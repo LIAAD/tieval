@@ -1,0 +1,84 @@
+
+############# TIMEBANKPT ##########################
+
+Mode Baseline
+	Test set
+	Accuracy of task A: 59.2 %
+	Accuracy of task B: 56.2 %
+	Accuracy of task C: 47.3 %
+
+
+Support Vector Machines
+	Test set
+	Accuracy of task A: 55.6 %
+	Accuracy of task B: 76.4 %
+	Accuracy of task C: 53.9 %
+
+
+Non trainable embeddings
+	Test set
+						AFTER  BEFORE  BEFORE-OR-OVERLAP  OVERLAP  OVERLAP-OR-AFTER  VAGUE  
+	AFTER                 43      34                  0       43                 0      0  
+	BEFORE                14     211                  1       38                 0      0  
+	BEFORE-OR-OVERLAP      4      14                  0        7                 0      0  
+	OVERLAP               30      64                  2      207                 0      1  
+	OVERLAP-OR-AFTER       3       3                  0        8                 0      0  
+	VAGUE                  1      11                  0       19                 0      0  
+
+	acc: 0.6081794195250659
+
+	Accuracy of task A: 56.2 %
+	Accuracy of task B: 71.3 %
+	Accuracy of task C: 50.4 %
+
+	
+Trainable Embeddings
+	{'input_operation': 'avg', 'num_dense_layers': 2, 'num_units': 201, 'dropout_rate': 0.2975203001983933, 'lr': 0.0017130455154995246}
+	
+	Test set
+						AFTER  BEFORE  BEFORE-OR-OVERLAP  OVERLAP  OVERLAP-OR-AFTER  VAGUE  
+	AFTER                 40      43                  0       37                 0      0  
+	BEFORE                16     207                  0       41                 0      0  
+	BEFORE-OR-OVERLAP      2      14                  0        9                 0      0  
+	OVERLAP               29      70                  0      205                 0      0  
+	OVERLAP-OR-AFTER       0       4                  0       10                 0      0  
+	VAGUE                  3       9                  0       19                 0      0  
+
+	acc:0.5963060686015831
+
+	Accuracy of task A: 53.3 %
+	Accuracy of task B: 69.5 %
+	Accuracy of task C: 51.2 %
+	
+	
+############# TempEval-3 ##########################
+Name: bert_L-4_H-256_A-4_based_model_context_reduce_labels
+	Train set: TempEval-3
+	Closure: Flase
+	Input: Concatenation of: source_token, related_token and context (the sentences where the tokens appear)
+	Targets: Labels reduced with reduce_lables dictionary.
+	Train: Fine-tune with AdamW with lr 3e-5 for 5 epochs.
+	Description: BERT with a 126 Dense layer on top of the pooled output values.
+	Temporal-awareness on Test Set Baseline: 0.375
+	Temporal-awareness on Test Set Model: 0.493
+
+
+
+Name: bert_L-4_H-256_A-4_based_model_context_reduce_labels_Large
+	Train set: TempEval-3
+	Closure: Flase
+	Input: Concatenation of: source_token, related_token and context (the sentences where the tokens appear)
+	Targets: Labels reduced with reduce_lables dictionary.
+	Description: BERT with a dense layers with 256 128 64 32 units on top of the pooled output values.
+	Temporal-awareness on Test Set Baseline: 0.375
+	Temporal-awareness on Test Set Model: 0.497
+
+
+Name: bert_L-4_H-256_A-4_based_model_context_reduce_labels_LARGER
+	Train set: TempEval-3
+	Closure: Flase
+	Input: Concatenation of: source_token, related_token and context (the sentences where the tokens appear)
+	Targets: Labels reduced with reduce_lables dictionary.
+	Description: BERT with a dense layers with 256 256 128 128 units on top of the pooled output values.
+	Temporal-awareness on Test Set Baseline: 0.375
+	Temporal-awareness on Test Set Model: 0.497
