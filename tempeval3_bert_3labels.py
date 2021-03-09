@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 
 import tensorflow_hub as hub
-import tensorflow_text as text
+import tensorflow_text as text  # Dependency for BERT preprocessing.
 
 from official.nlp import optimization
 
@@ -16,6 +16,7 @@ from tensorflow.keras import losses
 from tensorflow.keras import models
 from tensorflow.keras import metrics
 
+import text2story.data.tempeval3
 from text2story import read_xml as rxml
 from text2story import temporal_closure as tc
 from text2story import utils
@@ -31,7 +32,7 @@ tokenizer = nltk.word_tokenize
 AQUAINT_PATH = r'data/TempEval-3/Train/TBAQ-cleaned/AQUAINT'
 TIMEBANK_PATH = r'data/TempEval-3/Train/TBAQ-cleaned/TimeBank'
 
-base_aquaint, tlinks_aquaint = rxml.read_tempeval3(AQUAINT_PATH, tokenizer)
+base_aquaint, tlinks_aquaint = text2story.data.tempeval3.load_data(AQUAINT_PATH, tokenizer)
 base_timebank, tlinks_timebank = rxml.read_tempeval3(TIMEBANK_PATH, tokenizer)
 
 base = pd.concat([base_timebank, base_aquaint], axis=0)
@@ -179,7 +180,7 @@ y_test = [classes2idx[cl] for cl in tlinks_test.pointRel]
 
 # Split data into train and validation and build a tensorflow dataset.
 data_size = len(tlinks)
-batch_size = 64
+batch_size = 32
 
 cut = round(data_size * 0.8)
 train_set = tf.data.Dataset.from_tensor_slices(
@@ -189,7 +190,7 @@ valid_set = tf.data.Dataset.from_tensor_slices(
 
 """Model."""
 preprocess_url = 'https://tfhub.dev/tensorflow/bert_en_uncased_preprocess/3'
-bert_url = 'https://tfhub.dev/tensorflow/small_bert/bert_en_uncased_L-4_H-256_A-4/1'
+bert_url = 'https://tfhub.dev/tensorflow/small_bert/bert_en_uncased_L-6_H-768_A-12/1'
 
 
 def build_model():
@@ -237,7 +238,7 @@ model.compile(
     metrics=['accuracy']
 )
 
-model_path = r'bert_L-4_H-256_A-4_based_model_context_point_relation'
+model_path = r'bert_L-12_H-768_A-12_based_model_context_point_relation'
 checkpoint_cb = callbacks.ModelCheckpoint(model_path, save_best_only=True, save_weights_only=True)
 early_stop_cb = callbacks.EarlyStopping(patience=2, verbose=1, restore_best_weights=True)
 reduce_lr_cb = callbacks.ReduceLROnPlateau(patience=1, verbose=1, min_lr=1E-6)
@@ -246,6 +247,7 @@ model.fit(train_set, validation_data=valid_set, epochs=epochs, callbacks=[early_
 
 # model = models.load_model(model_path)
 model.load_weights(model_path)
+
 
 """Evaluate Model."""
 # Validation set.

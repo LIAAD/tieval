@@ -37,29 +37,29 @@ tokenizer = nltk.word_tokenize
 """Read data."""
 # Read AQUAINT dataset.
 AQUAINT_PATH = r'data/TempEval-3/Train/TBAQ-cleaned/AQUAINT'
-timexs_aquaint = rxml.timebankpt_get_tags(AQUAINT_PATH, rxml.get_timexs)
+timexs_aquaint = rxml.get_tags(AQUAINT_PATH, rxml.get_timexs)
 
-events_aquaint = rxml.timebankpt_get_tags(AQUAINT_PATH, rxml.get_events)
-makein_aquaint = rxml.timebankpt_get_tags(AQUAINT_PATH, rxml.get_makeinstance)
+events_aquaint = rxml.get_tags(AQUAINT_PATH, rxml.get_events)
+makein_aquaint = rxml.get_tags(AQUAINT_PATH, rxml.get_makeinstance)
 events_aquaint = events_aquaint.merge(makein_aquaint, left_on=['file', 'eid'], right_on=['file', 'eventID'])
 
-tlinks_aquaint = rxml.timebankpt_get_tags(AQUAINT_PATH, rxml.get_tlinks)
+tlinks_aquaint = rxml.get_tags(AQUAINT_PATH, rxml.get_tlinks)
 
-base_aquaint = rxml.timebankpt_get_base(AQUAINT_PATH, tokenizer)
+base_aquaint = rxml.get_base(AQUAINT_PATH, tokenizer)
 
 
 # Read TimeBank dataset.
 TIMEBANK_PATH = r'data/TempEval-3/Train/TBAQ-cleaned/TimeBank'
-timexs_timebank = rxml.timebankpt_get_tags(TIMEBANK_PATH, rxml.get_timexs)
+timexs_timebank = rxml.get_tags(TIMEBANK_PATH, rxml.get_timexs)
 
-events_timebank = rxml.timebankpt_get_tags(TIMEBANK_PATH, rxml.get_events)
-makein_timebank = rxml.timebankpt_get_tags(TIMEBANK_PATH, rxml.get_makeinstance)
+events_timebank = rxml.get_tags(TIMEBANK_PATH, rxml.get_events)
+makein_timebank = rxml.get_tags(TIMEBANK_PATH, rxml.get_makeinstance)
 events_timebank = events_timebank[['eid', 'class', 'text', 'file']].merge(makein_timebank, left_on=['file', 'eid'],
                                                                           right_on=['file', 'eventID'])
 
-tlinks_timebank = rxml.timebankpt_get_tags(TIMEBANK_PATH, rxml.get_tlinks)
+tlinks_timebank = rxml.get_tags(TIMEBANK_PATH, rxml.get_tlinks)
 
-base_timebank = rxml.timebankpt_get_base(TIMEBANK_PATH, tokenizer)
+base_timebank = rxml.get_base(TIMEBANK_PATH, tokenizer)
 
 # The training set will be the merge of TimeBank and AQUAINT.
 timexs_train = pd.concat([timexs_timebank, timexs_aquaint], axis=0)
@@ -74,14 +74,14 @@ base_train = pd.concat([base_timebank, base_aquaint], axis=0)
 
 # Read test data.
 TEST_PATH = r'data/TempEval-3/Test/TempEval-3-Platinum'
-timexs_test = rxml.timebankpt_get_tags(TEST_PATH, rxml.get_timexs)
+timexs_test = rxml.get_tags(TEST_PATH, rxml.get_timexs)
 
-events_test = rxml.timebankpt_get_tags(TEST_PATH, rxml.get_events)
-makein_test = rxml.timebankpt_get_tags(TEST_PATH, rxml.get_makeinstance)
+events_test = rxml.get_tags(TEST_PATH, rxml.get_events)
+makein_test = rxml.get_tags(TEST_PATH, rxml.get_makeinstance)
 events_test = events_test[['eid', 'class', 'text', 'file']].merge(makein_test, left_on=['file', 'eid'],
                                                                   right_on=['file', 'eventID'])
 
-tlinks_test = rxml.timebankpt_get_tags(TEST_PATH, rxml.get_tlinks)
+tlinks_test = rxml.get_tags(TEST_PATH, rxml.get_tlinks)
 tlinks_test['eventID'] = tlinks_test.eventInstanceID.fillna(tlinks_test.timeID).copy()
 tlinks_test['relatedTo'] = tlinks_test.relatedToTime.fillna(tlinks_test.relatedToEventInstance).copy()
 
@@ -89,7 +89,7 @@ tlinks_test['relatedTo'] = tlinks_test.relatedToTime.fillna(tlinks_test.relatedT
 tlinks_test['relType'] = tlinks_test.relType.map(tc.relevant_relations)
 tlinks_test.drop_duplicates(inplace=True)
 
-base_test = rxml.timebankpt_get_base(TEST_PATH, tokenizer)
+base_test = rxml.get_base(TEST_PATH, tokenizer)
 
 
 """Preprocess data."""

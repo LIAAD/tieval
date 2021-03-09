@@ -10,9 +10,8 @@ import bs4
 
 import nltk.data
 
-import numpy as np
-
 sent_tokenizer = nltk.data.load('tokenizers/punkt/english.pickle')
+
 
 def get_text(xml_root):
     return ''.join(txt for txt in xml_root.itertext()).strip()
@@ -48,7 +47,7 @@ def get_makeinstance(xml_root):
     return pd.DataFrame(tlink.attrib for tlink in xml_root.findall('.//MAKEINSTANCE'))
 
 
-def timebankpt_get_tags(folder_path, get_func=get_tlinks):
+def get_tags(folder_path, get_func=get_tlinks):
     glob_path = os.path.join(folder_path, '*.tml')
     files_path = glob.glob(glob_path)
 
@@ -127,7 +126,7 @@ def build_base(path, tokenizer):
     return base.reset_index()
 
 
-def timebankpt_get_base(folder_path, tokenizer):
+def get_base(folder_path, tokenizer):
     glob_path = os.path.join(folder_path, '*.tml')
     files_path = glob.glob(glob_path)
 
@@ -142,17 +141,17 @@ def timebankpt_get_base(folder_path, tokenizer):
     return pd.concat(base)
 
 
-def read_tempeval3(path: str, tokenizer) -> [pd.DataFrame, pd.DataFrame]:
+def read_dir(path: str, tokenizer) -> [pd.DataFrame, pd.DataFrame]:
     """
-    Reads all the files from a folder that contains .tml files annotated in the TempEval3 style.
+    Reads all .tml files that are in path.
 
     :param path: path to the folder to read.
     :param tokenizer:
     :return: two pandas DataFrames. One with all the tokens and another with the temporal links.
     """
     # Build base.
-    base = timebankpt_get_base(path, tokenizer)
-    makein = timebankpt_get_tags(path, get_makeinstance)
+    base = get_base(path, tokenizer)
+    makein = get_tags(path, get_makeinstance)
     base = base.merge(
         makein[['file', 'eventID', 'eiid']], left_on=['file', 'tag_id'],
         right_on=['file', 'eventID'], how='left')
@@ -160,10 +159,11 @@ def read_tempeval3(path: str, tokenizer) -> [pd.DataFrame, pd.DataFrame]:
     base = base[['file', 'sentence', 'tag_id', 'token']]
 
     # Build tlinks.
-    tlinks = timebankpt_get_tags(path, get_tlinks)
+    tlinks = get_tags(path, get_tlinks)
     tlinks['eventID'] = tlinks.eventInstanceID.fillna(tlinks.timeID).copy()
     tlinks['relatedTo'] = tlinks.relatedToTime.fillna(tlinks.relatedToEventInstance).copy()
     tlinks.rename(columns={'eventID': 'source'}, inplace=True)
     tlinks = tlinks[['file', 'lid', 'source', 'relatedTo', 'relType']]
 
     return base, tlinks
+

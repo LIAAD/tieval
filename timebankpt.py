@@ -42,11 +42,11 @@ elif WHERE == 'server':
 tokenizer = nltk.word_tokenize
 
 # Read train data.
-base_train = rxml.timebankpt_get_base(train_path, tokenizer)
+base_train = rxml.get_base(train_path, tokenizer)
 
-events_train = rxml.timebankpt_get_tags(train_path, rxml.get_events)
-timex_train = rxml.timebankpt_get_tags(train_path, rxml.get_timexs)
-tlinks_train = rxml.timebankpt_get_tags(train_path, rxml.get_tlinks)
+events_train = rxml.get_tags(train_path, rxml.get_events)
+timex_train = rxml.get_tags(train_path, rxml.get_timexs)
+tlinks_train = rxml.get_tags(train_path, rxml.get_tlinks)
 
 tlinks_train['relatedTo'] = tlinks_train.relatedToTime.fillna(tlinks_train.relatedToEvent).copy()
 tlinks_train = t2s.utils.add_text_to_tlinks(tlinks_train, events_train, timex_train)
@@ -54,11 +54,11 @@ tlinks_train.loc[tlinks_train.task == 'B', 'relatedToken'] = '<dct>'  # Use "<dc
 
 
 # Read test data.
-base_test = rxml.timebankpt_get_base(test_path, tokenizer)
+base_test = rxml.get_base(test_path, tokenizer)
 
-events_test = rxml.timebankpt_get_tags(test_path, rxml.get_events)
-timex_test = rxml.timebankpt_get_tags(test_path, rxml.get_timexs)
-tlinks_test = rxml.timebankpt_get_tags(test_path, rxml.get_tlinks)
+events_test = rxml.get_tags(test_path, rxml.get_events)
+timex_test = rxml.get_tags(test_path, rxml.get_timexs)
+tlinks_test = rxml.get_tags(test_path, rxml.get_tlinks)
 
 tlinks_test['relatedTo'] = tlinks_test.relatedToTime.fillna(tlinks_test.relatedToEvent).copy()
 tlinks_test = t2s.utils.add_text_to_tlinks(tlinks_test, events_test, timex_test)

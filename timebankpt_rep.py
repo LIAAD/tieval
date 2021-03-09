@@ -7,8 +7,8 @@ TEST_PATH = r'C:\Users\hmoso\OneDrive\Data\TimeBankPT\test'
 
 
 """Read data."""
-train = rxml.timebankpt_get_tags(TRAIN_PATH, rxml.get_tlinks)
-test = rxml.timebankpt_get_tags(TEST_PATH, rxml.get_tlinks)
+train = rxml.get_tags(TRAIN_PATH, rxml.get_tlinks)
+test = rxml.get_tags(TEST_PATH, rxml.get_tlinks)
 
 
 """Majority class baseline."""
