@@ -36,7 +36,7 @@ tokenizer = nltk.word_tokenize
 
 """Read data."""
 # Read AQUAINT dataset.
-AQUAINT_PATH = r'data/TempEval-3/Train/TBAQ-cleaned/AQUAINT'
+AQUAINT_PATH = r'../data/TempEval-3/Train/TBAQ-cleaned/AQUAINT'
 timexs_aquaint = rxml.get_tags(AQUAINT_PATH, rxml.get_timexs)
 
 events_aquaint = rxml.get_tags(AQUAINT_PATH, rxml.get_events)
@@ -49,7 +49,7 @@ base_aquaint = rxml.get_base(AQUAINT_PATH, tokenizer)
 
 
 # Read TimeBank dataset.
-TIMEBANK_PATH = r'data/TempEval-3/Train/TBAQ-cleaned/TimeBank'
+TIMEBANK_PATH = r'../data/TempEval-3/Train/TBAQ-cleaned/TimeBank'
 timexs_timebank = rxml.get_tags(TIMEBANK_PATH, rxml.get_timexs)
 
 events_timebank = rxml.get_tags(TIMEBANK_PATH, rxml.get_events)
@@ -73,7 +73,7 @@ base_train = pd.concat([base_timebank, base_aquaint], axis=0)
 
 
 # Read test data.
-TEST_PATH = r'data/TempEval-3/Test/TempEval-3-Platinum'
+TEST_PATH = r'../data/TempEval-3/Test/TempEval-3-Platinum'
 timexs_test = rxml.get_tags(TEST_PATH, rxml.get_timexs)
 
 events_test = rxml.get_tags(TEST_PATH, rxml.get_events)

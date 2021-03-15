@@ -32,8 +32,8 @@ WHERE = 'local'  # server or local
 
 """Read data."""
 if WHERE == 'local':
-    train_path = r'data\TimeBankPT\train'
-    test_path = r'data\TimeBankPT\test'
+    train_path = r'../data/TimeBankPT/train'
+    test_path = r'../data/TimeBankPT/test'
 elif WHERE == 'server':
     train_path = r'/home/dock/temporal_identification/data/TimeBankPT/train'
     test_path = r'/home/dock/temporal_identification/data/TimeBankPT/test'

@@ -31,8 +31,8 @@ tokenizer = nltk.word_tokenize
 
 """Read data."""
 # The training set will be the merge of TimeBank and AQUAINT.
-AQUAINT_PATH = r'data/TempEval-3/Train/TBAQ-cleaned/AQUAINT'
-TIMEBANK_PATH = r'data/TempEval-3/Train/TBAQ-cleaned/TimeBank'
+AQUAINT_PATH = r'../data/TempEval-3/Train/TBAQ-cleaned/AQUAINT'
+TIMEBANK_PATH = r'../data/TempEval-3/Train/TBAQ-cleaned/TimeBank'
 
 base_aquaint, tlinks_aquaint = rxml.read_tempeval3(AQUAINT_PATH, tokenizer)
 base_timebank, tlinks_timebank = rxml.read_tempeval3(TIMEBANK_PATH, tokenizer)
@@ -41,7 +41,7 @@ base = pd.concat([base_timebank, base_aquaint], axis=0)
 tlinks = pd.concat([tlinks_timebank, tlinks_aquaint], axis=0)
 
 # Read test data.
-TEST_PATH = r'data/TempEval-3/Test/TempEval-3-Platinum'
+TEST_PATH = r'../data/TempEval-3/Test/TempEval-3-Platinum'
 base_test, tlinks_test = rxml.read_tempeval3(TEST_PATH, tokenizer)
 
 # Remove relations that mean the same thing.

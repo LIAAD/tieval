@@ -21,37 +21,37 @@ from text2story import read_xml as rxml
 from text2story import temporal_closure as tc
 from text2story import utils
 
-from collections import defaultdict
+import collections
 
 pd.set_option('display.max_columns', 40)
 
 tokenizer = nltk.word_tokenize
 
 """Read data."""
-# The training set will be the merge of TimeBank and AQUAINT.
-AQUAINT_PATH = r'data/TempEval-3/Train/TBAQ-cleaned/AQUAINT'
-TIMEBANK_PATH = r'data/TempEval-3/Train/TBAQ-cleaned/TimeBank'
-
-base_aquaint, tlinks_aquaint = text2story.data.tempeval3.load_data(AQUAINT_PATH, tokenizer)
-base_timebank, tlinks_timebank = rxml.read_tempeval3(TIMEBANK_PATH, tokenizer)
-
-base = pd.concat([base_timebank, base_aquaint], axis=0)
-tlinks = pd.concat([tlinks_timebank, tlinks_aquaint], axis=0)
+TEMPEVAL_PATH = r'../data/TempEval-3'
+data = text2story.data.tempeval3.load_data(TEMPEVAL_PATH, tokenizer)
+base = pd.concat([data['train'][dataset]['base'] for dataset in data['train']], axis=0)
+tlinks = pd.concat([data['train'][dataset]['tlinks'] for dataset in data['train']], axis=0)
 
 # Read test data.
-TEST_PATH = r'data/TempEval-3/Test/TempEval-3-Platinum'
-base_test, tlinks_test = rxml.read_tempeval3(TEST_PATH, tokenizer)
+base_test = data['test']['platinum']['base']
+tlinks_test = data['test']['platinum']['tlinks']
+
+del data
 
 # Remove relations that mean the same thing.
+tlinks['relType'] = tlinks.relType.map(tc.relevant_relations)
+tlinks.drop_duplicates(inplace=True)
 tlinks_test['relType'] = tlinks_test.relType.map(tc.relevant_relations)
 tlinks_test.drop_duplicates(inplace=True)
+
 
 """Preprocess data."""
 # Add text for each token and the context between them to tlinks_closure dataframe.
 tlinks = utils.add_tokens(tlinks, base)
 tlinks_test = utils.add_tokens(tlinks_test, base_test)
 
-# Limit the temporal links to be inside the same sentece, or betwen neighbor sentences.
+# Limit the temporal links to be inside the same sentence, or consecutive sentences.
 sent_distance = tlinks.related_sent - tlinks.source_sent
 tlinks = tlinks[(tlinks.source == 't0') | (tlinks.relatedTo == 't0') | (abs(sent_distance) <= 1)]
 
@@ -144,7 +144,6 @@ _interval_to_point = {
                    (_te1, _start, "<", _te2, _end),
                    (_te1, _end, ">", _te2, _start),
                    (_te1, _end, "=", _te2, _end)],
-
     "OVERLAP": [(_te1, _start, "<", _te2, _start),
                 (_te1, _start, "<", _te2, _end),
                 (_te1, _end, ">", _te2, _start),
@@ -160,23 +159,28 @@ tlinks_test = tlinks_test.merge(map_relations)
 X = tlinks.source_text + ' ' + tlinks.related_text + ' ' + tlinks.context
 X_context = tlinks.context
 X_events = tlinks.source_text + ' ' + tlinks.related_text
-
-X_test = tlinks_test.source_text + ' ' + tlinks_test.related_text + ' ' + tlinks_test.context
-
 X_edge1 = tlinks.edge1.values
 X_edge2 = tlinks.edge1.values
+
+X_test = tlinks_test.source_text + ' ' + tlinks_test.related_text
+X_context_test = tlinks_test.context
 X_edge1_test = tlinks_test.edge1.values
 X_edge2_test = tlinks_test.edge2.values
 
 # Build target.
 classes = tlinks.pointRel.unique()
-output_size = len(classes)
+n_classes = len(classes)
 
 classes2idx = {cl: i for i, cl in enumerate(classes)}
 idx2classes = dict((i, cl) for cl, i in classes2idx.items())
 
 y = [classes2idx[cl] for cl in tlinks.pointRel]
 y_test = [classes2idx[cl] for cl in tlinks_test.pointRel]
+
+# Compute class weight.
+class_count = collections.Counter(y)
+n_samples = len(y)
+class_weight = {cl: (n_samples / (n_classes * count)) for cl, count in class_count.items()}
 
 # Split data into train and validation and build a tensorflow dataset.
 data_size = len(tlinks)
@@ -188,9 +192,10 @@ train_set = tf.data.Dataset.from_tensor_slices(
 valid_set = tf.data.Dataset.from_tensor_slices(
     ((X_context[cut:], X_events[cut:], X_edge1[cut:], X_edge2[cut:]), y[cut:])).batch(batch_size).prefetch(1)
 
+
 """Model."""
 preprocess_url = 'https://tfhub.dev/tensorflow/bert_en_uncased_preprocess/3'
-bert_url = 'https://tfhub.dev/tensorflow/small_bert/bert_en_uncased_L-6_H-768_A-12/1'
+bert_url = 'https://tfhub.dev/tensorflow/small_bert/bert_en_uncased_L-2_H-128_A-2/1'
 
 
 def build_model():
@@ -215,7 +220,7 @@ def build_model():
     z = layers.Dense(128, activation='relu')(z)
     z = layers.Dense(64, activation='relu')(z)
     z = layers.Dense(32, activation='relu')(z)
-    output = layers.Dense(output_size)(z)
+    output = layers.Dense(n_classes)(z)
     return models.Model([context, events, edge1, edge2], output)
 
 
@@ -238,12 +243,18 @@ model.compile(
     metrics=['accuracy']
 )
 
-model_path = r'bert_L-12_H-768_A-12_based_model_context_point_relation'
+model_path = r'models/bert_L-2_H-128_A-2_based_model_context_point_relation'
 checkpoint_cb = callbacks.ModelCheckpoint(model_path, save_best_only=True, save_weights_only=True)
 early_stop_cb = callbacks.EarlyStopping(patience=2, verbose=1, restore_best_weights=True)
 reduce_lr_cb = callbacks.ReduceLROnPlateau(patience=1, verbose=1, min_lr=1E-6)
 
-model.fit(train_set, validation_data=valid_set, epochs=epochs, callbacks=[early_stop_cb, checkpoint_cb])
+model.fit(
+    train_set,
+    validation_data=valid_set,
+    epochs=epochs,
+    callbacks=[early_stop_cb, checkpoint_cb],
+    class_weight=class_weight
+)
 
 # model = models.load_model(model_path)
 model.load_weights(model_path)
