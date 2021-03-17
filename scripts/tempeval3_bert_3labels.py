@@ -23,12 +23,16 @@ from text2story import utils
 
 import collections
 
+import json
+
+from pprint import pprint
+
 pd.set_option('display.max_columns', 40)
 
 tokenizer = nltk.word_tokenize
 
 """Read data."""
-TEMPEVAL_PATH = r'../data/TempEval-3'
+TEMPEVAL_PATH = r'data/TempEval-3'
 data = text2story.data.tempeval3.load_data(TEMPEVAL_PATH, tokenizer)
 base = pd.concat([data['train'][dataset]['base'] for dataset in data['train']], axis=0)
 tlinks = pd.concat([data['train'][dataset]['tlinks'] for dataset in data['train']], axis=0)
@@ -194,16 +198,18 @@ valid_set = tf.data.Dataset.from_tensor_slices(
 
 
 """Model."""
-preprocess_url = 'https://tfhub.dev/tensorflow/bert_en_uncased_preprocess/3'
-bert_url = 'https://tfhub.dev/tensorflow/small_bert/bert_en_uncased_L-2_H-128_A-2/1'
+with open('resources/bert_urls.json', 'r') as f:
+    bert_urls = json.load(f)
+
+small_bert_urls = {name.replace('/', '_'): bert_urls[name] for name in bert_urls if name.startswith('small_bert')}
 
 
-def build_model():
+def build_model(handler_url, bert_url):
     context = layers.Input(shape=(), dtype=tf.string, name='context')
     events = layers.Input(shape=(), dtype=tf.string, name='source')
 
     # Tokenize the text to word pieces.
-    bert_preprocess = hub.load(preprocess_url)
+    bert_preprocess = hub.load(handler_url)
     tokenizer = hub.KerasLayer(bert_preprocess.tokenize, name='tokenizer')
     segments = [tokenizer(s) for s in [context, events]]
     packer = hub.KerasLayer(bert_preprocess.bert_pack_inputs,
@@ -224,37 +230,60 @@ def build_model():
     return models.Model([context, events, edge1, edge2], output)
 
 
-model = build_model()
+def compile(model, epochs=5):
+    steps_per_epoch = tf.data.experimental.cardinality(train_set).numpy()  # np.lower(len(X) / batch_size)
+    num_train_steps = epochs * steps_per_epoch
+    num_warmup_steps = int(0.1 * num_train_steps)
+    optimizer = optimization.create_optimizer(
+        init_lr=3e-5,
+        num_train_steps=num_train_steps,
+        num_warmup_steps=num_warmup_steps,
+        optimizer_type='adamw'
+    )
 
-epochs = 5
-steps_per_epoch = tf.data.experimental.cardinality(train_set).numpy()  # np.lower(len(X) / batch_size)
-num_train_steps = epochs * steps_per_epoch
-num_warmup_steps = int(0.1 * num_train_steps)
-optimizer = optimization.create_optimizer(
-    init_lr=3e-5,
-    num_train_steps=num_train_steps,
-    num_warmup_steps=num_warmup_steps,
-    optimizer_type='adamw'
-)
+    model.compile(
+        optimizer=optimizer,
+        loss=losses.SparseCategoricalCrossentropy(from_logits=True),
+        metrics=['accuracy']
+    )
+    return model
 
-model.compile(
-    optimizer=optimizer,
-    loss=losses.SparseCategoricalCrossentropy(from_logits=True),
-    metrics=['accuracy']
-)
 
-model_path = r'models/bert_L-2_H-128_A-2_based_model_context_point_relation'
-checkpoint_cb = callbacks.ModelCheckpoint(model_path, save_best_only=True, save_weights_only=True)
-early_stop_cb = callbacks.EarlyStopping(patience=2, verbose=1, restore_best_weights=True)
-reduce_lr_cb = callbacks.ReduceLROnPlateau(patience=1, verbose=1, min_lr=1E-6)
+y_valid = np.concatenate([y for x, y in valid_set])
 
-model.fit(
-    train_set,
-    validation_data=valid_set,
-    epochs=epochs,
-    callbacks=[early_stop_cb, checkpoint_cb],
-    class_weight=class_weight
-)
+for model_name in small_bert_urls:
+    epochs = 5
+    model = build_model(
+        handler_url=small_bert_urls[model_name]['handler'],
+        bert_url=small_bert_urls[model_name]['model']
+    )
+    model = compile(model, epochs=epochs)
+
+    model_path = f'models/{model_name}_based_model_context_point_relation'
+    checkpoint_cb = callbacks.ModelCheckpoint(model_path, save_best_only=True, save_weights_only=True)
+    early_stop_cb = callbacks.EarlyStopping(patience=2, verbose=1, restore_best_weights=True)
+    reduce_lr_cb = callbacks.ReduceLROnPlateau(patience=1, verbose=1, min_lr=1E-6)
+
+    model.fit(
+        train_set,
+        validation_data=valid_set,
+        epochs=epochs,
+        callbacks=[early_stop_cb, checkpoint_cb],
+        #class_weight=class_weight
+    )
+
+    Y_prob_valid = model.predict(valid_set)
+    y_pred_valid = np.argmax(Y_prob_valid, axis=1)
+    cm = confusion_matrix(y_valid, y_pred_valid)
+    with open('results/results.txt', 'a') as f:
+        f.write(model_name)
+        f.write('\n')
+        f.write(str(cm))
+        f.write('\n\n')
+
+
+
+
 
 # model = models.load_model(model_path)
 model.load_weights(model_path)
@@ -262,9 +291,6 @@ model.load_weights(model_path)
 
 """Evaluate Model."""
 # Validation set.
-y_valid = np.concatenate([y for x, y in valid_set])
-Y_prob_valid = model.predict(valid_set)
-y_pred_valid = np.argmax(Y_prob_valid, axis=1)
 utils.print_confusion_matrix(y_valid, y_pred_valid, classes2idx.keys())
 
 baseline_classe = np.argmax(np.bincount(y))
