@@ -9,6 +9,10 @@ from typing import List
 
 from tqdm import tqdm
 
+import collections
+
+import numpy as np
+
 
 def text2token(text_list, word_idx: Dict, tokenizer) -> List:
     token_list = [[token if token in word_idx else '<oov>' for token in tokenizer(text)]
@@ -96,3 +100,111 @@ def print_confusion_matrix(y_true, y_pred, columns):
     cm = confusion_matrix(y_true, y_pred)
     cm = pd.DataFrame(cm, index=columns, columns=columns)
     print(cm)
+
+
+# Add point relation.
+_start = 0
+_end = 1
+_te1 = 0  # Time expression 1
+_te2 = 1  # Time expression 2
+
+# Remove relations that mean the same thing.
+interval_to_point = {
+    "BEFORE": [(_te1, _start, "<", _te2, _start),
+               (_te1, _start, "<", _te2, _end),
+               (_te1, _end, "<", _te2, _start),
+               (_te1, _end, "<", _te2, _end)],
+    "AFTER": [(_te1, _start, ">", _te2, _start),
+              (_te1, _start, ">", _te2, _end),
+              (_te1, _end, ">", _te2, _start),
+              (_te1, _end, ">", _te2, _end)],
+    "IBEFORE": [(_te1, _start, "<", _te2, _start),
+                (_te1, _start, "=", _te2, _end),
+                (_te1, _end, "<", _te2, _start),
+                (_te1, _end, "<", _te2, _end)],
+    "IAFTER": [(_te1, _start, ">", _te2, _start),
+               (_te1, _start, "=", _te2, _end),
+               (_te1, _end, ">", _te2, _start),
+               (_te1, _end, ">", _te2, _end)],
+    "CONTAINS": [(_te1, _start, "<", _te2, _start),
+                 (_te1, _start, "<", _te2, _end),
+                 (_te1, _end, ">", _te2, _start),
+                 (_te1, _end, ">", _te2, _end)],
+    "INCLUDES": [(_te1, _start, "<", _te2, _start),
+                 (_te1, _start, "<", _te2, _end),
+                 (_te1, _end, ">", _te2, _start),
+                 (_te1, _end, ">", _te2, _end)],
+    "IS_INCLUDED": [(_te1, _start, ">", _te2, _start),
+                    (_te1, _start, "<", _te2, _end),
+                    (_te1, _end, ">", _te2, _start),
+                    (_te1, _end, "<", _te2, _end)],
+    "BEGINS-ON": [(_te1, _start, "=", _te2, _start),
+                  (_te1, _start, "<", _te2, _end),
+                  (_te1, _end, ">", _te2, _start),
+                  (_te1, _end, None, _te2, _end)],
+    "ENDS-ON": [(_te1, _start, None, _te2, _start),
+                (_te1, _start, "<", _te2, _end),
+                (_te1, _end, ">", _te2, _start),
+                (_te1, _end, "=", _te2, _end)],
+    "BEGINS": [(_te1, _start, "=", _te2, _start),
+               (_te1, _start, "<", _te2, _end),
+               (_te1, _end, ">", _te2, _start),
+               (_te1, _end, "<", _te2, _end)],
+    "BEGUN_BY": [(_te1, _start, "=", _te2, _start),
+                 (_te1, _start, "<", _te2, _end),
+                 (_te1, _end, ">", _te2, _start),
+                 (_te1, _end, ">", _te2, _end)],
+    "ENDS": [(_te1, _start, ">", _te2, _start),
+             (_te1, _start, "<", _te2, _end),
+             (_te1, _end, ">", _te2, _start),
+             (_te1, _end, "=", _te2, _end)],
+    "ENDED_BY": [(_te1, _start, "<", _te2, _start),
+                 (_te1, _start, "<", _te2, _end),
+                 (_te1, _end, ">", _te2, _start),
+                 (_te1, _end, "=", _te2, _end)],
+
+    "SIMULTANEOUS": [(_te1, _start, "=", _te2, _start),
+                     (_te1, _start, "<", _te2, _end),
+                     (_te1, _end, ">", _te2, _start),
+                     (_te1, _end, "=", _te2, _end)],
+    "IDENTITY": [(_te1, _start, "=", _te2, _start),
+                 (_te1, _start, "<", _te2, _end),
+                 (_te1, _end, ">", _te2, _start),
+                 (_te1, _end, "=", _te2, _end)],
+    "DURING": [(_te1, _start, "=", _te2, _start),
+               (_te1, _start, "<", _te2, _end),
+               (_te1, _end, ">", _te2, _start),
+               (_te1, _end, "=", _te2, _end)],
+    "DURING_INV": [(_te1, _start, "=", _te2, _start),
+                   (_te1, _start, "<", _te2, _end),
+                   (_te1, _end, ">", _te2, _start),
+                   (_te1, _end, "=", _te2, _end)],
+    "OVERLAP": [(_te1, _start, "<", _te2, _start),
+                (_te1, _start, "<", _te2, _end),
+                (_te1, _end, ">", _te2, _start),
+                (_te1, _end, "<", _te2, _end)]
+}
+
+
+def compute_class_weight(y, n_classes):
+    # Compute class weight.
+    class_count = collections.Counter(y)
+    n_samples = len(y)
+    class_weight = {cl: (n_samples / (n_classes * count)) for cl, count in class_count.items()}
+    return class_weight
+
+
+def oversample(X, y):
+    oversample_idxs = np.array([], dtype=int)
+    class_count = collections.Counter(y)
+    max_class_count = max(class_count.values())
+    for class_, count in class_count.items():
+        class_idxs = np.where(y == class_)[0]
+        if count < max_class_count:
+            sample_idxs = class_idxs[np.random.randint(0, len(class_idxs), max_class_count)]
+        else:
+            sample_idxs = class_idxs
+        oversample_idxs = np.append(oversample_idxs, sample_idxs)
+    np.random.shuffle(oversample_idxs)
+
+    return X[oversample_idxs], y[oversample_idxs]

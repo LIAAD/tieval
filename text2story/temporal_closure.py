@@ -11,30 +11,31 @@ from tqdm import tqdm
 # constants representing the start point and end point of an interval
 _start = 0
 _end = 1
+_src = 0  # source
+_tgt = 1  # target
 
 # mapping from interval relation names to point relations
 # for example, BEFORE means that the first interval's end is before the second interval's start
 _interval_to_point = {
-    "BEFORE": [(0, _end, "<", 1, _start)],
-    "AFTER": [(1, _end, "<", 0, _start)],
-    "IBEFORE": [(0, _end, "=", 1, _start)],
-    "IAFTER": [(0, _start, "=", 1, _end)],
-    "CONTAINS": [(0, _start, "<", 1, _start), (1, _end, "<", 0, _end)],
-    "INCLUDES": [(0, _start, "<", 1, _start), (1, _end, "<", 0, _end)],
-    "IS_INCLUDED": [(1, _start, "<", 0, _start), (0, _end, "<", 1, _end)],
-    "BEGINS-ON": [(0, _start, "=", 1, _start)],
-    "ENDS-ON": [(0, _end, "=", 1, _end)],
-    "BEGINS": [(0, _start, "=", 1, _start), (0, _end, "<", 1, _end)],
-    "BEGUN_BY": [(0, _start, "=", 1, _start), (1, _end, "<", 0, _end)],
-    "ENDS": [(1, _start, "<", 0, _start), (0, _end, "=", 1, _end)],
-    "ENDED_BY": [(0, _start, "<", 1, _start), (0, _end, "=", 1, _end)],
-    "SIMULTANEOUS": [(0, _start, "=", 1, _start), (0, _end, "=", 1, _end)],
-    "IDENTITY": [(0, _start, "=", 1, _start), (0, _end, "=", 1, _end)],
-    "DURING": [(0, _start, "=", 1, _start), (0, _end, "=", 1, _end)],
-    "DURING_INV": [(0, _start, "=", 1, _start), (0, _end, "=", 1, _end)],
-    "OVERLAP": [(0, _start, "<", 1, _end), (1, _start, "<", 0, _end)],
+    "BEFORE": [(_src, _end, "<", _tgt, _start)],
+    "AFTER": [(_src, _start, '>', _tgt, _end)],
+    "IBEFORE": [(_src, _end, "=", _tgt, _start)],
+    "IAFTER": [(_src, _start, "=", _tgt, _end)],
+    # "CONTAINS": [(_src, _start, "<", _tgt, _start), (_tgt, _end, "<", _src, _end)],
+    "INCLUDES": [(_src, _start, "<", _tgt, _start), (_src, _end, '>', _tgt, _end)],
+    "IS_INCLUDED": [(_src, _start, '>', _tgt, _start), (_src, _end, "<", _tgt, _end)],
+    "BEGINS-ON": [(_src, _start, "=", _tgt, _start)],
+    "ENDS-ON": [(_src, _end, "=", _tgt, _end)],
+    "BEGINS": [(_src, _start, "=", _tgt, _start), (_src, _end, "<", _tgt, _end)],
+    "BEGUN_BY": [(_src, _start, "=", _tgt, _start), (_src, _end, '>', _tgt, _end)],
+    "ENDS": [(_src, _start, '>', _tgt, _start), (_src, _end, "=", _tgt, _end)],
+    "ENDED_BY": [(_src, _start, "<", _tgt, _start), (_src, _end, "=", _tgt, _end)],
+    "SIMULTANEOUS": [(_src, _start, "=", _tgt, _start), (_src, _end, "=", _tgt, _end)],
+    # "IDENTITY": [(_src, _start, "=", _tgt, _start), (_src, _end, "=", _tgt, _end)],
+    # "DURING": [(_src, _start, "=", _tgt, _start), (_src, _end, "=", _tgt, _end)],
+    # "DURING_INV": [(_src, _start, "=", _tgt, _start), (_src, _end, "=", _tgt, _end)],
+    "OVERLAP": [(_src, _start, "<", _tgt, _end), (_src, _end, '>', _tgt, _start)],
 }
-
 # transitivity table for point relations
 _point_transitions = {
     "<": {"<": "<", "=": "<"},

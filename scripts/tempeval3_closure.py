@@ -103,21 +103,7 @@ tlinks_closure = tlinks_closure[(tlinks_closure.source == 't0') |
                                 (abs(sent_distance) <= 1)]
 
 # Add context.
-file_sentence = base.groupby(['file', 'sentence']).token.apply(' '.join)
-context_sent = []
-for _, row in tqdm(tlinks_closure.iterrows()):
-    file, source_idx, related_idx = row[['file', 'source_sent', 'related_sent']]
-    if source_idx == related_idx:
-        context_sent.append(file_sentence[file, source_idx])
-    elif source_idx > related_idx:
-        context_sent.append(file_sentence[file, source_idx] + file_sentence[file, related_idx])
-    elif source_idx < related_idx:
-        context_sent.append(file_sentence[file, related_idx] + file_sentence[file, source_idx])
-    elif source_idx == -1:
-        context_sent.append(file_sentence[file, related_idx])
-    elif related_idx == -1:
-        context_sent.append(file_sentence[file, source_idx])
-tlinks_closure['context'] = context_sent
+tlinks_closure = utils.add_context(tlinks_closure, base)
 
 # Build inputs for the model.
 X_source = tlinks_closure.source_text.values
