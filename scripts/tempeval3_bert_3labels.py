@@ -17,7 +17,6 @@ from tensorflow.keras import models
 from tensorflow.keras import metrics
 
 import text2story.data.tempeval3
-from text2story import read_xml as rxml
 from text2story import temporal_closure as tc
 from text2story import utils
 
@@ -71,105 +70,24 @@ tlinks.loc[tlinks.relatedTo == 't0', 'related_text'] = DCT_TOKEN
 tlinks_test.loc[tlinks_test.source == 't0', 'source_text'] = DCT_TOKEN
 tlinks_test.loc[tlinks_test.relatedTo == 't0', 'related_text'] = DCT_TOKEN
 
-# Add point relation.
-_start = 0
-_end = 1
-_te1 = 0  # Time expression 1
-_te2 = 1  # Time expression 2
-
-# Remove relations that mean the same thing.
-_interval_to_point = {
-    "BEFORE": [(_te1, _start, "<", _te2, _start),
-               (_te1, _start, "<", _te2, _end),
-               (_te1, _end, "<", _te2, _start),
-               (_te1, _end, "<", _te2, _end)],
-    "AFTER": [(_te1, _start, ">", _te2, _start),
-              (_te1, _start, ">", _te2, _end),
-              (_te1, _end, ">", _te2, _start),
-              (_te1, _end, ">", _te2, _end)],
-    "IBEFORE": [(_te1, _start, "<", _te2, _start),
-                (_te1, _start, "=", _te2, _end),
-                (_te1, _end, "<", _te2, _start),
-                (_te1, _end, "<", _te2, _end)],
-    "IAFTER": [(_te1, _start, ">", _te2, _start),
-               (_te1, _start, "=", _te2, _end),
-               (_te1, _end, ">", _te2, _start),
-               (_te1, _end, ">", _te2, _end)],
-    "CONTAINS": [(_te1, _start, "<", _te2, _start),
-                 (_te1, _start, "<", _te2, _end),
-                 (_te1, _end, ">", _te2, _start),
-                 (_te1, _end, ">", _te2, _end)],
-    "INCLUDES": [(_te1, _start, "<", _te2, _start),
-                 (_te1, _start, "<", _te2, _end),
-                 (_te1, _end, ">", _te2, _start),
-                 (_te1, _end, ">", _te2, _end)],
-    "IS_INCLUDED": [(_te1, _start, ">", _te2, _start),
-                    (_te1, _start, "<", _te2, _end),
-                    (_te1, _end, ">", _te2, _start),
-                    (_te1, _end, "<", _te2, _end)],
-    "BEGINS-ON": [(_te1, _start, "=", _te2, _start),
-                  (_te1, _start, "<", _te2, _end),
-                  (_te1, _end, ">", _te2, _start),
-                  (_te1, _end, None, _te2, _end)],
-    "ENDS-ON": [(_te1, _start, None, _te2, _start),
-                (_te1, _start, "<", _te2, _end),
-                (_te1, _end, ">", _te2, _start),
-                (_te1, _end, "=", _te2, _end)],
-    "BEGINS": [(_te1, _start, "=", _te2, _start),
-               (_te1, _start, "<", _te2, _end),
-               (_te1, _end, ">", _te2, _start),
-               (_te1, _end, "<", _te2, _end)],
-    "BEGUN_BY": [(_te1, _start, "=", _te2, _start),
-                 (_te1, _start, "<", _te2, _end),
-                 (_te1, _end, ">", _te2, _start),
-                 (_te1, _end, ">", _te2, _end)],
-    "ENDS": [(_te1, _start, ">", _te2, _start),
-             (_te1, _start, "<", _te2, _end),
-             (_te1, _end, ">", _te2, _start),
-             (_te1, _end, "=", _te2, _end)],
-    "ENDED_BY": [(_te1, _start, "<", _te2, _start),
-                 (_te1, _start, "<", _te2, _end),
-                 (_te1, _end, ">", _te2, _start),
-                 (_te1, _end, "=", _te2, _end)],
-
-    "SIMULTANEOUS": [(_te1, _start, "=", _te2, _start),
-                     (_te1, _start, "<", _te2, _end),
-                     (_te1, _end, ">", _te2, _start),
-                     (_te1, _end, "=", _te2, _end)],
-    "IDENTITY": [(_te1, _start, "=", _te2, _start),
-                 (_te1, _start, "<", _te2, _end),
-                 (_te1, _end, ">", _te2, _start),
-                 (_te1, _end, "=", _te2, _end)],
-    "DURING": [(_te1, _start, "=", _te2, _start),
-               (_te1, _start, "<", _te2, _end),
-               (_te1, _end, ">", _te2, _start),
-               (_te1, _end, "=", _te2, _end)],
-    "DURING_INV": [(_te1, _start, "=", _te2, _start),
-                   (_te1, _start, "<", _te2, _end),
-                   (_te1, _end, ">", _te2, _start),
-                   (_te1, _end, "=", _te2, _end)],
-    "OVERLAP": [(_te1, _start, "<", _te2, _start),
-                (_te1, _start, "<", _te2, _end),
-                (_te1, _end, ">", _te2, _start),
-                (_te1, _end, "<", _te2, _end)]
-}
-
-map_relations = [[k, p1, p2, r] for k, v in _interval_to_point.items() for _, p1, r, _, p2 in v if r is not None]
+map_relations = [[k, p1, p2, r] for k, v in utils.interval_to_point.items()
+                 for _, p1, r, _, p2 in v if r is not None]
 map_relations = pd.DataFrame(map_relations, columns=['relType', 'edge1', 'edge2', 'pointRel'])
 tlinks = tlinks.merge(map_relations)
 tlinks_test = tlinks_test.merge(map_relations)
 
 # Build inputs for the model.
-X = tlinks.source_text + ' ' + tlinks.related_text + ' ' + tlinks.context
 X_context = tlinks.context
 X_events = tlinks.source_text + ' ' + tlinks.related_text
 X_edge1 = tlinks.edge1.values
-X_edge2 = tlinks.edge1.values
+X_edge2 = tlinks.edge2.values
+X = np.array(list(zip(X_context, X_events, X_edge1, X_edge2)))
 
-X_test = tlinks_test.source_text + ' ' + tlinks_test.related_text
 X_context_test = tlinks_test.context
+X_events_test = tlinks_test.source_text + ' ' + tlinks_test.related_text
 X_edge1_test = tlinks_test.edge1.values
 X_edge2_test = tlinks_test.edge2.values
+X_test = np.array(list(zip(X_context_test, X_events_test, X_edge1_test, X_edge2_test)))
 
 # Build target.
 classes = tlinks.pointRel.unique()
@@ -178,23 +96,47 @@ n_classes = len(classes)
 classes2idx = {cl: i for i, cl in enumerate(classes)}
 idx2classes = dict((i, cl) for cl, i in classes2idx.items())
 
-y = [classes2idx[cl] for cl in tlinks.pointRel]
-y_test = [classes2idx[cl] for cl in tlinks_test.pointRel]
+y = np.array([classes2idx[cl] for cl in tlinks.pointRel])
+y_test = np.array([classes2idx[cl] for cl in tlinks_test.pointRel])
 
-# Compute class weight.
-class_count = collections.Counter(y)
-n_samples = len(y)
-class_weight = {cl: (n_samples / (n_classes * count)) for cl, count in class_count.items()}
 
-# Split data into train and validation and build a tensorflow dataset.
-data_size = len(tlinks)
-batch_size = 32
-
+"""
 cut = round(data_size * 0.8)
 train_set = tf.data.Dataset.from_tensor_slices(
     ((X_context[:cut], X_events[:cut], X_edge1[:cut], X_edge2[:cut]), y[:cut])).batch(batch_size).prefetch(1)
 valid_set = tf.data.Dataset.from_tensor_slices(
     ((X_context[cut:], X_events[cut:], X_edge1[cut:], X_edge2[cut:]), y[cut:])).batch(batch_size).prefetch(1)
+"""
+
+oversample_idxs = np.array([], dtype=int)
+class_count = collections.Counter(y)
+max_class_count = max(class_count.values())
+for class_, count in class_count.items():
+    class_idxs = np.where(y == class_)[0]
+    if count < max_class_count:
+        sample_idxs = class_idxs[np.random.randint(0, len(class_idxs), max_class_count)]
+    else:
+        sample_idxs = class_idxs
+    oversample_idxs = np.append(oversample_idxs, sample_idxs)
+np.random.shuffle(oversample_idxs)
+
+
+#X_oversample, y_oversample = utils.oversample(X, y)
+oversample_size = 30000
+X_oversample, y_oversample = X[oversample_idxs[:oversample_size]], y[oversample_idxs[:oversample_size]]
+
+# Split data into train and validation and build a tensorflow dataset.
+data_size = len(tlinks)
+batch_size = 32
+cut = round(oversample_size * 0.8)
+
+X_train, y_train = X_oversample[:cut], y_oversample[:cut]
+X_valid, y_valid = X_oversample[cut:], y_oversample[cut:]
+
+train_set = tf.data.Dataset.from_tensor_slices(
+    ((X_train[:, 0], X_train[:, 1], np.array(X_train[:, 2], dtype=float), np.array(X_train[:, 3], dtype=float)), y_train)).batch(batch_size).prefetch(1)
+valid_set = tf.data.Dataset.from_tensor_slices(
+    ((X_valid[:, 0], X_valid[:, 1], np.array(X_valid[:, 2], dtype=float), np.array(X_valid[:, 3], dtype=float)), y_valid)).batch(batch_size).prefetch(1)
 
 
 """Model."""
@@ -205,6 +147,7 @@ small_bert_urls = {name.replace('/', '_'): bert_urls[name] for name in bert_urls
 
 
 def build_model(handler_url, bert_url):
+
     context = layers.Input(shape=(), dtype=tf.string, name='context')
     events = layers.Input(shape=(), dtype=tf.string, name='source')
 
@@ -251,7 +194,9 @@ def compile(model, epochs=5):
 
 y_valid = np.concatenate([y for x, y in valid_set])
 
+
 for model_name in small_bert_urls:
+    # model_name = 'small_bert_bert_en_uncased_L-4_H-768_A-12'
     epochs = 5
     model = build_model(
         handler_url=small_bert_urls[model_name]['handler'],
@@ -269,7 +214,6 @@ for model_name in small_bert_urls:
         validation_data=valid_set,
         epochs=epochs,
         callbacks=[early_stop_cb, checkpoint_cb],
-        #class_weight=class_weight
     )
 
     Y_prob_valid = model.predict(valid_set)
@@ -280,9 +224,7 @@ for model_name in small_bert_urls:
         f.write('\n')
         f.write(str(cm))
         f.write('\n\n')
-
-
-
+    break
 
 
 # model = models.load_model(model_path)
@@ -291,20 +233,67 @@ model.load_weights(model_path)
 
 """Evaluate Model."""
 # Validation set.
+y_valid = np.concatenate([y for x, y in valid_set])
+Y_prob_valid = model.predict(valid_set)
+y_pred_valid = np.argmax(Y_prob_valid, axis=1)
 utils.print_confusion_matrix(y_valid, y_pred_valid, classes2idx.keys())
 
-baseline_classe = np.argmax(np.bincount(y))
+baseline_class = np.argmax(np.bincount(y))
 
 # Test set.
-Y_proba_test = model.predict([X_test, X_edge1_test, X_edge2_test])
+Y_proba_test = model.predict([X_test[:, 0], X_test[:, 1], np.array(X_test[:, 2], dtype=float), np.array(X_test[:, 3], dtype=float)])
 y_pred_test = np.argmax(Y_proba_test, axis=1)
 print(confusion_matrix(y_test, y_pred_test))
 
+
+# From point relation to interval relation.
+tlinks_test['y_proba'] = np.max(Y_proba_test, axis=1)
+tlinks_test['y_pred'] = y_pred_test
+
+valid_relations = tlinks.relType.unique()
+
+interval2point = {rel: tc._interval_to_point[rel] for rel in valid_relations}
+
+def point2interval(point_relations):
+    for n_relations in range(1, 5):
+        relations = point_relations[:n_relations]
+        for interval_rel, point_rel in interval2point.items():
+            cond = [True if rel in relations else False for rel in point_rel]
+            if all(cond):
+                return interval_rel
+
+pred_relation = []
+point_pred = tlinks_test.groupby(['file', 'lid'])['y_proba', 'y_pred'].apply(lambda x: list(x.values)).to_dict()
+formatted_point_pred = dict()
+for link, values in point_pred.items():
+    confidence = [conf for conf, _ in values]
+    relations = [idx2classes[rel] for _, rel in values]
+    formatted = [
+        (0, 0, relations[0], 1, 0),
+        (0, 0, relations[1], 1, 1),
+        (0, 1, relations[2], 1, 0),
+        (0, 1, relations[3], 1, 1)
+    ]
+
+    sorted_relations = [rel for _, rel in sorted(zip(confidence, formatted), reverse=True)]
+
+    pred_relation.append(point2interval(sorted_relations))
+
+true = [tlinks_test.relType[i] for i in range(0, len(tlinks_test.relType), 4)]
+pred_relation
+
+pprint(list(zip(true, pred_relation)))
+
+
+example = [(0, 0, '=', 1, 0), (0, 1, '<', 1, 1), (0, 0, '<', 1, 1), (0, 1, '<', 1, 0)]  # BEGINS
+example = [(0, 1, '<', 1, 0), (0, 0, '=', 1, 0), (0, 1, '<', 1, 1), (0, 0, '<', 1, 1)]
+point2interval(example)
+
 # Compute temporal-awareness.
 tlinks_test['relPredicted'] = [idx2classes[idx] for idx in y_pred_test]
-tlinks_test['baseline'] = idx2classes[baseline_classe]
+tlinks_test['baseline'] = idx2classes[baseline_class]
 
-allen_rel2point_rel = {k: tuple([r for _, _, r, _, _ in v]) for k, v in _interval_to_point.items()}
+allen_rel2point_rel = {k: tuple([r for _, _, r, _, _ in v]) for k, v in utils.interval_to_point.items()}
 point_rel2allen_rel = {v: k for k, v in allen_rel2point_rel.items()}
 
 grouped_point_rel = tlinks_test.groupby(['file', 'lid', 'relType']).relPredicted.apply(tuple)
@@ -325,4 +314,3 @@ ta_baseline = tc.multifile_temporal_awareness(annotations_test, annotations_base
 
 print(f"Temporal awareness baseline: {ta_baseline:.3}")
 print(f"Temporal awareness model: {ta:.3}")
-
