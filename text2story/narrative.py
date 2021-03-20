@@ -1,12 +1,10 @@
+import collections
+from typing import Dict
+from typing import List
+from typing import Tuple
 from xml.etree import ElementTree
 
 import nltk
-
-from typing import List
-from typing import Tuple
-from typing import Dict
-
-import collections
 
 
 class TLink:
@@ -166,25 +164,14 @@ class TLink:
 
 class Timex:
     def __init__(self, attributes: Dict):
-        self.type = attributes['type']
-        self.type = attributes['type']
-        self.text = attributes['text']
-        self.value = attributes['value']
-        self.endpoints = attributes['endpoints']
-        self.function_in_document = attributes['functionInDocument']
-        self.temporal_function = attributes['temporalFunction']
+        for key, value in attributes.items():
+            setattr(self, key, value)
 
 
 class Event:
     def __init__(self, attributes: dict):
-        self.class_ = attributes['class']
-        self.text = attributes['text']
-        self.endpoints = attributes['endpoints']
-        self.aspect = attributes['aspect']
-        self.eiid = attributes['eiid']
-        self.polarity = attributes['polarity']
-        self.pos = attributes['pos']
-        self.tense = attributes['tense']
+        for key, value in attributes.items():
+            setattr(self, key, value)
 
 
 class Document:
@@ -249,8 +236,10 @@ class Document:
         # Get the tags of each expression.
         text_tags = list()
         for txt in text_root.iter():
-            if txt.items():
-                text_tags.append((txt.text, txt.items()[0][1]))
+            if txt.attrib and txt.tag == 'EVENT':
+                text_tags.append((txt.text, txt.attrib['eid']))
+            elif txt.attrib and txt.tag == 'TIMEX3':
+                text_tags.append((txt.text, txt.attrib['tid']))
 
         # Join the indexes with the tags.
         expression_idxs = {'t0': (-1, -1, None)}  # Initialize with the position of DCT.
@@ -271,22 +260,25 @@ class Document:
         make_insts = self._get_make_instance()
 
         events = dict()
-        for event in self.xml_root.findall('.//EVENT'):
-            event_id = event.attrib.pop('eid')
-            event.attrib['text'] = event.text
-            event.attrib['endpoints'] = self._expression_idxs[event_id]
-            event.attrib.update(make_insts[event_id])
-            events[event_id] = Event(event.attrib)
+        for event in self.xml_root.findall('.//TEXT//EVENT', ):
+            attrib = event.attrib.copy()
+            event_id = attrib['eid']
+            attrib['text'] = event.text
+            attrib['endpoints'] = self._expression_idxs[event_id]
+            if event_id in make_insts:
+                attrib.update(make_insts[event_id])
+            events[event_id] = Event(attrib)
         return events
 
     def _get_timexs(self) -> dict:
         # Add text to timex attributes.
         timexs = dict()
         for timex in self.xml_root.findall('.//TIMEX3'):
-            time_id = timex.attrib['tid']
-            timex.attrib['text'] = timex.text
-            timex.attrib['endpoints'] = self._expression_idxs[time_id]
-            timexs[time_id] = Timex(timex.attrib)
+            attrib = timex.attrib.copy()
+            time_id = attrib['tid']
+            attrib['text'] = timex.text
+            attrib['endpoints'] = self._expression_idxs[time_id]
+            timexs[time_id] = Timex(attrib)
         return timexs
 
     def _get_tlinks(self) -> dict:
@@ -341,7 +333,7 @@ class Document:
                 tlinks.append(tlink)
 
         # Generate indexes for tlinks.
-        return {f'tc{idx}': tlink for idx, tlink in enumerate(tlinks)}
+        return {f'lc{idx}': tlink for idx, tlink in enumerate(tlinks)}
 
     # transitivity table for point relations
     _point_transitions = {

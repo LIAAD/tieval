@@ -16,7 +16,7 @@ from tensorflow.keras import losses
 from tensorflow.keras import models
 from tensorflow.keras import metrics
 
-import text2story.data.tempeval3
+from text2story.data import tempeval3
 from text2story import temporal_closure as tc
 from text2story import utils
 
@@ -26,42 +26,40 @@ import json
 
 from pprint import pprint
 
-pd.set_option('display.max_columns', 40)
-
-tokenizer = nltk.word_tokenize
 
 """Read data."""
 TEMPEVAL_PATH = r'data/TempEval-3'
-data = text2story.data.tempeval3.load_data(TEMPEVAL_PATH, tokenizer)
-base = pd.concat([data['train'][dataset]['base'] for dataset in data['train']], axis=0)
-tlinks = pd.concat([data['train'][dataset]['tlinks'] for dataset in data['train']], axis=0)
+data = tempeval3.load_data(TEMPEVAL_PATH)
 
-# Read test data.
-base_test = data['test']['platinum']['base']
-tlinks_test = data['test']['platinum']['tlinks']
+train_docs = data['train']['aquaint'] + data['train']['timebank']
+test_docs = data['test']['platinum']
 
-del data
 
-# Remove relations that mean the same thing.
-tlinks['relType'] = tlinks.relType.map(tc.relevant_relations)
-tlinks.drop_duplicates(inplace=True)
-tlinks_test['relType'] = tlinks_test.relType.map(tc.relevant_relations)
-tlinks_test.drop_duplicates(inplace=True)
 
+doc = train_docs[11]
+
+n_tlinks = [len(doc.tlinks) for doc in train_docs]
+np.where(np.array(n_tlinks) == 9)
+
+tlinks = doc.tlinks
+tlinks_closure = doc.temporal_closure()
+
+annotation = []
+for lid, tlink in tlinks.items():
+    annotation.append((tlink.source, tlink.target, [tlink.interval_relation]))
+
+annotation_c = []
+for lid, tlink in tlinks_closure.items():
+    annotation_c.append((tlink.source, tlink.target, tlink.interval_relation))
+
+
+pprint(annotation)
+pprint(annotation_c)
+pprint([annot for annot in annotation_c if annot not in annotation])
+
+# To commit.
 
 """Preprocess data."""
-# Add text for each token and the context between them to tlinks_closure dataframe.
-tlinks = utils.add_tokens(tlinks, base)
-tlinks_test = utils.add_tokens(tlinks_test, base_test)
-
-# Limit the temporal links to be inside the same sentence, or consecutive sentences.
-sent_distance = tlinks.related_sent - tlinks.source_sent
-tlinks = tlinks[(tlinks.source == 't0') | (tlinks.relatedTo == 't0') | (abs(sent_distance) <= 1)]
-
-# Add context.
-tlinks = utils.add_context(tlinks, base)
-tlinks_test = utils.add_context(tlinks_test, base_test)
-
 # Replace dct tokens by "<dct>".
 DCT_TOKEN = '<dct>'
 tlinks.loc[tlinks.source == 't0', 'source_text'] = DCT_TOKEN
