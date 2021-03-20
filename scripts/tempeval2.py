@@ -1,12 +1,6 @@
-import nltk
-import pandas
-import os
-
 import numpy as np
 
 import itertools
-
-from tqdm import tqdm
 
 import collections
 
@@ -15,11 +9,9 @@ from tensorflow.keras import models
 from tensorflow.keras import layers
 from tensorflow.keras import optimizers
 from tensorflow.keras import callbacks
-from tensorflow.keras import metrics
 
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import precision_score
-from sklearn.metrics import recall_score
 from sklearn.metrics import confusion_matrix
 from sklearn.model_selection import train_test_split
 
