@@ -176,6 +176,7 @@ class Event:
 
 class Document:
     def __init__(self, path: str):
+        """
         self.tokenizer = nltk.tokenize.WordPunctTokenizer()
         self.xml_root = ElementTree.parse(path).getroot()
         self.name = self.xml_root.findtext('.//DOCID')
@@ -189,6 +190,7 @@ class Document:
         self.events = self._get_events()
 
         self.tlinks = self._get_tlinks()
+        """
 
     def _get_text(self) -> str:
         """
@@ -293,10 +295,24 @@ class Document:
             )
         return tlinks
 
-    def temporal_closure(self) -> Dict:
+    def temporal_closure(self, tlinks) -> Dict:
+        # TODO: Remove duplicates.
+        # TODO: Keep the original labels when the inferred are more ambiguous.
+        # Remove duplicate temporal links.
+        lids = set()
+        relations = set()
+        for lid, tlink in tlinks.items():
+            scr = tlink.source
+            tgt = tlink.target
+            if (scr, tgt) not in relations and (tgt, scr) not in relations:
+                lids.add(lid)
+                relations.add((scr, tgt))
+
+        tlinks = {lid: tlink for lid, tlink in tlinks.items() if lid in lids}
+
         # convert interval relations to point relations
         new_relations = {((tlink.source, scr_ep), r, (tlink.target, tgt_ep))
-                         for lid, tlink in self.tlinks.items()
+                         for lid, tlink in tlinks.items()
                          for scr_ep, r, tgt_ep in tlink.point_relation}
 
         # repeatedly apply point transitivity rules until no new relations can be inferred
@@ -323,6 +339,8 @@ class Document:
         # Combine point relations.
         combined_point_relations = collections.defaultdict(list)
         for ((scr, scr_ep), rel, (tgt, tgt_ep)) in point_relations:
+            if scr == tgt:
+                continue
             combined_point_relations[(scr, tgt)] += [(scr_ep, rel, tgt_ep)]
 
         # Creat and store the valid temporal links.
