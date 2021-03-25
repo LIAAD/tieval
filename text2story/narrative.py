@@ -252,10 +252,15 @@ class Document:
 
         # Join the indexes with the tags.
         expression_idxs = {'t0': (-1, -1, None)}  # Initialize with the position of DCT.
-        for txt, tag_id in text_tags:
-            for start, end, txt_sch in text_blocks:
+        while text_tags:
+            txt, tag_id = text_tags.pop(0)
+            for idx, (start, end, txt_sch) in enumerate(text_blocks):
                 if txt == txt_sch:
                     expression_idxs[tag_id] = (start, end)
+                    # remove the items that were found.
+                    text_blocks = text_blocks[idx + 1:]
+                    break
+
         return expression_idxs
 
     def _get_make_instance(self) -> dict:
@@ -268,42 +273,40 @@ class Document:
         # Most of event attributes are in <MAKEINSTACE> tag.
         make_insts = self._get_make_instance()
 
-        events = dict()
-        for event in self.xml_root.findall('.//TEXT//EVENT', ):
+        events = list()
+        for event in self.xml_root.findall('.//TEXT//EVENT'):
             attrib = event.attrib.copy()
             event_id = attrib['eid']
             attrib['text'] = event.text
             attrib['endpoints'] = self._expression_idxs[event_id]
             if event_id in make_insts:
                 attrib.update(make_insts[event_id])
-            events[event_id] = Event(attrib)
+            events.append(Event(attrib))
         return events
 
     def _get_timexs(self) -> dict:
-        # Add text to timex attributes.
-        timexs = dict()
+        timexs = list()
         for timex in self.xml_root.findall('.//TIMEX3'):
             attrib = timex.attrib.copy()
             time_id = attrib['tid']
             attrib['text'] = timex.text
             attrib['endpoints'] = self._expression_idxs[time_id]
-            timexs[time_id] = Timex(attrib)
+            timexs.append(Timex(attrib))
         return timexs
 
     def _get_tlinks(self) -> dict:
-        tlinks = dict()
+        tlinks = list()
         for tlink in self.xml_root.findall('.//TLINK'):
             attrib = tlink.attrib
             keys = tlink.keys()
-            tlinks[attrib['lid']] = TLink(
+            tlinks.append(TLink(
                 source=attrib[keys[2]],
                 target=attrib[keys[3]],
                 interval_relation=attrib['relType']
-            )
+            ))
         return tlinks
 
     def temporal_closure(self, tlinks) -> Dict:
-        # TODO: Remove duplicates.
         # TODO: Keep the original labels when the inferred are more ambiguous.
         # Remove duplicate temporal links.
         lids = set()

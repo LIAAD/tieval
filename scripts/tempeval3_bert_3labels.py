@@ -36,21 +36,24 @@ test_docs = data['test']['platinum']
 
 
 """Preprocess data."""
-doc = train_docs[11]
-
-tlinks = doc.tlinks
-tlink = tlinks['l2']
-
-tlink.point_relation
-
 # Replace dct tokens by "<dct>".
+for doc in train_docs:
+    expressions = {event.eiid: event for event in doc.events if hasattr(event, 'eiid')}
+    expressions.update({timex.tid: timex for timex in doc.timexs})
+    for tlink in doc.tlinks:
+        # get the source and target expressions.
+        scr_exp = expressions[tlink.source]
+        tgt_exp = expressions[tlink.target]
 
+        point_tlinks = tlink.complete_point_relation()
 
-map_relations = [[k, p1, p2, r] for k, v in utils.interval_to_point.items()
-                 for _, p1, r, _, p2 in v if r is not None]
-map_relations = pd.DataFrame(map_relations, columns=['relType', 'edge1', 'edge2', 'pointRel'])
-tlinks = tlinks.merge(map_relations)
-tlinks_test = tlinks_test.merge(map_relations)
+        # get the context between the two expressions.
+        scr_exp.text
+        tgt_exp.text
+        start_context = scr_exp.endpoints[0]
+        end_context = tgt_exp.endpoints[1]
+        doc.text[start_context: end_context]
+
 
 # Build inputs for the model.
 X_context = tlinks.context
