@@ -6,6 +6,8 @@ from xml.etree import ElementTree
 
 import nltk
 
+from pprint import pprint
+
 
 class TLink:
     def __init__(self, source: str, target: str, point_relation: List = None, interval_relation: List = None):
@@ -35,6 +37,13 @@ class TLink:
         if not result:
             return None
         return result
+
+    def complete_point_relation(self):
+        if self.interval_relation:
+            return self._interval_to_point_complete[self.interval_relation]
+        else:
+            raise Exception("interval_relation not defined.")
+
 
     # constants representing the start point and end point of an interval
     _start = 0
@@ -176,7 +185,6 @@ class Event:
 
 class Document:
     def __init__(self, path: str):
-        """
         self.tokenizer = nltk.tokenize.WordPunctTokenizer()
         self.xml_root = ElementTree.parse(path).getroot()
         self.name = self.xml_root.findtext('.//DOCID')
@@ -190,7 +198,6 @@ class Document:
         self.events = self._get_events()
 
         self.tlinks = self._get_tlinks()
-        """
 
     def _get_text(self) -> str:
         """
@@ -315,6 +322,10 @@ class Document:
                          for lid, tlink in tlinks.items()
                          for scr_ep, r, tgt_ep in tlink.point_relation}
 
+        # Add the symmetric of each relation. A < B ---> B > A
+        {(tgt, self._inverse_point_relation[rel], scr) for scr, rel, tgt in new_relations if rel != '='}
+
+
         # repeatedly apply point transitivity rules until no new relations can be inferred
         point_relations = set()
         point_relations_index = collections.defaultdict(set)
@@ -358,4 +369,9 @@ class Document:
         '<': {'<': '<', '=': '<', '>': None},
         '=': {'<': '<', '=': '=', '>': '>'},
         '>': {'>': '>', '=': '>', '<': None}
+    }
+
+    _inverse_point_relation = {
+        '<': '>',
+        '>': '<'
     }

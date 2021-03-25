@@ -35,38 +35,16 @@ train_docs = data['train']['aquaint'] + data['train']['timebank']
 test_docs = data['test']['platinum']
 
 
-
+"""Preprocess data."""
 doc = train_docs[11]
 
-n_tlinks = [len(doc.tlinks) for doc in train_docs]
-np.where(np.array(n_tlinks) == 9)
-
 tlinks = doc.tlinks
-tlinks_closure = doc.temporal_closure()
+tlink = tlinks['l2']
 
-annotation = []
-for lid, tlink in tlinks.items():
-    annotation.append((tlink.source, tlink.target, [tlink.interval_relation]))
+tlink.point_relation
 
-annotation_c = []
-for lid, tlink in tlinks_closure.items():
-    annotation_c.append((tlink.source, tlink.target, tlink.interval_relation))
-
-
-pprint(annotation)
-pprint(annotation_c)
-pprint([annot for annot in annotation_c if annot not in annotation])
-
-
-
-"""Preprocess data."""
 # Replace dct tokens by "<dct>".
-DCT_TOKEN = '<dct>'
-tlinks.loc[tlinks.source == 't0', 'source_text'] = DCT_TOKEN
-tlinks.loc[tlinks.relatedTo == 't0', 'related_text'] = DCT_TOKEN
 
-tlinks_test.loc[tlinks_test.source == 't0', 'source_text'] = DCT_TOKEN
-tlinks_test.loc[tlinks_test.relatedTo == 't0', 'related_text'] = DCT_TOKEN
 
 map_relations = [[k, p1, p2, r] for k, v in utils.interval_to_point.items()
                  for _, p1, r, _, p2 in v if r is not None]
