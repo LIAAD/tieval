@@ -1,3 +1,7 @@
+import os
+
+print(os.getcwd())
+
 import nltk
 import numpy as np
 import pandas as pd
@@ -26,6 +30,239 @@ import json
 
 from pprint import pprint
 
+from tqdm import tqdm
+
+from typing import NamedTuple
+
+import gc
+
+
+
+
+class Target:
+    def __init__(self, classes):
+        self.classes = classes
+        self.n_classes = len(classes)
+
+        self.classes2idx = {cl: i for i, cl in enumerate(classes)}
+        self.idx2classes = dict((i, cl) for cl, i in self.classes2idx.items())
+
+    def classes(self, indexes):
+        return np.array([self.idx2classes[idx] for idx in indexes])
+
+    def indexes(self, classes):
+        return np.array([self.classes2idx[cl] for cl in classes])
+
+
+class BuildIO:
+    def __init__(self, classes):
+        self.target = Target(classes)
+
+    def run(self, docs):
+        X_context = []
+        X_event = []
+        X_edge1 = []
+        X_edge2 = []
+        relations = []
+
+        for doc in tqdm(docs):
+            expressions = self.get_expressions(doc)
+            for tlink in doc.tlinks:
+                # get the source and target expressions.
+                scr_exp = expressions[tlink.source]
+                tgt_exp = expressions[tlink.target]
+
+                point_rels = tlink.complete_point_relation()
+                for point_rel in point_rels:
+                    edge1, relation, edge2 = point_rel
+                    event = self.get_text(tlink, scr_exp, tgt_exp)
+                    context = self.get_context(doc, tlink, scr_exp, tgt_exp)
+
+                    X_context.append(context)
+                    X_event.append(event)
+                    X_edge1.append(edge1)
+                    X_edge2.append(edge2)
+                    relations.append(relation)
+
+        y = self.target.indexes(relations)
+        return (X_context, X_event, X_edge1, X_edge2), y
+
+    def build_tensorflow_dataset(self, docs, batch_size=32, oversample=False):
+        X, y = self.run(docs)
+        if oversample:
+            X, y = self.oversample(X, y)
+        dataset = tf.data.Dataset.from_tensor_slices((X, y)).batch(batch_size).prefetch(1)
+        return dataset
+
+    @staticmethod
+    def get_text(tlink, source, target):
+        # get text of each expression.
+        # replace the DCT text by the '<dct>' token.
+        if tlink.source == 't0':
+            return ' '.join(['<dct>', target.text])
+        elif tlink.target == 't0':
+            return ' '.join([source.text, '<dct>'])
+        else:
+            return ' '.join([source.text, target.text])
+
+    @staticmethod
+    def get_context(doc, tlink, source, target):
+        # get the context between the two expressions.
+        # if the source or target are the DCT ('t0') we use as context the sentence where the other term
+        # appeared. else the context is the tokens between each of the expressions.
+        if tlink.source == 't0':
+            start_context, end_context = target.endpoints
+            return ' '.join(sent for s, e, sent in doc.sentences if start_context >= s and end_context <= e)
+        elif tlink.target == 't0':
+            start_context, end_context = source.endpoints
+            return ' '.join(sent for s, e, sent in doc.sentences if start_context >= s and end_context <= e)
+        else:
+            start_context = min(source.endpoints[0], target.endpoints[0])
+            end_context = max(target.endpoints[1], target.endpoints[1])
+            return ' '.join(token for s, e, token in doc.tokens if start_context <= s and end_context >= e)
+
+    @staticmethod
+    def get_expressions(doc):
+        expressions = {eiid: event for event in doc.events if hasattr(event, 'eiid') for eiid in event.eiid}
+        expressions.update({timex.tid: timex for timex in doc.timexs})
+        return expressions
+
+    def oversample(self, X: list, y: list, verbose: bool = True):
+        oversample_idxs = np.array([], dtype=int)
+        class_count = collections.Counter(y)
+
+        if verbose:
+            print("Original class count:")
+            self.print_class_count(class_count)
+
+        max_class_count = max(class_count.values())
+        for class_, count in class_count.items():
+            class_idxs = np.where(y == class_)[0]
+            if count < max_class_count:
+                sample_idxs = class_idxs[np.random.randint(0, len(class_idxs), max_class_count)]
+            else:
+                sample_idxs = class_idxs
+            oversample_idxs = np.append(oversample_idxs, sample_idxs)
+
+        np.random.shuffle(oversample_idxs)
+
+        X_oversample = tuple([[x[idx] for idx in oversample_idxs] for x in X])
+        y_oversample = list(y[oversample_idxs])
+
+        if verbose:
+            print("Oversample class count:")
+            self.print_class_count(collections.Counter(y_oversample))
+
+        return X_oversample, y_oversample
+
+    def print_class_count(self, counter: dict):
+        for class_, count in counter.items():
+            print(f"\t{self.target.idx2classes[class_]}: {count}")
+
+
+class ModelConfig(NamedTuple):
+    """ Model configuration.
+
+    name: Model name.
+    handler_url: Url to BERT handler.
+    bert_url: Url to BERT model.
+    epochs: Number of epochs to train
+    output_size: Output size.
+    train_set: Train set.
+    valid_set: Validation set.
+    init_lr: Initial learning rate.
+    """
+    name: str
+    handler_url: str
+    bert_url: str
+    output_size: int
+    train_set: tf.data.Dataset
+    valid_set: tf.data.Dataset
+    epochs: int = 5
+    init_lr: float = 3e-5
+
+
+class Model:
+    def __init__(self, config: ModelConfig):
+        self.name = config.name
+        self.path = f'models/{model_name}_based_model_context_point_relation'
+
+        self.handler_url = config.handler_url
+        self.bert_url = config.bert_url
+
+        self.epochs = config.epochs
+        self.output_size = config.output_size
+        self.init_lr = config.init_lr
+
+        self.train_set = config.train_set
+        self.valid_set = config.valid_set
+
+    def build(self):
+        context = layers.Input(shape=(), dtype=tf.string, name='context')
+        events = layers.Input(shape=(), dtype=tf.string, name='source')
+
+        # Tokenize the text to word pieces.
+        bert_preprocess = hub.load(self.handler_url)
+        tokenizer = hub.KerasLayer(bert_preprocess.tokenize, name='tokenizer')
+        segments = [tokenizer(s) for s in [context, events]]
+        packer = hub.KerasLayer(bert_preprocess.bert_pack_inputs,
+                                arguments=dict(seq_length=256),
+                                name='packer')
+        encoder_input = packer(segments)
+
+        edge1 = layers.Input(shape=(1), dtype=tf.float32, name='edge1')
+        edge2 = layers.Input(shape=(1), dtype=tf.float32, name='edge2')
+        encoder = hub.KerasLayer(self.bert_url, trainable=True)
+
+        z = encoder(encoder_input)['pooled_output']
+        z = layers.concatenate([z, edge1, edge2])
+        z = layers.Dense(256, activation='relu')(z)
+        z = layers.Dense(128, activation='relu')(z)
+        z = layers.Dense(64, activation='relu')(z)
+        z = layers.Dense(32, activation='relu')(z)
+        output = layers.Dense(self.output_size)(z)
+        return models.Model([context, events, edge1, edge2], output)
+
+    def compile(self, model):
+        steps_per_epoch = tf.data.experimental.cardinality(self.train_set).numpy()
+        num_train_steps = self.epochs * steps_per_epoch
+        num_warmup_steps = int(0.1 * num_train_steps)
+        optimizer = optimization.create_optimizer(
+            init_lr=3e-5,
+            num_train_steps=num_train_steps,
+            num_warmup_steps=num_warmup_steps,
+            optimizer_type='adamw'
+        )
+
+        model.compile(
+            optimizer=optimizer,
+            loss=losses.SparseCategoricalCrossentropy(from_logits=True),
+            metrics=['accuracy']
+        )
+        return model
+
+    def fit(self, model):
+        checkpoint_cb = callbacks.ModelCheckpoint(self.path, save_best_only=True, save_weights_only=True)
+        early_stop_cb = callbacks.EarlyStopping(patience=2, verbose=1, restore_best_weights=True)
+
+        model.fit(
+            self.train_set,
+            validation_data=self.valid_set,
+            epochs=self.epochs,
+            callbacks=[early_stop_cb, checkpoint_cb],
+        )
+        return model
+
+    def train(self):
+        model = self.build()
+        model = self.compile(model)
+        model = self.fit(model)
+        return model
+
+
+gpus = tf.config.experimental.list_physical_devices('GPU')
+for gpu in gpus:
+  tf.config.experimental.set_memory_growth(gpu, True)
 
 """Read data."""
 TEMPEVAL_PATH = r'data/TempEval-3'
@@ -34,166 +271,54 @@ data = tempeval3.load_data(TEMPEVAL_PATH)
 train_docs = data['train']['aquaint'] + data['train']['timebank']
 test_docs = data['test']['platinum']
 
-
 """Preprocess data."""
-# Replace dct tokens by "<dct>".
-for doc in train_docs:
-    expressions = {event.eiid: event for event in doc.events if hasattr(event, 'eiid')}
-    expressions.update({timex.tid: timex for timex in doc.timexs})
-    for tlink in doc.tlinks:
-        # get the source and target expressions.
-        scr_exp = expressions[tlink.source]
-        tgt_exp = expressions[tlink.target]
+classes = ['>', '<', '=']
 
-        point_tlinks = tlink.complete_point_relation()
+# Build train_valid_set.
+batch_size = 1
+builder = BuildIO(classes)
+dataset = builder.build_tensorflow_dataset(train_docs, batch_size, oversample=True)
 
-        # get the context between the two expressions.
-        scr_exp.text
-        tgt_exp.text
-        start_context = scr_exp.endpoints[0]
-        end_context = tgt_exp.endpoints[1]
-        doc.text[start_context: end_context]
+# Split data into train and test.
+dataset_size = len(dataset)
+cut = round(dataset_size * 0.8)
+train_set = dataset.take(cut)
+valid_set = dataset.skip(cut)
 
-
-# Build inputs for the model.
-X_context = tlinks.context
-X_events = tlinks.source_text + ' ' + tlinks.related_text
-X_edge1 = tlinks.edge1.values
-X_edge2 = tlinks.edge2.values
-X = np.array(list(zip(X_context, X_events, X_edge1, X_edge2)))
-
-X_context_test = tlinks_test.context
-X_events_test = tlinks_test.source_text + ' ' + tlinks_test.related_text
-X_edge1_test = tlinks_test.edge1.values
-X_edge2_test = tlinks_test.edge2.values
-X_test = np.array(list(zip(X_context_test, X_events_test, X_edge1_test, X_edge2_test)))
-
-# Build target.
-classes = tlinks.pointRel.unique()
-n_classes = len(classes)
-
-classes2idx = {cl: i for i, cl in enumerate(classes)}
-idx2classes = dict((i, cl) for cl, i in classes2idx.items())
-
-y = np.array([classes2idx[cl] for cl in tlinks.pointRel])
-y_test = np.array([classes2idx[cl] for cl in tlinks_test.pointRel])
-
-
-"""
-cut = round(data_size * 0.8)
-train_set = tf.data.Dataset.from_tensor_slices(
-    ((X_context[:cut], X_events[:cut], X_edge1[:cut], X_edge2[:cut]), y[:cut])).batch(batch_size).prefetch(1)
-valid_set = tf.data.Dataset.from_tensor_slices(
-    ((X_context[cut:], X_events[cut:], X_edge1[cut:], X_edge2[cut:]), y[cut:])).batch(batch_size).prefetch(1)
-"""
-
-oversample_idxs = np.array([], dtype=int)
-class_count = collections.Counter(y)
-max_class_count = max(class_count.values())
-for class_, count in class_count.items():
-    class_idxs = np.where(y == class_)[0]
-    if count < max_class_count:
-        sample_idxs = class_idxs[np.random.randint(0, len(class_idxs), max_class_count)]
-    else:
-        sample_idxs = class_idxs
-    oversample_idxs = np.append(oversample_idxs, sample_idxs)
-np.random.shuffle(oversample_idxs)
-
-
-#X_oversample, y_oversample = utils.oversample(X, y)
-oversample_size = 30000
-X_oversample, y_oversample = X[oversample_idxs[:oversample_size]], y[oversample_idxs[:oversample_size]]
-
-# Split data into train and validation and build a tensorflow dataset.
-data_size = len(tlinks)
-batch_size = 32
-cut = round(oversample_size * 0.8)
-
-X_train, y_train = X_oversample[:cut], y_oversample[:cut]
-X_valid, y_valid = X_oversample[cut:], y_oversample[cut:]
-
-train_set = tf.data.Dataset.from_tensor_slices(
-    ((X_train[:, 0], X_train[:, 1], np.array(X_train[:, 2], dtype=float), np.array(X_train[:, 3], dtype=float)), y_train)).batch(batch_size).prefetch(1)
-valid_set = tf.data.Dataset.from_tensor_slices(
-    ((X_valid[:, 0], X_valid[:, 1], np.array(X_valid[:, 2], dtype=float), np.array(X_valid[:, 3], dtype=float)), y_valid)).batch(batch_size).prefetch(1)
-
-
-"""Model."""
+"""Train model."""
+# Load BERT urls.
 with open('resources/bert_urls.json', 'r') as f:
     bert_urls = json.load(f)
 
+# Keep just the small BERTs (the others can't be loaded in the GPU memory).
 small_bert_urls = {name.replace('/', '_'): bert_urls[name] for name in bert_urls if name.startswith('small_bert')}
 
-
-def build_model(handler_url, bert_url):
-
-    context = layers.Input(shape=(), dtype=tf.string, name='context')
-    events = layers.Input(shape=(), dtype=tf.string, name='source')
-
-    # Tokenize the text to word pieces.
-    bert_preprocess = hub.load(handler_url)
-    tokenizer = hub.KerasLayer(bert_preprocess.tokenize, name='tokenizer')
-    segments = [tokenizer(s) for s in [context, events]]
-    packer = hub.KerasLayer(bert_preprocess.bert_pack_inputs,
-                            arguments=dict(seq_length=256),
-                            name='packer')
-    encoder_input = packer(segments)
-
-    edge1 = layers.Input(shape=(1), dtype=tf.float32, name='edge1')
-    edge2 = layers.Input(shape=(1), dtype=tf.float32, name='edge2')
-    encoder = hub.KerasLayer(bert_url, trainable=True)
-    z = encoder(encoder_input)['pooled_output']
-    z = layers.concatenate([z, edge1, edge2])
-    z = layers.Dense(256, activation='relu')(z)
-    z = layers.Dense(128, activation='relu')(z)
-    z = layers.Dense(64, activation='relu')(z)
-    z = layers.Dense(32, activation='relu')(z)
-    output = layers.Dense(n_classes)(z)
-    return models.Model([context, events, edge1, edge2], output)
-
-
-def compile(model, epochs=5):
-    steps_per_epoch = tf.data.experimental.cardinality(train_set).numpy()  # np.lower(len(X) / batch_size)
-    num_train_steps = epochs * steps_per_epoch
-    num_warmup_steps = int(0.1 * num_train_steps)
-    optimizer = optimization.create_optimizer(
-        init_lr=3e-5,
-        num_train_steps=num_train_steps,
-        num_warmup_steps=num_warmup_steps,
-        optimizer_type='adamw'
-    )
-
-    model.compile(
-        optimizer=optimizer,
-        loss=losses.SparseCategoricalCrossentropy(from_logits=True),
-        metrics=['accuracy']
-    )
-    return model
-
-
+# Evaluate different architectures.
 y_valid = np.concatenate([y for x, y in valid_set])
-
-
-for model_name in small_bert_urls:
+for model_name in tqdm(small_bert_urls):
     # model_name = 'small_bert_bert_en_uncased_L-4_H-768_A-12'
-    epochs = 5
-    model = build_model(
+    config = ModelConfig(
+        name=model_name,
         handler_url=small_bert_urls[model_name]['handler'],
-        bert_url=small_bert_urls[model_name]['model']
+        bert_url=small_bert_urls[model_name]['model'],
+        output_size=len(classes),
+        train_set=train_set,
+        valid_set=valid_set
     )
-    model = compile(model, epochs=epochs)
+    try:
+        model_builder = Model(config)
+        model = model_builder.train()
+    except:
+        message = f"Could not train model {model_name}"
+        print()
+        print(message)
+        print()
 
-    model_path = f'models/{model_name}_based_model_context_point_relation'
-    checkpoint_cb = callbacks.ModelCheckpoint(model_path, save_best_only=True, save_weights_only=True)
-    early_stop_cb = callbacks.EarlyStopping(patience=2, verbose=1, restore_best_weights=True)
-    reduce_lr_cb = callbacks.ReduceLROnPlateau(patience=1, verbose=1, min_lr=1E-6)
-
-    model.fit(
-        train_set,
-        validation_data=valid_set,
-        epochs=epochs,
-        callbacks=[early_stop_cb, checkpoint_cb],
-    )
+        with open('logs/log.txt', 'a') as f:
+            f.write(message)
+            f.write('\n')
+            gc.collect()
+        continue
 
     Y_prob_valid = model.predict(valid_set)
     y_pred_valid = np.argmax(Y_prob_valid, axis=1)
@@ -203,14 +328,18 @@ for model_name in small_bert_urls:
         f.write('\n')
         f.write(str(cm))
         f.write('\n\n')
-    break
 
+    with open('logs/log.txt', 'a') as f:
+        f.write(model_name + ' done')
+        f.write('\n')
 
+    gc.collect()
+
+"""
 # model = models.load_model(model_path)
 model.load_weights(model_path)
 
-
-"""Evaluate Model."""
+# Evaluate Model
 # Validation set.
 y_valid = np.concatenate([y for x, y in valid_set])
 Y_prob_valid = model.predict(valid_set)
@@ -220,10 +349,10 @@ utils.print_confusion_matrix(y_valid, y_pred_valid, classes2idx.keys())
 baseline_class = np.argmax(np.bincount(y))
 
 # Test set.
-Y_proba_test = model.predict([X_test[:, 0], X_test[:, 1], np.array(X_test[:, 2], dtype=float), np.array(X_test[:, 3], dtype=float)])
+Y_proba_test = model.predict(
+    [X_test[:, 0], X_test[:, 1], np.array(X_test[:, 2], dtype=float), np.array(X_test[:, 3], dtype=float)])
 y_pred_test = np.argmax(Y_proba_test, axis=1)
 print(confusion_matrix(y_test, y_pred_test))
-
 
 # From point relation to interval relation.
 tlinks_test['y_proba'] = np.max(Y_proba_test, axis=1)
@@ -233,6 +362,7 @@ valid_relations = tlinks.relType.unique()
 
 interval2point = {rel: tc._interval_to_point[rel] for rel in valid_relations}
 
+
 def point2interval(point_relations):
     for n_relations in range(1, 5):
         relations = point_relations[:n_relations]
@@ -240,6 +370,7 @@ def point2interval(point_relations):
             cond = [True if rel in relations else False for rel in point_rel]
             if all(cond):
                 return interval_rel
+
 
 pred_relation = []
 point_pred = tlinks_test.groupby(['file', 'lid'])['y_proba', 'y_pred'].apply(lambda x: list(x.values)).to_dict()
@@ -262,7 +393,6 @@ true = [tlinks_test.relType[i] for i in range(0, len(tlinks_test.relType), 4)]
 pred_relation
 
 pprint(list(zip(true, pred_relation)))
-
 
 example = [(0, 0, '=', 1, 0), (0, 1, '<', 1, 1), (0, 0, '<', 1, 1), (0, 1, '<', 1, 0)]  # BEGINS
 example = [(0, 1, '<', 1, 0), (0, 0, '=', 1, 0), (0, 1, '<', 1, 1), (0, 0, '<', 1, 1)]
@@ -293,3 +423,4 @@ ta_baseline = tc.multifile_temporal_awareness(annotations_test, annotations_base
 
 print(f"Temporal awareness baseline: {ta_baseline:.3}")
 print(f"Temporal awareness model: {ta:.3}")
+"""

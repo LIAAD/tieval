@@ -122,7 +122,7 @@ idx2classes = dict((i, cl) for cl, i in classes2idx.items())
 
 y = [classes2idx[cl] for cl in tlinks_closure.relType]
 
-# Split data into train and validation and build a tensorflow dataset.
+# Split data into train and validation and build a tensorflow train_valid_set.
 data_size = len(tlinks_closure)
 batch_size = 64
 

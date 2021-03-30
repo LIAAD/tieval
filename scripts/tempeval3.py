@@ -35,7 +35,7 @@ pd.set_option('display.max_columns', 40)
 tokenizer = nltk.word_tokenize
 
 """Read data."""
-# Read AQUAINT dataset.
+# Read AQUAINT train_valid_set.
 AQUAINT_PATH = r'../data/TempEval-3/Train/TBAQ-cleaned/AQUAINT'
 timexs_aquaint = rxml.get_tags(AQUAINT_PATH, rxml.get_timexs)
 
@@ -48,7 +48,7 @@ tlinks_aquaint = rxml.get_tags(AQUAINT_PATH, rxml.get_tlinks)
 base_aquaint = rxml.get_base(AQUAINT_PATH, tokenizer)
 
 
-# Read TimeBank dataset.
+# Read TimeBank train_valid_set.
 TIMEBANK_PATH = r'../data/TempEval-3/Train/TBAQ-cleaned/TimeBank'
 timexs_timebank = rxml.get_tags(TIMEBANK_PATH, rxml.get_timexs)
 
@@ -170,7 +170,7 @@ idx2classes = dict((i, cl) for cl, i in classes2idx.items())
 y_full_train = [classes2idx[cl] for cl in train_closure_df.relType]
 
 
-# Build tensorflow dataset and split data into train and validation.
+# Build tensorflow train_valid_set and split data into train and validation.
 full_train_size = len(X1_seq_train)
 
 cut = round(full_train_size * 0.8)
@@ -249,7 +249,7 @@ early_stop_cb = callbacks.EarlyStopping(patience=2, verbose=1, restore_best_weig
 reduce_lr_cb = callbacks.ReduceLROnPlateau(patience=1, verbose=1, min_lr=1E-6)
 
 
-# Compute the weight to assign to each class (given that the dataset is imbalanced).
+# Compute the weight to assign to each class (given that the train_valid_set is imbalanced).
 y_train = np.concatenate([y for x, y in train_set])
 class_count = Counter(y_train)
 total = len(y_train)

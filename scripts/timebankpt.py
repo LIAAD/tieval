@@ -108,7 +108,7 @@ idx2classes = dict((i, cl) for cl, i in classes2idx.items())
 y_full_train = [classes2idx[cl] for cl in tlinks_train_shuf.relType]
 
 
-# Build tensorflow dataset and split data into train and validation.
+# Build tensorflow train_valid_set and split data into train and validation.
 full_train_size = len(X1_seq_train)
 
 cut = round(full_train_size * 0.8)
@@ -189,7 +189,7 @@ early_stop_cb = callbacks.EarlyStopping(patience=12, verbose=1, restore_best_wei
 reduce_lr_cb = callbacks.ReduceLROnPlateau(patience=5, verbose=1, min_lr=1E-6)
 
 """
-# Compute the weight to assign to each class (given that the dataset is imbalanced).
+# Compute the weight to assign to each class (given that the train_valid_set is imbalanced).
 y_train = np.concatenate([y for x, y in train_set])
 class_count = Counter(y_train)
 total = len(y_train)
