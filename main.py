@@ -41,6 +41,8 @@ import gc
 
 import copy
 
+import copy
+
 
 class Target:
     def __init__(self, classes):
@@ -55,6 +57,80 @@ class Target:
 
     def indexes(self, classes):
         return np.array([self.classes2idx[cl] for cl in classes])
+
+    def prediction_to_relation(self, Y_pred):
+        """Predicts the interval relation given the model prediction for the point relations.
+
+        :param Y_pred:
+        :return:
+        """
+        y_pred = np.argmax(Y_pred, axis=1)
+        confidance = np.max(Y_pred, axis=1)
+
+        pred_point_relations = self.format_relation(y_pred)
+        cand_rels, cand_conf = self.generate_candidate_relations(confidance, pred_point_relations)
+        ordered_relations = [rel for _, rel in sorted(zip(cand_conf, cand_rels))]
+        relation = self.find_interval_relation(ordered_relations)
+        return relation
+
+    @staticmethod
+    def find_interval_relation(point_relations):
+        """Finds the interval relation for the poin relations.
+        :param point_relations:
+        :return: If the inputted point relation is valid it will return the corresponding interval relations. If not,
+        it will return None.
+        """
+        for rel in point_relations:
+            for i_rel, p_rel in t2s._INTERVAL_TO_POINT.items():
+                if rel == p_rel:
+                    return i_rel
+
+    def format_relation(self, y_pred):
+        """
+
+        :param y_pred: the prediction made for each of the 4 endpoints.
+        :return: the formated relation between those endpoints.
+        :example:
+            >>> prediction_to_relation([0, 2, 1, 0])
+            [(0, '>', 0), (0, '=', 1), (1, '<', 0), (1, '>', 1)]
+
+        """
+        predicted_relation = [self.idx2classes[idx] for idx in y_pred]
+        relations = [
+            (0, predicted_relation[0], 0),
+            (0, predicted_relation[1], 1),
+            (1, predicted_relation[2], 0),
+            (1, predicted_relation[3], 1)
+        ]
+        return relations
+
+    @staticmethod
+    def generate_candidate_relations(confidence, relations):
+        """Generates the candidates based on the confidence that the model had on each of them.
+        Since each of the interval relations can be resumed to one or two point relation we use this simple method to
+        generate the candidates.
+        This method outputs the single relations and the pairwise relations.
+        The confidence is computed as follow:
+            - single relation: the input confidence
+            - pairwise relations: mean confidence of the relations.
+
+        :param confidence: a list with the confidence of model prediction.
+        :param relations: a list with the formated point realtions.
+        :return: a tuple with the candidate relations and the confidence computed for that relation.
+
+        """
+        n = len(confidence)
+        conf = []
+        rels = []
+        for i in range(n):
+            for j in range(i, n):
+                if i == j:
+                    conf.append(confidence[i])
+                    rels.append([relations[i]])
+                else:
+                    conf.append((confidence[i] + confidence[j]) / 2)
+                    rels.append([relations[i], relations[j]])
+        return rels, conf
 
 
 class BuildIO:
@@ -81,7 +157,7 @@ class BuildIO:
         X_edge2 = []
         relations = []
 
-        for doc in tqdm(docs):
+        for doc in docs:
             expressions = self.get_expressions(doc)
             for tlink in doc.tlinks:
                 # get the source and target expressions.
@@ -103,29 +179,35 @@ class BuildIO:
         y = self.target.indexes(relations)
         return (X_context, X_event, X_edge1, X_edge2), y
 
-    def run_single_doc(self, doc):
+    def run_single_tlink(self, tlink, doc):
         """
 
         :param docs: The
         :return:
         """
+        X_context = []
+        X_event = []
+        X_edge1 = []
+        X_edge2 = []
+        relations = []
+
         expressions = self.get_expressions(doc)
-        for tlink in doc.tlinks:
-            # get the source and target expressions.
-            scr_exp = expressions[tlink.source]
-            tgt_exp = expressions[tlink.target]
 
-            point_rels = tlink.complete_point_relation()
-            for point_rel in point_rels:
-                edge1, relation, edge2 = point_rel
-                event = self.get_text(tlink, scr_exp, tgt_exp)
-                context = self.get_context(doc, tlink, scr_exp, tgt_exp)
+        # get the source and target expressions.
+        scr_exp = expressions[tlink.source]
+        tgt_exp = expressions[tlink.target]
 
-                X_context = [context]
-                X_event = [event]
-                X_edge1 = [edge1]
-                X_edge2 = [edge2]
-                relations = [relation]
+        point_rels = tlink.complete_point_relation()
+        for point_rel in point_rels:
+            edge1, relation, edge2 = point_rel
+            event = self.get_text(tlink, scr_exp, tgt_exp)
+            context = self.get_context(doc, tlink, scr_exp, tgt_exp)
+
+            X_context.append(context)
+            X_event.append(event)
+            X_edge1.append(edge1)
+            X_edge2.append(edge2)
+            relations.append(relation)
 
         y = self.target.indexes(relations)
         return (X_context, X_event, X_edge1, X_edge2), y
@@ -225,8 +307,6 @@ class ModelConfig(NamedTuple):
     handler_url: str
     bert_url: str
     output_size: int
-    train_set: tf.data.Dataset
-    valid_set: tf.data.Dataset
     epochs: int = 5
     init_lr: float = 3e-5
 
@@ -243,8 +323,7 @@ class Model:
         self.output_size = config.output_size
         self.init_lr = config.init_lr
 
-        self.train_set = config.train_set
-        self.valid_set = config.valid_set
+        self.model = None
 
     def build(self):
         context = layers.Input(shape=(), dtype=tf.string, name='context')
@@ -270,10 +349,11 @@ class Model:
         z = layers.Dense(64, activation='relu')(z)
         z = layers.Dense(32, activation='relu')(z)
         output = layers.Dense(self.output_size)(z)
-        return models.Model([context, events, edge1, edge2], output)
 
-    def compile(self, model):
-        steps_per_epoch = tf.data.experimental.cardinality(self.train_set).numpy()
+        self.model = models.Model([context, events, edge1, edge2], output)
+
+    def compile(self, train_set):
+        steps_per_epoch = tf.data.experimental.cardinality(train_set).numpy()
         num_train_steps = self.epochs * steps_per_epoch
         num_warmup_steps = int(0.1 * num_train_steps)
         optimizer = optimization.create_optimizer(
@@ -283,35 +363,44 @@ class Model:
             optimizer_type='adamw'
         )
 
-        model.compile(
+        self.model.compile(
             optimizer=optimizer,
             loss=losses.SparseCategoricalCrossentropy(from_logits=True),
             metrics=['accuracy']
         )
-        return model
 
-    def fit(self, model):
+    def fit(self, train_set, valid_set):
         checkpoint_cb = callbacks.ModelCheckpoint(self.path, save_best_only=True, save_weights_only=True)
         early_stop_cb = callbacks.EarlyStopping(patience=2, verbose=1, restore_best_weights=True)
 
-        model.fit(
-            self.train_set,
-            validation_data=self.valid_set,
+        self.model.fit(
+            train_set,
+            validation_data=valid_set,
             epochs=self.epochs,
             callbacks=[early_stop_cb, checkpoint_cb],
         )
-        return model
 
-    def train(self):
-        model = self.build()
-        model = self.compile(model)
-        model = self.fit(model)
-        return model
+    def train(self, train_set, valid_set):
+        self.build()
+        self.compile(train_set)
+        self.fit(train_set, valid_set)
 
     def load(self):
-        model = self.build()
-        model.load_weights(self.path)
-        return model
+        self.build()
+        self.model.load_weights(self.path)
+
+    def predict(self, dataset):
+        return self.model.predict(dataset)
+
+    def predict_classes(self, docs, builder):
+        pred_classes = []
+        for doc in tqdm(docs):
+            doc_set = builder.build_tensorflow_dataset(docs=[doc], batch_size=4)
+            for X_tlk, y_tlk in doc_set:
+                Y_tlk_pred = self.model.predict(X_tlk)
+                relation = builder.target.prediction_to_relation(Y_tlk_pred)
+                pred_classes.append(relation)
+        return pred_classes
 
 
 def print_header(msg):
@@ -361,16 +450,17 @@ print()
 """Preprocess data."""
 
 # Augment relations in the train set.
-train_docs = [doc.augment_tlinks('=') for doc in train_docs]
+augm_docs = copy.deepcopy(train_docs)
+for doc in augm_docs:
+    doc.augment_tlinks('=')
 
 # Limit to tasks A, B and C. That is, remove the relations with document creation time.
-
 
 # Build train_valid_set.
 batch_size = 32
 classes = ['>', '<', '=']
 builder = BuildIO(classes)
-train_set = builder.build_tensorflow_dataset(train_docs, batch_size, name='train')
+train_set = builder.build_tensorflow_dataset(augm_docs, batch_size, name='train')
 valid_set = builder.build_tensorflow_dataset(valid_docs, batch_size, name='valid')
 test_set = builder.build_tensorflow_dataset(test_docs, batch_size, name='test')
 
@@ -397,13 +487,12 @@ for model_name in tqdm(small_bert_urls):
         name=model_name,
         handler_url=small_bert_urls[model_name]['handler'],
         bert_url=small_bert_urls[model_name]['model'],
-        output_size=len(classes),
-        train_set=train_set,
-        valid_set=valid_set
+        output_size=len(classes)
     )
+
     try:
-        model_builder = Model(config)
-        model = model_builder.train()
+        model = Model(config)
+        model.train()
     except:
         message = f"Could not train model {model_name}"
         print()
@@ -444,17 +533,15 @@ config = ModelConfig(
     name=model_name,
     handler_url=small_bert_urls[model_name]['handler'],
     bert_url=small_bert_urls[model_name]['model'],
-    output_size=len(classes),
-    train_set=train_set,
-    valid_set=valid_set
+    output_size=len(classes)
 )
 
-model_builder = Model(config)
-model = model_builder.load()
+model = Model(config)
+model.load()
 
 
 # Validation set.
-y_valid = np.concatenate([y for x, y in valid_set])
+y_valid = builder.outputs['valid']
 Y_prob_valid = model.predict(valid_set)
 y_pred_valid = np.argmax(Y_prob_valid, axis=1)
 
@@ -463,7 +550,7 @@ print_metrics(y_valid, y_pred_valid)
 
 
 # Test set.
-y_test = np.concatenate([y for x, y in test_set])
+y_test = builder.outputs['test']
 Y_proba_test = model.predict(test_set)
 y_pred_test = np.argmax(Y_proba_test, axis=1)
 
@@ -472,84 +559,17 @@ print_metrics(y_test, y_pred_test)
 
 
 """Evaluate with interval relations."""
-for doc in valid_docs:
-    # TODO: fix this. i want to run for a single tlink, not a single document.
-    X_doc, y_doc   builder.run_single_doc(doc)
-    for tlink in
-    break
+
+rel_valid_pred = model.predict_classes(valid_docs, builder)
+rel_valid = [tlink.interval_relation for doc in valid_docs for tlink in doc.tlinks]
+print_header('Validation')
+print("Accuracy:", accuracy_score(rel_valid, rel_valid_pred))
+print(confusion_matrix(rel_valid, rel_valid_pred))
 
 
+rel_test_pred = model.predict_classes(test_docs, builder)
+rel_test = [tlink.interval_relation for doc in test_docs for tlink in doc.tlinks]
+print_header('Test')
+print("Accuracy:", accuracy_score(rel_test, rel_test_pred))
+print(confusion_matrix(rel_test, rel_test_pred))
 
-
-
-"""
-# From point relation to interval relation.
-tlinks_test['y_proba'] = np.max(Y_proba_test, axis=1)
-tlinks_test['y_pred'] = y_pred_test
-
-valid_relations = tlinks.relType.unique()
-
-interval2point = {rel: tc._interval_to_point[rel] for rel in valid_relations}
-
-
-def point2interval(point_relations):
-    for n_relations in range(1, 5):
-        relations = point_relations[:n_relations]
-        for interval_rel, point_rel in interval2point.items():
-            cond = [True if rel in relations else False for rel in point_rel]
-            if all(cond):
-                return interval_rel
-
-
-pred_relation = []
-point_pred = tlinks_test.groupby(['file', 'lid'])['y_proba', 'y_pred'].apply(lambda x: list(x.values)).to_dict()
-formatted_point_pred = dict()
-for link, values in point_pred.items():
-    confidence = [conf for conf, _ in values]
-    relations = [idx2classes[rel] for _, rel in values]
-    formatted = [
-        (0, 0, relations[0], 1, 0),
-        (0, 0, relations[1], 1, 1),
-        (0, 1, relations[2], 1, 0),
-        (0, 1, relations[3], 1, 1)
-    ]
-
-    sorted_relations = [rel for _, rel in sorted(zip(confidence, formatted), reverse=True)]
-
-    pred_relation.append(point2interval(sorted_relations))
-
-true = [tlinks_test.relType[i] for i in range(0, len(tlinks_test.relType), 4)]
-pred_relation
-
-pprint(list(zip(true, pred_relation)))
-
-example = [(0, 0, '=', 1, 0), (0, 1, '<', 1, 1), (0, 0, '<', 1, 1), (0, 1, '<', 1, 0)]  # BEGINS
-example = [(0, 1, '<', 1, 0), (0, 0, '=', 1, 0), (0, 1, '<', 1, 1), (0, 0, '<', 1, 1)]
-point2interval(example)
-
-# Compute temporal-awareness.
-tlinks_test['relPredicted'] = [idx2classes[idx] for idx in y_pred_test]
-tlinks_test['baseline'] = idx2classes[baseline_class]
-
-allen_rel2point_rel = {k: tuple([r for _, _, r, _, _ in v]) for k, v in utils.interval_to_point.items()}
-point_rel2allen_rel = {v: k for k, v in allen_rel2point_rel.items()}
-
-grouped_point_rel = tlinks_test.groupby(['file', 'lid', 'relType']).relPredicted.apply(tuple)
-
-pred_allen_rel = []
-for rel in grouped_point_rel:
-    if rel in point_rel2allen_rel:
-        pred_allen_rel.append(point_rel2allen_rel[rel])
-    else:
-        pred_allen_rel.append('')
-
-annotations_test = tc.get_annotations(tlinks_test, ['source', 'relatedTo', 'pointRel'])
-annotations_pred = tc.get_annotations(tlinks_test, ['source', 'relatedTo', 'relPredicted'])
-annotations_baseline = tc.get_annotations(tlinks_test, ['source', 'relatedTo', 'baseline'])
-
-ta = tc.multifile_temporal_awareness(annotations_test, annotations_pred)
-ta_baseline = tc.multifile_temporal_awareness(annotations_test, annotations_baseline)
-
-print(f"Temporal awareness baseline: {ta_baseline:.3}")
-print(f"Temporal awareness model: {ta:.3}")
-"""

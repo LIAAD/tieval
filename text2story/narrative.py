@@ -20,7 +20,6 @@ _INTERVAL_TO_POINT = {
     "AFTER": [(_START, '>', _END)],
     "IBEFORE": [(_END, "=", _START)],
     "IAFTER": [(_START, "=", _END)],
-    # "CONTAINS": [(_START, "<", _START), (_END, "<", _END)],
     "INCLUDES": [(_START, "<", _START), (_END, '>', _END)],
     "IS_INCLUDED": [(_START, '>', _START), (_END, "<", _END)],
     "BEGINS-ON": [(_START, "=", _START)],
@@ -30,10 +29,11 @@ _INTERVAL_TO_POINT = {
     "ENDS": [(_START, '>', _START), (_END, "=", _END)],
     "ENDED_BY": [(_START, "<", _START), (_END, "=", _END)],
     "SIMULTANEOUS": [(_START, "=", _START), (_END, "=", _END)],
+    "OVERLAP": [(_START, "<", _END), (_END, '>', _START)],
+    # "CONTAINS": [(_START, "<", _START), (_END, "<", _END)],
     # "IDENTITY": [(_START, "=", _START), (_END, "=", _END)],
     # "DURING": [(_START, "=", _START), (_END, "=", _END)],
     # "DURING_INV": [(_START, "=", _START), (_END, "=", _END)],
-    "OVERLAP": [(_START, "<", _END), (_END, '>', _START)],
 }
 
 _INTERVAL_TO_POINT_COMPLETE = {
@@ -140,7 +140,6 @@ _INVERSE_INTERVAL_RELATION = {
     'IS_INCLUDED': 'INCLUDES',
     'SIMULTANEOUS': 'SIMULTANEOUS'
 }
-
 
 # Map relations to the standard names.
 _ASSERT_RELATION = {
@@ -415,6 +414,7 @@ class Document:
 
         :return: None
         """
+        inv_tlinks = []
         for tlink in self.tlinks:
             if relation:
                 cond = [True for _, rel, _ in tlink.point_relation if rel == relation]
@@ -424,8 +424,8 @@ class Document:
             if any(cond):
                 inv_tlink = copy.copy(tlink)
                 inv_tlink.invert()
-                self.tlinks.append(inv_tlink)
-                break
+                inv_tlinks.append(inv_tlink)
+        self.tlinks += inv_tlinks
 
     def limit_task(self, tasks):
         """Limits the document to have only tlinks corresponding to the tasks in the task list.
@@ -434,8 +434,6 @@ class Document:
         :return:
         """
         self.tlinks = [tlink for tlink in self.tlinks if tlink.task in tasks]
-
-
 
     def temporal_closure(self, tlinks) -> Dict:
         # TODO: Keep the original labels when the inferred are more ambiguous.
