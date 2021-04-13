@@ -6,7 +6,7 @@ TRAIN_PATH = r'C:\Users\hmoso\OneDrive\Data\TimeBankPT\train'
 TEST_PATH = r'C:\Users\hmoso\OneDrive\Data\TimeBankPT\test'
 
 
-"""Read data."""
+"""Read datasets."""
 train = rxml.get_tags(TRAIN_PATH, rxml.get_tlinks)
 test = rxml.get_tags(TEST_PATH, rxml.get_tlinks)
 

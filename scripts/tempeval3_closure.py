@@ -29,7 +29,7 @@ pd.set_option('display.max_columns', 40)
 
 tokenizer = nltk.word_tokenize
 
-"""Read data."""
+"""Read datasets."""
 # The training set will be the merge of TimeBank and AQUAINT.
 AQUAINT_PATH = r'../data/TempEval-3/Train/TBAQ-cleaned/AQUAINT'
 TIMEBANK_PATH = r'../data/TempEval-3/Train/TBAQ-cleaned/TimeBank'
@@ -40,7 +40,7 @@ base_timebank, tlinks_timebank = rxml.read_tempeval3(TIMEBANK_PATH, tokenizer)
 base = pd.concat([base_timebank, base_aquaint], axis=0)
 tlinks = pd.concat([tlinks_timebank, tlinks_aquaint], axis=0)
 
-# Read test data.
+# Read test datasets.
 TEST_PATH = r'../data/TempEval-3/Test/TempEval-3-Platinum'
 base_test, tlinks_test = rxml.read_tempeval3(TEST_PATH, tokenizer)
 
@@ -48,8 +48,8 @@ base_test, tlinks_test = rxml.read_tempeval3(TEST_PATH, tokenizer)
 tlinks_test['relType'] = tlinks_test.relType.map(tc.relevant_relations)
 tlinks_test.drop_duplicates(inplace=True)
 
-"""Preprocess data."""
-# Prepare data to compute temporal closure.
+"""Preprocess datasets."""
+# Prepare datasets to compute temporal closure.
 annotations = tc.get_annotations(tlinks)
 closure = tc.get_temporal_closure(annotations)
 
@@ -122,7 +122,7 @@ idx2classes = dict((i, cl) for cl, i in classes2idx.items())
 
 y = [classes2idx[cl] for cl in tlinks_closure.relType]
 
-# Split data into train and validation and build a tensorflow train_valid_set.
+# Split datasets into train and validation and build a tensorflow train_valid_set.
 data_size = len(tlinks_closure)
 batch_size = 64
 

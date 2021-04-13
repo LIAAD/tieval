@@ -4,7 +4,7 @@
 Throughout the last two decades many datasets have been developed to train this task.
 To download them run the following code.
 ```shell
-cd data
+cd datasets
 sh download_datastes.sh
 ```
 

@@ -30,18 +30,18 @@ pd.set_option('display.max_columns', 30)
 WHERE = 'local'  # server or local
 
 
-"""Read data."""
+"""Read datasets."""
 if WHERE == 'local':
     train_path = r'../data/TimeBankPT/train'
     test_path = r'../data/TimeBankPT/test'
 elif WHERE == 'server':
-    train_path = r'/home/dock/temporal_identification/data/TimeBankPT/train'
-    test_path = r'/home/dock/temporal_identification/data/TimeBankPT/test'
+    train_path = r'/home/dock/temporal_identification/datasets/TimeBankPT/train'
+    test_path = r'/home/dock/temporal_identification/datasets/TimeBankPT/test'
 
 
 tokenizer = nltk.word_tokenize
 
-# Read train data.
+# Read train datasets.
 base_train = rxml.get_base(train_path, tokenizer)
 
 events_train = rxml.get_tags(train_path, rxml.get_events)
@@ -53,7 +53,7 @@ tlinks_train = t2s.utils.add_text_to_tlinks(tlinks_train, events_train, timex_tr
 tlinks_train.loc[tlinks_train.task == 'B', 'relatedToken'] = '<dct>'  # Use "<dct>" as token for task B
 
 
-# Read test data.
+# Read test datasets.
 base_test = rxml.get_base(test_path, tokenizer)
 
 events_test = rxml.get_tags(test_path, rxml.get_events)
@@ -89,7 +89,7 @@ idx_word = {idx: word for word, idx in word_idx.items()}
 
 
 """Build input and output of the model."""
-tlinks_train_shuf = tlinks_train.sample(frac=1).copy()  # Shuffle data.
+tlinks_train_shuf = tlinks_train.sample(frac=1).copy()  # Shuffle datasets.
 
 X1_tokens = t2s.utils.text2token(tlinks_train_shuf.eventToken) + t2s.utils.text2token(tlinks_test.eventToken)
 X2_tokens = t2s.utils.text2token(tlinks_train_shuf.relatedToken) + t2s.utils.text2token(tlinks_test.relatedToken)
@@ -108,7 +108,7 @@ idx2classes = dict((i, cl) for cl, i in classes2idx.items())
 y_full_train = [classes2idx[cl] for cl in tlinks_train_shuf.relType]
 
 
-# Build tensorflow train_valid_set and split data into train and validation.
+# Build tensorflow train_valid_set and split datasets into train and validation.
 full_train_size = len(X1_seq_train)
 
 cut = round(full_train_size * 0.8)

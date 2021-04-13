@@ -19,8 +19,8 @@ import pandas as pd
 
 pd.set_option("display.max_columns", 30)
 
-"""Read data."""
-train_path = r"data/train/english/data"
+"""Read datasets."""
+train_path = r"datasets/train/english/datasets"
 
 base = pd.read_csv(f"{train_path}/base-segmentation.tab", sep="\t",
                    names=["doc", "line", "position", "token"])
@@ -145,7 +145,7 @@ df["target"] = ~df.tlink.isna()
 """Prepare model for modeling."""
 # Load GloVe vectors.
 glove_embeddings = dict()
-with open(r"data\glove.6B\glove.6B.50d.txt", encoding="utf_8") as f:
+with open(r"datasets\glove.6B\glove.6B.50d.txt", encoding="utf_8") as f:
     for line in f.readlines():
         line = line.strip().split()
         glove_embeddings[line[0]] = np.array(line[1:], dtype=np.float)

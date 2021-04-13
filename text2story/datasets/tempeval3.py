@@ -8,7 +8,7 @@ import collections
 
 
 def load_data(path) -> dict:
-    """ Read TempEval-3 data.
+    """ Read TempEval-3 datasets.
 
     :param path:
     :return: A dictionary with keys 'train' and 'test'.

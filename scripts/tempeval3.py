@@ -34,7 +34,7 @@ pd.set_option('display.max_columns', 40)
 
 tokenizer = nltk.word_tokenize
 
-"""Read data."""
+"""Read datasets."""
 # Read AQUAINT train_valid_set.
 AQUAINT_PATH = r'../data/TempEval-3/Train/TBAQ-cleaned/AQUAINT'
 timexs_aquaint = rxml.get_tags(AQUAINT_PATH, rxml.get_timexs)
@@ -72,7 +72,7 @@ tlinks_train['relatedTo'] = tlinks_train.relatedToTime.fillna(tlinks_train.relat
 base_train = pd.concat([base_timebank, base_aquaint], axis=0)
 
 
-# Read test data.
+# Read test datasets.
 TEST_PATH = r'../data/TempEval-3/Test/TempEval-3-Platinum'
 timexs_test = rxml.get_tags(TEST_PATH, rxml.get_timexs)
 
@@ -92,8 +92,8 @@ tlinks_test.drop_duplicates(inplace=True)
 base_test = rxml.get_base(TEST_PATH, tokenizer)
 
 
-"""Preprocess data."""
-# Prepare data to compute temporal closure.
+"""Preprocess datasets."""
+# Prepare datasets to compute temporal closure.
 files = tlinks_train.file.unique()
 train_annotations = [tc.df_to_annotations(tlinks_train[tlinks_train.file == file], ['eventID', 'relatedTo', 'relType'])
                      for file in tqdm(files)]
@@ -153,7 +153,7 @@ X2_tokens = utils.text2token(train_closure_df.relatedText, word_idx, tokenizer) 
 max_len_x1 = max(len(x) for x in X1_tokens)
 max_len_x2 = max(len(x) for x in X2_tokens)
 
-train_closure_df_shuf = train_closure_df.sample(frac=1).copy()  # Shuffle data.
+train_closure_df_shuf = train_closure_df.sample(frac=1).copy()  # Shuffle datasets.
 
 X1_seq_train = utils.text2pad_sequence(train_closure_df_shuf.eventText.values, tokenizer, word_idx, max_len_x1)
 X2_seq_train = utils.text2pad_sequence(train_closure_df_shuf.relatedText, tokenizer, word_idx, max_len_x2)
@@ -170,7 +170,7 @@ idx2classes = dict((i, cl) for cl, i in classes2idx.items())
 y_full_train = [classes2idx[cl] for cl in train_closure_df.relType]
 
 
-# Build tensorflow train_valid_set and split data into train and validation.
+# Build tensorflow train_valid_set and split datasets into train and validation.
 full_train_size = len(X1_seq_train)
 
 cut = round(full_train_size * 0.8)

@@ -1,6 +1,6 @@
 from text2story import narrative
 
-from glob import glob
+import glob
 
 import os
 
@@ -78,7 +78,6 @@ def read_independent_dataset(dataset):
     file_paths = glob.glob(glob_path)
 
     pprint(file_paths)
-
 """
     list(os.walk(PATHS[dataset]))
     test = list(os.walk(PATHS['tempeval-3']))
@@ -95,21 +94,21 @@ file_paths = glob.glob(glob_path)
 
 
 def get_folders_with_tml(path):
-    return [dp for dp, _, _ in os.walk(path) if any(glob(dp + '/*.tml'))]
+    result = dict()
+    for walk_path, folders, files in os.walk(path):
+        for folder in folders:
+            folder_path = os.path.join(walk_path, folder)
+            result[folder] = get_folders_with_tml(folder_path)
 
+        tml_files = [file for file in files if file.endswith('.tml')]
+        if any(tml_files):
+            return tml_files
 
-folders = get_folders_with_tml(path)
-
-
-def taxonomy(path):
-
-    folders = get_folders_with_tml(path)
-
-    [folder.strip(path) for folder in folders]
-
-
-
+test = get_folders_with_tml(path)
 
 
 def read_dependent_dataset(dataset):
-    pass
+    path = PATHS[dataset]
+
+
+read(datasets)

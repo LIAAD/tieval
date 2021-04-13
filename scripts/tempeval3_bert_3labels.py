@@ -1,7 +1,5 @@
 import os
 
-print(os.getcwd())
-
 import nltk
 import numpy as np
 import pandas as pd
@@ -12,6 +10,10 @@ import tensorflow_text as text  # Dependency for BERT preprocessing.
 from official.nlp import optimization
 
 from sklearn.metrics import confusion_matrix
+from sklearn.metrics import accuracy_score
+from sklearn.metrics import precision_score
+from sklearn.metrics import recall_score
+from sklearn.metrics import f1_score
 
 import tensorflow as tf
 from tensorflow.keras import callbacks
@@ -20,7 +22,8 @@ from tensorflow.keras import losses
 from tensorflow.keras import models
 from tensorflow.keras import metrics
 
-from text2story.data import tempeval3
+from text2story.datasets import tempeval3
+from text2story import narrative as t2s
 from text2story import temporal_closure as tc
 from text2story import utils
 
@@ -36,7 +39,9 @@ from typing import NamedTuple
 
 import gc
 
+import copy
 
+import copy
 
 
 class Target:
@@ -53,19 +58,106 @@ class Target:
     def indexes(self, classes):
         return np.array([self.classes2idx[cl] for cl in classes])
 
+    def prediction_to_relation(self, Y_pred):
+        """Predicts the interval relation given the model prediction for the point relations.
+
+        :param Y_pred:
+        :return:
+        """
+        y_pred = np.argmax(Y_pred, axis=1)
+        confidance = np.max(Y_pred, axis=1)
+
+        pred_point_relations = self.format_relation(y_pred)
+        cand_rels, cand_conf = self.generate_candidate_relations(confidance, pred_point_relations)
+        ordered_relations = [rel for _, rel in sorted(zip(cand_conf, cand_rels))]
+        relation = self.find_interval_relation(ordered_relations)
+        return relation
+
+    @staticmethod
+    def find_interval_relation(point_relations):
+        """Finds the interval relation for the poin relations.
+        :param point_relations:
+        :return: If the inputted point relation is valid it will return the corresponding interval relations. If not,
+        it will return None.
+        """
+        for rel in point_relations:
+            for i_rel, p_rel in t2s._INTERVAL_TO_POINT.items():
+                if rel == p_rel:
+                    return i_rel
+
+    def format_relation(self, y_pred):
+        """
+
+        :param y_pred: the prediction made for each of the 4 endpoints.
+        :return: the formated relation between those endpoints.
+        :example:
+            >>> prediction_to_relation([0, 2, 1, 0])
+            [(0, '>', 0), (0, '=', 1), (1, '<', 0), (1, '>', 1)]
+
+        """
+        predicted_relation = [self.idx2classes[idx] for idx in y_pred]
+        relations = [
+            (0, predicted_relation[0], 0),
+            (0, predicted_relation[1], 1),
+            (1, predicted_relation[2], 0),
+            (1, predicted_relation[3], 1)
+        ]
+        return relations
+
+    @staticmethod
+    def generate_candidate_relations(confidence, relations):
+        """Generates the candidates based on the confidence that the model had on each of them.
+        Since each of the interval relations can be resumed to one or two point relation we use this simple method to
+        generate the candidates.
+        This method outputs the single relations and the pairwise relations.
+        The confidence is computed as follow:
+            - single relation: the input confidence
+            - pairwise relations: mean confidence of the relations.
+
+        :param confidence: a list with the confidence of model prediction.
+        :param relations: a list with the formated point realtions.
+        :return: a tuple with the candidate relations and the confidence computed for that relation.
+
+        """
+        n = len(confidence)
+        conf = []
+        rels = []
+        for i in range(n):
+            for j in range(i, n):
+                if i == j:
+                    conf.append(confidence[i])
+                    rels.append([relations[i]])
+                else:
+                    conf.append((confidence[i] + confidence[j]) / 2)
+                    rels.append([relations[i], relations[j]])
+        return rels, conf
+
 
 class BuildIO:
     def __init__(self, classes):
+        """Build input output from the documents.
+
+        :param classes: The classes in the target variable. In the point classification problem the classes would be
+        ['<', '>', '=']. In the interval relation would be ['BEFORE', 'AFTER', (...)].
+        """
         self.target = Target(classes)
+        self.inputs = dict()
+        self.outputs = dict()
+
 
     def run(self, docs):
+        """
+
+        :param docs: The
+        :return:
+        """
         X_context = []
         X_event = []
         X_edge1 = []
         X_edge2 = []
         relations = []
 
-        for doc in tqdm(docs):
+        for doc in docs:
             expressions = self.get_expressions(doc)
             for tlink in doc.tlinks:
                 # get the source and target expressions.
@@ -87,10 +179,49 @@ class BuildIO:
         y = self.target.indexes(relations)
         return (X_context, X_event, X_edge1, X_edge2), y
 
-    def build_tensorflow_dataset(self, docs, batch_size=32, oversample=False):
+    def run_single_tlink(self, tlink, doc):
+        """
+
+        :param docs: The
+        :return:
+        """
+        X_context = []
+        X_event = []
+        X_edge1 = []
+        X_edge2 = []
+        relations = []
+
+        expressions = self.get_expressions(doc)
+
+        # get the source and target expressions.
+        scr_exp = expressions[tlink.source]
+        tgt_exp = expressions[tlink.target]
+
+        point_rels = tlink.complete_point_relation()
+        for point_rel in point_rels:
+            edge1, relation, edge2 = point_rel
+            event = self.get_text(tlink, scr_exp, tgt_exp)
+            context = self.get_context(doc, tlink, scr_exp, tgt_exp)
+
+            X_context.append(context)
+            X_event.append(event)
+            X_edge1.append(edge1)
+            X_edge2.append(edge2)
+            relations.append(relation)
+
+        y = self.target.indexes(relations)
+        return (X_context, X_event, X_edge1, X_edge2), y
+
+    def build_tensorflow_dataset(self, docs, batch_size=32, oversample=False, name: str=None):
         X, y = self.run(docs)
+
+        if name:
+            self.inputs[name] = X
+            self.outputs[name] = y
+
         if oversample:
             X, y = self.oversample(X, y)
+
         dataset = tf.data.Dataset.from_tensor_slices((X, y)).batch(batch_size).prefetch(1)
         return dataset
 
@@ -176,8 +307,6 @@ class ModelConfig(NamedTuple):
     handler_url: str
     bert_url: str
     output_size: int
-    train_set: tf.data.Dataset
-    valid_set: tf.data.Dataset
     epochs: int = 5
     init_lr: float = 3e-5
 
@@ -194,8 +323,7 @@ class Model:
         self.output_size = config.output_size
         self.init_lr = config.init_lr
 
-        self.train_set = config.train_set
-        self.valid_set = config.valid_set
+        self.model = None
 
     def build(self):
         context = layers.Input(shape=(), dtype=tf.string, name='context')
@@ -221,10 +349,11 @@ class Model:
         z = layers.Dense(64, activation='relu')(z)
         z = layers.Dense(32, activation='relu')(z)
         output = layers.Dense(self.output_size)(z)
-        return models.Model([context, events, edge1, edge2], output)
 
-    def compile(self, model):
-        steps_per_epoch = tf.data.experimental.cardinality(self.train_set).numpy()
+        self.model = models.Model([context, events, edge1, edge2], output)
+
+    def compile(self, train_set):
+        steps_per_epoch = tf.data.experimental.cardinality(train_set).numpy()
         num_train_steps = self.epochs * steps_per_epoch
         num_warmup_steps = int(0.1 * num_train_steps)
         optimizer = optimization.create_optimizer(
@@ -234,58 +363,113 @@ class Model:
             optimizer_type='adamw'
         )
 
-        model.compile(
+        self.model.compile(
             optimizer=optimizer,
             loss=losses.SparseCategoricalCrossentropy(from_logits=True),
             metrics=['accuracy']
         )
-        return model
 
-    def fit(self, model):
+    def fit(self, train_set, valid_set):
         checkpoint_cb = callbacks.ModelCheckpoint(self.path, save_best_only=True, save_weights_only=True)
         early_stop_cb = callbacks.EarlyStopping(patience=2, verbose=1, restore_best_weights=True)
 
-        model.fit(
-            self.train_set,
-            validation_data=self.valid_set,
+        self.model.fit(
+            train_set,
+            validation_data=valid_set,
             epochs=self.epochs,
             callbacks=[early_stop_cb, checkpoint_cb],
         )
-        return model
 
-    def train(self):
-        model = self.build()
-        model = self.compile(model)
-        model = self.fit(model)
-        return model
+    def train(self, train_set, valid_set):
+        self.build()
+        self.compile(train_set)
+        self.fit(train_set, valid_set)
+
+    def load(self):
+        self.build()
+        self.model.load_weights(self.path)
+
+    def predict(self, dataset):
+        return self.model.predict(dataset)
+
+    def predict_classes(self, docs, builder):
+        pred_classes = []
+        for doc in tqdm(docs):
+            doc_set = builder.build_tensorflow_dataset(docs=[doc], batch_size=4)
+            for X_tlk, y_tlk in doc_set:
+                Y_tlk_pred = self.model.predict(X_tlk)
+                relation = builder.target.prediction_to_relation(Y_tlk_pred)
+                pred_classes.append(relation)
+        return pred_classes
 
 
+def print_header(msg):
+    print('-' * len(msg))
+    print(msg)
+    print('-' * len(msg))
+
+
+def print_metrics(y_true, y_pred):
+    metrics_dict = {
+        'Accuracy': accuracy_score(y_true, y_pred),
+        'Precision': precision_score(y_true, y_pred, average='macro'),
+        'Recall': recall_score(y_true, y_pred, average='macro'),
+    }
+    for metric, value in metrics_dict.items():
+        print(f'\t{metric}: {value:.03}')
+
+    cm = confusion_matrix(y_true, y_pred)
+    print(f'\tConfusion Matrix:')
+    for line in cm:
+        print(f'\t\t{line}')
+
+
+# Fix GPU memory problem.
 gpus = tf.config.experimental.list_physical_devices('GPU')
 for gpu in gpus:
   tf.config.experimental.set_memory_growth(gpu, True)
 
-"""Read data."""
-TEMPEVAL_PATH = r'data/TempEval-3'
+
+"""Read datasets."""
+TEMPEVAL_PATH = r'datasets/TempEval-3'
 data = tempeval3.load_data(TEMPEVAL_PATH)
 
-train_docs = data['train']['aquaint'] + data['train']['timebank']
+train_valid_docs = data['train']['aquaint'] + data['train']['timebank']
+cut = int(len(train_valid_docs) * 0.85)
+train_docs = train_valid_docs[:cut]
+valid_docs = train_valid_docs[cut:]
 test_docs = data['test']['platinum']
 
-"""Preprocess data."""
-classes = ['>', '<', '=']
+print_header('Data size (documents)')
+print(f"Number of documents in train: {len(train_docs)}")
+print(f"Number of documents in validation: {len(valid_docs)}")
+print(f"Number of documents in test: {len(test_docs)}")
+print()
+
+
+"""Preprocess datasets."""
+
+# Augment relations in the train set.
+augm_docs = copy.deepcopy(train_docs)
+for doc in augm_docs:
+    doc.augment_tlinks('=')
+
+# Limit to tasks A, B and C. That is, remove the relations with document creation time.
 
 # Build train_valid_set.
-batch_size = 1
+batch_size = 32
+classes = ['>', '<', '=']
 builder = BuildIO(classes)
-dataset = builder.build_tensorflow_dataset(train_docs, batch_size, oversample=True)
+train_set = builder.build_tensorflow_dataset(augm_docs, batch_size, name='train')
+valid_set = builder.build_tensorflow_dataset(valid_docs, batch_size, name='valid')
+test_set = builder.build_tensorflow_dataset(test_docs, batch_size, name='test')
 
-# Split data into train and test.
-dataset_size = len(dataset)
-cut = round(dataset_size * 0.8)
-train_set = dataset.take(cut)
-valid_set = dataset.skip(cut)
+print_header('Data size (tlinks)')
+print(f"Number of tlinks in train: {len(train_set) * batch_size}")
+print(f"Number of tlinks in validation: {len(valid_set) * batch_size}")
+print(f"Number of tlinks in test : {len(test_set) * batch_size}")
 
-"""Train model."""
+
 # Load BERT urls.
 with open('resources/bert_urls.json', 'r') as f:
     bert_urls = json.load(f)
@@ -293,21 +477,22 @@ with open('resources/bert_urls.json', 'r') as f:
 # Keep just the small BERTs (the others can't be loaded in the GPU memory).
 small_bert_urls = {name.replace('/', '_'): bert_urls[name] for name in bert_urls if name.startswith('small_bert')}
 
+
+"""Train model."""
 # Evaluate different architectures.
 y_valid = np.concatenate([y for x, y in valid_set])
 for model_name in tqdm(small_bert_urls):
-    # model_name = 'small_bert_bert_en_uncased_L-4_H-768_A-12'
+    # model_name = 'small_bert_bert_en_uncased_L-8_H-512_A-8'
     config = ModelConfig(
         name=model_name,
         handler_url=small_bert_urls[model_name]['handler'],
         bert_url=small_bert_urls[model_name]['model'],
-        output_size=len(classes),
-        train_set=train_set,
-        valid_set=valid_set
+        output_size=len(classes)
     )
+
     try:
-        model_builder = Model(config)
-        model = model_builder.train()
+        model = Model(config)
+        model.train()
     except:
         message = f"Could not train model {model_name}"
         print()
@@ -335,92 +520,55 @@ for model_name in tqdm(small_bert_urls):
 
     gc.collect()
 
-"""
-# model = models.load_model(model_path)
-model.load_weights(model_path)
 
-# Evaluate Model
+""" Evaluate model."""
+best_models = [
+    'small_bert_bert_en_uncased_L-8_H-512_A-8',
+    'small_bert_bert_en_uncased_L-10_H-512_A-8',
+    'small_bert_bert_en_uncased_L-12_H-256_A-4',
+]
+
+model_name = best_models[0]
+config = ModelConfig(
+    name=model_name,
+    handler_url=small_bert_urls[model_name]['handler'],
+    bert_url=small_bert_urls[model_name]['model'],
+    output_size=len(classes)
+)
+
+model = Model(config)
+model.load()
+
+
 # Validation set.
-y_valid = np.concatenate([y for x, y in valid_set])
+y_valid = builder.outputs['valid']
 Y_prob_valid = model.predict(valid_set)
 y_pred_valid = np.argmax(Y_prob_valid, axis=1)
-utils.print_confusion_matrix(y_valid, y_pred_valid, classes2idx.keys())
 
-baseline_class = np.argmax(np.bincount(y))
+print_header('Validation')
+print_metrics(y_valid, y_pred_valid)
+
 
 # Test set.
-Y_proba_test = model.predict(
-    [X_test[:, 0], X_test[:, 1], np.array(X_test[:, 2], dtype=float), np.array(X_test[:, 3], dtype=float)])
+y_test = builder.outputs['test']
+Y_proba_test = model.predict(test_set)
 y_pred_test = np.argmax(Y_proba_test, axis=1)
-print(confusion_matrix(y_test, y_pred_test))
 
-# From point relation to interval relation.
-tlinks_test['y_proba'] = np.max(Y_proba_test, axis=1)
-tlinks_test['y_pred'] = y_pred_test
-
-valid_relations = tlinks.relType.unique()
-
-interval2point = {rel: tc._interval_to_point[rel] for rel in valid_relations}
+print_header('Test')
+print_metrics(y_test, y_pred_test)
 
 
-def point2interval(point_relations):
-    for n_relations in range(1, 5):
-        relations = point_relations[:n_relations]
-        for interval_rel, point_rel in interval2point.items():
-            cond = [True if rel in relations else False for rel in point_rel]
-            if all(cond):
-                return interval_rel
+"""Evaluate with interval relations."""
+
+rel_valid_pred = model.predict_classes(valid_docs, builder)
+rel_valid = [tlink.interval_relation for doc in valid_docs for tlink in doc.tlinks]
+print_header('Validation')
+print("Accuracy:", accuracy_score(rel_valid, rel_valid_pred))
+print(confusion_matrix(rel_valid, rel_valid_pred))
 
 
-pred_relation = []
-point_pred = tlinks_test.groupby(['file', 'lid'])['y_proba', 'y_pred'].apply(lambda x: list(x.values)).to_dict()
-formatted_point_pred = dict()
-for link, values in point_pred.items():
-    confidence = [conf for conf, _ in values]
-    relations = [idx2classes[rel] for _, rel in values]
-    formatted = [
-        (0, 0, relations[0], 1, 0),
-        (0, 0, relations[1], 1, 1),
-        (0, 1, relations[2], 1, 0),
-        (0, 1, relations[3], 1, 1)
-    ]
-
-    sorted_relations = [rel for _, rel in sorted(zip(confidence, formatted), reverse=True)]
-
-    pred_relation.append(point2interval(sorted_relations))
-
-true = [tlinks_test.relType[i] for i in range(0, len(tlinks_test.relType), 4)]
-pred_relation
-
-pprint(list(zip(true, pred_relation)))
-
-example = [(0, 0, '=', 1, 0), (0, 1, '<', 1, 1), (0, 0, '<', 1, 1), (0, 1, '<', 1, 0)]  # BEGINS
-example = [(0, 1, '<', 1, 0), (0, 0, '=', 1, 0), (0, 1, '<', 1, 1), (0, 0, '<', 1, 1)]
-point2interval(example)
-
-# Compute temporal-awareness.
-tlinks_test['relPredicted'] = [idx2classes[idx] for idx in y_pred_test]
-tlinks_test['baseline'] = idx2classes[baseline_class]
-
-allen_rel2point_rel = {k: tuple([r for _, _, r, _, _ in v]) for k, v in utils.interval_to_point.items()}
-point_rel2allen_rel = {v: k for k, v in allen_rel2point_rel.items()}
-
-grouped_point_rel = tlinks_test.groupby(['file', 'lid', 'relType']).relPredicted.apply(tuple)
-
-pred_allen_rel = []
-for rel in grouped_point_rel:
-    if rel in point_rel2allen_rel:
-        pred_allen_rel.append(point_rel2allen_rel[rel])
-    else:
-        pred_allen_rel.append('')
-
-annotations_test = tc.get_annotations(tlinks_test, ['source', 'relatedTo', 'pointRel'])
-annotations_pred = tc.get_annotations(tlinks_test, ['source', 'relatedTo', 'relPredicted'])
-annotations_baseline = tc.get_annotations(tlinks_test, ['source', 'relatedTo', 'baseline'])
-
-ta = tc.multifile_temporal_awareness(annotations_test, annotations_pred)
-ta_baseline = tc.multifile_temporal_awareness(annotations_test, annotations_baseline)
-
-print(f"Temporal awareness baseline: {ta_baseline:.3}")
-print(f"Temporal awareness model: {ta:.3}")
-"""
+rel_test_pred = model.predict_classes(test_docs, builder)
+rel_test = [tlink.interval_relation for doc in test_docs for tlink in doc.tlinks]
+print_header('Test')
+print("Accuracy:", accuracy_score(rel_test, rel_test_pred))
+print(confusion_matrix(rel_test, rel_test_pred))
