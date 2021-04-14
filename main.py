@@ -24,7 +24,8 @@ DATASETS_INDEPENDENT = [
     'timebank',
     'aquaint',
     'timebank-pt',
-    'tempeval-3'
+    'tempeval-3',
+    'timebank-1.2'
 ]
 
 # datasets that only have a table with the temporal links
@@ -43,6 +44,7 @@ DATASETS_DEPENDENT = {
 # path to each dataset.
 PATHS = {
     'timebank': 'data/TempEval-3/Train/TBAQ-cleaned/TimeBank',
+    'timebank-1.2': 'data/TimeBank-1.2',
     'aquaint': 'data/TempEval-3/Train/TBAQ-cleaned/AQUAINT',
     'platinum': 'data/TempEval-3/Test/TempEval-3-Platinum',
     'timebankpt': 'data/TimeBankPT',
@@ -51,10 +53,6 @@ PATHS = {
     'matres': 'data/MATRES',
     'tddiscourse': 'data/TDDiscourse'
 }
-
-
-datasets = ['matres', 'timebank-pt']
-dataset = 'timebank'
 
 
 def read(datasets: list):
@@ -79,37 +77,44 @@ def read_independent_dataset(dataset):
 
     pprint(file_paths)
 
-"""
-    list(os.walk(PATHS[dataset]))
-    test = list(os.walk(PATHS['tempeval-3']))
-    pprint(test)
-    print(f'Reading dataset {dataset} from folder {folder}...')
-
-    data[folder][dataset] = [narrative.Document(file_path) for file_path in file_paths]
-
-"""
-path = PATHS['tempeval-3']
-
-glob_path = os.path.join(path, '*.tml')
-file_paths = glob.glob(glob_path)
-
 
 def get_folders_with_tml(path):
     return [dp for dp, _, _ in os.walk(path) if any(glob(dp + '/*.tml'))]
 
 
-folders = get_folders_with_tml(path)
+def get_tml_path(path: str) -> dict:
+    """ Given a path it will return a dictionary in which the keys are the folder path and the values are the paths to
+    every .tml path in that directory.
+
+    :param path:
+    :return:
+    """
+    result = dict()
+    for dp, _, _ in os.walk(path):
+
+        tml_files = glob(dp + '/*.tml')
+        if any(tml_files):
+            name = dp[len(path) + 1:]
+            result[name] = tml_files
+    return result
 
 
-def taxonomy(path):
+doc = narrative.TimeBank12Document('data/TimeBank-1.2/data/extra/wsj_0950.tml')
 
-    folders = get_folders_with_tml(path)
+path = PATHS['timebank-1.2']
+tml_paths = get_tml_path(path)
 
-    [folder.strip(path) for folder in folders]
+for folder_name, paths in tml_paths.items():
+    print(folder_name)
+    for path in paths:
+        print(path)
+        doc = narrative.TimeBank12Document(path)
 
 
 
+docs = {folder_name: [narrative.Document(path) for path in paths] for folder_name, paths in tml_paths.items()}
 
+pprint(docs)
 
 def read_dependent_dataset(dataset):
     pass

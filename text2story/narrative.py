@@ -7,6 +7,8 @@ import copy
 
 import nltk
 
+import numpy as np
+
 from pprint import pprint
 
 # constants representing the start point and end point of an interval
@@ -30,6 +32,7 @@ _INTERVAL_TO_POINT = {
     "ENDED_BY": [(_START, "<", _START), (_END, "=", _END)],
     "SIMULTANEOUS": [(_START, "=", _START), (_END, "=", _END)],
     "OVERLAP": [(_START, "<", _END), (_END, '>', _START)],
+    "VAGUE": [],
     # "CONTAINS": [(_START, "<", _START), (_END, "<", _END)],
     # "IDENTITY": [(_START, "=", _START), (_END, "=", _END)],
     # "DURING": [(_START, "=", _START), (_END, "=", _END)],
@@ -109,7 +112,11 @@ _INTERVAL_TO_POINT_COMPLETE = {
     "OVERLAP": [(_START, "<", _START),
                 (_START, "<", _END),
                 (_END, ">", _START),
-                (_END, "<", _END)]
+                (_END, "<", _END)],
+    "VAGUE": [(_START, None, _START),
+                (_START, None, _END),
+                (_END, None, _START),
+                (_END, None, _END)]
 }
 
 # transitivity table for point relations
@@ -138,7 +145,7 @@ _INVERSE_INTERVAL_RELATION = {
     'IBEFORE': 'IAFTER',
     'INCLUDES': 'IS_INCLUDED',
     'IS_INCLUDED': 'INCLUDES',
-    'SIMULTANEOUS': 'SIMULTANEOUS'
+    'SIMULTANEOUS': 'SIMULTANEOUS',
 }
 
 # Map relations to the standard names.
@@ -160,7 +167,11 @@ _ASSERT_RELATION = {
     'ENDS': 'ENDS',
     'IS_INCLUDED': 'IS_INCLUDED',
     'IBEFORE': 'IBEFORE',
-    'IAFTER': 'IAFTER'
+    'IAFTER': 'IAFTER',
+
+    'VAGUE': 'VAGUE',
+    'BEFORE-OR-OVERLAP': 'BEFORE-OR-OVERLAP'
+
 }
 
 
@@ -191,18 +202,36 @@ class TLink:
         self.task = self._infer_task()
 
         if 'interval_relation' in attributes:
-            interval_relation = attributes['interval_relation']
-            interval_relation = _ASSERT_RELATION[interval_relation]
-            self.interval_relation = interval_relation
-            self.point_relation = self._get_point_relation()
+            self._interval_relation = attributes['interval_relation']
+            self._point_relation = None
         elif 'point_relation' in attributes:
-            self.point_relation = attributes['point_relation']
-            self.interval_relation = self._get_interval_relation()
+            self._interval_relation = None
+            self._point_relation = attributes['point_relation']
         else:
-            raise Exception("point_relation and interval_relation are both None. Must provide one of them.")
+            raise Exception("point_relation and interval_relation are both None. Please provide one of them.")
 
     def __repr__(self):
         return f"{self.source} ---{self.interval_relation}--> {self.target}"
+
+    @property
+    def point_relation(self):
+        if self._point_relation:
+            return self._point_relation
+        else:
+            return self._get_point_relation()
+
+    @property
+    def interval_relation(self):
+        if self._interval_relation:
+            return self._interval_relation
+        else:
+            return self._get_interval_relation()
+
+    def normalize_relation(self):
+        """This method is usefull to remove redundent relations. For instances "OVERLAP" and "SIMULTANIUES" are the same
+        temporal relation but there are datasets that use both.
+        """
+        self.interval_relation = _ASSERT_RELATION[self.interval_relation]
 
     def _infer_task(self):
         """ Infer the task based on source and target id.
@@ -280,11 +309,24 @@ class Document:
         self.sentences = self._get_sentences()
         self.tokens = self._get_tokens()
 
+        self._dct = self._get_dct()
+
         self._expression_idxs = self._expression_indexes()
         self.timexs = self._get_timexs()
         self.events = self._get_events()
 
         self.tlinks = self._get_tlinks()
+
+    def _get_dct(self):
+        """Extract document creation time"""
+
+        # dct is always the first TIMEX3 element
+        dct = self.xml_root.find('.//TIMEX3')
+        return dct.attrib
+
+    @property
+    def dct(self):
+        return self._dct['value']
 
     def _get_text(self) -> str:
         """
@@ -319,7 +361,23 @@ class Document:
 
         :return:
         """
-        text_root = self.xml_root.find('.//TEXT')
+        text_root = copy.deepcopy(self.xml_root.find('.//TEXT'))
+
+        type(text_root)
+
+        ElementTree.tostring(text_root)
+
+
+        # remove unnecessary tags.
+        elements2remove = [elem for elem in text_root.findall('.//*') if elem.tag not in ['TIMEX3', 'EVENT']]
+        for elem in elements2remove:
+            break
+            text_root.remove(elem)
+        pprint(dir(text_root))
+
+        tags = [elem.tag for elem in text_root.findall('.//*')]
+        tags = np.unique(tags)
+        text_root.remove()
 
         # Find indexes of the expressions.
         text_blocks = list()
@@ -331,14 +389,19 @@ class Document:
 
         # Get the tags of each expression.
         text_tags = list()
-        for txt in text_root.iter():
-            if txt.attrib and txt.tag == 'EVENT':
-                text_tags.append((txt.text, txt.attrib['eid']))
-            elif txt.attrib and txt.tag == 'TIMEX3':
-                text_tags.append((txt.text, txt.attrib['tid']))
+        elements = [elem for elem in list(text_root.iterfind('.//*')) if elem.tag in ['EVENT', 'TIMEX3']]
+        for element in elements:
+
+            # there are cases where there is a nested tag <EVENT><NUMEX>example</NUMEX></EVENT>
+            text = ' '.join(list(element.itertext()))
+
+            if element.attrib and element.tag == 'EVENT':
+                text_tags.append((text, element.attrib['eid']))
+            elif element.attrib and element.tag == 'TIMEX3':
+                text_tags.append((text, element.attrib['tid']))
 
         # Join the indexes with the tags.
-        expression_idxs = {'t0': (-1, -1, None)}  # Initialize with the position of DCT.
+        expression_idxs = {self._dct['tid']: (-1, -1)}  # Initialize with the position of DCT.
         while text_tags:
             txt, tag_id = text_tags.pop(0)
             for idx, (start, end, txt_sch) in enumerate(text_blocks):
@@ -495,3 +558,7 @@ class Document:
 
         # Generate indexes for tlinks.
         return {f'lc{idx}': tlink for idx, tlink in enumerate(tlinks)}
+
+
+class TimeBank12Document(Document):
+    pass
