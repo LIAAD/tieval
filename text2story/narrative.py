@@ -1,8 +1,9 @@
 import collections
+import re
 from typing import Dict
 from typing import List
 from typing import Tuple
-from xml.etree import ElementTree
+from xml.etree import ElementTree as ET
 import copy
 
 import nltk
@@ -114,9 +115,9 @@ _INTERVAL_TO_POINT_COMPLETE = {
                 (_END, ">", _START),
                 (_END, "<", _END)],
     "VAGUE": [(_START, None, _START),
-                (_START, None, _END),
-                (_END, None, _START),
-                (_END, None, _END)]
+              (_START, None, _END),
+              (_END, None, _START),
+              (_END, None, _END)]
 }
 
 # transitivity table for point relations
@@ -195,6 +196,7 @@ class TLink:
         List with the minimal point relation between the edges of source and target (minimal mining set os relations
         that defines the interval relation between source and target):
     """
+
     def __init__(self, attributes: dict):
         self.lid = attributes['lid']
         self.source = attributes['source']
@@ -302,7 +304,7 @@ class Document:
         self.path = path
 
         self.tokenizer = nltk.tokenize.WordPunctTokenizer()
-        self.xml_root = ElementTree.parse(path).getroot()
+        self.xml_root = ET.parse(path).getroot()
         self.name = self.xml_root.findtext('.//DOCID')
 
         self.text = self._get_text()
@@ -327,6 +329,29 @@ class Document:
     @property
     def dct(self):
         return self._dct['value']
+
+    def _remove_xml_tags(self, xml_root: ET.Element, tags2keep: list = ['TIMEX3', 'EVENT']) -> ET.Element:
+        """ Removes tags all tags in xml_root that are not on tags2keep list.
+
+        :param xml_root:
+        :param tags2keep:
+        :return:
+        """
+        raw_text_root = ET.tostring(xml_root, encoding='unicode')
+
+        # some files have information after the end tag.
+        # this block is to remove that extra info.
+        end_tag = '</TEXT>'
+        end_text = raw_text_root.find(end_tag) + len(end_tag)
+        raw_text_root = raw_text_root[:end_text]
+
+        tags2remove = [elem.tag for elem in xml_root.findall('.//*') if elem.tag not in tags2keep]
+        tags2remove = np.unique(tags2remove).tolist()
+
+        for tag in tags2remove:
+            raw_text_root = re.sub(f'</?{tag}.*?>', '', raw_text_root)
+
+        return ET.fromstring(raw_text_root)
 
     def _get_text(self) -> str:
         """
@@ -361,23 +386,11 @@ class Document:
 
         :return:
         """
+
         text_root = copy.deepcopy(self.xml_root.find('.//TEXT'))
 
-        type(text_root)
-
-        ElementTree.tostring(text_root)
-
-
         # remove unnecessary tags.
-        elements2remove = [elem for elem in text_root.findall('.//*') if elem.tag not in ['TIMEX3', 'EVENT']]
-        for elem in elements2remove:
-            break
-            text_root.remove(elem)
-        pprint(dir(text_root))
-
-        tags = [elem.tag for elem in text_root.findall('.//*')]
-        tags = np.unique(tags)
-        text_root.remove()
+        text_root = self._remove_xml_tags(text_root)
 
         # Find indexes of the expressions.
         text_blocks = list()
@@ -459,7 +472,7 @@ class Document:
                 lid=tlink.attrib['lid'],
                 source=tlink.attrib['timeID'] if 'timeID' in tlink.attrib else tlink.attrib['eventInstanceID'],
                 target=tlink.attrib['relatedToEventInstance'] if 'relatedToEventInstance' in tlink.attrib
-                                                              else tlink.attrib['relatedToTime'],
+                else tlink.attrib['relatedToTime'],
                 interval_relation=tlink.attrib['relType']
             )
 
@@ -519,7 +532,6 @@ class Document:
 
         # Add the symmetric of each relation. A < B ---> B > A
         {(tgt, _INVERSE_POINT_RELATION[rel], scr) for scr, rel, tgt in new_relations if rel != '='}
-
 
         # repeatedly apply point transitivity rules until no new relations can be inferred
         point_relations = set()

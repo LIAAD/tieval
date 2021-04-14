@@ -99,16 +99,17 @@ def get_tml_path(path: str) -> dict:
     return result
 
 
-doc = narrative.TimeBank12Document('data/TimeBank-1.2/data/extra/wsj_0950.tml')
+doc = narrative.TimeBank12Document('data/TimeBank-1.2/data/extra/SJMN91-06338157.tml')
 
 path = PATHS['timebank-1.2']
 tml_paths = get_tml_path(path)
 
 for folder_name, paths in tml_paths.items():
-    print(folder_name)
     for path in paths:
-        print(path)
-        doc = narrative.TimeBank12Document(path)
+        try:
+            doc = narrative.TimeBank12Document(path)
+        except:
+            print(path)
 
 
 
