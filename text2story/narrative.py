@@ -212,8 +212,88 @@ class TLink:
         else:
             raise Exception("point_relation and interval_relation are both None. Please provide one of them.")
 
-    def __repr__(self):
+    def __call__(self, *args, **kwargs):
+        return self.lid
+
+    def __str__(self):
         return f"{self.source} ---{self.interval_relation}--> {self.target}"
+
+    def __repr__(self):
+        return self.__call__()
+
+    def __and__(self, other):
+        """ Infer the relation between two TLINKS.
+
+        If a relation can be infered it will return a Tlink between source of the first Tlink and target of the second
+        Tlink.
+
+        Example:
+            tlink_1 = TLink({
+                'lid': 'l1',
+                'source': 'e1',
+                'target': 'e2',
+                'interval_relation': 'BEFORE'
+            })
+
+            tlink_2 = TLink({
+                'lid': 'l2',
+                'source': 'e2',
+                'target': 'e3',
+                'interval_relation': 'BEFORE'
+            })
+
+            tlink_1 & tlink_2
+
+        :param other:
+        :return:
+        """
+
+        # pair the relations of the first and second tlink
+        paired_relations = zip(self.complete_point_relation(), other.complete_point_relation())
+
+        # get the relation between source of the first tlink and target of second tlink
+        point_relation13 = [
+            (relation12[0], _POINT_TRANSITIONS[relation12[1]][relation23[1]], relation23[2])
+            for relation12, relation23 in paired_relations
+        ]
+
+        # search for a interval relation that matches the found point relation
+        interval_relation = None
+        for i_rel, p_rel in _INTERVAL_TO_POINT_COMPLETE.items():
+            if p_rel == point_relation13:
+                interval_relation = i_rel
+
+        # if an interval relation was found it will return a TLink with it. otherwise it returns None
+        if interval_relation:
+            return TLink({
+                'lid': f'il{self.source}{other.target}',
+                'source': self.source,
+                'target': other.target,
+                'interval_relation': interval_relation
+            })
+
+        else:
+            return None
+
+    def __invert__(self):
+        """
+
+        Invert TLink.
+        Returns the symmetric tlink. For example, if A --Before--> B it will return a tlink with B --After--> A
+
+        :return:
+            A TLink symmetric to the current one.
+
+        """
+
+        inv_attrib = {
+            'lid': 'a' + self.lid,
+            'source': self.target,
+            'target': self.source,
+            'interval_relation': _INVERSE_INTERVAL_RELATION[self.interval_relation]
+        }
+
+        return TLink(inv_attrib)
 
     @property
     def point_relation(self):
@@ -228,6 +308,10 @@ class TLink:
             return self._interval_relation
         else:
             return self._get_interval_relation()
+
+    @interval_relation.setter
+    def interval_relation(self, value):
+        self._interval_relation = value
 
     def normalize_relation(self):
         """This method is usefull to remove redundent relations. For instances "OVERLAP" and "SIMULTANIUES" are the same
@@ -262,9 +346,11 @@ class TLink:
             raise Exception("interval_relation not defined.")
 
     def _get_interval_relation(self):
+
         result = [relation
                   for relation, requirements in _INTERVAL_TO_POINT.items()
                   if set(requirements).issubset(self.point_relation)]
+
         if not result:
             return None
         return result
@@ -274,17 +360,6 @@ class TLink:
             return _INTERVAL_TO_POINT_COMPLETE[self.interval_relation]
         else:
             raise Exception("interval_relation not defined.")
-
-    def invert(self):
-        """ Inverts the Tlink. For example if the Tlink is A ---Before---> B this method transforms it into
-         B ---AFTER--> A.
-
-        :return:
-        """
-        self.lid = 'a' + self.lid
-        self.source, self.target = self.target, self.source
-        self.interval_relation = _INVERSE_INTERVAL_RELATION[self.interval_relation]
-        self.point_relation = self._get_point_relation()
 
 
 class Timex:
@@ -300,12 +375,22 @@ class Event:
 
 
 class Document:
+    """
+
+    A .tml document.
+
+    Attributes:
+
+        - path
+
+    """
+
     def __init__(self, path: str):
         self.path = path
 
         self.tokenizer = nltk.tokenize.WordPunctTokenizer()
         self.xml_root = ET.parse(path).getroot()
-        self.name = self.xml_root.findtext('.//DOCID')
+        self.name = self._get_name()
 
         self.text = self._get_text()
         self.sentences = self._get_sentences()
@@ -319,6 +404,13 @@ class Document:
 
         self.tlinks = self._get_tlinks()
 
+    def __str__(self):
+        return self.text.strip()
+
+    def _get_name(self):
+        name = self.path.split('/')[-1].strip('.tml')
+        return name
+
     def _get_dct(self):
         """Extract document creation time"""
 
@@ -330,36 +422,29 @@ class Document:
     def dct(self):
         return self._dct['value']
 
-    def _remove_xml_tags(self, xml_root: ET.Element, tags2keep: list = ['TIMEX3', 'EVENT']) -> ET.Element:
+    def _remove_xml_tags(self, root: ET.Element, tags2keep: list = ['TIMEX3', 'EVENT']) -> ET.Element:
         """ Removes tags all tags in xml_root that are not on tags2keep list.
 
-        :param xml_root:
+        :param root:
         :param tags2keep:
         :return:
         """
-        raw_text_root = ET.tostring(xml_root, encoding='unicode')
+        raw_root = ET.tostring(root, encoding='unicode')
 
-        # some files have information after the end tag.
-        # this block is to remove that extra info.
-        end_tag = '</TEXT>'
-        end_text = raw_text_root.find(end_tag) + len(end_tag)
-        raw_text_root = raw_text_root[:end_text]
-
-        tags2remove = [elem.tag for elem in xml_root.findall('.//*') if elem.tag not in tags2keep]
+        tags2remove = [elem.tag for elem in root.findall('.//*') if elem.tag not in tags2keep]
         tags2remove = np.unique(tags2remove).tolist()
 
         for tag in tags2remove:
-            raw_text_root = re.sub(f'</?{tag}.*?>', '', raw_text_root)
+            raw_root = re.sub(f'</?{tag}.*?>', '', raw_root)
 
-        return ET.fromstring(raw_text_root)
+        return ET.fromstring(raw_root)
 
     def _get_text(self) -> str:
         """
         Returns the raw text of the document
         :return:
         """
-        text_root = self.xml_root.find('.//TEXT')
-        text = ''.join(list(text_root.itertext()))
+        text = ''.join(list(self.xml_root.itertext()))
         return text
 
     def _get_sentences(self) -> List[Tuple]:
@@ -387,22 +472,22 @@ class Document:
         :return:
         """
 
-        text_root = copy.deepcopy(self.xml_root.find('.//TEXT'))
+        root = copy.deepcopy(self.xml_root)
 
         # remove unnecessary tags.
-        text_root = self._remove_xml_tags(text_root)
+        root = self._remove_xml_tags(root)
 
         # Find indexes of the expressions.
         text_blocks = list()
         start = 0
-        for txt in text_root.itertext():
+        for txt in root.itertext():
             end = start + len(txt)
             text_blocks.append((start, end, txt))
             start = end
 
         # Get the tags of each expression.
         text_tags = list()
-        elements = [elem for elem in list(text_root.iterfind('.//*')) if elem.tag in ['EVENT', 'TIMEX3']]
+        elements = [elem for elem in list(root.iterfind('.//*')) if elem.tag in ['EVENT', 'TIMEX3']]
         for element in elements:
 
             # there are cases where there is a nested tag <EVENT><NUMEX>example</NUMEX></EVENT>
@@ -445,7 +530,7 @@ class Document:
         make_insts = self._get_make_instance()
 
         events = list()
-        for event in self.xml_root.findall('.//TEXT//EVENT'):
+        for event in self.xml_root.findall('.//EVENT'):
             attrib = event.attrib.copy()
             event_id = attrib['eid']
             attrib['text'] = event.text
@@ -466,8 +551,18 @@ class Document:
         return timexs
 
     def _get_tlinks(self) -> dict:
+        """
+        Get keys for each dataset
+
+        np.unique([key for tlink in self.xml_root.findall('.//TLINK') for key in tlink.attrib])
+
+        :return:
+        """
+
         tlinks = list()
+
         for tlink in self.xml_root.findall('.//TLINK'):
+
             attrib = dict(
                 lid=tlink.attrib['lid'],
                 source=tlink.attrib['timeID'] if 'timeID' in tlink.attrib else tlink.attrib['eventInstanceID'],
@@ -498,8 +593,7 @@ class Document:
                 cond = True
 
             if any(cond):
-                inv_tlink = copy.copy(tlink)
-                inv_tlink.invert()
+                inv_tlink = ~tlink
                 inv_tlinks.append(inv_tlink)
         self.tlinks += inv_tlinks
 
@@ -572,5 +666,34 @@ class Document:
         return {f'lc{idx}': tlink for idx, tlink in enumerate(tlinks)}
 
 
-class TimeBank12Document(Document):
-    pass
+TimeBankDocument = Document
+AquaintDocument = Document
+TempEval3Document = Document
+TimeBank12Document = None
+
+
+class TimeBankPTDocument(Document):
+    def _get_tlinks(self) -> dict:
+        """
+        Get keys for each dataset
+
+        np.unique([key for tlink in self.xml_root.findall('.//TLINK') for key in tlink.attrib])
+
+        :return:
+        """
+
+        tlinks = list()
+
+        for tlink in self.xml_root.findall('.//TLINK'):
+            attrib = dict(
+                lid=tlink.attrib['lid'],
+                source=tlink.attrib['eventID'],
+                target=tlink.attrib['relatedToEvent'] if 'relatedToEvent' in tlink.attrib
+                                                      else tlink.attrib['relatedToTime'],
+                interval_relation=tlink.attrib['relType']
+            )
+
+            tlinks.append(TLink(attrib))
+        return tlinks
+
+
