@@ -72,10 +72,10 @@ DATASET_DOCUMENT_OBJ = {
 }
 
 
-class Dataset:
+class ReadDataset:
     """
 
-    Read temporal relation dataset.
+    Read temporal relation datasets.
 
     The set of possible datasets are:
         - timebank
@@ -99,8 +99,6 @@ class Dataset:
 
         self.name = dataset
         self.path = PATHS[self.name]
-
-        self.docs = None
 
     def tml_paths(self) -> dict:
         """
@@ -139,10 +137,10 @@ class Dataset:
 
         # read dataset
         if self.name in DATASETS_INDEPENDENT:
-            self.docs = self.__read_independent_dataset()
+            return self.__read_independent_dataset()
 
         else:
-            self.docs = self.__read_dependent_dataset()
+            return self.__read_dependent_dataset()
 
     def __read_independent_dataset(self):
         """
@@ -162,9 +160,22 @@ class Dataset:
         Document = DATASET_DOCUMENT_OBJ[self.name]
 
         # read documents
-        docs = {folder_name: [Document(path) for path in paths] for folder_name, paths in tml_paths.items()}
+        datasets = {}
+        for folder_name, paths in tml_paths.items():
 
-        return docs
+            # read all documents in folder
+            docs = [Document(path) for path in paths]
+
+            # build dataset
+            dataset = Dataset(
+                name=self.name,
+                folder=folder_name,
+                docs=docs
+            )
+
+            datasets[folder_name] = dataset
+
+        return datasets
 
     def __read_dependent_dataset(self):
         """
@@ -178,3 +189,58 @@ class Dataset:
         """
 
         return None
+
+
+class DatasetReader:
+    """
+
+    Read temporal relation datasets.
+
+    The set of possible datasets are:
+        - timebank
+        - timebank-1.2
+        - aquaint
+        - matres
+        - timebank-pt
+        - tddiscourse
+        - timebank-dense
+        - tempeval-3
+
+    """
+
+    def __init__(self):
+
+        self.datasets = {}
+
+    def read(self, datasets: list):
+
+        for dataset_name in datasets:
+
+            dataset = ReadDataset(dataset_name)
+
+            # update datasets dictionary with the new datasets
+            self.datasets.update(dataset.read())
+
+
+class Dataset:
+
+    def __init__(self, name, folder, docs):
+        self.name = name
+        self.folder = folder
+        self.docs = docs
+
+    def __repr__(self):
+        return f"Dataset(name={self.name}, folder={self.folder})"
+
+    def labels_count(self):
+        """
+
+        Get labels names and count of dataset.
+
+        :return:
+        """
+
+        # get relation of all tlinks
+        relations = [tlink.interval_relation for doc in self.docs for tlink in doc.tlinks]
+
+        return collections.Counter(relations)

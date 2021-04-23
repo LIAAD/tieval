@@ -695,5 +695,3 @@ class TimeBankPTDocument(Document):
 
             tlinks.append(TLink(attrib))
         return tlinks
-
-

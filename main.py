@@ -1,19 +1,9 @@
 from text2story.datasets.custom import Dataset
+from text2story.datasets.custom import DatasetReader
 
-dataset = Dataset('timebank-pt')
+from pprint import pprint
 
-dataset.read()
+# load dataset
+reader = DatasetReader()
+reader.read(['timebank-pt'])
 
-train = dataset.docs['train']
-
-doc = train[0]
-
-print(doc)
-
-doc.events
-doc.timexs
-doc.tlinks
-
-tlink = doc.tlinks[0]
-
-tlink.source
