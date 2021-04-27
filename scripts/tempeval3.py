@@ -1,6 +1,6 @@
-from text2story import utils
-from text2story import read_xml as rxml
-from text2story import temporal_closure as tc
+from text2timeline import utils
+from text2timeline import read_xml as rxml
+from text2timeline import temporal_closure as tc
 
 import pandas as pd
 

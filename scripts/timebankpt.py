@@ -1,5 +1,5 @@
-import text2story as t2s
-from text2story import read_xml as rxml
+import text2timeline as t2s
+from text2timeline import read_xml as rxml
 
 import nltk
 

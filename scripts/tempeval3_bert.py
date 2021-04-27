@@ -15,9 +15,9 @@ from tensorflow.keras import layers
 from tensorflow.keras import losses
 from tensorflow.keras import models
 
-from text2story import read_xml as rxml
-from text2story import temporal_closure as tc
-from text2story import utils
+from text2timeline import read_xml as rxml
+from text2timeline import temporal_closure as tc
+from text2timeline import utils
 
 pd.set_option('display.max_columns', 40)
 

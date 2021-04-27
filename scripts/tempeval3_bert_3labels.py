@@ -19,9 +19,9 @@ from tensorflow.keras import losses
 from tensorflow.keras import models
 from tensorflow.keras import metrics
 
-from text2story.datasets import tempeval3
-from text2story import narrative as t2s
-from text2story import temporal_closure as tc
+from text2timeline.datasets import tempeval3
+from text2timeline import narrative as t2s
+from text2timeline import temporal_closure as tc
 
 import collections
 
@@ -37,12 +37,12 @@ import gc
 
 import copy
 
-from text2story.toolbox import BuildIO
-from text2story.toolbox import ModelConfig
-from text2story.toolbox import Model
+from text2timeline.toolbox import BuildIO
+from text2timeline.toolbox import ModelConfig
+from text2timeline.toolbox import Model
 
-from text2story.toolbox import print_header
-from text2story.toolbox import print_metrics
+from text2timeline.toolbox import print_header
+from text2timeline.toolbox import print_metrics
 
 
 # Fix GPU memory problem.

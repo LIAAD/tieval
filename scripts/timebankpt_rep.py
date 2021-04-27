@@ -1,4 +1,4 @@
-from text2story import read_xml as rxml
+from text2timeline import read_xml as rxml
 
 from sklearn.metrics import accuracy_score
 

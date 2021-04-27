@@ -1,12 +1,9 @@
-from text2story import narrative
-
+from text2timeline import narrative
 from glob import glob
-
 import os
-
 import numpy as np
-
 import collections
+import random
 
 from pprint import pprint
 
@@ -160,7 +157,7 @@ class ReadDataset:
         Document = DATASET_DOCUMENT_OBJ[self.name]
 
         # read documents
-        datasets = {}
+        datasets = []
         for folder_name, paths in tml_paths.items():
 
             # read all documents in folder
@@ -173,7 +170,7 @@ class ReadDataset:
                 docs=docs
             )
 
-            datasets[folder_name] = dataset
+            datasets += [dataset]
 
         return datasets
 
@@ -210,7 +207,7 @@ class DatasetReader:
 
     def __init__(self):
 
-        self.datasets = {}
+        self.datasets = []
 
     def read(self, datasets: list):
 
@@ -219,7 +216,7 @@ class DatasetReader:
             dataset = ReadDataset(dataset_name)
 
             # update datasets dictionary with the new datasets
-            self.datasets.update(dataset.read())
+            self.datasets += dataset.read()
 
 
 class Dataset:
@@ -232,7 +229,17 @@ class Dataset:
     def __repr__(self):
         return f"Dataset(name={self.name}, folder={self.folder})"
 
-    def labels_count(self):
+    def __add__(self, other):
+
+        result = Dataset(
+            name=f'{self.name} {other.name}',
+            folder=None,
+            docs=self.docs + other.docs
+        )
+
+        return result
+
+    def tlinks_count(self):
         """
 
         Get labels names and count of dataset.
@@ -244,3 +251,19 @@ class Dataset:
         relations = [tlink.interval_relation for doc in self.docs for tlink in doc.tlinks]
 
         return collections.Counter(relations)
+
+    def split(self, percentage, names=['train', 'valid']):
+
+        # TODO: add shuffle?
+
+        num_docs = len(self.docs)
+        num_train_docs = int(num_docs * percentage)
+
+        train_docs = self.docs[:num_train_docs]
+        valid_docs = self.docs[num_train_docs:]
+
+        train_set = Dataset(name=names[0], folder=None, docs=train_docs)
+        valid_set = Dataset(name=names[1], folder=None, docs=valid_docs)
+
+        return train_set, valid_set
+

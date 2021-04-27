@@ -2,7 +2,7 @@ import os
 
 import glob
 
-from text2story import narrative
+from text2timeline import narrative
 
 import collections
 

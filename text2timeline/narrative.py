@@ -34,10 +34,10 @@ _INTERVAL_TO_POINT = {
     "SIMULTANEOUS": [(_START, "=", _START), (_END, "=", _END)],
     "OVERLAP": [(_START, "<", _END), (_END, '>', _START)],
     "VAGUE": [],
-    # "CONTAINS": [(_START, "<", _START), (_END, "<", _END)],
-    # "IDENTITY": [(_START, "=", _START), (_END, "=", _END)],
-    # "DURING": [(_START, "=", _START), (_END, "=", _END)],
-    # "DURING_INV": [(_START, "=", _START), (_END, "=", _END)],
+    "CONTAINS": [(_START, "<", _START), (_END, "<", _END)],
+    "IDENTITY": [(_START, "=", _START), (_END, "=", _END)],
+    "DURING": [(_START, "=", _START), (_END, "=", _END)],
+    "DURING_INV": [(_START, "=", _START), (_END, "=", _END)],
 }
 
 _INTERVAL_TO_POINT_COMPLETE = {
@@ -147,6 +147,7 @@ _INVERSE_INTERVAL_RELATION = {
     'INCLUDES': 'IS_INCLUDED',
     'IS_INCLUDED': 'INCLUDES',
     'SIMULTANEOUS': 'SIMULTANEOUS',
+    'OVERLAP': 'OVERLAP'
 }
 
 # Map relations to the standard names.
@@ -219,7 +220,7 @@ class TLink:
         return f"{self.source} ---{self.interval_relation}--> {self.target}"
 
     def __repr__(self):
-        return self.__call__()
+        return f"TLink(lid={self.lid})"
 
     def __and__(self, other):
         """ Infer the relation between two TLINKS.
@@ -330,11 +331,11 @@ class TLink:
         :return:
         """
         scr, tgt = self.source, self.target
-        if (scr == 't0') or (tgt == 't0'):
+        if (scr() == 't0') or (tgt() == 't0'):
             return 'D'
-        elif (scr[0] == 'e') and (tgt[0] == 'e'):
+        elif (scr()[0] == 'e') and (tgt()[0] == 'e'):
             return 'A'
-        elif (scr[0] == 't') and (tgt[0] == 't'):
+        elif (scr()[0] == 't') and (tgt()[0] == 't'):
             return 'B'
         else:
             return 'C'
@@ -367,11 +368,23 @@ class Timex:
         for key, value in attributes.items():
             setattr(self, key, value)
 
+    def __repr__(self):
+        return f"Timex(tid={self.tid})"
+
+    def __call__(self):
+        return self.tid
+
 
 class Event:
     def __init__(self, attributes: dict):
         for key, value in attributes.items():
             setattr(self, key, value)
+
+    def __repr__(self):
+        return f"Event(eid={self.eid})"
+
+    def __call__(self):
+        return self.eid
 
 
 class Document:
@@ -403,6 +416,9 @@ class Document:
         self.events = self._get_events()
 
         self.tlinks = self._get_tlinks()
+
+    def __repr__(self):
+        return f'Document(name={self.name})'
 
     def __str__(self):
         return self.text.strip()
@@ -563,6 +579,8 @@ class Document:
 
         for tlink in self.xml_root.findall('.//TLINK'):
 
+
+
             attrib = dict(
                 lid=tlink.attrib['lid'],
                 source=tlink.attrib['timeID'] if 'timeID' in tlink.attrib else tlink.attrib['eventInstanceID'],
@@ -684,12 +702,25 @@ class TimeBankPTDocument(Document):
 
         tlinks = list()
 
+        # join timex and events list
+        expressions = self.timexs + self.events
+
+
         for tlink in self.xml_root.findall('.//TLINK'):
+
+            # get source and target ids
+            src_id = tlink.attrib['eventID']
+            tgt_id = tlink.attrib['relatedToEvent'] if 'relatedToEvent' in tlink.attrib \
+                         else tlink.attrib['relatedToTime']
+
+            # find Event/ Timex with those ids
+            source = [exp for exp in expressions if exp() == src_id][0]
+            target = [exp for exp in expressions if exp() == tgt_id][0]
+
             attrib = dict(
                 lid=tlink.attrib['lid'],
-                source=tlink.attrib['eventID'],
-                target=tlink.attrib['relatedToEvent'] if 'relatedToEvent' in tlink.attrib
-                                                      else tlink.attrib['relatedToTime'],
+                source=source,
+                target=target,
                 interval_relation=tlink.attrib['relType']
             )
 

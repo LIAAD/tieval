@@ -15,7 +15,7 @@ from tensorflow.keras import layers
 from tensorflow.keras import losses
 from tensorflow.keras import models
 
-from text2story import narrative as t2s
+from text2timeline import narrative as t2s
 
 import collections
 
@@ -123,7 +123,6 @@ class BuildIO:
         self.target = Target(classes)
         self.inputs = dict()
         self.outputs = dict()
-
 
     def run(self, docs):
         """
