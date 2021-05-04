@@ -112,6 +112,11 @@ class Target:
                     rels.append([relations[i], relations[j]])
         return rels, conf
 
+    def one_hot(self, indexes):
+        oh = np.zeros([len(indexes), self.n_classes])
+        oh[np.arange(len(indexes)), indexes] = 1
+        return oh
+
 
 class BuildIO:
     def __init__(self, classes):

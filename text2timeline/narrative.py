@@ -368,6 +368,8 @@ class Timex:
         for key, value in attributes.items():
             setattr(self, key, value)
 
+        self.id = self.tid
+
     def __repr__(self):
         return f"Timex(tid={self.tid})"
 
@@ -379,6 +381,8 @@ class Event:
     def __init__(self, attributes: dict):
         for key, value in attributes.items():
             setattr(self, key, value)
+
+        self.id = self.eid
 
     def __repr__(self):
         return f"Event(eid={self.eid})"
@@ -409,13 +413,14 @@ class Document:
         self.sentences = self._get_sentences()
         self.tokens = self._get_tokens()
 
-        self._dct = self._get_dct()
+        self.dct = self._get_dct()
 
         self._expression_idxs = self._expression_indexes()
         self.timexs = self._get_timexs()
         self.events = self._get_events()
 
         self.tlinks = self._get_tlinks()
+
 
     def __repr__(self):
         return f'Document(name={self.name})'
@@ -431,12 +436,9 @@ class Document:
         """Extract document creation time"""
 
         # dct is always the first TIMEX3 element
-        dct = self.xml_root.find('.//TIMEX3')
-        return dct.attrib
+        dct = self.xml_root.find(".//TIMEX3[@functionInDocument='CREATION_TIME']")
 
-    @property
-    def dct(self):
-        return self._dct['value']
+        return Timex(dct.attrib)
 
     def _remove_xml_tags(self, root: ET.Element, tags2keep: list = ['TIMEX3', 'EVENT']) -> ET.Element:
         """ Removes tags all tags in xml_root that are not on tags2keep list.
@@ -515,7 +517,7 @@ class Document:
                 text_tags.append((text, element.attrib['tid']))
 
         # Join the indexes with the tags.
-        expression_idxs = {self._dct['tid']: (-1, -1)}  # Initialize with the position of DCT.
+        expression_idxs = {self.dct.tid: (-1, -1)}  # Initialize with the position of DCT.
         while text_tags:
             txt, tag_id = text_tags.pop(0)
             for idx, (start, end, txt_sch) in enumerate(text_blocks):
@@ -691,6 +693,8 @@ TimeBank12Document = None
 
 
 class TimeBankPTDocument(Document):
+
+
     def _get_tlinks(self) -> dict:
         """
         Get keys for each dataset
@@ -705,7 +709,6 @@ class TimeBankPTDocument(Document):
         # join timex and events list
         expressions = self.timexs + self.events
 
-
         for tlink in self.xml_root.findall('.//TLINK'):
 
             # get source and target ids
@@ -714,8 +717,8 @@ class TimeBankPTDocument(Document):
                          else tlink.attrib['relatedToTime']
 
             # find Event/ Timex with those ids
-            source = [exp for exp in expressions if exp() == src_id][0]
-            target = [exp for exp in expressions if exp() == tgt_id][0]
+            source = [exp for exp in expressions if exp.id == src_id][0]
+            target = [exp for exp in expressions if exp.id == tgt_id][0]
 
             attrib = dict(
                 lid=tlink.attrib['lid'],

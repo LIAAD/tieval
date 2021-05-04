@@ -161,7 +161,10 @@ class ReadDataset:
         for folder_name, paths in tml_paths.items():
 
             # read all documents in folder
-            docs = [Document(path) for path in paths]
+            docs = []
+            for path in paths:
+                doc = Document(path)
+                docs.append(doc)
 
             # build dataset
             dataset = Dataset(
@@ -267,3 +270,8 @@ class Dataset:
 
         return train_set, valid_set
 
+    def reduce_tlinks(self, map):
+
+        for doc in self.docs:
+            for tlink in doc.tlinks:
+                tlink.interval_relation = map[tlink.interval_relation]
