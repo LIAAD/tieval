@@ -3,7 +3,6 @@ from text2timeline import toolbox
 
 import numpy as np
 import collections
-from pprint import pprint
 
 import transformers
 
@@ -13,8 +12,9 @@ from torch import optim
 import torch.nn.functional as F
 from torch.utils.data import DataLoader
 
-import matplotlib.pyplot as plt
+from pprint import pprint
 
+import random
 
 class BuildIO:
     def __init__(self, classes):
@@ -33,22 +33,20 @@ class BuildIO:
         :param docs: The
         :return:
         """
-        X_context = []
+        X = []
         relations = []
 
         for doc in dataset.docs:
             for tlink in doc.tlinks:
 
                 # sentence(s) between source and target tokens aka context
-                context = self.get_context(doc, tlink)
+                tokens, exp_idxs = self.get_context(doc, tlink)
 
-                X_context.append(context)
-                relations.append(tlink.interval_relation)
+                X += [(tokens, exp_idxs['src'], exp_idxs['tgt'])]
+                relations += [tlink.interval_relation]
 
         y = self.target.indexes(relations)
-        # y = self.target.one_hot(y_idxs)
-
-        return X_context, y
+        return X, y
 
     @staticmethod
     def get_context(doc, tlink):
@@ -62,17 +60,17 @@ class BuildIO:
 
             tgt = (tlink.target.endpoints[0], tlink.target.endpoints[1], tlink.target.text)
 
-            tokens = []
-            for s_tkn, e_tkn, tkn in doc.tokens:
-                if s_tkn >= s_sent and e_tkn <= e_sent:
+            tokens = [(s_tkn, e_tkn, tkn)
+                      for s_tkn, e_tkn, tkn in doc.tokens
+                      if s_tkn >= s_sent and e_tkn <= e_sent]
 
-                    if (s_tkn, e_tkn, tkn) == tgt:
-                        tokens += ['<target>', tkn, '</target>']
+            idxs = collections.defaultdict(list)
+            idxs['src'] = [-1]
+            for idx, tkn in enumerate(tokens):
+                if tgt[0] <= tkn[0] < tgt[1]:
+                    idxs['tgt'] += [idx]
 
-                    else:
-                        tokens += [tkn]
-
-            return ' '.join(tokens)
+            return [tkn for _, _, tkn in tokens], idxs
 
         elif tlink.target.id == doc.dct.id:
 
@@ -81,17 +79,17 @@ class BuildIO:
 
             src = (tlink.source.endpoints[0], tlink.source.endpoints[1], tlink.source.text)
 
-            tokens = []
-            for s_tkn, e_tkn, tkn in doc.tokens:
-                if s_tkn >= s_sent and e_tkn <= e_sent:
+            tokens = [(s_tkn, e_tkn, tkn)
+                      for s_tkn, e_tkn, tkn in doc.tokens
+                      if s_tkn >= s_sent and e_tkn <= e_sent]
 
-                    if (s_tkn, e_tkn, tkn) == src:
-                        tokens += ['<source>', tkn, '</source>']
+            idxs = collections.defaultdict(list)
+            idxs['tgt'] = [-1]
+            for idx, tkn in enumerate(tokens):
+                if src[0] <= tkn[0] < src[1]:
+                    idxs['src'] += [idx]
 
-                    else:
-                        tokens += [tkn]
-
-            return ' '.join(tokens)
+            return [tkn for _, _, tkn in tokens], idxs
 
         else:
 
@@ -104,21 +102,19 @@ class BuildIO:
             src = (tlink.source.endpoints[0], tlink.source.endpoints[1], tlink.source.text)
             tgt = (tlink.target.endpoints[0], tlink.target.endpoints[1], tlink.target.text)
 
-            tokens = []
-            for s_tkn, e_tkn, tkn in doc.tokens:
-                if s_tkn >= s_sent and e_tkn <= e_sent:
+            tokens = [(s_tkn, e_tkn, tkn)
+                      for s_tkn, e_tkn, tkn in doc.tokens
+                      if s_tkn >= s_sent and e_tkn <= e_sent]
 
-                    if (s_tkn, e_tkn, tkn) == src:
-                        tokens += ['<source>', tkn, '</source>']
+            idxs = collections.defaultdict(list)
+            for idx, tkn in enumerate(tokens):
+                if src[0] <= tkn[0] < src[1]:
+                    idxs['src'] += [idx]
 
-                    elif (s_tkn, e_tkn, tkn) == tgt:
-                        tokens += ['<target>', tkn, '</target>']
+                elif tgt[0] <= tkn[0] < tgt[1]:
+                    idxs['tgt'] += [idx]
 
-                    else:
-                        tokens += [tkn]
-
-            return ' '.join(tokens)
-
+            return [tkn for _, _, tkn in tokens], idxs
 
     def oversample(self, X: list, y: list, verbose: bool = True):
         oversample_idxs = np.array([], dtype=int)
@@ -161,12 +157,28 @@ class Model(nn.Module):
         super().__init__()
         self.name = name
 
-        self.encoder = transformers.AutoModel.from_pretrained(name)
-        self.gru = nn.GRU(max_length, 256, bidirectional=True)
+        encoder = transformers.AutoModel.from_pretrained(name)
+        for param in encoder.parameters():
+            param.requires_grad = False
+        self.encoder = encoder
+        # self.gru = nn.GRU(max_length, 256, bidirectional=True)
+        self.dense1 = nn.Linear(768, 768)
+        self.dense2 = nn.Linear(768, 768)
+        self.dense3 = nn.Linear(768, 768)
         self.classifier = nn.Linear(768, 4)
+        self.relu = nn.ReLU()
 
-    def forward(self, x):
+    def forward(self, inputs):
+        x = torch.cat([i['input_ids'] for i in inputs])
+        mask = torch.cat([i['attention_mask'] for i in inputs])
+
         x = self.encoder(x)['pooler_output']
+        x = self.dense1(x)
+        x = self.relu(x)
+        x = self.dense2(x)
+        x = self.relu(x)
+        x = self.dense3(x)
+        x = self.relu(x)
         return self.classifier(x)
 
 
@@ -177,35 +189,41 @@ class LinkDataset(torch.utils.data.Dataset):
         self.y = y
         self.tokenizer = transformers.AutoTokenizer.from_pretrained(name)
 
-    def _encode(self, txt):
-        seq = self.tokenizer.encode(
-            txt,
+    def _encode(self, x):
+        tokens, src, tgt = x
+
+        # src+1 because the token [CLS] is added at the start of the sentence
+        src = [s+1 for s in src]
+
+        inputs = self.tokenizer(
+            text=tokens,
+            is_split_into_words=True,
             return_tensors='pt',
             padding='max_length',
             truncation=True,
             max_length=max_length
         )
-        return seq
+
+        inputs['src'] = src
+        inputs['tgt'] = tgt
+
+        return inputs
 
     def __getitem__(self, idx):
 
-        seq = self._encode(self.x[idx])
-        return seq[0], self.y[idx]
+        inputs = self._encode(self.x[idx])
+        return inputs, self.y[idx]
 
     def __len__(self):
         return len(self.y)
 
 
-def dataloader(x, y, batch_size, shuffle=False):
-    dataset = LinkDataset(x, y, name)
-    return DataLoader(dataset, batch_size=batch_size, shuffle=shuffle)
-
-
-DEVICE = 'cuda' if torch.cuda.is_available() else 'cpu'
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 # model hyperparameters
 name = 'neuralmind/bert-base-portuguese-cased'
-lr = 1e-5
+epochs = 5
+lr = 1e-3
 batch_size = 2
 max_length = 512
 
@@ -247,36 +265,82 @@ X_test, y_test = builder.run(test_set)
 
 """ build model """
 
-train_dl = dataloader(X_train, y_train, batch_size, shuffle=True)
-valid_dl = dataloader(X_valid, y_valid, batch_size)
-test_dl = dataloader(X_test, y_test, batch_size)
+#train_dl = dataloader(X_train, y_train, batch_size, shuffle=True)
+#valid_dl = dataloader(X_valid, y_valid, batch_size)
+#test_dl = dataloader(X_test, y_test, batch_size)
+
+train_set = LinkDataset(X_train, y_train, name)
+valid_set = LinkDataset(X_valid, y_valid, name)
+test_set = LinkDataset(X_test, y_test, name)
 
 
 model = Model(name)
+model.to(device)
 
 loss_fn = F.cross_entropy
 optimizer = optim.Adam(params=model.parameters(), lr=lr)
 
 # train loop
-num_batches_train = len(train_dl)
 
-model.train()
-running_loss = 0.0
-for batch, (X, y) in enumerate(train_dl):
 
-    X, y = X.to(DEVICE), y.to(DEVICE)
+def train():
+    model.train()
+    running_loss = 0.0
+    running_acc = 0
 
-    optimizer.zero_grad()
+    size = len(train_set)
+    order = np.random.permutation(size)
+    limits = list(range(0, size, batch_size))
+    batches = [order[limits[i]: limits[i+1]] for i in range(len(limits) - 1)]
+    num_batches_train = len(batches)
 
-    y_pred = model(X)
+    for batch, idxs in enumerate(batches):
+        train_batch = [train_set[idx] for idx in idxs]
 
-    loss = loss_fn(y_pred, y)
+        inputs_b = [x for x, _ in train_batch]
+        yb = torch.tensor([y for _, y in train_batch])
 
-    loss.backward()
-    optimizer.step()
+        # Xb, yb = Xb.to(device), yb.to(device)
 
-    # print statistics
-    running_loss += loss
-    #if num_batches_train % 10 == 0:
-    msg = f"Batch: {batch:2d}/{num_batches_train}  Loss: {running_loss / (batch * batch_size)}"
+        optimizer.zero_grad()
+
+        y_pred = model(inputs_b)
+
+        loss = loss_fn(y_pred, yb)
+
+        loss.backward()
+        optimizer.step()
+
+        # print statistics
+        running_loss += loss.item()
+        running_acc += (y_pred.argmax(dim=1) == y).sum().item()
+
+        if (batch+1) % 20 == 0:
+            l = running_loss / ((batch+1) * batch_size)
+            a = running_acc / ((batch+1) * batch_size)
+            msg = f"Batch: {batch+1:3d}/{num_batches_train}  Loss: {l:4f}  Acc: {a:2f}"
+            print(msg)
+
+
+def eval():
+
+    model.eval()
+    with torch.no_grad():
+        size = len(valid_dl.dataset)
+        y_proba = torch.cat([model(X.to(device)) for X, y in valid_dl])
+        y = torch.cat([y for _, y in valid_dl]).to(device)
+
+        loss = loss_fn(y_proba, y).sum().item()
+
+        y_pred = y_proba.argmax(dim=1)
+        acc = (y_pred == y).sum().item() / size
+
+    msg = f"Valid loss: {loss:4f}  Valid acc: {acc:2f}"
     print(msg)
+
+
+for epoch in range(epochs):
+    print('#' * 30, f'Epoch {epoch+1}', '#' * 30)
+    train()
+    print('-' * 70)
+    eval()
