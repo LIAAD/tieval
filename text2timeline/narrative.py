@@ -1,6 +1,6 @@
 import collections
 import re
-from typing import Dict
+from typing import Dict, List
 from typing import List
 from typing import Tuple
 from xml.etree import ElementTree as ET
@@ -127,6 +127,10 @@ _POINT_TRANSITIONS = {
     '>': {'>': '>', '=': '>', '<': None}
 }
 
+_POINT_RELATIONS = ['<', '=', '>']
+
+_INTERVAL_RELATIONS = list(_INTERVAL_TO_POINT_COMPLETE.keys())
+
 _INVERSE_POINT_RELATION = {
     '<': '>',
     '>': '<',
@@ -147,7 +151,8 @@ _INVERSE_INTERVAL_RELATION = {
     'INCLUDES': 'IS_INCLUDED',
     'IS_INCLUDED': 'INCLUDES',
     'SIMULTANEOUS': 'SIMULTANEOUS',
-    'OVERLAP': 'OVERLAP'
+    'OVERLAP': 'OVERLAP',
+    'VAGUE': 'VAGUE'
 }
 
 # Map relations to the standard names.
@@ -594,7 +599,7 @@ class Document:
             tlinks.append(TLink(attrib))
         return tlinks
 
-    def augment_tlinks(self, relation: str = None):
+    def augment_tlinks(self, relations: List[str] = None):
         """ Augments the document tlinks by adding the symmetic relation of every tlink.
         For example if we have the tlink with A --BEFORE--> B the augmentation will add B --AFTER--> A to the document
         tlink list.
@@ -605,16 +610,21 @@ class Document:
 
         :return: None
         """
+
         inv_tlinks = []
         for tlink in self.tlinks:
-            if relation:
-                cond = [True for _, rel, _ in tlink.point_relation if rel == relation]
+
+            if relations:
+                cond_point_rel = [True for _, rel, _ in tlink.point_relation if rel in relations]
+                cond_inter_rel = [tlink.interval_relation in relations]
+                cond = any(cond_point_rel + cond_inter_rel)
+
             else:
                 cond = True
 
-            if any(cond):
-                inv_tlink = ~tlink
-                inv_tlinks.append(inv_tlink)
+            if cond:
+                inv_tlinks += [~tlink]
+
         self.tlinks += inv_tlinks
 
     def limit_task(self, tasks):

@@ -1,3 +1,5 @@
+from typing import List
+
 from text2timeline import narrative
 from glob import glob
 import os
@@ -275,3 +277,14 @@ class Dataset:
         for doc in self.docs:
             for tlink in doc.tlinks:
                 tlink.interval_relation = map[tlink.interval_relation]
+
+    def augment_tlinks(self, relations: List[str] = None):
+        """ Adds the inverse relations of the specified relations.
+        If None relations are passed
+
+        :param relations:
+        :return:
+        """
+
+        for doc in self.docs:
+            doc.augment_tlinks(relations)

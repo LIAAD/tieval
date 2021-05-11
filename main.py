@@ -12,9 +12,8 @@ from torch import optim
 import torch.nn.functional as F
 from torch.utils.data import DataLoader
 
-from pprint import pprint
+from sklearn.metrics import confusion_matrix
 
-import random
 
 class BuildIO:
     def __init__(self, classes):
@@ -161,25 +160,42 @@ class Model(nn.Module):
         for param in encoder.parameters():
             param.requires_grad = False
         self.encoder = encoder
-        # self.gru = nn.GRU(max_length, 256, bidirectional=True)
-        self.dense1 = nn.Linear(768, 768)
-        self.dense2 = nn.Linear(768, 768)
-        self.dense3 = nn.Linear(768, 768)
-        self.classifier = nn.Linear(768, 4)
-        self.relu = nn.ReLU()
+        self.gru = nn.GRU(768, 128, bidirectional=True, batch_first=True)
+        self.classifier = nn.Linear(512, 4)
 
     def forward(self, inputs):
-        x = torch.cat([i['input_ids'] for i in inputs])
-        mask = torch.cat([i['attention_mask'] for i in inputs])
 
-        x = self.encoder(x)['pooler_output']
-        x = self.dense1(x)
-        x = self.relu(x)
-        x = self.dense2(x)
-        x = self.relu(x)
-        x = self.dense3(x)
-        x = self.relu(x)
-        return self.classifier(x)
+        z = self.encoder(inputs['ids'], attention_mask=inputs['mask'])['last_hidden_state']
+        """
+        z_input_gru = torch.nn.utils.rnn.pack_padded_sequence(
+            input=z,
+            lengths=inputs['mask'].sum(dim=1),
+            batch_first=True,
+            enforce_sorted=False
+        )
+        """
+        z, _ = self.gru(z)
+        z = F.dropout(z, 0.3)
+        z_ = []
+        for s, src, tgt in zip(z, inputs['src'], inputs['tgt']):
+
+            if src == [-1]:  # source is dct
+                src_v = s.max(0).values
+                tgt_v = s[tgt].max(0).values
+
+            elif tgt == [-1]:  # target is dct
+                src_v = s[src].max(0).values
+                tgt_v = s.max(0).values
+
+            else:
+                src_v = s[src].max(0).values
+                tgt_v = s[tgt].max(0).values
+
+            z_ += [torch.cat([src_v, tgt_v])]
+
+        z = torch.vstack(z_)
+        z = F.dropout(z, 0.5)
+        return self.classifier(z)
 
 
 class LinkDataset(torch.utils.data.Dataset):
@@ -218,13 +234,48 @@ class LinkDataset(torch.utils.data.Dataset):
         return len(self.y)
 
 
+class Dataloader:
+
+    def __init__(self, dataset, batch_size, shuffle=False):
+        self.dataset = dataset
+        self.size = len(dataset)
+
+        if shuffle:
+            order = np.random.permutation(self.size)
+        else:
+            order = np.arange(self.size)
+
+        limits = list(range(0, self.size, batch_size))
+        self.batches = [order[limits[i]: limits[i + 1]] for i in range(len(limits) - 1)]
+        self.num_batches_train = len(self.batches)
+
+    def __len__(self):
+        return self.size
+
+    def __iter__(self):
+
+        for idxs in self.batches:
+            batch = [self.dataset[idx] for idx in idxs]
+
+            xb = {
+                'ids': torch.cat([x['input_ids'] for x, _ in batch]).to(device),
+                'token_type': torch.cat([x['token_type_ids'] for x, _ in batch]).to(device),
+                'mask': torch.cat([x['attention_mask'] for x, _ in batch]).type(torch.bool).to(device),
+                'src': [x['src'] for x, _ in batch],
+                'tgt': [x['tgt'] for x, _ in batch]
+            }
+
+            yb = torch.tensor([y for _, y in batch]).to(device)
+            yield xb, yb
+
+
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 # model hyperparameters
 name = 'neuralmind/bert-base-portuguese-cased'
 epochs = 5
 lr = 1e-3
-batch_size = 2
+batch_size = 64
 max_length = 512
 
 
@@ -232,9 +283,9 @@ max_length = 512
 reader = DatasetReader()
 reader.read(['timebank-pt'])
 
-train_valid_set = reader.datasets[1]
-train_set, valid_set = train_valid_set.split(0.8)
-test_set = reader.datasets[0]
+train_valid_docs = reader.datasets[1]
+train_docs, valid_docs = train_valid_docs.split(0.8)
+test_docs = reader.datasets[0]
 
 # reduce dataset tlinks set
 map = {
@@ -245,61 +296,48 @@ map = {
     'BEFORE-OR-OVERLAP': 'VAGUE',
     'OVERLAP-OR-AFTER': 'VAGUE'
 }
-train_set.reduce_tlinks(map)
-valid_set.reduce_tlinks(map)
-test_set.reduce_tlinks(map)
 
+train_docs.reduce_tlinks(map)
+valid_docs.reduce_tlinks(map)
+test_docs.reduce_tlinks(map)
 
-train_tlinks_count = train_set.tlinks_count()
-valid_tlinks_count = valid_set.tlinks_count()
-test_tlinks_count = test_set.tlinks_count()
+train_docs.augment_tlinks()
+
+train_tlinks_count = train_docs.tlinks_count()
+valid_tlinks_count = valid_docs.tlinks_count()
+test_tlinks_count = test_docs.tlinks_count()
 
 """ build model input and output """
 
 builder = BuildIO(train_tlinks_count.keys())
 
-X_train, y_train = builder.run(train_set)
-X_valid, y_valid = builder.run(valid_set)
-X_test, y_test = builder.run(test_set)
-
-
-""" build model """
-
-#train_dl = dataloader(X_train, y_train, batch_size, shuffle=True)
-#valid_dl = dataloader(X_valid, y_valid, batch_size)
-#test_dl = dataloader(X_test, y_test, batch_size)
+X_train, y_train = builder.run(train_docs)
+X_valid, y_valid = builder.run(valid_docs)
+X_test, y_test = builder.run(test_docs)
 
 train_set = LinkDataset(X_train, y_train, name)
 valid_set = LinkDataset(X_valid, y_valid, name)
 test_set = LinkDataset(X_test, y_test, name)
 
+train_dl = Dataloader(train_set, batch_size, shuffle=True)
+valid_dl = Dataloader(valid_set, batch_size)
+test_dl = Dataloader(test_set, batch_size)
 
+""" build model """
 model = Model(name)
 model.to(device)
 
 loss_fn = F.cross_entropy
 optimizer = optim.Adam(params=model.parameters(), lr=lr)
 
-# train loop
-
 
 def train():
+
     model.train()
     running_loss = 0.0
     running_acc = 0
 
-    size = len(train_set)
-    order = np.random.permutation(size)
-    limits = list(range(0, size, batch_size))
-    batches = [order[limits[i]: limits[i+1]] for i in range(len(limits) - 1)]
-    num_batches_train = len(batches)
-
-    for batch, idxs in enumerate(batches):
-        train_batch = [train_set[idx] for idx in idxs]
-
-        inputs_b = [x for x, _ in train_batch]
-        yb = torch.tensor([y for _, y in train_batch])
-
+    for batch, (inputs_b, yb) in enumerate(train_dl):
         # Xb, yb = Xb.to(device), yb.to(device)
 
         optimizer.zero_grad()
@@ -313,12 +351,12 @@ def train():
 
         # print statistics
         running_loss += loss.item()
-        running_acc += (y_pred.argmax(dim=1) == y).sum().item()
+        running_acc += (y_pred.argmax(dim=1) == yb).sum().item()
 
         if (batch+1) % 20 == 0:
             l = running_loss / ((batch+1) * batch_size)
             a = running_acc / ((batch+1) * batch_size)
-            msg = f"Batch: {batch+1:3d}/{num_batches_train}  Loss: {l:4f}  Acc: {a:2f}"
+            msg = f"Batch: {batch+1:3d}/{train_dl.num_batches_train}  Loss: {l:4f}  Acc: {a:2f}"
             print(msg)
 
 
@@ -326,9 +364,10 @@ def eval():
 
     model.eval()
     with torch.no_grad():
-        size = len(valid_dl.dataset)
-        y_proba = torch.cat([model(X.to(device)) for X, y in valid_dl])
-        y = torch.cat([y for _, y in valid_dl]).to(device)
+        size = valid_dl.size
+
+        y_proba = torch.cat([model(X) for X, y in valid_dl])
+        y = torch.cat([y for _, y in valid_dl])
 
         loss = loss_fn(y_proba, y).sum().item()
 
@@ -336,7 +375,9 @@ def eval():
         acc = (y_pred == y).sum().item() / size
 
     msg = f"Valid loss: {loss:4f}  Valid acc: {acc:2f}"
+    cm = confusion_matrix(y.cpu(), y_pred.cpu())
     print(msg)
+    print(cm)
 
 
 for epoch in range(epochs):
