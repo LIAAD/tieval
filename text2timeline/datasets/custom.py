@@ -248,7 +248,7 @@ class Dataset:
         """
 
         # get relation of all tlinks
-        relations = [tlink.interval_relation for doc in self.docs for tlink in doc.tlinks]
+        relations = [tlink.relation for doc in self.docs for tlink in doc.tlinks]
 
         return collections.Counter(relations)
 
@@ -271,7 +271,7 @@ class Dataset:
 
         for doc in self.docs:
             for tlink in doc.tlinks:
-                tlink.interval_relation = map[tlink.interval_relation]
+                tlink.relation = map[tlink.relation]
 
     def augment_tlinks(self, relations: List[str] = None):
         """ Adds the inverse relations of the specified relations.

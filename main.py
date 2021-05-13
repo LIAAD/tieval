@@ -16,6 +16,11 @@ from sklearn.metrics import confusion_matrix
 
 import pickle
 
+from sklearn.metrics import accuracy_score
+from sklearn.metrics import precision_score
+from sklearn.metrics import recall_score
+from sklearn.metrics import f1_score
+
 
 class BuildIO:
     def __init__(self, classes):
@@ -36,7 +41,6 @@ class BuildIO:
         """
         X = []
         relations = []
-        tasks = []
 
         for doc in dataset.docs:
             for tlink in doc.tlinks:
@@ -44,8 +48,7 @@ class BuildIO:
                 tokens, exp_idxs = self.get_context(doc, tlink)
 
                 X += [(tokens, exp_idxs['src'], exp_idxs['tgt'])]
-                relations += [tlink.interval_relation]
-                tasks += [tlink.task]
+                relations += [tlink.relation]
 
         y = self.target.indexes(relations)
         return X, y
@@ -164,6 +167,7 @@ class Model(nn.Module):
             param.requires_grad = False
         self.encoder = encoder
         self.gru = nn.GRU(768, 128, bidirectional=True, batch_first=True)
+        self.linear = nn.Linear(512, 512)
         self.classifier = nn.Linear(512, 4)
 
     def forward(self, inputs):
@@ -307,8 +311,6 @@ train_valid_docs = reader.datasets[1]
 train_docs, valid_docs = train_valid_docs.split(0.8)
 test_docs = reader.datasets[0]
 
-doc = train_docs.docs[0]
-
 builder = BuildIO(['OVERLAP', 'BEFORE', 'AFTER', 'VAGUE'])
 
 # reduce dataset tlinks set
@@ -379,7 +381,7 @@ def train():
             print(msg)
 
 
-def eval(valid_dl):
+def eval():
     model.eval()
     with torch.no_grad():
         size = valid_dl.size
@@ -406,3 +408,59 @@ for epoch in range(epochs):
 
 torch.save(model, 'models/temporal_relation_model_pt.pth')
 
+
+"""
+Test set
+"""
+
+model = torch.load('models/temporal_relation_model_pt.pth')
+
+model.eval()
+with torch.no_grad():
+    size = valid_dl.size
+
+    y_proba = torch.cat([model(X) for X, y in valid_dl])
+    y = torch.cat([y for _, y in valid_dl])
+
+    loss = loss_fn(y_proba, y).sum().item()
+
+    y_pred = y_proba.argmax(dim=1)
+    acc = (y_pred == y).sum().item() / size
+
+msg = f"Valid loss: {loss:4f}  Valid acc: {acc:2f}"
+cm = confusion_matrix(y.cpu(), y_pred.cpu())
+print(msg)
+print(cm)
+
+
+tasks = [tlink.task for doc in valid_docs.docs for tlink in doc.tlinks]
+tasks = tasks[:len(y)]
+
+
+task_correct = collections.defaultdict(int)
+for true, pred, task in zip(y, y_pred, tasks):
+    if true == pred:
+        task_correct[task] += 1
+
+task_count = collections.Counter(tasks)
+
+task_acc = {task: task_correct[task] / task_count[task] for task in tasks}
+
+
+def metrics(true, pred, tasks, task):
+
+    y_pred = pred[np.array(tasks) == task]
+    y = true[np.array(tasks) == task]
+
+    acc = accuracy_score(y, y_pred)
+    rec = recall_score(y, y_pred, average='micro')
+    pre = precision_score(y, y_pred, average='micro')
+    f1s = f1_score(y, y_pred, average='micro')
+
+    print(acc)
+    print(rec)
+    print(pre)
+    print(f1s)
+
+metrics(y.cpu().numpy(), y_pred.cpu().numpy(), tasks, 'A')
+metrics(y.cpu().numpy(), y_pred.cpu().numpy(), tasks, 'B')

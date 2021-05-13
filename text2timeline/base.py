@@ -262,26 +262,28 @@ class TLink:
     """
 
     def __init__(self,
+                 id: str,
                  source: Union[Timex, Event],
                  target: Union[Timex, Event],
                  relation: Union[IntervalRelation, PointRelation],
-                 attributes: Dict):
+                 **kwargs):
 
+        self.id = id
         self.source = source
         self.target = target
 
         self._relation = None
         self.relation = relation
 
-        attr = collections.defaultdict(lambda: None, attributes)
-        self.id = attr['lid']
-        self.task = attr['task']
+        for key, value in kwargs.items():
+            if key not in self.__dict__:
+                setattr(self, key, value)
 
     def __str__(self):
-        return f"{self.source} ---{self.interval_relation}--> {self.target}"
+        return f"{self.source} ---{self.relation}--> {self.target}"
 
     def __repr__(self):
-        return f"TLink(lid={self.id})"
+        return f"TLink(id={self.id})"
 
     def __and__(self, other):
         """ Infer the relation between two TLINKS.
@@ -291,17 +293,17 @@ class TLink:
 
         Example:
             tlink_1 = TLink({
-                'lid': 'l1',
+                'id': 'l1',
                 'source': 'e1',
                 'target': 'e2',
-                'interval_relation': 'BEFORE'
+                'relation': 'BEFORE'
             })
 
             tlink_2 = TLink({
-                'lid': 'l2',
+                'id': 'l2',
                 'source': 'e2',
                 'target': 'e3',
-                'interval_relation': 'BEFORE'
+                'relation': 'BEFORE'
             })
 
             tlink_1 & tlink_2
@@ -311,7 +313,7 @@ class TLink:
         """
 
         # pair the relations of the first and second tlink
-        paired_relations = zip(self.complete_point_relation(), other.complete_point_relation())
+        paired_relations = zip(self.point_relation_complete, other.point_relation_complete)
 
         # get the relation between source of the first tlink and target of second tlink
         point_relation13 = [
@@ -327,12 +329,12 @@ class TLink:
 
         # if an interval relation was found it will return a TLink with it. otherwise it returns None
         if interval_relation:
-            return TLink({
-                'lid': f'il{self.source}{other.target}',
-                'source': self.source,
-                'target': other.target,
-                'interval_relation': interval_relation
-            })
+            return TLink(
+                id=f'il{self.source}{other.target}',
+                source=self.source,
+                target=other.target,
+                relation=interval_relation,
+            )
 
         else:
             return None
@@ -348,14 +350,12 @@ class TLink:
 
         """
 
-        inv_attrib = {
-            'lid': 'a' + self.lid,
-            'source': self.target,
-            'target': self.source,
-            'interval_relation': _INVERSE_INTERVAL_RELATION[self.interval_relation]
-        }
-
-        return TLink(inv_attrib)
+        return TLink(
+            id=f'i{self.id}',
+            source=self.target,
+            target=self.source,
+            relation=_INVERSE_INTERVAL_RELATION[self.relation]
+        )
 
     @property
     def relation(self):
@@ -392,7 +392,7 @@ class TLink:
         """This method is usefull to remove redundent relations. For instances "OVERLAP" and "SIMULTANIUES" are the same
         temporal relation but there are datasets that use both.
         """
-        self.interval_relation = _ASSERT_RELATION[self.interval_relation]
+        self.relation = _ASSERT_RELATION[self.relation]
 
     def _infer_task(self):
         """ Infer the task based on source and target id.
@@ -463,7 +463,7 @@ class Document:
 
         return Timex(dct.attrib)
 
-    def _remove_xml_tags(self, root: ET.Element, tags2keep: list = ['TIMEX3', 'EVENT']) -> ET.Element:
+    def _remove_xml_tags(self, root: ET.Element, tags2keep: List[str] = ['TIMEX3', 'EVENT']) -> ET.Element:
         """ Removes tags all tags in xml_root that are not on tags2keep list.
 
         :param root:
@@ -619,10 +619,11 @@ class Document:
             target = [exp for exp in expressions if exp.id == tgt_id][0]
 
             tlink = TLink(
+                id=tlink.attrib['lid'],
                 source=source,
                 target=target,
                 relation=tlink.attrib['relType'],
-                attributes=tlink.attrib
+                **tlink.attrib
             )
 
             tlinks += [tlink]
@@ -646,7 +647,7 @@ class Document:
 
             if relations:
                 cond_point_rel = [True for _, rel, _ in tlink.point_relation if rel in relations]
-                cond_inter_rel = [tlink.interval_relation in relations]
+                cond_inter_rel = [tlink.relation in relations]
                 cond = any(cond_point_rel + cond_inter_rel)
 
             else:
@@ -719,7 +720,7 @@ class Document:
         tlinks = []
         for (scr, tgt), point_relation in combined_point_relations.items():
             tlink = TLink(scr, tgt, point_relation=point_relation)
-            if tlink.interval_relation:
+            if tlink.relation:
                 tlinks.append(tlink)
 
         # Generate indexes for tlinks.
