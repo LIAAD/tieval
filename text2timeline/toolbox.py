@@ -15,7 +15,7 @@ from tensorflow.keras import layers
 from tensorflow.keras import losses
 from tensorflow.keras import models
 
-from text2timeline import narrative as t2s
+from text2timeline import base as t2s
 
 import collections
 

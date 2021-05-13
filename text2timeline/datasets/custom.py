@@ -1,13 +1,8 @@
 from typing import List
-
-from text2timeline import narrative
+from text2timeline import base
 from glob import glob
 import os
-import numpy as np
 import collections
-import random
-
-from pprint import pprint
 
 # TODO: add support to tempeval-2
 
@@ -60,14 +55,14 @@ PATHS = {
 
 # map between dataset and document object build to read it
 DATASET_DOCUMENT_OBJ = {
-    'timebank': narrative.TimeBank12Document,
-    'timebank-1.2': narrative.TimeBank12Document,
-    'aquaint': narrative.AquaintDocument,
-    'matres': narrative.Document,
-    'timebank-pt': narrative.TimeBankPTDocument,
-    'tddiscourse': narrative.Document,
-    'timebank-dense': narrative.Document,
-    'tempeval-3': narrative.TempEval3Document,
+    'timebank': base.TimeBank12Document,
+    'timebank-1.2': base.TimeBank12Document,
+    'aquaint': base.AquaintDocument,
+    'matres': base.Document,
+    'timebank-pt': base.TimeBankPTDocument,
+    'tddiscourse': base.Document,
+    'timebank-dense': base.Document,
+    'tempeval-3': base.TempEval3Document,
 }
 
 

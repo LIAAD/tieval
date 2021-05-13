@@ -14,6 +14,8 @@ from torch.utils.data import DataLoader
 
 from sklearn.metrics import confusion_matrix
 
+import pickle
+
 
 class BuildIO:
     def __init__(self, classes):
@@ -34,15 +36,16 @@ class BuildIO:
         """
         X = []
         relations = []
+        tasks = []
 
         for doc in dataset.docs:
             for tlink in doc.tlinks:
-
                 # sentence(s) between source and target tokens aka context
                 tokens, exp_idxs = self.get_context(doc, tlink)
 
                 X += [(tokens, exp_idxs['src'], exp_idxs['tgt'])]
                 relations += [tlink.interval_relation]
+                tasks += [tlink.task]
 
         y = self.target.indexes(relations)
         return X, y
@@ -175,7 +178,7 @@ class Model(nn.Module):
         )
         """
         z, _ = self.gru(z)
-        z = F.dropout(z, 0.3)
+        z = F.dropout(z, 0.5)
         z_ = []
         for s, src, tgt in zip(z, inputs['src'], inputs['tgt']):
 
@@ -209,7 +212,7 @@ class LinkDataset(torch.utils.data.Dataset):
         tokens, src, tgt = x
 
         # src+1 because the token [CLS] is added at the start of the sentence
-        src = [s+1 for s in src]
+        src = [s + 1 for s in src]
 
         inputs = self.tokenizer(
             text=tokens,
@@ -226,7 +229,6 @@ class LinkDataset(torch.utils.data.Dataset):
         return inputs
 
     def __getitem__(self, idx):
-
         inputs = self._encode(self.x[idx])
         return inputs, self.y[idx]
 
@@ -269,6 +271,25 @@ class Dataloader:
             yield xb, yb
 
 
+def build_data_loader(docs_dataset,
+                      builder: BuildIO,
+                      batch_size: int,
+                      tlinks_map: dict = None,
+                      augment: bool = False,
+                      shuffle: bool = False):
+    if tlinks_map:
+        docs_dataset.reduce_tlinks(tlinks_map)
+
+    if augment:
+        docs_dataset.augment_tlinks()
+
+    X, y = builder.run(docs_dataset)
+
+    dataset = LinkDataset(X, y, name)
+
+    return Dataloader(dataset, batch_size, shuffle=shuffle)
+
+
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 # model hyperparameters
@@ -278,7 +299,6 @@ lr = 1e-3
 batch_size = 64
 max_length = 512
 
-
 # load dataset
 reader = DatasetReader()
 reader.read(['timebank-pt'])
@@ -287,8 +307,12 @@ train_valid_docs = reader.datasets[1]
 train_docs, valid_docs = train_valid_docs.split(0.8)
 test_docs = reader.datasets[0]
 
+doc = train_docs.docs[0]
+
+builder = BuildIO(['OVERLAP', 'BEFORE', 'AFTER', 'VAGUE'])
+
 # reduce dataset tlinks set
-map = {
+tlinks_map = {
     'OVERLAP': 'OVERLAP',
     'BEFORE': 'BEFORE',
     'AFTER': 'AFTER',
@@ -297,31 +321,28 @@ map = {
     'OVERLAP-OR-AFTER': 'VAGUE'
 }
 
-train_docs.reduce_tlinks(map)
-valid_docs.reduce_tlinks(map)
-test_docs.reduce_tlinks(map)
+train_dl = build_data_loader(
+    train_docs,
+    builder,
+    batch_size,
+    tlinks_map,
+    augment=True,
+    shuffle=True
+)
 
-train_docs.augment_tlinks()
+valid_dl = build_data_loader(
+    valid_docs,
+    builder,
+    batch_size,
+    tlinks_map
+)
 
-train_tlinks_count = train_docs.tlinks_count()
-valid_tlinks_count = valid_docs.tlinks_count()
-test_tlinks_count = test_docs.tlinks_count()
-
-""" build model input and output """
-
-builder = BuildIO(train_tlinks_count.keys())
-
-X_train, y_train = builder.run(train_docs)
-X_valid, y_valid = builder.run(valid_docs)
-X_test, y_test = builder.run(test_docs)
-
-train_set = LinkDataset(X_train, y_train, name)
-valid_set = LinkDataset(X_valid, y_valid, name)
-test_set = LinkDataset(X_test, y_test, name)
-
-train_dl = Dataloader(train_set, batch_size, shuffle=True)
-valid_dl = Dataloader(valid_set, batch_size)
-test_dl = Dataloader(test_set, batch_size)
+test_dl = build_data_loader(
+    test_docs,
+    builder,
+    batch_size,
+    tlinks_map
+)
 
 """ build model """
 model = Model(name)
@@ -332,13 +353,11 @@ optimizer = optim.Adam(params=model.parameters(), lr=lr)
 
 
 def train():
-
     model.train()
     running_loss = 0.0
     running_acc = 0
 
     for batch, (inputs_b, yb) in enumerate(train_dl):
-        # Xb, yb = Xb.to(device), yb.to(device)
 
         optimizer.zero_grad()
 
@@ -353,15 +372,14 @@ def train():
         running_loss += loss.item()
         running_acc += (y_pred.argmax(dim=1) == yb).sum().item()
 
-        if (batch+1) % 20 == 0:
-            l = running_loss / ((batch+1) * batch_size)
-            a = running_acc / ((batch+1) * batch_size)
-            msg = f"Batch: {batch+1:3d}/{train_dl.num_batches_train}  Loss: {l:4f}  Acc: {a:2f}"
+        if (batch + 1) % 20 == 0:
+            l = running_loss / ((batch + 1) * batch_size)
+            a = running_acc / ((batch + 1) * batch_size)
+            msg = f"Batch: {batch + 1:3d}/{train_dl.num_batches_train}  Loss: {l:4f}  Acc: {a:2f}"
             print(msg)
 
 
-def eval():
-
+def eval(valid_dl):
     model.eval()
     with torch.no_grad():
         size = valid_dl.size
@@ -381,7 +399,10 @@ def eval():
 
 
 for epoch in range(epochs):
-    print('#' * 30, f'Epoch {epoch+1}', '#' * 30)
+    print('#' * 30, f'Epoch {epoch + 1}', '#' * 30)
     train()
     print('-' * 70)
     eval()
+
+torch.save(model, 'models/temporal_relation_model_pt.pth')
+

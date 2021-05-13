@@ -2,7 +2,7 @@ import os
 
 import glob
 
-from text2timeline import narrative
+from text2timeline import base
 
 import collections
 
@@ -34,7 +34,7 @@ def load_data(path) -> dict:
 
             print(f'Reading dataset {dataset} from folder {folder}...')
 
-            data[folder][dataset] = [narrative.Document(file_path) for file_path in file_paths]
+            data[folder][dataset] = [base.Document(file_path) for file_path in file_paths]
 
             print('Done.\n')
     return data

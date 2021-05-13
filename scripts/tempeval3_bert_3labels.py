@@ -20,7 +20,7 @@ from tensorflow.keras import models
 from tensorflow.keras import metrics
 
 from text2timeline.datasets import tempeval3
-from text2timeline import narrative as t2s
+from text2timeline import base as t2s
 from text2timeline import temporal_closure as tc
 
 import collections

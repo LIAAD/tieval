@@ -1,16 +1,15 @@
 import collections
 import re
-from typing import Dict, List
+from typing import Dict
 from typing import List
 from typing import Tuple
+from typing import Union
 from xml.etree import ElementTree as ET
 import copy
 
 import nltk
 
 import numpy as np
-
-from pprint import pprint
 
 # constants representing the start point and end point of an interval
 _START = 0
@@ -38,6 +37,8 @@ _INTERVAL_TO_POINT = {
     "IDENTITY": [(_START, "=", _START), (_END, "=", _END)],
     "DURING": [(_START, "=", _START), (_END, "=", _END)],
     "DURING_INV": [(_START, "=", _START), (_END, "=", _END)],
+    'BEFORE-OR-OVERLAP': [(_START, '<', _START), (_END, '<', _END)],
+    'OVERLAP-OR-AFTER': [(_START, '>', _START), (_END, '>', _END)]
 }
 
 _INTERVAL_TO_POINT_COMPLETE = {
@@ -117,7 +118,15 @@ _INTERVAL_TO_POINT_COMPLETE = {
     "VAGUE": [(_START, None, _START),
               (_START, None, _END),
               (_END, None, _START),
-              (_END, None, _END)]
+              (_END, None, _END)],
+    'BEFORE-OR-OVERLAP': [(_START, '<', _START),
+                          (_START, '<', _END),
+                          (_END, None, _START),
+                          (_END, '<', _END)],
+    'OVERLAP-OR-AFTER': [(_START, '>', _START),
+                          (_START, None, _END),
+                          (_END, '>', _START),
+                          (_END, '>', _END)]
 }
 
 # transitivity table for point relations
@@ -127,7 +136,8 @@ _POINT_TRANSITIONS = {
     '>': {'>': '>', '=': '>', '<': None}
 }
 
-_POINT_RELATIONS = ['<', '=', '>']
+_POINT_RELATIONS = list(_INTERVAL_TO_POINT.values()) + \
+                   list(_INTERVAL_TO_POINT_COMPLETE.values())
 
 _INTERVAL_RELATIONS = list(_INTERVAL_TO_POINT_COMPLETE.keys())
 
@@ -178,8 +188,56 @@ _ASSERT_RELATION = {
 
     'VAGUE': 'VAGUE',
     'BEFORE-OR-OVERLAP': 'BEFORE-OR-OVERLAP'
-
 }
+
+PointRelation = List[Tuple[int, str, int]]
+IntervalRelation = str
+
+
+class Timex:
+    def __init__(self, attributes: Dict):
+        attr = collections.defaultdict(lambda: None, attributes)
+
+        self.id = attr['tid']
+        self.type = attr['type']
+        self.value = attr['value']
+        self.temporal_function = attr['temporalFunction']
+        self.function_in_document = attr['functionInDocument']
+        self.anchor_time_id = attr['anchorTimeID']
+        self.text = attr['text']
+        self.endpoints = attr['endpoints']
+
+    def __repr__(self):
+        return f"Timex(tid={self.id})"
+
+    @property
+    def is_dct(self):
+        if self.function_in_document == 'CREATION_TIME':
+            return True
+
+        return False
+
+
+class Event:
+    def __init__(self, attributes: dict):
+        attr = collections.defaultdict(lambda: None, attributes)
+
+        self.id = attr['eid']
+        self.family = attr['class']
+        self.stem = attr['stem']
+        self.aspect = attr['aspect']
+        self.tense = attr['tense']
+        self.polarity = attr['polarity']
+        self.pos = attr['pos']
+        self.text = attr['text']
+        self.endpoints = attr['endpoints']
+
+    def __repr__(self):
+        return f"Event(eid={self.id})"
+
+    @property
+    def is_dct(self):
+        return False
 
 
 class TLink:
@@ -203,29 +261,27 @@ class TLink:
         that defines the interval relation between source and target):
     """
 
-    def __init__(self, attributes: dict):
-        self.lid = attributes['lid']
-        self.source = attributes['source']
-        self.target = attributes['target']
-        self.task = self._infer_task()
+    def __init__(self,
+                 source: Union[Timex, Event],
+                 target: Union[Timex, Event],
+                 relation: Union[IntervalRelation, PointRelation],
+                 attributes: Dict):
 
-        if 'interval_relation' in attributes:
-            self._interval_relation = attributes['interval_relation']
-            self._point_relation = None
-        elif 'point_relation' in attributes:
-            self._interval_relation = None
-            self._point_relation = attributes['point_relation']
-        else:
-            raise Exception("point_relation and interval_relation are both None. Please provide one of them.")
+        self.source = source
+        self.target = target
 
-    def __call__(self, *args, **kwargs):
-        return self.lid
+        self._relation = None
+        self.relation = relation
+
+        attr = collections.defaultdict(lambda: None, attributes)
+        self.id = attr['lid']
+        self.task = attr['task']
 
     def __str__(self):
         return f"{self.source} ---{self.interval_relation}--> {self.target}"
 
     def __repr__(self):
-        return f"TLink(lid={self.lid})"
+        return f"TLink(lid={self.id})"
 
     def __and__(self, other):
         """ Infer the relation between two TLINKS.
@@ -302,22 +358,35 @@ class TLink:
         return TLink(inv_attrib)
 
     @property
-    def point_relation(self):
-        if self._point_relation:
-            return self._point_relation
+    def relation(self):
+        return self._relation
+
+    @relation.setter
+    def relation(self, relation):
+
+        if relation in _INTERVAL_RELATIONS:
+            self._relation = relation
+
+        elif relation in _INTERVAL_TO_POINT.values():
+            self._relation = [rel
+                              for rel, requirements in _INTERVAL_TO_POINT.items()
+                              if set(requirements).issubset(relation)]
+
+        elif relation in _INTERVAL_TO_POINT_COMPLETE.values():
+            self._relation = [rel
+                              for rel, requirements in _INTERVAL_TO_POINT_COMPLETE.items()
+                              if set(requirements).issubset(relation)][0]
+
         else:
-            return self._get_point_relation()
+            raise ValueError(f"{relation} is not a valid relation.")
 
     @property
-    def interval_relation(self):
-        if self._interval_relation:
-            return self._interval_relation
-        else:
-            return self._get_interval_relation()
+    def point_relation(self):
+        return _INTERVAL_TO_POINT[self.relation]
 
-    @interval_relation.setter
-    def interval_relation(self, value):
-        self._interval_relation = value
+    @property
+    def point_relation_complete(self):
+        return _INTERVAL_TO_POINT_COMPLETE[self.relation]
 
     def normalize_relation(self):
         """This method is usefull to remove redundent relations. For instances "OVERLAP" and "SIMULTANIUES" are the same
@@ -336,64 +405,14 @@ class TLink:
         :return:
         """
         scr, tgt = self.source, self.target
-        if (scr() == 't0') or (tgt() == 't0'):
+        if scr.is_dct or tgt.is_dct:
             return 'D'
-        elif (scr()[0] == 'e') and (tgt()[0] == 'e'):
+        elif (scr.id[0] == 'e') and (tgt.id[0] == 'e'):
             return 'A'
-        elif (scr()[0] == 't') and (tgt()[0] == 't'):
+        elif (scr.id[0] == 't') and (tgt.id[0] == 't'):
             return 'B'
         else:
             return 'C'
-
-    def _get_point_relation(self):
-        if self.interval_relation:
-            return _INTERVAL_TO_POINT[self.interval_relation]
-        else:
-            raise Exception("interval_relation not defined.")
-
-    def _get_interval_relation(self):
-
-        result = [relation
-                  for relation, requirements in _INTERVAL_TO_POINT.items()
-                  if set(requirements).issubset(self.point_relation)]
-
-        if not result:
-            return None
-        return result
-
-    def complete_point_relation(self):
-        if self.interval_relation:
-            return _INTERVAL_TO_POINT_COMPLETE[self.interval_relation]
-        else:
-            raise Exception("interval_relation not defined.")
-
-
-class Timex:
-    def __init__(self, attributes: Dict):
-        for key, value in attributes.items():
-            setattr(self, key, value)
-
-        self.id = self.tid
-
-    def __repr__(self):
-        return f"Timex(tid={self.tid})"
-
-    def __call__(self):
-        return self.tid
-
-
-class Event:
-    def __init__(self, attributes: dict):
-        for key, value in attributes.items():
-            setattr(self, key, value)
-
-        self.id = self.eid
-
-    def __repr__(self):
-        return f"Event(eid={self.eid})"
-
-    def __call__(self):
-        return self.eid
 
 
 class Document:
@@ -425,7 +444,6 @@ class Document:
         self.events = self._get_events()
 
         self.tlinks = self._get_tlinks()
-
 
     def __repr__(self):
         return f'Document(name={self.name})'
@@ -522,7 +540,7 @@ class Document:
                 text_tags.append((text, element.attrib['tid']))
 
         # Join the indexes with the tags.
-        expression_idxs = {self.dct.tid: (-1, -1)}  # Initialize with the position of DCT.
+        expression_idxs = {self.dct.id: (-1, -1)}  # Initialize with the position of DCT.
         while text_tags:
             txt, tag_id = text_tags.pop(0)
             for idx, (start, end, txt_sch) in enumerate(text_blocks):
@@ -584,19 +602,31 @@ class Document:
 
         tlinks = list()
 
+        # join timex and events list
+        expressions = self.timexs + self.events
+
         for tlink in self.xml_root.findall('.//TLINK'):
 
+            src_id = tlink.attrib['eventID']
 
+            if 'relatedToEvent' in tlink.attrib:
+                tgt_id = tlink.attrib['relatedToEvent']
+            else:
+                tgt_id = tlink.attrib['relatedToTime']
 
-            attrib = dict(
-                lid=tlink.attrib['lid'],
-                source=tlink.attrib['timeID'] if 'timeID' in tlink.attrib else tlink.attrib['eventInstanceID'],
-                target=tlink.attrib['relatedToEventInstance'] if 'relatedToEventInstance' in tlink.attrib
-                else tlink.attrib['relatedToTime'],
-                interval_relation=tlink.attrib['relType']
+            # find Event/ Timex with those ids
+            source = [exp for exp in expressions if exp.id == src_id][0]
+            target = [exp for exp in expressions if exp.id == tgt_id][0]
+
+            tlink = TLink(
+                source=source,
+                target=target,
+                relation=tlink.attrib['relType'],
+                attributes=tlink.attrib
             )
 
-            tlinks.append(TLink(attrib))
+            tlinks += [tlink]
+
         return tlinks
 
     def augment_tlinks(self, relations: List[str] = None):
@@ -699,43 +729,5 @@ class Document:
 TimeBankDocument = Document
 AquaintDocument = Document
 TempEval3Document = Document
+TimeBankPTDocument = Document
 TimeBank12Document = None
-
-
-class TimeBankPTDocument(Document):
-
-
-    def _get_tlinks(self) -> dict:
-        """
-        Get keys for each dataset
-
-        np.unique([key for tlink in self.xml_root.findall('.//TLINK') for key in tlink.attrib])
-
-        :return:
-        """
-
-        tlinks = list()
-
-        # join timex and events list
-        expressions = self.timexs + self.events
-
-        for tlink in self.xml_root.findall('.//TLINK'):
-
-            # get source and target ids
-            src_id = tlink.attrib['eventID']
-            tgt_id = tlink.attrib['relatedToEvent'] if 'relatedToEvent' in tlink.attrib \
-                         else tlink.attrib['relatedToTime']
-
-            # find Event/ Timex with those ids
-            source = [exp for exp in expressions if exp.id == src_id][0]
-            target = [exp for exp in expressions if exp.id == tgt_id][0]
-
-            attrib = dict(
-                lid=tlink.attrib['lid'],
-                source=source,
-                target=target,
-                interval_relation=tlink.attrib['relType']
-            )
-
-            tlinks.append(TLink(attrib))
-        return tlinks
