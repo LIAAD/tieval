@@ -9,6 +9,8 @@ import copy
 
 import nltk
 
+from pprint import pprint
+
 import numpy as np
 
 # constants representing the start point and end point of an interval
@@ -195,10 +197,11 @@ IntervalRelation = str
 
 
 class Timex:
+
     def __init__(self, attributes: Dict):
         attr = collections.defaultdict(lambda: None, attributes)
 
-        self.id = attr['tid']
+        self._tid = attr['tid']
         self.type = attr['type']
         self.value = attr['value']
         self.temporal_function = attr['temporalFunction']
@@ -209,6 +212,10 @@ class Timex:
 
     def __repr__(self):
         return f"Timex(tid={self.id})"
+
+    @property
+    def id(self):
+        return self._tid
 
     @property
     def is_dct(self):
@@ -222,7 +229,8 @@ class Event:
     def __init__(self, attributes: dict):
         attr = collections.defaultdict(lambda: None, attributes)
 
-        self.id = attr['eid']
+        self.eid = attr['eid']
+        self.eiid = attr['eiid']
         self.family = attr['class']
         self.stem = attr['stem']
         self.aspect = attr['aspect']
@@ -233,7 +241,14 @@ class Event:
         self.endpoints = attr['endpoints']
 
     def __repr__(self):
-        return f"Event(eid={self.id})"
+        return f"Event(eid={self.eid})"
+
+    @property
+    def id(self):
+        if self.eiid:
+            return self.eiid
+
+        return self.eid
 
     @property
     def is_dct(self):
@@ -442,6 +457,7 @@ class Document:
         self._expression_idxs = self._expression_indexes()
         self.timexs = self._get_timexs()
         self.events = self._get_events()
+        self.expressions = {exp.id: exp for exp in self.timexs + self.events}
 
         self.tlinks = self._get_tlinks()
 
@@ -458,8 +474,13 @@ class Document:
     def _get_dct(self):
         """Extract document creation time"""
 
+        # TODO: improve this syntax
+
         # dct is always the first TIMEX3 element
         dct = self.xml_root.find(".//TIMEX3[@functionInDocument='CREATION_TIME']")
+
+        if dct is None:
+            dct = self.xml_root.find(".//TIMEX3[@functionInDocument='PUBLICATION_TIME']")
 
         return Timex(dct.attrib)
 
@@ -472,11 +493,9 @@ class Document:
         """
         raw_root = ET.tostring(root, encoding='unicode')
 
-        tags2remove = [elem.tag for elem in root.findall('.//*') if elem.tag not in tags2keep]
-        tags2remove = np.unique(tags2remove).tolist()
-
+        tags2remove = set(elem.tag for elem in root.findall('.//*') if elem.tag not in tags2keep)
         for tag in tags2remove:
-            raw_root = re.sub(f'</?{tag}.*?>', '', raw_root)
+            raw_root = re.sub(f'</?{tag}>|</?{tag}\s.*?>', '', raw_root)
 
         return ET.fromstring(raw_root)
 
@@ -528,7 +547,8 @@ class Document:
 
         # Get the tags of each expression.
         text_tags = list()
-        elements = [elem for elem in list(root.iterfind('.//*')) if elem.tag in ['EVENT', 'TIMEX3']]
+        elements = [elem for elem in list(root.iterfind('.//*'))]
+
         for element in elements:
 
             # there are cases where there is a nested tag <EVENT><NUMEX>example</NUMEX></EVENT>
@@ -536,6 +556,7 @@ class Document:
 
             if element.attrib and element.tag == 'EVENT':
                 text_tags.append((text, element.attrib['eid']))
+
             elif element.attrib and element.tag == 'TIMEX3':
                 text_tags.append((text, element.attrib['tid']))
 
@@ -558,12 +579,6 @@ class Document:
             eid = make_inst.attrib['eventID']
             make_insts[eid].append(make_inst.attrib)
 
-        # there are some MAKEINSTANCE entries that refer to the same eid.
-        # in these cases we join those items we ignore the remaining differences and join the two eiid.
-        for eid, make_inst in make_insts.items():
-            eiids = [entry['eiid'] for entry in make_inst]
-            make_insts[eid] = make_insts[eid][0]
-            make_insts[eid]['eiid'] = eiids
         return make_insts
 
     def _get_events(self) -> dict:
@@ -576,12 +591,23 @@ class Document:
             event_id = attrib['eid']
             attrib['text'] = event.text
             attrib['endpoints'] = self._expression_idxs[event_id]
+
             if event_id in make_insts:
-                attrib.update(make_insts[event_id])
-            events.append(Event(attrib))
+
+                attribs = []
+                for make_inst in make_insts[event_id]:
+                     attrib_copy = attrib.copy()
+                     attrib_copy.update(make_inst)
+                     attribs += [attrib_copy]
+
+            else:
+                attribs = [attrib]
+
+            events += [Event(attrib) for attrib in attribs]
         return events
 
     def _get_timexs(self) -> dict:
+
         timexs = list()
         for timex in self.xml_root.findall('.//TIMEX3'):
             attrib = timex.attrib.copy()
@@ -602,21 +628,13 @@ class Document:
 
         tlinks = list()
 
-        # join timex and events list
-        expressions = self.timexs + self.events
-
         for tlink in self.xml_root.findall('.//TLINK'):
 
-            src_id = tlink.attrib['eventID']
-
-            if 'relatedToEvent' in tlink.attrib:
-                tgt_id = tlink.attrib['relatedToEvent']
-            else:
-                tgt_id = tlink.attrib['relatedToTime']
+            src_id, tgt_id = self._get_source_and_target_exp(tlink)
 
             # find Event/ Timex with those ids
-            source = [exp for exp in expressions if exp.id == src_id][0]
-            target = [exp for exp in expressions if exp.id == tgt_id][0]
+            source = self.expressions[src_id]
+            target = self.expressions[tgt_id]
 
             tlink = TLink(
                 id=tlink.attrib['lid'],
@@ -629,6 +647,19 @@ class Document:
             tlinks += [tlink]
 
         return tlinks
+
+    def _get_source_and_target_exp(self, tlink):
+
+        # scr_id
+        src_id = tlink.attrib['eventID']
+
+        # tgt_id
+        if 'relatedToEvent' in tlink.attrib:
+            tgt_id = tlink.attrib['relatedToEvent']
+        else:
+            tgt_id = tlink.attrib['relatedToTime']
+
+        return src_id, tgt_id
 
     def augment_tlinks(self, relations: List[str] = None):
         """ Augments the document tlinks by adding the symmetic relation of every tlink.
@@ -731,4 +762,23 @@ TimeBankDocument = Document
 AquaintDocument = Document
 TempEval3Document = Document
 TimeBankPTDocument = Document
-TimeBank12Document = None
+
+
+class TimeBank12Document(Document):
+
+    def _get_source_and_target_exp(self, tlink):
+
+        # scr_id
+        if 'eventInstanceID' in tlink.attrib:
+            src_id = tlink.attrib['eventInstanceID']
+        else:
+            src_id = tlink.attrib['timeID']
+
+        # tgt_id
+        if 'relatedToEventInstance' in tlink.attrib:
+            tgt_id = tlink.attrib['relatedToEventInstance']
+        else:
+            tgt_id = tlink.attrib['relatedToTime']
+
+        return src_id, tgt_id
+
