@@ -1,11 +1,10 @@
 import warnings
-from typing import List
 from text2timeline import base
-from glob import glob
 import os
 import collections
 
-from pprint import pprint
+from typing import List
+from typing import Union
 
 # TODO: add support to tempeval-2
 
@@ -46,7 +45,8 @@ PATHS = {
     ],
 
     'timebank-1.2': [
-        'data/TimeBank-1.2/data'
+        'data/TimeBank-1.2/data/extra',
+        'data/TimeBank-1.2/data/timeml',
     ],
 
     'aquaint': [
@@ -301,15 +301,14 @@ class ReadDataset:
 
         :return:
         """
-
         # read dataset
         if self.name in DATASETS_INDEPENDENT:
-            return self.__read_independent_dataset()
+            return self._read_independent_dataset()
 
         else:
-            return self.__read_dependent_dataset()
+            return self._read_dependent_dataset()
 
-    def __read_independent_dataset(self):
+    def _read_independent_dataset(self):
         """
 
         Read dataset that has the .tml files.
@@ -345,7 +344,7 @@ class ReadDataset:
 
         return datasets
 
-    def __read_dependent_dataset(self):
+    def _read_dependent_dataset(self):
         """
 
         Read datasets that do not have the original text, only the annotations.
@@ -397,7 +396,7 @@ class DatasetReader:
     def __init__(self):
         self.datasets = []
 
-    def read(self, datasets: list):
+    def read(self, datasets: Union[List, str]):
         """
 
         Read temporal relation datasets.
@@ -413,6 +412,9 @@ class DatasetReader:
             - tempeval-3
 
         """
+
+        if not isinstance(datasets, list):
+            datasets = [datasets]
 
         for dataset_name in datasets:
 
