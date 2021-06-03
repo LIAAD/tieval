@@ -4,7 +4,13 @@ from pprint import pprint
 
 # load dataset
 reader = DatasetReader()
-reader.read(['timebank-1.2'])
+reader.read(['timebank', 'timebank-dense'])
 
-train_docs = reader.datasets[1]
-test_docs = reader.datasets[0]
+
+pprint(reader.datasets)
+
+tb = reader.datasets[0]
+tbdense = reader.datasets[1]
+
+len([tlink for doc in tb.docs for tlink in doc.tlinks])
+len([tlink for doc in tbdense.docs for tlink in doc.tlinks])

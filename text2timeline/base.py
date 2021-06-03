@@ -6,16 +6,46 @@ from typing import Tuple
 from typing import Union
 from xml.etree import ElementTree as ET
 import copy
+import warnings
 
 import nltk
-
-from pprint import pprint
-
-import numpy as np
 
 # constants representing the start point and end point of an interval
 _START = 0
 _END = 1
+
+# Map relations to unique names.
+_SETTLE_RELATION = {
+    'OVERLAP': 'OVERLAP',
+    'BEGINS': 'BEGINS',
+    'BEFORE': 'BEFORE',
+    'b': 'BEFORE',
+    'CONTAINS': 'INCLUDES',
+    'IDENTITY': 'SIMULTANEOUS',
+    'EQUAL': 'SIMULTANEOUS',
+    'AFTER': 'AFTER',
+    'a': 'AFTER',
+    'BEGINS-ON': 'BEGINS-ON',
+    'SIMULTANEOUS': 'SIMULTANEOUS',
+    's': 'SIMULTANEOUS',
+    'INCLUDES': 'INCLUDES',
+    'i': 'INCLUDES',
+    'DURING': 'SIMULTANEOUS',
+    'ENDS-ON': 'ENDS-ON',
+    'BEGUN_BY': 'BEGUN_BY',
+    'ENDED_BY': 'ENDED_BY',
+    'DURING_INV': 'SIMULTANEOUS',
+    'ENDS': 'ENDS',
+    'IS_INCLUDED': 'IS_INCLUDED',
+    'ii': 'IS_INCLUDED',
+    'IBEFORE': 'IBEFORE',
+    'IAFTER': 'IAFTER',
+    'VAGUE': 'VAGUE',
+    'v': 'VAGUE',
+    'BEFORE-OR-OVERLAP': 'BEFORE-OR-OVERLAP'
+}
+
+_INTERVAL_RELATIONS = list(_SETTLE_RELATION.keys())
 
 # Mapping from interval relation names to point relations.
 # For example, BEFORE means that the first interval's end is before the second interval's start
@@ -35,101 +65,118 @@ _INTERVAL_TO_POINT = {
     "SIMULTANEOUS": [(_START, "=", _START), (_END, "=", _END)],
     "OVERLAP": [(_START, "<", _END), (_END, '>', _START)],
     "VAGUE": [],
-    "CONTAINS": [(_START, "<", _START), (_END, "<", _END)],
-    "IDENTITY": [(_START, "=", _START), (_END, "=", _END)],
-    "DURING": [(_START, "=", _START), (_END, "=", _END)],
-    "DURING_INV": [(_START, "=", _START), (_END, "=", _END)],
     'BEFORE-OR-OVERLAP': [(_START, '<', _START), (_END, '<', _END)],
     'OVERLAP-OR-AFTER': [(_START, '>', _START), (_END, '>', _END)]
 }
 
 _INTERVAL_TO_POINT_COMPLETE = {
-    "BEFORE": [(_START, "<", _START),
-               (_START, "<", _END),
-               (_END, "<", _START),
-               (_END, "<", _END)],
-    "AFTER": [(_START, ">", _START),
-              (_START, ">", _END),
-              (_END, ">", _START),
-              (_END, ">", _END)],
-    "IBEFORE": [(_START, "<", _START),
-                (_START, "=", _END),
-                (_END, "<", _START),
-                (_END, "<", _END)],
-    "IAFTER": [(_START, ">", _START),
-               (_START, "=", _END),
-               (_END, ">", _START),
-               (_END, ">", _END)],
-    "CONTAINS": [(_START, "<", _START),
-                 (_START, "<", _END),
-                 (_END, ">", _START),
-                 (_END, ">", _END)],
-    "INCLUDES": [(_START, "<", _START),
-                 (_START, "<", _END),
-                 (_END, ">", _START),
-                 (_END, ">", _END)],
-    "IS_INCLUDED": [(_START, ">", _START),
-                    (_START, "<", _END),
-                    (_END, ">", _START),
-                    (_END, "<", _END)],
-    "BEGINS-ON": [(_START, "=", _START),
-                  (_START, "<", _END),
-                  (_END, ">", _START),
-                  (_END, None, _END)],
-    "ENDS-ON": [(_START, None, _START),
-                (_START, "<", _END),
-                (_END, ">", _START),
-                (_END, "=", _END)],
-    "BEGINS": [(_START, "=", _START),
-               (_START, "<", _END),
-               (_END, ">", _START),
-               (_END, "<", _END)],
-    "BEGUN_BY": [(_START, "=", _START),
-                 (_START, "<", _END),
-                 (_END, ">", _START),
-                 (_END, ">", _END)],
-    "ENDS": [(_START, ">", _START),
-             (_START, "<", _END),
-             (_END, ">", _START),
-             (_END, "=", _END)],
-    "ENDED_BY": [(_START, "<", _START),
-                 (_START, "<", _END),
-                 (_END, ">", _START),
-                 (_END, "=", _END)],
+    "BEFORE": [
+        (_START, "<", _START),
+        (_START, "<", _END),
+        (_END, "<", _START),
+        (_END, "<", _END)
+    ],
+    "AFTER": [
+        (_START, ">", _START),
+        (_START, ">", _END),
+        (_END, ">", _START),
+        (_END, ">", _END)
+    ],
+    "IBEFORE": [
+        (_START, "<", _START),
+        (_START, "=", _END),
+        (_END, "<", _START),
+        (_END, "<", _END)
+    ],
+    "IAFTER": [
+        (_START, ">", _START),
+        (_START, "=", _END),
+        (_END, ">", _START),
+        (_END, ">", _END)
+    ],
+    "INCLUDES": [
+        (_START, "<", _START),
+        (_START, "<", _END),
+        (_END, ">", _START),
+        (_END, ">", _END)
+    ],
+    "IS_INCLUDED": [
+        (_START, ">", _START),
+        (_START, "<", _END),
+        (_END, ">", _START),
+        (_END, "<", _END)
+    ],
+    "BEGINS-ON": [
+        (_START, "=", _START),
+        (_START, "<", _END),
+        (_END, ">", _START),
+        (_END, None, _END)
+    ],
+    "ENDS-ON": [
+        (_START, None, _START),
+        (_START, "<", _END),
+        (_END, ">", _START),
+        (_END, "=", _END)
+    ],
+    "BEGINS": [
+        (_START, "=", _START),
+        (_START, "<", _END),
+        (_END, ">", _START),
+        (_END, "<", _END)
+    ],
+    "BEGUN_BY": [
+        (_START, "=", _START),
+        (_START, "<", _END),
+        (_END, ">", _START),
+        (_END, ">", _END)
+    ],
+    "ENDS": [
+        (_START, ">", _START),
+        (_START, "<", _END),
+        (_END, ">", _START),
+        (_END, "=", _END)
+    ],
+    "ENDED_BY": [
+        (_START, "<", _START),
+        (_START, "<", _END),
+        (_END, ">", _START),
+        (_END, "=", _END)
+    ],
 
-    "SIMULTANEOUS": [(_START, "=", _START),
-                     (_START, "<", _END),
-                     (_END, ">", _START),
-                     (_END, "=", _END)],
-    "IDENTITY": [(_START, "=", _START),
-                 (_START, "<", _END),
-                 (_END, ">", _START),
-                 (_END, "=", _END)],
-    "DURING": [(_START, "=", _START),
-               (_START, "<", _END),
-               (_END, ">", _START),
-               (_END, "=", _END)],
-    "DURING_INV": [(_START, "=", _START),
-                   (_START, "<", _END),
-                   (_END, ">", _START),
-                   (_END, "=", _END)],
-    "OVERLAP": [(_START, "<", _START),
-                (_START, "<", _END),
-                (_END, ">", _START),
-                (_END, "<", _END)],
-    "VAGUE": [(_START, None, _START),
-              (_START, None, _END),
-              (_END, None, _START),
-              (_END, None, _END)],
-    'BEFORE-OR-OVERLAP': [(_START, '<', _START),
-                          (_START, '<', _END),
-                          (_END, None, _START),
-                          (_END, '<', _END)],
-    'OVERLAP-OR-AFTER': [(_START, '>', _START),
-                          (_START, None, _END),
-                          (_END, '>', _START),
-                          (_END, '>', _END)]
+    "SIMULTANEOUS": [
+        (_START, "=", _START),
+        (_START, "<", _END),
+        (_END, ">", _START),
+        (_END, "=", _END)
+    ],
+    "OVERLAP": [
+        (_START, "<", _START),
+        (_START, "<", _END),
+        (_END, ">", _START),
+        (_END, "<", _END)
+    ],
+    "VAGUE": [
+        (_START, None, _START),
+        (_START, None, _END),
+        (_END, None, _START),
+        (_END, None, _END)
+    ],
+    'BEFORE-OR-OVERLAP': [
+        (_START, '<', _START),
+        (_START, '<', _END),
+        (_END, None, _START),
+        (_END, '<', _END)
+    ],
+    'OVERLAP-OR-AFTER': [
+        (_START, '>', _START),
+        (_START, None, _END),
+        (_END, '>', _START),
+        (_END, '>', _END)
+    ]
 }
+
+_POINT_RELATIONS = list(_INTERVAL_TO_POINT.values()) + \
+                   list(_INTERVAL_TO_POINT_COMPLETE.values())
 
 # transitivity table for point relations
 _POINT_TRANSITIONS = {
@@ -137,11 +184,6 @@ _POINT_TRANSITIONS = {
     '=': {'<': '<', '=': '=', '>': '>'},
     '>': {'>': '>', '=': '>', '<': None}
 }
-
-_POINT_RELATIONS = list(_INTERVAL_TO_POINT.values()) + \
-                   list(_INTERVAL_TO_POINT_COMPLETE.values())
-
-_INTERVAL_RELATIONS = list(_INTERVAL_TO_POINT_COMPLETE.keys())
 
 _INVERSE_POINT_RELATION = {
     '<': '>',
@@ -167,30 +209,6 @@ _INVERSE_INTERVAL_RELATION = {
     'VAGUE': 'VAGUE'
 }
 
-# Map relations to the standard names.
-_ASSERT_RELATION = {
-    'OVERLAP': 'OVERLAP',
-    'BEGINS': 'BEGINS',
-    'BEFORE': 'BEFORE',
-    'CONTAINS': 'INCLUDES',
-    'IDENTITY': 'SIMULTANEOUS',
-    'AFTER': 'AFTER',
-    'BEGINS-ON': 'BEGINS-ON',
-    'SIMULTANEOUS': 'SIMULTANEOUS',
-    'INCLUDES': 'INCLUDES',
-    'DURING': 'SIMULTANEOUS',
-    'ENDS-ON': 'ENDS-ON',
-    'BEGUN_BY': 'BEGUN_BY',
-    'ENDED_BY': 'ENDED_BY',
-    'DURING_INV': 'SIMULTANEOUS',
-    'ENDS': 'ENDS',
-    'IS_INCLUDED': 'IS_INCLUDED',
-    'IBEFORE': 'IBEFORE',
-    'IAFTER': 'IAFTER',
-
-    'VAGUE': 'VAGUE',
-    'BEFORE-OR-OVERLAP': 'BEFORE-OR-OVERLAP'
-}
 
 PointRelation = List[Tuple[int, str, int]]
 IntervalRelation = str
@@ -201,7 +219,7 @@ class Timex:
     def __init__(self, attributes: Dict):
         attr = collections.defaultdict(lambda: None, attributes)
 
-        self._tid = attr['tid']
+        self.tid = attr['tid']
         self.type = attr['type']
         self.value = attr['value']
         self.temporal_function = attr['temporalFunction']
@@ -211,11 +229,11 @@ class Timex:
         self.endpoints = attr['endpoints']
 
     def __repr__(self):
-        return f"Timex(tid={self.id})"
+        return f"Timex(tid={self.tid})"
 
     @property
     def id(self):
-        return self._tid
+        return self.tid
 
     @property
     def is_dct(self):
@@ -379,18 +397,25 @@ class TLink:
     @relation.setter
     def relation(self, relation):
 
+        # if it is an interval relation
         if relation in _INTERVAL_RELATIONS:
-            self._relation = relation
+            self._relation = _SETTLE_RELATION[relation]
 
+        # if it is point relation
         elif relation in _INTERVAL_TO_POINT.values():
-            self._relation = [rel
-                              for rel, requirements in _INTERVAL_TO_POINT.items()
-                              if set(requirements).issubset(relation)]
+            interval_relation = [rel
+                                 for rel, requirements in _INTERVAL_TO_POINT.items()
+                                 if set(requirements).issubset(relation)]
 
+            self._relation = [_SETTLE_RELATION[rel] for rel in interval_relation]
+
+        # if it is a complete interval relation
         elif relation in _INTERVAL_TO_POINT_COMPLETE.values():
-            self._relation = [rel
-                              for rel, requirements in _INTERVAL_TO_POINT_COMPLETE.items()
-                              if set(requirements).issubset(relation)][0]
+            [interval_relation] = [rel
+                                 for rel, requirements in _INTERVAL_TO_POINT_COMPLETE.items()
+                                 if set(requirements).issubset(relation)]
+
+            self._relation = _SETTLE_RELATION[interval_relation]
 
         else:
             raise ValueError(f"{relation} is not a valid relation.")
@@ -407,7 +432,7 @@ class TLink:
         """This method is usefull to remove redundent relations. For instances "OVERLAP" and "SIMULTANIUES" are the same
         temporal relation but there are datasets that use both.
         """
-        self.relation = _ASSERT_RELATION[self.relation]
+        self.relation = _SETTLE_RELATION[self.relation]
 
     def _infer_task(self):
         """ Infer the task based on source and target id.
@@ -437,7 +462,7 @@ class Document:
 
     Attributes:
 
-        - path
+        - paths
 
     """
 
@@ -457,7 +482,9 @@ class Document:
         self._expression_idxs = self._expression_indexes()
         self.timexs = self._get_timexs()
         self.events = self._get_events()
-        self.expressions = {exp.id: exp for exp in self.timexs + self.events}
+
+        self.expressions_uid = {exp.id: exp for exp in self.timexs + self.events}
+        self.expressions_id = {**{exp.id: exp for exp in self.timexs}, **{exp.eid: exp for exp in self.events}}
 
         self.tlinks = self._get_tlinks()
 
@@ -537,7 +564,7 @@ class Document:
         # remove unnecessary tags.
         root = self._remove_xml_tags(root)
 
-        # Find indexes of the expressions.
+        # Find indexes of the expressions_uid.
         text_blocks = list()
         start = 0
         for txt in root.itertext():
@@ -596,9 +623,9 @@ class Document:
 
                 attribs = []
                 for make_inst in make_insts[event_id]:
-                     attrib_copy = attrib.copy()
-                     attrib_copy.update(make_inst)
-                     attribs += [attrib_copy]
+                    attrib_copy = attrib.copy()
+                    attrib_copy.update(make_inst)
+                    attribs += [attrib_copy]
 
             else:
                 attribs = [attrib]
@@ -633,8 +660,18 @@ class Document:
             src_id, tgt_id = self._get_source_and_target_exp(tlink)
 
             # find Event/ Timex with those ids
-            source = self.expressions[src_id]
-            target = self.expressions[tgt_id]
+            if src_id not in self.expressions_uid:
+                msg = f"Expression {src_id} of tlink {tlink.attrib['lid']} from doc in {self.path} was not found"
+                warnings.warn(msg)
+                continue
+
+            elif tgt_id not in self.expressions_uid:
+                msg = f"Expression {tgt_id} of tlink {tlink.attrib['lid']} from doc in {self.path} was not found"
+                warnings.warn(msg)
+                continue
+
+            source = self.expressions_uid[src_id]
+            target = self.expressions_uid[tgt_id]
 
             tlink = TLink(
                 id=tlink.attrib['lid'],
@@ -759,12 +796,10 @@ class Document:
 
 
 TimeBankDocument = Document
-AquaintDocument = Document
-TempEval3Document = Document
 TimeBankPTDocument = Document
 
 
-class TimeBank12Document(Document):
+class TempEval3Document(Document):
 
     def _get_source_and_target_exp(self, tlink):
 
@@ -782,3 +817,7 @@ class TimeBank12Document(Document):
 
         return src_id, tgt_id
 
+
+AquaintDocument = TempEval3Document
+PlatinumDocument = TempEval3Document
+TimeBank12Document = TempEval3Document
