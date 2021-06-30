@@ -59,7 +59,7 @@ PATHS = {
 
     'timebank-pt': [
         'data/TimeBankPT/train',
-        'data/TimeBankPT/test'
+        'data/TimeBankPT/tests'
     ],
 
     'tempeval-3': [

@@ -11,7 +11,7 @@ def load_data(path) -> dict:
     """ Read TempEval-3 datasets.
 
     :param path:
-    :return: A dictionary with keys 'train' and 'test'.
+    :return: A dictionary with keys 'train' and 'tests'.
     """
     paths = {
         'train': {
@@ -19,7 +19,7 @@ def load_data(path) -> dict:
             'timebank': os.path.join(path, r'Train/TBAQ-cleaned/TimeBank'),
             'train_t3': os.path.join(path, r'Train/trainT3')
         },
-        'test': {
+        'tests': {
             'platinum': os.path.join(path, r'Test/TempEval-3-Platinum')
         }
     }

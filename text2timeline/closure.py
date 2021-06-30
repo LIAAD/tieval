@@ -1,0 +1,3 @@
+
+class TemporalClosure:
+    pass

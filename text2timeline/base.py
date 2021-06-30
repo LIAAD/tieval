@@ -10,205 +10,13 @@ import warnings
 
 import nltk
 
-# constants representing the start point and end point of an interval
-_START = 0
-_END = 1
-
-# Map relations to unique names.
-_SETTLE_RELATION = {
-    'OVERLAP': 'OVERLAP',
-    'BEGINS': 'BEGINS',
-    'BEFORE': 'BEFORE',
-    'b': 'BEFORE',
-    'CONTAINS': 'INCLUDES',
-    'IDENTITY': 'SIMULTANEOUS',
-    'EQUAL': 'SIMULTANEOUS',
-    'AFTER': 'AFTER',
-    'a': 'AFTER',
-    'BEGINS-ON': 'BEGINS-ON',
-    'SIMULTANEOUS': 'SIMULTANEOUS',
-    's': 'SIMULTANEOUS',
-    'INCLUDES': 'INCLUDES',
-    'i': 'INCLUDES',
-    'DURING': 'SIMULTANEOUS',
-    'ENDS-ON': 'ENDS-ON',
-    'BEGUN_BY': 'BEGUN_BY',
-    'ENDED_BY': 'ENDED_BY',
-    'DURING_INV': 'SIMULTANEOUS',
-    'ENDS': 'ENDS',
-    'IS_INCLUDED': 'IS_INCLUDED',
-    'ii': 'IS_INCLUDED',
-    'IBEFORE': 'IBEFORE',
-    'IAFTER': 'IAFTER',
-    'VAGUE': 'VAGUE',
-    'v': 'VAGUE',
-    'BEFORE-OR-OVERLAP': 'BEFORE-OR-OVERLAP',
-    'OVERLAP-OR-AFTER': 'OVERLAP-OR-AFTER'
-}
-
-_INTERVAL_RELATIONS = list(_SETTLE_RELATION.keys())
-
-# Mapping from interval relation names to point relations.
-# For example, BEFORE means that the first interval's end is before the second interval's start
-_INTERVAL_TO_POINT = {
-    "BEFORE": [(_END, "<", _START)],
-    "AFTER": [(_START, '>', _END)],
-    "IBEFORE": [(_END, "=", _START)],
-    "IAFTER": [(_START, "=", _END)],
-    "INCLUDES": [(_START, "<", _START), (_END, '>', _END)],
-    "IS_INCLUDED": [(_START, '>', _START), (_END, "<", _END)],
-    "BEGINS-ON": [(_START, "=", _START)],
-    "ENDS-ON": [(_END, "=", _END)],
-    "BEGINS": [(_START, "=", _START), (_END, "<", _END)],
-    "BEGUN_BY": [(_START, "=", _START), (_END, '>', _END)],
-    "ENDS": [(_START, '>', _START), (_END, "=", _END)],
-    "ENDED_BY": [(_START, "<", _START), (_END, "=", _END)],
-    "SIMULTANEOUS": [(_START, "=", _START), (_END, "=", _END)],
-    "OVERLAP": [(_START, "<", _END), (_END, '>', _START)],
-    "VAGUE": [],
-    'BEFORE-OR-OVERLAP': [(_START, '<', _START), (_END, '<', _END)],
-    'OVERLAP-OR-AFTER': [(_START, '>', _START), (_END, '>', _END)]
-}
-
-_INTERVAL_TO_POINT_COMPLETE = {
-    "BEFORE": [
-        (_START, "<", _START),
-        (_START, "<", _END),
-        (_END, "<", _START),
-        (_END, "<", _END)
-    ],
-    "AFTER": [
-        (_START, ">", _START),
-        (_START, ">", _END),
-        (_END, ">", _START),
-        (_END, ">", _END)
-    ],
-    "IBEFORE": [
-        (_START, "<", _START),
-        (_START, "=", _END),
-        (_END, "<", _START),
-        (_END, "<", _END)
-    ],
-    "IAFTER": [
-        (_START, ">", _START),
-        (_START, "=", _END),
-        (_END, ">", _START),
-        (_END, ">", _END)
-    ],
-    "INCLUDES": [
-        (_START, "<", _START),
-        (_START, "<", _END),
-        (_END, ">", _START),
-        (_END, ">", _END)
-    ],
-    "IS_INCLUDED": [
-        (_START, ">", _START),
-        (_START, "<", _END),
-        (_END, ">", _START),
-        (_END, "<", _END)
-    ],
-    "BEGINS-ON": [
-        (_START, "=", _START),
-        (_START, "<", _END),
-        (_END, ">", _START),
-        (_END, None, _END)
-    ],
-    "ENDS-ON": [
-        (_START, None, _START),
-        (_START, "<", _END),
-        (_END, ">", _START),
-        (_END, "=", _END)
-    ],
-    "BEGINS": [
-        (_START, "=", _START),
-        (_START, "<", _END),
-        (_END, ">", _START),
-        (_END, "<", _END)
-    ],
-    "BEGUN_BY": [
-        (_START, "=", _START),
-        (_START, "<", _END),
-        (_END, ">", _START),
-        (_END, ">", _END)
-    ],
-    "ENDS": [
-        (_START, ">", _START),
-        (_START, "<", _END),
-        (_END, ">", _START),
-        (_END, "=", _END)
-    ],
-    "ENDED_BY": [
-        (_START, "<", _START),
-        (_START, "<", _END),
-        (_END, ">", _START),
-        (_END, "=", _END)
-    ],
-
-    "SIMULTANEOUS": [
-        (_START, "=", _START),
-        (_START, "<", _END),
-        (_END, ">", _START),
-        (_END, "=", _END)
-    ],
-    "OVERLAP": [
-        (_START, "<", _START),
-        (_START, "<", _END),
-        (_END, ">", _START),
-        (_END, "<", _END)
-    ],
-    "VAGUE": [
-        (_START, None, _START),
-        (_START, None, _END),
-        (_END, None, _START),
-        (_END, None, _END)
-    ],
-    'BEFORE-OR-OVERLAP': [
-        (_START, '<', _START),
-        (_START, '<', _END),
-        (_END, None, _START),
-        (_END, '<', _END)
-    ],
-    'OVERLAP-OR-AFTER': [
-        (_START, '>', _START),
-        (_START, None, _END),
-        (_END, '>', _START),
-        (_END, '>', _END)
-    ]
-}
-
-_POINT_RELATIONS = list(_INTERVAL_TO_POINT.values()) + \
-                   list(_INTERVAL_TO_POINT_COMPLETE.values())
-
-# transitivity table for point relations
-_POINT_TRANSITIONS = {
-    '<': {'<': '<', '=': '<', '>': None},
-    '=': {'<': '<', '=': '=', '>': '>'},
-    '>': {'>': '>', '=': '>', '<': None}
-}
-
-_INVERSE_POINT_RELATION = {
-    '<': '>',
-    '>': '<',
-    '=': '='
-}
-
-_INVERSE_INTERVAL_RELATION = {
-    'AFTER': 'BEFORE',
-    'BEFORE': 'AFTER',
-    'BEGINS': 'BEGUN_BY',
-    'BEGINS-ON': 'BEGINS-ON',
-    'BEGUN_BY': 'BEGINS',
-    'ENDED_BY': 'ENDS',
-    'ENDS': 'ENDED_BY',
-    'ENDS-ON': 'ENDS-ON',
-    'IAFTER': 'IBEFORE',
-    'IBEFORE': 'IAFTER',
-    'INCLUDES': 'IS_INCLUDED',
-    'IS_INCLUDED': 'INCLUDES',
-    'SIMULTANEOUS': 'SIMULTANEOUS',
-    'OVERLAP': 'OVERLAP',
-    'VAGUE': 'VAGUE'
-}
+from text2timeline.basics import _POINT_TRANSITIONS
+from text2timeline.basics import _INTERVAL_TO_POINT_COMPLETE
+from text2timeline.basics import _INVERSE_INTERVAL_RELATION
+from text2timeline.basics import _INTERVAL_RELATIONS
+from text2timeline.basics import _SETTLE_RELATION
+from text2timeline.basics import _INTERVAL_TO_POINT
+from text2timeline.basics import _INVERSE_POINT_RELATION
 
 
 PointRelation = List[Tuple[int, str, int]]
@@ -218,16 +26,15 @@ IntervalRelation = str
 class Timex:
 
     def __init__(self, attributes: Dict):
-        attr = collections.defaultdict(lambda: None, attributes)
 
-        self.tid = attr['tid']
-        self.type = attr['type']
-        self.value = attr['value']
-        self.temporal_function = attr['temporalFunction']
-        self.function_in_document = attr['functionInDocument']
-        self.anchor_time_id = attr['anchorTimeID']
-        self.text = attr['text']
-        self.endpoints = attr['endpoints']
+        self.tid = attributes.get('tid')
+        self.type = attributes.get('type')
+        self.value = attributes.get('value')
+        self.temporal_function = attributes.get('temporalFunction')
+        self.function_in_document = attributes.get('functionInDocument')
+        self.anchor_time_id = attributes.get('anchorTimeID')
+        self.text = attributes.get('text')
+        self.endpoints = attributes.get('endpoints')
 
     def __repr__(self):
         return f"Timex(tid={self.tid})"
@@ -245,19 +52,19 @@ class Timex:
 
 
 class Event:
-    def __init__(self, attributes: dict):
-        attr = collections.defaultdict(lambda: None, attributes)
 
-        self.eid = attr['eid']
-        self.eiid = attr['eiid']
-        self.family = attr['class']
-        self.stem = attr['stem']
-        self.aspect = attr['aspect']
-        self.tense = attr['tense']
-        self.polarity = attr['polarity']
-        self.pos = attr['pos']
-        self.text = attr['text']
-        self.endpoints = attr['endpoints']
+    def __init__(self, attributes: dict):
+
+        self.eid = attributes.get('eid')
+        self.eiid = attributes.get('eiid')
+        self.family = attributes.get('class')
+        self.stem = attributes.get('stem')
+        self.aspect = attributes.get('aspect')
+        self.tense = attributes.get('tense')
+        self.polarity = attributes.get('polarity')
+        self.pos = attributes.get('pos')
+        self.text = attributes.get('text')
+        self.endpoints = attributes.get('endpoints')
 
     def __repr__(self):
         return f"Event(eid={self.eid})"
@@ -429,12 +236,6 @@ class TLink:
     def point_relation_complete(self):
         return _INTERVAL_TO_POINT_COMPLETE[self.relation]
 
-    def normalize_relation(self):
-        """This method is usefull to remove redundent relations. For instances "OVERLAP" and "SIMULTANIUES" are the same
-        temporal relation but there are datasets that use both.
-        """
-        self.relation = _SETTLE_RELATION[self.relation]
-
     def _infer_task(self):
         """ Infer the task based on source and target id.
         The task ontology is as follows:
@@ -537,7 +338,7 @@ class Document:
 
     def _get_sentences(self) -> List[Tuple]:
         sentences = nltk.sent_tokenize(self.text)
-        sentence_idxs = list()
+        sentence_idxs = []
         for sent in sentences:
             start = self.text.find(sent)
             end = start + len(sent)
@@ -566,7 +367,7 @@ class Document:
         root = self._remove_xml_tags(root)
 
         # Find indexes of the expressions_uid.
-        text_blocks = list()
+        text_blocks = []
         start = 0
         for txt in root.itertext():
             end = start + len(txt)
@@ -574,7 +375,7 @@ class Document:
             start = end
 
         # Get the tags of each expression.
-        text_tags = list()
+        text_tags = []
         elements = [elem for elem in list(root.iterfind('.//*'))]
 
         for element in elements:
@@ -613,7 +414,7 @@ class Document:
         # Most of event attributes are in <MAKEINSTACE> tag.
         make_insts = self._get_make_instance()
 
-        events = list()
+        events = []
         for event in self.xml_root.findall('.//EVENT'):
             attrib = event.attrib.copy()
             event_id = attrib['eid']
@@ -636,7 +437,7 @@ class Document:
 
     def _get_timexs(self) -> dict:
 
-        timexs = list()
+        timexs = []
         for timex in self.xml_root.findall('.//TIMEX3'):
             attrib = timex.attrib.copy()
             time_id = attrib['tid']
@@ -654,8 +455,7 @@ class Document:
         :return:
         """
 
-        tlinks = list()
-
+        tlinks = []
         for tlink in self.xml_root.findall('.//TLINK'):
 
             src_id, tgt_id = self._get_source_and_target_exp(tlink)
@@ -796,10 +596,6 @@ class Document:
         return {f'lc{idx}': tlink for idx, tlink in enumerate(tlinks)}
 
 
-TimeBankDocument = Document
-TimeBankPTDocument = Document
-
-
 class TempEval3Document(Document):
 
     def _get_source_and_target_exp(self, tlink):
@@ -819,6 +615,8 @@ class TempEval3Document(Document):
         return src_id, tgt_id
 
 
+TimeBankDocument = Document
+TimeBankPTDocument = Document
 AquaintDocument = TempEval3Document
 PlatinumDocument = TempEval3Document
 TimeBank12Document = TempEval3Document
