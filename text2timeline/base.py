@@ -1,22 +1,19 @@
 import collections
 import re
-from typing import Dict
-from typing import List
-from typing import Tuple
-from typing import Union
+from typing import Dict, List, Tuple, Union
 from xml.etree import ElementTree as ET
 import copy
 import warnings
 
 import nltk
 
-from text2timeline.basics import _POINT_TRANSITIONS
-from text2timeline.basics import _INTERVAL_TO_POINT_COMPLETE
-from text2timeline.basics import _INVERSE_INTERVAL_RELATION
-from text2timeline.basics import _INTERVAL_RELATIONS
-from text2timeline.basics import _SETTLE_RELATION
-from text2timeline.basics import _INTERVAL_TO_POINT
-from text2timeline.basics import _INVERSE_POINT_RELATION
+from text2timeline.constants import _POINT_TRANSITIONS
+from text2timeline.constants import _INTERVAL_TO_POINT_COMPLETE
+from text2timeline.constants import _INVERSE_INTERVAL_RELATION
+from text2timeline.constants import _INTERVAL_RELATIONS
+from text2timeline.constants import _SETTLE_RELATION
+from text2timeline.constants import _INTERVAL_TO_POINT
+from text2timeline.constants import _INVERSE_POINT_RELATION
 
 
 PointRelation = List[Tuple[int, str, int]]
@@ -53,7 +50,7 @@ class Timex:
 
 class Event:
 
-    def __init__(self, attributes: dict):
+    def __init__(self, attributes: Dict):
 
         self.eid = attributes.get('eid')
         self.eiid = attributes.get('eiid')
@@ -75,10 +72,6 @@ class Event:
             return self.eiid
 
         return self.eid
-
-    @property
-    def is_dct(self):
-        return False
 
 
 class TLink:
@@ -235,26 +228,6 @@ class TLink:
     @property
     def point_relation_complete(self):
         return _INTERVAL_TO_POINT_COMPLETE[self.relation]
-
-    def _infer_task(self):
-        """ Infer the task based on source and target id.
-        The task ontology is as follows:
-            task A: event <-> event relations
-            task B: timex <-> timex relations
-            task C: event <-> timex relations
-            task D: dct <-> event/timex relations
-
-        :return:
-        """
-        scr, tgt = self.source, self.target
-        if scr.is_dct or tgt.is_dct:
-            return 'D'
-        elif (scr.id[0] == 'e') and (tgt.id[0] == 'e'):
-            return 'A'
-        elif (scr.id[0] == 't') and (tgt.id[0] == 't'):
-            return 'B'
-        else:
-            return 'C'
 
 
 class Document:
@@ -617,6 +590,7 @@ class TempEval3Document(Document):
 
 TimeBankDocument = Document
 TimeBankPTDocument = Document
+
 AquaintDocument = TempEval3Document
 PlatinumDocument = TempEval3Document
 TimeBank12Document = TempEval3Document

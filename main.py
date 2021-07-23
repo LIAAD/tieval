@@ -4,6 +4,8 @@ from pprint import pprint
 
 # load dataset
 reader = DatasetReader()
-reader.read(['timebank-dense', 'timebank-pt', 'aquaint'])
+reader.read('timebank')
 
 pprint(reader.datasets)
+
+reader.datasets[0]
