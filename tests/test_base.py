@@ -1,5 +1,7 @@
 import unittest
 
+import pytest
+
 from text2timeline.base import Event
 from text2timeline.base import Timex
 from text2timeline.base import TLink

@@ -1,11 +1,5 @@
-import collections
-import re
 from typing import Dict, List, Tuple, Union
-from xml.etree import ElementTree as ET
-import copy
-import warnings
-
-import nltk
+from dataclasses import dataclass
 
 from text2timeline.constants import _POINT_TRANSITIONS
 from text2timeline.constants import _INTERVAL_TO_POINT_COMPLETE
@@ -13,7 +7,6 @@ from text2timeline.constants import _INVERSE_INTERVAL_RELATION
 from text2timeline.constants import _INTERVAL_RELATIONS
 from text2timeline.constants import _SETTLE_RELATION
 from text2timeline.constants import _INTERVAL_TO_POINT
-from text2timeline.constants import _INVERSE_POINT_RELATION
 
 
 PointRelation = List[Tuple[int, str, int]]
@@ -21,6 +14,7 @@ IntervalRelation = str
 
 
 class Timex:
+    """Object that represents a time expression."""
 
     def __init__(self, attributes: Dict):
 
@@ -49,6 +43,7 @@ class Timex:
 
 
 class Event:
+    """Object that represents an event."""
 
     def __init__(self, attributes: Dict):
 
@@ -74,9 +69,51 @@ class Event:
         return self.eid
 
 
+# TODO: make TLink able to handel multiple interval relations
+class TemporalRelation:
+    """Descriptor for temporal relation.
+
+    The relation can be passed as:
+        - interval relation (ex: AFTER, BEFORE, ...)
+        - point relation (ex: [(1, '<', 0)], )
+        - complete point relation (ex: [(0, '<', 0), (1, '<', 0), (0, '<', 1), (1, '<', 1)])
+    """
+
+    def __get__(self, instance, owner):
+        return self._relation
+
+    def __set__(self, instance, relation):
+        self._relation = self._validate(relation)
+        if not self._relation:
+            raise ValueError(f"{relation} is not valid")
+
+    @staticmethod
+    def _validate(relation):
+
+        # if it is an interval relation
+        if relation in _INTERVAL_RELATIONS:
+            return _SETTLE_RELATION[relation]
+
+        # if it is point relation
+        elif relation in _INTERVAL_TO_POINT.values():
+            interval_relation = [rel
+                                 for rel, requirements in _INTERVAL_TO_POINT.items()
+                                 if set(requirements).issubset(relation)]
+
+            return [_SETTLE_RELATION[rel] for rel in interval_relation]
+
+        # if it is a complete interval relation
+        elif relation in _INTERVAL_TO_POINT_COMPLETE.values():
+            [interval_relation] = [rel
+                                   for rel, requirements in _INTERVAL_TO_POINT_COMPLETE.items()
+                                   if set(requirements).issubset(relation)]
+
+            return _SETTLE_RELATION[interval_relation]
+
+
 class TLink:
     """
-    Class that represents a temporal link.
+    Object that represents a temporal link.
 
     ...
 
@@ -95,23 +132,18 @@ class TLink:
         that defines the interval relation between source and target):
     """
 
+    relation = TemporalRelation()
+
     def __init__(self,
                  id: str,
                  source: Union[Timex, Event],
                  target: Union[Timex, Event],
-                 relation: Union[IntervalRelation, PointRelation],
-                 **kwargs):
+                 relation: Union[IntervalRelation, PointRelation]):
 
         self.id = id
         self.source = source
         self.target = target
-
-        self._relation = None
         self.relation = relation
-
-        for key, value in kwargs.items():
-            if key not in self.__dict__:
-                setattr(self, key, value)
 
     def __str__(self):
         return f"{self.source} ---{self.relation}--> {self.target}"
@@ -120,7 +152,7 @@ class TLink:
         return f"TLink(id={self.id})"
 
     def __and__(self, other):
-        """ Infer the relation between two TLINKS.
+        """ Infer the relation between two TLinks.
 
         If a relation can be infered it will return a Tlink between source of the first Tlink and target of the second
         Tlink.
@@ -192,36 +224,6 @@ class TLink:
         )
 
     @property
-    def relation(self):
-        return self._relation
-
-    @relation.setter
-    def relation(self, relation):
-
-        # if it is an interval relation
-        if relation in _INTERVAL_RELATIONS:
-            self._relation = _SETTLE_RELATION[relation]
-
-        # if it is point relation
-        elif relation in _INTERVAL_TO_POINT.values():
-            interval_relation = [rel
-                                 for rel, requirements in _INTERVAL_TO_POINT.items()
-                                 if set(requirements).issubset(relation)]
-
-            self._relation = [_SETTLE_RELATION[rel] for rel in interval_relation]
-
-        # if it is a complete interval relation
-        elif relation in _INTERVAL_TO_POINT_COMPLETE.values():
-            [interval_relation] = [rel
-                                 for rel, requirements in _INTERVAL_TO_POINT_COMPLETE.items()
-                                 if set(requirements).issubset(relation)]
-
-            self._relation = _SETTLE_RELATION[interval_relation]
-
-        else:
-            raise ValueError(f"{relation} is not a valid relation.")
-
-    @property
     def point_relation(self):
         return _INTERVAL_TO_POINT[self.relation]
 
@@ -230,38 +232,15 @@ class TLink:
         return _INTERVAL_TO_POINT_COMPLETE[self.relation]
 
 
+@dataclass
 class Document:
-    """
+    """An temporally annotated document."""
 
-    A .tml document.
-
-    Attributes:
-
-        - paths
-
-    """
-
-    def __init__(self, path: str):
-        self.path = path
-
-        self.tokenizer = nltk.tokenize.WordPunctTokenizer()
-        self.xml_root = ET.parse(path).getroot()
-        self.name = self._get_name()
-
-        self.text = self._get_text()
-        self.sentences = self._get_sentences()
-        self.tokens = self._get_tokens()
-
-        self.dct = self._get_dct()
-
-        self._expression_idxs = self._expression_indexes()
-        self.timexs = self._get_timexs()
-        self.events = self._get_events()
-
-        self.expressions_uid = {exp.id: exp for exp in self.timexs + self.events}
-        self.expressions_id = {**{exp.id: exp for exp in self.timexs}, **{exp.eid: exp for exp in self.events}}
-
-        self.tlinks = self._get_tlinks()
+    name: str
+    text: str
+    events: List[Event]
+    timexs: List[Timex]
+    tlinks: List[TLink]
 
     def __repr__(self):
         return f'Document(name={self.name})'
@@ -269,210 +248,14 @@ class Document:
     def __str__(self):
         return self.text.strip()
 
-    def _get_name(self):
-        name = self.path.split('/')[-1].strip('.tml')
-        return name
-
-    def _get_dct(self):
+    @property
+    def dct(self):
         """Extract document creation time"""
+        for timex in self.timexs:
+            if timex.is_dct:
+                return timex
 
-        # TODO: improve this syntax
-
-        # dct is always the first TIMEX3 element
-        dct = self.xml_root.find(".//TIMEX3[@functionInDocument='CREATION_TIME']")
-
-        if dct is None:
-            dct = self.xml_root.find(".//TIMEX3[@functionInDocument='PUBLICATION_TIME']")
-
-        return Timex(dct.attrib)
-
-    def _remove_xml_tags(self, root: ET.Element, tags2keep: List[str] = ['TIMEX3', 'EVENT']) -> ET.Element:
-        """ Removes tags all tags in xml_root that are not on tags2keep list.
-
-        :param root:
-        :param tags2keep:
-        :return:
-        """
-        raw_root = ET.tostring(root, encoding='unicode')
-
-        tags2remove = set(elem.tag for elem in root.findall('.//*') if elem.tag not in tags2keep)
-        for tag in tags2remove:
-            raw_root = re.sub(f'</?{tag}>|</?{tag}\s.*?>', '', raw_root)
-
-        return ET.fromstring(raw_root)
-
-    def _get_text(self) -> str:
-        """
-        Returns the raw text of the document
-        :return:
-        """
-        text = ''.join(list(self.xml_root.itertext()))
-        return text
-
-    def _get_sentences(self) -> List[Tuple]:
-        sentences = nltk.sent_tokenize(self.text)
-        sentence_idxs = []
-        for sent in sentences:
-            start = self.text.find(sent)
-            end = start + len(sent)
-            sentence_idxs.append((start, end, sent))
-        return sentence_idxs
-
-    def _get_tokens(self) -> List[Tuple]:
-        """
-        Returns the tokens with their respective start and end positions.
-        :return:
-        """
-        spans = self.tokenizer.span_tokenize(self.text)
-        tokens = [(start, end, self.text[start:end]) for start, end in spans]
-        return tokens
-
-    def _expression_indexes(self) -> dict:
-        """
-        Finds start and end indexes of each expression (EVENT or TIMEX).
-
-        :return:
-        """
-
-        root = copy.deepcopy(self.xml_root)
-
-        # remove unnecessary tags.
-        root = self._remove_xml_tags(root)
-
-        # Find indexes of the expressions_uid.
-        text_blocks = []
-        start = 0
-        for txt in root.itertext():
-            end = start + len(txt)
-            text_blocks.append((start, end, txt))
-            start = end
-
-        # Get the tags of each expression.
-        text_tags = []
-        elements = [elem for elem in list(root.iterfind('.//*'))]
-
-        for element in elements:
-
-            # there are cases where there is a nested tag <EVENT><NUMEX>example</NUMEX></EVENT>
-            text = ' '.join(list(element.itertext()))
-
-            if element.attrib and element.tag == 'EVENT':
-                text_tags.append((text, element.attrib['eid']))
-
-            elif element.attrib and element.tag == 'TIMEX3':
-                text_tags.append((text, element.attrib['tid']))
-
-        # Join the indexes with the tags.
-        expression_idxs = {self.dct.id: (-1, -1)}  # Initialize with the position of DCT.
-        while text_tags:
-            txt, tag_id = text_tags.pop(0)
-            for idx, (start, end, txt_sch) in enumerate(text_blocks):
-                if txt == txt_sch:
-                    expression_idxs[tag_id] = (start, end)
-                    # remove the items that were found.
-                    text_blocks = text_blocks[idx + 1:]
-                    break
-
-        return expression_idxs
-
-    def _get_make_instance(self) -> dict:
-        make_insts = collections.defaultdict(list)
-        for make_inst in self.xml_root.findall('.//MAKEINSTANCE'):
-            eid = make_inst.attrib['eventID']
-            make_insts[eid].append(make_inst.attrib)
-
-        return make_insts
-
-    def _get_events(self) -> dict:
-        # Most of event attributes are in <MAKEINSTACE> tag.
-        make_insts = self._get_make_instance()
-
-        events = []
-        for event in self.xml_root.findall('.//EVENT'):
-            attrib = event.attrib.copy()
-            event_id = attrib['eid']
-            attrib['text'] = event.text
-            attrib['endpoints'] = self._expression_idxs[event_id]
-
-            if event_id in make_insts:
-
-                attribs = []
-                for make_inst in make_insts[event_id]:
-                    attrib_copy = attrib.copy()
-                    attrib_copy.update(make_inst)
-                    attribs += [attrib_copy]
-
-            else:
-                attribs = [attrib]
-
-            events += [Event(attrib) for attrib in attribs]
-        return events
-
-    def _get_timexs(self) -> dict:
-
-        timexs = []
-        for timex in self.xml_root.findall('.//TIMEX3'):
-            attrib = timex.attrib.copy()
-            time_id = attrib['tid']
-            attrib['text'] = timex.text
-            attrib['endpoints'] = self._expression_idxs[time_id]
-            timexs.append(Timex(attrib))
-        return timexs
-
-    def _get_tlinks(self) -> dict:
-        """
-        Get keys for each dataset
-
-        np.unique([key for tlink in self.xml_root.findall('.//TLINK') for key in tlink.attrib])
-
-        :return:
-        """
-
-        tlinks = []
-        for tlink in self.xml_root.findall('.//TLINK'):
-
-            src_id, tgt_id = self._get_source_and_target_exp(tlink)
-
-            # find Event/ Timex with those ids
-            if src_id not in self.expressions_uid:
-                msg = f"Expression {src_id} of tlink {tlink.attrib['lid']} from doc in {self.path} was not found"
-                warnings.warn(msg)
-                continue
-
-            elif tgt_id not in self.expressions_uid:
-                msg = f"Expression {tgt_id} of tlink {tlink.attrib['lid']} from doc in {self.path} was not found"
-                warnings.warn(msg)
-                continue
-
-            source = self.expressions_uid[src_id]
-            target = self.expressions_uid[tgt_id]
-
-            tlink = TLink(
-                id=tlink.attrib['lid'],
-                source=source,
-                target=target,
-                relation=tlink.attrib['relType'],
-                **tlink.attrib
-            )
-
-            tlinks += [tlink]
-
-        return tlinks
-
-    def _get_source_and_target_exp(self, tlink):
-
-        # scr_id
-        src_id = tlink.attrib['eventID']
-
-        # tgt_id
-        if 'relatedToEvent' in tlink.attrib:
-            tgt_id = tlink.attrib['relatedToEvent']
-        else:
-            tgt_id = tlink.attrib['relatedToTime']
-
-        return src_id, tgt_id
-
-    def augment_tlinks(self, relations: List[str] = None):
+    def augment_tlinks(self, relations: List[str] = None) -> None:
         """ Augments the document tlinks by adding the symmetic relation of every tlink.
         For example if we have the tlink with A --BEFORE--> B the augmentation will add B --AFTER--> A to the document
         tlink list.
@@ -500,97 +283,12 @@ class Document:
 
         self.tlinks += inv_tlinks
 
-    def limit_task(self, tasks):
-        """Limits the document to have only tlinks corresponding to the tasks in the task list.
-
-        :param tasks:
-        :return:
-        """
-        self.tlinks = [tlink for tlink in self.tlinks if tlink.task in tasks]
-
-    def temporal_closure(self, tlinks) -> Dict:
-        # TODO: Keep the original labels when the inferred are more ambiguous.
-        # Remove duplicate temporal links.
-        lids = set()
-        relations = set()
-        for lid, tlink in tlinks.items():
-            scr = tlink.source
-            tgt = tlink.target
-            if (scr, tgt) not in relations and (tgt, scr) not in relations:
-                lids.add(lid)
-                relations.add((scr, tgt))
-
-        tlinks = {lid: tlink for lid, tlink in tlinks.items() if lid in lids}
-
-        # convert interval relations to point relations
-        new_relations = {((tlink.source, scr_ep), r, (tlink.target, tgt_ep))
-                         for lid, tlink in tlinks.items()
-                         for scr_ep, r, tgt_ep in tlink.point_relation}
-
-        # Add the symmetric of each relation. A < B ---> B > A
-        {(tgt, _INVERSE_POINT_RELATION[rel], scr) for scr, rel, tgt in new_relations if rel != '='}
-
-        # repeatedly apply point transitivity rules until no new relations can be inferred
-        point_relations = set()
-        point_relations_index = collections.defaultdict(set)
-        while new_relations:
-
-            # update the result and the index with any new relations found on the last iteration
-            point_relations.update(new_relations)
-            for point_relation in new_relations:
-                point_relations_index[point_relation[0]].add(point_relation)
-
-            # infer any new transitive relations, e.g., if A < B and B < C then A < C
-            new_relations = set()
-            for point1, relation12, point2 in point_relations:
-                for _, relation23, point3 in point_relations_index[point2]:
-                    relation13 = _POINT_TRANSITIONS[relation12][relation23]
-                    if not relation13:
-                        continue
-                    new_relation = (point1, relation13, point3)
-                    if new_relation not in point_relations:
-                        new_relations.add(new_relation)
-
-        # Combine point relations.
-        combined_point_relations = collections.defaultdict(list)
-        for ((scr, scr_ep), rel, (tgt, tgt_ep)) in point_relations:
-            if scr == tgt:
-                continue
-            combined_point_relations[(scr, tgt)] += [(scr_ep, rel, tgt_ep)]
-
-        # Creat and store the valid temporal links.
-        tlinks = []
-        for (scr, tgt), point_relation in combined_point_relations.items():
-            tlink = TLink(scr, tgt, point_relation=point_relation)
-            if tlink.relation:
-                tlinks.append(tlink)
-
-        # Generate indexes for tlinks.
-        return {f'lc{idx}': tlink for idx, tlink in enumerate(tlinks)}
+    def temporal_closure(self):
+        pass
 
 
-class TempEval3Document(Document):
+@dataclass
+class Dataset:
+    """A compilation of documents that have temporal annotations."""
 
-    def _get_source_and_target_exp(self, tlink):
-
-        # scr_id
-        if 'eventInstanceID' in tlink.attrib:
-            src_id = tlink.attrib['eventInstanceID']
-        else:
-            src_id = tlink.attrib['timeID']
-
-        # tgt_id
-        if 'relatedToEventInstance' in tlink.attrib:
-            tgt_id = tlink.attrib['relatedToEventInstance']
-        else:
-            tgt_id = tlink.attrib['relatedToTime']
-
-        return src_id, tgt_id
-
-
-TimeBankDocument = Document
-TimeBankPTDocument = Document
-
-AquaintDocument = TempEval3Document
-PlatinumDocument = TempEval3Document
-TimeBank12Document = TempEval3Document
+    documents: List[Document]

@@ -54,7 +54,7 @@ _INTERVAL_TO_POINT = {
     "ENDED_BY": [(_START, "<", _START), (_END, "=", _END)],
     "SIMULTANEOUS": [(_START, "=", _START), (_END, "=", _END)],
     "OVERLAP": [(_START, "<", _END), (_END, '>', _START)],
-    "VAGUE": [],
+    "VAGUE": [(_START, None, _START), (_START, None, _END), (_END, None, _START), (_END, None, _END)],
     'BEFORE-OR-OVERLAP': [(_START, '<', _START), (_END, '<', _END)],
     'OVERLAP-OR-AFTER': [(_START, '>', _START), (_END, '>', _END)]
 }
