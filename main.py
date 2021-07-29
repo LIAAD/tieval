@@ -1,4 +1,11 @@
-from text2timeline.base import Event, Timex, TLink
+from text2timeline.entities import Event, Timex
+from text2timeline.links import TLink
+from text2timeline.temporal_relation import PointRelation
+
+
+p = PointRelation(">", "=", ">",  ">")
+
+
 
 source = Event({
     'eid': 'e1',
@@ -25,15 +32,5 @@ tlink = TLink(
     id='l70',
     source=source,
     target=target,
-    relation=[(1, '<', 0)]
+    relation=PointRelation(">", "=", ">",  ">")
 )
-
-print(tlink.relation)
-print(tlink.point_relation)
-
-tlink.__dict__
-
-dir(tlink)
-print(tlink.relation)
-
-tlink.point_relation
