@@ -178,15 +178,18 @@ _INVERSE_POINT_RELATION = {
 
 class ValidPointRelation:
 
-    def __init__(self):
-        self._relation = None
-        self._complete_relation = None
+    def __set_name__(self, owner, name):
+        self._name = name
 
     def __get__(self, instance, owner):
-        return self._relation
+        if instance is None:
+            return self
+        return instance.__dict__[self._name]
 
     def __set__(self, instance, relation):
+        self._complete_relation = self._complete(relation)
         self._validate(relation)
+        instance.__dict__[self._name] = self._complete_relation
 
     @staticmethod
     def _complete(relations):
@@ -222,11 +225,9 @@ class ValidPointRelation:
 
     def _validate(self, relation):
 
-        self._relation = self._complete(relation)
-
         # if the complete relation inferred a point relation different than the original
         # relations, the point relation is inconsistent a.k.a. not valid
-        for (src, rel, tgt), (_, inferred_rel, _) in zip(relation, self._relation):
+        for (src, rel, tgt), (_, inferred_rel, _) in zip(relation, self._complete_relation):
             if rel:
                 assert rel == inferred_rel, "Point relation is not valid."
 
@@ -250,27 +251,26 @@ class PointRelation:
             ("ts", "<", "te"),  # target start, target end
         ]
 
-        print(self.relation)
-
     def __eq__(self, other):
         return self.relation == other.relation
 
 
 class ValidIntervalRelation:
 
-    def __init__(self):
-        self._relation = None
+    def __set_name__(self, owner, name):
+        self._name = name
 
     def __get__(self, instance, owner):
-        return self._relation
+        if instance is None:
+            return self
+        return instance.__dict__[self._name]
 
     def __set__(self, instance, relation):
+        self._relation = _SETTLE_RELATION.get(relation)
         self._validate(relation)
+        instance.__dict__[self._name] =  self._relation
 
     def _validate(self, relation):
-
-        self._relation = _SETTLE_RELATION.get(relation)
-
         if self._relation is None:
             raise ValueError(f"Interval relation {relation} not supported.")
 
@@ -288,62 +288,42 @@ class IntervalRelation:
 
 # Mapping from interval relation names to point relations.
 # For example, BEFORE means that the first interval"s end is before the second interval"s start
-_INTERVAL_TO_POINT_RELATION = [
-    ("BEFORE", PointRelation(end_start="<")),
-    ("AFTER", PointRelation(start_end=">")),
-    ("IBEFORE", PointRelation(end_start="=")),
-    ("IAFTER", PointRelation(start_end="=")),
-    ("INCLUDES", PointRelation(start_start="<", end_end=">")),
-    ("IS_INCLUDED", PointRelation(start_start=">", end_end="<")),
-    ("BEGINS-ON", PointRelation(start_start="=")),
-    ("ENDS-ON", PointRelation(end_end="=")),
-    ("BEGINS", PointRelation(start_start="=", end_end="<")),
-    ("BEGUN_BY", PointRelation(start_start="=", end_end=">")),
-    ("ENDS", PointRelation(start_start=">", end_end="=")),
-    ("ENDED_BY", PointRelation(start_start="<", end_end="=")),
-    ("SIMULTANEOUS", PointRelation(start_start="=", end_end="=")),
-    ("OVERLAP", PointRelation(start_end="<", end_start=">")),
-    ("VAGUE", PointRelation()),
-    ("BEFORE-OR-OVERLAP", PointRelation(start_start="<", end_end="<")),
-    ("OVERLAP-OR-AFTER", PointRelation(start_start=">", end_end=">"))
-]
-
-# TODO: set attributo in descriptor
-for _int, _pnt in _INTERVAL_TO_POINT_RELATION:
-    print(_pnt.relation)
+_INTERVAL_TO_POINT_RELATION = {
+    "BEFORE": PointRelation(end_start="<"),
+    "AFTER": PointRelation(start_end=">"),
+    "IBEFORE": PointRelation(end_start="="),
+    "IAFTER": PointRelation(start_end="="),
+    "INCLUDES": PointRelation(start_start="<", end_end=">"),
+    "IS_INCLUDED": PointRelation(start_start=">", end_end="<"),
+    "BEGINS-ON": PointRelation(start_start="="),
+    "ENDS-ON": PointRelation(end_end="="),
+    "BEGINS": PointRelation(start_start="=", end_end="<"),
+    "BEGUN_BY": PointRelation(start_start="=", end_end=">"),
+    "ENDS": PointRelation(start_start=">", end_end="="),
+    "ENDED_BY": PointRelation(start_start="<", end_end="="),
+    "SIMULTANEOUS": PointRelation(start_start="=", end_end="="),
+    "OVERLAP": PointRelation(start_end="<", end_start=">"),
+    "VAGUE": PointRelation(),
+    "BEFORE-OR-OVERLAP": PointRelation(start_start="<", end_end="<"),
+    "OVERLAP-OR-AFTER": PointRelation(start_start=">", end_end=">")
+}
 
 
 class TemporalRelation:
 
     def __init__(self, relation: Union[PointRelation, IntervalRelation]):
 
+        # PointRelation is given as input
         if isinstance(relation, PointRelation):
             self.point = relation
-            self.interval = [int for int, pnt in _INTERVAL_TO_POINT_RELATION.items() if pnt.relation == self.point.relation]
+            [self.interval] = [IntervalRelation(int)
+                               for int, pnt in _INTERVAL_TO_POINT_RELATION.items()
+                               if pnt.relation == self.point.relation]
 
+        # IntervalRelation is given as input
         elif isinstance(relation, IntervalRelation):
             self.interval = relation
-            self.point = _INTERVAL_TO_POINT_RELATION(self.interval)
+            self.point = _INTERVAL_TO_POINT_RELATION[self.interval]
 
-
-
-p1 = PointRelation(end_start="<")
-p2 = PointRelation(end_start="<", start_start="<")
-
-tr = TemporalRelation(p1)
-
-tr.interval
-
-print(p1 == p2)
-
-p1.relation
-
-p3 = IntervalRelation("before")
-p4 = IntervalRelation("BEFORE")
-p3== p4
-print(p3)
-
-
-p1.relation
-p2.relation
-
+    def __str__(self):
+        return self.interval.relation
