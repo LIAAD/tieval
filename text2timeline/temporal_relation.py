@@ -1,10 +1,6 @@
 from typing import Union
 
-# constants representing the start point and end point of an interval
-_START = 0
-_END = 1
-
-# Map relations to unique names.
+# map interval relations to unique names
 _SETTLE_RELATION = {
     "OVERLAP": "OVERLAP",
     "BEGINS": "BEGINS",
@@ -36,132 +32,6 @@ _SETTLE_RELATION = {
     "OVERLAP-OR-AFTER": "OVERLAP-OR-AFTER"
 }
 
-_INTERVAL_RELATIONS = list(_SETTLE_RELATION.keys())
-
-_INTERVAL_TO_POINT_COMPLETE = {
-    "BEFORE": [
-        (_START, "<", _START),
-        (_START, "<", _END),
-        (_END, "<", _START),
-        (_END, "<", _END)
-    ],
-    "AFTER": [
-        (_START, ">", _START),
-        (_START, ">", _END),
-        (_END, ">", _START),
-        (_END, ">", _END)
-    ],
-    "IBEFORE": [
-        (_START, "<", _START),
-        (_START, "=", _END),
-        (_END, "<", _START),
-        (_END, "<", _END)
-    ],
-    "IAFTER": [
-        (_START, ">", _START),
-        (_START, "=", _END),
-        (_END, ">", _START),
-        (_END, ">", _END)
-    ],
-    "INCLUDES": [
-        (_START, "<", _START),
-        (_START, "<", _END),
-        (_END, ">", _START),
-        (_END, ">", _END)
-    ],
-    "IS_INCLUDED": [
-        (_START, ">", _START),
-        (_START, "<", _END),
-        (_END, ">", _START),
-        (_END, "<", _END)
-    ],
-    "BEGINS-ON": [
-        (_START, "=", _START),
-        (_START, "<", _END),
-        (_END, ">", _START),
-        (_END, None, _END)
-    ],
-    "ENDS-ON": [
-        (_START, None, _START),
-        (_START, "<", _END),
-        (_END, ">", _START),
-        (_END, "=", _END)
-    ],
-    "BEGINS": [
-        (_START, "=", _START),
-        (_START, "<", _END),
-        (_END, ">", _START),
-        (_END, "<", _END)
-    ],
-    "BEGUN_BY": [
-        (_START, "=", _START),
-        (_START, "<", _END),
-        (_END, ">", _START),
-        (_END, ">", _END)
-    ],
-    "ENDS": [
-        (_START, ">", _START),
-        (_START, "<", _END),
-        (_END, ">", _START),
-        (_END, "=", _END)
-    ],
-    "ENDED_BY": [
-        (_START, "<", _START),
-        (_START, "<", _END),
-        (_END, ">", _START),
-        (_END, "=", _END)
-    ],
-
-    "SIMULTANEOUS": [
-        (_START, "=", _START),
-        (_START, "<", _END),
-        (_END, ">", _START),
-        (_END, "=", _END)
-    ],
-    "OVERLAP": [
-        (_START, "<", _START),
-        (_START, "<", _END),
-        (_END, ">", _START),
-        (_END, "<", _END)
-    ],
-    "VAGUE": [
-        (_START, None, _START),
-        (_START, None, _END),
-        (_END, None, _START),
-        (_END, None, _END)
-    ],
-    "BEFORE-OR-OVERLAP": [
-        (_START, "<", _START),
-        (_START, "<", _END),
-        (_END, None, _START),
-        (_END, "<", _END)
-    ],
-    "OVERLAP-OR-AFTER": [
-        (_START, ">", _START),
-        (_START, None, _END),
-        (_END, ">", _START),
-        (_END, ">", _END)
-    ]
-}
-
-_INVERSE_INTERVAL_RELATION = {
-    "AFTER": "BEFORE",
-    "BEFORE": "AFTER",
-    "BEGINS": "BEGUN_BY",
-    "BEGINS-ON": "BEGINS-ON",
-    "BEGUN_BY": "BEGINS",
-    "ENDED_BY": "ENDS",
-    "ENDS": "ENDED_BY",
-    "ENDS-ON": "ENDS-ON",
-    "IAFTER": "IBEFORE",
-    "IBEFORE": "IAFTER",
-    "INCLUDES": "IS_INCLUDED",
-    "IS_INCLUDED": "INCLUDES",
-    "SIMULTANEOUS": "SIMULTANEOUS",
-    "OVERLAP": "OVERLAP",
-    "VAGUE": "VAGUE"
-}
-
 # transitivity table for point relations
 _POINT_TRANSITIONS = {
     "<": {"<": "<", "=": "<", ">": None},
@@ -169,6 +39,7 @@ _POINT_TRANSITIONS = {
     ">": {">": ">", "=": ">", "<": None}
 }
 
+# inverse for each point relation
 _INVERSE_POINT_RELATION = {
     "<": ">",
     ">": "<",
@@ -234,7 +105,7 @@ class ValidPointRelation:
 
 class PointRelation:
 
-    relation = ValidPointRelation()
+    _complete_relation = ValidPointRelation()
 
     def __init__(self,
                  start_start: str = None,
@@ -242,7 +113,7 @@ class PointRelation:
                  end_start: str = None,
                  end_end: str = None) -> None:
 
-        self.relation = [
+        self._complete_relation = [
             ("ss", start_start, "ts"),  # source start, target start
             ("ss", start_end, "te"),  # source start, target end
             ("se", end_start, "ts"),  # source end, target start
@@ -250,9 +121,19 @@ class PointRelation:
             ("ss", "<", "se"),  # source start, source end
             ("ts", "<", "te"),  # target start, target end
         ]
+        self.relation = [rel for _, rel, _ in self._complete_relation[:4]]
+
+    def __repr__(self):
+        return f"PointRelation({self.relation})"
 
     def __eq__(self, other):
         return self.relation == other.relation
+
+    def __invert__(self):
+        inverse_relations = [_INVERSE_POINT_RELATION[rel]
+                             for rel in self.relation]
+
+        return PointRelation(*inverse_relations)
 
 
 class ValidIntervalRelation:
@@ -268,7 +149,7 @@ class ValidIntervalRelation:
     def __set__(self, instance, relation):
         self._relation = _SETTLE_RELATION.get(relation)
         self._validate(relation)
-        instance.__dict__[self._name] =  self._relation
+        instance.__dict__[self._name] = self._relation
 
     def _validate(self, relation):
         if self._relation is None:
@@ -302,28 +183,54 @@ _INTERVAL_TO_POINT_RELATION = {
     "ENDS": PointRelation(start_start=">", end_end="="),
     "ENDED_BY": PointRelation(start_start="<", end_end="="),
     "SIMULTANEOUS": PointRelation(start_start="=", end_end="="),
-    "OVERLAP": PointRelation(start_end="<", end_start=">"),
+    "OVERLAP": PointRelation(start_start="<", end_start=">", end_end="<"),
     "VAGUE": PointRelation(),
     "BEFORE-OR-OVERLAP": PointRelation(start_start="<", end_end="<"),
     "OVERLAP-OR-AFTER": PointRelation(start_start=">", end_end=">")
 }
 
 
+class RelationHandler:
+
+    @staticmethod
+    def handle(relation):
+
+        if isinstance(relation, str):
+            interval = IntervalRelation(relation)
+            point = _INTERVAL_TO_POINT_RELATION[interval.relation]
+
+        elif isinstance(relation, IntervalRelation):
+            point = _INTERVAL_TO_POINT_RELATION[relation.relation]
+
+        elif isinstance(relation, PointRelation):
+            point = relation
+
+        return point
+
+
 class TemporalRelation:
 
-    def __init__(self, relation: Union[PointRelation, IntervalRelation]):
+    def __init__(self, relation: Union[str, IntervalRelation, PointRelation]):
+        self._point_relation = RelationHandler.handle(relation)
 
-        # PointRelation is given as input
-        if isinstance(relation, PointRelation):
-            self.point = relation
-            [self.interval] = [IntervalRelation(int)
-                               for int, pnt in _INTERVAL_TO_POINT_RELATION.items()
-                               if pnt.relation == self.point.relation]
+    def __repr__(self) -> str:
+        return f"TemporalRelation({self.point})"
 
-        # IntervalRelation is given as input
-        elif isinstance(relation, IntervalRelation):
-            self.interval = relation
-            self.point = _INTERVAL_TO_POINT_RELATION[self.interval]
+    def __str__(self) -> str:
 
-    def __str__(self):
-        return self.interval.relation
+        if self.interval:
+            return self.interval
+
+        else:
+            return str(self.point)
+
+
+    @property
+    def interval(self) -> Union[str, PointRelation]:
+        for int, pnt in _INTERVAL_TO_POINT_RELATION.items():
+            if pnt == self._point_relation:
+                return int
+
+    @property
+    def point(self):
+        return self._point_relation
