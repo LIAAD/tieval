@@ -47,23 +47,55 @@ _INVERSE_POINT_RELATION = {
 }
 
 
-class ValidPointRelation:
+class PointRelation:
 
-    def __set_name__(self, owner, name):
-        self._name = name
+    def __init__(self,
+                 start_start: str = None,
+                 start_end: str = None,
+                 end_start: str = None,
+                 end_end: str = None) -> None:
 
-    def __get__(self, instance, owner):
-        if instance is None:
-            return self
-        return instance.__dict__[self._name]
+        self.relation = [start_start, start_end, end_start, end_end]
 
-    def __set__(self, instance, relation):
-        self._complete_relation = self._complete(relation)
-        self._validate(relation)
-        instance.__dict__[self._name] = self._complete_relation
+    def __repr__(self):
+        return f"PointRelation({self.relation})"
+
+    def __eq__(self, other):
+        return self.relation == other.relation
+
+    def __invert__(self):
+        inverse_relations = [_INVERSE_POINT_RELATION[rel]
+                             for rel in self.relation]
+
+        return PointRelation(*inverse_relations)
+
+    @property
+    def relation(self):
+        return self._relation
+
+    @relation.setter
+    def relation(self, relations):
+
+        # if the complete relation inferred a point relation different than the original
+        # relations, the point relation is inconsistent a.k.a. not valid
+        complete_relations = self._complete(*relations)
+        for rel, inferred_rel in zip(relations, complete_relations):
+            if rel and rel != inferred_rel:
+                raise ValueError(f"Point relation {relations} is not valid.")
+
+        self._relation = complete_relations
 
     @staticmethod
-    def _complete(relations):
+    def _complete(start_start, start_end, end_start, end_end):
+
+        relations = [
+            ("ss", start_start, "ts"),  # source start, target start
+            ("ss", start_end, "te"),  # source start, target end
+            ("se", end_start, "ts"),  # source end, target start
+            ("se", end_end, "te"),  # source end, target end
+            ("ss", "<", "se"),  # source start, source end
+            ("ts", "<", "te"),  # target start, target end
+        ]
 
         # creat a dictionary with the input relations
         relations_dict = {}
@@ -92,79 +124,29 @@ class ValidPointRelation:
 
             relations_dict.update(inferred_relations)
 
-        return [(src, relations_dict.get((src, tgt)), tgt) for src, rel, tgt in relations]
-
-    def _validate(self, relation):
-
-        # if the complete relation inferred a point relation different than the original
-        # relations, the point relation is inconsistent a.k.a. not valid
-        for (src, rel, tgt), (_, inferred_rel, _) in zip(relation, self._complete_relation):
-            if rel:
-                assert rel == inferred_rel, "Point relation is not valid."
-
-
-class PointRelation:
-
-    _complete_relation = ValidPointRelation()
-
-    def __init__(self,
-                 start_start: str = None,
-                 start_end: str = None,
-                 end_start: str = None,
-                 end_end: str = None) -> None:
-
-        self._complete_relation = [
-            ("ss", start_start, "ts"),  # source start, target start
-            ("ss", start_end, "te"),  # source start, target end
-            ("se", end_start, "ts"),  # source end, target start
-            ("se", end_end, "te"),  # source end, target end
-            ("ss", "<", "se"),  # source start, source end
-            ("ts", "<", "te"),  # target start, target end
-        ]
-        self.relation = [rel for _, rel, _ in self._complete_relation[:4]]
-
-    def __repr__(self):
-        return f"PointRelation({self.relation})"
-
-    def __eq__(self, other):
-        return self.relation == other.relation
-
-    def __invert__(self):
-        inverse_relations = [_INVERSE_POINT_RELATION[rel]
-                             for rel in self.relation]
-
-        return PointRelation(*inverse_relations)
-
-
-class ValidIntervalRelation:
-
-    def __set_name__(self, owner, name):
-        self._name = name
-
-    def __get__(self, instance, owner):
-        if instance is None:
-            return self
-        return instance.__dict__[self._name]
-
-    def __set__(self, instance, relation):
-        self._relation = _SETTLE_RELATION.get(relation)
-        self._validate(relation)
-        instance.__dict__[self._name] = self._relation
-
-    def _validate(self, relation):
-        if self._relation is None:
-            raise ValueError(f"Interval relation {relation} not supported.")
+        return [relations_dict.get((src, tgt)) for src, rel, tgt in relations[:4]]
 
 
 class IntervalRelation:
 
-    relation = ValidIntervalRelation()
-
     def __init__(self, relation: str) -> None:
-        self.relation = relation.upper()
+        self.relation = relation
 
     def __eq__(self, other):
         return self.relation == other.relation
+
+    @property
+    def relation(self):
+        return self._relation
+
+    @relation.setter
+    def relation(self, relation):
+
+        inferred_relation = _SETTLE_RELATION.get(relation.upper())
+        if inferred_relation is None:
+            raise ValueError(f"Interval relation {relation} not supported.")
+
+        self._relation = inferred_relation
 
 
 # Mapping from interval relation names to point relations.
@@ -205,6 +187,9 @@ class RelationHandler:
         elif isinstance(relation, PointRelation):
             point = relation
 
+        else:
+            raise TypeError("Argument type is not supported.")
+
         return point
 
 
@@ -224,12 +209,11 @@ class TemporalRelation:
         else:
             return str(self.point)
 
-
     @property
     def interval(self) -> Union[str, PointRelation]:
-        for int, pnt in _INTERVAL_TO_POINT_RELATION.items():
+        for itr, pnt in _INTERVAL_TO_POINT_RELATION.items():
             if pnt == self._point_relation:
-                return int
+                return itr
 
     @property
     def point(self):

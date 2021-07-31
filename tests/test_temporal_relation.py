@@ -27,8 +27,7 @@ _INTERVAL_TO_POINT_COMPLETE = {
 def test_point_relation():
 
     for int_rel, pnt_rel in _INTERVAL_TO_POINT_COMPLETE.items():
-        pnt_rel_resolved = _INTERVAL_TO_POINT_RELATION[int_rel].relation[:4]
-        pnt_rel_resolved = [rel for _, rel, _ in pnt_rel_resolved]
+        pnt_rel_resolved = _INTERVAL_TO_POINT_RELATION[int_rel].relation
         assert pnt_rel == pnt_rel_resolved, f"There is a problem with the way the {int_rel} is resolved."
 
 
