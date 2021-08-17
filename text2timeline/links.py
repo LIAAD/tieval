@@ -1,11 +1,7 @@
 from typing import Union
 
-from text2timeline.temporal_relation import _POINT_TRANSITIONS
-from text2timeline.temporal_relation import _INTERVAL_TO_POINT_COMPLETE
-from text2timeline.temporal_relation import _INVERSE_INTERVAL_RELATION
-
+from text2timeline.temporal_relation import TemporalRelation
 from text2timeline.entities import Event, Timex
-from text2timeline.temporal_relation import IntervalRelation, PointRelation
 
 
 class TLink:
@@ -29,7 +25,7 @@ class TLink:
                  id: str,
                  source: Union[Timex, Event],
                  target: Union[Timex, Event],
-                 relation: Union[IntervalRelation, PointRelation]):
+                 relation: TemporalRelation):
 
         self.id = id
         self.source = source
@@ -69,32 +65,12 @@ class TLink:
         :return:
         """
 
-        # pair the relations of the first and second tlink
-        paired_relations = zip(self.point_relation_complete, other.point_relation_complete)
-
-        # get the relation between source of the first tlink and target of second tlink
-        point_relation13 = [
-            (relation12[0], _POINT_TRANSITIONS[relation12[1]][relation23[1]], relation23[2])
-            for relation12, relation23 in paired_relations
-        ]
-
-        # search for a interval relation that matches the found point relation
-        interval_relation = None
-        for i_rel, p_rel in _INTERVAL_TO_POINT_COMPLETE.items():
-            if p_rel == point_relation13:
-                interval_relation = i_rel
-
-        # if an interval relation was found it will return a TLink with it. otherwise it returns None
-        if interval_relation:
-            return TLink(
-                id=f'il{self.source}{other.target}',
-                source=self.source,
-                target=other.target,
-                relation=interval_relation,
-            )
-
-        else:
-            return None
+        return TLink(
+            id=f'il{self.source}{other.target}',
+            source=self.source,
+            target=other.target,
+            relation=self.relation & other.relation,
+        )
 
     def __invert__(self):
         """
@@ -111,6 +87,6 @@ class TLink:
             id=f'i{self.id}',
             source=self.target,
             target=self.source,
-            relation=_INVERSE_INTERVAL_RELATION[self.relation]
+            relation=~self.relation
         )
 

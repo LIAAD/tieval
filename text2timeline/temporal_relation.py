@@ -3,6 +3,7 @@ from typing import Union
 # map interval relations to unique names
 _SETTLE_RELATION = {
     "OVERLAP": "OVERLAP",
+    "OVERLAPPED": "OVERLAPPED",
     "BEGINS": "BEGINS",
     "BEFORE": "BEFORE",
     "B": "BEFORE",
@@ -34,16 +35,18 @@ _SETTLE_RELATION = {
 
 # transitivity table for point relations
 _POINT_TRANSITIONS = {
-    "<": {"<": "<", "=": "<", ">": None},
-    "=": {"<": "<", "=": "=", ">": ">"},
-    ">": {">": ">", "=": ">", "<": None}
+    "<": {"<": "<", "=": "<", ">": None, None: None},
+    "=": {"<": "<", "=": "=", ">": ">", None: None},
+    ">": {">": ">", "=": ">", "<": None, None: None},
+    None: {">": None, "=": None, "<": None, None: None}
 }
 
 # inverse for each point relation
 _INVERSE_POINT_RELATION = {
     "<": ">",
     ">": "<",
-    "=": "="
+    "=": "=",
+    None: None
 }
 
 
@@ -64,10 +67,22 @@ class PointRelation:
         return self.relation == other.relation
 
     def __invert__(self):
-        inverse_relations = [_INVERSE_POINT_RELATION[rel]
-                             for rel in self.relation]
+
+        ss, se, es, ee = self.relation
+
+        inverse_relations = [
+            _INVERSE_POINT_RELATION[ss],
+            _INVERSE_POINT_RELATION[es],
+            _INVERSE_POINT_RELATION[se],
+            _INVERSE_POINT_RELATION[ee],
+        ]
 
         return PointRelation(*inverse_relations)
+
+    def __and__(self, other):
+        result = [_POINT_TRANSITIONS[self_relation][other_relation]
+                  for self_relation, other_relation in zip(self.relation, other.relation)]
+        return PointRelation(*result)
 
     @property
     def relation(self):
@@ -166,6 +181,7 @@ _INTERVAL_TO_POINT_RELATION = {
     "ENDED_BY": PointRelation(start_start="<", end_end="="),
     "SIMULTANEOUS": PointRelation(start_start="=", end_end="="),
     "OVERLAP": PointRelation(start_start="<", end_start=">", end_end="<"),
+    "OVERLAPPED": PointRelation(start_start=">", start_end="<", end_end=">"),
     "VAGUE": PointRelation(),
     "BEFORE-OR-OVERLAP": PointRelation(start_start="<", end_end="<"),
     "OVERLAP-OR-AFTER": PointRelation(start_start=">", end_end=">")
@@ -208,6 +224,12 @@ class TemporalRelation:
 
         else:
             return str(self.point)
+
+    def __invert__(self):
+        return TemporalRelation(~self.point)
+
+    def __and__(self, other):
+        return TemporalRelation(self.point & other.point)
 
     @property
     def interval(self) -> Union[str, PointRelation]:

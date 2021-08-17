@@ -1,51 +1,46 @@
 import pytest
 
 from text2timeline.temporal_relation import PointRelation
-from text2timeline.temporal_relation import _INTERVAL_TO_POINT_RELATION
-
-_INTERVAL_TO_POINT_COMPLETE = {
-    "BEFORE": ["<", "<", "<", "<"],
-    "AFTER": [">", ">", ">", ">"],
-    "IBEFORE": ["<", "<", "=", "<"],
-    "IAFTER": [">", "=", ">", ">"],
-    "INCLUDES": ["<", "<", ">", ">"],
-    "IS_INCLUDED": [">", "<", ">", "<"],
-    "BEGINS-ON": ["=", "<", ">", None],
-    "ENDS-ON": [None, "<", ">", "="],
-    "BEGINS": ["=", "<", ">", "<"],
-    "BEGUN_BY": ["=", "<", ">", ">"],
-    "ENDS": [">", "<", ">", "="],
-    "ENDED_BY": ["<", "<", ">", "="],
-    "SIMULTANEOUS": ["=", "<", ">", "="],
-    "OVERLAP": ["<", "<", ">", "<"],
-    "VAGUE": [None, None, None, None],
-    "BEFORE-OR-OVERLAP": ["<", "<", None, "<"],
-    "OVERLAP-OR-AFTER": [">", None, ">", ">"]
-}
+from text2timeline.temporal_relation import TemporalRelation
 
 
-def test_point_relation():
+def test_point_relation_inference():
+    """Check if point relation inference is working."""
 
-    for int_rel, pnt_rel in _INTERVAL_TO_POINT_COMPLETE.items():
-        pnt_rel_resolved = _INTERVAL_TO_POINT_RELATION[int_rel].relation
-        assert pnt_rel == pnt_rel_resolved, f"There is a problem with the way the {int_rel} is resolved."
+    assert PointRelation(end_start="<").relation == ["<", "<", "<", "<"]
+    assert PointRelation(start_end=">").relation == [">", ">", ">", ">"]
+    assert PointRelation(end_start="=").relation == ["<", "<", "=", "<"]
+    assert PointRelation(start_end="=").relation == [">", "=", ">", ">"]
+    assert PointRelation(start_start="<", end_end=">").relation == ["<", "<", ">", ">"]
+    assert PointRelation(start_start=">", end_end="<").relation == [">", "<", ">", "<"]
+    assert PointRelation(start_start="=").relation == ["=", "<", ">", None]
+    assert PointRelation(end_end="=").relation == [None, "<", ">", "="]
+    assert PointRelation(start_start="=", end_end="<").relation == ["=", "<", ">", "<"]
+    assert PointRelation(start_start="=", end_end=">").relation == ["=", "<", ">", ">"]
+    assert PointRelation(start_start=">", end_end="=").relation == [">", "<", ">", "="]
+    assert PointRelation(start_start="<", end_end="=").relation == ["<", "<", ">", "="]
+    assert PointRelation(start_start="=", end_end="=").relation == ["=", "<", ">", "="]
+    assert PointRelation(start_start="<", end_start=">", end_end="<").relation == ["<", "<", ">", "<"]
+    assert PointRelation().relation == [None, None, None, None]
+    assert PointRelation(start_start="<", end_end="<").relation == ["<", "<", None, "<"]
+    assert PointRelation(start_start=">", end_end=">").relation == [">", None, ">", ">"]
 
 
-_INVERSE_INTERVAL_RELATION = {
-    "AFTER": "BEFORE",
-    "BEFORE": "AFTER",
-    "BEGINS": "BEGUN_BY",
-    "BEGINS-ON": "BEGINS-ON",
-    "BEGUN_BY": "BEGINS",
-    "ENDED_BY": "ENDS",
-    "ENDS": "ENDED_BY",
-    "ENDS-ON": "ENDS-ON",
-    "IAFTER": "IBEFORE",
-    "IBEFORE": "IAFTER",
-    "INCLUDES": "IS_INCLUDED",
-    "IS_INCLUDED": "INCLUDES",
-    "SIMULTANEOUS": "SIMULTANEOUS",
-    "OVERLAP": "OVERLAP",
-    "VAGUE": "VAGUE"
-}
+def test_temporal_relation_inversion():
 
+    assert (~TemporalRelation("AFTER")).interval == "BEFORE"
+    assert (~TemporalRelation("BEFORE")).interval == "AFTER"
+    assert (~TemporalRelation("BEGINS")).interval == "BEGUN_BY"
+    assert (~TemporalRelation("BEGINS-ON")).interval == "BEGINS-ON"
+    assert (~TemporalRelation("BEGUN_BY")).interval == "BEGINS"
+    assert (~TemporalRelation("ENDED_BY")).interval == "ENDS"
+    assert (~TemporalRelation("ENDS")).interval == "ENDED_BY"
+    assert (~TemporalRelation("ENDS-ON")).interval == "ENDS-ON"
+    assert (~TemporalRelation("IAFTER")).interval == "IBEFORE"
+    assert (~TemporalRelation("IBEFORE")).interval == "IAFTER"
+    assert (~TemporalRelation("INCLUDES")).interval == "IS_INCLUDED"
+    assert (~TemporalRelation("IS_INCLUDED")).interval == "INCLUDES"
+    assert (~TemporalRelation("SIMULTANEOUS")).interval == "SIMULTANEOUS"
+    assert (~TemporalRelation("OVERLAP")).interval == "OVERLAPPED"
+    assert (~TemporalRelation("OVERLAPPED")).interval == "OVERLAP"
+    assert (~TemporalRelation("VAGUE")).interval == "VAGUE"
