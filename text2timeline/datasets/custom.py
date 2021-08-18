@@ -103,8 +103,6 @@ TABLE_READER = {
 
 
 
-
-
 class Dataset:
 
     def __init__(self, name, docs, path=None):
