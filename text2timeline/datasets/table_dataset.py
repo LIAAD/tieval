@@ -4,65 +4,6 @@ import warnings
 from text2timeline import base
 
 
-def _read_matres_tlink(self, line: list, doc: str) -> base.TLink:
-    """Read a temporal link from the MATRES dataset."""
-
-    src, tgt = f'ei{line[2]}', f'ei{line[3]}'
-
-    source = self._find_expressions(src, doc)
-    target = self._find_expressions(tgt, doc)
-
-    if source is None or target is None:
-        return None, None
-
-    tlink = base.TLink(
-        id=f'l{self._tlink_id}',
-        source=source,
-        target=target,
-        relation=line[4]
-    )
-
-    self._tlink_id += 1
-    return tlink
-
-
-def _read_tddiscourse_tlink(self, line: list, doc: str):
-    """Read a temporal link from the TDDiscourse dataset."""
-
-    src, tgt = line[0], line[1]
-
-    source = self._find_expressions(src, doc)
-    target = self._find_expressions(tgt, doc)
-
-    if source is None or target is None:
-        return None, None
-
-    tlink = base.TLink(
-        id=f'l{self._tlink_id}',
-        source=source,
-        target=target,
-        relation=line[2]
-    )
-
-    self._tlink_id += 1
-    return tlink
-
-
-def _read_tbdense_tlink(self, line: list, doc: str):
-    """Read a temporal link from the Timebank Dense dataset."""
-
-    return self._tddiscourse(line, doc)
-
-
-# mapping between the name of the dataset and the respective tlink reader
-TLINK_READER = {
-    'matres': _read_matres_tlink,
-    'tddiscourse': _read_tddiscourse_tlink,
-    'tbdense': _read_tbdense_tlink,
-
-}
-
-
 class ReadDatasetFromTable:
     """
     Read datasets that are a table where each row is a temporal link. As is the case of: MATRES, TDDiscourse and

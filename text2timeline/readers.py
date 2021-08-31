@@ -1,10 +1,14 @@
 
-from typing import List, Tuple
+from pprint import pprint
+
+from typing import List, Tuple, Union
 
 import nltk
 import collections
 import warnings
 import copy
+
+from pathlib import Path
 
 from text2timeline.base import Document, Dataset
 from text2timeline.entities import Timex, Event
@@ -12,11 +16,10 @@ from text2timeline.links import TLink
 from text2timeline.utils import XMLHandler
 
 # TODO: clean the readers interface
-# Move the responsabilities to handel the xml file to the XMLHandler
-# Favor composition over inherentence
+# Move the responsibilities to handle the xml file to the XMLHandler
 
 
-class TMLReader:
+class TMLDocumentReader:
     """
 
     A .tml document.
@@ -31,85 +34,27 @@ class TMLReader:
 
         self.tokenizer = nltk.tokenize.WordPunctTokenizer()
 
-    def _expression_indexes(self) -> dict:
-        """
-        Finds start and end indexes of each expression (EVENT or TIMEX).
+    def _get_events_from_tags(self, xml: XMLHandler) -> List[Event]:
 
-        :return:
-        """
+        event_tags = xml.get_tag("EVENT")
 
-        root = copy.deepcopy(self.xml_root)
-
-        # remove unnecessary tags.
-        root = self._remove_xml_tags(root)
-
-        # Find indexes of the expressions_uid.
-        text_blocks = []
-        start = 0
-        for txt in root.itertext():
-            end = start + len(txt)
-            text_blocks.append((start, end, txt))
-            start = end
-
-        # Get the tags of each expression.
-        text_tags = []
-        elements = list(root.iterfind('.//*'))
-
-        for element in elements:
-
-            # there are cases where there is a nested tag <EVENT><NUMEX>example</NUMEX></EVENT>
-            text = ' '.join(element.itertext())
-
-            if element.attrib and element.tag == 'EVENT':
-                text_tags.append((text, element.attrib['eid']))
-
-            elif element.attrib and element.tag == 'TIMEX3':
-                text_tags.append((text, element.attrib['tid']))
-
-        # Join the indexes with the tags.
-        expression_idxs = {self.dct.id: (-1, -1)}  # Initialize with the position of DCT.
-        while text_tags:
-            txt, tag_id = text_tags.pop(0)
-            for idx, (start, end, txt_sch) in enumerate(text_blocks):
-                if txt == txt_sch:
-                    expression_idxs[tag_id] = (start, end)
-                    # remove the items that were found.
-                    text_blocks = text_blocks[idx + 1:]
-                    break
-
-        return expression_idxs
-
-    def _get_make_instance(self) -> dict:
-        make_insts = collections.defaultdict(list)
-        for make_inst in self.xml_root.findall('.//MAKEINSTANCE'):
-            eid = make_inst.attrib['eventID']
-            make_insts[eid].append(make_inst.attrib)
-
-        return make_insts
-
-    def _get_events(self) -> dict:
-        # Most of event attributes are in <MAKEINSTACE> tag.
-        make_insts = self._get_make_instance()
+        # complementary information of each event is given on MAKEINSTANCE tags
+        minst_tags = xml.get_tag("MAKEINSTANCE")
+        minst_attrib = {mit.attrib['eventID']: mit.attrib for mit in minst_tags}
 
         events = []
-        for event in self.xml_root.findall('.//EVENT'):
-            attrib = event.attrib.copy()
+        for et in event_tags:
+
+            attrib = et.attrib
             event_id = attrib['eid']
-            attrib['text'] = event.text
-            attrib['endpoints'] = self._expression_idxs[event_id]
 
-            if event_id in make_insts:
+            attrib['text'] = ''.join(list(et.itertext()))
+            # attrib['endpoints'] = self._expression_idxs[event_id]
 
-                attribs = []
-                for make_inst in make_insts[event_id]:
-                    attrib_copy = attrib.copy()
-                    attrib_copy.update(make_inst)
-                    attribs += [attrib_copy]
+            # add MAKEINSTANCE info
+            attrib.update(minst_attrib.get(event_id))
+            events += [Event(attrib)]
 
-            else:
-                attribs = [attrib]
-
-            events += [Event(attrib) for attrib in attribs]
         return events
 
     def _get_timexs(self) -> dict:
@@ -176,13 +121,128 @@ class TMLReader:
 
         return src_id, tgt_id
 
-    def read(self, path: str) -> Document:
+    def read(self, path: Union[str, Path]) -> Document:
+
+        if not isinstance(path, Path):
+            path = Path(path)
+
+        tml = XMLHandler(path)
+
+        name = path.name.replace('.tml', '')
+        text = tml.text
+
+        events = self._get_events_from_tags(tml)
+        tags = tml.get_tag("EVENT"), tml.get_tag("TIMEX3"), tml.get_tag("TLINK")
+        event_tags, timex_tags, tlink_tags = tags
 
         return Document(name, text, events, timexs, tlinks)
 
 
+def _read_matres_tlink(self, line: list, doc: str) -> TLink:
+    """Read a temporal link from the MATRES dataset."""
+
+    src, tgt = f'ei{line[2]}', f'ei{line[3]}'
+
+    source = self._find_expressions(src, doc)
+    target = self._find_expressions(tgt, doc)
+
+    if source is None or target is None:
+        return None, None
+
+    tlink = TLink(
+        id=f'l{self._tlink_id}',
+        source=source,
+        target=target,
+        relation=line[4]
+    )
+
+    self._tlink_id += 1
+    return tlink
 
 
+def _read_tddiscourse_tlink(self, line: list, doc: str):
+    """Read a temporal link from the TDDiscourse dataset."""
+
+    src, tgt = line[0], line[1]
+
+    source = self._find_expressions(src, doc)
+    target = self._find_expressions(tgt, doc)
+
+    if source is None or target is None:
+        return None, None
+
+    tlink = TLink(
+        id=f'l{self._tlink_id}',
+        source=source,
+        target=target,
+        relation=line[2]
+    )
+
+    self._tlink_id += 1
+    return tlink
+
+
+def _read_tbdense_tlink(self, line: list, doc: str):
+    """Read a temporal link from the Timebank Dense dataset."""
+
+    return self._tddiscourse(line, doc)
+
+
+# mapping between the name of the dataset and the respective tlink reader
+TLINK_READER = {
+    'matres': _read_matres_tlink,
+    'tddiscourse': _read_tddiscourse_tlink,
+    'tbdense': _read_tbdense_tlink,
+
+}
+
+
+class TableDatasetReader:
+    """Read temporal annotated files that the annotation is given on tables.
+    As is the case of: MATRES, TDDiscourse and TimeBank-Dense."""
+
+    def __init__(self, dataset_name: str):
+
+        self.dataset = dataset_name
+        self.tlink_reader = TLINK_READER[dataset_name]
+
+    def read(self, table):
+
+        with open(table, 'r') as f:
+            content = [line.split() for line in f.read().split('\n')]
+
+            tlinks_by_doc = collections.defaultdict(list)
+            for line in content:
+                if line:
+                    tlinks_by_doc[line[0]] += [line[1:]]  # doc: tlink
+
+            tlinks = {}
+            for doc, lines in tlinks_by_doc.items():
+
+                if doc not in self.dataset.doc_names:
+                    warnings.warn(f"Document {doc} not found on the source dataset")
+                    continue
+
+                tlinks[doc] = [self.tlink_reader(line, doc) for line in lines]
+
+        return tlinks
+
+    def _find_expressions(self, exp_id: str, doc: str):
+
+        if exp_id in self.dataset[doc].expressions_uid:
+            return self.dataset[doc].expressions_uid[exp_id]
+
+        elif exp_id in self.dataset[doc].expressions_id:
+            return self.dataset[doc].expressions_id[exp_id]
+
+        else:
+            warnings.warn(f"Expression with id {exp_id} was not found in document {doc}")
+            return None
+
+
+class DatasetReader:
+    """Handles the process of reading any temporally annotated dataset."""
+    pass
 
 
 class TempEval3Document:

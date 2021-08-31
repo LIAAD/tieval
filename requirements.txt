@@ -103,3 +103,5 @@ uritemplate==3.0.1
 urllib3==1.26.3
 Werkzeug==1.0.1
 wrapt==1.12.1
+
+pytest~=6.2.4
