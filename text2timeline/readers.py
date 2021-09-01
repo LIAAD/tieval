@@ -15,8 +15,9 @@ from text2timeline.entities import Timex, Event
 from text2timeline.links import TLink
 from text2timeline.utils import XMLHandler
 
-# TODO: clean the readers interface
-# Move the responsibilities to handle the xml file to the XMLHandler
+"""
+Document Readers.
+"""
 
 
 class TMLDocumentReader:
@@ -34,64 +35,66 @@ class TMLDocumentReader:
 
         self.tokenizer = nltk.tokenize.WordPunctTokenizer()
 
-    def get_events(self, xml: XMLHandler) -> List[Event]:
+    @staticmethod
+    def get_events(xml: XMLHandler) -> List[Event]:
         """Retrive Events from tml file."""
 
         event_tags = xml.get_tag("EVENT")
 
         # complementary information of each event is given on MAKEINSTANCE tags
         minst_tags = xml.get_tag("MAKEINSTANCE")
-        minst_attrib = {mit.attrib['eventID']: mit.attrib for mit in minst_tags}
+        minst_attribs = {mit.attrib['eventID']: mit.attrib for mit in minst_tags}
+
+        if len(minst_tags) != len(minst_attribs):
+            warnings.warn(f"There might be multiple MAKEINSTANCE entries with the same event id in {xml.path}. "
+                          f"Only the last will be used.")
 
         events = []
-        for et in event_tags:
+        for event_tag in event_tags:
 
-            attrib = et.attrib
+            attrib = event_tag.attrib
             event_id = attrib['eid']
 
             # add MAKEINSTANCE info
-            attrib.update(minst_attrib.get(event_id))
+            minst_attrib = minst_attribs.get(event_id)
+            if minst_attrib:
+                attrib.update(minst_attrib)
+
             events += [Event(attrib)]
 
         return events
 
-    def get_timexs(self, xml: XMLHandler) -> List[Timex]:
+    @staticmethod
+    def get_timexs(xml: XMLHandler) -> List[Timex]:
         return [Timex(element.attrib) for element in xml.get_tag('TIMEX3')]
 
-    def get_tlinks(self, xml: XMLHandler, events: List[Event], timexs: List[Timex]) -> List[TLink]:
-        """
-        Get keys for each dataset
+    @staticmethod
+    def get_tlinks(xml: XMLHandler, events: List[Event], timexs: List[Timex]) -> List[TLink]:
+        """Get Tlink's of the document"""
 
-        np.unique([key for tlink in self.xml_root.findall('.//TLINK') for key in tlink.attrib])
-
-        :return:
-        """
-
-        entities = events + timexs
+        entities = {entity.id: entity for entity in events + timexs}
 
         tlinks = []
         for tlink in xml.get_tag("TLINK"):
 
-            # retrive source and target id.
+            # retrieve source and target id.
             attrib = tlink.attrib
-            src_id = attrib.get("eventID")
-            tgt_id = attrib.get("relatedToEvent") or attrib.get("relatedToTime")
+            src_id = attrib.get("eventInstanceID") or attrib.get("timeID")
+            tgt_id = attrib.get("relatedToEventInstance") or attrib.get("relatedToTime")
 
-            source = None
-            target = self.expressions_uid[tgt_id]
-
-            tlink = TLink(
-                id=tlink.attrib['lid'],
-                source=source,
-                target=target,
-                relation=tlink.attrib['relType']
-            )
-
-            tlinks += [tlink]
+            source, target = entities.get(src_id), entities.get(tgt_id)
+            if source and target:
+                tlinks += [TLink(
+                    id=tlink.attrib['lid'],
+                    source=source,
+                    target=entities[tgt_id],
+                    relation=tlink.attrib['relType']
+                )]
 
         return tlinks
 
     def read(self, path: Union[str, Path]) -> Document:
+        """Read the tml file on the provided path."""
 
         if not isinstance(path, Path):
             path = Path(path)
@@ -166,6 +169,11 @@ TLINK_READER = {
 }
 
 
+"""
+Dataset Readers.
+"""
+
+
 class TableDatasetReader:
     """Read temporal annotated files that the annotation is given on tables.
     As is the case of: MATRES, TDDiscourse and TimeBank-Dense."""
@@ -209,33 +217,18 @@ class TableDatasetReader:
             return None
 
 
-class DatasetReader:
+class TMLDatasetReader:
     """Handles the process of reading any temporally annotated dataset."""
-    pass
 
+    def __init__(self):
+        self.document_reader = TMLDocumentReader()
 
-class TempEval3Document:
+    def read(self, path: str) -> Dataset:
 
-    def _get_source_and_target_exp(self, tlink):
+        path = Path(path)
 
-        # scr_id
-        if 'eventInstanceID' in tlink.attrib:
-            src_id = tlink.attrib['eventInstanceID']
-        else:
-            src_id = tlink.attrib['timeID']
+        documents = [self.document_reader.read(tml_file)
+                     for tml_file in path.glob("*.tml")]
 
-        # tgt_id
-        if 'relatedToEventInstance' in tlink.attrib:
-            tgt_id = tlink.attrib['relatedToEventInstance']
-        else:
-            tgt_id = tlink.attrib['relatedToTime']
+        return Dataset(documents)
 
-        return src_id, tgt_id
-
-
-# TimeBankDocument = DocumentReader
-# TimeBankPTDocument = DocumentReader
-
-AquaintDocument = TempEval3Document
-PlatinumDocument = TempEval3Document
-TimeBank12Document = TempEval3Document

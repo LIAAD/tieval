@@ -2,7 +2,7 @@
 from typing import List, Union
 
 from text2timeline.base import Dataset
-from text2timeline.readers import DatasetReader
+from text2timeline.readers import TMLDatasetReader
 
 
 DATASETS = [
@@ -82,6 +82,7 @@ PATHS = {
 }
 
 
-def load_dataset(name: Union[str, List[str]]) -> Dataset:
-    reader = DatasetReader()
-    return reader.read(name)
+def load_dataset(name: str) -> Dataset:
+    name = name.lower().strip()
+    reader = TMLDatasetReader()
+    return [reader.read(path) for path in PATHS[name]]
