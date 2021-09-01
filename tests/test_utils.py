@@ -48,3 +48,16 @@ class TestXMLHandler:
         tags = events, timexs, tlinks, minstances, slinks, alinks
 
         assert tags == sample_tags
+
+    def test_endpoints(self):
+        """Check if the text limited by inferred endpoints is the same as the element text."""
+
+        tags = self.xml.root.iterfind(".//*")
+        for tag in tags:
+
+            if "endpoints" in tag.attrib:
+                start, end = tag.attrib["endpoints"]
+
+                text = tag.attrib["text"]
+                text_inferred = self.xml.text[start: end]
+                assert text_inferred == text

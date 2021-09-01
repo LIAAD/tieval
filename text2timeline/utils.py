@@ -1,39 +1,44 @@
 
-from typing import List, Tuple, Iterable, Union
+from typing import List, Union
+from pathlib import Path
 
 from xml.etree import ElementTree as ET
-
-import re
-
-from pprint import pprint
 
 
 class XMLHandler:
     """Object responsible for handling all the operations regarding XML files."""
 
-    def __init__(self, path: str):
+    def __init__(self, path: Union[str, Path]) -> None:
         self.path = path
 
+        # parse the xml file
         tree = ET.parse(self.path)
         self.root = tree.getroot()
-        self. _expression_indexes()
+
+        # by default we add the text and endpoints to the xml element attributes
+        self._add_text_to_attributes()
+        self._add_endpoints_to_attributes()
 
     @property
-    def text(self):
+    def text(self) -> str:
         return ''.join(list(self.root.itertext()))
 
     def get_tag(self, tag: str) -> List:
         return [element for element in self.root.iter()
                 if element.tag == tag]
 
-    def _expression_indexes(self) -> dict:
-        """
-        Finds start and end indexes of each expression (EVENT or TIMEX).
+    def _add_text_to_attributes(self) -> None:
+        """Add the text to attributes of each xml element."""
 
-        :return:
-        """
+        for element in self.root.iterfind('.//*'):
+            text = "".join(element.itertext())
+            if text:
+                element.attrib["text"] = text
 
-        # Find indexes of the expressions_uid.
+    def _add_endpoints_to_attributes(self) -> None:
+        """Add the text endpoints to the attributes of endpoint od each xml element."""
+
+        # Find indexes of each text block.
         text_blocks = []
         start = 0
         for txt in self.root.itertext():
@@ -41,29 +46,14 @@ class XMLHandler:
             text_blocks += [(start, end, txt)]
             start = end
 
-        # Get the tags of each expression.
-        text_tags = []
+        # Add the endpoints to each xml element attribute.
         for element in self.root.iterfind('.//*'):
 
-            # there are cases where there is a nested tag <EVENT><NUMEX>example</NUMEX></EVENT>
             text = "".join(element.itertext())
-
-            if element.attrib and element.tag == 'EVENT':
-                text_tags.append((text, element.attrib['eid']))
-
-            elif element.attrib and element.tag == 'TIMEX3':
-                text_tags.append((text, element.attrib['tid']))
-
-        # Join the indexes with the tags.
-        expression_idxs = {self.dct.id: (-1, -1)}  # Initialize with the position of DCT.
-        while text_tags:
-            txt, tag_id = text_tags.pop(0)
-            for idx, (start, end, txt_sch) in enumerate(text_blocks):
-                if txt == txt_sch:
-                    expression_idxs[tag_id] = (start, end)
-                    # remove the items that were found.
-                    text_blocks = text_blocks[idx + 1:]
-                    break
-
-        return expression_idxs
-
+            if text:
+                for idx, (start, end, block) in enumerate(text_blocks):
+                    if text == block:
+                        element.attrib["endpoints"] = (start, end)
+                        # remove the items that were found.
+                        text_blocks = text_blocks[idx + 1:]
+                        break

@@ -34,7 +34,8 @@ class TMLDocumentReader:
 
         self.tokenizer = nltk.tokenize.WordPunctTokenizer()
 
-    def _get_events_from_tags(self, xml: XMLHandler) -> List[Event]:
+    def get_events(self, xml: XMLHandler) -> List[Event]:
+        """Retrive Events from tml file."""
 
         event_tags = xml.get_tag("EVENT")
 
@@ -48,27 +49,16 @@ class TMLDocumentReader:
             attrib = et.attrib
             event_id = attrib['eid']
 
-            attrib['text'] = ''.join(list(et.itertext()))
-            # attrib['endpoints'] = self._expression_idxs[event_id]
-
             # add MAKEINSTANCE info
             attrib.update(minst_attrib.get(event_id))
             events += [Event(attrib)]
 
         return events
 
-    def _get_timexs(self) -> dict:
+    def get_timexs(self, xml: XMLHandler) -> List[Timex]:
+        return [Timex(element.attrib) for element in xml.get_tag('TIMEX3')]
 
-        timexs = []
-        for timex in self.xml_root.findall('.//TIMEX3'):
-            attrib = timex.attrib.copy()
-            time_id = attrib['tid']
-            attrib['text'] = timex.text
-            attrib['endpoints'] = self._expression_idxs[time_id]
-            timexs.append(Timex(attrib))
-        return timexs
-
-    def _get_tlinks(self) -> dict:
+    def get_tlinks(self, xml: XMLHandler, events: List[Event], timexs: List[Timex]) -> List[TLink]:
         """
         Get keys for each dataset
 
@@ -77,49 +67,29 @@ class TMLDocumentReader:
         :return:
         """
 
+        entities = events + timexs
+
         tlinks = []
-        for tlink in self.xml_root.findall('.//TLINK'):
+        for tlink in xml.get_tag("TLINK"):
 
-            src_id, tgt_id = self._get_source_and_target_exp(tlink)
+            # retrive source and target id.
+            attrib = tlink.attrib
+            src_id = attrib.get("eventID")
+            tgt_id = attrib.get("relatedToEvent") or attrib.get("relatedToTime")
 
-            # find Event/ Timex with those ids
-            if src_id not in self.expressions_uid:
-                msg = f"Expression {src_id} of tlink {tlink.attrib['lid']} from doc in {self.path} was not found"
-                warnings.warn(msg)
-                continue
-
-            elif tgt_id not in self.expressions_uid:
-                msg = f"Expression {tgt_id} of tlink {tlink.attrib['lid']} from doc in {self.path} was not found"
-                warnings.warn(msg)
-                continue
-
-            source = self.expressions_uid[src_id]
+            source = None
             target = self.expressions_uid[tgt_id]
 
             tlink = TLink(
                 id=tlink.attrib['lid'],
                 source=source,
                 target=target,
-                relation=tlink.attrib['relType'],
-                **tlink.attrib
+                relation=tlink.attrib['relType']
             )
 
             tlinks += [tlink]
 
         return tlinks
-
-    def _get_source_and_target_exp(self, tlink):
-
-        # scr_id
-        src_id = tlink.attrib['eventID']
-
-        # tgt_id
-        if 'relatedToEvent' in tlink.attrib:
-            tgt_id = tlink.attrib['relatedToEvent']
-        else:
-            tgt_id = tlink.attrib['relatedToTime']
-
-        return src_id, tgt_id
 
     def read(self, path: Union[str, Path]) -> Document:
 
@@ -131,9 +101,8 @@ class TMLDocumentReader:
         name = path.name.replace('.tml', '')
         text = tml.text
 
-        events = self._get_events_from_tags(tml)
-        tags = tml.get_tag("EVENT"), tml.get_tag("TIMEX3"), tml.get_tag("TLINK")
-        event_tags, timex_tags, tlink_tags = tags
+        events, timexs = self.get_events(tml), self.get_timexs(tml)
+        tlinks = self.get_tlinks(tml, events, timexs)
 
         return Document(name, text, events, timexs, tlinks)
 
