@@ -65,4 +65,8 @@ class Document:
 class Dataset:
     """A compilation of documents that have temporal annotations."""
 
+    name: str
     documents: List[Document]
+
+    def __repr__(self):
+        return f"Dataset(name={self.name})"
