@@ -152,5 +152,12 @@ def load_table_dataset(name: str) -> Dataset:
     name = name.lower().strip()
     metadata = DATASETS_METADATA[name]
 
-    reader = TableDatasetReader(metadata)
+    # read base dataset
+    base_datasets = []
+    for dataset_name in metadata["base"]:
+        base_datasets += load_tml_dataset(dataset_name)
+    base_dataset = sum(base_datasets)
+
+    reader = TableDatasetReader(metadata, base_dataset)
+
     return [reader.read(path) for path in metadata['path']]

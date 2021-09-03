@@ -1,8 +1,9 @@
-
+import collections
 from typing import List, Tuple, Union
 
 import nltk
 import warnings
+import collections
 
 from pathlib import Path
 
@@ -64,36 +65,55 @@ class TMLDocumentReader:
     def get_timexs(xml: XMLHandler) -> List[Timex]:
         return [Timex(element.attrib) for element in xml.get_tag('TIMEX3')]
 
-    @staticmethod
-    def get_tlinks(xml: XMLHandler, events: List[Event], timexs: List[Timex]) -> List[TLink]:
+    def get_tlinks(self, xml: XMLHandler, events: List[Event], timexs: List[Timex]) -> List[TLink]:
         """Get Tlink's of the document"""
 
         entities = {entity.id: entity for entity in events + timexs}
+
+        # tlinks have eiid but our reference is eid.
+        # the map between eiid to eid is on the MAKEINSTANCE elements
+        minst_tags = xml.get_tag("MAKEINSTANCE")
+        eiid2eid = {
+            mit.attrib['eiid']: mit.attrib['eventID']
+            for mit in minst_tags
+        }
 
         tlinks = []
         for tlink in xml.get_tag("TLINK"):
 
             # retrieve source and target id.
-            attrib = tlink.attrib
+            src_id, tgt_id = self._src_tgt_id_tlink(tlink.attrib)
 
-            src_id = attrib.get("eventInstanceID") or \
-                     attrib.get("timeID") or \
-                     attrib.get("eventID")
+            # map eiid to eid
+            if src_id in eiid2eid:
+                src_id = eiid2eid[src_id]
 
-            tgt_id = attrib.get("relatedToEventInstance") or \
-                     attrib.get("relatedToTime") or \
-                     attrib.get("relatedToEvent")
+            if tgt_id in eiid2eid:
+                tgt_id = eiid2eid[tgt_id]
 
+            # build tlink
             source, target = entities.get(src_id), entities.get(tgt_id)
             if source and target:
                 tlinks += [TLink(
                     id=tlink.attrib['lid'],
                     source=source,
-                    target=entities[tgt_id],
+                    target=target,
                     relation=tlink.attrib['relType']
                 )]
 
         return tlinks
+
+    def _src_tgt_id_tlink(self, attrib):
+
+        src_id = attrib.get("eventInstanceID") or \
+                 attrib.get("timeID") or \
+                 attrib.get("eventID")
+
+        tgt_id = attrib.get("relatedToEventInstance") or \
+                 attrib.get("relatedToTime") or \
+                 attrib.get("relatedToEvent")
+
+        return src_id, tgt_id
 
     def read(self, path: Union[str, Path]) -> Document:
         """Read the tml file on the provided path."""
@@ -124,20 +144,22 @@ class TableDatasetReader:
     """Read temporal annotated files that the annotation is given on tables.
     As is the case of: MATRES, TDDiscourse and TimeBank-Dense."""
 
-    def __init__(self, metadata: dict) -> None:
+    def __init__(self, metadata: dict, base_dataset: Dataset) -> None:
 
         self._extension = metadata["extension"]
         self._column_idxs = (
             metadata["columns"].index("doc"),
             metadata["columns"].index("src"),
             metadata["columns"].index("tgt"),
+            metadata["columns"].index("relation"),
         )
-        self._base_datasets = metadata['base']
+        self._base_dataset = base_dataset
 
     def read(self, path: str) -> Dataset:
 
         path = Path(path)
 
+        documents = []
         for path in path.glob(self._extension):
 
             with open(path, 'r') as f:
@@ -148,16 +170,30 @@ class TableDatasetReader:
                 # create a dictionary with docs as keys and a list of tlinks as values.
                 for line in lines:
                     if line:
-                        doc_name, src, tgt = [line[idx] for idx in self._column_idxs]
 
-        # TODO: where should the base dataset should be read?
+                        doc_name, src, tgt, relation = self._decode_line(line)
+
+                        doc = self._base_dataset[doc_name]
+                        source = doc[src]
+                        target = doc[tgt]
+
+
         return None
+
+    def _decode_line(self, line: List[str]):
+
+        doc_name, src, tgt, relation = [line[idx] for idx in self._column_idxs]
+
+        if src.isdigit():
+            src, tgt = f"e{src}", f"e{tgt}"
+
+        return doc_name, src, tgt, relation
 
 
 class TMLDatasetReader:
     """Handles the process of reading any temporally annotated dataset."""
 
-    def __init__(self, metadata: dict) -> None:
+    def __init__(self, metadata: dict = None) -> None:
         self.document_reader = TMLDocumentReader()
 
     def read(self, path: str) -> Dataset:

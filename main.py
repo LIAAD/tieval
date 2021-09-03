@@ -8,4 +8,4 @@ import os
 # reader.read("data/TempEval-3/Train/TBAQ-cleaned/TimeBank/ABC19980304.1830.1636.tml")
 
 
-dataset = load_table_dataset("timebank-dense")
+dataset = load_tml_dataset("tempeval-3")

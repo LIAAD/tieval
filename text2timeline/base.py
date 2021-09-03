@@ -22,6 +22,12 @@ class Document:
     def __str__(self):
         return self.text.strip()
 
+    def __getitem__(self, id: str):
+        entities = self.events + self.timexs + self.tlinks
+        for entity in entities:
+            if entity.id == id:
+                return entity
+
     @property
     def dct(self):
         """Extract document creation time"""
@@ -70,3 +76,22 @@ class Dataset:
 
     def __repr__(self):
         return f"Dataset(name={self.name})"
+
+    def __add__(self, other):
+        name = f"{self.name}+{other.name}"
+        docs = self.documents + other.documents
+        return Dataset(name, docs)
+
+    def __radd__(self, other):
+        if other == 0:
+            return self
+        else:
+            return self.__add__(other)
+
+    def __getitem__(self, item):
+        for doc in self.documents:
+            if doc.name == item:
+                return doc
+
+    def __len__(self):
+        return self.documents.__len__()

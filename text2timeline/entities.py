@@ -52,7 +52,4 @@ class Event:
 
     @property
     def id(self):
-        if self.eiid:
-            return self.eiid
-
         return self.eid
