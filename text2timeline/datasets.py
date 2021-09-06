@@ -124,7 +124,14 @@ def load_tml_dataset(name: str) -> Dataset:
     """
 
     name = name.lower().strip()
-    metadata = DATASETS_METADATA[name]
+    metadata = DATASETS_METADATA.get(name)
+
+    # guardians
+    if name not in DATASETS_METADATA:
+        raise ValueError(f"{name} not found on datasets")
+
+    if metadata["type"] != "tml":
+        raise TypeError(f"{name} is not an TML dataset.")
 
     reader = TMLDatasetReader(metadata)
     return [reader.read(path) for path in metadata['path']]
@@ -151,6 +158,13 @@ def load_table_dataset(name: str) -> Dataset:
 
     name = name.lower().strip()
     metadata = DATASETS_METADATA[name]
+
+    # guardians
+    if name not in DATASETS_METADATA:
+        raise ValueError(f"{name} not found on datasets")
+
+    if metadata["type"] != "table":
+        raise TypeError(f"{name} is not an table dataset.")
 
     # read base dataset
     base_datasets = []

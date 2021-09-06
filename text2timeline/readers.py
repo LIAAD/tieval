@@ -1,9 +1,7 @@
-import collections
-from typing import List, Tuple, Union
+from typing import List, Union
 
 import nltk
 import warnings
-import collections
 
 from pathlib import Path
 
