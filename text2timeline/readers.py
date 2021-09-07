@@ -166,6 +166,7 @@ class TableDatasetReader:
                         doc_name = line[self._metadata["columns"].index("doc")]
                         lines_by_doc[doc_name] += [line]
 
+                # add tlinks from table to the base document
                 for doc_name, lines in lines_by_doc.items():
 
                     doc = self._retrieve_base_document(doc_name)
@@ -201,22 +202,24 @@ class TableDatasetReader:
 
         src, tgt, relation = [line[idx] for idx in column_idxs]
 
-        if src.isdigit():
-            if self._event_id == "eiid":
-                src, tgt = f"ei{src}", f"ei{tgt}"
-
-            elif self._event_id == "eid":
-                src, tgt = f"e{src}", f"e{tgt}"
-
         return src, tgt, relation
 
-    def _transform_eiid2eid(self, id: str, eiid2eid: dict):
+    def _resolve_id(self, id, doc):
 
-        if self._event_id == "eiid":
-            eiid = eiid2eid.get(id)
+        # to address the problem of timebank-dense where t0 is referred but it is not defined on timebank.
+        if id == "t0":
+            return doc.dct.id
 
-            if eiid:
-                return eiid
+        # MATRES only has the id number (ex: "e105" appears as 105)
+        if id.isdigit():
+            if self._event_id == "eiid":
+                eiid = f"ei{id}"
+                eid = doc.eiid2eid.get(eiid)
+                return eid
+
+            elif self._event_id == "eid":
+                eid = f"e{id}"
+                return eid
 
         return id
 
@@ -233,8 +236,8 @@ class TableDatasetReader:
 
     def _get_source_target(self, src: str, tgt: str, doc: Document) -> Tuple[Entity]:
 
-        source = doc[self._transform_eiid2eid(src, doc.eiid2eid)]
-        target = doc[self._transform_eiid2eid(tgt, doc.eiid2eid)]
+        source = doc[self._resolve_id(src, doc)]
+        target = doc[self._resolve_id(tgt, doc)]
 
         if source is None:
             warnings.warn(f"{src} not found on the original document {doc.name}.")
