@@ -6,15 +6,24 @@ from text2timeline.entities import Event, Timex
 from text2timeline.links import TLink
 
 
-@dataclass
 class Document:
     """An temporally annotated document."""
 
-    name: str
-    text: str
-    events: List[Event]
-    timexs: List[Timex]
-    tlinks: List[TLink]
+    def __init__(self,
+                 name: str,
+                 text: str,
+                 events: List[Event],
+                 timexs: List[Timex],
+                 tlinks: List[TLink]
+                 ):
+
+        self.name = name
+        self.text = text
+        self.events = events
+        self.timexs = timexs
+        self.tlinks = tlinks
+
+        self.eiid2eid = {event.eiid: event.id for event in self.events}
 
     def __repr__(self):
         return f'Document(name={self.name})'
@@ -23,8 +32,7 @@ class Document:
         return self.text.strip()
 
     def __getitem__(self, id: str):
-        entities = self.events + self.timexs + self.tlinks
-        for entity in entities:
+        for entity in self.entities + self.tlinks:
             if entity.id == id:
                 return entity
 
@@ -34,6 +42,10 @@ class Document:
         for timex in self.timexs:
             if timex.is_dct:
                 return timex
+
+    @property
+    def entities(self):
+        return self.events + self.timexs
 
     def augment_tlinks(self, relations: List[str] = None) -> None:
         """ Augments the document tlinks by adding the symmetic relation of every tlink.

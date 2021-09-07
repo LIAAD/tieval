@@ -1,3 +1,4 @@
+import collections
 from typing import List, Union
 
 import nltk
@@ -35,25 +36,20 @@ class TMLDocumentReader:
         """Retrive Events from tml file."""
 
         event_tags = xml.get_tag("EVENT")
+        event_attrs = {event_tag.attrib["eid"]: event_tag.attrib
+                       for event_tag in event_tags}
 
         # complementary information of each event is given on MAKEINSTANCE tags
-        minst_tags = xml.get_tag("MAKEINSTANCE")
-        minst_attribs = {mit.attrib['eventID']: mit.attrib for mit in minst_tags}
-
-        if len(minst_tags) != len(minst_attribs):
-            warnings.warn(f"There might be multiple MAKEINSTANCE entries with the same event id in {xml.path}. "
-                          f"Only the last will be used.")
-
         events = []
-        for event_tag in event_tags:
+        for mnist_tag in xml.get_tag("MAKEINSTANCE"):
 
-            attrib = event_tag.attrib
-            event_id = attrib['eid']
+            attrib = mnist_tag.attrib
+            event_id = attrib["eventID"]
 
             # add MAKEINSTANCE info
-            minst_attrib = minst_attribs.get(event_id)
-            if minst_attrib:
-                attrib.update(minst_attrib)
+            event_attr = event_attrs.get(event_id)
+            if event_attr:
+                attrib.update(event_attr)
 
             events += [Event(attrib)]
 
@@ -70,10 +66,9 @@ class TMLDocumentReader:
 
         # tlinks have eiid but our reference is eid.
         # the map between eiid to eid is on the MAKEINSTANCE elements
-        minst_tags = xml.get_tag("MAKEINSTANCE")
         eiid2eid = {
             mit.attrib['eiid']: mit.attrib['eventID']
-            for mit in minst_tags
+            for mit in xml.get_tag("MAKEINSTANCE")
         }
 
         tlinks = []
@@ -145,12 +140,10 @@ class TableDatasetReader:
     def __init__(self, metadata: dict, base_dataset: Dataset) -> None:
 
         self._extension = metadata["extension"]
-        self._column_idxs = (
-            metadata["columns"].index("doc"),
-            metadata["columns"].index("src"),
-            metadata["columns"].index("tgt"),
-            metadata["columns"].index("relation"),
-        )
+        self._event_id = metadata["index"]
+
+        self._metadata = metadata
+
         self._base_dataset = base_dataset
 
     def read(self, path: str) -> Dataset:
@@ -166,14 +159,21 @@ class TableDatasetReader:
                 lines = [line.split() for line in content.split('\n')]
 
                 # create a dictionary with docs as keys and a list of tlinks as values.
+                lines_by_doc = collections.defaultdict(list)
                 for line in lines:
                     if line:
+                        doc_name = line[self._metadata["columns"].index("doc")]
+                        lines_by_doc[doc_name] += [line]
 
-                        doc_name, src, tgt, relation = self._decode_line(line)
+                for doc_name, lines in lines_by_doc.items():
 
-                        doc = self._base_dataset[doc_name]
-                        source = doc[src]
-                        target = doc[tgt]
+                    doc = self._retrieve_base_document(doc_name)
+
+                    for line in lines:
+                        src, tgt, relation = self._decode_line(line)
+
+                        source = doc[self._transform_eiid2eid(src, doc.eiid2eid)]
+                        target = doc[self._transform_eiid2eid(tgt, doc.eiid2eid)]
 
                         if source is None:
                             warnings.warn(f"{src} not found on the original document {doc_name}.")
@@ -185,12 +185,43 @@ class TableDatasetReader:
 
     def _decode_line(self, line: List[str]):
 
-        doc_name, src, tgt, relation = [line[idx] for idx in self._column_idxs]
+        column_idxs = (
+            self._metadata["columns"].index("src"),
+            self._metadata["columns"].index("tgt"),
+            self._metadata["columns"].index("relation"),
+        )
+
+        src, tgt, relation = [line[idx] for idx in column_idxs]
 
         if src.isdigit():
-            src, tgt = f"e{src}", f"e{tgt}"
+            if self._event_id == "eiid":
+                src, tgt = f"ei{src}", f"ei{tgt}"
 
-        return doc_name, src, tgt, relation
+            elif self._event_id == "eid":
+                src, tgt = f"e{src}", f"e{tgt}"
+
+        return src, tgt, relation
+
+    def _transform_eiid2eid(self, id: str, eiid2eid: dict):
+
+        if self._event_id == "eiid":
+            eiid = eiid2eid.get(id)
+
+            if eiid:
+                return eiid
+
+        return id
+
+    def _retrieve_base_document(self, doc_name):
+
+        # retrieve document from the original dataset.
+        doc = self._base_dataset[doc_name]
+
+        if doc is None:
+            warnings.warn(f"Document {doc_name} was not found on the source dataset "
+                          f"{self._base_dataset.name}")
+
+        return doc
 
 
 class TMLDatasetReader:
