@@ -1,5 +1,5 @@
 import collections
-from typing import List, Union
+from typing import List, Union, Tuple
 
 import nltk
 import warnings
@@ -131,6 +131,7 @@ Dataset Readers.
 
 DocName = str
 SourceID, TargetID = str, str
+Entity = Union[Event, Timex]
 
 
 class TableDatasetReader:
@@ -169,19 +170,26 @@ class TableDatasetReader:
 
                     doc = self._retrieve_base_document(doc_name)
 
-                    for line in lines:
+                    tlinks = []
+                    for idx, line in enumerate(lines):
+
                         src, tgt, relation = self._decode_line(line)
+                        source, target = self._get_source_target(src, tgt, doc)
 
-                        source = doc[self._transform_eiid2eid(src, doc.eiid2eid)]
-                        target = doc[self._transform_eiid2eid(tgt, doc.eiid2eid)]
+                        if source and target:
+                            tlinks += [
+                                TLink(
+                                    id=f"l{idx}",
+                                    source=source,
+                                    target=target,
+                                    relation=relation
+                                )
+                            ]
 
-                        if source is None:
-                            warnings.warn(f"{src} not found on the original document {doc_name}.")
+                    doc.tlinks = tlinks
+                    documents += [doc]
 
-                        elif target is None:
-                            warnings.warn(f"{tgt} not found on the original document {doc_name}.")
-
-        return None
+        return Dataset(path.name, documents)
 
     def _decode_line(self, line: List[str]):
 
@@ -222,6 +230,19 @@ class TableDatasetReader:
                           f"{self._base_dataset.name}")
 
         return doc
+
+    def _get_source_target(self, src: str, tgt: str, doc: Document) -> Tuple[Entity]:
+
+        source = doc[self._transform_eiid2eid(src, doc.eiid2eid)]
+        target = doc[self._transform_eiid2eid(tgt, doc.eiid2eid)]
+
+        if source is None:
+            warnings.warn(f"{src} not found on the original document {doc.name}.")
+
+        elif target is None:
+            warnings.warn(f"{tgt} not found on the original document {doc.name}.")
+
+        return source, target
 
 
 class TMLDatasetReader:
