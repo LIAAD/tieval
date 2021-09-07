@@ -30,6 +30,8 @@ class TLink:
         self.id = id
         self.source = source
         self.target = target
+
+        self._relation = None
         self.relation = relation
 
     def __str__(self):
@@ -89,4 +91,12 @@ class TLink:
             target=self.source,
             relation=~self.relation
         )
+
+    @property
+    def relation(self) -> TemporalRelation:
+        return self._relation
+
+    @relation.setter
+    def relation(self, rel: str) -> None:
+        self._relation = TemporalRelation(rel)
 
