@@ -175,6 +175,11 @@ class TableDatasetReader:
                         source = doc[src]
                         target = doc[tgt]
 
+                        if source is None:
+                            warnings.warn(f"{src} not found on the original document {doc_name}.")
+
+                        elif target is None:
+                            warnings.warn(f"{tgt} not found on the original document {doc_name}.")
 
         return None
 
