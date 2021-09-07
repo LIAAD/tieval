@@ -24,11 +24,13 @@ DATASETS_METADATA = {
 
     "timebank-1.2": {
         "url": "",
-        "description": "",
+
+        "description":
+            """""",
+
         "type": "tml",
         "path": (
             "data/TimeBank-1.2/data/timeml",
-            "data/TimeBank-1.2/data/extra"
         )
     },
 
@@ -42,8 +44,14 @@ DATASETS_METADATA = {
     },
 
     "timebank-pt": {
-        "url": "",
-        "description": "",
+        "url": "nlx-server.di.fc.ul.pt/~fcosta/TimeBankPT/TimeBankPTv1.0.zip",
+
+        "description":
+            """TimeBankPT was obtained by translating the English data used in the first TempEval 
+        competition (http://timeml.org/tempeval).\nTimeBankPT can be found at 
+        http://nlx.di.fc.ul.pt/~fcosta/TimeBankPT.\nThat page contains some information about the corpus and a link 
+        to the release.""",
+
         "type": "tml",
         "path": (
             'data/TimeBankPT/train',
@@ -58,7 +66,7 @@ DATASETS_METADATA = {
         "path": (
             'data/TempEval-3/Train/TBAQ-cleaned/TimeBank',
             'data/TempEval-3/Train/TBAQ-cleaned/AQUAINT',
-            'data/TempEval-3/Train/trainT3',
+            # 'data/TempEval-3/Train/trainT3',
             'data/TempEval-3/Test/TempEval-3-Platinum'
         )
     },
@@ -73,11 +81,11 @@ DATASETS_METADATA = {
     },
 
     "matres": {
-        "base": ("aquaint", "timebank", "platinum"),
+        "base": ("tempeval-3", ),
         "extension": "*.txt",
         "columns": ("doc", "src_token", "tgt_token", "src", "tgt", "relation"),
         "index": "eiid",
-        "url": "",
+        "url": "https://github.com/qiangning/MATRES",
         "description": "",
         "type": "table",
         "path": (
@@ -86,12 +94,18 @@ DATASETS_METADATA = {
     },
 
     "tddiscourse": {
-        "base": {"timebank"},
+        "base": {"timebank-1.2"},
         "extension": "*.tsv",
         "columns": ("doc", "src", "tgt", "relation"),
         "index": "eid",
-        "url": "",
-        "description": "",
+        "url": "https://github.com/aakanksha19/TDDiscourse",
+        "description":
+            "TDDiscourse is a dataset for temporal ordering of events, which specifically focuses on event pairs that "
+            "are more than one sentence apart in a document. TDDiscourse was created by augmenting TimeBank-Dense. "
+            "TimeBank-Dense focuses mainly on event pairs which are in the same or adjacent sentences (though they do "
+            "include labels for some event pairs which are more than one sentence apart). TDDiscourse was created to "
+            "address this gap and to turn the focus towards discourse-level temporal ordering, which turns out to be a "
+            "harder task.",
         "type": "table",
         "path": (
             'data/TDDiscourse/TDDMan',
