@@ -18,8 +18,17 @@ DATASETS_METADATA = {
         "description": "",
         "type": "tml",
         "path": (
-            'data/TimeBank-1.2/data/timeml',
-            'data/TimeBank-1.2/data/extra'
+            "data/TempEval-3/Train/TBAQ-cleaned/TimeBank",
+        )
+    },
+
+    "timebank-1.2": {
+        "url": "",
+        "description": "",
+        "type": "tml",
+        "path": (
+            "data/TimeBank-1.2/data/timeml",
+            "data/TimeBank-1.2/data/extra"
         )
     },
 
@@ -67,6 +76,7 @@ DATASETS_METADATA = {
         "base": ("aquaint", "timebank", "platinum"),
         "extension": "*.txt",
         "columns": ("doc", "src_token", "tgt_token", "src", "tgt", "relation"),
+        "index": "eiid",
         "url": "",
         "description": "",
         "type": "table",
@@ -79,6 +89,7 @@ DATASETS_METADATA = {
         "base": {"timebank"},
         "extension": "*.tsv",
         "columns": ("doc", "src", "tgt", "relation"),
+        "index": "eid",
         "url": "",
         "description": "",
         "type": "table",
@@ -89,9 +100,10 @@ DATASETS_METADATA = {
     },
 
     "timebank-dense": {
-        "base": {"timebank"},
+        "base": {"timebank-1.2"},
         "extension": "*.txt",
         "columns": ("doc", "src", "tgt", "relation"),
+        "index": "eid",
         "url": "",
         "description": "",
         "type": "table",
