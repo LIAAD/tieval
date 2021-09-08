@@ -6,23 +6,17 @@ from text2timeline.entities import Event, Timex
 from text2timeline.links import TLink
 
 
+@dataclass
 class Document:
     """An temporally annotated document."""
 
-    def __init__(self,
-                 name: str,
-                 text: str,
-                 events: List[Event],
-                 timexs: List[Timex],
-                 tlinks: List[TLink]
-                 ):
+    name: str
+    text: str
+    events: List[Event]
+    timexs: List[Timex]
+    tlinks: List[TLink]
 
-        self.name = name
-        self.text = text
-        self.events = events
-        self.timexs = timexs
-        self.tlinks = tlinks
-
+    def __post_init__(self):
         self.eiid2eid = {event.eiid: event.id for event in self.events}
 
     def __repr__(self):

@@ -138,13 +138,8 @@ class TableDatasetReader:
     """Read temporal annotated files that the annotation is given on tables.
     As is the case of: MATRES, TDDiscourse and TimeBank-Dense."""
 
-    def __init__(self, metadata: dict, base_dataset: Dataset) -> None:
-
-        self._extension = metadata["extension"]
-        self._event_id = metadata["index"]
-
+    def __init__(self, metadata, base_dataset: Dataset) -> None:
         self._metadata = metadata
-
         self._base_dataset = base_dataset
 
     def read(self, path: str) -> Dataset:
@@ -152,7 +147,7 @@ class TableDatasetReader:
         path = Path(path)
 
         documents = []
-        for path in path.glob(self._extension):
+        for path in path.glob(self._metadata.extension):
 
             with open(path, 'r') as f:
 
@@ -163,7 +158,7 @@ class TableDatasetReader:
                 lines_by_doc = collections.defaultdict(list)
                 for line in lines:
                     if line:
-                        doc_name = line[self._metadata["columns"].index("doc")]
+                        doc_name = line[self._metadata.columns.index("doc")]
                         lines_by_doc[doc_name] += [line]
 
                 # add tlinks from table to the base document
@@ -195,9 +190,9 @@ class TableDatasetReader:
     def _decode_line(self, line: List[str]):
 
         column_idxs = (
-            self._metadata["columns"].index("src"),
-            self._metadata["columns"].index("tgt"),
-            self._metadata["columns"].index("relation"),
+            self._metadata.columns.index("src"),
+            self._metadata.columns.index("tgt"),
+            self._metadata.columns.index("relation"),
         )
 
         src, tgt, relation = [line[idx] for idx in column_idxs]
@@ -212,12 +207,12 @@ class TableDatasetReader:
 
         # MATRES only has the id number (ex: "e105" appears as 105)
         if id.isdigit():
-            if self._event_id == "eiid":
+            if self._metadata.event_index == "eiid":
                 eiid = f"ei{id}"
                 eid = doc.eiid2eid.get(eiid)
                 return eid
 
-            elif self._event_id == "eid":
+            elif self._metadata.event_index == "eid":
                 eid = f"e{id}"
                 return eid
 
@@ -251,7 +246,7 @@ class TableDatasetReader:
 class TMLDatasetReader:
     """Handles the process of reading any temporally annotated dataset."""
 
-    def __init__(self, metadata: dict = None) -> None:
+    def __init__(self) -> None:
         self.document_reader = TMLDocumentReader()
 
     def read(self, path: str) -> Dataset:
