@@ -147,43 +147,41 @@ class TableDatasetReader:
         path = Path(path)
 
         documents = []
-        for path in path.glob(self._metadata.extension):
+        with open(path, 'r') as f:
 
-            with open(path, 'r') as f:
+            content = f.read()
+            lines = [line.split() for line in content.split('\n')]
 
-                content = f.read()
-                lines = [line.split() for line in content.split('\n')]
+            # create a dictionary with docs as keys and a list of tlinks as values.
+            lines_by_doc = collections.defaultdict(list)
+            for line in lines:
+                if line:
+                    doc_name = line[self._metadata.columns.index("doc")]
+                    lines_by_doc[doc_name] += [line]
 
-                # create a dictionary with docs as keys and a list of tlinks as values.
-                lines_by_doc = collections.defaultdict(list)
-                for line in lines:
-                    if line:
-                        doc_name = line[self._metadata.columns.index("doc")]
-                        lines_by_doc[doc_name] += [line]
+            # add tlinks from table to the base document
+            for doc_name, lines in lines_by_doc.items():
 
-                # add tlinks from table to the base document
-                for doc_name, lines in lines_by_doc.items():
+                doc = self._retrieve_base_document(doc_name)
 
-                    doc = self._retrieve_base_document(doc_name)
+                tlinks = []
+                for idx, line in enumerate(lines):
 
-                    tlinks = []
-                    for idx, line in enumerate(lines):
+                    src, tgt, relation = self._decode_line(line)
+                    source, target = self._get_source_target(src, tgt, doc)
 
-                        src, tgt, relation = self._decode_line(line)
-                        source, target = self._get_source_target(src, tgt, doc)
+                    if source and target:
+                        tlinks += [
+                            TLink(
+                                id=f"l{idx}",
+                                source=source,
+                                target=target,
+                                relation=relation
+                            )
+                        ]
 
-                        if source and target:
-                            tlinks += [
-                                TLink(
-                                    id=f"l{idx}",
-                                    source=source,
-                                    target=target,
-                                    relation=relation
-                                )
-                            ]
-
-                    doc.tlinks = tlinks
-                    documents += [doc]
+                doc.tlinks = tlinks
+                documents += [doc]
 
         return Dataset(path.name, documents)
 
