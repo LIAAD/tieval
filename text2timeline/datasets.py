@@ -185,5 +185,4 @@ def load_dataset(name: str) -> Dataset:
 
 
 def load_timebank():
-    tb, * = load_dataset("timebank")
-    return set(tb)
+    return load_dataset("timebank")
