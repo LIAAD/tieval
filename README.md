@@ -7,10 +7,3 @@ To download them run the following code.
 cd data
 sh download_datastes.sh
 ```
-
-## Links
-Semantic role labeling 
-    https://github.com/asofiaoliveira/srl_bert_pt
-
-Heideltime
-    https://github.com/JMendes1995/py_heideltime
