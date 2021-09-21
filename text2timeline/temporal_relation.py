@@ -64,6 +64,10 @@ class PointRelation:
         return f"PointRelation({self.relation})"
 
     def __eq__(self, other):
+
+        if isinstance(other, list):
+            other = PointRelation(*other)
+
         return self.relation == other.relation
 
     def __invert__(self):
@@ -202,6 +206,9 @@ class RelationHandler:
 
         elif isinstance(relation, PointRelation):
             point = relation
+
+        elif isinstance(relation, TemporalRelation):
+            point = relation.point
 
         else:
             raise TypeError("Argument type is not supported.")

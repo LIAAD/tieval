@@ -26,15 +26,16 @@ def dataset_statistics():
 
 def test_load_dataset(dataset_statistics):
 
-    def get_dataset_statistics(dataset):
+    def get_dataset_statistics(datasets):
 
         statistics = defaultdict(int)
 
-        statistics["n_docs"] = len(dataset)
-        for doc in dataset.documents:
-            statistics["n_events"] += len(set(event.id for event in doc.events))
-            statistics["n_timexs"] += len(doc.timexs)
-            statistics["n_tlinks"] += len(doc.tlinks)
+        for dataset in datasets:
+            statistics["n_docs"] += len(dataset)
+            for doc in dataset.documents:
+                statistics["n_events"] += len(set(event.id for event in doc.events))
+                statistics["n_timexs"] += len(doc.timexs)
+                statistics["n_tlinks"] += len(doc.tlinks)
 
         return statistics
 
