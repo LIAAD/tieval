@@ -23,7 +23,7 @@ setup(
     author_email="hugo.o.sousa@inesctec.pt",
 
     description=" ",
-    long_description=read("README.rst"),
+    long_description=read("README.md"),
 
     packages=find_packages(exclude=('tests',)),
 
