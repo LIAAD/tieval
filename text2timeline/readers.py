@@ -40,7 +40,7 @@ class TMLDocumentReader:
                        for event_tag in event_tags}
 
         # complementary information of each event is given on MAKEINSTANCE tags
-        events = []
+        events = set()
         for mnist_tag in xml.get_tag("MAKEINSTANCE"):
 
             attrib = mnist_tag.attrib
@@ -51,7 +51,7 @@ class TMLDocumentReader:
             if event_attr:
                 attrib.update(event_attr)
 
-            events += [Event(attrib)]
+            events.add(Event(attrib))
 
         return events
 
@@ -207,7 +207,7 @@ class TableDatasetReader:
         if id.isdigit():
             if self._metadata.event_index == "eiid":
                 eiid = f"ei{id}"
-                eid = doc.eiid2eid.get(eiid)
+                eid = doc._eiid2eid.get(eiid)
                 return eid
 
             elif self._metadata.event_index == "eid":

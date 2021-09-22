@@ -1,9 +1,10 @@
 from dataclasses import dataclass
 
-from typing import List
+from typing import Set, List
 
 from text2timeline.entities import Event, Timex
 from text2timeline.links import TLink
+from text2timeline.closure import temporal_closure as _temporal_closure
 
 
 @dataclass
@@ -12,12 +13,13 @@ class Document:
 
     name: str
     text: str
-    events: List[Event]
-    timexs: List[Timex]
-    tlinks: List[TLink]
+    events: Set[Event]
+    timexs: Set[Timex]
+    tlinks: Set[TLink]
 
     def __post_init__(self):
-        self.eiid2eid = {event.eiid: event.id for event in self.events}
+        self._eiid2eid = {event.eiid: event.id for event in self.events}
+        self._closure = None
 
     def __repr__(self):
         return f'Document(name={self.name})'
@@ -26,7 +28,7 @@ class Document:
         return self.text.strip()
 
     def __getitem__(self, id: str):
-        for entity in self.entities + self.tlinks:
+        for entity in self.entities.union(self.tlinks):
             if entity.id == id:
                 return entity
 
@@ -39,38 +41,15 @@ class Document:
 
     @property
     def entities(self):
-        return self.events + self.timexs
+        return self.events.union(self.timexs)
 
-    def augment_tlinks(self, relations: List[str] = None) -> None:
-        """ Augments the document tlinks by adding the symmetic relation of every tlink.
-        For example if we have the tlink with A --BEFORE--> B the augmentation will add B --AFTER--> A to the document
-        tlink list.
-
-        :parameter:
-            relation: a relation to limit the augmentation. If this argument is passed the method will only add the
-            symmetric relation to tlink that have this relation in theis point_relation.
-
-        :return: None
-        """
-
-        inv_tlinks = []
-        for tlink in self.tlinks:
-
-            if relations:
-                cond_point_rel = [True for _, rel, _ in tlink.point_relation if rel in relations]
-                cond_inter_rel = [tlink.relation in relations]
-                cond = any(cond_point_rel + cond_inter_rel)
-
-            else:
-                cond = True
-
-            if cond:
-                inv_tlinks += [~tlink]
-
-        self.tlinks += inv_tlinks
-
+    @property
     def temporal_closure(self):
-        pass
+
+        if self._closure is None:
+            self._closure = _temporal_closure(self.tlinks)
+
+        return self._closure
 
 
 @dataclass
