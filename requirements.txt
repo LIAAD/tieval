@@ -1,2 +1,4 @@
 nltk
 pytest
+pytest-cov
+codecov
