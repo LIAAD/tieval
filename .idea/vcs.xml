@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/data/MATRES" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/data/TDDiscourse" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/data/TempEval-3/Test/TempEval-3-Platinum" vcs="Git" />
+  </component>
+</project>

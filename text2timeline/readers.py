@@ -57,12 +57,12 @@ class TMLDocumentReader:
 
     @staticmethod
     def get_timexs(xml: XMLHandler) -> List[Timex]:
-        return [Timex(element.attrib) for element in xml.get_tag('TIMEX3')]
+        return set(Timex(element.attrib) for element in xml.get_tag('TIMEX3'))
 
     def get_tlinks(self, xml: XMLHandler, events: List[Event], timexs: List[Timex]) -> List[TLink]:
         """Get Tlink's of the document"""
 
-        entities = {entity.id: entity for entity in events + timexs}
+        entities = {entity.id: entity for entity in events.union(timexs)}
 
         # tlinks have eiid but our reference is eid.
         # the map between eiid to eid is on the MAKEINSTANCE elements
@@ -71,7 +71,7 @@ class TMLDocumentReader:
             for mit in xml.get_tag("MAKEINSTANCE")
         }
 
-        tlinks = []
+        tlinks = set()
         for tlink in xml.get_tag("TLINK"):
 
             # retrieve source and target id.
@@ -87,12 +87,14 @@ class TMLDocumentReader:
             # build tlink
             source, target = entities.get(src_id), entities.get(tgt_id)
             if source and target:
-                tlinks += [TLink(
-                    id=tlink.attrib['lid'],
-                    source=source,
-                    target=target,
-                    relation=tlink.attrib['relType']
-                )]
+                tlinks.add(
+                    TLink(
+                        id=tlink.attrib['lid'],
+                        source=source,
+                        target=target,
+                        relation=tlink.attrib['relType']
+                    )
+                )
 
         return tlinks
 
@@ -146,7 +148,7 @@ class TableDatasetReader:
 
         path = Path(path)
 
-        documents = []
+        documents = set()
         with open(path, 'r') as f:
 
             content = f.read()
@@ -164,24 +166,24 @@ class TableDatasetReader:
 
                 doc = self._retrieve_base_document(doc_name)
 
-                tlinks = []
+                tlinks = set()
                 for idx, line in enumerate(lines):
 
                     src, tgt, relation = self._decode_line(line)
                     source, target = self._get_source_target(src, tgt, doc)
 
                     if source and target:
-                        tlinks += [
+                        tlinks.add(
                             TLink(
                                 id=f"l{idx}",
                                 source=source,
                                 target=target,
                                 relation=relation
                             )
-                        ]
+                        )
 
                 doc.tlinks = tlinks
-                documents += [doc]
+                documents.add(doc)
 
         return Dataset(path.name, documents)
 

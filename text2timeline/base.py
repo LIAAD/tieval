@@ -57,14 +57,14 @@ class Dataset:
     """A compilation of documents that have temporal annotations."""
 
     name: str
-    documents: List[Document]
+    documents: Set[Document]
 
     def __repr__(self):
         return f"Dataset(name={self.name})"
 
     def __add__(self, other):
         name = f"{self.name}+{other.name}"
-        docs = self.documents + other.documents
+        docs = self.documents.union(other.documents)
         return Dataset(name, docs)
 
     def __radd__(self, other):
