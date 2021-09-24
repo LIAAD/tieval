@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from typing import Set, List
+from typing import Set, Iterable, Optional, Union
 
 from text2timeline.entities import Event, Timex
 from text2timeline.links import TLink
@@ -21,13 +21,13 @@ class Document:
         self._eiid2eid = {event.eiid: event.id for event in self.events}
         self._closure = None
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f'Document(name={self.name})'
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.text.strip()
 
-    def __getitem__(self, id: str):
+    def __getitem__(self, id: str) -> Optional[Union[Timex, Event, TLink]]:
         for entity in self.entities.union(self.tlinks):
             if entity.id == id:
                 return entity
@@ -40,11 +40,11 @@ class Document:
                 return timex
 
     @property
-    def entities(self):
+    def entities(self) -> Set:
         return self.events.union(self.timexs)
 
     @property
-    def temporal_closure(self):
+    def temporal_closure(self) -> Set[TLink]:
 
         if self._closure is None:
             self._closure = _temporal_closure(self.tlinks)

@@ -1,22 +1,17 @@
 from dataclasses import dataclass
-from typing import Union, Tuple, Set
+from typing import Union, Tuple, Iterable, List
 
 from text2timeline.base import Dataset
 from text2timeline.readers import TMLDatasetReader, TableDatasetReader
-
-DATASET_READER = {
-    "tml": TMLDatasetReader,
-    "table": TableDatasetReader
-}
 
 
 @dataclass
 class DatasetMetadata:
     name: str
     reader: Union[TMLDatasetReader, TableDatasetReader]
-    path: Tuple[str]
+    path: Iterable[str]
     url: str = None
-    base: Set[str] = None
+    base: Iterable[str] = None
     extension: str = None
     columns: Tuple = None
     event_index: str = None
@@ -133,7 +128,7 @@ DATASETS_METADATA = {
 }
 
 
-def load_dataset(name: str) -> Dataset:
+def load_dataset(name: str) -> List[Dataset]:
     """
 
     Load temporally annotated dataset.
