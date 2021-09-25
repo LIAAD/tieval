@@ -4,26 +4,52 @@ from text2timeline.temporal_relation import PointRelation
 from text2timeline.temporal_relation import TemporalRelation
 
 
-def test_point_relation_inference():
-    """Check if point relation inference is working."""
+class TestPointRelation:
 
-    assert PointRelation(end_start="<").relation == ["<", "<", "<", "<"]
-    assert PointRelation(start_end=">").relation == [">", ">", ">", ">"]
-    assert PointRelation(end_start="=").relation == ["<", "<", "=", "<"]
-    assert PointRelation(start_end="=").relation == [">", "=", ">", ">"]
-    assert PointRelation(start_start="<", end_end=">").relation == ["<", "<", ">", ">"]
-    assert PointRelation(start_start=">", end_end="<").relation == [">", "<", ">", "<"]
-    assert PointRelation(start_start="=").relation == ["=", "<", ">", None]
-    assert PointRelation(end_end="=").relation == [None, "<", ">", "="]
-    assert PointRelation(start_start="=", end_end="<").relation == ["=", "<", ">", "<"]
-    assert PointRelation(start_start="=", end_end=">").relation == ["=", "<", ">", ">"]
-    assert PointRelation(start_start=">", end_end="=").relation == [">", "<", ">", "="]
-    assert PointRelation(start_start="<", end_end="=").relation == ["<", "<", ">", "="]
-    assert PointRelation(start_start="=", end_end="=").relation == ["=", "<", ">", "="]
-    assert PointRelation(start_start="<", end_start=">", end_end="<").relation == ["<", "<", ">", "<"]
-    assert PointRelation().relation == [None, None, None, None]
-    assert PointRelation(start_start="<", end_end="<").relation == ["<", "<", None, "<"]
-    assert PointRelation(start_start=">", end_end=">").relation == [">", None, ">", ">"]
+    def test_relation(self, point_relations):
+        """Check if point relation inference is working."""
+
+        assert PointRelation(end_start="<").relation == ["<", "<", "<", "<"]
+        assert PointRelation(start_end=">").relation == [">", ">", ">", ">"]
+        assert PointRelation(end_start="=").relation == ["<", "<", "=", "<"]
+        assert PointRelation(start_end="=").relation == [">", "=", ">", ">"]
+        assert PointRelation(start_start="<", end_end=">").relation == ["<", "<", ">", ">"]
+        assert PointRelation(start_start=">", end_end="<").relation == [">", "<", ">", "<"]
+        assert PointRelation(start_start="=").relation == ["=", "<", ">", None]
+        assert PointRelation(end_end="=").relation == [None, "<", ">", "="]
+        assert PointRelation(start_start="=", end_end="<").relation == ["=", "<", ">", "<"]
+        assert PointRelation(start_start="=", end_end=">").relation == ["=", "<", ">", ">"]
+        assert PointRelation(start_start=">", end_end="=").relation == [">", "<", ">", "="]
+        assert PointRelation(start_start="<", end_end="=").relation == ["<", "<", ">", "="]
+        assert PointRelation(start_start="=", end_end="=").relation == ["=", "<", ">", "="]
+        assert PointRelation(start_start="<", end_start=">", end_end="<").relation == ["<", "<", ">", "<"]
+        assert PointRelation().relation == [None, None, None, None]
+        assert PointRelation(start_start="<", end_end="<").relation == ["<", "<", None, "<"]
+        assert PointRelation(start_start=">", end_end=">").relation == [">", None, ">", ">"]
+
+    def test_order(self):
+
+        assert PointRelation(end_start="<").order == [[1, 2], [3, 4]]
+        assert PointRelation(start_end=">").order == [[3, 4], [1, 2]]
+        assert PointRelation(end_start="=").order == [[1, 2], [2, 4]]
+        assert PointRelation(start_end="=").order == [[2, 4], [1, 2]]
+        assert PointRelation(start_start="<", end_end=">").order == [[1, 4], [2, 3]]
+        assert PointRelation(start_start=">", end_end="<").order == [[2, 3], [1, 4]]
+        assert PointRelation(start_start="=", end_end="<").order == [[1, 3], [1, 4]]
+        assert PointRelation(start_start="=", end_end=">").order == [[1, 4], [1, 3]]
+        assert PointRelation(start_start=">", end_end="=").order == [[2, 3], [1, 3]]
+        assert PointRelation(start_start="<", end_end="=").order == [[1, 3], [2, 3]]
+        assert PointRelation(start_start="=", end_end="=").order == [[1, 3], [1, 3]]
+        assert PointRelation(start_start="<", end_start=">", end_end="<").order == [[1, 3], [2, 4]]
+
+        # TODO: what should be the order when one end point is not defined?
+        assert PointRelation(start_start="=").order == [[1, 3], [1, 3]]
+        assert PointRelation(end_end="=").order == [[1, 3], [1, 3]]
+        assert PointRelation().order == [[1, 2], [1, 2]]
+        assert PointRelation(start_start="<", end_end="<").order == [[], []]
+        assert PointRelation(start_start=">", end_end=">").order == [[], []]
+
+
 
 
 def test_temporal_relation_inversion():

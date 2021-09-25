@@ -1,4 +1,5 @@
-import dataclasses
+
+from dataclasses import dataclass
 from typing import Union
 
 # map interval relations to unique names
@@ -51,24 +52,9 @@ _INVERSE_POINT_RELATION = {
 }
 
 
-@dataclasses.dataclass
-class Timeline:
-    s_src: int = 0
-    e_src: int = 0
-    s_tgt: int = 0
-    e_tgt: int = 0
-
-    def resolve(self, relation):
-        for rel, pair in zip(self.relation, self._timeline):
-
-            if rel == "<":
-                timeline[1] += + 1
-
-            elif rel == ">":
-                pair[0] = pair[0] + 1
-
-            elif rel == "=":
-                continue
+@dataclass
+class Point:
+    value: int = 1
 
 
 class PointRelation:
@@ -80,10 +66,18 @@ class PointRelation:
                  end_end: str = None) -> None:
 
         self.relation = [start_start, start_end, end_start, end_end]
-        self.timeline = Timeline().resolve(self.relation)
+        self.order = self._relative_position()
 
     def __repr__(self):
         return f"PointRelation({self.relation})"
+
+    def __str__(self):
+        src_idx, tgt_idx = self.order
+
+        source = "   ".join("*" if i in src_idx else " " for i in range(5))
+        target = "   ".join("*" if i in tgt_idx else " " for i in range(5))
+
+        return f"Source {source}\nTarget {target}"
 
     def __eq__(self, other):
 
@@ -167,6 +161,50 @@ class PointRelation:
 
         return [relations_dict.get((src, tgt)) for src, rel, tgt in relations[:4]]
 
+    def _relative_position(self):
+        """
+        Compute the relative position of the points.
+        """
+
+        s_src, e_src = Point(), Point()
+        s_tgt, e_tgt = Point(), Point()
+
+        relations = [
+            (s_src, self.relation[0], s_tgt),
+            (s_src, self.relation[1], e_tgt),
+            (e_src, self.relation[2], s_tgt),
+            (e_src, self.relation[3], e_tgt),
+            (s_src, "<", e_src),
+            (s_tgt, "<", e_tgt)
+        ]
+
+        for src, rel, tgt in relations:
+
+            if rel == "<":
+                tgt.value += 1
+
+            elif rel == ">":
+                src.value += 1
+
+            elif rel is None:
+                # TODO: What should be done in this case?
+                # "Beware: relation between x and z ir not defined."
+                continue
+
+        return [[s_src.value, e_src.value], [s_tgt.value, e_tgt.value]]
+
+    @property
+    def minimal(self):
+
+        src_pos, tgt_pos = self.order
+
+        sequence = [""] * 4
+        sequence[src_pos[0]] = "src_s"
+        sequence[src_pos[1]] = "src_e"
+        sequence[tgt_pos[0]] = "tgt_s"
+        sequence[tgt_pos[1]] = "tgt_e"
+        pass
+
 
 class IntervalRelation:
 
@@ -242,6 +280,7 @@ class TemporalRelation:
 
     def __init__(self, relation: Union[str, IntervalRelation, PointRelation]):
         self._point_relation = RelationHandler.handle(relation)
+        self._interval = None
 
     def __repr__(self) -> str:
         return f"TemporalRelation({self.point})"
@@ -262,9 +301,13 @@ class TemporalRelation:
 
     @property
     def interval(self) -> Union[str, PointRelation]:
-        for itr, pnt in _INTERVAL_TO_POINT_RELATION.items():
-            if pnt == self._point_relation:
-                return itr
+
+        if self._interval is None:
+            for itr, pnt in _INTERVAL_TO_POINT_RELATION.items():
+                if pnt == self._point_relation:
+                    self._interval = itr
+
+        return self._interval
 
     @property
     def point(self):
