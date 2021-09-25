@@ -1,3 +1,4 @@
+import dataclasses
 from typing import Union
 
 # map interval relations to unique names
@@ -50,6 +51,26 @@ _INVERSE_POINT_RELATION = {
 }
 
 
+@dataclasses.dataclass
+class Timeline:
+    s_src: int = 0
+    e_src: int = 0
+    s_tgt: int = 0
+    e_tgt: int = 0
+
+    def resolve(self, relation):
+        for rel, pair in zip(self.relation, self._timeline):
+
+            if rel == "<":
+                timeline[1] += + 1
+
+            elif rel == ">":
+                pair[0] = pair[0] + 1
+
+            elif rel == "=":
+                continue
+
+
 class PointRelation:
 
     def __init__(self,
@@ -59,6 +80,7 @@ class PointRelation:
                  end_end: str = None) -> None:
 
         self.relation = [start_start, start_end, end_start, end_end]
+        self.timeline = Timeline().resolve(self.relation)
 
     def __repr__(self):
         return f"PointRelation({self.relation})"

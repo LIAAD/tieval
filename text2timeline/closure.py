@@ -1,10 +1,13 @@
-from typing import List
+from typing import Set
 
 from text2timeline.links import TLink
 
 
-def temporal_closure(tlinks: List[TLink]) -> dict:
+def temporal_closure(tlinks: Set[TLink]) -> Set[TLink]:
 
+    tlink0, tlink1, *_ = tlinks
+
+    r = tlink0 & tlink1
 
     # repeatedly apply point transitivity rules until no new relations can be inferred
     point_relations = set()

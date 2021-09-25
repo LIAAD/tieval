@@ -9,24 +9,11 @@ from text2timeline.base import TLink
 def tlink():
 
     source = Event({
-        "eid": "e1",
-        "class": "OCCURRENCE",
-        "text": "expansion",
-        "endpoints": (82, 91),
-        "eventID": "e1",
-        "eiid": "ei50001",
-        "tense": "NONE",
-        "aspect": "NONE",
-        "polarity": "POS",
-        "pos": "NOUN"
+        "eid": "e1"
     })
 
     target = Timex({
-        "tid": "t0",
-        "type": "DATE",
-        "value": "1998-03-03",
-        "temporalFunction": "false",
-        "functionInDocument": "CREATION_TIME"
+        "tid": "t0"
     })
 
     return TLink(
@@ -75,6 +62,8 @@ class TestTLink:
         assert relation.interval == "AFTER"
         assert relation.point == [">", ">", ">", ">"]
 
+    # TODO: check equality assertion of temporal relations.
     def test_equal(self, tlink, tlink0):
         assert tlink == tlink
+        assert tlink == ~tlink
         assert tlink != tlink0

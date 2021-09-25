@@ -92,6 +92,22 @@ class TLink:
             relation=~self.relation
         )
 
+    def __eq__(self, other):
+
+        other_inv = ~other
+
+        if (self.source == other.source) and \
+                (self.target == other.target) and \
+                (self.relation == other.relation):
+            return True
+
+        elif (self.source == other_inv.source) and \
+                (self.target == other_inv.target) and \
+                (self.relation == other_inv.relation):
+            return True
+
+        return False
+
     @property
     def relation(self) -> TemporalRelation:
         return self._relation
