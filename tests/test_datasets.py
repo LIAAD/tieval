@@ -16,7 +16,7 @@ def dataset_statistics():
             "n_docs": 183,
             "n_events": 7935,
             "n_timexs": 1414,
-            "n_tlinks": 6418
+            "n_tlinks": 6416
         },
 
     }

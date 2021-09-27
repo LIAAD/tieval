@@ -73,6 +73,9 @@ class PointRelation:
         self.relation = [start_start, start_end, end_start, end_end]
         self.order = self._relative_position()
 
+    def __hash__(self):
+        return hash(tuple(self.relation))
+
     def __repr__(self):
         return f"PointRelation({self.relation})"
 
@@ -230,6 +233,9 @@ class IntervalRelation:
     def __str__(self):
         return self.relation
 
+    def __hash__(self):
+        return hash(self.relation)
+
     @property
     def relation(self):
         return self._relation
@@ -328,5 +334,8 @@ class TemporalRelation:
 
     def __eq__(self, other):
         return self.point == self.point
+
+    def __hash__(self):
+        return hash((self.point, self.interval))
 
 
