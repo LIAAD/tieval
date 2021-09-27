@@ -92,6 +92,8 @@ class TLink:
             relation=~self.relation
         )
 
+    # TODO: define equality in tlinks.
+    """
     def __eq__(self, other):
 
         other_inv = ~other
@@ -107,6 +109,7 @@ class TLink:
             return True
 
         return False
+    """
 
     @property
     def relation(self) -> TemporalRelation:

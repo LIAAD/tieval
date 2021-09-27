@@ -57,6 +57,11 @@ class Point:
     value: int = 1
 
 
+class IncompleteRelationError(Exception):
+    """Raised when the point relation is incomplete."""
+    pass
+
+
 class PointRelation:
 
     def __init__(self,
@@ -72,8 +77,11 @@ class PointRelation:
         return f"PointRelation({self.relation})"
 
     def __str__(self):
-        src_idx, tgt_idx = self.order
 
+        if self.order is None:
+            raise IncompleteRelationError("The point relation is incomplete.")
+
+        src_idx, tgt_idx = self.order
         source = "   ".join("*" if i in src_idx else " " for i in range(5))
         target = "   ".join("*" if i in tgt_idx else " " for i in range(5))
 
@@ -187,9 +195,7 @@ class PointRelation:
                 src.value += 1
 
             elif rel is None:
-                # TODO: What should be done in this case?
-                # "Beware: relation between x and z ir not defined."
-                continue
+                return None
 
         return [[s_src.value, e_src.value], [s_tgt.value, e_tgt.value]]
 
@@ -212,7 +218,17 @@ class IntervalRelation:
         self.relation = relation
 
     def __eq__(self, other):
+
+        if isinstance(other, str):
+            other = IntervalRelation(other)
+
         return self.relation == other.relation
+
+    def __repr__(self):
+        return f"IntervalRelation({self.relation})"
+
+    def __str__(self):
+        return self.relation
 
     @property
     def relation(self):
@@ -254,44 +270,55 @@ _INTERVAL_TO_POINT_RELATION = {
 
 class RelationHandler:
 
-    @staticmethod
-    def handle(relation):
+    def handle(self, relation):
 
         if isinstance(relation, str):
             interval = IntervalRelation(relation)
             point = _INTERVAL_TO_POINT_RELATION[interval.relation]
 
+        elif isinstance(relation, list):
+            point = PointRelation(*relation)
+            interval = self._point2interval(point)
+
+        elif isinstance(relation, dict):
+            point = PointRelation(**relation)
+            interval = self._point2interval(point)
+
         elif isinstance(relation, IntervalRelation):
             point = _INTERVAL_TO_POINT_RELATION[relation.relation]
+            interval = self._point2interval(point)
 
         elif isinstance(relation, PointRelation):
             point = relation
+            interval = self._point2interval(point)
 
         elif isinstance(relation, TemporalRelation):
             point = relation.point
+            interval = relation.interval
 
         else:
             raise TypeError("Argument type is not supported.")
 
-        return point
+        return interval, point
+
+    @staticmethod
+    def _point2interval(point_relation):
+
+        for itr, pnt in _INTERVAL_TO_POINT_RELATION.items():
+            if pnt == point_relation:
+                return IntervalRelation(itr)
 
 
 class TemporalRelation:
 
-    def __init__(self, relation: Union[str, IntervalRelation, PointRelation]):
-        self._point_relation = RelationHandler.handle(relation)
-        self._interval = None
+    def __init__(self, relation: Union[str, list, dict]):
+        self.interval, self.point = RelationHandler().handle(relation)
 
     def __repr__(self) -> str:
-        return f"TemporalRelation({self.point})"
+        return f"TemporalRelation({self.interval.relation})"
 
     def __str__(self) -> str:
-
-        if self.interval:
-            return self.interval
-
-        else:
-            return str(self.point)
+        return f"{self.interval.relation}"
 
     def __invert__(self):
         return TemporalRelation(~self.point)
@@ -299,16 +326,7 @@ class TemporalRelation:
     def __and__(self, other):
         return TemporalRelation(self.point & other.point)
 
-    @property
-    def interval(self) -> Union[str, PointRelation]:
+    def __eq__(self, other):
+        return self.point == self.point
 
-        if self._interval is None:
-            for itr, pnt in _INTERVAL_TO_POINT_RELATION.items():
-                if pnt == self._point_relation:
-                    self._interval = itr
 
-        return self._interval
-
-    @property
-    def point(self):
-        return self._point_relation

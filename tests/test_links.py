@@ -65,5 +65,5 @@ class TestTLink:
     # TODO: check equality assertion of temporal relations.
     def test_equal(self, tlink, tlink0):
         assert tlink == tlink
-        assert tlink == ~tlink
+        # assert tlink == ~tlink
         assert tlink != tlink0
