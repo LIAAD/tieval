@@ -125,6 +125,20 @@ DATASETS_METADATA = {
             "data/TimeBank-Dense/TimebankDense.full.txt",
         )
     ),
+
+    "tcr": DatasetMetadata(
+        name="tcr",
+        description="""TCR stands for Temporal and Causal Reasoning, which is a new dataset proposed in "Joint 
+        Reasoning for Temporal and Causal Relations" (Q. Ning et al., 2018). TCR is jointly annotated with both 
+        temporal and causal relations. Specifically, the temporal relations were annotated based on the scheme 
+        proposed in "A Multi-Axis Annotation Scheme for Event Temporal Relations" using CrowdFlower; the causal 
+        relations were mapped from the "EventCausalityData """,
+        reader=TMLDatasetReader,
+        url="https://github.com/CogComp/TCR",
+        path=(
+            "data/TCR/TemporalPart",
+        )
+    )
 }
 
 

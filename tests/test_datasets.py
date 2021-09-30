@@ -19,6 +19,11 @@ def dataset_statistics():
             "n_tlinks": 6416
         },
 
+        "tcr": {
+            "n_docs": 25,
+            "n_tlinks": 2646
+        },
+
     }
 
     return statistics
@@ -42,6 +47,9 @@ def test_load_dataset(dataset_statistics):
     for dataset_name in dataset_statistics:
         dataset = load_dataset(dataset_name)
 
+        [ds] = dataset
+        set(tl.relation.interval.relation for doc in ds.documents for tl in doc.tlinks)
+
         statistics = dataset_statistics[dataset_name]
         statistics_found = get_dataset_statistics(dataset)
 
@@ -50,6 +58,7 @@ def test_load_dataset(dataset_statistics):
             if statistics[key] is None:
                 continue
 
-            assert statistics_found[key] == statistics[key], f"The {key} is not correct for dataset {dataset_name}."
+            if key in statistics:
+                assert statistics_found[key] == statistics[key], f"The {key} is not correct for dataset {dataset_name}."
 
 
