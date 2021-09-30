@@ -33,3 +33,7 @@ wget -O TempEval-2.zip https://drive.inesctec.pt/s/ZD6wzmrgysr8mne/download
 unzip TempEval-2.zip
 rm TempEval-2.zip
 
+echo "Download Temporal and Casual Relation"
+wget -O TCR.zip https://drive.inesctec.pt/s/H9xi7mRpEkYL6ws/download
+unzip TCR.zip
+rm TCR.zip
