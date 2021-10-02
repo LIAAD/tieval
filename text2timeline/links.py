@@ -23,9 +23,9 @@ class TLink:
 
     def __init__(self,
                  id: str,
-                 source: Union[Timex, Event],
-                 target: Union[Timex, Event],
-                 relation: TemporalRelation):
+                 source: Union[str, Timex, Event],
+                 target: Union[str, Timex, Event],
+                 relation: Union[str, list, dict, TemporalRelation]):
 
         self.id = id
         self.source = source

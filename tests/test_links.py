@@ -62,8 +62,7 @@ class TestTLink:
         assert relation.interval == "AFTER"
         assert relation.point == [">", ">", ">", ">"]
 
-    # TODO: check equality assertion of temporal relations.
     def test_equal(self, tlink, tlink0):
         assert tlink == tlink
-        # assert tlink == ~tlink
+        assert tlink == ~tlink
         assert tlink != tlink0
