@@ -111,14 +111,15 @@ class PointRelation:
         return PointRelation(*inverse_relations)
 
     def __and__(self, other):
-        result = [
-            _POINT_TRANSITIONS[self.relation[0]][other.relation[0]],
-            _POINT_TRANSITIONS[self.relation[1]][other.relation[2]],
-            _POINT_TRANSITIONS[self.relation[2]][other.relation[1]],
-            _POINT_TRANSITIONS[self.relation[3]][other.relation[3]],
-        ]
+        r1, r2, r3, r4 = self.relation
+        r5, r6, r7, r8 = other.relation
 
-        return PointRelation(*result)
+        ss = _POINT_TRANSITIONS[r1][r5] or _POINT_TRANSITIONS[r2][r7]
+        se = _POINT_TRANSITIONS[r1][r6] or _POINT_TRANSITIONS[r2][r8]
+        es = _POINT_TRANSITIONS[r3][r5] or _POINT_TRANSITIONS[r4][r7]
+        ee = _POINT_TRANSITIONS[r3][r6] or _POINT_TRANSITIONS[r4][r8]
+
+        return PointRelation(ss, se, es, ee)
 
     @property
     def relation(self):
@@ -338,7 +339,7 @@ class TemporalRelation:
         return TemporalRelation(self.point & other.point)
 
     def __eq__(self, other):
-        return self.point == self.point
+        return self.point == other.point
 
     def __hash__(self):
         return hash((self.point, self.interval))

@@ -33,10 +33,3 @@ def temporal_closure(tlinks: Set[TLink]) -> Set[TLink]:
 
         if new_n_tlinks > n_tlinks:
             tlinks = copy.copy(new_tlinks)
-
-
-
-
-
-
-

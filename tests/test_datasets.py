@@ -21,7 +21,7 @@ def dataset_statistics():
 
         "tcr": {
             "n_docs": 25,
-            "n_tlinks": 2646
+            "n_tlinks": 3515  # TODO: the Paper reports 2646
         },
 
     }

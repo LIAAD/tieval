@@ -14,17 +14,6 @@ def tlink():
     )
 
 
-@pytest.fixture
-def tlink0():
-
-    return TLink(
-        id="l6",
-        source="e2",
-        target="e3",
-        relation="INCLUDES"
-    )
-
-
 class TestTLink:
 
     def test_id(self, tlink):
@@ -45,10 +34,10 @@ class TestTLink:
         assert relation.interval == "AFTER"
         assert relation.point == [">", ">", ">", ">"]
 
-    def test_equal(self, tlink, tlink0):
+    def test_equal(self, tlink):
         assert tlink == tlink
         assert tlink == ~tlink
-        assert tlink != tlink0
+        assert tlink != TLink("l6", "e2", "e3", "INCLUDES")
 
     def test_inference(self):
 
@@ -64,12 +53,15 @@ class TestTLink:
         assert ba & ac == bc
         assert ab & ca == bc
 
+        # test the case where there is nothing to be inferred.
         assert ab & ba is None
+
+        # test the case where the inferred relation is VAGUE
+        assert ab & bc is None
 
         # specific case #1
         dh = TLink("l2", "D", "H", "ends")
         dg = TLink("l3", "D", "G", "before")
-
         hg = TLink("l3", "H", "G", "before")
         assert dh & dg == hg
 
@@ -77,16 +69,7 @@ class TestTLink:
         assert dh & dg == gh
 
         # specific case #2
-        # C ---SIMULTANEOUS--> A A ---BEFORE--> F
         ca = TLink("l2", "C", "A", "simultaneous")
         af = TLink("l3", "A", "F", "before")
-
         cf = TLink("l3", "C", "F", "before")
         assert ca & af == cf
-
-        # test the case where the inferred relation is VAGUE
-        assert ab & bc is None
-
-
-
-
