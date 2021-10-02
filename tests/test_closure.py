@@ -29,12 +29,12 @@ def tlinks_closure():
         TLink("l6", "B", "E", "after"),
 
         TLink("l7", "E", "A", "before"),
-        TLink("l7", "E", "F", "before"),
-        TLink("l7", "E", "C", "before"),
-        TLink("l7", "B", "F", "before"),
-        TLink("l7", "B", "C", "before"),
-        TLink("l7", "H", "G", "before"),
-        TLink("l7", "F", "C", "after"),
+        TLink("l8", "E", "F", "before"),
+        TLink("l9", "E", "C", "before"),
+        TLink("l10", "B", "F", "before"),
+        TLink("l11", "B", "C", "before"),
+        TLink("l12", "H", "G", "before"),
+        TLink("l13", "F", "C", "after"),
     }
 
 

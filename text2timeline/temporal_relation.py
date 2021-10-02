@@ -111,8 +111,13 @@ class PointRelation:
         return PointRelation(*inverse_relations)
 
     def __and__(self, other):
-        result = [_POINT_TRANSITIONS[self_relation][other_relation]
-                  for self_relation, other_relation in zip(self.relation, other.relation)]
+        result = [
+            _POINT_TRANSITIONS[self.relation[0]][other.relation[0]],
+            _POINT_TRANSITIONS[self.relation[1]][other.relation[2]],
+            _POINT_TRANSITIONS[self.relation[2]][other.relation[1]],
+            _POINT_TRANSITIONS[self.relation[3]][other.relation[3]],
+        ]
+
         return PointRelation(*result)
 
     @property

@@ -8,18 +8,10 @@ from text2timeline.base import TLink
 @pytest.fixture
 def tlink():
 
-    source = Event({
-        "eid": "e1"
-    })
-
-    target = Timex({
-        "tid": "t0"
-    })
-
     return TLink(
         id="l70",
-        source=source,
-        target=target,
+        source="e1",
+        target="t0",
         relation="BEFORE"
     )
 
@@ -66,3 +58,17 @@ class TestTLink:
         assert tlink == tlink
         assert tlink == ~tlink
         assert tlink != tlink0
+
+    def test_inference(self):
+
+        ab = TLink(id='l0', source="A", target="B", relation="after")
+        ac = TLink(id='l1', source="A", target="C", relation="simultaneous")
+        ba = TLink(id='l2', source="B", target="A", relation="before")
+        ca = TLink(id='l3', source="C", target="A", relation="simultaneous")
+
+        bc = TLink(id='li1', source="B", target="C", relation="before")
+
+        assert ab & ac == bc
+        assert ab & ca == bc
+        assert ba & ac == bc
+        assert ab & ca == bc

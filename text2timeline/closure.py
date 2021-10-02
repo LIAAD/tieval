@@ -6,18 +6,23 @@ import copy
 
 def temporal_closure(tlinks: Set[TLink]) -> Set[TLink]:
 
-    new_tlinks = copy.deepcopy(tlinks)
-
+    n_tlinks = len(tlinks)
+    new_tlinks = copy.copy(tlinks)
     while new_tlinks:
 
         tlinks.update(new_tlinks)
 
         # find new tlinks
-        old_tlinks = copy.deepcopy(tlinks)
-        while old_tlinks:
-            link = old_tlinks.pop()
+        tlink = tlinks.pop()
+        infered_tlinks = [tl & tlink for tl in tlinks]
 
-            inferred_links = [link & l for l in old_tlinks]
+        for tl in tlinks:
+            print(tl)
+            print(tlink)
+            infered = tl & tlink
+            print(infered)
+            print()
+
 
 
 

@@ -46,32 +46,36 @@ class TLink:
         If a relation can be inferred it will return a Tlink between source of the first Tlink and target of the second
         Tlink.
 
-        Example:
-            tlink_1 = TLink({
-                'id': 'l1',
-                'source': 'e1',
-                'target': 'e2',
-                'relation': 'BEFORE'
-            })
-
-            tlink_2 = TLink({
-                'id': 'l2',
-                'source': 'e2',
-                'target': 'e3',
-                'relation': 'BEFORE'
-            })
-
-            tlink_1 & tlink_2
-
-        :param other:
-        :return:
         """
+
+        if self.source == other.source:
+            source = self.target
+            target = other.target
+            relation = (~self.relation) & other.relation
+
+        elif self.source == other.target:
+            source = self.target
+            target = other.source
+            relation = ~self.relation & ~other.relation
+
+        elif self.target == other.source:
+            source = self.source
+            target = other.target
+            relation = self.relation & other.relation
+
+        elif self.target == other.target:
+            source = self.source
+            target = other.source
+            relation = self.relation & ~other.relation
+
+        else:
+            return None
 
         return TLink(
             id=f'il{self.source}{other.target}',
-            source=self.source,
-            target=other.target,
-            relation=self.relation & other.relation,
+            source=source,
+            target=target,
+            relation=relation
         )
 
     def __invert__(self):
