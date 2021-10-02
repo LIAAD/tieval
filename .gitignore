@@ -42,5 +42,6 @@ nosetests.xml
 /data/TimeBank-Dense/
 /data/TimeBankPT/
 /data/Timpeval-2/
+/data/TCR/
 
 main.py
