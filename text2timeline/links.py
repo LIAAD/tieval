@@ -40,13 +40,8 @@ class TLink:
     def __repr__(self):
         return f"TLink(id={self.id})"
 
-    def __and__(self, other):
-        """ Infer the relation between two TLinks.
-
-        If a relation can be inferred it will return a Tlink between source of the first Tlink and target of the second
-        Tlink.
-
-        """
+    @staticmethod
+    def _resolve_inference(self, other):
 
         if self.source == other.source:
             source = self.target
@@ -68,7 +63,24 @@ class TLink:
             target = other.source
             relation = self.relation & ~other.relation
 
-        else:
+        return source, target, relation
+
+    def __and__(self, other):
+        """ Infer the relation between two TLinks.
+
+        If a relation can be inferred it will return a Tlink between source of the first Tlink and target of the second
+        Tlink.
+
+        """
+
+        # verify that there is one entity in common between self and other instances
+        entities = {self.source, self.target, other.source, other.target}
+        if len(entities) != 3:
+            return None
+
+        source, target, relation = self._resolve_inference(self, other)
+
+        if relation.interval == "VAGUE":
             return None
 
         return TLink(
