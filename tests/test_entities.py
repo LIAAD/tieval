@@ -40,8 +40,18 @@ class TestTimex:
     def test_is_dct(self, timex):
         assert timex.is_dct
 
+    def test_le(self):
+        t1 = Timex({"tid": "t1"})
+        t2 = Timex({"tid": "t2"})
+        assert t1 < t2
+
 
 class TestEvent:
 
     def test_id(self, event):
         assert event.id == "e1"
+
+    def test_le(self):
+        e1 = Event({"eid": "e1"})
+        e2 = Event({"eid": "e2"})
+        assert e1 < e2

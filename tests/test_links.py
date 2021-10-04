@@ -73,3 +73,9 @@ class TestTLink:
         af = TLink("l3", "A", "F", "before")
         cf = TLink("l3", "C", "F", "before")
         assert ca & af == cf
+
+    def test_hash(self):
+        tl1 = TLink("l1", "A", "B", "before")
+        tl2 = TLink("l2", "B", "A", "after")
+
+        assert hash(tl1) == hash(tl2)

@@ -19,6 +19,9 @@ class Timex:
     def __repr__(self):
         return f"Timex(tid={self.tid})"
 
+    def __lt__(self, other):
+        return self.id < other.id
+
     @property
     def id(self):
         return self.tid
@@ -49,6 +52,9 @@ class Event:
 
     def __repr__(self):
         return f"Event(eid={self.eid})"
+
+    def __lt__(self, other):
+        return self.id < other.id
 
     @property
     def id(self):
