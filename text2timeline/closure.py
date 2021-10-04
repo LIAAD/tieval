@@ -7,11 +7,12 @@ import copy
 def temporal_closure(tlinks: Set[TLink], allow_incomplete=False) -> Set[TLink]:
 
     n_tlinks = len(tlinks)
+    result = copy.copy(tlinks)
     while True:
 
         # find new tlinks
         inferred_tlinks = set()
-        foo = copy.copy(tlinks)
+        foo = copy.copy(result)
         while foo:
 
             tlink = foo.pop()
@@ -28,14 +29,14 @@ def temporal_closure(tlinks: Set[TLink], allow_incomplete=False) -> Set[TLink]:
                     inferred_tlinks.add(inferred)
 
         # update tlinks set
-        tlinks.update(inferred_tlinks)
+        result.update(inferred_tlinks)
 
         # check if new tlinks were found
-        new_n_tlinks = len(tlinks)
+        new_n_tlinks = len(result)
         if new_n_tlinks != n_tlinks:
             n_tlinks = new_n_tlinks
 
         else:
             break
 
-    return tlinks
+    return result
