@@ -4,7 +4,7 @@ from text2timeline.links import TLink
 import copy
 
 
-def temporal_closure(tlinks: Set[TLink]) -> Set[TLink]:
+def temporal_closure(tlinks: Set[TLink], allow_incomplete=False) -> Set[TLink]:
 
     n_tlinks = len(tlinks)
     while True:
@@ -16,9 +16,15 @@ def temporal_closure(tlinks: Set[TLink]) -> Set[TLink]:
 
             tlink = foo.pop()
             for tl in foo:
+
                 inferred = tl & tlink
 
                 if inferred:
+
+                    if not allow_incomplete:
+                        if None in inferred.relation.point.relation:
+                            continue
+
                     inferred_tlinks.add(inferred)
 
         # update tlinks set
