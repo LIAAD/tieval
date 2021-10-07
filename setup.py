@@ -2,6 +2,10 @@
 from setuptools import find_packages
 from setuptools import setup
 
+
+README = open("README.md").read()
+
+
 setup(
     name="text2timeline",
     version="0.1.0",
@@ -11,8 +15,10 @@ setup(
     author="Hugo Sousa",
     author_email="hugo.o.sousa@inesctec.pt",
 
-    description=" ",
-    long_description=open("README.md").read(),
+    description="This package was build to facilitate the development of temporal aware models. TO that end it makes "
+                "it easy to import the datasets that have been developed over the years and use the evaluation metrics "
+                "that use din this domain.",
+    long_description=README,
 
     packages=find_packages(exclude=('tests*',)),
 
@@ -25,4 +31,5 @@ setup(
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
     ],
+    python_requires=">=3.8"
 )
