@@ -1,5 +1,9 @@
 # text2timeline
 
+A framework for the development of temporally aware models.
+
+![](imgs/text2timeline.png)
+
 ## Installation
 
 The package is available on [PyPI]():
@@ -25,4 +29,16 @@ To know more about the module run the following code on the terminal.
 python -m text2timeline download --help
 ```
 
+## Contributing
 
+1. Fork it (https://github.com/hmosousa/text2timeline)
+2. Create your feature branch (`git checkout -b feature/fooBar`)
+3. Commit your changes (`git commit -am 'Add some fooBar'`)
+4. Push to the branch (`git push origin feature/fooBar`)
+5. Create a new Pull Request
+
+## Meta
+
+Hugo Sousa - hugo.o.sousa@inesctec.pt
+
+This framework is part of the [Text2Story](https://text2story.inesctec.pt/) project which is financed by the ERDF – European Regional Development Fund through the North Portugal Regional Operational Programme (NORTE 2020), under the PORTUGAL 2020 and by National Funds through the Portuguese funding agency, FCT - Fundação para a Ciência e a Tecnologia within project PTDC/CCI-COM/31857/2017 (NORTE-01-0145-FEDER-03185) 
