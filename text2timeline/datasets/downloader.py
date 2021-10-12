@@ -35,6 +35,8 @@ DATA_PATH = pathlib.Path("./data")
 
 
 def _download_repo(metadata):
+    """Download dataset from git repository."""
+
     repo_name = metadata.repo.split("/")[-1]
 
     print(f"Downloading {repo_name} from {metadata.repo}")
@@ -43,6 +45,7 @@ def _download_repo(metadata):
 
 
 def _download_url(metadata):
+    """Download dataset from url."""
 
     print(f"Downloading {metadata.name} from {metadata.urls}")
 
@@ -76,6 +79,28 @@ def _download_url(metadata):
 
 
 def download(dataset: str) -> None:
+    """ Download temporally annoated corpus.
+
+    The available datasets are:
+        - TimeBank-1.2
+        - AQUAINT
+        - TimeBankPT
+        - TempEval-3
+        - MATRES
+        - TDDiscourse
+        - TimeBank-Dense"
+        - TCR
+
+    Parameters
+    ----------
+    dataset: str
+        The name of the dataset to download.
+
+    Returns
+    -------
+    None
+        The dataset is downloaded to the data folder.
+    """
 
     dataset = dataset.lower().strip()
     metadata = DATASETS_METADATA.get(dataset)

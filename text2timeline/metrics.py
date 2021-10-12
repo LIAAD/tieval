@@ -1,3 +1,12 @@
+""" Evaluation metrics.
+
+Functions:
+----------
+    - temporal_recall
+    - temporal_precision
+    - temporal_awareness
+
+"""
 
 from typing import Set
 
@@ -28,8 +37,9 @@ def temporal_precision(system: Set[TLink], annotation: Set[TLink]):
 def temporal_awareness(system: Set[TLink], annotation: Set[TLink]):
     """Compute the temporal awareness of a system.
 
-    Temporal awareness is a f1 measure that takes into account the temporal closure of a system. For more information
-    refer to the original paper (UzZaman et al.)[https://aclanthology.org/P11-2061.pdf]"""
+    Temporal awareness is a f1 measure that takes into account the temporal
+    closure of a system. For more information refer to the original paper
+    (UzZaman et al.)[https://aclanthology.org/P11-2061.pdf]"""
 
     recall = temporal_recall(system, annotation)
     precision = temporal_precision(system, annotation)

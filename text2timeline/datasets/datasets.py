@@ -5,10 +5,8 @@ from text2timeline.base import Dataset
 from text2timeline.datasets import DATASETS_METADATA
 
 
-def load_dataset(name: str) -> List[Dataset]:
-    """
-
-    Load temporally annotated dataset.
+def load(dataset: str) -> List[Dataset]:
+    """Load temporally annotated dataset.
 
     The supported datasets are:
         TimeBank
@@ -23,19 +21,22 @@ def load_dataset(name: str) -> List[Dataset]:
 
     Parameters
     ----------
-    name
+    dataset: str
+        The name of the dataset to read.
 
     Returns
     -------
+    List[Dataset]
+        A list with all the datasets  # TODO: return only one dataset.
 
     """
 
-    name = name.lower().strip()
-    metadata = DATASETS_METADATA[name]
+    dataset = dataset.lower().strip()
+    metadata = DATASETS_METADATA[dataset]
 
     # guardians
-    if name not in DATASETS_METADATA:
-        raise ValueError(f"{name} not found on datasets")
+    if dataset not in DATASETS_METADATA:
+        raise ValueError(f"{dataset} not found on datasets")
 
     # table dataset
     if metadata.base:
@@ -43,7 +44,7 @@ def load_dataset(name: str) -> List[Dataset]:
         # read base dataset
         base_datasets = []
         for dataset_name in metadata.base:
-            base_datasets += load_dataset(dataset_name)
+            base_datasets += load(dataset_name)
         base_dataset = sum(base_datasets)
 
         # define reader
@@ -54,7 +55,3 @@ def load_dataset(name: str) -> List[Dataset]:
         reader = metadata.reader()
 
     return [reader.read(path) for path in metadata.path]
-
-
-def load_timebank():
-    return load_dataset("timebank")

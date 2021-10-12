@@ -1,3 +1,10 @@
+""" Objects that represent entities on TML.
+
+Objects implemented:
+    - Timex
+    - Event
+
+"""
 
 from typing import Dict
 

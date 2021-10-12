@@ -1,15 +1,47 @@
+"""Base objects.
+
+Objects
+-------
+    - Document
+    - Dataset
+
+"""
+
 from dataclasses import dataclass
 
-from typing import Set, Iterable, Optional, Union
+from typing import Set, Optional, Union
 
-from text2timeline.entities import Event, Timex
+from text2timeline.entities import Event
+from text2timeline.entities import Timex
 from text2timeline.links import TLink
 from text2timeline.closure import temporal_closure as _temporal_closure
 
 
 @dataclass
 class Document:
-    """An temporally annotated document."""
+    """
+    A document with temporal annotation.
+
+    ...
+
+    Attributes
+    ----------
+    name: str
+        The name of the document
+    text: str
+        The raw test of the document
+    events: Set[Event]
+        The events annotated
+    timexs: Set[Timex]
+        The time expressions annotated
+    tlinks: Set[TLink]
+        The temporal links annotated
+
+    Properties
+    -------
+    temporal_closure(sound=None)
+        Prints the animals name and what sound it makes
+    """
 
     name: str
     text: str
@@ -34,17 +66,29 @@ class Document:
 
     @property
     def dct(self):
-        """Extract document creation time"""
+        """Document creation time.
+
+        Returns the Timex that is set as document creation time for this
+        document.
+        """
+
         for timex in self.timexs:
             if timex.is_dct:
                 return timex
 
     @property
     def entities(self) -> Set:
+        """ A set with the Events and Timexs."""
+
         return self.events.union(self.timexs)
 
     @property
     def temporal_closure(self) -> Set[TLink]:
+        """Compute temporal closure of the document.
+
+        Temporal closure is the process of inferring new TLinks from the
+        annotated TLinks.
+        """
 
         if self._closure is None:
             self._closure = _temporal_closure(self.tlinks)

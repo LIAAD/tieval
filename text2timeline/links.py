@@ -1,3 +1,10 @@
+""" Objects that represent links on TML.
+
+Objects implemented:
+    - Tlink
+
+"""
+
 from typing import Union
 
 from text2timeline.temporal_relation import TemporalRelation
@@ -12,13 +19,14 @@ class TLink:
 
     Attributes
     -----------
-    lid: str
-        link id
-    source: str
-        source event/timex id that the link refers to
-    target: str
-        target event/timex id that the link refers to
-
+    id: str
+        Link id
+    source: Union[str, Timex, Event],
+        Source event/timex id that the link refers to
+    target: Union[str, Timex, Event]
+        Target event/timex id that the link refers to
+    relation: Union[str, list, dict, TemporalRelation]
+        The temporal relation between source and target
     """
 
     def __init__(self,
@@ -26,7 +34,12 @@ class TLink:
                  source: Union[str, Timex, Event],
                  target: Union[str, Timex, Event],
                  relation: Union[str, list, dict, TemporalRelation]):
+        """
 
+        Parameters
+        ----------
+        id : object
+        """
         self.id = id
         self.source = source
         self.target = target
@@ -131,9 +144,28 @@ class TLink:
 
     @property
     def relation(self) -> TemporalRelation:
+        """ Temporal relation between source and target.
+
+        Returns
+        -------
+        TemporalRelation
+
+        """
         return self._relation
 
     @relation.setter
     def relation(self, rel: str) -> None:
+        """
+
+        Parameters
+        ----------
+        rel : str
+            Relation on the string format.
+
+        Returns
+        -------
+        None
+
+        """
         self._relation = TemporalRelation(rel)
 

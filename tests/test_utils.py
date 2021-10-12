@@ -2,7 +2,7 @@ import pytest
 
 from pathlib import Path
 
-from text2timeline.utils import XMLHandler
+from text2timeline.datasets.utils import XMLHandler
 
 
 @pytest.fixture

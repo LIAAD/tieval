@@ -1,12 +1,25 @@
+""" Store metadata about datasets.
+
+Objects
+-------
+    - DatasetMetadata
+
+Constants
+---------
+    - DATASETS_METADATA
+
+"""
 
 from dataclasses import dataclass
 from typing import Union, Tuple, Iterable
 
-from text2timeline.readers import TMLDatasetReader, TableDatasetReader
+from text2timeline.datasets.readers import TMLDatasetReader, TableDatasetReader
 
 
 @dataclass
 class DatasetMetadata:
+    """ Store dataset metadata."""
+
     name: str
     reader: Union[TMLDatasetReader, TableDatasetReader]
     path: Iterable[str]

@@ -9,7 +9,7 @@ from pathlib import Path
 from text2timeline.base import Document, Dataset
 from text2timeline.entities import Timex, Event
 from text2timeline.links import TLink
-from text2timeline.utils import XMLHandler
+from text2timeline.datasets.utils import XMLHandler
 
 """
 Document Readers.

@@ -14,7 +14,6 @@ Options:
 
 Contacts:
 --------
-
 - hugo.o.sousa@inesctec.pt
 """
 

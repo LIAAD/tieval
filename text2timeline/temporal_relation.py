@@ -1,3 +1,20 @@
+"""All the logic to handel temporal relaitons.
+
+Constants
+---------
+    _SETTLE_RELATION
+    _POINT_TRANSITIONS
+    _INVERSE_POINT_RELATION
+    _INTERVAL_TO_POINT_RELATION
+
+Objects
+-------
+    Point
+    IncompleteRelationError
+    PointRelation
+    IntervalRelation
+    TemporalRelation
+"""
 
 from dataclasses import dataclass
 from typing import Union
@@ -257,7 +274,8 @@ class IntervalRelation:
 
 
 # Mapping from interval relation names to point relations.
-# For example, BEFORE means that the first interval"s end is before the second interval"s start
+# For example, BEFORE means that the first interval"s end is before the second
+# interval"s start
 _INTERVAL_TO_POINT_RELATION = {
     "BEFORE": PointRelation(end_start="<"),
     "AFTER": PointRelation(start_end=">"),

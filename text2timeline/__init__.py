@@ -1,7 +1,6 @@
-"""
-text2timeline
+"""text2timeline
 
-A python library to work with temporal links in text.
+A python framework to develop and evaluate temporally aware models.
 """
 
 __version__ = "0.0.1"
