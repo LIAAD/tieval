@@ -18,8 +18,11 @@ To understand its usability refer to the notebooks available [here]().
 ## Data
 
 Throughout the last two decades many datasets have been developed to train this task.
-To download them run the following code.
+text2timeline provides an easy interface to download the available corpus.
+
+To know more about the module run the following code on the terminal.
 ```shell
-cd data
-sh download_datastes.sh
+python -m text2timeline download --help
 ```
+
+
