@@ -8,16 +8,22 @@ README = open("README.md").read()
 
 setup(
     name="text2timeline",
-    version="0.1.0",
+    version="0.0.1",
     url="https://github.com/hmosousa/text2timeline",
     license='MIT',
 
     author="Hugo Sousa",
     author_email="hugo.o.sousa@inesctec.pt",
 
-    description="This package was build to facilitate the development of temporal aware models. TO that end it makes "
-                "it easy to import the datasets that have been developed over the years and use the evaluation metrics "
-                "that use din this domain.",
+    description="""
+    This package was build to facilitate the development of temporal aware 
+    models. TO that end it makes it easy to import the datasets that have been
+    developed over the years and use the evaluation metrics that use din this 
+    domain.
+    """,
+
+    long_description_content_type='text/markdown',
+
     long_description=README,
 
     packages=find_packages(exclude=('tests*',)),
