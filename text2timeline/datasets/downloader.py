@@ -44,42 +44,25 @@ def _download_repo(metadata):
     print("Done.")
 
 
-def _download_url(metadata):
+def _download_url(url):
     """Download dataset from url."""
 
-    print(f"Downloading {metadata.name} from {metadata.urls}")
+    print(f"Downloading from {url}")
 
-    for url in metadata.urls:
+    response = requests.get(url, stream=True)
 
-        response = requests.get(url, stream=True)
+    if response.ok:
 
-        if response.ok:
+        z = zipfile.ZipFile(io.BytesIO(response.content))
+        z.extractall(DATA_PATH)
+        print("Done.")
 
-            if ".zip" in url:
-                z = zipfile.ZipFile(io.BytesIO(response.content))
-                z.extractall(DATA_PATH)
-
-            elif ".tar.gz" in url:
-                z = tarfile.open(fileobj=response.raw, mode="r|gz")
-                z.extractall(DATA_PATH)
-
-            elif ".txt" in url:
-
-                file = pathlib.Path(metadata.path[0])
-                if not file.exists():
-                    file.parent.mkdir()
-
-                with open(file, "wb") as f:
-                    f.write(response.content)
-
-        else:
-            raise Exception(f"Request code: {response.status_code}")
-
-    print("Done.")
+    else:
+        raise Exception(f"Request code: {response.status_code}")
 
 
 def download(dataset: str) -> None:
-    """ Download temporally annoated corpus.
+    """ Download temporally annotated corpus.
 
     The available datasets are:
         - TimeBank-1.2
@@ -114,11 +97,5 @@ def download(dataset: str) -> None:
         os.mkdir(DATA_PATH)
 
     # download
-    if metadata.repo:
-        _download_repo(metadata)
+    _download_url(metadata.url)
 
-    elif metadata.urls:
-        _download_url(metadata)
-
-    else:
-        print(metadata.download_description)
