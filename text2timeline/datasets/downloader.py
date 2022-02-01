@@ -88,7 +88,7 @@ def download(dataset: str) -> None:
         - TempEval-3
         - MATRES
         - TDDiscourse
-        - TimeBank-Dense"
+        - TimeBank-Dense
         - TCR
 
     Parameters

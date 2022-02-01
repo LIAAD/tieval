@@ -253,6 +253,9 @@ class TMLDatasetReader:
 
         path = Path(path)
 
+        if not path.is_dir():
+            raise IOError(f"The dataset being load have not been downloaded yet.")
+
         documents = [self.document_reader.read(tml_file)
                      for tml_file in path.glob("*.tml")]
 

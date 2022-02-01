@@ -29,6 +29,17 @@ To know more about the module run the following code on the terminal.
 python -m text2timeline download --help
 ```
 
+## How To ...
+
+In this section we summarize how to perform the most useful operations in text2timeline.
+
+### download a dataset
+```python
+from text2timeline.datasets import download
+
+
+```
+
 ## Contributing
 
 1. Fork it (https://github.com/hmosousa/text2timeline)

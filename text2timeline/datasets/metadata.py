@@ -41,7 +41,10 @@ DATASETS_METADATA = {
         reader=TMLDatasetReader,
         path=(
             "data/TBAQ-cleaned/TimeBank",
-        )
+        ),
+        urls=[
+            "https://www.cs.york.ac.uk/semeval-2013/task1/data/uploads/datasets/tbaq-2013-03.zip"
+        ]
     ),
 
     "timebank-1.2": DatasetMetadata(
@@ -187,5 +190,27 @@ DATASETS_METADATA = {
         path=(
             "data/TCR/TemporalPart",
         )
-    )
+    ),
+
+    ###
+    "tempqa": DatasetMetadata(
+        name="TempQA",
+        description="https://alt.qcri.org/semeval2015/task5/index.php?id=data-and-tools"
+    ),
+
+    "torque": DatasetMetadata(
+        name="TORQUE",
+        description="https://github.com/qiangning/TORQUE-dataset"
+    ),
+
+    "mctaco": DatasetMetadata(
+        name="MCTACO",
+        description="https://github.com/CogComp/MCTACO/tree/master/dataset"
+    ),
+
+    "timequestions": DatasetMetadata(
+        name="TimeQuestions",
+        description="qa.mpi-inf.mpg.de/TempQuestions.zip"
+    ),
+
 }
