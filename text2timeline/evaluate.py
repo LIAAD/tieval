@@ -6,7 +6,27 @@ from text2timeline.entities import Timex
 from text2timeline.entities import Event
 from text2timeline.links import TLink
 
-from pprint import pprint
+from tabulate import tabulate
+
+
+def _print_table(result):
+
+    rows = list(set(result.keys()))
+    rows.sort()
+
+    cols = list(set(key for row in rows for key in result[row]))
+    cols.sort()
+
+    content = [[row] + [round(result[row][col], 2) for col in cols]
+               for row in rows]
+
+    tabel = tabulate(
+        tabular_data=content,
+        headers=cols,
+        tablefmt='orgtbl'
+    )
+
+    print(tabel)
 
 
 class Evaluator:
@@ -60,7 +80,7 @@ class Evaluator:
         }
 
         if verbose:
-            pprint(result)
+            _print_table(result)
 
         return result
 
