@@ -2,7 +2,7 @@ import pytest
 
 from pathlib import Path
 
-from text2timeline.datasets.utils import XMLHandler
+from text2timeline.datasets.utils import TMLHandler
 
 
 @pytest.fixture
@@ -31,7 +31,7 @@ def sample_tags():
 class TestXMLHandler:
 
     path = Path(r"/home/hugosousa/Projects/text2timeline/data/sample.tml")
-    xml = XMLHandler(path)
+    xml = TMLHandler(path)
 
     def test_text(self, sample_text):
         assert self.xml.text.strip() == sample_text

@@ -2,3 +2,4 @@ nltk
 pytest
 pytest-cov
 codecov
+git+https://github.com/JMendes1995/py_heideltime.git

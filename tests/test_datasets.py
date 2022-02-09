@@ -3,7 +3,7 @@ import os
 import pytest
 from collections import defaultdict
 
-from text2timeline. datasets import load, DATASETS_METADATA
+from text2timeline. datasets import read, DATASETS_METADATA
 
 os.chdir("/home/hugosousa/Projects/text2timeline")
 
@@ -45,7 +45,7 @@ def test_load_dataset(dataset_statistics):
         return statistics
 
     for dataset_name in dataset_statistics:
-        dataset = load(dataset_name)
+        dataset = read(dataset_name)
 
         [ds] = dataset
         set(tl.relation.interval.relation for doc in ds.documents for tl in doc.tlinks)

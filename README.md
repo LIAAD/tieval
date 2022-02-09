@@ -29,16 +29,24 @@ To know more about the module run the following code on the terminal.
 python -m text2timeline download --help
 ```
 
-## How To ...
+## How to ...
 
 In this section we summarize how to perform the most useful operations in text2timeline.
 
 ### download a dataset
 ```python
-from text2timeline.datasets import download
-
-
+from text2timeline import datasets
+datasets.download("TimeBank")
 ```
+
+### load a dataset
+
+```python
+from text2timeline import datasets
+
+tb = datasets.read("TimeBank")
+```
+
 
 ## Contributing
 

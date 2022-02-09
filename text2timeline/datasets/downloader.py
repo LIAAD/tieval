@@ -22,16 +22,12 @@ Datasets:
 """
 
 import os
-import pathlib
 import requests
 import zipfile
-import tarfile
 import io
 
 from text2timeline.datasets import DATASETS_METADATA
-
-CWD = pathlib.Path.cwd()
-DATA_PATH = pathlib.Path("./data")
+from text2timeline import DATA_PATH
 
 
 def _download_repo(metadata):
@@ -92,9 +88,14 @@ def download(dataset: str) -> None:
     if metadata is None:
         raise Exception(f"{dataset} not recognized.")
 
-    # check id data folder exists
+    # check if DATA_PATH folder exists
     if not DATA_PATH.is_dir():
         os.mkdir(DATA_PATH)
+
+    # check if it has already been downloaded
+    if metadata.path.is_dir():
+        print(f"Dataset {dataset} was already on {DATA_PATH}.")
+        return None
 
     # download
     _download_url(metadata.url)

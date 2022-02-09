@@ -5,7 +5,7 @@ from text2timeline.base import Dataset
 from text2timeline.datasets import DATASETS_METADATA
 
 
-def load(dataset: str) -> List[Dataset]:
+def read(dataset: str) -> List[Dataset]:
     """Load temporally annotated dataset.
 
     The supported datasets are:
@@ -27,7 +27,7 @@ def load(dataset: str) -> List[Dataset]:
     Returns
     -------
     List[Dataset]
-        A list with all the datasets  # TODO: return only one dataset.
+        A list with all the datasets
 
     """
 
@@ -44,7 +44,7 @@ def load(dataset: str) -> List[Dataset]:
         # read base dataset
         base_datasets = []
         for dataset_name in metadata.base:
-            base_datasets += load(dataset_name)
+            base_datasets += [read(dataset_name)]
         base_dataset = sum(base_datasets)
 
         # define reader
@@ -52,6 +52,6 @@ def load(dataset: str) -> List[Dataset]:
 
     # tml dataset
     else:
-        reader = metadata.reader()
+        reader = metadata.reader(metadata.doc_reader)
 
-    return [reader.read(path) for path in metadata.path]
+    return reader.read(metadata.path)

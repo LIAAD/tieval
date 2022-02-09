@@ -9,6 +9,7 @@ from pathlib import Path
 from text2timeline.base import Document, Dataset
 from text2timeline.entities import Timex, Event
 from text2timeline.links import TLink
+from text2timeline.datasets.utils import TMLHandler
 from text2timeline.datasets.utils import XMLHandler
 
 """
@@ -28,11 +29,10 @@ class TMLDocumentReader:
     """
 
     def __init__(self):
-
-        self.tokenizer = nltk.tokenize.WordPunctTokenizer()
+        pass
 
     @staticmethod
-    def get_events(xml: XMLHandler) -> List[Event]:
+    def get_events(xml: TMLHandler) -> List[Event]:
         """Retrive Events from tml file."""
 
         event_tags = xml.get_tag("EVENT")
@@ -56,10 +56,10 @@ class TMLDocumentReader:
         return events
 
     @staticmethod
-    def get_timexs(xml: XMLHandler) -> List[Timex]:
+    def get_timexs(xml: TMLHandler) -> List[Timex]:
         return set(Timex(element.attrib) for element in xml.get_tag('TIMEX3'))
 
-    def get_tlinks(self, xml: XMLHandler, events: List[Event], timexs: List[Timex]) -> List[TLink]:
+    def get_tlinks(self, xml: TMLHandler, events: List[Event], timexs: List[Timex]) -> List[TLink]:
         """Get Tlink's of the document"""
 
         entities = {entity.id: entity for entity in events.union(timexs)}
@@ -116,7 +116,7 @@ class TMLDocumentReader:
         if not isinstance(path, Path):
             path = Path(path)
 
-        tml = XMLHandler(path)
+        tml = TMLHandler(path)
 
         name = path.name.replace('.tml', '')
         text = tml.text
@@ -124,7 +124,134 @@ class TMLDocumentReader:
         events, timexs = self.get_events(tml), self.get_timexs(tml)
         tlinks = self.get_tlinks(tml, events, timexs)
 
-        return Document(name, text, events, timexs, tlinks)
+        # train or test document
+        if "train" in path.parts:
+            set_ = "train"
+        else:
+            set_ = "test"
+
+        return Document(name, text, events, timexs, tlinks, set_)
+
+
+class MeanTimeDocumentReader:
+    """
+
+    A .tml document.
+
+    Attributes:
+
+        - paths
+
+    """
+
+    def __init__(self):
+        pass
+
+    @staticmethod
+    def get_events(xml: XMLHandler) -> List[Event]:
+        """Retrive Events from tml file."""
+
+        event_tags = xml.get_tag("EVENT_MENTION")
+        for event_tag in event_tags:
+            print(event_tag.attrib["text"])
+            break
+        event_attrs = {["eid"]: event_tag.attrib
+                       }
+
+        # complementary information of each event is given on MAKEINSTANCE tags
+        events = set()
+        for mnist_tag in xml.get_tag("MAKEINSTANCE"):
+
+            attrib = mnist_tag.attrib
+            event_id = attrib["eventID"]
+
+            # add MAKEINSTANCE info
+            event_attr = event_attrs.get(event_id)
+            if event_attr:
+                attrib.update(event_attr)
+
+            events.add(Event(attrib))
+
+        return events
+
+    @staticmethod
+    def get_timexs(xml: TMLHandler) -> List[Timex]:
+        return set(Timex(element.attrib) for element in xml.get_tag('TIMEX3'))
+
+    def get_tlinks(self, xml: TMLHandler, events: List[Event], timexs: List[Timex]) -> List[TLink]:
+        """Get Tlink's of the document"""
+
+        entities = {entity.id: entity for entity in events.union(timexs)}
+
+        # tlinks have eiid but our reference is eid.
+        # the map between eiid to eid is on the MAKEINSTANCE elements
+        eiid2eid = {
+            mit.attrib['eiid']: mit.attrib['eventID']
+            for mit in xml.get_tag("MAKEINSTANCE")
+        }
+
+        tlinks = set()
+        for tlink in xml.get_tag("TLINK"):
+
+            # retrieve source and target id.
+            src_id, tgt_id = self._src_tgt_id_tlink(tlink.attrib)
+
+            # map eiid to eid
+            if src_id in eiid2eid:
+                src_id = eiid2eid[src_id]
+
+            if tgt_id in eiid2eid:
+                tgt_id = eiid2eid[tgt_id]
+
+            # build tlink
+            source, target = entities.get(src_id), entities.get(tgt_id)
+            if source and target:
+                tlinks.add(
+                    TLink(
+                        id=tlink.attrib['lid'],
+                        source=source,
+                        target=target,
+                        relation=tlink.attrib['relType']
+                    )
+                )
+
+        return tlinks
+
+    def _src_tgt_id_tlink(self, attrib):
+
+        src_id = attrib.get("eventInstanceID") or \
+                 attrib.get("timeID") or \
+                 attrib.get("eventID")
+
+        tgt_id = attrib.get("relatedToEventInstance") or \
+                 attrib.get("relatedToTime") or \
+                 attrib.get("relatedToEvent")
+
+        return src_id, tgt_id
+
+    def read(self, path: Union[str, Path]) -> Document:
+        """Read the tml file on the provided path."""
+
+        if not isinstance(path, Path):
+            path = Path(path)
+
+        xml = XMLHandler(path)
+
+        name = path.name.replace('.xml', '')
+
+        # reconstruct original text
+        text = xml.text
+
+        events, timexs = self.get_events(xml), self.get_timexs(xml)
+        tlinks = self.get_tlinks(xml, events, timexs)
+
+        # train or test document
+        if "train" in path.parts:
+            set_ = "train"
+        else:
+            set_ = "test"
+
+        return Document(name, text, events, timexs, tlinks, set_)
 
 
 """
@@ -243,11 +370,11 @@ class TableDatasetReader:
         return source, target
 
 
-class TMLDatasetReader:
-    """Handles the process of reading any temporally annotated dataset."""
+class XMLDatasetReader:
+    """Handles the process of reading any temporally annotated dataset stored with .tml or .xml extension."""
 
-    def __init__(self) -> None:
-        self.document_reader = TMLDocumentReader()
+    def __init__(self, doc_reader) -> None:
+        self.document_reader = doc_reader()
 
     def read(self, path: str) -> Dataset:
 
@@ -256,8 +383,13 @@ class TMLDatasetReader:
         if not path.is_dir():
             raise IOError(f"The dataset being load have not been downloaded yet.")
 
-        documents = [self.document_reader.read(tml_file)
-                     for tml_file in path.glob("*.tml")]
+        # documents = [self.document_reader.read(file)
+        #              for file in path.glob("**/*.[tx]ml")]
 
-        return Dataset(path.name, documents)
+        docs = []
+        for file in path.glob("**/*.[tx]ml"):
+            doc = self.document_reader.read(file)
+            docs += [doc]
+
+        return Dataset(path.name, docs)
 

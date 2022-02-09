@@ -48,6 +48,7 @@ class Document:
     events: Set[Event]
     timexs: Set[Timex]
     tlinks: Set[TLink]
+    set: str = None
 
     def __post_init__(self):
         self._eiid2eid = {event.eiid: event.id for event in self.events}
@@ -57,7 +58,7 @@ class Document:
         return f'Document(name={self.name})'
 
     def __str__(self) -> str:
-        return self.text.strip()
+        return self.text
 
     def __getitem__(self, id: str) -> Optional[Union[Timex, Event, TLink]]:
         for entity in self.entities.union(self.tlinks):
@@ -124,3 +125,26 @@ class Dataset:
 
     def __len__(self):
         return self.documents.__len__()
+
+    @property
+    def train(self):
+        return [doc for doc in self.documents if doc.set == "train"]
+
+    @property
+    def test(self):
+        return [doc for doc in self.documents if doc.set == "test"]
+
+    def evalaute(self, prediction, verbose=0):
+
+        result = {
+            "recall": None,
+            "precision": None,
+            "f1": None,
+            "f_aware": None
+        }
+
+        # compute
+        if verbose:
+            print()
+
+        return result
