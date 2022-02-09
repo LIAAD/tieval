@@ -63,12 +63,12 @@ DATASETS_METADATA = {
         name="AQUAINT",
         reader=XMLDatasetReader,
         doc_reader=TMLDocumentReader,
-        url="https://drive.inesctec.pt/s/sW8Acr9wxGzmn74/download",
+        url="https://drive.inesctec.pt/s/fxRfPfLcKKJ74Dn/download",
     ),
 
     "eventtime": DatasetMetadata(
         name="EventTime",
-        url="https://drive.inesctec.pt/s/TT6M7TXTbo93kKb/download",
+        url="https://drive.inesctec.pt/s/wbGtJceye6ntkiS/download",
         reader=TableDatasetReader,
         files=[
             "event-times_normalized.tab"
@@ -79,12 +79,12 @@ DATASETS_METADATA = {
 
     "grapheve": DatasetMetadata(
         name="GraphEve",
-        url="https://drive.inesctec.pt/s/2oYDkRTwTSpyY4N/download"
+        url="https://drive.inesctec.pt/s/eKSHKB6gMozCP4Q/download"
     ),
 
     "matres": DatasetMetadata(
         name="MATRES",
-        url="https://drive.inesctec.pt/s/bNkyKYLog9TLTfp/download",
+        url="https://drive.inesctec.pt/s/7g68GBTECiD2XYK/download",
         base=("tempeval-3",),
         files=[
           "aquaint.txt", "platinum.txt", "timebank,txt"
@@ -97,33 +97,33 @@ DATASETS_METADATA = {
 
     "mctaco": DatasetMetadata(
         name="MCTaco",
-        url="https://drive.inesctec.pt/s/dNkSnFKsyjjYRCQ/download"
+        url="https://drive.inesctec.pt/s/q54BizkCwK9egEL/download"
     ),
 
     "meantime": DatasetMetadata(
         name="MeanTime",
-        url="https://drive.inesctec.pt/s/YskTKn5H7Bj7Dtt/download",
+        url="https://drive.inesctec.pt/s/WxfGqyGyxi5ac35/download",
         reader=XMLDatasetReader,
         doc_reader=MeanTimeDocumentReader
     ),
 
     "platinum": DatasetMetadata(
         name="Platinum",
-        url="https://drive.inesctec.pt/s/X7PdbFF466ffMsC/download",
+        url="https://drive.inesctec.pt/s/ppCdTWijAYFbRiL/download",
         reader=XMLDatasetReader,
         doc_reader=TMLDocumentReader,
     ),
 
     "tcr": DatasetMetadata(
         name="TCR",
-        url="https://drive.inesctec.pt/s/H9xi7mRpEkYL6ws/download",
+        url="https://drive.inesctec.pt/s/mSGaNyYSiMRTfGH/download",
         reader=XMLDatasetReader,
         doc_reader=TMLDocumentReader,
     ),
 
     "tddiscourse": DatasetMetadata(
         name="TDDiscourse",
-        url="https://drive.inesctec.pt/s/reaoG7LJD4sjdaN/download",
+        url="https://drive.inesctec.pt/s/9nXDNqt3Sa8bkDk/download",
         base={"timebank-1.2"},
         columns=("doc", "src", "tgt", "relation"),
         event_index="eid",
@@ -132,29 +132,29 @@ DATASETS_METADATA = {
 
     "tempeval-2": DatasetMetadata(
         name="TempEval-2",
-        url="https://drive.inesctec.pt/s/ZD6wzmrgysr8mne/download"
+        url="https://drive.inesctec.pt/s/q8k52gL6LoQts5c/download"
     ),
 
     "tempeval-3": DatasetMetadata(
         name="TempEval-3",
-        url="https://drive.inesctec.pt/s/K457eTAo656gqMw/download",
+        url="https://drive.inesctec.pt/s/ebp27ZjfCgDTxwG/download",
         reader=XMLDatasetReader,
         doc_reader=TMLDocumentReader,
     ),
 
     "tempqa": DatasetMetadata(
         name="TempQA",
-        url="https://drive.inesctec.pt/s/q6jntQeoa2EZntD/download"
+        url="https://drive.inesctec.pt/s/PQJD7KfEgKTYMXR/download"
     ),
 
     "tempquestions": DatasetMetadata(
         name="TempQuestions",
-        url="https://drive.inesctec.pt/s/KgdXNKz35DW2opN/download"
+        url="https://drive.inesctec.pt/s/RCYzmwQapHJMaa4/download"
     ),
 
     "timebank-1.2": DatasetMetadata(
         name="TimeBank-1.2",
-        url="https://drive.inesctec.pt/s/2yTsSCRsmJ9nGKH/download",
+        url="https://drive.inesctec.pt/s/QHiBgZmi45B72AB/download",
         reader=XMLDatasetReader,
         doc_reader=TMLDocumentReader,
 
@@ -162,7 +162,7 @@ DATASETS_METADATA = {
 
     "timebank-dense": DatasetMetadata(
         name="TimeBank-Dense",
-        url="https://drive.inesctec.pt/s/8AK3LYJpayn39px/download",
+        url="https://drive.inesctec.pt/s/dtztXXBpPPXyzLX/download",
         base={"timebank-1.2"},
         columns=("doc", "src", "tgt", "relation"),
         event_index="eid",
@@ -172,32 +172,32 @@ DATASETS_METADATA = {
 
     "timebankpt": DatasetMetadata(
         name="TimeBankPT",
-        url="https://drive.inesctec.pt/s/kxk9yMHAiK4XdKS/download",
+        url="https://drive.inesctec.pt/s/jCcpQGXzLdnL9Tx/download",
         reader=XMLDatasetReader,
         doc_reader=TMLDocumentReader,
     ),
 
     "timebank": DatasetMetadata(
         name="TimeBank",
-        url="https://drive.inesctec.pt/s/i57gZQjZs5XiDpZ/download",
+        url="https://drive.inesctec.pt/s/KmeTs6LqnmzRr2s/download",
         reader=XMLDatasetReader,
         doc_reader=TMLDocumentReader,
     ),
 
     "torque": DatasetMetadata(
         name="TORQUE",
-        url="https://drive.inesctec.pt/s/yLLiJtTW99XLpZE/download"
+        url="https://drive.inesctec.pt/s/EfJ2YeB7wQKxdjM/download"
     ),
 
     "traint3": DatasetMetadata(
         name="Traint3",
-        url="https://drive.inesctec.pt/s/4mF6NmZa47zyX2R/download",
+        url="https://drive.inesctec.pt/s/SaPzJxD2b9PzxY4/download",
         reader=XMLDatasetReader,
         doc_reader=TMLDocumentReader
     ),
 
     "uds-t": DatasetMetadata(
         name="UDS-T",
-        url="https://drive.inesctec.pt/s/db5dNCCyG3szWej/download"
+        url="https://drive.inesctec.pt/s/JLRoMczLXcgpYKg/download"
     )
 }
