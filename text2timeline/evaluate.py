@@ -1,7 +1,7 @@
 from typing import Iterable
 from typing import Dict
 
-from text2timeline.base import Dataset
+from text2timeline.base import Document
 from text2timeline.entities import Timex
 from text2timeline.entities import Event
 from text2timeline.links import TLink
@@ -31,7 +31,7 @@ def _print_table(result):
 
 class Evaluator:
 
-    def __init__(self, documents: Dataset):
+    def __init__(self, documents: Iterable[Document]):
         self.documents = documents
 
     def timex_identification(self, predictions: Dict[str, Timex], verbose=False):

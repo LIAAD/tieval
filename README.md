@@ -33,20 +33,35 @@ python -m text2timeline download --help
 
 In this section we summarize how to perform the most useful operations in text2timeline.
 
-### download a dataset
+### download a dataset.
 ```python
 from text2timeline import datasets
 datasets.download("TimeBank")
 ```
 
-### load a dataset
-
+### load a dataset.
 ```python
 from text2timeline import datasets
-
-tb = datasets.read("TimeBank")
+te3 = datasets.read("TempEval-3")
 ```
 
+### load a model.
+```python
+from text2timeline import models
+heideltime = models.identification.Heideltime()
+```
+
+### make predictions.
+```python
+predictions = heideltime.predict(te3.test)
+```
+
+### evaluate predictions.
+```python
+from text2timeline import evaluate
+evaluator = evaluate.Evaluator(te3.test)
+result = evaluator.timex_identification(predictions)
+```
 
 ## Contributing
 
