@@ -58,7 +58,7 @@ class Document:
         return f'Document(name={self.name})'
 
     def __str__(self) -> str:
-        return self.text
+        return self.text.strip()
 
     def __getitem__(self, id: str) -> Optional[Union[Timex, Event, TLink]]:
         for entity in self.entities.union(self.tlinks):

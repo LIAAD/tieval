@@ -1,5 +1,6 @@
 from typing import Iterable
 from typing import Dict
+from typing import Union
 
 from text2timeline.base import Document
 from text2timeline.entities import Timex
@@ -29,12 +30,15 @@ def _print_table(result):
     print(tabel)
 
 
+Entity = Union[Event, Timex]
+
+
 class Evaluator:
 
     def __init__(self, documents: Iterable[Document]):
         self.documents = documents
 
-    def timex_identification(self, predictions: Dict[str, Timex], verbose=False):
+    def _identification(self, predictions: Dict[str, Entity], verbose=False):
 
         n_docs = len(self.documents)
 
@@ -84,10 +88,21 @@ class Evaluator:
 
         return result
 
-    def event_identificaiton(self, predictions: Dict[str, Event], verbose=False):
-        return None
+    def timex_identification(
+            self,
+            predictions: Dict[str, Timex],
+            verbose=False
+    ) -> Dict:
+        return self._identification(predictions, verbose)
 
-    def tlink_identificaiton(self, predictions: Dict[str, TLink], verbose=False):
+    def event_identification(
+        self,
+        predictions: Dict[str, Event],
+        verbose=False
+    ) -> Dict:
+        return self._identification(predictions, verbose)
+
+    def tlink_identification(self, predictions: Dict[str, TLink], verbose=False):
         return None
 
     def tlink_classification(self, predictions: Dict[str, TLink], verbose=False):

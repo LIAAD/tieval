@@ -1,1 +1,2 @@
 from text2timeline.models.identification.heideltime import Heideltime
+from text2timeline.models.identification.event import EventIdentificationBaseline
