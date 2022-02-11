@@ -47,12 +47,8 @@ class TMLHandler:
             start = end
 
         # Add the endpoints to each xml element attribute.
-        elements = [
-            *self.root.iterfind('.//TIMEX3'),
-            *self.root.iterfind('.//EVENT'),
-        ]
-
-        for element in elements:
+        # TODO: Fix issue with DCT
+        for element in self.root.iterfind('.//*'):
             text = "".join(element.itertext())
             if text:
                 for idx, (start, end, block) in enumerate(text_blocks):
