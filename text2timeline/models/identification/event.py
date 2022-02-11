@@ -24,7 +24,7 @@ class EventIdentificationBaseline:
 
         result = {}
         for doc in documents:
-            prediction = self.nlp(doc.text.strip())
+            prediction = self.nlp(doc.text)
 
             events = []
             for entity in prediction.ents:
