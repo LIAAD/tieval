@@ -1,5 +1,8 @@
-nltk
-pytest
-pytest-cov
-codecov
-git+https://github.com/JMendes1995/py_heideltime.git
+nltk~=3.6.7
+pytest~=6.2.5
+setuptools~=57.0.0
+torch~=1.10.2
+spacy~=3.2.1
+tqdm~=4.62.3
+requests~=2.27.1
+tabulate~=0.8.9
