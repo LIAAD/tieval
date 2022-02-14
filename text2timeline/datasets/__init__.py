@@ -19,5 +19,6 @@ from text2timeline.datasets.readers import XMLDatasetReader
 from text2timeline.datasets.readers import TableDatasetReader
 
 from text2timeline.datasets.metadata import DATASETS_METADATA
+from text2timeline.datasets.utils import xml2dict
 from text2timeline.datasets.datasets import read
 from text2timeline.datasets.downloader import download

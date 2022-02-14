@@ -1,7 +1,6 @@
 import collections
 from typing import List, Union, Tuple
 
-import nltk
 import warnings
 
 from pathlib import Path
@@ -11,13 +10,14 @@ from text2timeline.entities import Timex, Event
 from text2timeline.links import TLink
 from text2timeline.datasets.utils import TMLHandler
 from text2timeline.datasets.utils import XMLHandler
+from text2timeline.datasets.utils import xml2dict
 
 """
 Document Readers.
 """
 
 
-class TMLDocumentReader:
+class TempEval3DocumentReader:
     """
 
     A .tml document.
@@ -116,7 +116,15 @@ class TMLDocumentReader:
         if not isinstance(path, Path):
             path = Path(path)
 
-        tml = TMLHandler(path)
+        tml = xml2dict(path)
+
+        root = tml["TimeML"]
+        name = root["DOCID"]
+        text = root["TEXT"]["#text"]
+        dct = root["TIMEX3"].keys()
+        events = self.get_events()
+        timexs = self.get_timexs()
+        tlinks = self.get_tlinks()
 
         name = path.name.replace('.tml', '')
         text = tml.text

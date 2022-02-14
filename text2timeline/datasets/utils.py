@@ -1,6 +1,11 @@
 
-from typing import List, Union
+from typing import Union
+from typing import List
+from typing import Dict
+
 from pathlib import Path
+import xmltodict
+from pprint import pprint
 
 from xml.etree import ElementTree as ET
 
@@ -10,6 +15,17 @@ class TMLHandler:
 
     def __init__(self, path: Union[str, Path]) -> None:
         self.path = path
+
+        with open(path, 'r', encoding='utf-8') as f:
+            xml = f.read()
+
+        xml_dict = xmltodict.parse(xml)
+        len(xml_dict)
+        pprint(xml_dict)
+        xml_dict.keys()
+        xml_dict["TimeML"].keys()
+        xml_dict["TimeML"]["TEXT"].keys()
+        xml_dict["TimeML"]["TIMEX3"].keys()
 
         # parse the xml file
         tree = ET.parse(self.path)
@@ -120,3 +136,16 @@ class XMLHandler:
                         # remove the items that were found.
                         text_blocks = text_blocks[idx + 1:]
                         break
+
+
+def xml2dict(path: Union[str, Path]) -> Dict:
+
+    # parse the xml file
+    with open(path, 'r', encoding='utf-8') as f:
+        xml = f.read()
+
+    result = xmltodict.parse(xml)
+
+    return result
+
+

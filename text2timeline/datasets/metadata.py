@@ -18,13 +18,15 @@ from text2timeline.datasets.readers import XMLDatasetReader
 from text2timeline.datasets.readers import TableDatasetReader
 
 from text2timeline.datasets.readers import MeanTimeDocumentReader
-from text2timeline.datasets.readers import TMLDocumentReader
+from text2timeline.datasets.readers import TempEval3DocumentReader
 
 from text2timeline import DATA_PATH
 
 
 DatasetReaders = Union[XMLDatasetReader, TableDatasetReader]
-DocumentReaders = Union[TMLDocumentReader, MeanTimeDocumentReader]
+DocumentReaders = Union[TempEval3DocumentReader, MeanTimeDocumentReader]
+
+TMLDocumentReader = None
 
 
 @dataclass
@@ -139,7 +141,7 @@ DATASETS_METADATA = {
         name="TempEval-3",
         url="https://drive.inesctec.pt/s/ebp27ZjfCgDTxwG/download",
         reader=XMLDatasetReader,
-        doc_reader=TMLDocumentReader,
+        doc_reader=TempEval3DocumentReader,
     ),
 
     "tempqa": DatasetMetadata(
