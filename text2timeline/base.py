@@ -10,6 +10,7 @@ Objects
 from dataclasses import dataclass
 
 from typing import Set, Optional, Union
+from typing import Iterable, List
 
 from text2timeline.entities import Event
 from text2timeline.entities import Timex
@@ -45,13 +46,11 @@ class Document:
 
     name: str
     text: str
-    events: Set[Event]
-    timexs: Set[Timex]
+    dct: Timex
+    entities: Set[Event]
     tlinks: Set[TLink]
-    set: str = None
 
     def __post_init__(self):
-        self._eiid2eid = {event.eiid: event.id for event in self.events}
         self._closure = None
 
     def __repr__(self) -> str:
@@ -64,24 +63,6 @@ class Document:
         for entity in self.entities.union(self.tlinks):
             if entity.id == id:
                 return entity
-
-    @property
-    def dct(self):
-        """Document creation time.
-
-        Returns the Timex that is set as document creation time for this
-        document.
-        """
-
-        for timex in self.timexs:
-            if timex.is_dct:
-                return timex
-
-    @property
-    def entities(self) -> Set:
-        """ A set with the Events and Timexs."""
-
-        return self.events.union(self.timexs)
 
     @property
     def temporal_closure(self) -> Set[TLink]:
@@ -102,15 +83,22 @@ class Dataset:
     """A compilation of documents that have temporal annotations."""
 
     name: str
-    documents: Set[Document]
+    train: List[Document]
+    test: List[Document]
+
+    def __post_init__(self):
+        self.documents = self.train + self.test
 
     def __repr__(self):
         return f"Dataset(name={self.name})"
 
     def __add__(self, other):
+
         name = f"{self.name}+{other.name}"
-        docs = self.documents.union(other.documents)
-        return Dataset(name, docs)
+        train = self.train + other.train
+        test = self.test + other.test
+
+        return Dataset(name, train, test)
 
     def __radd__(self, other):
         if other == 0:
@@ -125,26 +113,3 @@ class Dataset:
 
     def __len__(self):
         return self.documents.__len__()
-
-    @property
-    def train(self):
-        return [doc for doc in self.documents if doc.set == "train"]
-
-    @property
-    def test(self):
-        return [doc for doc in self.documents if doc.set == "test"]
-
-    def evalaute(self, prediction, verbose=0):
-
-        result = {
-            "recall": None,
-            "precision": None,
-            "f1": None,
-            "f_aware": None
-        }
-
-        # compute
-        if verbose:
-            print()
-
-        return result

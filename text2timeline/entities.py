@@ -7,6 +7,7 @@ Objects implemented:
 """
 
 from typing import Dict
+from typing import Union
 
 
 class Timex:
@@ -65,4 +66,7 @@ class Event:
 
     @property
     def id(self):
-        return self.eid
+        return self.eiid
+
+
+Entity = Union[Timex, Event]

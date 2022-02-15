@@ -144,7 +144,12 @@ def xml2dict(path: Union[str, Path]) -> Dict:
     with open(path, 'r', encoding='utf-8') as f:
         xml = f.read()
 
-    result = xmltodict.parse(xml)
+    result = xmltodict.parse(
+        xml,
+        attr_prefix="",
+        cdata_key="text",
+        dict_constructor=dict
+    )
 
     return result
 
