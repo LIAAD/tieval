@@ -63,7 +63,7 @@ class DatasetMetadata:
 DATASETS_METADATA = {
     "aquaint": DatasetMetadata(
         name="AQUAINT",
-        reader=XMLDatasetReader,
+        reader=TempEval3DocumentReader,
         doc_reader=TMLDocumentReader,
         url="https://drive.inesctec.pt/s/fxRfPfLcKKJ74Dn/download",
     ),
@@ -113,7 +113,7 @@ DATASETS_METADATA = {
         name="Platinum",
         url="https://drive.inesctec.pt/s/ppCdTWijAYFbRiL/download",
         reader=XMLDatasetReader,
-        doc_reader=TMLDocumentReader,
+        doc_reader=TempEval3DocumentReader,
     ),
 
     "tcr": DatasetMetadata(
@@ -158,7 +158,7 @@ DATASETS_METADATA = {
         name="TimeBank-1.2",
         url="https://drive.inesctec.pt/s/QHiBgZmi45B72AB/download",
         reader=XMLDatasetReader,
-        doc_reader=TMLDocumentReader,
+        doc_reader=TempEval3DocumentReader,
 
     ),
 
@@ -176,14 +176,14 @@ DATASETS_METADATA = {
         name="TimeBankPT",
         url="https://drive.inesctec.pt/s/jCcpQGXzLdnL9Tx/download",
         reader=XMLDatasetReader,
-        doc_reader=TMLDocumentReader,
+        doc_reader=TempEval3DocumentReader,
     ),
 
     "timebank": DatasetMetadata(
         name="TimeBank",
         url="https://drive.inesctec.pt/s/KmeTs6LqnmzRr2s/download",
         reader=XMLDatasetReader,
-        doc_reader=TMLDocumentReader,
+        doc_reader=TempEval3DocumentReader,
     ),
 
     "torque": DatasetMetadata(
@@ -195,7 +195,7 @@ DATASETS_METADATA = {
         name="Traint3",
         url="https://drive.inesctec.pt/s/SaPzJxD2b9PzxY4/download",
         reader=XMLDatasetReader,
-        doc_reader=TMLDocumentReader
+        doc_reader=TempEval3DocumentReader
     ),
 
     "uds-t": DatasetMetadata(

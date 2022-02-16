@@ -52,6 +52,8 @@ _SETTLE_RELATION = {
     "OVERLAP-OR-AFTER": "OVERLAP-OR-AFTER"
 }
 
+SUPPORTED_RELATIONS = list(_SETTLE_RELATION)
+
 # transitivity table for point relations
 _POINT_TRANSITIONS = {
     "<": {"<": "<", "=": "<", ">": None, None: None},

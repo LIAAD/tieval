@@ -77,6 +77,14 @@ class Document:
 
         return self._closure
 
+    @property
+    def timexs(self):
+        return set(ent for ent in self.entities if isinstance(ent, Timex))
+
+    @property
+    def events(self):
+        return set(ent for ent in self.entities if isinstance(ent, Event))
+
 
 @dataclass
 class Dataset:
@@ -94,7 +102,7 @@ class Dataset:
 
     def __add__(self, other):
 
-        name = f"{self.name}+{other.name}"
+        name = f"{self.name}+{other._name}"
         train = self.train + other.train
         test = self.test + other.test
 

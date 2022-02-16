@@ -1,18 +1,34 @@
-import collections
 from typing import List, Union, Tuple
 from typing import Iterable, Dict
 
 import abc
 import warnings
+import collections
+
+import string
 
 from pathlib import Path
 
 from text2timeline.base import Document, Dataset
 from text2timeline.entities import Timex, Event, Entity
 from text2timeline.links import TLink
-from text2timeline.datasets.utils import TMLHandler
-from text2timeline.datasets.utils import XMLHandler
 from text2timeline.datasets.utils import xml2dict
+from text2timeline.temporal_relation import SUPPORTED_RELATIONS
+
+from pprint import pprint
+
+
+def _detokenize(tokens):
+
+    text = [
+        " " + tkn
+        if not tkn.startswith("'") and tkn not in string.punctuation
+        else tkn
+        for tkn in tokens
+    ]
+
+    return "".join(text).strip()
+
 
 """
 Document Readers.
@@ -29,46 +45,54 @@ class BaseDocumentReader:
         self.path = path
         self.content = xml2dict(self.path)
 
+    @property
     @abc.abstractmethod
-    def name(self) -> str:
+    def _name(self) -> str:
         pass
 
+    @property
     @abc.abstractmethod
-    def dct(self) -> Timex:
+    def _dct(self) -> Timex:
         pass
 
+    @property
     @abc.abstractmethod
-    def text(self) -> str:
+    def _text(self) -> str:
         pass
 
+    @property
     @abc.abstractmethod
-    def entities(self) -> Iterable[Entity]:
+    def _entities(self) -> Iterable[Entity]:
         pass
 
+    @property
     @abc.abstractmethod
-    def tlinks(self) -> Iterable[TLink]:
+    def _tlinks(self) -> Iterable[TLink]:
         pass
 
     def read(self) -> Document:
 
         return Document(
-            name=self.name(),
-            dct=self.dct(),
-            text=self.text(),
-            entities=self.entities(),
-            tlinks=self.tlinks()
+            name=self._name,
+            dct=self._dct,
+            text=self._text,
+            entities=self._entities,
+            tlinks=self._tlinks
         )
 
 
 class TempEval3DocumentReader(BaseDocumentReader):
 
-    def name(self) -> str:
+    @property
+    def _name(self) -> str:
         return self.path.parts[-1]
 
-    def text(self) -> str:
+    @property
+    def _text(self) -> str:
         return self.content["TimeML"]["TEXT"]["text"]
 
-    def entities(self) -> Iterable[Entity]:
+    @property
+    def _entities(self) -> Iterable[Entity]:
 
         def assert_list(entities):
 
@@ -103,12 +127,14 @@ class TempEval3DocumentReader(BaseDocumentReader):
 
         return result
 
-    def dct(self) -> Timex:
+    @property
+    def _dct(self) -> Timex:
         return Timex(self.content["TimeML"]["TIMEX3"])
 
-    def tlinks(self) -> Iterable[TLink]:
+    @property
+    def _tlinks(self) -> Iterable[TLink]:
 
-        entities = set.union(self.entities(), {self.dct()})
+        entities = set.union(self._entities(), {self._dct()})
         entities_dict = {ent.id: ent for ent in entities}
 
         tlinks = self.content["TimeML"].get("TLINK")
@@ -129,125 +155,164 @@ class TempEval3DocumentReader(BaseDocumentReader):
         return result
 
 
-class MeanTimeDocumentReader:
-    """
+class MeanTimeDocumentReader(BaseDocumentReader):
 
-    A .tml document.
+    @property
+    def _name(self) -> str:
+        return self.path.parts[-1]
 
-    Attributes:
+    @property
+    def _text(self) -> str:
+        tokens = self.content["Document"]["token"]
+        sent_n = 0
+        text, sent = [], []
+        for token in tokens:
 
-        - paths
+            if int(token["sentence"]) != sent_n:
 
-    """
+               text += [_detokenize(sent)]
+               sent = []
+               sent_n += 1
 
-    def __init__(self):
-        pass
+            sent += [token["text"]]
 
-    @staticmethod
-    def get_events(xml: XMLHandler) -> List[Event]:
-        """Retrive Events from tml file."""
 
-        event_tags = xml.get_tag("EVENT_MENTION")
-        for event_tag in event_tags:
-            print(event_tag.attrib["text"])
-            break
-        event_attrs = {["eid"]: event_tag.attrib
-                       }
 
-        # complementary information of each event is given on MAKEINSTANCE tags
-        events = set()
-        for mnist_tag in xml.get_tag("MAKEINSTANCE"):
+        return "\n".join(text)
 
-            attrib = mnist_tag.attrib
-            event_id = attrib["eventID"]
+    @property
+    def _entities(self) -> Iterable[Entity]:
 
-            # add MAKEINSTANCE info
-            event_attr = event_attrs.get(event_id)
-            if event_attr:
-                attrib.update(event_attr)
+        def get_text(token_anchor, tokens):
 
-            events.add(Event(attrib))
+            if not isinstance(token_anchor, list):
+                token_anchor = [token_anchor]
 
-        return events
+            text = [tokens[tkn["t_id"]]for tkn in token_anchor]
 
-    @staticmethod
-    def get_timexs(xml: TMLHandler) -> List[Timex]:
-        return set(Timex(element.attrib) for element in xml.get_tag('TIMEX3'))
+            return " ".join(text)
 
-    def get_tlinks(self, xml: TMLHandler, events: List[Event], timexs: List[Timex]) -> List[TLink]:
-        """Get Tlink's of the document"""
-
-        entities = {entity.id: entity for entity in events.union(timexs)}
-
-        # tlinks have eiid but our reference is eid.
-        # the map between eiid to eid is on the MAKEINSTANCE elements
-        eiid2eid = {
-            mit.attrib['eiid']: mit.attrib['eventID']
-            for mit in xml.get_tag("MAKEINSTANCE")
+        tokens = {
+            tkn["t_id"]: tkn["text"]
+            for tkn in self.content["Document"]["token"]
         }
 
-        tlinks = set()
-        for tlink in xml.get_tag("TLINK"):
+        entities = set()
 
-            # retrieve source and target id.
-            src_id, tgt_id = self._src_tgt_id_tlink(tlink.attrib)
+        # events
+        events = self.content["Document"]["Markables"]["EVENT_MENTION"]
+        for event in events:
 
-            # map eiid to eid
-            if src_id in eiid2eid:
-                src_id = eiid2eid[src_id]
+            # retrieve text
+            if event.get("token_anchor"):
+                text = get_text(event["token_anchor"], tokens)
+                event["text"] = text
 
-            if tgt_id in eiid2eid:
-                tgt_id = eiid2eid[tgt_id]
+            attrib = {
+                "eid": event["m_id"],
+                "eiid": event["m_id"],
+                "class": None,
+                "stem": None,
+                "aspect": None,
+                "tense": event.get("tense"),
+                "polarity": None,
+                "pos": event.get("pos"),
+                "text": event["text"],
+                "endpoints": None,
+            }
 
-            # build tlink
-            source, target = entities.get(src_id), entities.get(tgt_id)
-            if source and target:
-                tlinks.add(
+            entities.add(Event(attrib))
+
+        # timex
+        timexs = self.content["Document"]["Markables"]["TIMEX3"]
+
+        if not isinstance(timexs, list):
+            timexs = [timexs]
+
+        for timex in timexs:
+
+            is_dct = timex["functionInDocument"] == "CREATION_TIME"
+            is_descriptor = "TAG_DESCRIPTOR" in timex
+            if is_dct or is_descriptor:
+                continue
+
+            # retrieve text
+            if timex.get("token_anchor"):
+                text = get_text(timex["token_anchor"], tokens)
+                timex["text"] = text
+
+            attrib = {
+                "tid": timex["m_id"],
+                "type": timex["type"],
+                "value": None,
+                "temporalFunction": None,
+                "functionInDocument": timex["functionInDocument"],
+                "anchorTimeID": None,
+                "text": timex["text"],
+                "endpoints": None,
+            }
+
+            entities.add(Timex(attrib))
+
+        return entities
+
+    @property
+    def _dct(self) -> Timex:
+
+        timexs = self.content["Document"]["Markables"]["TIMEX3"]
+        if not isinstance(timexs, list):
+            timexs = [timexs]
+
+        for timex in timexs:
+            if timex["functionInDocument"] == 'CREATION_TIME':
+                attrib = {
+                    "tid": timex["m_id"],
+                    "type": None,
+                    "value": timex["value"],
+                    "functionInDocument": timex["functionInDocument"],
+                    "text": timex["value"],
+                }
+                return Timex(attrib)
+
+    @property
+    def _tlinks(self) -> Iterable[TLink]:
+
+        tlinks = self.content["Document"]["Relations"]["TLINK"]
+
+        entities_dict = {entity.id: entity for entity in self._entities}
+        entities_dict[self._dct.id] = self._dct
+
+        result = set()
+        for tlink in tlinks:
+
+            id = tlink.get("r_id")
+            relation = tlink.get("reltype")
+            source = tlink.get("source")
+            target = tlink.get("target")
+
+            # proceed in case any of the required information is missing.
+            if not all([relation, source, target, id]):
+                continue
+
+            # ensure that the relation is supported by the framework
+            if relation in SUPPORTED_RELATIONS:
+
+                result.add(
                     TLink(
-                        id=tlink.attrib['lid'],
-                        source=source,
-                        target=target,
-                        relation=tlink.attrib['relType']
+                        id=id,
+                        source=source["m_id"],
+                        target=target["m_id"],
+                        relation=relation
                     )
                 )
 
-        return tlinks
+            else:
+                id = tlink["r_id"]
+                relation = tlink["reltype"]
+                warnings.warn(f"Temporal link with id {id} was discarded since the temporal relation {relation} "
+                              f"is not supported.")
 
-    def _src_tgt_id_tlink(self, attrib):
-
-        src_id = attrib.get("eventInstanceID") or \
-                 attrib.get("timeID") or \
-                 attrib.get("eventID")
-
-        tgt_id = attrib.get("relatedToEventInstance") or \
-                 attrib.get("relatedToTime") or \
-                 attrib.get("relatedToEvent")
-
-        return src_id, tgt_id
-
-    def read(self, path: Union[str, Path]) -> Document:
-        """Read the tml file on the provided path."""
-
-        if not isinstance(path, Path):
-            path = Path(path)
-
-        xml = XMLHandler(path)
-
-        name = path.name.replace('.xml', '')
-
-        # reconstruct original text
-        text = xml.text
-
-        events, timexs = self.get_events(xml), self.get_timexs(xml)
-        tlinks = self.get_tlinks(xml, events, timexs)
-
-        # train or test document
-        if "train" in path.parts:
-            set_ = "train"
-        else:
-            set_ = "test"
-
-        return Document(name, text, events, timexs, tlinks, set_)
+        return result
 
 
 """
@@ -325,7 +390,7 @@ class TableDatasetReader:
 
         # to address the problem of timebank-dense where t0 is referred but it is not defined on timebank.
         if id == "t0":
-            return doc.dct.id
+            return doc._dct.id
 
         # MATRES only has the id number (ex: "e105" appears as 105)
         if id.isdigit():
