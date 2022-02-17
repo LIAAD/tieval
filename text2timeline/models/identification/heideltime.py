@@ -37,18 +37,12 @@ class Heideltime:
                 endpoints = (s + idx, e + idx)
                 idx += e
 
-                attrib = {
-                    "value": value,
-                    "text": text,
-                    "endpoints": endpoints
-                }
-
-                timexs += [Timex(attrib)]
+                timexs += [Timex(
+                    value=value,
+                    text=text,
+                    endpoints=endpoints
+                )]
 
             pred_timexs[doc.name] = timexs
 
         return pred_timexs
-
-
-
-

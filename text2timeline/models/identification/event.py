@@ -28,12 +28,11 @@ class EventIdentificationBaseline:
 
             events = []
             for entity in prediction.ents:
-                attrib = {
-                    "text": entity.text,
-                    "endpoints": (entity.start_char, entity.end_char)
-                }
 
-                events += [Event(attrib)]
+                events += [Event(
+                    text=entity.text,
+                    endpoints=(entity.start_char, entity.end_char)
+                )]
 
             result[doc.name] = events
 

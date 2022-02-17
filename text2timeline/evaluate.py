@@ -30,6 +30,7 @@ def identification(
         predictions: Dict[str, Entity],
         verbose=False
 ) -> Dict:
+
     n_docs = len(annotations)
 
     M_precision, M_recall = 0, 0
@@ -43,8 +44,8 @@ def identification(
         fn = len(true - pred)
 
         # update macro metrics counts
-        M_precision += tp / (tp + fp)
-        M_recall += tp / (tp + fn)
+        M_precision += tp / (tp + fp) if (tp + fp) else 0
+        M_recall += tp / (tp + fn) if (tp + fn) else 0
 
         # update micro metrics counts
         tps += tp
@@ -76,6 +77,22 @@ def identification(
         _print_table(result)
 
     return result
+
+
+def timex_identification(
+        annotations: Dict[str, Entity],
+        predictions: Dict[str, Entity],
+        verbose=False
+) -> Dict:
+    return identification(annotations, predictions, verbose)
+
+
+def event_identification(
+        annotations: Dict[str, Entity],
+        predictions: Dict[str, Entity],
+        verbose=False
+) -> Dict:
+    return identification(annotations, predictions, verbose)
 
 
 def tlink_identification(

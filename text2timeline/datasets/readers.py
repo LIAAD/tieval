@@ -5,10 +5,14 @@ import abc
 import warnings
 import collections
 
+import re
+
 from tqdm import tqdm
 import string
 
 from pathlib import Path
+
+from xml.etree import ElementTree as ET
 
 from text2timeline.base import Document, Dataset
 from text2timeline.entities import Timex, Event, Entity
@@ -16,6 +20,7 @@ from text2timeline.links import TLink
 from text2timeline.datasets.utils import xml2dict
 from text2timeline.temporal_relation import SUPPORTED_RELATIONS
 
+from pprint import pprint
 
 def _detokenize(tokens):
     text = [
@@ -41,6 +46,8 @@ class BaseDocumentReader:
 
         self.path = path
         self.content = xml2dict(self.path)
+
+        self.xml = ET.parse(self.path)
 
     @property
     @abc.abstractmethod
@@ -85,7 +92,9 @@ class TempEval3DocumentReader(BaseDocumentReader):
 
     @property
     def _text(self) -> str:
-        return self.content["TimeML"]["TEXT"]["text"]
+        text_tag = self.xml.find("TEXT")
+        text_blocks = list(text_tag.itertext())
+        return "".join(text_blocks)
 
     @property
     def _entities(self) -> Iterable[Entity]:
@@ -97,14 +106,14 @@ class TempEval3DocumentReader(BaseDocumentReader):
 
             return entities
 
-        root = self.content["TimeML"]
+        entities = set()
 
-        events = assert_list(root["TEXT"].get("EVENT"))
-        timexs = assert_list(root["TEXT"].get("TIMEX3"))
-        mkinsts = assert_list(root.get("MAKEINSTANCE"))
+        events = assert_list(self.content["TimeML"]["TEXT"].get("EVENT"))
+        timexs = assert_list(self.content["TimeML"]["TEXT"].get("TIMEX3"))
 
-        result = set()
+        # events
         events_dict = {event["eid"]: event for event in events}
+        mkinsts = assert_list(self.content["TimeML"].get("MAKEINSTANCE"))
         if mkinsts:
 
             # add makeintance information to events
@@ -114,7 +123,9 @@ class TempEval3DocumentReader(BaseDocumentReader):
                 if event:
                     mkinst.update(event)
 
-                result.add(Event(
+                s, e = mkinst["endpoints"].split()
+
+                entities.add(Event(
                     aspect=mkinst['aspect'],
                     class_=mkinst['class'],
                     id=mkinst['eiid'],
@@ -122,20 +133,25 @@ class TempEval3DocumentReader(BaseDocumentReader):
                     pos=mkinst['pos'],
                     tense=mkinst['tense'],
                     text=mkinst['text'],
+                    endpoints=(int(s), int(e))
                 ))
 
-        # add timexs to entities
+        # timexs
         if timexs:
             for timex in timexs:
-                result.add(Timex(
+
+                s, e = timex["endpoints"].split()
+
+                entities.add(Timex(
                     function_in_document=timex.get("functionInDocument"),
                     text=timex["text"],
                     id=timex["tid"],
                     type_=timex["type"],
-                    value=timex["value"]
+                    value=timex["value"],
+                    endpoints=(int(s), int(e))
                 ))
 
-        return result
+        return entities
 
     @property
     def _dct(self) -> Timex:
