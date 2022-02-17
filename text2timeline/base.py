@@ -18,7 +18,6 @@ from text2timeline.links import TLink
 from text2timeline.closure import temporal_closure as _temporal_closure
 
 
-@dataclass
 class Document:
     """
     A document with temporal annotation.
@@ -44,13 +43,24 @@ class Document:
         Prints the animals name and what sound it makes
     """
 
-    name: str
-    text: str
-    dct: Timex
-    entities: Set[Event]
-    tlinks: Set[TLink]
+    def __init__(
+            self,
+            name: str,
+            text: str,
+            dct: Timex,
+            entities: Set[Event],
+            tlinks: Set[TLink],
+            **kwargs
+    ):
+        self.name = name
+        self.text = text
+        self.dct = dct
+        self.entities = entities
+        self.tlinks = tlinks
 
-    def __post_init__(self):
+        for key, value in kwargs.items():
+            setattr(self, key, value)
+
         self._closure = None
 
     def __repr__(self) -> str:

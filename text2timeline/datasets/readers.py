@@ -5,6 +5,7 @@ import abc
 import warnings
 import collections
 
+from tqdm import tqdm
 import string
 
 from pathlib import Path
@@ -294,13 +295,18 @@ class MeanTimeDocumentReader(BaseDocumentReader):
                     )
                 )
 
-            else:
-                id = tlink["r_id"]
-                relation = tlink["reltype"]
-                warnings.warn(f"Temporal link with id {id} was discarded since the temporal relation {relation} "
-                              f"is not supported.")
-
         return result
+
+    def read(self) -> Document:
+
+        return Document(
+            name=self._name,
+            dct=self._dct,
+            text=self._text,
+            entities=self._entities,
+            tlinks=self._tlinks,
+            language=self.content["Document"]["lang"]
+        )
 
 
 # TODO: add support for EXTRA corpus
@@ -524,7 +530,8 @@ class XMLDatasetReader:
             raise IOError(f"The dataset being load have not been downloaded yet.")
 
         train, test = [], []
-        for file in path.glob("**/*.[tx]ml"):
+        files = list(path.glob("**/*.[tx]ml"))
+        for file in tqdm(files):
             reader = self.document_reader(file)
             document = reader.read()
 

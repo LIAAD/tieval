@@ -26,6 +26,7 @@ class Timex:
             type_: str = None,
             function_in_document: str = None,
             anchor_time_id: str = None,
+            **kwargs
     ):
 
         self.id = id
@@ -35,6 +36,9 @@ class Timex:
         self.anchor_time_id = anchor_time_id
         self.text = text
         self.endpoints = endpoints
+
+        for key, value in kwargs.items():
+            setattr(self, key, value)
 
     def __hash__(self):
         return hash(self.id)
@@ -68,7 +72,10 @@ class Event:
             tense: str = None,
             polarity: str = None,
             pos: str = None,
-            class_: str = None
+            class_: str = None,
+            start_time: str = None,
+            end_time: str = None,
+            **kwargs
     ):
 
         self.id = id
@@ -82,6 +89,11 @@ class Event:
         self.text = text
         self.endpoints = endpoints
         self.class_ = class_
+        self.start_time = start_time
+        self.end_time = end_time
+
+        for key, value in kwargs.items():
+            setattr(self, key, value)
 
     def __hash__(self):
         return hash(self.id)
