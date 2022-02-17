@@ -30,22 +30,32 @@ class TLink:
     """
 
     def __init__(self,
-                 id: str,
                  source: Union[str, Timex, Event],
                  target: Union[str, Timex, Event],
-                 relation: Union[str, list, dict, TemporalRelation]):
+                 relation: Union[str, list, dict, TemporalRelation],
+                 id: str = None):
         """
 
         Parameters
         ----------
         id : object
         """
-        self.id = id
+
         self.source = source
         self.target = target
 
         self._relation = None
         self.relation = relation
+
+        if id is None:
+
+            # generate an id from object hash
+            foo = hex(hash(self))
+            foo = foo[foo.find("x") + 1:]
+            self.id = foo
+
+        else:
+            self.id = id
 
     def __str__(self):
         return f"{self.source} ---{self.relation}--> {self.target}"

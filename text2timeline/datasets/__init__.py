@@ -15,9 +15,14 @@ The corpus available are:
 
 """
 
+# dataset readers
 from text2timeline.datasets.readers import XMLDatasetReader
 from text2timeline.datasets.readers import TableDatasetReader
 
+# document readers
+from text2timeline.datasets.readers import TempEval3DocumentReader
+
+# utils
 from text2timeline.datasets.metadata import DATASETS_METADATA
 from text2timeline.datasets.datasets import read
 from text2timeline.datasets.downloader import download

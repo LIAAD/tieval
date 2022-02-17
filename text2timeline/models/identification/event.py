@@ -39,7 +39,7 @@ class EventIdentificationBaseline:
 
         return result
 
-    def train(self, documents: Iterable[Document]):
+    def fit(self, documents: Iterable[Document]):
 
         train_set = self.preprocess(documents)
 

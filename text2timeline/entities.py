@@ -8,31 +8,43 @@ Objects implemented:
 
 from typing import Dict
 from typing import Union
+from typing import Iterable
 
 
 class Timex:
     """Object that represents a time expression."""
 
-    def __init__(self, attributes: Dict):
+    def __init__(
+            self,
+            id: str = None,
+            text: str = None,
+            value: str = None,
+            endpoints: Iterable[int] = None,
+            type_: str = None,
+            function_in_document: str = None,
+            anchor_time_id: str = None,
+            **kwargs
+    ):
 
-        self.tid = attributes.get('tid')
-        self.type = attributes.get('type')
-        self.value = attributes.get('value')
-        self.temporal_function = attributes.get('temporalFunction')
-        self.function_in_document = attributes.get('functionInDocument')
-        self.anchor_time_id = attributes.get('anchorTimeID')
-        self.text = attributes.get('text')
-        self.endpoints = attributes.get('endpoints')
+        self.id = id
+        self.type = type_
+        self.value = value
+        self.function_in_document = function_in_document
+        self.anchor_time_id = anchor_time_id
+        self.text = text
+        self.endpoints = endpoints
+
+        for key, value in kwargs.items():
+            setattr(self, key, value)
+
+    def __hash__(self):
+        return hash(self.id)
 
     def __repr__(self):
-        return f"Timex(tid={self.tid})"
+        return f"Timex(tid={self.id})"
 
     def __lt__(self, other):
         return self.id < other.id
-
-    @property
-    def id(self):
-        return self.tid
 
     @property
     def is_dct(self):
@@ -45,28 +57,49 @@ class Timex:
 class Event:
     """Object that represents an event."""
 
-    def __init__(self, attributes: Dict):
+    def __init__(
+            self,
+            id: str = None,
+            text: str = None,
+            endpoints: Iterable[int] = None,
+            family: str = None,
+            stem: str = None,
+            lemma: str = None,
+            aspect: str = None,
+            tense: str = None,
+            polarity: str = None,
+            pos: str = None,
+            class_: str = None,
+            start_time: str = None,
+            end_time: str = None,
+            **kwargs
+    ):
 
-        self.eid = attributes.get('eid')
-        self.eiid = attributes.get('eiid')
-        self.family = attributes.get('class')
-        self.stem = attributes.get('stem')
-        self.aspect = attributes.get('aspect')
-        self.tense = attributes.get('tense')
-        self.polarity = attributes.get('polarity')
-        self.pos = attributes.get('pos')
-        self.text = attributes.get('text')
-        self.endpoints = attributes.get('endpoints')
+        self.id = id
+        self.family = family
+        self.stem = stem
+        self.lemma = lemma
+        self.aspect = aspect
+        self.tense = tense
+        self.polarity = polarity
+        self.pos = pos
+        self.text = text
+        self.endpoints = endpoints
+        self.class_ = class_
+        self.start_time = start_time
+        self.end_time = end_time
+
+        for key, value in kwargs.items():
+            setattr(self, key, value)
+
+    def __hash__(self):
+        return hash(self.id)
 
     def __repr__(self):
-        return f"Event(eid={self.eid})"
+        return f"Event(eid={self.id})"
 
     def __lt__(self, other):
         return self.id < other.id
 
-    @property
-    def id(self):
-        return self.eid
 
-
-Entity = Union[Event, Timex]
+Entity = Union[Timex, Event]
