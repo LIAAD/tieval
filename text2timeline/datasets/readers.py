@@ -1,5 +1,5 @@
-from typing import List, Union, Tuple
-from typing import Iterable, Dict
+from typing import List, Tuple
+from typing import Iterable
 
 import abc
 import warnings
@@ -15,11 +15,8 @@ from text2timeline.links import TLink
 from text2timeline.datasets.utils import xml2dict
 from text2timeline.temporal_relation import SUPPORTED_RELATIONS
 
-from pprint import pprint
-
 
 def _detokenize(tokens):
-
     text = [
         " " + tkn
         if not tkn.startswith("'") and tkn not in string.punctuation
@@ -38,7 +35,6 @@ Document Readers.
 class BaseDocumentReader:
 
     def __init__(self, path):
-
         if not isinstance(path, Path):
             path = Path(path)
 
@@ -71,7 +67,6 @@ class BaseDocumentReader:
         pass
 
     def read(self) -> Document:
-
         return Document(
             name=self._name,
             dct=self._dct,
@@ -118,23 +113,44 @@ class TempEval3DocumentReader(BaseDocumentReader):
                 if event:
                     mkinst.update(event)
 
-                result.add(Event(mkinst))
+                result.add(Event(
+                    aspect=mkinst['aspect'],
+                    class_=mkinst['class'],
+                    id=mkinst['eiid'],
+                    polarity=mkinst['polarity'],
+                    pos=mkinst['pos'],
+                    tense=mkinst['tense'],
+                    text=mkinst['text'],
+                ))
 
         # add timexs to entities
         if timexs:
             for timex in timexs:
-                result.add(Timex(timex))
+                result.add(Timex(
+                    function_in_document=timex.get("functionInDocument"),
+                    text=timex["text"],
+                    id=timex["tid"],
+                    type_=timex["type"],
+                    value=timex["value"]
+                ))
 
         return result
 
     @property
     def _dct(self) -> Timex:
-        return Timex(self.content["TimeML"]["TIMEX3"])
+        attrib = self.content["TimeML"]["TIMEX3"]
+        return Timex(
+            function_in_document=attrib["functionInDocument"],
+            text=attrib["text"],
+            id=attrib["tid"],
+            type_=attrib["type"],
+            value=attrib["value"]
+        )
 
     @property
     def _tlinks(self) -> Iterable[TLink]:
 
-        entities = set.union(self._entities(), {self._dct()})
+        entities = set.union(self._entities, {self._dct})
         entities_dict = {ent.id: ent for ent in entities}
 
         tlinks = self.content["TimeML"].get("TLINK")
@@ -142,7 +158,6 @@ class TempEval3DocumentReader(BaseDocumentReader):
         result = set()
 
         for tlink in tlinks:
-
             result.add(
                 TLink(
                     id=tlink["lid"],
@@ -169,14 +184,11 @@ class MeanTimeDocumentReader(BaseDocumentReader):
         for token in tokens:
 
             if int(token["sentence"]) != sent_n:
-
-               text += [_detokenize(sent)]
-               sent = []
-               sent_n += 1
+                text += [_detokenize(sent)]
+                sent = []
+                sent_n += 1
 
             sent += [token["text"]]
-
-
 
         return "\n".join(text)
 
@@ -188,7 +200,7 @@ class MeanTimeDocumentReader(BaseDocumentReader):
             if not isinstance(token_anchor, list):
                 token_anchor = [token_anchor]
 
-            text = [tokens[tkn["t_id"]]for tkn in token_anchor]
+            text = [tokens[tkn["t_id"]] for tkn in token_anchor]
 
             return " ".join(text)
 
@@ -208,20 +220,12 @@ class MeanTimeDocumentReader(BaseDocumentReader):
                 text = get_text(event["token_anchor"], tokens)
                 event["text"] = text
 
-            attrib = {
-                "eid": event["m_id"],
-                "eiid": event["m_id"],
-                "class": None,
-                "stem": None,
-                "aspect": None,
-                "tense": event.get("tense"),
-                "polarity": None,
-                "pos": event.get("pos"),
-                "text": event["text"],
-                "endpoints": None,
-            }
-
-            entities.add(Event(attrib))
+            entities.add(Event(
+                id=event["m_id"],
+                tense=event.get("tense"),
+                pos=event.get("pos"),
+                text=event["text"],
+            ))
 
         # timex
         timexs = self.content["Document"]["Markables"]["TIMEX3"]
@@ -241,18 +245,8 @@ class MeanTimeDocumentReader(BaseDocumentReader):
                 text = get_text(timex["token_anchor"], tokens)
                 timex["text"] = text
 
-            attrib = {
-                "tid": timex["m_id"],
-                "type": timex["type"],
-                "value": None,
-                "temporalFunction": None,
-                "functionInDocument": timex["functionInDocument"],
-                "anchorTimeID": None,
-                "text": timex["text"],
-                "endpoints": None,
-            }
-
-            entities.add(Timex(attrib))
+            entities.add(Timex(id=timex["m_id"], text=timex["text"], type_=timex["type"],
+                               function_in_document=timex["functionInDocument"]))
 
         return entities
 
@@ -265,14 +259,8 @@ class MeanTimeDocumentReader(BaseDocumentReader):
 
         for timex in timexs:
             if timex["functionInDocument"] == 'CREATION_TIME':
-                attrib = {
-                    "tid": timex["m_id"],
-                    "type": None,
-                    "value": timex["value"],
-                    "functionInDocument": timex["functionInDocument"],
-                    "text": timex["value"],
-                }
-                return Timex(attrib)
+                return Timex(id=timex["m_id"], text=timex["value"], value=timex["value"],
+                             function_in_document=timex["functionInDocument"])
 
     @property
     def _tlinks(self) -> Iterable[TLink]:
@@ -311,6 +299,98 @@ class MeanTimeDocumentReader(BaseDocumentReader):
                 relation = tlink["reltype"]
                 warnings.warn(f"Temporal link with id {id} was discarded since the temporal relation {relation} "
                               f"is not supported.")
+
+        return result
+
+
+# TODO: add support for EXTRA corpus
+class GraphEveDocumentReader(BaseDocumentReader):
+
+    @property
+    def _root(self):
+        if "Article" in self.content:
+            return self.content["Article"]
+
+        return self.content["ProcessedArticle"]
+
+    @property
+    def _name(self) -> str:
+        return self.path.parts[-1]
+
+    @property
+    def _dct(self) -> Timex:
+        return None
+
+    @property
+    def _text(self) -> str:
+        self.content.values()
+        return self._root["Text"]
+
+    @property
+    def _entities(self) -> Iterable[Entity]:
+
+        entities = set()
+
+        # events
+        events = self._root["MicroEvents"]["MicroEvent"]
+        for event in events:
+
+            entities.add(Event(
+                id=event["ID"],
+                text=event["EventCarrier"],
+                stem=event["EventCarrierTaggedWord"]["Stem"],
+                pos=event["EventCarrierTaggedWord"]["POSTag"],
+                lemma=event["EventCarrierTaggedWord"]["Lemma"],
+                endpoints=(
+                    int(event["EventCarrierTaggedWord"]["DocumentStartPosition"]),
+                    int(event["EventCarrierTaggedWord"]["DocumentStartPosition"]) + len(event["EventCarrier"])
+                )
+            ))
+
+        # timexs
+        timexs = []
+        sentences = self._root["Sentences"]["Sentence"]
+        for sentence in sentences:
+            if sentence["TemporalExpressions"]:
+                timex = sentence["TemporalExpressions"]["TemporalExpression"]
+                if isinstance(timex, list):
+                    timexs += timex
+                else:
+                    timexs += [timex]
+
+        for timex in timexs:
+            entities.add(Timex(
+                id=timex["TimexID"],
+                value=timex.get("Value"),
+                text=timex["Text"],
+                type_=timex["Type"]
+            ))
+
+        return entities
+
+    @property
+    def _tlinks(self) -> Iterable[TLink]:
+
+        result = set()
+
+        entities_dict = {ent.id: ent for ent in self._entities}
+
+        annotations = self._root["Relations"]["Relation"]
+        for annot in annotations:
+
+            relation = annot["RelationType"]
+
+            if relation.startswith("Temporal"):
+
+                relation = relation.replace("Temporal", "")
+                source = entities_dict[annot["FirstEvent"]["ID"]]
+                target = entities_dict[annot["SecondEvent"]["ID"]]
+
+                result.add(TLink(
+                    source=source,
+                    target=target,
+                    relation=relation
+                ))
 
         return result
 
@@ -455,4 +535,3 @@ class XMLDatasetReader:
                 train += [document]
 
         return Dataset(path.name, train, test)
-

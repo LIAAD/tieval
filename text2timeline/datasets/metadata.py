@@ -19,6 +19,7 @@ from text2timeline.datasets.readers import TableDatasetReader
 
 from text2timeline.datasets.readers import MeanTimeDocumentReader
 from text2timeline.datasets.readers import TempEval3DocumentReader
+from text2timeline.datasets.readers import GraphEveDocumentReader
 
 from text2timeline import DATA_PATH
 
@@ -63,8 +64,8 @@ class DatasetMetadata:
 DATASETS_METADATA = {
     "aquaint": DatasetMetadata(
         name="AQUAINT",
-        reader=TempEval3DocumentReader,
-        doc_reader=TMLDocumentReader,
+        reader=XMLDatasetReader,
+        doc_reader=TempEval3DocumentReader,
         url="https://drive.inesctec.pt/s/fxRfPfLcKKJ74Dn/download",
     ),
 
@@ -81,7 +82,9 @@ DATASETS_METADATA = {
 
     "grapheve": DatasetMetadata(
         name="GraphEve",
-        url="https://drive.inesctec.pt/s/eKSHKB6gMozCP4Q/download"
+        url="https://drive.inesctec.pt/s/eKSHKB6gMozCP4Q/download",
+        reader=XMLDatasetReader,
+        doc_reader=GraphEveDocumentReader
     ),
 
     "matres": DatasetMetadata(
