@@ -23,6 +23,7 @@ class Timex:
             type_: str = None,
             function_in_document: str = None,
             anchor_time_id: str = None,
+            sent_idx: int = None,
             **kwargs
     ):
 
@@ -33,6 +34,7 @@ class Timex:
         self.anchor_time_id = anchor_time_id
         self.text = text
         self.endpoints = endpoints
+        self.sent_idx = sent_idx
 
         for key, value in kwargs.items():
             setattr(self, key, value)
@@ -72,6 +74,7 @@ class Event:
             class_: str = None,
             start_time: str = None,
             end_time: str = None,
+            sent_idx: int = None,
             **kwargs
     ):
 
@@ -88,6 +91,7 @@ class Event:
         self.class_ = class_
         self.start_time = start_time
         self.end_time = end_time
+        self.sent_idx = sent_idx
 
         for key, value in kwargs.items():
             setattr(self, key, value)

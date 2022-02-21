@@ -1,19 +1,25 @@
-import torch
+from typing import Iterable
+
+from text2timeline.models.base import BaseModel
+from text2timeline.base import Document
+from text2timeline.links import TLink
 
 
-class Base:
+class TLinkClassificationBaseline(BaseModel):
 
-    def __init__(self):
-        pass
+    def predict(self, documents: Iterable[Document]):
 
-    def train(self):
-        pass
+        predictions = {}
+        for doc in documents:
+            doc_predictions = [
+                TLink(
+                    tlink.source,
+                    tlink.target,
+                    relation="BEFORE"
+                )
+                for tlink in doc.tlinks
+            ]
 
-    def data_pipeline(self):
-        pass
+            predictions[doc.name] = doc_predictions
 
-    def predict(self):
-        pass
-
-    def forward(self):
-        pass
+        return predictions

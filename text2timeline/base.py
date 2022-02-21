@@ -95,6 +95,10 @@ class Document:
     def events(self):
         return set(ent for ent in self.entities if isinstance(ent, Event))
 
+    @property
+    def sentences(self):
+        return self.text.split("\n")
+
 
 @dataclass
 class Dataset:

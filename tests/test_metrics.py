@@ -3,9 +3,9 @@ import pytest
 
 from text2timeline.links import TLink
 
-from text2timeline.metrics import temporal_precision
-from text2timeline.metrics import temporal_recall
-from text2timeline.metrics import temporal_awareness
+from text2timeline.evaluate.metrics import temporal_precision
+from text2timeline.evaluate.metrics import temporal_recall
+from text2timeline.evaluate.metrics import temporal_awareness
 
 
 # examples extracted from https://github.com/bethard/anaforatools/blob/master/anafora/test/test_anafora_evaluate.py

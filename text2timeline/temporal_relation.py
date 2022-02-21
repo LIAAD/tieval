@@ -83,11 +83,13 @@ class IncompleteRelationError(Exception):
 
 class PointRelation:
 
-    def __init__(self,
-                 start_start: str = None,
-                 start_end: str = None,
-                 end_start: str = None,
-                 end_end: str = None) -> None:
+    def __init__(
+            self,
+            start_start: str = None,
+            start_end: str = None,
+            end_start: str = None,
+            end_end: str = None
+    ) -> None:
 
         self.relation = [start_start, start_end, end_start, end_end]
         self.order = self._relative_position()
@@ -229,50 +231,7 @@ class PointRelation:
 
     @property
     def minimal(self):
-
-        src_pos, tgt_pos = self.order
-
-        sequence = [""] * 4
-        sequence[src_pos[0]] = "src_s"
-        sequence[src_pos[1]] = "src_e"
-        sequence[tgt_pos[0]] = "tgt_s"
-        sequence[tgt_pos[1]] = "tgt_e"
         pass
-
-
-class IntervalRelation:
-
-    def __init__(self, relation: str) -> None:
-        self.relation = relation
-
-    def __eq__(self, other):
-
-        if isinstance(other, str):
-            other = IntervalRelation(other)
-
-        return self.relation == other.relation
-
-    def __repr__(self):
-        return f"IntervalRelation({self.relation})"
-
-    def __str__(self):
-        return self.relation
-
-    def __hash__(self):
-        return hash(self.relation)
-
-    @property
-    def relation(self):
-        return self._relation
-
-    @relation.setter
-    def relation(self, relation):
-
-        inferred_relation = _SETTLE_RELATION.get(relation.upper())
-        if inferred_relation is None:
-            raise ValueError(f"Interval relation {relation} not supported.")
-
-        self._relation = inferred_relation
 
 
 # Mapping from interval relation names to point relations.
@@ -300,54 +259,15 @@ _INTERVAL_TO_POINT_RELATION = {
 }
 
 
-class RelationHandler:
-
-    def handle(self, relation):
-
-        if isinstance(relation, str):
-            interval = IntervalRelation(relation)
-            point = _INTERVAL_TO_POINT_RELATION[interval.relation]
-
-        elif isinstance(relation, list):
-            point = PointRelation(*relation)
-            interval = self._point2interval(point)
-
-        elif isinstance(relation, dict):
-            point = PointRelation(**relation)
-            interval = self._point2interval(point)
-
-        elif isinstance(relation, IntervalRelation):
-            point = _INTERVAL_TO_POINT_RELATION[relation.relation]
-            interval = self._point2interval(point)
-
-        elif isinstance(relation, PointRelation):
-            point = relation
-            interval = self._point2interval(point)
-
-        elif isinstance(relation, TemporalRelation):
-            point = relation.point
-            interval = relation.interval
-
-        else:
-            raise TypeError("Argument type is not supported.")
-
-        return interval, point
-
-    @staticmethod
-    def _point2interval(point_relation):
-
-        for itr, pnt in _INTERVAL_TO_POINT_RELATION.items():
-            if pnt == point_relation:
-                return IntervalRelation(itr)
-
-
 class TemporalRelation:
 
     def __init__(self, relation: Union[str, list, dict]):
-        self.interval, self.point = RelationHandler().handle(relation)
+
+        self.point = self._handle(relation)
+        self._interval = None
 
     def __repr__(self) -> str:
-        return f"TemporalRelation({self.interval.relation})"
+        return f"TemporalRelation({self.interval})"
 
     def __str__(self) -> str:
         if self.interval:
@@ -367,4 +287,40 @@ class TemporalRelation:
     def __hash__(self):
         return hash((self.point, self.interval))
 
+    @property
+    def interval(self):
 
+        if self._interval is None:
+            for itr, pnt in _INTERVAL_TO_POINT_RELATION.items():
+                if pnt == self.point:
+                    self._interval = itr
+
+        return self._interval
+
+    @staticmethod
+    def _handle(relation):
+
+        if isinstance(relation, str):
+
+            interval = _SETTLE_RELATION.get(relation.upper())
+            if interval is None:
+                raise ValueError(f"Interval relation {relation} not supported.")
+
+            point = _INTERVAL_TO_POINT_RELATION[interval]
+
+        elif isinstance(relation, list):
+            point = PointRelation(*relation)
+
+        elif isinstance(relation, dict):
+            point = PointRelation(**relation)
+
+        elif isinstance(relation, PointRelation):
+            point = relation
+
+        elif isinstance(relation, TemporalRelation):
+            point = relation.point
+
+        else:
+            raise TypeError("Argument type is not supported.")
+
+        return point

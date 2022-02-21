@@ -46,9 +46,11 @@ te3 = datasets.read("TempEval-3")
 ```
 
 ### load a model.
+
 ```python
 from text2timeline import models
-heideltime = models.identification.Heideltime()
+
+heideltime = models.identification.HeidelTime()
 ```
 
 ### make predictions.

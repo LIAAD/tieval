@@ -32,7 +32,7 @@ class TLink:
     def __init__(self,
                  source: Union[str, Timex, Event],
                  target: Union[str, Timex, Event],
-                 relation: Union[str, list, dict, TemporalRelation],
+                 relation: Union[str, list, dict],
                  id: str = None):
         """
 
@@ -43,9 +43,7 @@ class TLink:
 
         self.source = source
         self.target = target
-
-        self._relation = None
-        self.relation = relation
+        self.relation = TemporalRelation(relation)
 
         if id is None:
 
@@ -134,7 +132,7 @@ class TLink:
     def __eq__(self, other):
         return self.__hash__() == other.__hash__()
 
-    def _encode(self):
+    def __hash__(self):
         """Define an unique encoding depending on source, target and relation.
          This encoding is necessary for hashing and equality.
          """
@@ -148,34 +146,3 @@ class TLink:
             relation = ~self.relation.point
 
         return hash((src, tgt, relation))
-
-    def __hash__(self):
-        return self._encode()
-
-    @property
-    def relation(self) -> TemporalRelation:
-        """ Temporal relation between source and target.
-
-        Returns
-        -------
-        TemporalRelation
-
-        """
-        return self._relation
-
-    @relation.setter
-    def relation(self, rel: str) -> None:
-        """
-
-        Parameters
-        ----------
-        rel : str
-            Relation on the string format.
-
-        Returns
-        -------
-        None
-
-        """
-        self._relation = TemporalRelation(rel)
-

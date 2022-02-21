@@ -10,3 +10,4 @@ __credits__ = "INESC TEC"
 import pathlib
 
 DATA_PATH = pathlib.Path("./data")
+MODELS_PATH = pathlib.Path("./models")

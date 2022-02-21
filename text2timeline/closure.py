@@ -4,9 +4,7 @@ from text2timeline.links import TLink
 import copy
 
 
-def temporal_closure(
-        tlinks: Set[TLink],
-        allow_incomplete: bool = False) -> Set[TLink]:
+def temporal_closure(tlinks: Set[TLink]) -> Set[TLink]:
     """Compute temporal closure from a set of temporal links.
 
     This function infers all possible TLinks form the set of tlinks
@@ -28,35 +26,28 @@ def temporal_closure(
         The union of the tlinks given as input and the tlinks inferred.
     """
 
-    n_tlinks = len(tlinks)
-    result = copy.copy(tlinks)
+    result = copy.deepcopy(tlinks)
+
+    old_tlinks = tlinks
+    new_tlinks = tlinks
     while True:
 
-        # find new tlinks
         inferred_tlinks = set()
-        foo = copy.copy(result)
-        while foo:
+        for tlink1 in old_tlinks:
+            for tlink2 in new_tlinks:
 
-            tlink = foo.pop()
-            for tl in foo:
+                if tlink1 == tlink2:
+                    continue
 
-                inferred = tl & tlink
+                inferred_tlink = tlink1 & tlink2
 
-                if inferred:
+                if inferred_tlink and (inferred_tlink not in result):
+                    inferred_tlinks.add(inferred_tlink)
 
-                    if not allow_incomplete:
-                        if None in inferred.relation.point.relation:
-                            continue
-
-                    inferred_tlinks.add(inferred)
-
-        # update tlinks set
-        result.update(inferred_tlinks)
-
-        # check if new tlinks were found
-        new_n_tlinks = len(result)
-        if new_n_tlinks != n_tlinks:
-            n_tlinks = new_n_tlinks
+        if inferred_tlinks:
+            result.update(inferred_tlinks)
+            old_tlinks = result
+            new_tlinks = inferred_tlinks
 
         else:
             break

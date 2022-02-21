@@ -133,7 +133,8 @@ class TempEval3DocumentReader(BaseDocumentReader):
                     pos=mkinst['pos'],
                     tense=mkinst['tense'],
                     text=mkinst['text'],
-                    endpoints=(int(s), int(e))
+                    endpoints=(int(s), int(e)),
+                    sent_idx=int(mkinst.get("sent_idx"))
                 ))
 
         # timexs
@@ -148,7 +149,8 @@ class TempEval3DocumentReader(BaseDocumentReader):
                     id=timex["tid"],
                     type_=timex["type"],
                     value=timex["value"],
-                    endpoints=(int(s), int(e))
+                    endpoints=(int(s), int(e)),
+                    sent_idx=int(timex.get("sent_idx"))
                 ))
 
         return entities
@@ -161,7 +163,7 @@ class TempEval3DocumentReader(BaseDocumentReader):
             text=attrib["text"],
             id=attrib["tid"],
             type_=attrib["type"],
-            value=attrib["value"]
+            value=attrib["value"],
         )
 
     @property
