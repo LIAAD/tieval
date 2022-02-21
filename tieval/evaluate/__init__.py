@@ -1,12 +1,12 @@
 from typing import Dict, Iterable, Set
 
-from text2timeline.entities import Entity
-from text2timeline.links import TLink
+from tieval.entities import Entity
+from tieval.links import TLink
 
 from typing import Set
 
-from text2timeline.closure import temporal_closure
-from text2timeline.links import TLink
+from tieval.closure import temporal_closure
+from tieval.links import TLink
 
 
 from tabulate import tabulate

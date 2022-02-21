@@ -7,8 +7,8 @@ Objects implemented:
 
 from typing import Union
 
-from text2timeline.temporal_relation import TemporalRelation
-from text2timeline.entities import Event, Timex
+from tieval.temporal_relation import TemporalRelation
+from tieval.entities import Event, Timex
 
 
 class TLink:

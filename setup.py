@@ -7,7 +7,7 @@ README = open("README.md").read()
 
 
 setup(
-    name="text2timeline",
+    name="tieval",
     version="0.0.2",
     url="https://github.com/hmosousa/text2timeline",
     license='MIT',

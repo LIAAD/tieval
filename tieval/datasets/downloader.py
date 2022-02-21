@@ -26,8 +26,8 @@ import requests
 import zipfile
 import io
 
-from text2timeline.datasets import DATASETS_METADATA
-from text2timeline import DATA_PATH
+from tieval.datasets import DATASETS_METADATA
+from tieval import DATA_PATH
 
 
 def _download_repo(metadata):

@@ -14,11 +14,11 @@ from pathlib import Path
 
 from xml.etree import ElementTree as ET
 
-from text2timeline.base import Document, Dataset
-from text2timeline.entities import Timex, Event, Entity
-from text2timeline.links import TLink
-from text2timeline.datasets.utils import xml2dict
-from text2timeline.temporal_relation import SUPPORTED_RELATIONS
+from tieval.base import Document, Dataset
+from tieval.entities import Timex, Event, Entity
+from tieval.links import TLink
+from tieval.datasets.utils import xml2dict
+from tieval.temporal_relation import SUPPORTED_RELATIONS
 
 from pprint import pprint
 

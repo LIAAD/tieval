@@ -1,6 +1,6 @@
 from typing import Set
 
-from text2timeline.links import TLink
+from tieval.links import TLink
 import copy
 
 

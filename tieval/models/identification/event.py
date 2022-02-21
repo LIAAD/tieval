@@ -8,13 +8,13 @@ from spacy.util import compounding
 from spacy.util import minibatch
 from spacy.training import Example
 
-from text2timeline import MODELS_PATH
-from text2timeline.models.base import (
+from tieval import MODELS_PATH
+from tieval.models.base import (
     BaseModel,
     BaseTrainableModel
 )
-from text2timeline.base import Document
-from text2timeline.entities import Event
+from tieval.base import Document
+from tieval.entities import Event
 
 
 class EventIdentificationBaseline(BaseTrainableModel):

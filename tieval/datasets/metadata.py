@@ -14,14 +14,14 @@ from dataclasses import dataclass
 import pathlib
 from typing import Union, Tuple, Iterable
 
-from text2timeline.datasets.readers import XMLDatasetReader
-from text2timeline.datasets.readers import TableDatasetReader
+from tieval.datasets.readers import XMLDatasetReader
+from tieval.datasets.readers import TableDatasetReader
 
-from text2timeline.datasets.readers import MeanTimeDocumentReader
-from text2timeline.datasets.readers import TempEval3DocumentReader
-from text2timeline.datasets.readers import GraphEveDocumentReader
+from tieval.datasets.readers import MeanTimeDocumentReader
+from tieval.datasets.readers import TempEval3DocumentReader
+from tieval.datasets.readers import GraphEveDocumentReader
 
-from text2timeline import DATA_PATH
+from tieval import DATA_PATH
 
 
 DatasetReaders = Union[XMLDatasetReader, TableDatasetReader]

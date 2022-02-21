@@ -12,10 +12,10 @@ from dataclasses import dataclass
 from typing import Set, Optional, Union
 from typing import Iterable, List
 
-from text2timeline.entities import Event
-from text2timeline.entities import Timex
-from text2timeline.links import TLink
-from text2timeline.closure import temporal_closure as _temporal_closure
+from tieval.entities import Event
+from tieval.entities import Timex
+from tieval.links import TLink
+from tieval.closure import temporal_closure as _temporal_closure
 
 
 class Document:

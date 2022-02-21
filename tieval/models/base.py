@@ -4,7 +4,7 @@ from typing import Iterable
 from abc import ABC
 from abc import abstractmethod
 
-from text2timeline.base import Document
+from tieval.base import Document
 
 
 class BaseModel(ABC):

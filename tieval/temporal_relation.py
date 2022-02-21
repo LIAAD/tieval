@@ -271,9 +271,9 @@ class TemporalRelation:
 
     def __str__(self) -> str:
         if self.interval:
-            return f"{self.interval.relation}"
+            return f"{self.interval}"
         else:
-            return f"{self.point.relation}"
+            return f"{self.point}"
 
     def __invert__(self):
         return TemporalRelation(~self.point)

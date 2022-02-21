@@ -1,8 +1,8 @@
 from typing import Iterable
 
-from text2timeline.models.base import BaseModel
-from text2timeline.base import Document
-from text2timeline.links import TLink
+from tieval.models.base import BaseModel
+from tieval.base import Document
+from tieval.links import TLink
 
 
 class TLinkClassificationBaseline(BaseModel):

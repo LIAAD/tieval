@@ -2,7 +2,7 @@ import pytest
 
 from pathlib import Path
 
-from text2timeline.datasets.utils import TMLHandler
+from tieval.datasets.utils import TMLHandler
 
 
 @pytest.fixture
@@ -30,7 +30,7 @@ def sample_tags():
 
 class TestXMLHandler:
 
-    path = Path(r"/home/hugosousa/Projects/text2timeline/data/sample.tml")
+    path = Path(r"//data/sample.tml")
     xml = TMLHandler(path)
 
     def test_text(self, sample_text):

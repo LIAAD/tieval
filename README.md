@@ -9,7 +9,7 @@ A framework for the development of temporally aware models.
 The package is available on [PyPI]():
 
 ```shell
-pip install text2timeline
+pip install tieval
 ```
 
 It requires Python 3.8 or above.
@@ -26,7 +26,7 @@ text2timeline provides an easy interface to download the available corpus.
 
 To know more about the module run the following code on the terminal.
 ```shell
-python -m text2timeline download --help
+python -m tieval download --help
 ```
 
 ## How to ...
@@ -34,21 +34,23 @@ python -m text2timeline download --help
 In this section we summarize how to perform the most useful operations in text2timeline.
 
 ### download a dataset.
+
 ```python
-from text2timeline import datasets
+from tieval import datasets
 datasets.download("TimeBank")
 ```
 
 ### load a dataset.
+
 ```python
-from text2timeline import datasets
+from tieval import datasets
 te3 = datasets.read("TempEval-3")
 ```
 
 ### load a model.
 
 ```python
-from text2timeline import models
+from tieval import models
 
 heideltime = models.identification.HeidelTime()
 ```
@@ -59,8 +61,9 @@ predictions = heideltime.predict(te3.test)
 ```
 
 ### evaluate predictions.
+
 ```python
-from text2timeline import evaluate
+from tieval import evaluate
 evaluator = evaluate.Evaluator(te3.test)
 result = evaluator.timex_identification(predictions)
 ```

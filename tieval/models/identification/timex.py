@@ -11,11 +11,11 @@ from spacy.training import Example
 
 from py_heideltime import py_heideltime
 
-from text2timeline import MODELS_PATH
-from text2timeline.models.base import BaseModel
-from text2timeline.models.base import BaseTrainableModel
-from text2timeline.base import Document
-from text2timeline.entities import Timex
+from tieval import MODELS_PATH
+from tieval.models.base import BaseModel
+from tieval.models.base import BaseTrainableModel
+from tieval.base import Document
+from tieval.entities import Timex
 
 
 class TimexIdentificationBaseline(BaseTrainableModel):

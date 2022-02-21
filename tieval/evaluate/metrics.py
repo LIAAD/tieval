@@ -10,8 +10,8 @@ Functions:
 
 from typing import Set
 
-from text2timeline.closure import temporal_closure
-from text2timeline.links import TLink
+from tieval.closure import temporal_closure
+from tieval.links import TLink
 
 
 

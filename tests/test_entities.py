@@ -1,8 +1,8 @@
 import pytest
 
-from text2timeline.base import Event
-from text2timeline.base import Timex
-from text2timeline.base import TLink
+from tieval.base import Event
+from tieval.base import Timex
+from tieval.base import TLink
 
 
 @pytest.fixture

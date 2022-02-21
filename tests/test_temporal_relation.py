@@ -1,7 +1,7 @@
 
-from text2timeline.temporal_relation import PointRelation
-from text2timeline.temporal_relation import IntervalRelation
-from text2timeline.temporal_relation import TemporalRelation
+from tieval.temporal_relation import PointRelation
+from tieval.temporal_relation import IntervalRelation
+from tieval.temporal_relation import TemporalRelation
 
 
 class TestPointRelation:

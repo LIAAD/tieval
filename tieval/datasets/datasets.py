@@ -1,8 +1,8 @@
 
 from typing import List
 
-from text2timeline.base import Dataset
-from text2timeline.datasets import DATASETS_METADATA
+from tieval.base import Dataset
+from tieval.datasets import DATASETS_METADATA
 
 
 def read(dataset: str) -> List[Dataset]:

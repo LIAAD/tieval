@@ -2,7 +2,7 @@
 Usage:
 ------
 
-    $ text2timeline <command> [OPTIONS]
+    $ tieval <command> [OPTIONS]
 
 Commands:
     download        Download temporally annotated corpora.
@@ -19,8 +19,8 @@ Contacts:
 
 import sys
 
-from text2timeline.datasets import downloader
-from text2timeline.datasets import download
+from tieval.datasets import downloader
+from tieval.datasets import download
 
 
 def main():

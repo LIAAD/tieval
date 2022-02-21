@@ -1,6 +1,6 @@
 import pytest
 
-from text2timeline.base import TLink
+from tieval.base import TLink
 
 
 @pytest.fixture
@@ -37,16 +37,16 @@ class TestTLink:
     def test_equal(self, tlink):
         assert tlink == tlink
         assert tlink == ~tlink
-        assert tlink != TLink("l6", "e2", "e3", "INCLUDES")
+        assert tlink != TLink("e2", "e3", "INCLUDES")
 
     def test_inference(self):
 
-        ab = TLink("l0", "A", "B", "after")
-        ac = TLink("l1", "A", "C", "simultaneous")
-        ba = TLink("l2", "B", "A", "before")
-        ca = TLink("l3", "C", "A", "simultaneous")
+        ab = TLink("A", "B", "after")
+        ac = TLink("A", "C", "simultaneous")
+        ba = TLink("B", "A", "before")
+        ca = TLink("C", "A", "simultaneous")
 
-        bc = TLink("li1", "B", "C", "before")
+        bc = TLink("B", "C", "before")
 
         assert ab & ac == bc
         assert ab & ca == bc
@@ -60,22 +60,22 @@ class TestTLink:
         assert ab & bc is None
 
         # specific case #1
-        dh = TLink("l2", "D", "H", "ends")
-        dg = TLink("l3", "D", "G", "before")
-        hg = TLink("l3", "H", "G", "before")
+        dh = TLink("D", "H", "ends")
+        dg = TLink("D", "G", "before")
+        hg = TLink("H", "G", "before")
         assert dh & dg == hg
 
-        gh = TLink("l3", "G", "H", "after")
+        gh = TLink("G", "H", "after")
         assert dh & dg == gh
 
         # specific case #2
-        ca = TLink("l2", "C", "A", "simultaneous")
-        af = TLink("l3", "A", "F", "before")
-        cf = TLink("l3", "C", "F", "before")
+        ca = TLink("C", "A", "simultaneous")
+        af = TLink("A", "F", "before")
+        cf = TLink("C", "F", "before")
         assert ca & af == cf
 
     def test_hash(self):
-        tl1 = TLink("l1", "A", "B", "before")
-        tl2 = TLink("l2", "B", "A", "after")
+        tl1 = TLink("A", "B", "before")
+        tl2 = TLink("B", "A", "after")
 
         assert hash(tl1) == hash(tl2)

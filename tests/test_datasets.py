@@ -3,9 +3,9 @@ import os
 import pytest
 from collections import defaultdict
 
-from text2timeline. datasets import read, DATASETS_METADATA
+from tieval. datasets import read, DATASETS_METADATA
 
-os.chdir("/home/hugosousa/Projects/text2timeline")
+os.chdir("/")
 
 
 @pytest.fixture
