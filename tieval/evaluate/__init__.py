@@ -120,21 +120,26 @@ def identification(
     # compute macro metrics
     M_precision /= n_docs
     M_recall /= n_docs
+    M_f1 = 2 * M_recall * M_precision / (M_recall + M_precision)
 
     # compute micro metrics
     m_precision = tps / (tps + fps)
     m_recall = tps / (tps + fns)
+    if m_recall + m_precision:
+        m_f1 = 2 * m_recall * m_precision / (m_recall + m_precision)
+    else:
+        m_f1 = 0
 
     result = {
         "micro": {
             "recall": m_recall,
             "precision": m_precision,
-            "f1": 2 * m_recall * m_precision / (m_recall + m_precision)
+            "f1": m_f1
         },
         "macro": {
             "recall": M_recall,
             "precision": M_precision,
-            "f1": 2 * M_recall * M_precision / (M_recall + M_precision)
+            "f1": M_f1
         }
     }
 

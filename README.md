@@ -1,4 +1,4 @@
-# text2timeline
+# tieval
 
 A framework for the development of temporally aware models.
 
