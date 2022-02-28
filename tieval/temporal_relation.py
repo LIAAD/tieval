@@ -31,13 +31,13 @@ _SETTLE_RELATION = {
     "EQUAL": "SIMULTANEOUS",
     "AFTER": "AFTER",
     "A": "AFTER",
-    "BEGINS-ON": "BEGINS-ON",
+    "BEGINS-ON": "BEGINS",  #
     "SIMULTANEOUS": "SIMULTANEOUS",
     "S": "SIMULTANEOUS",
     "INCLUDES": "INCLUDES",
     "I": "INCLUDES",
     "DURING": "SIMULTANEOUS",
-    "ENDS-ON": "ENDS-ON",
+    "ENDS-ON": "ENDS",  #
     "BEGUN_BY": "BEGUN_BY",
     "ENDED_BY": "ENDED_BY",
     "DURING_INV": "SIMULTANEOUS",
@@ -48,8 +48,8 @@ _SETTLE_RELATION = {
     "IAFTER": "IAFTER",
     "VAGUE": "VAGUE",
     "V": "VAGUE",
-    "BEFORE-OR-OVERLAP": "BEFORE-OR-OVERLAP",
-    "OVERLAP-OR-AFTER": "OVERLAP-OR-AFTER"
+    # "BEFORE-OR-OVERLAP": "BEFORE-OR-OVERLAP",
+    # "OVERLAP-OR-AFTER": "OVERLAP-OR-AFTER"
 }
 
 SUPPORTED_RELATIONS = list(_SETTLE_RELATION)
@@ -244,18 +244,18 @@ _INTERVAL_TO_POINT_RELATION = {
     "IAFTER": PointRelation(start_end="="),
     "INCLUDES": PointRelation(start_start="<", end_end=">"),
     "IS_INCLUDED": PointRelation(start_start=">", end_end="<"),
-    "BEGINS-ON": PointRelation(start_start="="),
-    "ENDS-ON": PointRelation(end_end="="),
+    # "ENDS-ON": PointRelation(end_end="="),
     "BEGINS": PointRelation(start_start="=", end_end="<"),
     "BEGUN_BY": PointRelation(start_start="=", end_end=">"),
+    # "BEGINS-ON": PointRelation(start_start="="),
     "ENDS": PointRelation(start_start=">", end_end="="),
     "ENDED_BY": PointRelation(start_start="<", end_end="="),
     "SIMULTANEOUS": PointRelation(start_start="=", end_end="="),
     "OVERLAP": PointRelation(start_start="<", end_start=">", end_end="<"),
     "OVERLAPPED": PointRelation(start_start=">", start_end="<", end_end=">"),
     "VAGUE": PointRelation(),
-    "BEFORE-OR-OVERLAP": PointRelation(start_start="<", end_end="<"),
-    "OVERLAP-OR-AFTER": PointRelation(start_start=">", end_end=">")
+    # "BEFORE-OR-OVERLAP": PointRelation(start_start="<", end_end="<"),
+    # "OVERLAP-OR-AFTER": PointRelation(start_start=">", end_end=">")
 }
 
 
@@ -286,6 +286,15 @@ class TemporalRelation:
 
     def __hash__(self):
         return hash((self.point, self.interval))
+
+    def is_complete(self):
+        # A relation is considered complete if the point relation inferred can be mapped to one of the interval
+        # relations.
+
+        if self.interval:
+            return True
+
+        return False
 
     @property
     def interval(self):

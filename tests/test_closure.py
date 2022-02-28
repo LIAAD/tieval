@@ -8,25 +8,25 @@ import pytest
 @pytest.fixture
 def annotation():
     sample1 = {
-        TLink("l1", "B", "A", "before"),
-        TLink("l2", "D", "H", "ends"),
-        TLink("l3", "D", "G", "before"),
-        TLink("l4", "A", "F", "before"),
-        TLink("l5", "C", "A", "simultaneous"),
-        TLink("l6", "B", "E", "after"),
+        TLink("B", "A", "before"),
+        TLink("D", "H", "ends"),
+        TLink("D", "G", "before"),
+        TLink("A", "F", "before"),
+        TLink("C", "A", "simultaneous"),
+        TLink("B", "E", "after"),
     }
 
     sample2 = {
-        TLink("l1", "A", "B", "before"),
-        TLink("l1", "B", "C", "is_included"),
-        TLink("l1", "D", "C", "includes"),
-        TLink("l1", "E", "D", "contains"),
-        TLink("l1", "F", "E", "after"),
-        TLink("l1", "G", "H", "begins-on"),
-        TLink("l1", "I", "G", "before"),
-        TLink("l1", "J", "K", "ibefore"),
-        TLink("l1", "K", "L", "begun_by"),
-        TLink("l1", "L", "K", "begins")
+        TLink("A", "B", "before"),
+        TLink("B", "C", "is_included"),
+        TLink("D", "C", "includes"),
+        TLink("E", "D", "contains"),
+        TLink("F", "E", "after"),
+        TLink("G", "H", "begins-on"),
+        TLink("I", "G", "before"),
+        TLink("J", "K", "ibefore"),
+        TLink("K", "L", "begun_by"),
+        TLink("L", "K", "begins")
     }
 
     return sample1, sample2
@@ -35,40 +35,40 @@ def annotation():
 @pytest.fixture
 def closure():
     sample1 = {
-        TLink("l1", "B", "A", "before"),
-        TLink("l2", "D", "H", "ends"),
-        TLink("l3", "D", "G", "before"),
-        TLink("l4", "A", "F", "before"),
-        TLink("l5", "C", "A", "simultaneous"),
-        TLink("l6", "B", "E", "after"),
-        TLink("l7", "E", "A", "before"),
-        TLink("l8", "E", "F", "before"),
-        TLink("l9", "E", "C", "before"),
-        TLink("l10", "B", "F", "before"),
-        TLink("l11", "B", "C", "before"),
-        TLink("l12", "H", "G", "before"),
-        TLink("l13", "F", "C", "after"),
+        TLink("B", "A", "before"),
+        TLink("D", "H", "ends"),
+        TLink("D", "G", "before"),
+        TLink("A", "F", "before"),
+        TLink("C", "A", "simultaneous"),
+        TLink("B", "E", "after"),
+        TLink("E", "A", "before"),
+        TLink("E", "F", "before"),
+        TLink("E", "C", "before"),
+        TLink("B", "F", "before"),
+        TLink("B", "C", "before"),
+        TLink("H", "G", "before"),
+        TLink("F", "C", "after"),
     }
 
     sample2 = {
-        TLink("li", "A", "B", "before"),
-        TLink("li", "A", "F", "before"),
-        TLink("li", "B", "F", "before"),
-        TLink("li", "C", "B", "includes"),
-        TLink("li", "C", "F", "before"),
-        TLink("li", "D", "B", "includes"),
-        TLink("li", "D", "C", "includes"),
-        TLink("li", "D", "F", "before"),
-        TLink("li", "E", "B", "includes"),
-        TLink("li", "E", "C", "includes"),
-        TLink("li", "E", "D", "includes"),
-        TLink("li", "E", "F", "before"),
-        TLink("l1", "G", "H", "begins-on"),
-        TLink("li", "I", "G", "before"),
-        TLink("li", "I", "H", "before"),
-        TLink("li", "J", "L", "ibefore"),
-        TLink("l1", "K", "L", "begun_by"),
-        TLink("li", "J", "K", "ibefore"),
+        TLink("A", "B", "before"),
+        TLink("A", "F", "before"),
+        TLink("B", "F", "before"),
+        TLink("C", "B", "includes"),
+        TLink("C", "F", "before"),
+        TLink("D", "B", "includes"),
+        TLink("D", "C", "includes"),
+        TLink("D", "F", "before"),
+        TLink("E", "B", "includes"),
+        TLink("E", "C", "includes"),
+        TLink("E", "D", "includes"),
+        TLink("E", "F", "before"),
+        TLink("G", "H", "begins-on"),
+        TLink("I", "G", "before"),
+        TLink("I", "H", "before"),
+        TLink("J", "L", "ibefore"),
+        TLink("K", "L", "begun_by"),
+        TLink("J", "K", "ibefore"),
     }
 
     return sample1, sample2

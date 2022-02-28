@@ -1,6 +1,5 @@
 
 from tieval.temporal_relation import PointRelation
-from tieval.temporal_relation import IntervalRelation
 from tieval.temporal_relation import TemporalRelation
 
 
@@ -58,7 +57,6 @@ class TestTemporalRelation:
         assert TemporalRelation(["<", "<", "<", "<"]).interval == "BEFORE"
         assert TemporalRelation({"end_start": "<"}).interval == "BEFORE"
         assert TemporalRelation(PointRelation(end_start="<")).interval == "BEFORE"
-        assert TemporalRelation(IntervalRelation("before")).interval == "BEFORE"
         assert TemporalRelation(TemporalRelation("before")).interval == "BEFORE"
 
     def test_inference(self):
@@ -73,11 +71,11 @@ class TestTemporalRelation:
         assert (~TemporalRelation("AFTER")).interval == "BEFORE"
         assert (~TemporalRelation("BEFORE")).interval == "AFTER"
         assert (~TemporalRelation("BEGINS")).interval == "BEGUN_BY"
-        assert (~TemporalRelation("BEGINS-ON")).interval == "BEGINS-ON"
         assert (~TemporalRelation("BEGUN_BY")).interval == "BEGINS"
+        # assert (~TemporalRelation("BEGINS-ON")).interval == "BEGINS-ON"
         assert (~TemporalRelation("ENDED_BY")).interval == "ENDS"
         assert (~TemporalRelation("ENDS")).interval == "ENDED_BY"
-        assert (~TemporalRelation("ENDS-ON")).interval == "ENDS-ON"
+        # assert (~TemporalRelation("ENDS-ON")).interval == "ENDS-ON"
         assert (~TemporalRelation("IAFTER")).interval == "IBEFORE"
         assert (~TemporalRelation("IBEFORE")).interval == "IAFTER"
         assert (~TemporalRelation("INCLUDES")).interval == "IS_INCLUDED"
