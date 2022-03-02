@@ -26,3 +26,5 @@ from tieval.datasets.readers import TempEval3DocumentReader
 from tieval.datasets.metadata import DATASETS_METADATA
 from tieval.datasets.datasets import read
 from tieval.datasets.downloader import download
+
+SUPPORTED_DATASETS = list(DATASETS_METADATA)

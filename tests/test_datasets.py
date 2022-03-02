@@ -3,7 +3,8 @@ import os
 import pytest
 from collections import defaultdict
 
-from tieval. datasets import read, DATASETS_METADATA
+from tieval import datasets
+from tieval.datasets import read, DATASETS_METADATA
 
 os.chdir("/")
 
@@ -61,4 +62,9 @@ def test_load_dataset(dataset_statistics):
             if key in statistics:
                 assert statistics_found[key] == statistics[key], f"The {key} is not correct for dataset {dataset_name}."
 
+
+def test_download():
+
+    for dataset in datasets.SUPPORTED_DATASETS:
+        print()
 

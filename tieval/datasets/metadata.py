@@ -105,9 +105,30 @@ DATASETS_METADATA = {
         url="https://drive.inesctec.pt/s/q54BizkCwK9egEL/download"
     ),
 
-    "meantime": DatasetMetadata(
-        name="MeanTime",
-        url="https://drive.inesctec.pt/s/WxfGqyGyxi5ac35/download",
+    "meantime_english": DatasetMetadata(
+        name="meantime_english",
+        url="https://drive.inesctec.pt/s/QoLwqgdTLkfia7L/download",
+        reader=XMLDatasetReader,
+        doc_reader=MeanTimeDocumentReader
+    ),
+
+    "meantime_spanish": DatasetMetadata(
+        name="meantime_spanish",
+        url="https://drive.inesctec.pt/s/xEPGnqygP6FEFkP/download",
+        reader=XMLDatasetReader,
+        doc_reader=MeanTimeDocumentReader
+    ),
+
+    "meantime_dutch": DatasetMetadata(
+        name="meantime_dutch",
+        url="https://drive.inesctec.pt/s/HyFfxEwryj6Fffq/download",
+        reader=XMLDatasetReader,
+        doc_reader=MeanTimeDocumentReader
+    ),
+
+    "meantime_italian": DatasetMetadata(
+        name="meantime_italian",
+        url="https://drive.inesctec.pt/s/kabifjEcQboKbBA/download",
         reader=XMLDatasetReader,
         doc_reader=MeanTimeDocumentReader
     ),

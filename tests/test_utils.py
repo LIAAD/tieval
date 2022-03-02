@@ -5,6 +5,11 @@ from pathlib import Path
 from tieval.datasets.utils import TMLHandler
 
 
+import os
+
+print(os.getcwd())
+
+
 @pytest.fixture
 def sample_text():
     text = "WSJ891102-0188 \n = 891102 \n 891102-0188. \n Pacific First Financial Corp. \n 11/02/89 \n WALL STREET " \
@@ -30,7 +35,7 @@ def sample_tags():
 
 class TestXMLHandler:
 
-    path = Path(r"//data/sample.tml")
+    path = Path(r"../data/sample.tml")
     xml = TMLHandler(path)
 
     def test_text(self, sample_text):

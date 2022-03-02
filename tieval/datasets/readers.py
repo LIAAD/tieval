@@ -22,6 +22,7 @@ from tieval.temporal_relation import SUPPORTED_RELATIONS
 
 from pprint import pprint
 
+
 def _detokenize(tokens):
     text = [
         " " + tkn
@@ -124,7 +125,6 @@ class TempEval3DocumentReader(BaseDocumentReader):
                     mkinst.update(event)
 
                 s, e = mkinst["endpoints"].split()
-
                 entities.add(Event(
                     aspect=mkinst['aspect'],
                     class_=mkinst['class'],
@@ -197,19 +197,25 @@ class MeanTimeDocumentReader(BaseDocumentReader):
 
     @property
     def _text(self) -> str:
-        tokens = self.content["Document"]["token"]
-        sent_n = 0
-        text, sent = [], []
-        for token in tokens:
 
-            if int(token["sentence"]) != sent_n:
-                text += [_detokenize(sent)]
-                sent = []
-                sent_n += 1
+        raw = self.content["Document"]["raw"]
 
-            sent += [token["text"]]
+        # the first two sentences are always the name and publication time.
+        sentences = raw.split("\n")[2:]
+        text = "\n".join(sentences)
 
-        return "\n".join(text)
+        # add endpoints to tokens
+        idx = 0
+        running_text = text
+        for tkn in self.content["Document"]["token"]:
+            if int(tkn["sentence"]) >= 2:  # ignore title and dct
+                offset = running_text.find(tkn["text"])
+                idx += offset
+                tkn["endpoints"] = (idx, idx + len(tkn["text"]))
+                idx += len(tkn["text"])
+                running_text = running_text[offset + len(tkn["text"]) :]
+
+        return text
 
     @property
     def _entities(self) -> Iterable[Entity]:
