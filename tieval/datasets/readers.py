@@ -198,39 +198,38 @@ class MeanTimeDocumentReader(BaseDocumentReader):
     @property
     def _text(self) -> str:
 
-        raw = self.content["Document"]["raw"]
-
-        # the first two sentences are always the name and publication time.
-        sentences = raw.split("\n")[2:]
-        text = "\n".join(sentences)
+        text = self.content["Document"]["raw"]
 
         # add endpoints to tokens
         idx = 0
         running_text = text
         for tkn in self.content["Document"]["token"]:
-            if int(tkn["sentence"]) >= 2:  # ignore title and dct
-                offset = running_text.find(tkn["text"])
-                idx += offset
-                tkn["endpoints"] = (idx, idx + len(tkn["text"]))
-                idx += len(tkn["text"])
-                running_text = running_text[offset + len(tkn["text"]) :]
+            offset = running_text.find(tkn["text"])
+            idx += offset
+            tkn["endpoints"] = (idx, idx + len(tkn["text"]))
+            idx += len(tkn["text"])
+            running_text = running_text[offset + len(tkn["text"]) :]
 
         return text
 
     @property
     def _entities(self) -> Iterable[Entity]:
 
-        def get_text(token_anchor, tokens):
+        def get_endpoints(token_anchor, tokens):
 
             if not isinstance(token_anchor, list):
                 token_anchor = [token_anchor]
 
-            text = [tokens[tkn["t_id"]] for tkn in token_anchor]
+            endpoints = [
+                endpoint
+                for tkn in token_anchor
+                for endpoint in tokens[tkn["t_id"]]["endpoints"]
+            ]
 
-            return " ".join(text)
+            return endpoints[0], endpoints[-1]
 
         tokens = {
-            tkn["t_id"]: tkn["text"]
+            tkn["t_id"]: tkn
             for tkn in self.content["Document"]["token"]
         }
 
@@ -241,15 +240,15 @@ class MeanTimeDocumentReader(BaseDocumentReader):
         for event in events:
 
             # retrieve text
-            if event.get("token_anchor"):
-                text = get_text(event["token_anchor"], tokens)
-                event["text"] = text
+            s, e = get_endpoints(event["token_anchor"], tokens)
+            text = self._text[s: e]
 
             entities.add(Event(
                 id=event["m_id"],
                 tense=event.get("tense"),
                 pos=event.get("pos"),
-                text=event["text"],
+                text=text,
+                endpoints=(s, e)
             ))
 
         # timex
@@ -265,13 +264,17 @@ class MeanTimeDocumentReader(BaseDocumentReader):
             if is_dct or is_descriptor:
                 continue
 
-            # retrieve text
-            if timex.get("token_anchor"):
-                text = get_text(timex["token_anchor"], tokens)
-                timex["text"] = text
+            # retrieve endpoints and text
+            s, e = get_endpoints(timex["token_anchor"], tokens)
+            text = self._text[s: e]
 
-            entities.add(Timex(id=timex["m_id"], text=timex["text"], type_=timex["type"],
-                               function_in_document=timex["functionInDocument"]))
+            entities.add(Timex(
+                id=timex["m_id"],
+                text=text,
+                endpoints=(s, e),
+                type_=timex["type"],
+                function_in_document=timex["functionInDocument"]),
+            )
 
         return entities
 
@@ -284,8 +287,12 @@ class MeanTimeDocumentReader(BaseDocumentReader):
 
         for timex in timexs:
             if timex["functionInDocument"] == 'CREATION_TIME':
-                return Timex(id=timex["m_id"], text=timex["value"], value=timex["value"],
-                             function_in_document=timex["functionInDocument"])
+                return Timex(
+                    id=timex["m_id"],
+                    text=timex["value"],
+                    value=timex["value"],
+                    function_in_document=timex["functionInDocument"]
+                )
 
     @property
     def _tlinks(self) -> Iterable[TLink]:
