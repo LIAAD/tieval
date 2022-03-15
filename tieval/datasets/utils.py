@@ -1,12 +1,8 @@
-
-from typing import Union
-from typing import List
-from typing import Dict
-
+from typing import Union, List, Dict
 from pathlib import Path
-import xmltodict
-from pprint import pprint
+import string
 
+import xmltodict
 from xml.etree import ElementTree as ET
 
 
@@ -20,9 +16,6 @@ class TMLHandler:
             xml = f.read()
 
         xml_dict = xmltodict.parse(xml)
-        len(xml_dict)
-        pprint(xml_dict)
-        xml_dict.keys()
         xml_dict["TimeML"].keys()
         xml_dict["TimeML"]["TEXT"].keys()
         xml_dict["TimeML"]["TIMEX3"].keys()
@@ -139,7 +132,6 @@ class XMLHandler:
 
 
 def xml2dict(path: Union[str, Path]) -> Dict:
-
     # parse the xml file
     with open(path, 'r', encoding='utf-8') as f:
         xml = f.read()
@@ -154,3 +146,12 @@ def xml2dict(path: Union[str, Path]) -> Dict:
     return result
 
 
+def _detokenize(tokens):
+    text = [
+        " " + tkn
+        if not tkn.startswith("'") and tkn not in string.punctuation
+        else tkn
+        for tkn in tokens
+    ]
+
+    return "".join(text).strip()
