@@ -2,6 +2,7 @@ from typing import List, Tuple
 from typing import Iterable
 
 import abc
+import json
 import warnings
 import collections
 
@@ -23,6 +24,7 @@ from tieval.temporal_relation import SUPPORTED_RELATIONS
 from pprint import pprint
 
 
+
 def _detokenize(tokens):
     text = [
         " " + tkn
@@ -40,15 +42,6 @@ Document Readers.
 
 
 class BaseDocumentReader:
-
-    def __init__(self, path):
-        if not isinstance(path, Path):
-            path = Path(path)
-
-        self.path = path
-        self.content = xml2dict(self.path)
-
-        self.xml = ET.parse(self.path)
 
     @property
     @abc.abstractmethod
@@ -86,6 +79,15 @@ class BaseDocumentReader:
 
 
 class TempEval3DocumentReader(BaseDocumentReader):
+
+    def __init__(self, path):
+        if not isinstance(path, Path):
+            path = Path(path)
+
+        self.path = path
+        self.content = xml2dict(self.path)
+
+        self.xml = ET.parse(self.path)
 
     @property
     def _name(self) -> str:
@@ -191,6 +193,14 @@ class TempEval3DocumentReader(BaseDocumentReader):
 
 class MeanTimeDocumentReader(BaseDocumentReader):
 
+    def __init__(self, path):
+
+        if not isinstance(path, Path):
+            path = Path(path)
+
+        self.path = path
+        self.content = xml2dict(self.path)
+
     @property
     def _name(self) -> str:
         return self.path.parts[-1]
@@ -208,7 +218,7 @@ class MeanTimeDocumentReader(BaseDocumentReader):
             idx += offset
             tkn["endpoints"] = (idx, idx + len(tkn["text"]))
             idx += len(tkn["text"])
-            running_text = running_text[offset + len(tkn["text"]) :]
+            running_text = running_text[offset + len(tkn["text"]):]
 
         return text
 
@@ -343,6 +353,13 @@ class MeanTimeDocumentReader(BaseDocumentReader):
 # TODO: add support for EXTRA corpus
 class GraphEveDocumentReader(BaseDocumentReader):
 
+    def __init__(self, path):
+        if not isinstance(path, Path):
+            path = Path(path)
+
+        self.path = path
+        self.content = xml2dict(self.path)
+
     @property
     def _root(self):
         if "Article" in self.content:
@@ -430,6 +447,255 @@ class GraphEveDocumentReader(BaseDocumentReader):
                 ))
 
         return result
+
+
+class TempEval2DocumentReader(BaseDocumentReader):
+
+    def __init__(self, path):
+        if not isinstance(path, Path):
+            path = Path(path)
+
+        self.path = path
+        self.content = json.load(self.path.open())
+
+    @property
+    def _name(self) -> str:
+        return self.content["name"]
+
+    @property
+    def _dct(self) -> Timex:
+
+        timexs = self.content["entities"]["timexs"]
+        for timex in timexs:
+            if "function_in_document" in timex:
+                return Timex(
+                    id=timex["id"],
+                    sent_idx=timex["sent_idx"],
+                    tkn_idx=timex["tkn_idx"],
+                    value=timex["val"],
+                    function_in_document=timex["function_in_document"]
+                )
+
+    @property
+    def _text(self) -> str:
+        return self.content["raw"]
+
+    @property
+    def _entities(self) -> Iterable[Entity]:
+
+        entities = set()
+
+        token_dict = {
+            f"s{tkn['sent_idx']}t{tkn['tkn_idx']}": tkn
+            for tkn in self.content["tokens"]
+        }
+
+        # events
+        for event in self.content["entities"]["events"]:
+
+            # find entity endpoints
+            endpoints = []
+            for idx in event["tkn_idx"]:
+                key = f"s{event['sent_idx']}t{idx}"
+                token = token_dict[key]
+                endpoints += [*token["endpoints"]]
+            s, e = endpoints[0], endpoints[-1]
+
+            event["endpoints"] = [s, e]
+            event["text"] = self._text[s: e]
+
+            entities.add(Event(
+                id=event["id"],
+                sent_idx=event["sent_idx"],
+                tkn_idx=event["tkn_idx"],
+                aspect=event.get("aspect"),
+                mood=event.get("mood"),
+                tense=event.get("tense"),
+                polarity=event.get("polarity"),
+                endpoints=event.get("endpoints"),
+                text=event.get("text")
+            ))
+
+        # timexs
+        for timex in self.content["entities"]["timexs"]:
+
+            # find entity endpoints
+            if timex["sent_idx"] != 0 and timex["tkn_idx"] != [0]:  # ignore dct as it is not explicit in raw text
+                endpoints = []
+                for idx in timex["tkn_idx"]:
+                    key = f"s{timex['sent_idx']}t{idx}"
+                    token = token_dict[key]
+                    endpoints += [*token["endpoints"]]
+                s, e = endpoints[0], endpoints[-1]
+
+                timex["endpoints"] = [s, e]
+                timex["text"] = self._text[s: e]
+
+            entities.add(Timex(
+                id=timex["id"],
+                sent_idx=timex["sent_idx"],
+                tkn_idx=timex["tkn_idx"],
+                type=timex["id"],
+                value=timex.get("val"),
+                function_in_document=timex.get("function_in_document"),
+                endpoints=timex.get("endpoints"),
+                text=timex.get("text")
+            ))
+
+        return entities
+
+    @property
+    def _tlinks(self) -> Iterable[TLink]:
+
+        tlinks = set()
+
+        entities_dict = {ent.id: ent for ent in self._entities}
+        for tlink in self.content["tlinks"]:
+
+            source = entities_dict[tlink["from"]]
+            target = entities_dict[tlink["to"]]
+
+            tlinks.add(TLink(
+                source=source,
+                target=target,
+                relation=tlink["relation"]
+            ))
+
+        return tlinks
+
+    def _get_endpoints(self, entity):
+
+        endpoints = []
+        for token in self.content["tokens"]:
+            cond1 = token["sent_idx"] == entity["sent_idx"]
+            cond2 = token["tkn_idx"] in entity["tkn_idx"]
+            if cond1 and cond2:
+                endpoints += [*token["endpoints"]]
+
+        return endpoints[0], endpoints[-1]
+
+
+class TempEval2FrenchDocumentReader(BaseDocumentReader):
+
+    def __init__(self, path):
+        if not isinstance(path, Path):
+            path = Path(path)
+
+        self.path = path
+        self.content = xml2dict(self.path)
+
+        self.xml = ET.parse(self.path)
+
+    @property
+    def _name(self) -> str:
+        return self.path.name.replace(".xml", "")
+
+    @property
+    def _dct(self) -> Timex:
+
+        timexs = self.content["TimeML"]["TEXT"]["TIMEX3"]
+        if not isinstance(timexs, list):
+            timexs = [timexs]
+
+        for timex in timexs:
+            if timex.get("functionInDocument") == "CREATION_TIME":
+                return Timex(
+                    id=timex["tid"],
+                    function_in_document=timex["functionInDocument"],
+                    value=timex["value"],
+                    type=timex["type"],
+                )
+
+    @property
+    def _text(self) -> str:
+
+        root = self.xml.find("TEXT")
+        return "".join(element for element in root.itertext())
+
+    @property
+    def _entities(self) -> Iterable[Entity]:
+
+        entities = set()
+
+        # events
+        events = self.content["TimeML"]["TEXT"]["EVENT"]
+        events_dict = {event["eid"]: event for event in events}
+        mkinsts = self.content["TimeML"].get("MAKEINSTANCE")
+        if mkinsts:
+            for mkinst in mkinsts:
+
+                # add makeintance information to events
+                event = events_dict.get(mkinst["eid"])
+                if event:
+                    mkinst.update(event)
+
+                entities.add(Event(
+                    id=mkinst['eiid'],
+                    text=mkinst['text'],
+                    aspect=mkinst.get('aspect'),
+                    class_=mkinst.get('class'),
+                    modality=mkinst.get('modality'),
+                    polarity=mkinst.get('polarity'),
+                    cardinality=mkinst.get('cardinality'),
+                    signal_id=mkinst.get('signalID'),
+                    pos=mkinst.get('pos'),
+                    tense=mkinst.get('tense'),
+                ))
+
+        else:
+
+            for event in events:
+
+                entities.add(Event(
+                    id=event['eid'],
+                    text=event['text'],
+                    aspect=event.get('aspect'),
+                    class_=event.get('class'),
+                    modality=event.get('modality'),
+                    polarity=event.get('polarity'),
+                    cardinality=event.get('cardinality'),
+                    signal_id=event.get('signalID'),
+                    pos=event.get('pos'),
+                    tense=event.get('tense'),
+                ))
+
+        timexs = self.content["TimeML"]["TEXT"]["TIMEX3"]
+        if not isinstance(timexs, list):
+            timexs = [timexs]
+
+        for timex in timexs:
+            entities.add(Timex(
+                id=timex["tid"],
+                text=timex.get("text"),
+                value=timex.get("value"),
+                type=timex.get("type"),
+                function_in_document=timex.get("functionInDocument"),
+                anchor_time_id=timex.get("anchorTimeID"),
+                temporal_function=timex.get("temporalFunction"),
+                value_from_function=timex.get("valueFromFunction"),
+            ))
+
+        return entities
+    
+    @property
+    def _tlinks(self) -> Iterable[TLink]:
+
+        result = set()
+
+        entities_dict = {ent.id: ent for ent in self._entities}
+
+        tlinks = self.content["TimeML"].get("TLINK")
+        if tlinks:
+            for tlink in tlinks:
+                result.add(TLink(
+                    id=tlink["lid"],
+                    source=entities_dict[tlink["from"]],
+                    target=entities_dict[tlink["to"]],
+                    relation=tlink["relType"]
+                ))
+
+        return result
+
 
 
 """
@@ -556,13 +822,40 @@ class XMLDatasetReader:
     def read(self, path: str) -> Dataset:
 
         path = Path(path)
-
         if not path.is_dir():
             raise IOError(f"The dataset being load have not been downloaded yet.")
 
         train, test = [], []
         files = list(path.glob("**/*.[tx]ml"))
         for file in tqdm(files):
+            print(file)
+            reader = self.document_reader(file)
+            document = reader.read()
+
+            if "test" in file.parts:
+                test += [document]
+
+            else:
+                train += [document]
+
+        return Dataset(path.name, train, test)
+
+
+class JSONDatasetReader:
+
+    def __init__(self, doc_reader) -> None:
+        self.document_reader = doc_reader
+
+    def read(self, path) -> Dataset:
+
+        path = Path(path)
+        if not path.is_dir():
+            raise IOError(f"The dataset being load have not been downloaded yet.")
+
+        train, test = [], []
+        files = list(path.glob("**/*.json"))
+        for file in tqdm(files):
+            print(file)
             reader = self.document_reader(file)
             document = reader.read()
 

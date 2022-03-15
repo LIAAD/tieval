@@ -14,12 +14,18 @@ from dataclasses import dataclass
 import pathlib
 from typing import Union, Tuple, Iterable
 
-from tieval.datasets.readers import XMLDatasetReader
-from tieval.datasets.readers import TableDatasetReader
+from tieval.datasets.readers import \
+    XMLDatasetReader, \
+    TableDatasetReader, \
+    JSONDatasetReader
 
-from tieval.datasets.readers import MeanTimeDocumentReader
-from tieval.datasets.readers import TempEval3DocumentReader
-from tieval.datasets.readers import GraphEveDocumentReader
+
+from tieval.datasets.readers import \
+    MeanTimeDocumentReader,\
+    TempEval3DocumentReader, \
+    GraphEveDocumentReader, \
+    TempEval2DocumentReader, \
+    TempEval2FrenchDocumentReader
 
 from tieval import DATA_PATH
 
@@ -76,8 +82,8 @@ DATASETS_METADATA = {
         files=[
             "event-times_normalized.tab"
         ],
-        base=("timebank",),
-        columns=("doc", "sentence_number", "token_number", "tag_name", "tag_id", "instance_id", "attribute_name", "attribute_value"),
+        base=["timebank"],
+        columns=("doc", "sentence_idx", "token_idx", "tag_id", "instance_id", "attribute_name", "attribute_value"),
     ),
 
     "grapheve": DatasetMetadata(
@@ -90,7 +96,7 @@ DATASETS_METADATA = {
     "matres": DatasetMetadata(
         name="MATRES",
         url="https://drive.inesctec.pt/s/7g68GBTECiD2XYK/download",
-        base=("tempeval-3",),
+        base=["tempeval_3"],
         files=[
           "aquaint.txt", "platinum.txt", "timebank,txt"
         ],
@@ -150,19 +156,61 @@ DATASETS_METADATA = {
     "tddiscourse": DatasetMetadata(
         name="TDDiscourse",
         url="https://drive.inesctec.pt/s/9nXDNqt3Sa8bkDk/download",
-        base={"timebank-1.2"},
+        base=["timebank_1.2"],
         columns=("doc", "src", "tgt", "relation"),
         event_index="eid",
         reader=TableDatasetReader,
     ),
 
-    "tempeval-2": DatasetMetadata(
-        name="TempEval-2",
-        url="https://drive.inesctec.pt/s/q8k52gL6LoQts5c/download"
+    "tempeval_2_chinese": DatasetMetadata(
+        name="tempeval_2_chinese",
+        url="https://drive.inesctec.pt/s/s4HMWnntet8z2bS/download",
+        reader=JSONDatasetReader,
+        doc_reader=TempEval2DocumentReader,
     ),
 
-    "tempeval-3": DatasetMetadata(
-        name="TempEval-3",
+
+    "tempeval_2_english": DatasetMetadata(
+        name="tempeval_2_english",
+        url="https://drive.inesctec.pt/s/Z2q5oEYf4cAM2ji/download",
+        reader=JSONDatasetReader,
+        doc_reader=TempEval2DocumentReader,
+    ),
+
+
+    "tempeval_2_french": DatasetMetadata(
+        name="tempeval_2_french",
+        url="https://drive.inesctec.pt/s/mNoo2YFWG4X8tD4/download",
+        reader=XMLDatasetReader,
+        doc_reader=TempEval2FrenchDocumentReader,
+    ),
+
+
+    "tempeval_2_italian": DatasetMetadata(
+        name="tempeval_2_italian",
+        url="https://drive.inesctec.pt/s/PkADwaWEogapSWW/download",
+        reader=JSONDatasetReader,
+        doc_reader=TempEval2DocumentReader,
+    ),
+
+
+    "tempeval_2_korean": DatasetMetadata(
+        name="tempeval_2_korean",
+        url="https://drive.inesctec.pt/s/RwMLseDt4GnnfKr/download",
+        reader=JSONDatasetReader,
+        doc_reader=TempEval2DocumentReader,
+    ),
+
+
+    "tempeval_2_spanish": DatasetMetadata(
+        name="tempeval_2_spanish",
+        url="https://drive.inesctec.pt/s/H7otpwJCFCsjM9r/download",
+        reader=JSONDatasetReader,
+        doc_reader=TempEval2DocumentReader,
+    ),
+
+    "tempeval_3": DatasetMetadata(
+        name="tempeval_3",
         url="https://drive.inesctec.pt/s/ebp27ZjfCgDTxwG/download",
         reader=XMLDatasetReader,
         doc_reader=TempEval3DocumentReader,
@@ -178,18 +226,18 @@ DATASETS_METADATA = {
         url="https://drive.inesctec.pt/s/RCYzmwQapHJMaa4/download"
     ),
 
-    "timebank-1.2": DatasetMetadata(
-        name="TimeBank-1.2",
+    "timebank_1.2": DatasetMetadata(
+        name="TimeBank_1.2",
         url="https://drive.inesctec.pt/s/QHiBgZmi45B72AB/download",
         reader=XMLDatasetReader,
         doc_reader=TempEval3DocumentReader,
 
     ),
 
-    "timebank-dense": DatasetMetadata(
-        name="TimeBank-Dense",
+    "timebank_dense": DatasetMetadata(
+        name="TimeBank_Dense",
         url="https://drive.inesctec.pt/s/dtztXXBpPPXyzLX/download",
-        base={"timebank-1.2"},
+        base=["timebank_1.2"],
         columns=("doc", "src", "tgt", "relation"),
         event_index="eid",
         reader=TableDatasetReader,
@@ -222,8 +270,8 @@ DATASETS_METADATA = {
         doc_reader=TempEval3DocumentReader
     ),
 
-    "uds-t": DatasetMetadata(
-        name="UDS-T",
+    "uds_t": DatasetMetadata(
+        name="UDS_T",
         url="https://drive.inesctec.pt/s/JLRoMczLXcgpYKg/download"
     )
 }

@@ -22,6 +22,7 @@ from typing import Union
 # map interval relations to unique names
 _SETTLE_RELATION = {
     "OVERLAP": "OVERLAP",
+    "OVERLAPS": "OVERLAP",
     "OVERLAPPED": "OVERLAPPED",
     "BEGINS": "BEGINS",
     "BEFORE": "BEFORE",
@@ -39,6 +40,7 @@ _SETTLE_RELATION = {
     "DURING": "SIMULTANEOUS",
     "ENDS-ON": "ENDS",  #
     "BEGUN_BY": "BEGUN_BY",
+    "STARTED_BY": "BEGUN_BY",
     "ENDED_BY": "ENDED_BY",
     "DURING_INV": "SIMULTANEOUS",
     "ENDS": "ENDS",
@@ -48,8 +50,12 @@ _SETTLE_RELATION = {
     "IAFTER": "IAFTER",
     "VAGUE": "VAGUE",
     "V": "VAGUE",
-    # "BEFORE-OR-OVERLAP": "BEFORE-OR-OVERLAP",
-    # "OVERLAP-OR-AFTER": "OVERLAP-OR-AFTER"
+    "NONE": "VAGUE",
+    "UNKNOWN": "VAGUE",
+    "BEFORE-OR-OVERLAP": "BEFORE-OR-OVERLAP",
+    "OVERLAP_BEFORE": "BEFORE-OR-OVERLAP",
+    "OVERLAP-OR-AFTER": "OVERLAP-OR-AFTER",
+    "OVERLAP_AFTER": "OVERLAP-OR-AFTER",
 }
 
 SUPPORTED_RELATIONS = list(_SETTLE_RELATION)
@@ -254,8 +260,8 @@ _INTERVAL_TO_POINT_RELATION = {
     "OVERLAP": PointRelation(start_start="<", end_start=">", end_end="<"),
     "OVERLAPPED": PointRelation(start_start=">", start_end="<", end_end=">"),
     "VAGUE": PointRelation(),
-    # "BEFORE-OR-OVERLAP": PointRelation(start_start="<", end_end="<"),
-    # "OVERLAP-OR-AFTER": PointRelation(start_start=">", end_end=">")
+    "BEFORE-OR-OVERLAP": PointRelation(start_start="<", end_end="<"),
+    "OVERLAP-OR-AFTER": PointRelation(start_start=">", end_end=">")
 }
 
 
