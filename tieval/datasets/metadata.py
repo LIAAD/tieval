@@ -17,11 +17,16 @@ from typing import Union, Tuple, Iterable
 from tieval.datasets.readers import \
     XMLDatasetReader, \
     JSONDatasetReader, \
-    EventTimeDatasetReader
+    EventTimeDatasetReader, \
+    MATRESDatasetReader, \
+    UDSTDatasetReader, \
+    TDDiscourseDatasetReader, \
+    MCTacoDatasetReader, \
+    MeanTimeDocumentReader, \
+    TimeBankDenseDatasetReader
 
 
 from tieval.datasets.readers import \
-    MeanTimeDocumentReader,\
     TempEval3DocumentReader, \
     GraphEveDocumentReader, \
     TempEval2DocumentReader, \
@@ -30,8 +35,24 @@ from tieval.datasets.readers import \
 from tieval import DATA_PATH
 
 
-DatasetReaders = Union[XMLDatasetReader, EventTimeDatasetReader]
-DocumentReaders = Union[TempEval3DocumentReader, MeanTimeDocumentReader]
+DatasetReaders = Union[
+    XMLDatasetReader,
+    JSONDatasetReader,
+    EventTimeDatasetReader,
+    MATRESDatasetReader,
+    UDSTDatasetReader,
+    TDDiscourseDatasetReader,
+    MCTacoDatasetReader,
+    MeanTimeDocumentReader,
+    TimeBankDenseDatasetReader
+]
+
+DocumentReaders = Union[
+    TempEval3DocumentReader,
+    GraphEveDocumentReader,
+    TempEval2DocumentReader,
+    TempEval2FrenchDocumentReader
+]
 
 TMLDocumentReader = None
 
@@ -90,21 +111,18 @@ DATASETS_METADATA = {
     ),
 
     "matres": DatasetMetadata(
-        name="MATRES",
+        name="matres",
         url="https://drive.inesctec.pt/s/7g68GBTECiD2XYK/download",
         base=["tempeval_3"],
-        files=[
-          "aquaint.txt", "platinum.txt", "timebank,txt"
-        ],
         columns=("doc", "src_token", "tgt_token", "src", "tgt", "relation"),
-        event_index="eiid",
         repo="https://github.com/qiangning/MATRES",
-        reader=EventTimeDatasetReader,
+        reader=MATRESDatasetReader,
     ),
 
     "mctaco": DatasetMetadata(
         name="MCTaco",
-        url="https://drive.inesctec.pt/s/q54BizkCwK9egEL/download"
+        url="https://drive.inesctec.pt/s/q54BizkCwK9egEL/download",
+        reader=MCTacoDatasetReader
     ),
 
     "meantime_english": DatasetMetadata(
@@ -155,7 +173,7 @@ DATASETS_METADATA = {
         base=["timebank_1.2"],
         columns=("doc", "src", "tgt", "relation"),
         event_index="eid",
-        reader=EventTimeDatasetReader,
+        reader=TDDiscourseDatasetReader,
     ),
 
     "tempeval_2_chinese": DatasetMetadata(
@@ -236,7 +254,7 @@ DATASETS_METADATA = {
         base=["timebank_1.2"],
         columns=("doc", "src", "tgt", "relation"),
         event_index="eid",
-        reader=EventTimeDatasetReader,
+        reader=TimeBankDenseDatasetReader,
 
     ),
 
@@ -256,7 +274,7 @@ DATASETS_METADATA = {
 
     "torque": DatasetMetadata(
         name="TORQUE",
-        url="https://drive.inesctec.pt/s/EfJ2YeB7wQKxdjM/download"
+        url="https://drive.inesctec.pt/s/EfJ2YeB7wQKxdjM/download",
     ),
 
     "traint3": DatasetMetadata(
@@ -268,6 +286,7 @@ DATASETS_METADATA = {
 
     "uds_t": DatasetMetadata(
         name="UDS_T",
-        url="https://drive.inesctec.pt/s/JLRoMczLXcgpYKg/download"
+        url="https://drive.inesctec.pt/s/JLRoMczLXcgpYKg/download",
+        reader=UDSTDatasetReader
     )
 }
