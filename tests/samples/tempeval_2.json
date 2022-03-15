@@ -1,0 +1,6006 @@
+{
+    "raw": "LA CRISI MICHELIN COLPIRA' SOPRATTUTTO LE FILIALI ITALIANE.\nLa multinazionale francese ha perso lo scorso anno circa 400 miliardi di lire.\nTORINO ­ Emanuel Daubre', presidente della Michelin Italiana, ha deciso di tenere sulla corda il sindacato, lasciando priva di qualsiasi conferma ufficiale la notizia dei 01:05:00 licenziamenti nelle fabbriche italiane della multinazionale di Clermont-Ferrand.\nLa scelta del silenzio non e' nuova, fa parte della politica di Francois Michelin, un padrone vecchia maniera che non ha mai amato i rapporti col sindacato: Daubre' si e' limitato a far sapere in questa occasione che e' stato interpretato come licenziamento quello che per ora e' solo un lungo periodo di cassa integrazione.\nIn questo caso pero' c' e' qualcosa di piu' dell' avversione per le relazioni industriali, nel senso che dietro la notizia dei tagli occupazionali riferiti dal quotidiano Le Monde c' e' un progetto che va oltre il ridimensionamento previsto negli stabilimenti italiani del gruppo.\nNel giugno del 1984 c' e' stato a Clermont-Ferrand un incontro tra i sindacati italiani e francesi e gia' allora si prevedeva per i prossimi due anni un calo dell' occupazione.\nAdesso pero' si teme che il prezzo piu' alto lo si voglia far pagare ai lavoratori italiani del gruppo che sono complessivamente 12126 distribuiti negli stabilimenti di Torino, Cuneo, Alessandria, Fossano, Trento e Milano.\nTra l' 81 e l' 83 la riduzione del personale era stata infatti del 7.5 per cento in Italia e del 7.7 in Francia, ma per il periodo che va dall' 83 all' 86 le previsioni vogliono tagli del 22 per cento nel nostro paese e del 10 per cento nella madrepatria della Michelin.\nNel 1984 la Michelin ha perduto 400 miliardi, con un leggero miglioramento rispetto all' anno precedente; conserva saldamente il secondo posto dopo la Goodyear tra i colossi mondiali della gomma e detiene piu' d' un terzo del mercato europeo del settore.\nMa la crisi dell' industria automobilistica francese e in particolare le difficolta' della Renault, accompagnata ai problemi internazionali di tutto il settore dell' auto, devono avere convinto i vertici di Clermont-Ferrand della necessita' di accelerare il processo di ristrutturazione.\nI sindacati ne sono a conoscenza e temono che la Michelin disattenda gli accordi raggiunti meno di un mese fa, procedendo alla chiusura dello stabilimento di Torino-Dora e al progressivo smantellamento di Torino-Stura.\nL' interpretazione che viene data dal sindacato della notizia diffusa da Le Monde e' che essa sia un messaggio indiretto rivolto al governo francese.\nNegli ambienti sindacali si sostiene infatti che la Michelin ha ottenuto aiuti finanziari dal governo di Parigi in cambio di un mantenimento dei livelli occupazionali.\nPertanto la decisione di procedere ai licenziamenti in Italia dovrebbe essere un campanello d' allarme; come dire che la situazione e' tale per cui dopo l' Italia potrebbe giungere inevitabilmente il momento dei licenziamenti anche negli stabilimenti francesi, indipendentemente dalle garanzie che possono essere state fornite.",
+    "tokens": [
+        {
+            "sent_idx": "1",
+            "tkn_idx": "7",
+            "text": "LA",
+            "endpoints": [
+                0,
+                2
+            ]
+        },
+        {
+            "sent_idx": "1",
+            "tkn_idx": "8",
+            "text": "CRISI",
+            "endpoints": [
+                3,
+                8
+            ]
+        },
+        {
+            "sent_idx": "1",
+            "tkn_idx": "9",
+            "text": "MICHELIN",
+            "endpoints": [
+                9,
+                17
+            ]
+        },
+        {
+            "sent_idx": "1",
+            "tkn_idx": "10",
+            "text": "COLPIRA'",
+            "endpoints": [
+                18,
+                26
+            ]
+        },
+        {
+            "sent_idx": "1",
+            "tkn_idx": "11",
+            "text": "SOPRATTUTTO",
+            "endpoints": [
+                27,
+                38
+            ]
+        },
+        {
+            "sent_idx": "1",
+            "tkn_idx": "12",
+            "text": "LE",
+            "endpoints": [
+                39,
+                41
+            ]
+        },
+        {
+            "sent_idx": "1",
+            "tkn_idx": "13",
+            "text": "FILIALI",
+            "endpoints": [
+                42,
+                49
+            ]
+        },
+        {
+            "sent_idx": "1",
+            "tkn_idx": "14",
+            "text": "ITALIANE",
+            "endpoints": [
+                50,
+                58
+            ]
+        },
+        {
+            "sent_idx": "1",
+            "tkn_idx": "15",
+            "text": ".",
+            "endpoints": [
+                58,
+                59
+            ]
+        },
+        {
+            "sent_idx": "2",
+            "tkn_idx": "16",
+            "text": "La",
+            "endpoints": [
+                60,
+                62
+            ]
+        },
+        {
+            "sent_idx": "2",
+            "tkn_idx": "17",
+            "text": "multinazionale",
+            "endpoints": [
+                63,
+                77
+            ]
+        },
+        {
+            "sent_idx": "2",
+            "tkn_idx": "18",
+            "text": "francese",
+            "endpoints": [
+                78,
+                86
+            ]
+        },
+        {
+            "sent_idx": "2",
+            "tkn_idx": "19",
+            "text": "ha",
+            "endpoints": [
+                87,
+                89
+            ]
+        },
+        {
+            "sent_idx": "2",
+            "tkn_idx": "20",
+            "text": "perso",
+            "endpoints": [
+                90,
+                95
+            ]
+        },
+        {
+            "sent_idx": "2",
+            "tkn_idx": "21",
+            "text": "lo",
+            "endpoints": [
+                96,
+                98
+            ]
+        },
+        {
+            "sent_idx": "2",
+            "tkn_idx": "22",
+            "text": "scorso",
+            "endpoints": [
+                99,
+                105
+            ]
+        },
+        {
+            "sent_idx": "2",
+            "tkn_idx": "23",
+            "text": "anno",
+            "endpoints": [
+                106,
+                110
+            ]
+        },
+        {
+            "sent_idx": "2",
+            "tkn_idx": "24",
+            "text": "circa",
+            "endpoints": [
+                111,
+                116
+            ]
+        },
+        {
+            "sent_idx": "2",
+            "tkn_idx": "25",
+            "text": "400",
+            "endpoints": [
+                117,
+                120
+            ]
+        },
+        {
+            "sent_idx": "2",
+            "tkn_idx": "26",
+            "text": "miliardi",
+            "endpoints": [
+                121,
+                129
+            ]
+        },
+        {
+            "sent_idx": "2",
+            "tkn_idx": "27",
+            "text": "di",
+            "endpoints": [
+                130,
+                132
+            ]
+        },
+        {
+            "sent_idx": "2",
+            "tkn_idx": "28",
+            "text": "lire",
+            "endpoints": [
+                133,
+                137
+            ]
+        },
+        {
+            "sent_idx": "2",
+            "tkn_idx": "29",
+            "text": ".",
+            "endpoints": [
+                137,
+                138
+            ]
+        },
+        {
+            "sent_idx": "3",
+            "tkn_idx": "30",
+            "text": "TORINO",
+            "endpoints": [
+                139,
+                145
+            ]
+        },
+        {
+            "sent_idx": "3",
+            "tkn_idx": "31",
+            "text": "­",
+            "endpoints": [
+                146,
+                147
+            ]
+        },
+        {
+            "sent_idx": "3",
+            "tkn_idx": "32",
+            "text": "Emanuel",
+            "endpoints": [
+                148,
+                155
+            ]
+        },
+        {
+            "sent_idx": "3",
+            "tkn_idx": "33",
+            "text": "Daubre'",
+            "endpoints": [
+                156,
+                163
+            ]
+        },
+        {
+            "sent_idx": "3",
+            "tkn_idx": "34",
+            "text": ",",
+            "endpoints": [
+                163,
+                164
+            ]
+        },
+        {
+            "sent_idx": "3",
+            "tkn_idx": "35",
+            "text": "presidente",
+            "endpoints": [
+                165,
+                175
+            ]
+        },
+        {
+            "sent_idx": "3",
+            "tkn_idx": "36",
+            "text": "della",
+            "endpoints": [
+                176,
+                181
+            ]
+        },
+        {
+            "sent_idx": "3",
+            "tkn_idx": "37",
+            "text": "Michelin",
+            "endpoints": [
+                182,
+                190
+            ]
+        },
+        {
+            "sent_idx": "3",
+            "tkn_idx": "38",
+            "text": "Italiana",
+            "endpoints": [
+                191,
+                199
+            ]
+        },
+        {
+            "sent_idx": "3",
+            "tkn_idx": "39",
+            "text": ",",
+            "endpoints": [
+                199,
+                200
+            ]
+        },
+        {
+            "sent_idx": "3",
+            "tkn_idx": "40",
+            "text": "ha",
+            "endpoints": [
+                201,
+                203
+            ]
+        },
+        {
+            "sent_idx": "3",
+            "tkn_idx": "41",
+            "text": "deciso",
+            "endpoints": [
+                204,
+                210
+            ]
+        },
+        {
+            "sent_idx": "3",
+            "tkn_idx": "42",
+            "text": "di",
+            "endpoints": [
+                211,
+                213
+            ]
+        },
+        {
+            "sent_idx": "3",
+            "tkn_idx": "43",
+            "text": "tenere",
+            "endpoints": [
+                214,
+                220
+            ]
+        },
+        {
+            "sent_idx": "3",
+            "tkn_idx": "44",
+            "text": "sulla",
+            "endpoints": [
+                221,
+                226
+            ]
+        },
+        {
+            "sent_idx": "3",
+            "tkn_idx": "45",
+            "text": "corda",
+            "endpoints": [
+                227,
+                232
+            ]
+        },
+        {
+            "sent_idx": "3",
+            "tkn_idx": "46",
+            "text": "il",
+            "endpoints": [
+                233,
+                235
+            ]
+        },
+        {
+            "sent_idx": "3",
+            "tkn_idx": "47",
+            "text": "sindacato",
+            "endpoints": [
+                236,
+                245
+            ]
+        },
+        {
+            "sent_idx": "3",
+            "tkn_idx": "48",
+            "text": ",",
+            "endpoints": [
+                245,
+                246
+            ]
+        },
+        {
+            "sent_idx": "3",
+            "tkn_idx": "49",
+            "text": "lasciando",
+            "endpoints": [
+                247,
+                256
+            ]
+        },
+        {
+            "sent_idx": "3",
+            "tkn_idx": "50",
+            "text": "priva",
+            "endpoints": [
+                257,
+                262
+            ]
+        },
+        {
+            "sent_idx": "3",
+            "tkn_idx": "51",
+            "text": "di",
+            "endpoints": [
+                263,
+                265
+            ]
+        },
+        {
+            "sent_idx": "3",
+            "tkn_idx": "52",
+            "text": "qualsiasi",
+            "endpoints": [
+                266,
+                275
+            ]
+        },
+        {
+            "sent_idx": "3",
+            "tkn_idx": "53",
+            "text": "conferma",
+            "endpoints": [
+                276,
+                284
+            ]
+        },
+        {
+            "sent_idx": "3",
+            "tkn_idx": "54",
+            "text": "ufficiale",
+            "endpoints": [
+                285,
+                294
+            ]
+        },
+        {
+            "sent_idx": "3",
+            "tkn_idx": "55",
+            "text": "la",
+            "endpoints": [
+                295,
+                297
+            ]
+        },
+        {
+            "sent_idx": "3",
+            "tkn_idx": "56",
+            "text": "notizia",
+            "endpoints": [
+                298,
+                305
+            ]
+        },
+        {
+            "sent_idx": "3",
+            "tkn_idx": "57",
+            "text": "dei",
+            "endpoints": [
+                306,
+                309
+            ]
+        },
+        {
+            "sent_idx": "3",
+            "tkn_idx": "58",
+            "text": "01:05:00",
+            "endpoints": [
+                310,
+                318
+            ]
+        },
+        {
+            "sent_idx": "3",
+            "tkn_idx": "59",
+            "text": "licenziamenti",
+            "endpoints": [
+                319,
+                332
+            ]
+        },
+        {
+            "sent_idx": "3",
+            "tkn_idx": "60",
+            "text": "nelle",
+            "endpoints": [
+                333,
+                338
+            ]
+        },
+        {
+            "sent_idx": "3",
+            "tkn_idx": "61",
+            "text": "fabbriche",
+            "endpoints": [
+                339,
+                348
+            ]
+        },
+        {
+            "sent_idx": "3",
+            "tkn_idx": "62",
+            "text": "italiane",
+            "endpoints": [
+                349,
+                357
+            ]
+        },
+        {
+            "sent_idx": "3",
+            "tkn_idx": "63",
+            "text": "della",
+            "endpoints": [
+                358,
+                363
+            ]
+        },
+        {
+            "sent_idx": "3",
+            "tkn_idx": "64",
+            "text": "multinazionale",
+            "endpoints": [
+                364,
+                378
+            ]
+        },
+        {
+            "sent_idx": "3",
+            "tkn_idx": "65",
+            "text": "di",
+            "endpoints": [
+                379,
+                381
+            ]
+        },
+        {
+            "sent_idx": "3",
+            "tkn_idx": "66",
+            "text": "Clermont-Ferrand",
+            "endpoints": [
+                382,
+                398
+            ]
+        },
+        {
+            "sent_idx": "3",
+            "tkn_idx": "67",
+            "text": ".",
+            "endpoints": [
+                398,
+                399
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "68",
+            "text": "La",
+            "endpoints": [
+                400,
+                402
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "69",
+            "text": "scelta",
+            "endpoints": [
+                403,
+                409
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "70",
+            "text": "del",
+            "endpoints": [
+                410,
+                413
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "71",
+            "text": "silenzio",
+            "endpoints": [
+                414,
+                422
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "72",
+            "text": "non",
+            "endpoints": [
+                423,
+                426
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "73",
+            "text": "e'",
+            "endpoints": [
+                427,
+                429
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "74",
+            "text": "nuova",
+            "endpoints": [
+                430,
+                435
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "75",
+            "text": ",",
+            "endpoints": [
+                435,
+                436
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "76",
+            "text": "fa",
+            "endpoints": [
+                437,
+                439
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "77",
+            "text": "parte",
+            "endpoints": [
+                440,
+                445
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "78",
+            "text": "della",
+            "endpoints": [
+                446,
+                451
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "79",
+            "text": "politica",
+            "endpoints": [
+                452,
+                460
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "80",
+            "text": "di",
+            "endpoints": [
+                461,
+                463
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "81",
+            "text": "Francois",
+            "endpoints": [
+                464,
+                472
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "82",
+            "text": "Michelin",
+            "endpoints": [
+                473,
+                481
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "83",
+            "text": ",",
+            "endpoints": [
+                481,
+                482
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "84",
+            "text": "un",
+            "endpoints": [
+                483,
+                485
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "85",
+            "text": "padrone",
+            "endpoints": [
+                486,
+                493
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "86",
+            "text": "vecchia",
+            "endpoints": [
+                494,
+                501
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "87",
+            "text": "maniera",
+            "endpoints": [
+                502,
+                509
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "88",
+            "text": "che",
+            "endpoints": [
+                510,
+                513
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "89",
+            "text": "non",
+            "endpoints": [
+                514,
+                517
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "90",
+            "text": "ha",
+            "endpoints": [
+                518,
+                520
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "91",
+            "text": "mai",
+            "endpoints": [
+                521,
+                524
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "92",
+            "text": "amato",
+            "endpoints": [
+                525,
+                530
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "93",
+            "text": "i",
+            "endpoints": [
+                531,
+                532
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "94",
+            "text": "rapporti",
+            "endpoints": [
+                533,
+                541
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "95",
+            "text": "col",
+            "endpoints": [
+                542,
+                545
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "96",
+            "text": "sindacato",
+            "endpoints": [
+                546,
+                555
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "97",
+            "text": ":",
+            "endpoints": [
+                555,
+                556
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "98",
+            "text": "Daubre'",
+            "endpoints": [
+                557,
+                564
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "99",
+            "text": "si",
+            "endpoints": [
+                565,
+                567
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "100",
+            "text": "e'",
+            "endpoints": [
+                568,
+                570
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "101",
+            "text": "limitato",
+            "endpoints": [
+                571,
+                579
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "102",
+            "text": "a",
+            "endpoints": [
+                580,
+                581
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "103",
+            "text": "far",
+            "endpoints": [
+                582,
+                585
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "104",
+            "text": "sapere",
+            "endpoints": [
+                586,
+                592
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "105",
+            "text": "in",
+            "endpoints": [
+                593,
+                595
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "106",
+            "text": "questa",
+            "endpoints": [
+                596,
+                602
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "107",
+            "text": "occasione",
+            "endpoints": [
+                603,
+                612
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "108",
+            "text": "che",
+            "endpoints": [
+                613,
+                616
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "109",
+            "text": "e'",
+            "endpoints": [
+                617,
+                619
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "110",
+            "text": "stato",
+            "endpoints": [
+                620,
+                625
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "111",
+            "text": "interpretato",
+            "endpoints": [
+                626,
+                638
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "112",
+            "text": "come",
+            "endpoints": [
+                639,
+                643
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "113",
+            "text": "licenziamento",
+            "endpoints": [
+                644,
+                657
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "114",
+            "text": "quello",
+            "endpoints": [
+                658,
+                664
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "115",
+            "text": "che",
+            "endpoints": [
+                665,
+                668
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "116",
+            "text": "per",
+            "endpoints": [
+                669,
+                672
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "117",
+            "text": "ora",
+            "endpoints": [
+                673,
+                676
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "118",
+            "text": "e'",
+            "endpoints": [
+                677,
+                679
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "119",
+            "text": "solo",
+            "endpoints": [
+                680,
+                684
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "120",
+            "text": "un",
+            "endpoints": [
+                685,
+                687
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "121",
+            "text": "lungo",
+            "endpoints": [
+                688,
+                693
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "122",
+            "text": "periodo",
+            "endpoints": [
+                694,
+                701
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "123",
+            "text": "di",
+            "endpoints": [
+                702,
+                704
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "124",
+            "text": "cassa",
+            "endpoints": [
+                705,
+                710
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "125",
+            "text": "integrazione",
+            "endpoints": [
+                711,
+                723
+            ]
+        },
+        {
+            "sent_idx": "4",
+            "tkn_idx": "126",
+            "text": ".",
+            "endpoints": [
+                723,
+                724
+            ]
+        },
+        {
+            "sent_idx": "5",
+            "tkn_idx": "127",
+            "text": "In",
+            "endpoints": [
+                725,
+                727
+            ]
+        },
+        {
+            "sent_idx": "5",
+            "tkn_idx": "128",
+            "text": "questo",
+            "endpoints": [
+                728,
+                734
+            ]
+        },
+        {
+            "sent_idx": "5",
+            "tkn_idx": "129",
+            "text": "caso",
+            "endpoints": [
+                735,
+                739
+            ]
+        },
+        {
+            "sent_idx": "5",
+            "tkn_idx": "130",
+            "text": "pero'",
+            "endpoints": [
+                740,
+                745
+            ]
+        },
+        {
+            "sent_idx": "5",
+            "tkn_idx": "131",
+            "text": "c'",
+            "endpoints": [
+                746,
+                748
+            ]
+        },
+        {
+            "sent_idx": "5",
+            "tkn_idx": "132",
+            "text": "e'",
+            "endpoints": [
+                749,
+                751
+            ]
+        },
+        {
+            "sent_idx": "5",
+            "tkn_idx": "133",
+            "text": "qualcosa",
+            "endpoints": [
+                752,
+                760
+            ]
+        },
+        {
+            "sent_idx": "5",
+            "tkn_idx": "134",
+            "text": "di",
+            "endpoints": [
+                761,
+                763
+            ]
+        },
+        {
+            "sent_idx": "5",
+            "tkn_idx": "135",
+            "text": "piu'",
+            "endpoints": [
+                764,
+                768
+            ]
+        },
+        {
+            "sent_idx": "5",
+            "tkn_idx": "136",
+            "text": "dell'",
+            "endpoints": [
+                769,
+                774
+            ]
+        },
+        {
+            "sent_idx": "5",
+            "tkn_idx": "137",
+            "text": "avversione",
+            "endpoints": [
+                775,
+                785
+            ]
+        },
+        {
+            "sent_idx": "5",
+            "tkn_idx": "138",
+            "text": "per",
+            "endpoints": [
+                786,
+                789
+            ]
+        },
+        {
+            "sent_idx": "5",
+            "tkn_idx": "139",
+            "text": "le",
+            "endpoints": [
+                790,
+                792
+            ]
+        },
+        {
+            "sent_idx": "5",
+            "tkn_idx": "140",
+            "text": "relazioni",
+            "endpoints": [
+                793,
+                802
+            ]
+        },
+        {
+            "sent_idx": "5",
+            "tkn_idx": "141",
+            "text": "industriali",
+            "endpoints": [
+                803,
+                814
+            ]
+        },
+        {
+            "sent_idx": "5",
+            "tkn_idx": "142",
+            "text": ",",
+            "endpoints": [
+                814,
+                815
+            ]
+        },
+        {
+            "sent_idx": "5",
+            "tkn_idx": "143",
+            "text": "nel senso che",
+            "endpoints": [
+                816,
+                829
+            ]
+        },
+        {
+            "sent_idx": "5",
+            "tkn_idx": "144",
+            "text": "dietro",
+            "endpoints": [
+                830,
+                836
+            ]
+        },
+        {
+            "sent_idx": "5",
+            "tkn_idx": "145",
+            "text": "la",
+            "endpoints": [
+                837,
+                839
+            ]
+        },
+        {
+            "sent_idx": "5",
+            "tkn_idx": "146",
+            "text": "notizia",
+            "endpoints": [
+                840,
+                847
+            ]
+        },
+        {
+            "sent_idx": "5",
+            "tkn_idx": "147",
+            "text": "dei",
+            "endpoints": [
+                848,
+                851
+            ]
+        },
+        {
+            "sent_idx": "5",
+            "tkn_idx": "148",
+            "text": "tagli",
+            "endpoints": [
+                852,
+                857
+            ]
+        },
+        {
+            "sent_idx": "5",
+            "tkn_idx": "149",
+            "text": "occupazionali",
+            "endpoints": [
+                858,
+                871
+            ]
+        },
+        {
+            "sent_idx": "5",
+            "tkn_idx": "150",
+            "text": "riferiti",
+            "endpoints": [
+                872,
+                880
+            ]
+        },
+        {
+            "sent_idx": "5",
+            "tkn_idx": "151",
+            "text": "dal",
+            "endpoints": [
+                881,
+                884
+            ]
+        },
+        {
+            "sent_idx": "5",
+            "tkn_idx": "152",
+            "text": "quotidiano",
+            "endpoints": [
+                885,
+                895
+            ]
+        },
+        {
+            "sent_idx": "5",
+            "tkn_idx": "153",
+            "text": "Le",
+            "endpoints": [
+                896,
+                898
+            ]
+        },
+        {
+            "sent_idx": "5",
+            "tkn_idx": "154",
+            "text": "Monde",
+            "endpoints": [
+                899,
+                904
+            ]
+        },
+        {
+            "sent_idx": "5",
+            "tkn_idx": "155",
+            "text": "c'",
+            "endpoints": [
+                905,
+                907
+            ]
+        },
+        {
+            "sent_idx": "5",
+            "tkn_idx": "156",
+            "text": "e'",
+            "endpoints": [
+                908,
+                910
+            ]
+        },
+        {
+            "sent_idx": "5",
+            "tkn_idx": "157",
+            "text": "un",
+            "endpoints": [
+                911,
+                913
+            ]
+        },
+        {
+            "sent_idx": "5",
+            "tkn_idx": "158",
+            "text": "progetto",
+            "endpoints": [
+                914,
+                922
+            ]
+        },
+        {
+            "sent_idx": "5",
+            "tkn_idx": "159",
+            "text": "che",
+            "endpoints": [
+                923,
+                926
+            ]
+        },
+        {
+            "sent_idx": "5",
+            "tkn_idx": "160",
+            "text": "va",
+            "endpoints": [
+                927,
+                929
+            ]
+        },
+        {
+            "sent_idx": "5",
+            "tkn_idx": "161",
+            "text": "oltre",
+            "endpoints": [
+                930,
+                935
+            ]
+        },
+        {
+            "sent_idx": "5",
+            "tkn_idx": "162",
+            "text": "il",
+            "endpoints": [
+                936,
+                938
+            ]
+        },
+        {
+            "sent_idx": "5",
+            "tkn_idx": "163",
+            "text": "ridimensionamento",
+            "endpoints": [
+                939,
+                956
+            ]
+        },
+        {
+            "sent_idx": "5",
+            "tkn_idx": "164",
+            "text": "previsto",
+            "endpoints": [
+                957,
+                965
+            ]
+        },
+        {
+            "sent_idx": "5",
+            "tkn_idx": "165",
+            "text": "negli",
+            "endpoints": [
+                966,
+                971
+            ]
+        },
+        {
+            "sent_idx": "5",
+            "tkn_idx": "166",
+            "text": "stabilimenti",
+            "endpoints": [
+                972,
+                984
+            ]
+        },
+        {
+            "sent_idx": "5",
+            "tkn_idx": "167",
+            "text": "italiani",
+            "endpoints": [
+                985,
+                993
+            ]
+        },
+        {
+            "sent_idx": "5",
+            "tkn_idx": "168",
+            "text": "del",
+            "endpoints": [
+                994,
+                997
+            ]
+        },
+        {
+            "sent_idx": "5",
+            "tkn_idx": "169",
+            "text": "gruppo",
+            "endpoints": [
+                998,
+                1004
+            ]
+        },
+        {
+            "sent_idx": "5",
+            "tkn_idx": "170",
+            "text": ".",
+            "endpoints": [
+                1004,
+                1005
+            ]
+        },
+        {
+            "sent_idx": "6",
+            "tkn_idx": "171",
+            "text": "Nel",
+            "endpoints": [
+                1006,
+                1009
+            ]
+        },
+        {
+            "sent_idx": "6",
+            "tkn_idx": "172",
+            "text": "giugno",
+            "endpoints": [
+                1010,
+                1016
+            ]
+        },
+        {
+            "sent_idx": "6",
+            "tkn_idx": "173",
+            "text": "del",
+            "endpoints": [
+                1017,
+                1020
+            ]
+        },
+        {
+            "sent_idx": "6",
+            "tkn_idx": "174",
+            "text": "1984",
+            "endpoints": [
+                1021,
+                1025
+            ]
+        },
+        {
+            "sent_idx": "6",
+            "tkn_idx": "175",
+            "text": "c'",
+            "endpoints": [
+                1026,
+                1028
+            ]
+        },
+        {
+            "sent_idx": "6",
+            "tkn_idx": "176",
+            "text": "e'",
+            "endpoints": [
+                1029,
+                1031
+            ]
+        },
+        {
+            "sent_idx": "6",
+            "tkn_idx": "177",
+            "text": "stato",
+            "endpoints": [
+                1032,
+                1037
+            ]
+        },
+        {
+            "sent_idx": "6",
+            "tkn_idx": "178",
+            "text": "a",
+            "endpoints": [
+                1038,
+                1039
+            ]
+        },
+        {
+            "sent_idx": "6",
+            "tkn_idx": "179",
+            "text": "Clermont-Ferrand",
+            "endpoints": [
+                1040,
+                1056
+            ]
+        },
+        {
+            "sent_idx": "6",
+            "tkn_idx": "180",
+            "text": "un",
+            "endpoints": [
+                1057,
+                1059
+            ]
+        },
+        {
+            "sent_idx": "6",
+            "tkn_idx": "181",
+            "text": "incontro",
+            "endpoints": [
+                1060,
+                1068
+            ]
+        },
+        {
+            "sent_idx": "6",
+            "tkn_idx": "182",
+            "text": "tra",
+            "endpoints": [
+                1069,
+                1072
+            ]
+        },
+        {
+            "sent_idx": "6",
+            "tkn_idx": "183",
+            "text": "i",
+            "endpoints": [
+                1073,
+                1074
+            ]
+        },
+        {
+            "sent_idx": "6",
+            "tkn_idx": "184",
+            "text": "sindacati",
+            "endpoints": [
+                1075,
+                1084
+            ]
+        },
+        {
+            "sent_idx": "6",
+            "tkn_idx": "185",
+            "text": "italiani",
+            "endpoints": [
+                1085,
+                1093
+            ]
+        },
+        {
+            "sent_idx": "6",
+            "tkn_idx": "186",
+            "text": "e",
+            "endpoints": [
+                1094,
+                1095
+            ]
+        },
+        {
+            "sent_idx": "6",
+            "tkn_idx": "187",
+            "text": "francesi",
+            "endpoints": [
+                1096,
+                1104
+            ]
+        },
+        {
+            "sent_idx": "6",
+            "tkn_idx": "188",
+            "text": "e",
+            "endpoints": [
+                1105,
+                1106
+            ]
+        },
+        {
+            "sent_idx": "6",
+            "tkn_idx": "189",
+            "text": "gia'",
+            "endpoints": [
+                1107,
+                1111
+            ]
+        },
+        {
+            "sent_idx": "6",
+            "tkn_idx": "190",
+            "text": "allora",
+            "endpoints": [
+                1112,
+                1118
+            ]
+        },
+        {
+            "sent_idx": "6",
+            "tkn_idx": "191",
+            "text": "si",
+            "endpoints": [
+                1119,
+                1121
+            ]
+        },
+        {
+            "sent_idx": "6",
+            "tkn_idx": "192",
+            "text": "prevedeva",
+            "endpoints": [
+                1122,
+                1131
+            ]
+        },
+        {
+            "sent_idx": "6",
+            "tkn_idx": "193",
+            "text": "per",
+            "endpoints": [
+                1132,
+                1135
+            ]
+        },
+        {
+            "sent_idx": "6",
+            "tkn_idx": "194",
+            "text": "i",
+            "endpoints": [
+                1136,
+                1137
+            ]
+        },
+        {
+            "sent_idx": "6",
+            "tkn_idx": "195",
+            "text": "prossimi",
+            "endpoints": [
+                1138,
+                1146
+            ]
+        },
+        {
+            "sent_idx": "6",
+            "tkn_idx": "196",
+            "text": "due",
+            "endpoints": [
+                1147,
+                1150
+            ]
+        },
+        {
+            "sent_idx": "6",
+            "tkn_idx": "197",
+            "text": "anni",
+            "endpoints": [
+                1151,
+                1155
+            ]
+        },
+        {
+            "sent_idx": "6",
+            "tkn_idx": "198",
+            "text": "un",
+            "endpoints": [
+                1156,
+                1158
+            ]
+        },
+        {
+            "sent_idx": "6",
+            "tkn_idx": "199",
+            "text": "calo",
+            "endpoints": [
+                1159,
+                1163
+            ]
+        },
+        {
+            "sent_idx": "6",
+            "tkn_idx": "200",
+            "text": "dell'",
+            "endpoints": [
+                1164,
+                1169
+            ]
+        },
+        {
+            "sent_idx": "6",
+            "tkn_idx": "201",
+            "text": "occupazione",
+            "endpoints": [
+                1170,
+                1181
+            ]
+        },
+        {
+            "sent_idx": "6",
+            "tkn_idx": "202",
+            "text": ".",
+            "endpoints": [
+                1181,
+                1182
+            ]
+        },
+        {
+            "sent_idx": "7",
+            "tkn_idx": "203",
+            "text": "Adesso",
+            "endpoints": [
+                1183,
+                1189
+            ]
+        },
+        {
+            "sent_idx": "7",
+            "tkn_idx": "204",
+            "text": "pero'",
+            "endpoints": [
+                1190,
+                1195
+            ]
+        },
+        {
+            "sent_idx": "7",
+            "tkn_idx": "205",
+            "text": "si",
+            "endpoints": [
+                1196,
+                1198
+            ]
+        },
+        {
+            "sent_idx": "7",
+            "tkn_idx": "206",
+            "text": "teme",
+            "endpoints": [
+                1199,
+                1203
+            ]
+        },
+        {
+            "sent_idx": "7",
+            "tkn_idx": "207",
+            "text": "che",
+            "endpoints": [
+                1204,
+                1207
+            ]
+        },
+        {
+            "sent_idx": "7",
+            "tkn_idx": "208",
+            "text": "il",
+            "endpoints": [
+                1208,
+                1210
+            ]
+        },
+        {
+            "sent_idx": "7",
+            "tkn_idx": "209",
+            "text": "prezzo",
+            "endpoints": [
+                1211,
+                1217
+            ]
+        },
+        {
+            "sent_idx": "7",
+            "tkn_idx": "210",
+            "text": "piu'",
+            "endpoints": [
+                1218,
+                1222
+            ]
+        },
+        {
+            "sent_idx": "7",
+            "tkn_idx": "211",
+            "text": "alto",
+            "endpoints": [
+                1223,
+                1227
+            ]
+        },
+        {
+            "sent_idx": "7",
+            "tkn_idx": "212",
+            "text": "lo",
+            "endpoints": [
+                1228,
+                1230
+            ]
+        },
+        {
+            "sent_idx": "7",
+            "tkn_idx": "213",
+            "text": "si",
+            "endpoints": [
+                1231,
+                1233
+            ]
+        },
+        {
+            "sent_idx": "7",
+            "tkn_idx": "214",
+            "text": "voglia",
+            "endpoints": [
+                1234,
+                1240
+            ]
+        },
+        {
+            "sent_idx": "7",
+            "tkn_idx": "215",
+            "text": "far",
+            "endpoints": [
+                1241,
+                1244
+            ]
+        },
+        {
+            "sent_idx": "7",
+            "tkn_idx": "216",
+            "text": "pagare",
+            "endpoints": [
+                1245,
+                1251
+            ]
+        },
+        {
+            "sent_idx": "7",
+            "tkn_idx": "217",
+            "text": "ai",
+            "endpoints": [
+                1252,
+                1254
+            ]
+        },
+        {
+            "sent_idx": "7",
+            "tkn_idx": "218",
+            "text": "lavoratori",
+            "endpoints": [
+                1255,
+                1265
+            ]
+        },
+        {
+            "sent_idx": "7",
+            "tkn_idx": "219",
+            "text": "italiani",
+            "endpoints": [
+                1266,
+                1274
+            ]
+        },
+        {
+            "sent_idx": "7",
+            "tkn_idx": "220",
+            "text": "del",
+            "endpoints": [
+                1275,
+                1278
+            ]
+        },
+        {
+            "sent_idx": "7",
+            "tkn_idx": "221",
+            "text": "gruppo",
+            "endpoints": [
+                1279,
+                1285
+            ]
+        },
+        {
+            "sent_idx": "7",
+            "tkn_idx": "222",
+            "text": "che",
+            "endpoints": [
+                1286,
+                1289
+            ]
+        },
+        {
+            "sent_idx": "7",
+            "tkn_idx": "223",
+            "text": "sono",
+            "endpoints": [
+                1290,
+                1294
+            ]
+        },
+        {
+            "sent_idx": "7",
+            "tkn_idx": "224",
+            "text": "complessivamente",
+            "endpoints": [
+                1295,
+                1311
+            ]
+        },
+        {
+            "sent_idx": "7",
+            "tkn_idx": "225",
+            "text": "12126",
+            "endpoints": [
+                1312,
+                1317
+            ]
+        },
+        {
+            "sent_idx": "7",
+            "tkn_idx": "226",
+            "text": "distribuiti",
+            "endpoints": [
+                1318,
+                1329
+            ]
+        },
+        {
+            "sent_idx": "7",
+            "tkn_idx": "227",
+            "text": "negli",
+            "endpoints": [
+                1330,
+                1335
+            ]
+        },
+        {
+            "sent_idx": "7",
+            "tkn_idx": "228",
+            "text": "stabilimenti",
+            "endpoints": [
+                1336,
+                1348
+            ]
+        },
+        {
+            "sent_idx": "7",
+            "tkn_idx": "229",
+            "text": "di",
+            "endpoints": [
+                1349,
+                1351
+            ]
+        },
+        {
+            "sent_idx": "7",
+            "tkn_idx": "230",
+            "text": "Torino",
+            "endpoints": [
+                1352,
+                1358
+            ]
+        },
+        {
+            "sent_idx": "7",
+            "tkn_idx": "231",
+            "text": ",",
+            "endpoints": [
+                1358,
+                1359
+            ]
+        },
+        {
+            "sent_idx": "7",
+            "tkn_idx": "232",
+            "text": "Cuneo",
+            "endpoints": [
+                1360,
+                1365
+            ]
+        },
+        {
+            "sent_idx": "7",
+            "tkn_idx": "233",
+            "text": ",",
+            "endpoints": [
+                1365,
+                1366
+            ]
+        },
+        {
+            "sent_idx": "7",
+            "tkn_idx": "234",
+            "text": "Alessandria",
+            "endpoints": [
+                1367,
+                1378
+            ]
+        },
+        {
+            "sent_idx": "7",
+            "tkn_idx": "235",
+            "text": ",",
+            "endpoints": [
+                1378,
+                1379
+            ]
+        },
+        {
+            "sent_idx": "7",
+            "tkn_idx": "236",
+            "text": "Fossano",
+            "endpoints": [
+                1380,
+                1387
+            ]
+        },
+        {
+            "sent_idx": "7",
+            "tkn_idx": "237",
+            "text": ",",
+            "endpoints": [
+                1387,
+                1388
+            ]
+        },
+        {
+            "sent_idx": "7",
+            "tkn_idx": "238",
+            "text": "Trento",
+            "endpoints": [
+                1389,
+                1395
+            ]
+        },
+        {
+            "sent_idx": "7",
+            "tkn_idx": "239",
+            "text": "e",
+            "endpoints": [
+                1396,
+                1397
+            ]
+        },
+        {
+            "sent_idx": "7",
+            "tkn_idx": "240",
+            "text": "Milano",
+            "endpoints": [
+                1398,
+                1404
+            ]
+        },
+        {
+            "sent_idx": "7",
+            "tkn_idx": "241",
+            "text": ".",
+            "endpoints": [
+                1404,
+                1405
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "242",
+            "text": "Tra",
+            "endpoints": [
+                1406,
+                1409
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "243",
+            "text": "l'",
+            "endpoints": [
+                1410,
+                1412
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "244",
+            "text": "81",
+            "endpoints": [
+                1413,
+                1415
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "245",
+            "text": "e",
+            "endpoints": [
+                1416,
+                1417
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "246",
+            "text": "l'",
+            "endpoints": [
+                1418,
+                1420
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "247",
+            "text": "83",
+            "endpoints": [
+                1421,
+                1423
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "248",
+            "text": "la",
+            "endpoints": [
+                1424,
+                1426
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "249",
+            "text": "riduzione",
+            "endpoints": [
+                1427,
+                1436
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "250",
+            "text": "del",
+            "endpoints": [
+                1437,
+                1440
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "251",
+            "text": "personale",
+            "endpoints": [
+                1441,
+                1450
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "252",
+            "text": "era",
+            "endpoints": [
+                1451,
+                1454
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "253",
+            "text": "stata",
+            "endpoints": [
+                1455,
+                1460
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "254",
+            "text": "infatti",
+            "endpoints": [
+                1461,
+                1468
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "255",
+            "text": "del",
+            "endpoints": [
+                1469,
+                1472
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "256",
+            "text": "7.5",
+            "endpoints": [
+                1473,
+                1476
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "257",
+            "text": "per cento",
+            "endpoints": [
+                1477,
+                1486
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "258",
+            "text": "in",
+            "endpoints": [
+                1487,
+                1489
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "259",
+            "text": "Italia",
+            "endpoints": [
+                1490,
+                1496
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "260",
+            "text": "e",
+            "endpoints": [
+                1497,
+                1498
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "261",
+            "text": "del",
+            "endpoints": [
+                1499,
+                1502
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "262",
+            "text": "7.7",
+            "endpoints": [
+                1503,
+                1506
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "263",
+            "text": "in",
+            "endpoints": [
+                1507,
+                1509
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "264",
+            "text": "Francia",
+            "endpoints": [
+                1510,
+                1517
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "265",
+            "text": ",",
+            "endpoints": [
+                1517,
+                1518
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "266",
+            "text": "ma",
+            "endpoints": [
+                1519,
+                1521
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "267",
+            "text": "per",
+            "endpoints": [
+                1522,
+                1525
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "268",
+            "text": "il",
+            "endpoints": [
+                1526,
+                1528
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "269",
+            "text": "periodo",
+            "endpoints": [
+                1529,
+                1536
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "270",
+            "text": "che",
+            "endpoints": [
+                1537,
+                1540
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "271",
+            "text": "va",
+            "endpoints": [
+                1541,
+                1543
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "272",
+            "text": "dall'",
+            "endpoints": [
+                1544,
+                1549
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "273",
+            "text": "83",
+            "endpoints": [
+                1550,
+                1552
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "274",
+            "text": "all'",
+            "endpoints": [
+                1553,
+                1557
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "275",
+            "text": "86",
+            "endpoints": [
+                1558,
+                1560
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "276",
+            "text": "le",
+            "endpoints": [
+                1561,
+                1563
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "277",
+            "text": "previsioni",
+            "endpoints": [
+                1564,
+                1574
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "278",
+            "text": "vogliono",
+            "endpoints": [
+                1575,
+                1583
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "279",
+            "text": "tagli",
+            "endpoints": [
+                1584,
+                1589
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "280",
+            "text": "del",
+            "endpoints": [
+                1590,
+                1593
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "281",
+            "text": "22",
+            "endpoints": [
+                1594,
+                1596
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "282",
+            "text": "per cento",
+            "endpoints": [
+                1597,
+                1606
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "283",
+            "text": "nel",
+            "endpoints": [
+                1607,
+                1610
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "284",
+            "text": "nostro",
+            "endpoints": [
+                1611,
+                1617
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "285",
+            "text": "paese",
+            "endpoints": [
+                1618,
+                1623
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "286",
+            "text": "e",
+            "endpoints": [
+                1624,
+                1625
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "287",
+            "text": "del",
+            "endpoints": [
+                1626,
+                1629
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "288",
+            "text": "10",
+            "endpoints": [
+                1630,
+                1632
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "289",
+            "text": "per cento",
+            "endpoints": [
+                1633,
+                1642
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "290",
+            "text": "nella",
+            "endpoints": [
+                1643,
+                1648
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "291",
+            "text": "madrepatria",
+            "endpoints": [
+                1649,
+                1660
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "292",
+            "text": "della",
+            "endpoints": [
+                1661,
+                1666
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "293",
+            "text": "Michelin",
+            "endpoints": [
+                1667,
+                1675
+            ]
+        },
+        {
+            "sent_idx": "8",
+            "tkn_idx": "294",
+            "text": ".",
+            "endpoints": [
+                1675,
+                1676
+            ]
+        },
+        {
+            "sent_idx": "9",
+            "tkn_idx": "295",
+            "text": "Nel",
+            "endpoints": [
+                1677,
+                1680
+            ]
+        },
+        {
+            "sent_idx": "9",
+            "tkn_idx": "296",
+            "text": "1984",
+            "endpoints": [
+                1681,
+                1685
+            ]
+        },
+        {
+            "sent_idx": "9",
+            "tkn_idx": "297",
+            "text": "la",
+            "endpoints": [
+                1686,
+                1688
+            ]
+        },
+        {
+            "sent_idx": "9",
+            "tkn_idx": "298",
+            "text": "Michelin",
+            "endpoints": [
+                1689,
+                1697
+            ]
+        },
+        {
+            "sent_idx": "9",
+            "tkn_idx": "299",
+            "text": "ha",
+            "endpoints": [
+                1698,
+                1700
+            ]
+        },
+        {
+            "sent_idx": "9",
+            "tkn_idx": "300",
+            "text": "perduto",
+            "endpoints": [
+                1701,
+                1708
+            ]
+        },
+        {
+            "sent_idx": "9",
+            "tkn_idx": "301",
+            "text": "400",
+            "endpoints": [
+                1709,
+                1712
+            ]
+        },
+        {
+            "sent_idx": "9",
+            "tkn_idx": "302",
+            "text": "miliardi",
+            "endpoints": [
+                1713,
+                1721
+            ]
+        },
+        {
+            "sent_idx": "9",
+            "tkn_idx": "303",
+            "text": ",",
+            "endpoints": [
+                1721,
+                1722
+            ]
+        },
+        {
+            "sent_idx": "9",
+            "tkn_idx": "304",
+            "text": "con",
+            "endpoints": [
+                1723,
+                1726
+            ]
+        },
+        {
+            "sent_idx": "9",
+            "tkn_idx": "305",
+            "text": "un",
+            "endpoints": [
+                1727,
+                1729
+            ]
+        },
+        {
+            "sent_idx": "9",
+            "tkn_idx": "306",
+            "text": "leggero",
+            "endpoints": [
+                1730,
+                1737
+            ]
+        },
+        {
+            "sent_idx": "9",
+            "tkn_idx": "307",
+            "text": "miglioramento",
+            "endpoints": [
+                1738,
+                1751
+            ]
+        },
+        {
+            "sent_idx": "9",
+            "tkn_idx": "308",
+            "text": "rispetto all'",
+            "endpoints": [
+                1752,
+                1765
+            ]
+        },
+        {
+            "sent_idx": "9",
+            "tkn_idx": "309",
+            "text": "anno",
+            "endpoints": [
+                1766,
+                1770
+            ]
+        },
+        {
+            "sent_idx": "9",
+            "tkn_idx": "310",
+            "text": "precedente",
+            "endpoints": [
+                1771,
+                1781
+            ]
+        },
+        {
+            "sent_idx": "9",
+            "tkn_idx": "311",
+            "text": ";",
+            "endpoints": [
+                1781,
+                1782
+            ]
+        },
+        {
+            "sent_idx": "9",
+            "tkn_idx": "312",
+            "text": "conserva",
+            "endpoints": [
+                1783,
+                1791
+            ]
+        },
+        {
+            "sent_idx": "9",
+            "tkn_idx": "313",
+            "text": "saldamente",
+            "endpoints": [
+                1792,
+                1802
+            ]
+        },
+        {
+            "sent_idx": "9",
+            "tkn_idx": "314",
+            "text": "il",
+            "endpoints": [
+                1803,
+                1805
+            ]
+        },
+        {
+            "sent_idx": "9",
+            "tkn_idx": "315",
+            "text": "secondo",
+            "endpoints": [
+                1806,
+                1813
+            ]
+        },
+        {
+            "sent_idx": "9",
+            "tkn_idx": "316",
+            "text": "posto",
+            "endpoints": [
+                1814,
+                1819
+            ]
+        },
+        {
+            "sent_idx": "9",
+            "tkn_idx": "317",
+            "text": "dopo",
+            "endpoints": [
+                1820,
+                1824
+            ]
+        },
+        {
+            "sent_idx": "9",
+            "tkn_idx": "318",
+            "text": "la",
+            "endpoints": [
+                1825,
+                1827
+            ]
+        },
+        {
+            "sent_idx": "9",
+            "tkn_idx": "319",
+            "text": "Goodyear",
+            "endpoints": [
+                1828,
+                1836
+            ]
+        },
+        {
+            "sent_idx": "9",
+            "tkn_idx": "320",
+            "text": "tra",
+            "endpoints": [
+                1837,
+                1840
+            ]
+        },
+        {
+            "sent_idx": "9",
+            "tkn_idx": "321",
+            "text": "i",
+            "endpoints": [
+                1841,
+                1842
+            ]
+        },
+        {
+            "sent_idx": "9",
+            "tkn_idx": "322",
+            "text": "colossi",
+            "endpoints": [
+                1843,
+                1850
+            ]
+        },
+        {
+            "sent_idx": "9",
+            "tkn_idx": "323",
+            "text": "mondiali",
+            "endpoints": [
+                1851,
+                1859
+            ]
+        },
+        {
+            "sent_idx": "9",
+            "tkn_idx": "324",
+            "text": "della",
+            "endpoints": [
+                1860,
+                1865
+            ]
+        },
+        {
+            "sent_idx": "9",
+            "tkn_idx": "325",
+            "text": "gomma",
+            "endpoints": [
+                1866,
+                1871
+            ]
+        },
+        {
+            "sent_idx": "9",
+            "tkn_idx": "326",
+            "text": "e",
+            "endpoints": [
+                1872,
+                1873
+            ]
+        },
+        {
+            "sent_idx": "9",
+            "tkn_idx": "327",
+            "text": "detiene",
+            "endpoints": [
+                1874,
+                1881
+            ]
+        },
+        {
+            "sent_idx": "9",
+            "tkn_idx": "328",
+            "text": "piu'",
+            "endpoints": [
+                1882,
+                1886
+            ]
+        },
+        {
+            "sent_idx": "9",
+            "tkn_idx": "329",
+            "text": "d'",
+            "endpoints": [
+                1887,
+                1889
+            ]
+        },
+        {
+            "sent_idx": "9",
+            "tkn_idx": "330",
+            "text": "un",
+            "endpoints": [
+                1890,
+                1892
+            ]
+        },
+        {
+            "sent_idx": "9",
+            "tkn_idx": "331",
+            "text": "terzo",
+            "endpoints": [
+                1893,
+                1898
+            ]
+        },
+        {
+            "sent_idx": "9",
+            "tkn_idx": "332",
+            "text": "del",
+            "endpoints": [
+                1899,
+                1902
+            ]
+        },
+        {
+            "sent_idx": "9",
+            "tkn_idx": "333",
+            "text": "mercato",
+            "endpoints": [
+                1903,
+                1910
+            ]
+        },
+        {
+            "sent_idx": "9",
+            "tkn_idx": "334",
+            "text": "europeo",
+            "endpoints": [
+                1911,
+                1918
+            ]
+        },
+        {
+            "sent_idx": "9",
+            "tkn_idx": "335",
+            "text": "del",
+            "endpoints": [
+                1919,
+                1922
+            ]
+        },
+        {
+            "sent_idx": "9",
+            "tkn_idx": "336",
+            "text": "settore",
+            "endpoints": [
+                1923,
+                1930
+            ]
+        },
+        {
+            "sent_idx": "9",
+            "tkn_idx": "337",
+            "text": ".",
+            "endpoints": [
+                1930,
+                1931
+            ]
+        },
+        {
+            "sent_idx": "10",
+            "tkn_idx": "338",
+            "text": "Ma",
+            "endpoints": [
+                1932,
+                1934
+            ]
+        },
+        {
+            "sent_idx": "10",
+            "tkn_idx": "339",
+            "text": "la",
+            "endpoints": [
+                1935,
+                1937
+            ]
+        },
+        {
+            "sent_idx": "10",
+            "tkn_idx": "340",
+            "text": "crisi",
+            "endpoints": [
+                1938,
+                1943
+            ]
+        },
+        {
+            "sent_idx": "10",
+            "tkn_idx": "341",
+            "text": "dell'",
+            "endpoints": [
+                1944,
+                1949
+            ]
+        },
+        {
+            "sent_idx": "10",
+            "tkn_idx": "342",
+            "text": "industria",
+            "endpoints": [
+                1950,
+                1959
+            ]
+        },
+        {
+            "sent_idx": "10",
+            "tkn_idx": "343",
+            "text": "automobilistica",
+            "endpoints": [
+                1960,
+                1975
+            ]
+        },
+        {
+            "sent_idx": "10",
+            "tkn_idx": "344",
+            "text": "francese",
+            "endpoints": [
+                1976,
+                1984
+            ]
+        },
+        {
+            "sent_idx": "10",
+            "tkn_idx": "345",
+            "text": "e",
+            "endpoints": [
+                1985,
+                1986
+            ]
+        },
+        {
+            "sent_idx": "10",
+            "tkn_idx": "346",
+            "text": "in particolare",
+            "endpoints": [
+                1987,
+                2001
+            ]
+        },
+        {
+            "sent_idx": "10",
+            "tkn_idx": "347",
+            "text": "le",
+            "endpoints": [
+                2002,
+                2004
+            ]
+        },
+        {
+            "sent_idx": "10",
+            "tkn_idx": "348",
+            "text": "difficolta'",
+            "endpoints": [
+                2005,
+                2016
+            ]
+        },
+        {
+            "sent_idx": "10",
+            "tkn_idx": "349",
+            "text": "della",
+            "endpoints": [
+                2017,
+                2022
+            ]
+        },
+        {
+            "sent_idx": "10",
+            "tkn_idx": "350",
+            "text": "Renault",
+            "endpoints": [
+                2023,
+                2030
+            ]
+        },
+        {
+            "sent_idx": "10",
+            "tkn_idx": "351",
+            "text": ",",
+            "endpoints": [
+                2030,
+                2031
+            ]
+        },
+        {
+            "sent_idx": "10",
+            "tkn_idx": "352",
+            "text": "accompagnata",
+            "endpoints": [
+                2032,
+                2044
+            ]
+        },
+        {
+            "sent_idx": "10",
+            "tkn_idx": "353",
+            "text": "ai",
+            "endpoints": [
+                2045,
+                2047
+            ]
+        },
+        {
+            "sent_idx": "10",
+            "tkn_idx": "354",
+            "text": "problemi",
+            "endpoints": [
+                2048,
+                2056
+            ]
+        },
+        {
+            "sent_idx": "10",
+            "tkn_idx": "355",
+            "text": "internazionali",
+            "endpoints": [
+                2057,
+                2071
+            ]
+        },
+        {
+            "sent_idx": "10",
+            "tkn_idx": "356",
+            "text": "di",
+            "endpoints": [
+                2072,
+                2074
+            ]
+        },
+        {
+            "sent_idx": "10",
+            "tkn_idx": "357",
+            "text": "tutto",
+            "endpoints": [
+                2075,
+                2080
+            ]
+        },
+        {
+            "sent_idx": "10",
+            "tkn_idx": "358",
+            "text": "il",
+            "endpoints": [
+                2081,
+                2083
+            ]
+        },
+        {
+            "sent_idx": "10",
+            "tkn_idx": "359",
+            "text": "settore",
+            "endpoints": [
+                2084,
+                2091
+            ]
+        },
+        {
+            "sent_idx": "10",
+            "tkn_idx": "360",
+            "text": "dell'",
+            "endpoints": [
+                2092,
+                2097
+            ]
+        },
+        {
+            "sent_idx": "10",
+            "tkn_idx": "361",
+            "text": "auto",
+            "endpoints": [
+                2098,
+                2102
+            ]
+        },
+        {
+            "sent_idx": "10",
+            "tkn_idx": "362",
+            "text": ",",
+            "endpoints": [
+                2102,
+                2103
+            ]
+        },
+        {
+            "sent_idx": "10",
+            "tkn_idx": "363",
+            "text": "devono",
+            "endpoints": [
+                2104,
+                2110
+            ]
+        },
+        {
+            "sent_idx": "10",
+            "tkn_idx": "364",
+            "text": "avere",
+            "endpoints": [
+                2111,
+                2116
+            ]
+        },
+        {
+            "sent_idx": "10",
+            "tkn_idx": "365",
+            "text": "convinto",
+            "endpoints": [
+                2117,
+                2125
+            ]
+        },
+        {
+            "sent_idx": "10",
+            "tkn_idx": "366",
+            "text": "i",
+            "endpoints": [
+                2126,
+                2127
+            ]
+        },
+        {
+            "sent_idx": "10",
+            "tkn_idx": "367",
+            "text": "vertici",
+            "endpoints": [
+                2128,
+                2135
+            ]
+        },
+        {
+            "sent_idx": "10",
+            "tkn_idx": "368",
+            "text": "di",
+            "endpoints": [
+                2136,
+                2138
+            ]
+        },
+        {
+            "sent_idx": "10",
+            "tkn_idx": "369",
+            "text": "Clermont-Ferrand",
+            "endpoints": [
+                2139,
+                2155
+            ]
+        },
+        {
+            "sent_idx": "10",
+            "tkn_idx": "370",
+            "text": "della",
+            "endpoints": [
+                2156,
+                2161
+            ]
+        },
+        {
+            "sent_idx": "10",
+            "tkn_idx": "371",
+            "text": "necessita'",
+            "endpoints": [
+                2162,
+                2172
+            ]
+        },
+        {
+            "sent_idx": "10",
+            "tkn_idx": "372",
+            "text": "di",
+            "endpoints": [
+                2173,
+                2175
+            ]
+        },
+        {
+            "sent_idx": "10",
+            "tkn_idx": "373",
+            "text": "accelerare",
+            "endpoints": [
+                2176,
+                2186
+            ]
+        },
+        {
+            "sent_idx": "10",
+            "tkn_idx": "374",
+            "text": "il",
+            "endpoints": [
+                2187,
+                2189
+            ]
+        },
+        {
+            "sent_idx": "10",
+            "tkn_idx": "375",
+            "text": "processo",
+            "endpoints": [
+                2190,
+                2198
+            ]
+        },
+        {
+            "sent_idx": "10",
+            "tkn_idx": "376",
+            "text": "di",
+            "endpoints": [
+                2199,
+                2201
+            ]
+        },
+        {
+            "sent_idx": "10",
+            "tkn_idx": "377",
+            "text": "ristrutturazione",
+            "endpoints": [
+                2202,
+                2218
+            ]
+        },
+        {
+            "sent_idx": "10",
+            "tkn_idx": "378",
+            "text": ".",
+            "endpoints": [
+                2218,
+                2219
+            ]
+        },
+        {
+            "sent_idx": "11",
+            "tkn_idx": "379",
+            "text": "I",
+            "endpoints": [
+                2220,
+                2221
+            ]
+        },
+        {
+            "sent_idx": "11",
+            "tkn_idx": "380",
+            "text": "sindacati",
+            "endpoints": [
+                2222,
+                2231
+            ]
+        },
+        {
+            "sent_idx": "11",
+            "tkn_idx": "381",
+            "text": "ne",
+            "endpoints": [
+                2232,
+                2234
+            ]
+        },
+        {
+            "sent_idx": "11",
+            "tkn_idx": "382",
+            "text": "sono",
+            "endpoints": [
+                2235,
+                2239
+            ]
+        },
+        {
+            "sent_idx": "11",
+            "tkn_idx": "383",
+            "text": "a",
+            "endpoints": [
+                2240,
+                2241
+            ]
+        },
+        {
+            "sent_idx": "11",
+            "tkn_idx": "384",
+            "text": "conoscenza",
+            "endpoints": [
+                2242,
+                2252
+            ]
+        },
+        {
+            "sent_idx": "11",
+            "tkn_idx": "385",
+            "text": "e",
+            "endpoints": [
+                2253,
+                2254
+            ]
+        },
+        {
+            "sent_idx": "11",
+            "tkn_idx": "386",
+            "text": "temono",
+            "endpoints": [
+                2255,
+                2261
+            ]
+        },
+        {
+            "sent_idx": "11",
+            "tkn_idx": "387",
+            "text": "che",
+            "endpoints": [
+                2262,
+                2265
+            ]
+        },
+        {
+            "sent_idx": "11",
+            "tkn_idx": "388",
+            "text": "la",
+            "endpoints": [
+                2266,
+                2268
+            ]
+        },
+        {
+            "sent_idx": "11",
+            "tkn_idx": "389",
+            "text": "Michelin",
+            "endpoints": [
+                2269,
+                2277
+            ]
+        },
+        {
+            "sent_idx": "11",
+            "tkn_idx": "390",
+            "text": "disattenda",
+            "endpoints": [
+                2278,
+                2288
+            ]
+        },
+        {
+            "sent_idx": "11",
+            "tkn_idx": "391",
+            "text": "gli",
+            "endpoints": [
+                2289,
+                2292
+            ]
+        },
+        {
+            "sent_idx": "11",
+            "tkn_idx": "392",
+            "text": "accordi",
+            "endpoints": [
+                2293,
+                2300
+            ]
+        },
+        {
+            "sent_idx": "11",
+            "tkn_idx": "393",
+            "text": "raggiunti",
+            "endpoints": [
+                2301,
+                2310
+            ]
+        },
+        {
+            "sent_idx": "11",
+            "tkn_idx": "394",
+            "text": "meno",
+            "endpoints": [
+                2311,
+                2315
+            ]
+        },
+        {
+            "sent_idx": "11",
+            "tkn_idx": "395",
+            "text": "di",
+            "endpoints": [
+                2316,
+                2318
+            ]
+        },
+        {
+            "sent_idx": "11",
+            "tkn_idx": "396",
+            "text": "un",
+            "endpoints": [
+                2319,
+                2321
+            ]
+        },
+        {
+            "sent_idx": "11",
+            "tkn_idx": "397",
+            "text": "mese",
+            "endpoints": [
+                2322,
+                2326
+            ]
+        },
+        {
+            "sent_idx": "11",
+            "tkn_idx": "398",
+            "text": "fa",
+            "endpoints": [
+                2327,
+                2329
+            ]
+        },
+        {
+            "sent_idx": "11",
+            "tkn_idx": "399",
+            "text": ",",
+            "endpoints": [
+                2329,
+                2330
+            ]
+        },
+        {
+            "sent_idx": "11",
+            "tkn_idx": "400",
+            "text": "procedendo",
+            "endpoints": [
+                2331,
+                2341
+            ]
+        },
+        {
+            "sent_idx": "11",
+            "tkn_idx": "401",
+            "text": "alla",
+            "endpoints": [
+                2342,
+                2346
+            ]
+        },
+        {
+            "sent_idx": "11",
+            "tkn_idx": "402",
+            "text": "chiusura",
+            "endpoints": [
+                2347,
+                2355
+            ]
+        },
+        {
+            "sent_idx": "11",
+            "tkn_idx": "403",
+            "text": "dello",
+            "endpoints": [
+                2356,
+                2361
+            ]
+        },
+        {
+            "sent_idx": "11",
+            "tkn_idx": "404",
+            "text": "stabilimento",
+            "endpoints": [
+                2362,
+                2374
+            ]
+        },
+        {
+            "sent_idx": "11",
+            "tkn_idx": "405",
+            "text": "di",
+            "endpoints": [
+                2375,
+                2377
+            ]
+        },
+        {
+            "sent_idx": "11",
+            "tkn_idx": "406",
+            "text": "Torino-Dora",
+            "endpoints": [
+                2378,
+                2389
+            ]
+        },
+        {
+            "sent_idx": "11",
+            "tkn_idx": "407",
+            "text": "e",
+            "endpoints": [
+                2390,
+                2391
+            ]
+        },
+        {
+            "sent_idx": "11",
+            "tkn_idx": "408",
+            "text": "al",
+            "endpoints": [
+                2392,
+                2394
+            ]
+        },
+        {
+            "sent_idx": "11",
+            "tkn_idx": "409",
+            "text": "progressivo",
+            "endpoints": [
+                2395,
+                2406
+            ]
+        },
+        {
+            "sent_idx": "11",
+            "tkn_idx": "410",
+            "text": "smantellamento",
+            "endpoints": [
+                2407,
+                2421
+            ]
+        },
+        {
+            "sent_idx": "11",
+            "tkn_idx": "411",
+            "text": "di",
+            "endpoints": [
+                2422,
+                2424
+            ]
+        },
+        {
+            "sent_idx": "11",
+            "tkn_idx": "412",
+            "text": "Torino-Stura",
+            "endpoints": [
+                2425,
+                2437
+            ]
+        },
+        {
+            "sent_idx": "11",
+            "tkn_idx": "413",
+            "text": ".",
+            "endpoints": [
+                2437,
+                2438
+            ]
+        },
+        {
+            "sent_idx": "12",
+            "tkn_idx": "414",
+            "text": "L'",
+            "endpoints": [
+                2439,
+                2441
+            ]
+        },
+        {
+            "sent_idx": "12",
+            "tkn_idx": "415",
+            "text": "interpretazione",
+            "endpoints": [
+                2442,
+                2457
+            ]
+        },
+        {
+            "sent_idx": "12",
+            "tkn_idx": "416",
+            "text": "che",
+            "endpoints": [
+                2458,
+                2461
+            ]
+        },
+        {
+            "sent_idx": "12",
+            "tkn_idx": "417",
+            "text": "viene",
+            "endpoints": [
+                2462,
+                2467
+            ]
+        },
+        {
+            "sent_idx": "12",
+            "tkn_idx": "418",
+            "text": "data",
+            "endpoints": [
+                2468,
+                2472
+            ]
+        },
+        {
+            "sent_idx": "12",
+            "tkn_idx": "419",
+            "text": "dal",
+            "endpoints": [
+                2473,
+                2476
+            ]
+        },
+        {
+            "sent_idx": "12",
+            "tkn_idx": "420",
+            "text": "sindacato",
+            "endpoints": [
+                2477,
+                2486
+            ]
+        },
+        {
+            "sent_idx": "12",
+            "tkn_idx": "421",
+            "text": "della",
+            "endpoints": [
+                2487,
+                2492
+            ]
+        },
+        {
+            "sent_idx": "12",
+            "tkn_idx": "422",
+            "text": "notizia",
+            "endpoints": [
+                2493,
+                2500
+            ]
+        },
+        {
+            "sent_idx": "12",
+            "tkn_idx": "423",
+            "text": "diffusa",
+            "endpoints": [
+                2501,
+                2508
+            ]
+        },
+        {
+            "sent_idx": "12",
+            "tkn_idx": "424",
+            "text": "da",
+            "endpoints": [
+                2509,
+                2511
+            ]
+        },
+        {
+            "sent_idx": "12",
+            "tkn_idx": "425",
+            "text": "Le",
+            "endpoints": [
+                2512,
+                2514
+            ]
+        },
+        {
+            "sent_idx": "12",
+            "tkn_idx": "426",
+            "text": "Monde",
+            "endpoints": [
+                2515,
+                2520
+            ]
+        },
+        {
+            "sent_idx": "12",
+            "tkn_idx": "427",
+            "text": "e'",
+            "endpoints": [
+                2521,
+                2523
+            ]
+        },
+        {
+            "sent_idx": "12",
+            "tkn_idx": "428",
+            "text": "che",
+            "endpoints": [
+                2524,
+                2527
+            ]
+        },
+        {
+            "sent_idx": "12",
+            "tkn_idx": "429",
+            "text": "essa",
+            "endpoints": [
+                2528,
+                2532
+            ]
+        },
+        {
+            "sent_idx": "12",
+            "tkn_idx": "430",
+            "text": "sia",
+            "endpoints": [
+                2533,
+                2536
+            ]
+        },
+        {
+            "sent_idx": "12",
+            "tkn_idx": "431",
+            "text": "un",
+            "endpoints": [
+                2537,
+                2539
+            ]
+        },
+        {
+            "sent_idx": "12",
+            "tkn_idx": "432",
+            "text": "messaggio",
+            "endpoints": [
+                2540,
+                2549
+            ]
+        },
+        {
+            "sent_idx": "12",
+            "tkn_idx": "433",
+            "text": "indiretto",
+            "endpoints": [
+                2550,
+                2559
+            ]
+        },
+        {
+            "sent_idx": "12",
+            "tkn_idx": "434",
+            "text": "rivolto",
+            "endpoints": [
+                2560,
+                2567
+            ]
+        },
+        {
+            "sent_idx": "12",
+            "tkn_idx": "435",
+            "text": "al",
+            "endpoints": [
+                2568,
+                2570
+            ]
+        },
+        {
+            "sent_idx": "12",
+            "tkn_idx": "436",
+            "text": "governo",
+            "endpoints": [
+                2571,
+                2578
+            ]
+        },
+        {
+            "sent_idx": "12",
+            "tkn_idx": "437",
+            "text": "francese",
+            "endpoints": [
+                2579,
+                2587
+            ]
+        },
+        {
+            "sent_idx": "12",
+            "tkn_idx": "438",
+            "text": ".",
+            "endpoints": [
+                2587,
+                2588
+            ]
+        },
+        {
+            "sent_idx": "13",
+            "tkn_idx": "439",
+            "text": "Negli",
+            "endpoints": [
+                2589,
+                2594
+            ]
+        },
+        {
+            "sent_idx": "13",
+            "tkn_idx": "440",
+            "text": "ambienti",
+            "endpoints": [
+                2595,
+                2603
+            ]
+        },
+        {
+            "sent_idx": "13",
+            "tkn_idx": "441",
+            "text": "sindacali",
+            "endpoints": [
+                2604,
+                2613
+            ]
+        },
+        {
+            "sent_idx": "13",
+            "tkn_idx": "442",
+            "text": "si",
+            "endpoints": [
+                2614,
+                2616
+            ]
+        },
+        {
+            "sent_idx": "13",
+            "tkn_idx": "443",
+            "text": "sostiene",
+            "endpoints": [
+                2617,
+                2625
+            ]
+        },
+        {
+            "sent_idx": "13",
+            "tkn_idx": "444",
+            "text": "infatti",
+            "endpoints": [
+                2626,
+                2633
+            ]
+        },
+        {
+            "sent_idx": "13",
+            "tkn_idx": "445",
+            "text": "che",
+            "endpoints": [
+                2634,
+                2637
+            ]
+        },
+        {
+            "sent_idx": "13",
+            "tkn_idx": "446",
+            "text": "la",
+            "endpoints": [
+                2638,
+                2640
+            ]
+        },
+        {
+            "sent_idx": "13",
+            "tkn_idx": "447",
+            "text": "Michelin",
+            "endpoints": [
+                2641,
+                2649
+            ]
+        },
+        {
+            "sent_idx": "13",
+            "tkn_idx": "448",
+            "text": "ha",
+            "endpoints": [
+                2650,
+                2652
+            ]
+        },
+        {
+            "sent_idx": "13",
+            "tkn_idx": "449",
+            "text": "ottenuto",
+            "endpoints": [
+                2653,
+                2661
+            ]
+        },
+        {
+            "sent_idx": "13",
+            "tkn_idx": "450",
+            "text": "aiuti",
+            "endpoints": [
+                2662,
+                2667
+            ]
+        },
+        {
+            "sent_idx": "13",
+            "tkn_idx": "451",
+            "text": "finanziari",
+            "endpoints": [
+                2668,
+                2678
+            ]
+        },
+        {
+            "sent_idx": "13",
+            "tkn_idx": "452",
+            "text": "dal",
+            "endpoints": [
+                2679,
+                2682
+            ]
+        },
+        {
+            "sent_idx": "13",
+            "tkn_idx": "453",
+            "text": "governo",
+            "endpoints": [
+                2683,
+                2690
+            ]
+        },
+        {
+            "sent_idx": "13",
+            "tkn_idx": "454",
+            "text": "di",
+            "endpoints": [
+                2691,
+                2693
+            ]
+        },
+        {
+            "sent_idx": "13",
+            "tkn_idx": "455",
+            "text": "Parigi",
+            "endpoints": [
+                2694,
+                2700
+            ]
+        },
+        {
+            "sent_idx": "13",
+            "tkn_idx": "456",
+            "text": "in",
+            "endpoints": [
+                2701,
+                2703
+            ]
+        },
+        {
+            "sent_idx": "13",
+            "tkn_idx": "457",
+            "text": "cambio",
+            "endpoints": [
+                2704,
+                2710
+            ]
+        },
+        {
+            "sent_idx": "13",
+            "tkn_idx": "458",
+            "text": "di",
+            "endpoints": [
+                2711,
+                2713
+            ]
+        },
+        {
+            "sent_idx": "13",
+            "tkn_idx": "459",
+            "text": "un",
+            "endpoints": [
+                2714,
+                2716
+            ]
+        },
+        {
+            "sent_idx": "13",
+            "tkn_idx": "460",
+            "text": "mantenimento",
+            "endpoints": [
+                2717,
+                2729
+            ]
+        },
+        {
+            "sent_idx": "13",
+            "tkn_idx": "461",
+            "text": "dei",
+            "endpoints": [
+                2730,
+                2733
+            ]
+        },
+        {
+            "sent_idx": "13",
+            "tkn_idx": "462",
+            "text": "livelli",
+            "endpoints": [
+                2734,
+                2741
+            ]
+        },
+        {
+            "sent_idx": "13",
+            "tkn_idx": "463",
+            "text": "occupazionali",
+            "endpoints": [
+                2742,
+                2755
+            ]
+        },
+        {
+            "sent_idx": "13",
+            "tkn_idx": "464",
+            "text": ".",
+            "endpoints": [
+                2755,
+                2756
+            ]
+        },
+        {
+            "sent_idx": "14",
+            "tkn_idx": "465",
+            "text": "Pertanto",
+            "endpoints": [
+                2757,
+                2765
+            ]
+        },
+        {
+            "sent_idx": "14",
+            "tkn_idx": "466",
+            "text": "la",
+            "endpoints": [
+                2766,
+                2768
+            ]
+        },
+        {
+            "sent_idx": "14",
+            "tkn_idx": "467",
+            "text": "decisione",
+            "endpoints": [
+                2769,
+                2778
+            ]
+        },
+        {
+            "sent_idx": "14",
+            "tkn_idx": "468",
+            "text": "di",
+            "endpoints": [
+                2779,
+                2781
+            ]
+        },
+        {
+            "sent_idx": "14",
+            "tkn_idx": "469",
+            "text": "procedere",
+            "endpoints": [
+                2782,
+                2791
+            ]
+        },
+        {
+            "sent_idx": "14",
+            "tkn_idx": "470",
+            "text": "ai",
+            "endpoints": [
+                2792,
+                2794
+            ]
+        },
+        {
+            "sent_idx": "14",
+            "tkn_idx": "471",
+            "text": "licenziamenti",
+            "endpoints": [
+                2795,
+                2808
+            ]
+        },
+        {
+            "sent_idx": "14",
+            "tkn_idx": "472",
+            "text": "in",
+            "endpoints": [
+                2809,
+                2811
+            ]
+        },
+        {
+            "sent_idx": "14",
+            "tkn_idx": "473",
+            "text": "Italia",
+            "endpoints": [
+                2812,
+                2818
+            ]
+        },
+        {
+            "sent_idx": "14",
+            "tkn_idx": "474",
+            "text": "dovrebbe",
+            "endpoints": [
+                2819,
+                2827
+            ]
+        },
+        {
+            "sent_idx": "14",
+            "tkn_idx": "475",
+            "text": "essere",
+            "endpoints": [
+                2828,
+                2834
+            ]
+        },
+        {
+            "sent_idx": "14",
+            "tkn_idx": "476",
+            "text": "un",
+            "endpoints": [
+                2835,
+                2837
+            ]
+        },
+        {
+            "sent_idx": "14",
+            "tkn_idx": "477",
+            "text": "campanello",
+            "endpoints": [
+                2838,
+                2848
+            ]
+        },
+        {
+            "sent_idx": "14",
+            "tkn_idx": "478",
+            "text": "d'",
+            "endpoints": [
+                2849,
+                2851
+            ]
+        },
+        {
+            "sent_idx": "14",
+            "tkn_idx": "479",
+            "text": "allarme",
+            "endpoints": [
+                2852,
+                2859
+            ]
+        },
+        {
+            "sent_idx": "14",
+            "tkn_idx": "480",
+            "text": ";",
+            "endpoints": [
+                2859,
+                2860
+            ]
+        },
+        {
+            "sent_idx": "14",
+            "tkn_idx": "481",
+            "text": "come",
+            "endpoints": [
+                2861,
+                2865
+            ]
+        },
+        {
+            "sent_idx": "14",
+            "tkn_idx": "482",
+            "text": "dire",
+            "endpoints": [
+                2866,
+                2870
+            ]
+        },
+        {
+            "sent_idx": "14",
+            "tkn_idx": "483",
+            "text": "che",
+            "endpoints": [
+                2871,
+                2874
+            ]
+        },
+        {
+            "sent_idx": "14",
+            "tkn_idx": "484",
+            "text": "la",
+            "endpoints": [
+                2875,
+                2877
+            ]
+        },
+        {
+            "sent_idx": "14",
+            "tkn_idx": "485",
+            "text": "situazione",
+            "endpoints": [
+                2878,
+                2888
+            ]
+        },
+        {
+            "sent_idx": "14",
+            "tkn_idx": "486",
+            "text": "e'",
+            "endpoints": [
+                2889,
+                2891
+            ]
+        },
+        {
+            "sent_idx": "14",
+            "tkn_idx": "487",
+            "text": "tale",
+            "endpoints": [
+                2892,
+                2896
+            ]
+        },
+        {
+            "sent_idx": "14",
+            "tkn_idx": "488",
+            "text": "per",
+            "endpoints": [
+                2897,
+                2900
+            ]
+        },
+        {
+            "sent_idx": "14",
+            "tkn_idx": "489",
+            "text": "cui",
+            "endpoints": [
+                2901,
+                2904
+            ]
+        },
+        {
+            "sent_idx": "14",
+            "tkn_idx": "490",
+            "text": "dopo",
+            "endpoints": [
+                2905,
+                2909
+            ]
+        },
+        {
+            "sent_idx": "14",
+            "tkn_idx": "491",
+            "text": "l'",
+            "endpoints": [
+                2910,
+                2912
+            ]
+        },
+        {
+            "sent_idx": "14",
+            "tkn_idx": "492",
+            "text": "Italia",
+            "endpoints": [
+                2913,
+                2919
+            ]
+        },
+        {
+            "sent_idx": "14",
+            "tkn_idx": "493",
+            "text": "potrebbe",
+            "endpoints": [
+                2920,
+                2928
+            ]
+        },
+        {
+            "sent_idx": "14",
+            "tkn_idx": "494",
+            "text": "giungere",
+            "endpoints": [
+                2929,
+                2937
+            ]
+        },
+        {
+            "sent_idx": "14",
+            "tkn_idx": "495",
+            "text": "inevitabilmente",
+            "endpoints": [
+                2938,
+                2953
+            ]
+        },
+        {
+            "sent_idx": "14",
+            "tkn_idx": "496",
+            "text": "il",
+            "endpoints": [
+                2954,
+                2956
+            ]
+        },
+        {
+            "sent_idx": "14",
+            "tkn_idx": "497",
+            "text": "momento",
+            "endpoints": [
+                2957,
+                2964
+            ]
+        },
+        {
+            "sent_idx": "14",
+            "tkn_idx": "498",
+            "text": "dei",
+            "endpoints": [
+                2965,
+                2968
+            ]
+        },
+        {
+            "sent_idx": "14",
+            "tkn_idx": "499",
+            "text": "licenziamenti",
+            "endpoints": [
+                2969,
+                2982
+            ]
+        },
+        {
+            "sent_idx": "14",
+            "tkn_idx": "500",
+            "text": "anche",
+            "endpoints": [
+                2983,
+                2988
+            ]
+        },
+        {
+            "sent_idx": "14",
+            "tkn_idx": "501",
+            "text": "negli",
+            "endpoints": [
+                2989,
+                2994
+            ]
+        },
+        {
+            "sent_idx": "14",
+            "tkn_idx": "502",
+            "text": "stabilimenti",
+            "endpoints": [
+                2995,
+                3007
+            ]
+        },
+        {
+            "sent_idx": "14",
+            "tkn_idx": "503",
+            "text": "francesi",
+            "endpoints": [
+                3008,
+                3016
+            ]
+        },
+        {
+            "sent_idx": "14",
+            "tkn_idx": "504",
+            "text": ",",
+            "endpoints": [
+                3016,
+                3017
+            ]
+        },
+        {
+            "sent_idx": "14",
+            "tkn_idx": "505",
+            "text": "indipendentemente",
+            "endpoints": [
+                3018,
+                3035
+            ]
+        },
+        {
+            "sent_idx": "14",
+            "tkn_idx": "506",
+            "text": "dalle",
+            "endpoints": [
+                3036,
+                3041
+            ]
+        },
+        {
+            "sent_idx": "14",
+            "tkn_idx": "507",
+            "text": "garanzie",
+            "endpoints": [
+                3042,
+                3050
+            ]
+        },
+        {
+            "sent_idx": "14",
+            "tkn_idx": "508",
+            "text": "che",
+            "endpoints": [
+                3051,
+                3054
+            ]
+        },
+        {
+            "sent_idx": "14",
+            "tkn_idx": "509",
+            "text": "possono",
+            "endpoints": [
+                3055,
+                3062
+            ]
+        },
+        {
+            "sent_idx": "14",
+            "tkn_idx": "510",
+            "text": "essere",
+            "endpoints": [
+                3063,
+                3069
+            ]
+        },
+        {
+            "sent_idx": "14",
+            "tkn_idx": "511",
+            "text": "state",
+            "endpoints": [
+                3070,
+                3075
+            ]
+        },
+        {
+            "sent_idx": "14",
+            "tkn_idx": "512",
+            "text": "fornite",
+            "endpoints": [
+                3076,
+                3083
+            ]
+        },
+        {
+            "sent_idx": "14",
+            "tkn_idx": "513",
+            "text": ".",
+            "endpoints": [
+                3083,
+                3084
+            ]
+        }
+    ],
+    "entities": {
+        "events": [
+            {
+                "sent_idx": "3",
+                "tkn_idx": "41",
+                "aspect": "PERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PRESENT"
+            },
+            {
+                "sent_idx": "3",
+                "tkn_idx": "43",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "3",
+                "tkn_idx": "49",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "3",
+                "tkn_idx": "53",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "NEG",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "3",
+                "tkn_idx": "56",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "3",
+                "tkn_idx": "59",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "4",
+                "tkn_idx": "69",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "4",
+                "tkn_idx": "73",
+                "aspect": "IMPERFECTIVE",
+                "mood": "NONE",
+                "polarity": "NEG",
+                "tense": "PRESENT"
+            },
+            {
+                "sent_idx": "4",
+                "tkn_idx": "74",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "NEG",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "4",
+                "tkn_idx": "76",
+                "aspect": "IMPERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PRESENT"
+            },
+            {
+                "sent_idx": "4",
+                "tkn_idx": "77",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "4",
+                "tkn_idx": "92",
+                "aspect": "PERFECTIVE",
+                "mood": "NONE",
+                "polarity": "NEG",
+                "tense": "PRESENT"
+            },
+            {
+                "sent_idx": "4",
+                "tkn_idx": "94",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "4",
+                "tkn_idx": "101",
+                "aspect": "PERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PRESENT"
+            },
+            {
+                "sent_idx": "4",
+                "tkn_idx": "103",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "4",
+                "tkn_idx": "104",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "4",
+                "tkn_idx": "111",
+                "aspect": "PERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PRESENT"
+            },
+            {
+                "sent_idx": "4",
+                "tkn_idx": "113",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "4",
+                "tkn_idx": "118",
+                "aspect": "IMPERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PRESENT"
+            },
+            {
+                "sent_idx": "4",
+                "tkn_idx": "124",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "5",
+                "tkn_idx": "132",
+                "aspect": "IMPERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PRESENT"
+            },
+            {
+                "sent_idx": "5",
+                "tkn_idx": "137",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "5",
+                "tkn_idx": "140",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "5",
+                "tkn_idx": "148",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "5",
+                "tkn_idx": "150",
+                "aspect": "PERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "5",
+                "tkn_idx": "156",
+                "aspect": "IMPERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PRESENT"
+            },
+            {
+                "sent_idx": "5",
+                "tkn_idx": "158",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "5",
+                "tkn_idx": "160",
+                "aspect": "IMPERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PRESENT"
+            },
+            {
+                "sent_idx": "5",
+                "tkn_idx": "163",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "5",
+                "tkn_idx": "164",
+                "aspect": "PERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "6",
+                "tkn_idx": "177",
+                "aspect": "PERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PRESENT"
+            },
+            {
+                "sent_idx": "6",
+                "tkn_idx": "181",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "6",
+                "tkn_idx": "192",
+                "aspect": "IMPERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PAST"
+            },
+            {
+                "sent_idx": "6",
+                "tkn_idx": "199",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "7",
+                "tkn_idx": "206",
+                "aspect": "IMPERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PRESENT"
+            },
+            {
+                "sent_idx": "7",
+                "tkn_idx": "214",
+                "aspect": "IMPERFECTIVE",
+                "modality": "VOLERE",
+                "mood": "SUBJUNCTIVE",
+                "polarity": "POS",
+                "tense": "PRESENT"
+            },
+            {
+                "sent_idx": "7",
+                "tkn_idx": "215",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "7",
+                "tkn_idx": "216",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "7",
+                "tkn_idx": "223",
+                "aspect": "IMPERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PRESENT"
+            },
+            {
+                "sent_idx": "7",
+                "tkn_idx": "226",
+                "aspect": "PERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "8",
+                "tkn_idx": "249",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "8",
+                "tkn_idx": "253",
+                "aspect": "PERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PAST"
+            },
+            {
+                "sent_idx": "8",
+                "tkn_idx": "271",
+                "aspect": "IMPERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PRESENT"
+            },
+            {
+                "sent_idx": "8",
+                "tkn_idx": "277",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "8",
+                "tkn_idx": "278",
+                "aspect": "IMPERFECTIVE",
+                "modality": "VOLERE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PRESENT"
+            },
+            {
+                "sent_idx": "8",
+                "tkn_idx": "279",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "9",
+                "tkn_idx": "300",
+                "aspect": "PERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PRESENT"
+            },
+            {
+                "sent_idx": "9",
+                "tkn_idx": "307",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "9",
+                "tkn_idx": "312",
+                "aspect": "IMPERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PRESENT"
+            },
+            {
+                "sent_idx": "9",
+                "tkn_idx": "327",
+                "aspect": "IMPERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PRESENT"
+            },
+            {
+                "sent_idx": "10",
+                "tkn_idx": "340",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "10",
+                "tkn_idx": "348",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "10",
+                "tkn_idx": "352",
+                "aspect": "PERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "10",
+                "tkn_idx": "354",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "10",
+                "tkn_idx": "363",
+                "aspect": "IMPERFECTIVE",
+                "modality": "DOVERE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PRESENT"
+            },
+            {
+                "sent_idx": "10",
+                "tkn_idx": "365",
+                "aspect": "PERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "10",
+                "tkn_idx": "371",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "10",
+                "tkn_idx": "373",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "10",
+                "tkn_idx": "375",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "10",
+                "tkn_idx": "377",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "11",
+                "tkn_idx": "382",
+                "aspect": "IMPERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PRESENT"
+            },
+            {
+                "sent_idx": "11",
+                "tkn_idx": "383",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "11",
+                "tkn_idx": "386",
+                "aspect": "IMPERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PRESENT"
+            },
+            {
+                "sent_idx": "11",
+                "tkn_idx": "390",
+                "aspect": "IMPERFECTIVE",
+                "mood": "SUBJUNCTIVE",
+                "polarity": "POS",
+                "tense": "PRESENT"
+            },
+            {
+                "sent_idx": "11",
+                "tkn_idx": "392",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "11",
+                "tkn_idx": "393",
+                "aspect": "PERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "11",
+                "tkn_idx": "400",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "11",
+                "tkn_idx": "402",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "11",
+                "tkn_idx": "410",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "12",
+                "tkn_idx": "415",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "12",
+                "tkn_idx": "418",
+                "aspect": "PERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PRESENT"
+            },
+            {
+                "sent_idx": "12",
+                "tkn_idx": "423",
+                "aspect": "PERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "12",
+                "tkn_idx": "427",
+                "aspect": "IMPERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PRESENT"
+            },
+            {
+                "sent_idx": "12",
+                "tkn_idx": "430",
+                "aspect": "IMPERFECTIVE",
+                "mood": "SUBJUNCTIVE",
+                "polarity": "POS",
+                "tense": "PRESENT"
+            },
+            {
+                "sent_idx": "12",
+                "tkn_idx": "432",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "12",
+                "tkn_idx": "434",
+                "aspect": "PERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "13",
+                "tkn_idx": "443",
+                "aspect": "IMPERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PRESENT"
+            },
+            {
+                "sent_idx": "13",
+                "tkn_idx": "449",
+                "aspect": "PERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PRESENT"
+            },
+            {
+                "sent_idx": "13",
+                "tkn_idx": "450",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "13",
+                "tkn_idx": "460",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "14",
+                "tkn_idx": "467",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "14",
+                "tkn_idx": "469",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "14",
+                "tkn_idx": "471",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "14",
+                "tkn_idx": "474",
+                "aspect": "IMPERFECTIVE",
+                "modality": "DOVERE",
+                "mood": "CONDITIONAL",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "14",
+                "tkn_idx": "475",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "14",
+                "tkn_idx": "477",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "14",
+                "tkn_idx": "482",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "14",
+                "tkn_idx": "485",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "14",
+                "tkn_idx": "486",
+                "aspect": "IMPERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PRESENT"
+            },
+            {
+                "sent_idx": "14",
+                "tkn_idx": "493",
+                "aspect": "IMPERFECTIVE",
+                "modality": "POTERE",
+                "mood": "CONDITIONAL",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "14",
+                "tkn_idx": "494",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "14",
+                "tkn_idx": "499",
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "sent_idx": "14",
+                "tkn_idx": "509",
+                "aspect": "IMPERFECTIVE",
+                "modality": "POTERE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PRESENT"
+            },
+            {
+                "sent_idx": "14",
+                "tkn_idx": "512",
+                "aspect": "PERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            }
+        ],
+        "timexs": [
+            {
+                "sent_idx": "0",
+                "tkn_idx": "0",
+                "type": "DATE",
+                "val": "1985-01-30",
+                "function_in_document": "CREATION_TIME",
+                "id": "t0"
+            },
+            {
+                "sent_idx": "4",
+                "tkn_idx": "117",
+                "type": "DATE",
+                "val": "PRESENT_REF"
+            },
+            {
+                "sent_idx": "6",
+                "tkn_idx": "174",
+                "type": "DATE",
+                "val": "1984-06"
+            },
+            {
+                "sent_idx": "6",
+                "tkn_idx": "190",
+                "type": "DATE",
+                "val": "1984-06"
+            },
+            {
+                "sent_idx": "6",
+                "tkn_idx": "197",
+                "type": "DURATION",
+                "val": "P2Y"
+            },
+            {
+                "sent_idx": "7",
+                "tkn_idx": "203",
+                "type": "DATE",
+                "val": "PRESENT_REF"
+            },
+            {
+                "sent_idx": "8",
+                "tkn_idx": "244",
+                "type": "DATE",
+                "val": "1981"
+            },
+            {
+                "sent_idx": "8",
+                "tkn_idx": "247",
+                "type": "DATE",
+                "val": "1983"
+            },
+            {
+                "sent_idx": "8",
+                "tkn_idx": "269",
+                "type": "DURATION",
+                "val": "P3Y"
+            },
+            {
+                "sent_idx": "8",
+                "tkn_idx": "273",
+                "type": "DATE",
+                "val": "1983"
+            },
+            {
+                "sent_idx": "8",
+                "tkn_idx": "275",
+                "type": "DATE",
+                "val": "1986"
+            },
+            {
+                "sent_idx": "9",
+                "tkn_idx": "296",
+                "type": "DATE",
+                "val": "1984"
+            },
+            {
+                "sent_idx": "9",
+                "tkn_idx": "310",
+                "type": "DATE",
+                "val": "1983"
+            },
+            {
+                "sent_idx": "11",
+                "tkn_idx": "398",
+                "type": "DURATION",
+                "val": "P1M"
+            }
+        ]
+    },
+    "tlinks": [
+        {
+            "from": "e1",
+            "to": "t0",
+            "relation": "before"
+        },
+        {
+            "from": "e2",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e3",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e4",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e5",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e6",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e7",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e8",
+            "to": "t0",
+            "relation": "overlap"
+        },
+        {
+            "from": "e9",
+            "to": "t0",
+            "relation": "overlap"
+        },
+        {
+            "from": "e10",
+            "to": "t0",
+            "relation": "overlap"
+        },
+        {
+            "from": "e11",
+            "to": "t0",
+            "relation": "overlap"
+        },
+        {
+            "from": "e12",
+            "to": "t0",
+            "relation": "before"
+        },
+        {
+            "from": "e13",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e14",
+            "to": "t0",
+            "relation": "before"
+        },
+        {
+            "from": "e15",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e16",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e17",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e18",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e19",
+            "to": "t0",
+            "relation": "overlap"
+        },
+        {
+            "from": "e20",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e21",
+            "to": "t0",
+            "relation": "overlap"
+        },
+        {
+            "from": "e22",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e23",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e24",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e25",
+            "to": "t0",
+            "relation": "before"
+        },
+        {
+            "from": "e26",
+            "to": "t0",
+            "relation": "overlap"
+        },
+        {
+            "from": "e27",
+            "to": "t0",
+            "relation": "overlap"
+        },
+        {
+            "from": "e28",
+            "to": "t0",
+            "relation": "overlap"
+        },
+        {
+            "from": "e29",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e30",
+            "to": "t0",
+            "relation": "overlap"
+        },
+        {
+            "from": "e31",
+            "to": "t0",
+            "relation": "before"
+        },
+        {
+            "from": "e32",
+            "to": "t0",
+            "relation": "before"
+        },
+        {
+            "from": "e33",
+            "to": "t0",
+            "relation": "before"
+        },
+        {
+            "from": "e34",
+            "to": "t0",
+            "relation": "before"
+        },
+        {
+            "from": "e35",
+            "to": "t0",
+            "relation": "overlap"
+        },
+        {
+            "from": "e36",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e37",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e38",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e39",
+            "to": "t0",
+            "relation": "overlap"
+        },
+        {
+            "from": "e40",
+            "to": "t0",
+            "relation": "overlap"
+        },
+        {
+            "from": "e41",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e42",
+            "to": "t0",
+            "relation": "before"
+        },
+        {
+            "from": "e43",
+            "to": "t0",
+            "relation": "before"
+        },
+        {
+            "from": "e44",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e45",
+            "to": "t0",
+            "relation": "before"
+        },
+        {
+            "from": "e46",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e47",
+            "to": "t0",
+            "relation": "before"
+        },
+        {
+            "from": "e48",
+            "to": "t0",
+            "relation": "before"
+        },
+        {
+            "from": "e49",
+            "to": "t0",
+            "relation": "overlap"
+        },
+        {
+            "from": "e50",
+            "to": "t0",
+            "relation": "overlap"
+        },
+        {
+            "from": "e51",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e52",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e53",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e54",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e55",
+            "to": "t0",
+            "relation": "overlap"
+        },
+        {
+            "from": "e56",
+            "to": "t0",
+            "relation": "before"
+        },
+        {
+            "from": "e57",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e58",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e59",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e60",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e61",
+            "to": "t0",
+            "relation": "overlap"
+        },
+        {
+            "from": "e62",
+            "to": "t0",
+            "relation": "overlap"
+        },
+        {
+            "from": "e63",
+            "to": "t0",
+            "relation": "overlap"
+        },
+        {
+            "from": "e64",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e65",
+            "to": "t0",
+            "relation": "before"
+        },
+        {
+            "from": "e66",
+            "to": "t0",
+            "relation": "before"
+        },
+        {
+            "from": "e67",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e68",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e69",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e70",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e71",
+            "to": "t0",
+            "relation": "overlap"
+        },
+        {
+            "from": "e72",
+            "to": "t0",
+            "relation": "before"
+        },
+        {
+            "from": "e73",
+            "to": "t0",
+            "relation": "overlap"
+        },
+        {
+            "from": "e74",
+            "to": "t0",
+            "relation": "overlap"
+        },
+        {
+            "from": "e75",
+            "to": "t0",
+            "relation": "overlap"
+        },
+        {
+            "from": "e76",
+            "to": "t0",
+            "relation": "before"
+        },
+        {
+            "from": "e77",
+            "to": "t0",
+            "relation": "overlap"
+        },
+        {
+            "from": "e78",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e79",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e80",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e81",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e82",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e83",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e84",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e85",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e86",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e87",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e88",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e89",
+            "to": "t0",
+            "relation": "overlap"
+        },
+        {
+            "from": "e90",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e91",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e92",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e93",
+            "to": "t0",
+            "relation": "overlap"
+        },
+        {
+            "from": "e94",
+            "to": "t0",
+            "relation": "before"
+        },
+        {
+            "from": "e19",
+            "to": "t2",
+            "relation": "overlap"
+        },
+        {
+            "from": "e31",
+            "to": "t3",
+            "relation": "overlap"
+        },
+        {
+            "from": "e33",
+            "to": "t4",
+            "relation": "overlap"
+        },
+        {
+            "from": "e34",
+            "to": "t5",
+            "relation": "overlap"
+        },
+        {
+            "from": "e35",
+            "to": "t6",
+            "relation": "overlap"
+        },
+        {
+            "from": "e42",
+            "to": "t6",
+            "relation": "started_by"
+        },
+        {
+            "from": "e43",
+            "to": "t10",
+            "relation": "started_by"
+        },
+        {
+            "from": "e45",
+            "to": "t8",
+            "relation": "overlap"
+        },
+        {
+            "from": "e47",
+            "to": "t11",
+            "relation": "overlap"
+        },
+        {
+            "from": "e48",
+            "to": "t12",
+            "relation": "after"
+        },
+        {
+            "from": "e65",
+            "to": "t13",
+            "relation": "vague"
+        },
+        {
+            "from": "e66",
+            "to": "t13",
+            "relation": "vague"
+        },
+        {
+            "from": "e1",
+            "to": "e8",
+            "relation": "before"
+        },
+        {
+            "from": "e8",
+            "to": "e21",
+            "relation": "overlap"
+        },
+        {
+            "from": "e21",
+            "to": "e31",
+            "relation": "after"
+        },
+        {
+            "from": "e31",
+            "to": "e35",
+            "relation": "before"
+        },
+        {
+            "from": "e35",
+            "to": "e42",
+            "relation": "after"
+        },
+        {
+            "from": "e42",
+            "to": "e47",
+            "relation": "before"
+        },
+        {
+            "from": "e47",
+            "to": "e56",
+            "relation": "before"
+        },
+        {
+            "from": "e56",
+            "to": "e61",
+            "relation": "before"
+        },
+        {
+            "from": "e61",
+            "to": "e73",
+            "relation": "overlap"
+        },
+        {
+            "from": "e73",
+            "to": "e77",
+            "relation": "overlap"
+        },
+        {
+            "from": "e77",
+            "to": "e85",
+            "relation": "overlap"
+        }
+    ],
+    "name": "els.morph003"
+}
