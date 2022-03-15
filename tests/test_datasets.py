@@ -6,7 +6,7 @@ from collections import defaultdict
 from tieval import datasets
 from tieval.datasets import read, DATASETS_METADATA
 
-os.chdir("/")
+os.chdir("..")
 
 
 @pytest.fixture
@@ -68,3 +68,34 @@ def test_download():
     for dataset in datasets.SUPPORTED_DATASETS:
         print()
 
+
+def test_read():
+
+    assert datasets.read("aquaint")
+    assert datasets.read("eventtime")
+    assert datasets.read("grapheve")
+    assert datasets.read("matres")
+    assert datasets.read("mctaco")
+    assert datasets.read("meantime_english")
+    assert datasets.read("meantime_spanish")
+    assert datasets.read("meantime_dutch")
+    assert datasets.read("meantime_italian")
+    assert datasets.read("platinum")
+    assert datasets.read("tcr")
+    assert datasets.read("tddiscourse")
+    assert datasets.read("tempeval_2_chinese")
+    assert datasets.read("tempeval_2_english")
+    assert datasets.read("tempeval_2_french")
+    assert datasets.read("tempeval_2_italian")
+    assert datasets.read("tempeval_2_korean")
+    assert datasets.read("tempeval_2_spanish")
+    assert datasets.read("tempeval_3")
+    assert datasets.read("tempqa")
+    assert datasets.read("tempquestions")
+    assert datasets.read("timebank_1.2")
+    assert datasets.read("timebank_dense")
+    assert datasets.read("timebankpt")
+    assert datasets.read("timebank")
+    assert datasets.read("torque")
+    assert datasets.read("traint3")
+    assert datasets.read("uds_t")
