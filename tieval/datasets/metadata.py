@@ -16,8 +16,8 @@ from typing import Union, Tuple, Iterable
 
 from tieval.datasets.readers import \
     XMLDatasetReader, \
-    TableDatasetReader, \
-    JSONDatasetReader
+    JSONDatasetReader, \
+    EventTimeDatasetReader
 
 
 from tieval.datasets.readers import \
@@ -30,7 +30,7 @@ from tieval.datasets.readers import \
 from tieval import DATA_PATH
 
 
-DatasetReaders = Union[XMLDatasetReader, TableDatasetReader]
+DatasetReaders = Union[XMLDatasetReader, EventTimeDatasetReader]
 DocumentReaders = Union[TempEval3DocumentReader, MeanTimeDocumentReader]
 
 TMLDocumentReader = None
@@ -78,12 +78,8 @@ DATASETS_METADATA = {
     "eventtime": DatasetMetadata(
         name="EventTime",
         url="https://drive.inesctec.pt/s/wbGtJceye6ntkiS/download",
-        reader=TableDatasetReader,
-        files=[
-            "event-times_normalized.tab"
-        ],
-        base=["timebank"],
-        columns=("doc", "sentence_idx", "token_idx", "tag_id", "instance_id", "attribute_name", "attribute_value"),
+        reader=EventTimeDatasetReader,
+        base=["timebank"]
     ),
 
     "grapheve": DatasetMetadata(
@@ -103,7 +99,7 @@ DATASETS_METADATA = {
         columns=("doc", "src_token", "tgt_token", "src", "tgt", "relation"),
         event_index="eiid",
         repo="https://github.com/qiangning/MATRES",
-        reader=TableDatasetReader,
+        reader=EventTimeDatasetReader,
     ),
 
     "mctaco": DatasetMetadata(
@@ -159,7 +155,7 @@ DATASETS_METADATA = {
         base=["timebank_1.2"],
         columns=("doc", "src", "tgt", "relation"),
         event_index="eid",
-        reader=TableDatasetReader,
+        reader=EventTimeDatasetReader,
     ),
 
     "tempeval_2_chinese": DatasetMetadata(
@@ -240,7 +236,7 @@ DATASETS_METADATA = {
         base=["timebank_1.2"],
         columns=("doc", "src", "tgt", "relation"),
         event_index="eid",
-        reader=TableDatasetReader,
+        reader=EventTimeDatasetReader,
 
     ),
 

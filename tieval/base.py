@@ -106,9 +106,13 @@ class Dataset:
 
     name: str
     train: List[Document]
-    test: List[Document]
+    test: List[Document] = None
 
     def __post_init__(self):
+
+        if self.test is None:
+            self.test = []
+
         self.documents = self.train + self.test
 
     def __repr__(self):

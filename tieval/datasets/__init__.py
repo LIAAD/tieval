@@ -17,7 +17,7 @@ The corpus available are:
 
 # dataset readers
 from tieval.datasets.readers import XMLDatasetReader
-from tieval.datasets.readers import TableDatasetReader
+from tieval.datasets.readers import EventTimeDatasetReader
 
 # document readers
 from tieval.datasets.readers import TempEval3DocumentReader

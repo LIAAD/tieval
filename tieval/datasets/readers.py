@@ -6,10 +6,7 @@ import json
 import warnings
 import collections
 
-import re
-
 from tqdm import tqdm
-import string
 
 from pathlib import Path
 
@@ -20,21 +17,6 @@ from tieval.entities import Timex, Event, Entity
 from tieval.links import TLink
 from tieval.datasets.utils import xml2dict
 from tieval.temporal_relation import SUPPORTED_RELATIONS
-
-from pprint import pprint
-
-
-
-def _detokenize(tokens):
-    text = [
-        " " + tkn
-        if not tkn.startswith("'") and tkn not in string.punctuation
-        else tkn
-        for tkn in tokens
-    ]
-
-    return "".join(text).strip()
-
 
 """
 Document Readers.
@@ -91,7 +73,7 @@ class TempEval3DocumentReader(BaseDocumentReader):
 
     @property
     def _name(self) -> str:
-        return self.path.parts[-1]
+        return self.path.name.replace(".tml", "")
 
     @property
     def _text(self) -> str:
@@ -131,6 +113,8 @@ class TempEval3DocumentReader(BaseDocumentReader):
                     aspect=mkinst['aspect'],
                     class_=mkinst['class'],
                     id=mkinst['eiid'],
+                    eid=mkinst['eid'],
+                    eiid=mkinst['eiid'],
                     polarity=mkinst['polarity'],
                     pos=mkinst['pos'],
                     tense=mkinst['tense'],
@@ -631,6 +615,8 @@ class TempEval2FrenchDocumentReader(BaseDocumentReader):
 
                 entities.add(Event(
                     id=mkinst['eiid'],
+                    eid=mkinst['eid'],
+                    eiid=mkinst['eiid'],
                     text=mkinst['text'],
                     aspect=mkinst.get('aspect'),
                     class_=mkinst.get('class'),
@@ -648,6 +634,7 @@ class TempEval2FrenchDocumentReader(BaseDocumentReader):
 
                 entities.add(Event(
                     id=event['eid'],
+                    eid=event['eid'],
                     text=event['text'],
                     aspect=event.get('aspect'),
                     class_=event.get('class'),
@@ -697,120 +684,12 @@ class TempEval2FrenchDocumentReader(BaseDocumentReader):
         return result
 
 
-
 """
 Dataset Readers.
 """
 
 DocName = str
 SourceID, TargetID = str, str
-
-
-class TableDatasetReader:
-    """Read temporal annotated files that the annotation is given on tables.
-    As is the case of: MATRES, TDDiscourse and TimeBank-Dense."""
-
-    def __init__(self, metadata, base_dataset: Dataset) -> None:
-        self._metadata = metadata
-        self._base_dataset = base_dataset
-
-    def read(self, path: str) -> Dataset:
-
-        path = Path(path)
-
-        documents = set()
-        with open(path, 'r') as f:
-
-            content = f.read()
-            lines = [line.split() for line in content.split('\n')]
-
-            # create a dictionary with docs as keys and a list of tlinks as values.
-            lines_by_doc = collections.defaultdict(list)
-            for line in lines:
-                if line:
-                    doc_name = line[self._metadata.columns.index("doc")]
-                    lines_by_doc[doc_name] += [line]
-
-            # add tlinks from table to the base document
-            for doc_name, lines in lines_by_doc.items():
-
-                doc = self._retrieve_base_document(doc_name)
-
-                tlinks = set()
-                for idx, line in enumerate(lines):
-
-                    src, tgt, relation = self._decode_line(line)
-                    source, target = self._get_source_target(src, tgt, doc)
-
-                    if source and target:
-                        tlinks.add(
-                            TLink(
-                                id=f"l{idx}",
-                                source=source,
-                                target=target,
-                                relation=relation
-                            )
-                        )
-
-                doc.tlinks = tlinks
-                documents.add(doc)
-
-        return Dataset(path.name, documents)
-
-    def _decode_line(self, line: List[str]):
-
-        column_idxs = (
-            self._metadata.columns.index("src"),
-            self._metadata.columns.index("tgt"),
-            self._metadata.columns.index("relation"),
-        )
-
-        src, tgt, relation = [line[idx] for idx in column_idxs]
-
-        return src, tgt, relation
-
-    def _resolve_id(self, id, doc):
-
-        # to address the problem of timebank-dense where t0 is referred but it is not defined on timebank.
-        if id == "t0":
-            return doc._dct.id
-
-        # MATRES only has the id number (ex: "e105" appears as 105)
-        if id.isdigit():
-            if self._metadata.event_index == "eiid":
-                eiid = f"ei{id}"
-                eid = doc._eiid2eid.get(eiid)
-                return eid
-
-            elif self._metadata.event_index == "eid":
-                eid = f"e{id}"
-                return eid
-
-        return id
-
-    def _retrieve_base_document(self, doc_name):
-
-        # retrieve document from the original dataset.
-        doc = self._base_dataset[doc_name]
-
-        if doc is None:
-            warnings.warn(f"Document {doc_name} was not found on the source dataset "
-                          f"{self._base_dataset.name}")
-
-        return doc
-
-    def _get_source_target(self, src: str, tgt: str, doc: Document) -> Tuple[Entity]:
-
-        source = doc[self._resolve_id(src, doc)]
-        target = doc[self._resolve_id(tgt, doc)]
-
-        if source is None:
-            warnings.warn(f"{src} not found on the original document {doc.name}.")
-
-        elif target is None:
-            warnings.warn(f"{tgt} not found on the original document {doc.name}.")
-
-        return source, target
 
 
 class XMLDatasetReader:
@@ -828,7 +707,6 @@ class XMLDatasetReader:
         train, test = [], []
         files = list(path.glob("**/*.[tx]ml"))
         for file in tqdm(files):
-            print(file)
             reader = self.document_reader(file)
             document = reader.read()
 
@@ -855,7 +733,6 @@ class JSONDatasetReader:
         train, test = [], []
         files = list(path.glob("**/*.json"))
         for file in tqdm(files):
-            print(file)
             reader = self.document_reader(file)
             document = reader.read()
 
@@ -866,3 +743,41 @@ class JSONDatasetReader:
                 train += [document]
 
         return Dataset(path.name, train, test)
+
+
+class EventTimeDatasetReader:
+
+    def __init__(self, base_dataset: Dataset) -> None:
+        self.base_dataset = base_dataset
+
+    def read(self, path: str) -> Dataset:
+
+        path = Path(path)
+
+        events_table = path / "train/event-times_normalized.tab"
+        with open(events_table, 'r') as fin:
+
+            docs = collections.defaultdict(list)
+            for line in fin.readlines():
+                doc, sent_idx, tkn_idx, entity_type, id_, _, type_, value = line.split()
+                docs[doc] += [Event(
+                    id=id_,
+                    sent_idx=sent_idx,
+                    tkn_idx=tkn_idx,
+                    type=type_,
+                    value=value
+                )]
+
+        documents = []
+        for doc_name, events in docs.items():
+
+            document = self.base_dataset[doc_name]
+
+            document.tlinks = None
+            document.entities = events
+
+            documents += [document]
+
+        return Dataset(path.name, train=documents)
+
+
