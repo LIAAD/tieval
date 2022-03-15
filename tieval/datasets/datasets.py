@@ -48,7 +48,7 @@ def read(dataset: str) -> List[Dataset]:
         base_dataset = sum(base_datasets)
 
         # define reader
-        reader = metadata.reader(metadata, base_dataset)
+        reader = metadata.reader(base_dataset)
 
     # tml dataset
     else:
