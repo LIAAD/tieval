@@ -2,7 +2,7 @@
 
 A framework for the development of temporally aware models.
 
-![](imgs/text2timeline.png)
+![](imgs/tieval.png)
 
 ## Installation
 
