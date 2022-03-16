@@ -6,3 +6,4 @@ spacy~=3.2.1
 tqdm~=4.62.3
 requests~=2.27.1
 tabulate~=0.8.9
+xmltodict
