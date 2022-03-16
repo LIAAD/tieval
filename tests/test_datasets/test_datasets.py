@@ -24,8 +24,8 @@ def test_read_matres():
     assert read("matres")
 
 
-def test_read_mctaco():
-    assert read("mctaco")
+# def test_read_mctaco():
+#     assert read("mctaco")
 
 
 def test_read_meantime_english():
@@ -84,8 +84,8 @@ def test_read_tempeval_3():
     assert read("tempeval_3")
 
 
-def test_read_tempqa():
-    assert read("tempqa")
+# def test_read_tempqa():
+#     assert read("tempqa")
 
 
 # def test_read_tempquestions():
@@ -108,8 +108,8 @@ def test_read_timebank():
     assert read("timebank")
 
 
-def test_read_torque():
-    torque = read("torque")
+# def test_read_torque():
+#     torque = read("torque")
 
 
 def test_read_traint3():

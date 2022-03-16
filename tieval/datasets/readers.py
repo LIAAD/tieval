@@ -139,6 +139,9 @@ class TempEval3DocumentReader(BaseDocumentReader):
                     sent_idx=int(timex.get("sent_idx"))
                 ))
 
+        # dct
+        entities.add(self._dct)
+
         return entities
 
     @property
@@ -237,6 +240,9 @@ class TimeBank12DocumentReader(BaseDocumentReader):
                     type_=timex["type"],
                     value=timex["value"],
                 ))
+
+        # dct
+        entities.add(self._dct)
 
         return entities
 
@@ -1026,7 +1032,6 @@ class XMLDatasetReader:
         train, test = [], []
         files = list(path.glob("**/*.[tx]ml"))
         for file in tqdm(files):
-            print(file)
             reader = self.document_reader(file)
             document = reader.read()
 
@@ -1231,7 +1236,6 @@ class UDSTDatasetReader:
         self.base_dataset = base_dataset
 
     def read(self, path: str) -> Dataset:
-
         return None
 
 
@@ -1244,29 +1248,54 @@ class TimeBankDenseDatasetReader:
 
         path = Path(path)
 
-        events_table = path / "train/event-times_normalized.tab"
-        with open(events_table, 'r') as fin:
+        docs = {
+            "train": collections.defaultdict(list),
+            "test": collections.defaultdict(list)
+        }
+        for filepath in path.glob("**/*.txt"):
 
-            docs = collections.defaultdict(list)
-            for line in fin.readlines():
-                doc, sent_idx, tkn_idx, entity_type, id_, _, type_, value = line.split()
-                docs[doc] += [Event(
-                    id=id_,
-                    sent_idx=sent_idx,
-                    tkn_idx=tkn_idx,
-                    type=type_,
-                    value=value
-                )]
+            split = filepath.parts[-2]
+            with open(filepath, 'r') as fin:
 
-        documents = []
-        for doc_name, events in docs.items():
+                for line in fin.readlines():
 
-            document = self.base_dataset[doc_name]
+                    doc, src_id, tgt_id, relation = line.split()
 
-            document.tlinks = None
-            document.entities = events
+                    document = self.base_dataset[doc]
+                    entities_dict = {}
+                    for timex in document.timexs:
+                        if timex.is_dct:
+                            entities_dict["t0"] = timex
+                        else:
+                            entities_dict[timex.id] = timex
 
-            documents += [document]
+                    entities_dict.update({event.eid: event for event in document.events})
 
-        return Dataset(path.name, train=documents)
+                    src = entities_dict[src_id]
+                    tgt = entities_dict[tgt_id]
 
+                    docs[split][doc] += [TLink(
+                        source=src,
+                        target=tgt,
+                        relation=relation
+                    )]
+
+        documents = {
+            "train": [],
+            "test": []
+        }
+        for split in docs:
+            for doc_name, tlinks in docs[split].items():
+
+                document = self.base_dataset[doc_name]
+
+                entities = []
+                for tlink in tlinks:
+                    entities += [tlink.source, tlink.target]
+
+                document.tlinks = tlinks
+                document.entities = set(entities)
+
+                documents[split] += [document]
+
+        return Dataset(path.name, train=documents["train"], test=documents["test"])
