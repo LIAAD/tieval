@@ -660,6 +660,108 @@ class TempEval2DocumentReader(BaseDocumentReader):
         return endpoints[0], endpoints[-1]
 
 
+class TCRDocumentReader(BaseDocumentReader):
+
+    def __init__(self, path):
+        if not isinstance(path, Path):
+            path = Path(path)
+
+        self.path = path
+        self.content = xml2dict(self.path)
+
+        self.xml = ET.parse(self.path)
+
+    @property
+    def _name(self) -> str:
+        return self.content["TimeML"]["DOCID"]
+
+    @property
+    def _text(self) -> str:
+        root = self.xml.find("TEXT")
+        return "".join(root.itertext())
+
+    @property
+    def _entities(self) -> Iterable[Entity]:
+
+        entities = set()
+
+        # events
+        events = self.content["TimeML"]["TEXT"].get("EVENT")
+        events_dict = {event["eid"]: event for event in events}
+        mkinsts = self.content["TimeML"].get("MAKEINSTANCE")
+        if mkinsts:
+
+            # add makeintance information to events
+            for mkinst in mkinsts:
+
+                event = events_dict.get(mkinst["eid"])
+                if event:
+                    mkinst.update(event)
+
+                entities.add(Event(
+                    aspect=mkinst.get('aspect'),
+                    class_=mkinst.get('class'),
+                    id=mkinst['eiid'],
+                    eid=mkinst['eid'],
+                    eiid=mkinst['eiid'],
+                    polarity=mkinst.get('polarity'),
+                    pos=mkinst.get('pos'),
+                    tense=mkinst.get('tense'),
+                    text=mkinst.get('text')
+                ))
+
+        # timexs
+        timexs = self.content["TimeML"]["TEXT"].get("TIMEX3")
+        if not isinstance(timexs, list) and timexs is not None:
+            timexs = [timexs]
+
+        if timexs:
+            for timex in timexs:
+
+                entities.add(Timex(
+                    text=timex["text"],
+                    id=timex["tid"],
+                    type_=timex["type"],
+                    value=timex["value"],
+                ))
+
+        # dct
+        entities.add(self._dct)
+
+        return entities
+
+    @property
+    def _dct(self) -> Timex:
+
+        attrib = self.content["TimeML"]["DCT"]["TIMEX3"]
+        return Timex(
+            function_in_document=attrib["functionInDocument"],
+            text=attrib["text"],
+            id=attrib["tid"],
+            type_=attrib["type"],
+            value=attrib["value"],
+        )
+
+    @property
+    def _tlinks(self) -> Iterable[TLink]:
+
+        entities_dict = {ent.id: ent for ent in self._entities}
+
+        tlinks = self.content["TimeML"].get("TLINK")
+
+        result = set()
+
+        for tlink in tlinks:
+            result.add(TLink(
+                    id=tlink["lid"],
+                    source=entities_dict[tlink["from"]],
+                    target=entities_dict[tlink["to"]],
+                    relation=tlink["relType"]
+            ))
+
+        return result
+
+
 class TempEval2FrenchDocumentReader(BaseDocumentReader):
 
     def __init__(self, path):
@@ -785,6 +887,122 @@ class TempEval2FrenchDocumentReader(BaseDocumentReader):
         return result
 
 
+class TimeBankPTDocumentReader(BaseDocumentReader):
+
+    def __init__(self, path):
+        if not isinstance(path, Path):
+            path = Path(path)
+
+        self.path = path
+        self.content = xml2dict(self.path)
+
+        self.xml = ET.parse(self.path)
+
+    @property
+    def _name(self) -> str:
+        return self.path.name.replace(".tml", "")
+
+    @property
+    def _dct(self) -> Timex:
+
+        attrib = self.content["TempEval"]["TIMEX3"]
+        return Timex(
+            id=attrib["tid"],
+            function_in_document=attrib["functionInDocument"],
+            value=attrib["value"],
+            text=attrib["text"],
+            type=attrib["type"],
+        )
+
+    @property
+    def _text(self) -> str:
+
+        sentences = self.xml.findall("s")
+
+        text = "\n".join(
+            "".join(e for e in sent.itertext())
+            for sent in sentences
+        )
+
+        return text
+
+    @property
+    def _entities(self) -> Iterable[Entity]:
+
+        entities = set()
+
+        # events
+        events, timexs = [], []
+        for sent in self.content["TempEval"]["s"]:
+
+            if "EVENT" in sent:
+                sent_events = sent["EVENT"]
+                if not isinstance(sent_events, list):
+                    sent_events = [sent_events]
+                events += sent_events
+
+            if "TIMEX3" in sent:
+                sent_timexs = sent["TIMEX3"]
+                if not isinstance(sent_timexs, list):
+                    sent_timexs = [sent_timexs]
+                timexs += sent_timexs
+
+        for event in events:
+            entities.add(Event(
+                id=event['eid'],
+                eid=event['eid'],
+                text=event['text'],
+                aspect=event.get('aspect'),
+                class_=event.get('class'),
+                modality=event.get('modality'),
+                polarity=event.get('polarity'),
+                cardinality=event.get('cardinality'),
+                signal_id=event.get('signalID'),
+                pos=event.get('pos'),
+                tense=event.get('tense'),
+            ))
+
+        for timex in timexs:
+            entities.add(Timex(
+                id=timex["tid"],
+                text=timex.get("text"),
+                value=timex.get("value"),
+                type=timex.get("type"),
+                function_in_document=timex.get("functionInDocument"),
+                anchor_time_id=timex.get("anchorTimeID"),
+                temporal_function=timex.get("temporalFunction"),
+                value_from_function=timex.get("valueFromFunction"),
+            ))
+
+        # dct
+        entities.add(self._dct)
+
+        return entities
+
+    @property
+    def _tlinks(self) -> Iterable[TLink]:
+
+        result = set()
+
+        entities_dict = {ent.id: ent for ent in self._entities}
+
+        tlinks = self.content["TempEval"].get("TLINK")
+        if tlinks:
+
+            if not isinstance(tlinks, list):
+                tlinks = [tlinks]
+
+            for tlink in tlinks:
+                result.add(TLink(
+                    id=tlink["lid"],
+                    source=entities_dict[tlink["from"]],
+                    target=entities_dict[tlink["to"]],
+                    relation=tlink["relType"]
+                ))
+
+        return result
+
+
 """
 Dataset Readers.
 """
@@ -898,7 +1116,7 @@ class MATRESDatasetReader:
         }
         for filepath in path.glob("**/*.txt"):
 
-            folder = filepath.parts[-2]
+            split = filepath.parts[-2]
             with open(filepath, 'r') as fin:
 
                 for line in fin.readlines():
@@ -913,7 +1131,7 @@ class MATRESDatasetReader:
                     src = entities_dict[src_id]
                     tgt = entities_dict[tgt_id]
 
-                    docs[folder][doc] += [TLink(
+                    docs[split][doc] += [TLink(
                         source=src,
                         target=tgt,
                         relation=relation
@@ -923,8 +1141,8 @@ class MATRESDatasetReader:
             "train": [],
             "test": []
         }
-        for folder in docs:
-            for doc_name, tlinks in docs[folder].items():
+        for split in docs:
+            for doc_name, tlinks in docs[split].items():
 
                 document = self.base_dataset[doc_name]
 
@@ -935,7 +1153,7 @@ class MATRESDatasetReader:
                 document.tlinks = tlinks
                 document.entities = set(entities)
 
-                documents[folder] += [document]
+                documents[split] += [document]
 
         return Dataset(path.name, train=documents["train"], test=documents["test"])
 
@@ -961,31 +1179,50 @@ class TDDiscourseDatasetReader:
 
         path = Path(path)
 
-        events_table = path / "train/event-times_normalized.tab"
-        with open(events_table, 'r') as fin:
+        docs = {
+            "train": collections.defaultdict(list),
+            "test": collections.defaultdict(list)
+        }
+        for filepath in path.glob("**/*.tsv"):
 
-            docs = collections.defaultdict(list)
-            for line in fin.readlines():
-                doc, sent_idx, tkn_idx, entity_type, id_, _, type_, value = line.split()
-                docs[doc] += [Event(
-                    id=id_,
-                    sent_idx=sent_idx,
-                    tkn_idx=tkn_idx,
-                    type=type_,
-                    value=value
-                )]
+            split = filepath.parts[-2]
+            with open(filepath, 'r') as fin:
 
-        documents = []
-        for doc_name, events in docs.items():
+                for line in fin.readlines():
 
-            document = self.base_dataset[doc_name]
+                    doc, src_id, tgt_id, relation = line.split()
 
-            document.tlinks = None
-            document.entities = events
+                    document = self.base_dataset[doc]
+                    entities_dict = {ent.eid: ent for ent in document.events}
 
-            documents += [document]
+                    src = entities_dict[src_id]
+                    tgt = entities_dict[tgt_id]
 
-        return Dataset(path.name, train=documents)
+                    docs[split][doc] += [TLink(
+                        source=src,
+                        target=tgt,
+                        relation=relation
+                    )]
+
+        documents = {
+            "train": [],
+            "test": []
+        }
+        for split in docs:
+            for doc_name, tlinks in docs[split].items():
+
+                document = self.base_dataset[doc_name]
+
+                entities = []
+                for tlink in tlinks:
+                    entities += [tlink.source, tlink.target]
+
+                document.tlinks = tlinks
+                document.entities = set(entities)
+
+                documents[split] += [document]
+
+        return Dataset(path.name, train=documents["train"], test=documents["test"])
 
 
 class UDSTDatasetReader:
@@ -995,33 +1232,7 @@ class UDSTDatasetReader:
 
     def read(self, path: str) -> Dataset:
 
-        path = Path(path)
-
-        events_table = path / "train/event-times_normalized.tab"
-        with open(events_table, 'r') as fin:
-
-            docs = collections.defaultdict(list)
-            for line in fin.readlines():
-                doc, sent_idx, tkn_idx, entity_type, id_, _, type_, value = line.split()
-                docs[doc] += [Event(
-                    id=id_,
-                    sent_idx=sent_idx,
-                    tkn_idx=tkn_idx,
-                    type=type_,
-                    value=value
-                )]
-
-        documents = []
-        for doc_name, events in docs.items():
-
-            document = self.base_dataset[doc_name]
-
-            document.tlinks = None
-            document.entities = events
-
-            documents += [document]
-
-        return Dataset(path.name, train=documents)
+        return None
 
 
 class TimeBankDenseDatasetReader:

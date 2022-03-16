@@ -23,7 +23,8 @@ from tieval.datasets.readers import \
     TDDiscourseDatasetReader, \
     MCTacoDatasetReader, \
     MeanTimeDocumentReader, \
-    TimeBankDenseDatasetReader
+    TimeBankDenseDatasetReader, \
+    TimeBankPTDocumentReader
 
 
 from tieval.datasets.readers import \
@@ -31,7 +32,8 @@ from tieval.datasets.readers import \
     GraphEveDocumentReader, \
     TempEval2DocumentReader, \
     TempEval2FrenchDocumentReader, \
-    TimeBank12DocumentReader
+    TimeBank12DocumentReader, \
+    TCRDocumentReader
 
 from tieval import DATA_PATH
 
@@ -164,15 +166,13 @@ DATASETS_METADATA = {
         name="TCR",
         url="https://drive.inesctec.pt/s/mSGaNyYSiMRTfGH/download",
         reader=XMLDatasetReader,
-        doc_reader=TMLDocumentReader,
+        doc_reader=TCRDocumentReader,
     ),
 
     "tddiscourse": DatasetMetadata(
         name="TDDiscourse",
         url="https://drive.inesctec.pt/s/9nXDNqt3Sa8bkDk/download",
         base=["timebank_1.2"],
-        columns=("doc", "src", "tgt", "relation"),
-        event_index="eid",
         reader=TDDiscourseDatasetReader,
     ),
 
@@ -252,7 +252,6 @@ DATASETS_METADATA = {
         name="TimeBank_Dense",
         url="https://drive.inesctec.pt/s/dtztXXBpPPXyzLX/download",
         base=["timebank_1.2"],
-        columns=("doc", "src", "tgt", "relation"),
         event_index="eid",
         reader=TimeBankDenseDatasetReader,
 
@@ -262,7 +261,7 @@ DATASETS_METADATA = {
         name="TimeBankPT",
         url="https://drive.inesctec.pt/s/jCcpQGXzLdnL9Tx/download",
         reader=XMLDatasetReader,
-        doc_reader=TempEval3DocumentReader,
+        doc_reader=TimeBankPTDocumentReader,
     ),
 
     "timebank": DatasetMetadata(
@@ -287,6 +286,7 @@ DATASETS_METADATA = {
     "uds_t": DatasetMetadata(
         name="UDS_T",
         url="https://drive.inesctec.pt/s/JLRoMczLXcgpYKg/download",
-        reader=UDSTDatasetReader
+        reader=UDSTDatasetReader,
+        # base=English web treebank
     )
 }
