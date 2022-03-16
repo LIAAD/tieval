@@ -92,8 +92,8 @@ def test_read_tempquestions():
     tempquestions = read("tempquestions")
 
 
-def test_read_timebank_1():
-    timebank_1 = read("timebank_1.2")
+def test_read_timebank_12():
+    timebank_12 = read("timebank_1.2")
 
 
 def test_read_timebank_dense():
@@ -118,44 +118,3 @@ def test_read_traint3():
 
 def test_read_uds_t():
     uds_t = read("uds_t")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

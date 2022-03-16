@@ -30,7 +30,8 @@ from tieval.datasets.readers import \
     TempEval3DocumentReader, \
     GraphEveDocumentReader, \
     TempEval2DocumentReader, \
-    TempEval2FrenchDocumentReader
+    TempEval2FrenchDocumentReader, \
+    TimeBank12DocumentReader
 
 from tieval import DATA_PATH
 
@@ -114,7 +115,6 @@ DATASETS_METADATA = {
         name="matres",
         url="https://drive.inesctec.pt/s/7g68GBTECiD2XYK/download",
         base=["tempeval_3"],
-        columns=("doc", "src_token", "tgt_token", "src", "tgt", "relation"),
         repo="https://github.com/qiangning/MATRES",
         reader=MATRESDatasetReader,
     ),
@@ -244,7 +244,7 @@ DATASETS_METADATA = {
         name="TimeBank_1.2",
         url="https://drive.inesctec.pt/s/QHiBgZmi45B72AB/download",
         reader=XMLDatasetReader,
-        doc_reader=TempEval3DocumentReader,
+        doc_reader=TimeBank12DocumentReader,
 
     ),
 

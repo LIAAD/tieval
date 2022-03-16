@@ -175,6 +175,107 @@ class TempEval3DocumentReader(BaseDocumentReader):
         return result
 
 
+class TimeBank12DocumentReader(BaseDocumentReader):
+
+    def __init__(self, path):
+        if not isinstance(path, Path):
+            path = Path(path)
+
+        self.path = path
+        self.content = xml2dict(self.path)
+
+    @property
+    def _name(self) -> str:
+        return self.path.name.replace(".tml", "")
+
+    @property
+    def _text(self) -> str:
+        return self.content["TimeML"]["text"]
+
+    @property
+    def _entities(self) -> Iterable[Entity]:
+
+        entities = set()
+
+        # events
+        events = self.content["TimeML"].get("EVENT")
+        events_dict = {event["eid"]: event for event in events}
+        mkinsts = self.content["TimeML"].get("MAKEINSTANCE")
+        if mkinsts:
+
+            # add makeintance information to events
+            for mkinst in mkinsts:
+
+                event = events_dict.get(mkinst["eid"])
+                if event:
+                    mkinst.update(event)
+
+                entities.add(Event(
+                    aspect=mkinst['aspect'],
+                    class_=mkinst['class'],
+                    id=mkinst['eiid'],
+                    eid=mkinst['eid'],
+                    eiid=mkinst['eiid'],
+                    polarity=mkinst['polarity'],
+                    pos=mkinst['pos'],
+                    tense=mkinst['tense'],
+                    text=mkinst['text']
+                ))
+
+        # timexs
+        timexs = self.content["TimeML"].get("TIMEX3")
+        if not isinstance(timexs, list):
+            timexs = [timexs]
+
+        if timexs:
+            for timex in timexs:
+
+                entities.add(Timex(
+                    function_in_document=timex.get("functionInDocument"),
+                    text=timex["text"],
+                    id=timex["tid"],
+                    type_=timex["type"],
+                    value=timex["value"],
+                ))
+
+        return entities
+
+    @property
+    def _dct(self) -> Timex:
+        attrib = self.content["TimeML"]["TIMEX3"]
+        if isinstance(attrib, list):
+            attrib = attrib[0]
+
+        return Timex(
+            function_in_document=attrib["functionInDocument"],
+            text=attrib["text"],
+            id=attrib["tid"],
+            type_=attrib["type"],
+            value=attrib["value"],
+        )
+
+    @property
+    def _tlinks(self) -> Iterable[TLink]:
+
+        entities_dict = {ent.id: ent for ent in self._entities}
+
+        tlinks = self.content["TimeML"].get("TLINK")
+
+        result = set()
+
+        for tlink in tlinks:
+            result.add(
+                TLink(
+                    id=tlink["lid"],
+                    source=entities_dict[tlink["from"]],
+                    target=entities_dict[tlink["to"]],
+                    relation=tlink["relType"]
+                )
+            )
+
+        return result
+
+
 class MeanTimeDocumentReader(BaseDocumentReader):
 
     def __init__(self, path):
@@ -707,6 +808,7 @@ class XMLDatasetReader:
         train, test = [], []
         files = list(path.glob("**/*.[tx]ml"))
         for file in tqdm(files):
+            print(file)
             reader = self.document_reader(file)
             document = reader.read()
 
@@ -847,31 +949,7 @@ class MCTacoDatasetReader:
 
         path = Path(path)
 
-        events_table = path / "train/event-times_normalized.tab"
-        with open(events_table, 'r') as fin:
-
-            docs = collections.defaultdict(list)
-            for line in fin.readlines():
-                doc, sent_idx, tkn_idx, entity_type, id_, _, type_, value = line.split()
-                docs[doc] += [Event(
-                    id=id_,
-                    sent_idx=sent_idx,
-                    tkn_idx=tkn_idx,
-                    type=type_,
-                    value=value
-                )]
-
-        documents = []
-        for doc_name, events in docs.items():
-
-            document = self.base_dataset[doc_name]
-
-            document.tlinks = None
-            document.entities = events
-
-            documents += [document]
-
-        return Dataset(path.name, train=documents)
+        return None
 
 
 class TDDiscourseDatasetReader:

@@ -5,7 +5,8 @@ from tieval.datasets.readers import \
     TempEval3DocumentReader, \
     GraphEveDocumentReader, \
     TempEval2DocumentReader, \
-    TempEval2FrenchDocumentReader
+    TempEval2FrenchDocumentReader, \
+    TimeBank12DocumentReader
 
 from tieval.datasets.readers import JSONDatasetReader
 
@@ -14,6 +15,13 @@ DATA_PATH = Path("../../data")
 
 class TestTempEval2DocumentReader:
     reader = TempEval2DocumentReader(DATA_PATH / "tempeval_2_italian/train/cs.morph015.json")
+
+    def test_read(self):
+        self.reader.read()
+
+
+class TestTimeBank12DocumentReader:
+    reader = TimeBank12DocumentReader(DATA_PATH / "timebank_1.2/train/wsj_0685.tml")
 
     def test_read(self):
         self.reader.read()
