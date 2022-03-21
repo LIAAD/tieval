@@ -252,7 +252,6 @@ DATASETS_METADATA = {
         name="TimeBank_Dense",
         url="https://drive.inesctec.pt/s/dtztXXBpPPXyzLX/download",
         base=["timebank_1.2"],
-        event_index="eid",
         reader=TimeBankDenseDatasetReader,
 
     ),
