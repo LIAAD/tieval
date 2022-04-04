@@ -1,9 +1,8 @@
+import copy
 from typing import Set
-
 from collections import defaultdict
 
 from tieval.links import TLink
-import copy
 
 
 def temporal_closure(

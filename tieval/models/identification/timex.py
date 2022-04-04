@@ -1,14 +1,11 @@
+import random
 from typing import Iterable
 
-from tqdm import tqdm
-
-import random
-
 import spacy
+from tqdm import tqdm
 from spacy.util import minibatch
 from spacy.util import compounding
 from spacy.training import Example
-
 from py_heideltime import py_heideltime
 
 from tieval import MODELS_PATH

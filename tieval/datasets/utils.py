@@ -1,9 +1,9 @@
-from typing import Union, List, Dict
-from pathlib import Path
 import string
+from pathlib import Path
+from typing import Union, List, Dict
+from xml.etree import ElementTree as ET
 
 import xmltodict
-from xml.etree import ElementTree as ET
 
 
 class TMLHandler:

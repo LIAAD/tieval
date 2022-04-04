@@ -8,9 +8,7 @@ Objects
 """
 
 from dataclasses import dataclass
-
-from typing import Set, Optional, Union
-from typing import Iterable, List
+from typing import Set, Optional, Union, List
 
 from tieval.entities import Event
 from tieval.entities import Timex

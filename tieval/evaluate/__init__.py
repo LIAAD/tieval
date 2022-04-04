@@ -1,11 +1,6 @@
-from typing import Dict, Iterable, Set
+from typing import Dict
 
 from tieval.entities import Entity
-from tieval.links import TLink
-
-from typing import Set
-
-from tieval.closure import temporal_closure
 from tieval.links import TLink
 from tieval.evaluate.metrics import temporal_precision
 from tieval.evaluate.metrics import temporal_recall

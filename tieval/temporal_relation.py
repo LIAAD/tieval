@@ -16,8 +16,8 @@ Objects
     TemporalRelation
 """
 
-from dataclasses import dataclass
 from typing import Union
+from dataclasses import dataclass
 
 # map interval relations to unique names
 _SETTLE_RELATION = {

@@ -10,8 +10,8 @@ Constants
 
 """
 
-from dataclasses import dataclass
 import pathlib
+from dataclasses import dataclass
 from typing import Union, Tuple, Iterable
 
 from tieval.datasets.readers import \
@@ -25,8 +25,6 @@ from tieval.datasets.readers import \
     MeanTimeDocumentReader, \
     TimeBankDenseDatasetReader, \
     TimeBankPTDocumentReader
-
-
 from tieval.datasets.readers import \
     TempEval3DocumentReader, \
     GraphEveDocumentReader, \
@@ -34,7 +32,6 @@ from tieval.datasets.readers import \
     TempEval2FrenchDocumentReader, \
     TimeBank12DocumentReader, \
     TCRDocumentReader
-
 from tieval import DATA_PATH
 
 

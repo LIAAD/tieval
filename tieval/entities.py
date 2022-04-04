@@ -6,9 +6,7 @@ Objects implemented:
 
 """
 
-from typing import Dict
-from typing import Union
-from typing import Iterable
+from typing import Union, Iterable
 
 
 class Timex:

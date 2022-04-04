@@ -1,8 +1,7 @@
 
-from typing import Iterable
-
 from abc import ABC
 from abc import abstractmethod
+from typing import Iterable
 
 from tieval.base import Document
 

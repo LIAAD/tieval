@@ -1,16 +1,12 @@
-from typing import List, Tuple
-from typing import Iterable
 
 import abc
 import json
-import warnings
 import collections
+from typing import Iterable
+from pathlib import Path
+from xml.etree import ElementTree as ET
 
 from tqdm import tqdm
-
-from pathlib import Path
-
-from xml.etree import ElementTree as ET
 
 from tieval.base import Document, Dataset
 from tieval.entities import Timex, Event, Entity

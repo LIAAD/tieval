@@ -15,14 +15,11 @@ The corpus available are:
 
 """
 
-# dataset readers
 from tieval.datasets.readers import XMLDatasetReader
 from tieval.datasets.readers import EventTimeDatasetReader
 
-# document readers
 from tieval.datasets.readers import TempEval3DocumentReader
 
-# utils
 from tieval.datasets.metadata import DATASETS_METADATA
 from tieval.datasets.datasets import read
 from tieval.datasets.downloader import download
