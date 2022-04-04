@@ -3,8 +3,7 @@ import os
 import pytest
 from collections import defaultdict
 
-from tieval import datasets
-from tieval.datasets import read, DATASETS_METADATA
+from tieval.datasets import read
 
 os.chdir("..")
 

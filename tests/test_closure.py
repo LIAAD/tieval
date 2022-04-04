@@ -1,8 +1,7 @@
+import pytest
 
 from tieval.links import TLink
 from tieval.closure import temporal_closure
-
-import pytest
 
 
 @pytest.fixture

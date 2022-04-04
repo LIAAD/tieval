@@ -2,7 +2,6 @@
 import pytest
 
 from tieval.links import TLink
-
 from tieval.evaluate.metrics import temporal_precision
 from tieval.evaluate.metrics import temporal_recall
 from tieval.evaluate.metrics import temporal_awareness

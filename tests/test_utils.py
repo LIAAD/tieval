@@ -1,13 +1,8 @@
-import pytest
-
 from pathlib import Path
 
+import pytest
+
 from tieval.datasets.utils import TMLHandler
-
-
-import os
-
-print(os.getcwd())
 
 
 @pytest.fixture
