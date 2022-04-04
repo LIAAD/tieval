@@ -7,3 +7,4 @@ tqdm~=4.62.3
 requests~=2.27.1
 tabulate~=0.8.9
 xmltodict
+git+https://github.com/JMendes1995/py_heideltime.git
