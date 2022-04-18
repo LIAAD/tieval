@@ -17,10 +17,7 @@ from tieval.closure import temporal_closure as _temporal_closure
 
 
 class Document:
-    """
-    A document with temporal annotation.
-
-    ...
+    """A document with temporal annotation.
 
     Attributes
     ----------
@@ -36,7 +33,7 @@ class Document:
         The temporal links annotated
 
     Properties
-    -------
+    ----------
     temporal_closure(sound=None)
         Prints the animals name and what sound it makes
     """
@@ -49,7 +46,7 @@ class Document:
             entities: Set[Event],
             tlinks: Set[TLink],
             **kwargs
-    ):
+    ) -> None:
         self.name = name
         self.text = text
         self.dct = dct
@@ -86,21 +83,31 @@ class Document:
         return self._closure
 
     @property
-    def timexs(self):
+    def timexs(self) -> Set[Timex]:
         return set(ent for ent in self.entities if isinstance(ent, Timex))
 
     @property
-    def events(self):
+    def events(self) -> Set[Event]:
         return set(ent for ent in self.entities if isinstance(ent, Event))
 
     @property
-    def sentences(self):
+    def sentences(self) -> list[str]:
         return self.text.split("\n")
 
 
 @dataclass
 class Dataset:
-    """A compilation of documents that have temporal annotations."""
+    """A compilation of documents that have temporal annotations.
+
+    Attributes
+    ----------
+    name : str
+        The name of the dataset.
+    train : list[Document]
+        A list containing the documents of the training set.
+    test : list[Document]
+        A list containing the documents of the test set.
+    """
 
     name: str
     train: List[Document]

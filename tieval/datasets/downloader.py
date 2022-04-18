@@ -30,18 +30,14 @@ from tieval.datasets import DATASETS_METADATA
 from tieval import DATA_PATH
 
 
-def _download_repo(metadata):
-    """Download dataset from git repository."""
+def _download_url(url: str) -> None:
+    """Download dataset from url.
 
-    repo_name = metadata.repo.split("/")[-1]
-
-    print(f"Downloading {repo_name} from {metadata.repo}")
-    os.system(f"git clone {metadata.repo} {DATA_PATH.joinpath(repo_name)}")
-    print("Done.")
-
-
-def _download_url(url):
-    """Download dataset from url."""
+    Parameters
+    ----------
+    url: str
+        The name of the dataset to download.
+    """
 
     print(f"Downloading from {url}")
 
@@ -58,7 +54,7 @@ def _download_url(url):
 
 
 def download(dataset: str) -> None:
-    """ Download temporally annotated corpus.
+    """ Download corpus.
 
     The available datasets are:
         - TimeBank-1.2
@@ -74,11 +70,6 @@ def download(dataset: str) -> None:
     ----------
     dataset: str
         The name of the dataset to download.
-
-    Returns
-    -------
-    None
-        The dataset is downloaded to the data folder.
     """
 
     dataset = dataset.lower().strip()
@@ -95,8 +86,6 @@ def download(dataset: str) -> None:
     # check if it has already been downloaded
     if metadata.path.is_dir():
         print(f"Dataset {dataset} was already on {DATA_PATH}.")
-        return None
+        return
 
-    # download
     _download_url(metadata.url)
-

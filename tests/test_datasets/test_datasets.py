@@ -1,12 +1,17 @@
 import os
+import pathlib
 
+from tieval import  datasets
 from tieval.datasets.datasets import read
 
 
-os.chdir("../../")
+# dowload the supported datasets
+# for ds_name in datasets.SUPPORTED_DATASETS:
+#     datasets.download()
 
 
-def test_read_aquaint():
+def test_read_aquaint(tmp_path):
+    datasets.download("aquaint")
     assert read("aquaint")
 
 
@@ -95,8 +100,8 @@ def test_read_timebank():
 
 
 def test_read_traint3():
-    traint3 = read("traint3")
+    assert read("traint3")
 
 
 def test_read_uds_t():
-    uds_t = read("uds_t")
+    assert read("uds_t")

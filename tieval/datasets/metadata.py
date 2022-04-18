@@ -14,24 +14,26 @@ import pathlib
 from dataclasses import dataclass
 from typing import Union, Tuple, Iterable
 
-from tieval.datasets.readers import \
-    XMLDatasetReader, \
-    JSONDatasetReader, \
-    EventTimeDatasetReader, \
-    MATRESDatasetReader, \
-    UDSTDatasetReader, \
-    TDDiscourseDatasetReader, \
-    MCTacoDatasetReader, \
-    MeanTimeDocumentReader, \
-    TimeBankDenseDatasetReader, \
+from tieval.datasets.readers import (
+    XMLDatasetReader,
+    JSONDatasetReader,
+    EventTimeDatasetReader,
+    MATRESDatasetReader,
+    UDSTDatasetReader,
+    TDDiscourseDatasetReader,
+    MCTacoDatasetReader,
+    MeanTimeDocumentReader,
+    TimeBankDenseDatasetReader,
     TimeBankPTDocumentReader
-from tieval.datasets.readers import \
-    TempEval3DocumentReader, \
-    GraphEveDocumentReader, \
-    TempEval2DocumentReader, \
-    TempEval2FrenchDocumentReader, \
-    TimeBank12DocumentReader, \
+)
+from tieval.datasets.readers import (
+    TempEval3DocumentReader,
+    GraphEveDocumentReader,
+    TempEval2DocumentReader,
+    TempEval2FrenchDocumentReader,
+    TimeBank12DocumentReader,
     TCRDocumentReader
+)
 from tieval import DATA_PATH
 
 
