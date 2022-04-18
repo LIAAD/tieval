@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TempEval>
+APW19980227.0476
+REPORTAGEM
+<TIMEX3 tid="t19" type="TIME" value="1998-02-27T08:02:00" temporalFunction="false" functionInDocument="CREATION_TIME">02/27/1998 08:02:00</TIMEX3>
+w2381 Cx1f wstm-
+u i Cx13  Cx11  BC-WorldCourt-Lockerbie 5thLd   02-27 0169
+BC-World Court-Lockerbie, 5th Ld
+Tribunal Internacional declara jurisdição na disputa de Lockerbie
+UR Eds: RECASTS lead to clarify; ADDS detail of U.S. and British
+objections in 3rd graf. QL
+UR AP Photo staffing QL
+UR By MIKE CORDER QC
+UR Associated Press Writer QC
+<s>Haia, Holanda (AP) - O Tribunal Internacional <EVENT eid="e1" class="OCCURRENCE" stem="rejeitar" aspect="NONE" tense="PPI" polarity="POS" pos="VERB">rejeitou</EVENT> na <TIMEX3 tid="t21" type="DATE" value="1998-02-27" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t19">sexta-feira</TIMEX3> as <EVENT eid="e1996" class="OCCURRENCE" stem="objeção" aspect="NONE" tense="NONE" polarity="POS" pos="NOUN">objeções</EVENT> americanas e britânicas a um caso líbio no Tribunal Internacional que <EVENT eid="e2" class="I_ACTION" stem="bloquear" aspect="NONE" tense="PPI" polarity="POS" pos="VERB">bloqueou</EVENT> o <EVENT eid="e1997" class="OCCURRENCE" stem="julgamento" aspect="NONE" tense="NONE" polarity="POS" pos="NOUN">julgamento</EVENT> de dois líbios <EVENT eid="e3" class="I_STATE" stem="suspeito" aspect="NONE" tense="NONE" polarity="POS" pos="ADJECTIVE">suspeitos</EVENT> de <EVENT eid="e4" class="OCCURRENCE" stem="explodir" aspect="NONE" tense="INF" polarity="POS" pos="VERB">explodir</EVENT> um avião jumbo da Pan Am sobre a Escócia em <TIMEX3 tid="t22" type="DATE" value="1988" temporalFunction="false" functionInDocument="NONE">1988</TIMEX3>.</s>
+<s>A Líbia, que <EVENT eid="e5" class="OCCURRENCE" stem="levar" aspect="NONE" tense="PPI" polarity="POS" pos="VERB">levou</EVENT> o caso ao órgão judicial máximo da ONU na sua <EVENT eid="e6" class="OCCURRENCE" stem="disputa" aspect="NONE" tense="NONE" polarity="POS" pos="NOUN">disputa</EVENT> com os Estados Unidos e a Grã-Bretanha, <EVENT eid="e8" class="I_ACTION" stem="elogiar" aspect="NONE" tense="PPI" polarity="POS" pos="VERB">elogiou</EVENT> a <EVENT eid="e1998" class="OCCURRENCE" stem="decisão" aspect="NONE" tense="NONE" polarity="POS" pos="NOUN">decisão</EVENT> e <EVENT eid="e9" class="REPORTING" stem="dizer" aspect="NONE" tense="PPI" polarity="POS" pos="VERB">disse</EVENT> que vai <EVENT eid="e10" class="I_ACTION" stem="pressionar" aspect="NONE" tense="IR-PI+INF" polarity="POS" pos="VERB">pressionar</EVENT> por um novo <EVENT eid="e1999" class="OCCURRENCE" stem="julgamento" aspect="NONE" tense="NONE" polarity="POS" pos="NOUN">julgamento</EVENT> num terceiro país neutro.</s>
+<s>Oficiais americanos e britânicos <EVENT eid="e12" class="OCCURRENCE" stem="apresentar" aspect="NONE" tense="PPI" polarity="POS" pos="VERB">apresentaram</EVENT> objeções à jurisdição do tribunal em <TIMEX3 tid="t23" type="DATE" value="1995" temporalFunction="false" functionInDocument="NONE">1995</TIMEX3>, <EVENT eid="e13" class="I_ACTION" stem="alegar" aspect="NONE" tense="GER" polarity="POS" pos="VERB">alegando</EVENT> que as <EVENT eid="e2078" class="OCCURRENCE" stem="resolução" aspect="NONE" tense="NONE" polarity="POS" pos="NOUN">resoluções</EVENT> do Conselho de Segurança <EVENT eid="e14" class="OCCURRENCE" stem="impor" aspect="NONE" tense="PPA" polarity="POS" pos="VERB">impostas</EVENT> à Líbia para <EVENT eid="e15" class="OCCURRENCE" stem="forçar" aspect="NONE" tense="INF" polarity="POS" pos="VERB">forçar</EVENT> a extradição dos suspeitos se <EVENT eid="e16" class="OCCURRENCE" stem="sobrepor" aspect="NONE" tense="PPI" polarity="POS" pos="VERB">sobrepuseram</EVENT> a uma convenção de <TIMEX3 tid="t24" type="DATE" value="1971" temporalFunction="false" functionInDocument="NONE">1971</TIMEX3> que dá à Líbia o direito de julgar os homens.</s>
+<s>The decision, 3rd graf pvs.</s>
+(PROFILE
+(WS SL:BC-World Court-Lockerbie, 5th Ld; CT:i;
+(REG:EURO;)
+(REG:BRIT;)
+(REG:SCAN;)
+(REG:ENGL;)
+(LANG:ENGLISH;))
+)
+<s>AP-NY-02-27-98 0802EST</s>
+<TLINK lid="l1" relType="BEFORE" from="e9" to="t19" task="B"/>
+</TempEval>

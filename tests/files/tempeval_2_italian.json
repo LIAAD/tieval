@@ -1,0 +1,6724 @@
+{
+    "raw": "Ilmilitare inveiva anche nei confronti della figlia Marianna.\nDenunciato, rischia severa condanna.\nUn corazziere contro Scalfaro.\nCon il telefonino insulti e minacce di attentati al presidente.\nAlcune chiamate partirono dal Quirinale.\nL' allarme e' scattato una settimana fa.\nIl reato: offesa all' onore del capo di Stato.\nROMA ­ Dopo le polemiche per l' elicottero dei vigili del fuoco che sarebbe stato preso di mira dalla scorta di Scalfaro, al Quirinale scoppia il\" giallo\" del corazziere.\nSugli addetti alla sicurezza del Quirinale sembra essersi *SI abbattuta una sorta di maledizione: si e' infatti scoperto che era uno dei militari adibiti alla sorveglianza del presidente l' autore di una serie di minacciose telefonate anonime che avevano per obiettivo lo stesso Scalfaro e sua figlia Marianna.\nNon pago degli insulti, il corazziere avrebbe aggiunto anche la minaccia di un attentato, parlando di una bomba pronta a far saltare in aria il capo dello Stato.\nIl nome del carabiniere( i corazzieri sono infatti un reparto speciale dell' Arma) e'\" top secret\", ma la vicenda e' stata denunciata alla magistratura e il procuratore militare Antonino Intelisano ha aperto un' inchiesta per il reato di offesa all' onore del presidente della Repubblica.\nL' allarme e' scattato alla fine della scorsa settimana.\nInizialmente al centralino delle forze dell' ordine erano arrivate chiamate nelle quali si insultavano pesantemente Scalfaro e la figlia.\nI funzionari hanno cosi' messo in moto il meccanismo per individuare l' autore delle telefonate.\nIl pericolo non poteva essere sottovalutato.\nL' ansia di rintracciare da dove partissero prima che accadesse qualcosa di irrimediabile si e' trasformata in meraviglia quando e' stato individuato l' apparecchio dal quale venivano effettuate: era il cellulare di un corazziere.\nE' stato facile ricostruire le telefonate in partenza dal\" portatile\" ed e' subito stato chiaro che il carabiniere addetto alla sicurezza del presidente era anche colui che aveva a lungo inveito contro lo stesso Scalfaro e la figlia.\nSorpresa nella sorpresa: sembra che una delle telefonata sia stata fatta dal corazziere mentre era in servizio al Quirinale.\nCe n' era abbastanza per avvertire la magistratura.\nSecondo indiscrezioni la prima segnalazione e' stata inviata alla procura della Repubblica.\nA palazzo di giustizia si e' ritenuto che il caso fosse di competenza della magistratura militare ed e' stato avvertito Intelisano.\nIl quale procede per un reato, quello appunto di offesa all' onore del presidente della Repubblica, che prevede pene detentive da un minimo di cinque a un massimo di quindici anni di reclusione militare.\nPer mandare avanti l' indagine, Intelisano dovra' chiedere l' autorizzazione a procedere al ministro della Giustizia e il complesso iter sara' messo in moto nei prossimi giorni.\nIl corazziere e' solo un mitomane o dietro alla vicenda c' e' dell' altro? Negli ambienti giudiziari la seconda ipotesi viene esclusa e anche il carabiniere, individuato e subito ascoltato dagli investigatori, avrebbe cercato di accreditare la tesi di una\" bambinata\".\nPer il militare, a questo punto, sembra comunque inevitabile la sospensione cautelare dal servizio.",
+    "tokens": [
+        {
+            "sent_idx": 0,
+            "tkn_idx": 0,
+            "text": "Il",
+            "endpoints": [
+                0,
+                2
+            ]
+        },
+        {
+            "sent_idx": 0,
+            "tkn_idx": 1,
+            "text": "militare",
+            "endpoints": [
+                2,
+                10
+            ]
+        },
+        {
+            "sent_idx": 0,
+            "tkn_idx": 2,
+            "text": "inveiva",
+            "endpoints": [
+                11,
+                18
+            ]
+        },
+        {
+            "sent_idx": 0,
+            "tkn_idx": 3,
+            "text": "anche",
+            "endpoints": [
+                19,
+                24
+            ]
+        },
+        {
+            "sent_idx": 0,
+            "tkn_idx": 4,
+            "text": "nei confronti della",
+            "endpoints": [
+                25,
+                44
+            ]
+        },
+        {
+            "sent_idx": 0,
+            "tkn_idx": 5,
+            "text": "figlia",
+            "endpoints": [
+                45,
+                51
+            ]
+        },
+        {
+            "sent_idx": 0,
+            "tkn_idx": 6,
+            "text": "Marianna",
+            "endpoints": [
+                52,
+                60
+            ]
+        },
+        {
+            "sent_idx": 0,
+            "tkn_idx": 7,
+            "text": ".",
+            "endpoints": [
+                60,
+                61
+            ]
+        },
+        {
+            "sent_idx": 1,
+            "tkn_idx": 8,
+            "text": "Denunciato",
+            "endpoints": [
+                62,
+                72
+            ]
+        },
+        {
+            "sent_idx": 1,
+            "tkn_idx": 9,
+            "text": ",",
+            "endpoints": [
+                72,
+                73
+            ]
+        },
+        {
+            "sent_idx": 1,
+            "tkn_idx": 10,
+            "text": "rischia",
+            "endpoints": [
+                74,
+                81
+            ]
+        },
+        {
+            "sent_idx": 1,
+            "tkn_idx": 11,
+            "text": "severa",
+            "endpoints": [
+                82,
+                88
+            ]
+        },
+        {
+            "sent_idx": 1,
+            "tkn_idx": 12,
+            "text": "condanna",
+            "endpoints": [
+                89,
+                97
+            ]
+        },
+        {
+            "sent_idx": 1,
+            "tkn_idx": 13,
+            "text": ".",
+            "endpoints": [
+                97,
+                98
+            ]
+        },
+        {
+            "sent_idx": 2,
+            "tkn_idx": 14,
+            "text": "Un",
+            "endpoints": [
+                99,
+                101
+            ]
+        },
+        {
+            "sent_idx": 2,
+            "tkn_idx": 15,
+            "text": "corazziere",
+            "endpoints": [
+                102,
+                112
+            ]
+        },
+        {
+            "sent_idx": 2,
+            "tkn_idx": 16,
+            "text": "contro",
+            "endpoints": [
+                113,
+                119
+            ]
+        },
+        {
+            "sent_idx": 2,
+            "tkn_idx": 17,
+            "text": "Scalfaro",
+            "endpoints": [
+                120,
+                128
+            ]
+        },
+        {
+            "sent_idx": 2,
+            "tkn_idx": 18,
+            "text": ".",
+            "endpoints": [
+                128,
+                129
+            ]
+        },
+        {
+            "sent_idx": 3,
+            "tkn_idx": 19,
+            "text": "Con",
+            "endpoints": [
+                130,
+                133
+            ]
+        },
+        {
+            "sent_idx": 3,
+            "tkn_idx": 20,
+            "text": "il",
+            "endpoints": [
+                134,
+                136
+            ]
+        },
+        {
+            "sent_idx": 3,
+            "tkn_idx": 21,
+            "text": "telefonino",
+            "endpoints": [
+                137,
+                147
+            ]
+        },
+        {
+            "sent_idx": 3,
+            "tkn_idx": 22,
+            "text": "insulti",
+            "endpoints": [
+                148,
+                155
+            ]
+        },
+        {
+            "sent_idx": 3,
+            "tkn_idx": 23,
+            "text": "e",
+            "endpoints": [
+                156,
+                157
+            ]
+        },
+        {
+            "sent_idx": 3,
+            "tkn_idx": 24,
+            "text": "minacce",
+            "endpoints": [
+                158,
+                165
+            ]
+        },
+        {
+            "sent_idx": 3,
+            "tkn_idx": 25,
+            "text": "di",
+            "endpoints": [
+                166,
+                168
+            ]
+        },
+        {
+            "sent_idx": 3,
+            "tkn_idx": 26,
+            "text": "attentati",
+            "endpoints": [
+                169,
+                178
+            ]
+        },
+        {
+            "sent_idx": 3,
+            "tkn_idx": 27,
+            "text": "al",
+            "endpoints": [
+                179,
+                181
+            ]
+        },
+        {
+            "sent_idx": 3,
+            "tkn_idx": 28,
+            "text": "presidente",
+            "endpoints": [
+                182,
+                192
+            ]
+        },
+        {
+            "sent_idx": 3,
+            "tkn_idx": 29,
+            "text": ".",
+            "endpoints": [
+                192,
+                193
+            ]
+        },
+        {
+            "sent_idx": 4,
+            "tkn_idx": 30,
+            "text": "Alcune",
+            "endpoints": [
+                194,
+                200
+            ]
+        },
+        {
+            "sent_idx": 4,
+            "tkn_idx": 31,
+            "text": "chiamate",
+            "endpoints": [
+                201,
+                209
+            ]
+        },
+        {
+            "sent_idx": 4,
+            "tkn_idx": 32,
+            "text": "partirono",
+            "endpoints": [
+                210,
+                219
+            ]
+        },
+        {
+            "sent_idx": 4,
+            "tkn_idx": 33,
+            "text": "dal",
+            "endpoints": [
+                220,
+                223
+            ]
+        },
+        {
+            "sent_idx": 4,
+            "tkn_idx": 34,
+            "text": "Quirinale",
+            "endpoints": [
+                224,
+                233
+            ]
+        },
+        {
+            "sent_idx": 4,
+            "tkn_idx": 35,
+            "text": ".",
+            "endpoints": [
+                233,
+                234
+            ]
+        },
+        {
+            "sent_idx": 5,
+            "tkn_idx": 36,
+            "text": "L'",
+            "endpoints": [
+                235,
+                237
+            ]
+        },
+        {
+            "sent_idx": 5,
+            "tkn_idx": 37,
+            "text": "allarme",
+            "endpoints": [
+                238,
+                245
+            ]
+        },
+        {
+            "sent_idx": 5,
+            "tkn_idx": 38,
+            "text": "e'",
+            "endpoints": [
+                246,
+                248
+            ]
+        },
+        {
+            "sent_idx": 5,
+            "tkn_idx": 39,
+            "text": "scattato",
+            "endpoints": [
+                249,
+                257
+            ]
+        },
+        {
+            "sent_idx": 5,
+            "tkn_idx": 40,
+            "text": "una",
+            "endpoints": [
+                258,
+                261
+            ]
+        },
+        {
+            "sent_idx": 5,
+            "tkn_idx": 41,
+            "text": "settimana",
+            "endpoints": [
+                262,
+                271
+            ]
+        },
+        {
+            "sent_idx": 5,
+            "tkn_idx": 42,
+            "text": "fa",
+            "endpoints": [
+                272,
+                274
+            ]
+        },
+        {
+            "sent_idx": 5,
+            "tkn_idx": 43,
+            "text": ".",
+            "endpoints": [
+                274,
+                275
+            ]
+        },
+        {
+            "sent_idx": 6,
+            "tkn_idx": 44,
+            "text": "Il",
+            "endpoints": [
+                276,
+                278
+            ]
+        },
+        {
+            "sent_idx": 6,
+            "tkn_idx": 45,
+            "text": "reato",
+            "endpoints": [
+                279,
+                284
+            ]
+        },
+        {
+            "sent_idx": 6,
+            "tkn_idx": 46,
+            "text": ":",
+            "endpoints": [
+                284,
+                285
+            ]
+        },
+        {
+            "sent_idx": 6,
+            "tkn_idx": 47,
+            "text": "offesa",
+            "endpoints": [
+                286,
+                292
+            ]
+        },
+        {
+            "sent_idx": 6,
+            "tkn_idx": 48,
+            "text": "all'",
+            "endpoints": [
+                293,
+                297
+            ]
+        },
+        {
+            "sent_idx": 6,
+            "tkn_idx": 49,
+            "text": "onore",
+            "endpoints": [
+                298,
+                303
+            ]
+        },
+        {
+            "sent_idx": 6,
+            "tkn_idx": 50,
+            "text": "del",
+            "endpoints": [
+                304,
+                307
+            ]
+        },
+        {
+            "sent_idx": 6,
+            "tkn_idx": 51,
+            "text": "capo",
+            "endpoints": [
+                308,
+                312
+            ]
+        },
+        {
+            "sent_idx": 6,
+            "tkn_idx": 52,
+            "text": "di",
+            "endpoints": [
+                313,
+                315
+            ]
+        },
+        {
+            "sent_idx": 6,
+            "tkn_idx": 53,
+            "text": "Stato",
+            "endpoints": [
+                316,
+                321
+            ]
+        },
+        {
+            "sent_idx": 6,
+            "tkn_idx": 54,
+            "text": ".",
+            "endpoints": [
+                321,
+                322
+            ]
+        },
+        {
+            "sent_idx": 7,
+            "tkn_idx": 55,
+            "text": "ROMA",
+            "endpoints": [
+                323,
+                327
+            ]
+        },
+        {
+            "sent_idx": 7,
+            "tkn_idx": 56,
+            "text": "­",
+            "endpoints": [
+                328,
+                329
+            ]
+        },
+        {
+            "sent_idx": 7,
+            "tkn_idx": 57,
+            "text": "Dopo",
+            "endpoints": [
+                330,
+                334
+            ]
+        },
+        {
+            "sent_idx": 7,
+            "tkn_idx": 58,
+            "text": "le",
+            "endpoints": [
+                335,
+                337
+            ]
+        },
+        {
+            "sent_idx": 7,
+            "tkn_idx": 59,
+            "text": "polemiche",
+            "endpoints": [
+                338,
+                347
+            ]
+        },
+        {
+            "sent_idx": 7,
+            "tkn_idx": 60,
+            "text": "per",
+            "endpoints": [
+                348,
+                351
+            ]
+        },
+        {
+            "sent_idx": 7,
+            "tkn_idx": 61,
+            "text": "l'",
+            "endpoints": [
+                352,
+                354
+            ]
+        },
+        {
+            "sent_idx": 7,
+            "tkn_idx": 62,
+            "text": "elicottero",
+            "endpoints": [
+                355,
+                365
+            ]
+        },
+        {
+            "sent_idx": 7,
+            "tkn_idx": 63,
+            "text": "dei",
+            "endpoints": [
+                366,
+                369
+            ]
+        },
+        {
+            "sent_idx": 7,
+            "tkn_idx": 64,
+            "text": "vigili",
+            "endpoints": [
+                370,
+                376
+            ]
+        },
+        {
+            "sent_idx": 7,
+            "tkn_idx": 65,
+            "text": "del",
+            "endpoints": [
+                377,
+                380
+            ]
+        },
+        {
+            "sent_idx": 7,
+            "tkn_idx": 66,
+            "text": "fuoco",
+            "endpoints": [
+                381,
+                386
+            ]
+        },
+        {
+            "sent_idx": 7,
+            "tkn_idx": 67,
+            "text": "che",
+            "endpoints": [
+                387,
+                390
+            ]
+        },
+        {
+            "sent_idx": 7,
+            "tkn_idx": 68,
+            "text": "sarebbe",
+            "endpoints": [
+                391,
+                398
+            ]
+        },
+        {
+            "sent_idx": 7,
+            "tkn_idx": 69,
+            "text": "stato",
+            "endpoints": [
+                399,
+                404
+            ]
+        },
+        {
+            "sent_idx": 7,
+            "tkn_idx": 70,
+            "text": "preso",
+            "endpoints": [
+                405,
+                410
+            ]
+        },
+        {
+            "sent_idx": 7,
+            "tkn_idx": 71,
+            "text": "di",
+            "endpoints": [
+                411,
+                413
+            ]
+        },
+        {
+            "sent_idx": 7,
+            "tkn_idx": 72,
+            "text": "mira",
+            "endpoints": [
+                414,
+                418
+            ]
+        },
+        {
+            "sent_idx": 7,
+            "tkn_idx": 73,
+            "text": "dalla",
+            "endpoints": [
+                419,
+                424
+            ]
+        },
+        {
+            "sent_idx": 7,
+            "tkn_idx": 74,
+            "text": "scorta",
+            "endpoints": [
+                425,
+                431
+            ]
+        },
+        {
+            "sent_idx": 7,
+            "tkn_idx": 75,
+            "text": "di",
+            "endpoints": [
+                432,
+                434
+            ]
+        },
+        {
+            "sent_idx": 7,
+            "tkn_idx": 76,
+            "text": "Scalfaro",
+            "endpoints": [
+                435,
+                443
+            ]
+        },
+        {
+            "sent_idx": 7,
+            "tkn_idx": 77,
+            "text": ",",
+            "endpoints": [
+                443,
+                444
+            ]
+        },
+        {
+            "sent_idx": 7,
+            "tkn_idx": 78,
+            "text": "al",
+            "endpoints": [
+                445,
+                447
+            ]
+        },
+        {
+            "sent_idx": 7,
+            "tkn_idx": 79,
+            "text": "Quirinale",
+            "endpoints": [
+                448,
+                457
+            ]
+        },
+        {
+            "sent_idx": 7,
+            "tkn_idx": 80,
+            "text": "scoppia",
+            "endpoints": [
+                458,
+                465
+            ]
+        },
+        {
+            "sent_idx": 7,
+            "tkn_idx": 81,
+            "text": "il",
+            "endpoints": [
+                466,
+                468
+            ]
+        },
+        {
+            "sent_idx": 7,
+            "tkn_idx": 82,
+            "text": "\"",
+            "endpoints": [
+                468,
+                469
+            ]
+        },
+        {
+            "sent_idx": 7,
+            "tkn_idx": 83,
+            "text": "giallo",
+            "endpoints": [
+                470,
+                476
+            ]
+        },
+        {
+            "sent_idx": 7,
+            "tkn_idx": 84,
+            "text": "\"",
+            "endpoints": [
+                476,
+                477
+            ]
+        },
+        {
+            "sent_idx": 7,
+            "tkn_idx": 85,
+            "text": "del",
+            "endpoints": [
+                478,
+                481
+            ]
+        },
+        {
+            "sent_idx": 7,
+            "tkn_idx": 86,
+            "text": "corazziere",
+            "endpoints": [
+                482,
+                492
+            ]
+        },
+        {
+            "sent_idx": 7,
+            "tkn_idx": 87,
+            "text": ".",
+            "endpoints": [
+                492,
+                493
+            ]
+        },
+        {
+            "sent_idx": 8,
+            "tkn_idx": 88,
+            "text": "Sugli",
+            "endpoints": [
+                494,
+                499
+            ]
+        },
+        {
+            "sent_idx": 8,
+            "tkn_idx": 89,
+            "text": "addetti",
+            "endpoints": [
+                500,
+                507
+            ]
+        },
+        {
+            "sent_idx": 8,
+            "tkn_idx": 90,
+            "text": "alla",
+            "endpoints": [
+                508,
+                512
+            ]
+        },
+        {
+            "sent_idx": 8,
+            "tkn_idx": 91,
+            "text": "sicurezza",
+            "endpoints": [
+                513,
+                522
+            ]
+        },
+        {
+            "sent_idx": 8,
+            "tkn_idx": 92,
+            "text": "del",
+            "endpoints": [
+                523,
+                526
+            ]
+        },
+        {
+            "sent_idx": 8,
+            "tkn_idx": 93,
+            "text": "Quirinale",
+            "endpoints": [
+                527,
+                536
+            ]
+        },
+        {
+            "sent_idx": 8,
+            "tkn_idx": 94,
+            "text": "sembra",
+            "endpoints": [
+                537,
+                543
+            ]
+        },
+        {
+            "sent_idx": 8,
+            "tkn_idx": 95,
+            "text": "essersi",
+            "endpoints": [
+                544,
+                551
+            ]
+        },
+        {
+            "sent_idx": 8,
+            "tkn_idx": 96,
+            "text": "*SI",
+            "endpoints": [
+                552,
+                555
+            ]
+        },
+        {
+            "sent_idx": 8,
+            "tkn_idx": 97,
+            "text": "abbattuta",
+            "endpoints": [
+                556,
+                565
+            ]
+        },
+        {
+            "sent_idx": 8,
+            "tkn_idx": 98,
+            "text": "una",
+            "endpoints": [
+                566,
+                569
+            ]
+        },
+        {
+            "sent_idx": 8,
+            "tkn_idx": 99,
+            "text": "sorta",
+            "endpoints": [
+                570,
+                575
+            ]
+        },
+        {
+            "sent_idx": 8,
+            "tkn_idx": 100,
+            "text": "di",
+            "endpoints": [
+                576,
+                578
+            ]
+        },
+        {
+            "sent_idx": 8,
+            "tkn_idx": 101,
+            "text": "maledizione",
+            "endpoints": [
+                579,
+                590
+            ]
+        },
+        {
+            "sent_idx": 8,
+            "tkn_idx": 102,
+            "text": ":",
+            "endpoints": [
+                590,
+                591
+            ]
+        },
+        {
+            "sent_idx": 8,
+            "tkn_idx": 103,
+            "text": "si",
+            "endpoints": [
+                592,
+                594
+            ]
+        },
+        {
+            "sent_idx": 8,
+            "tkn_idx": 104,
+            "text": "e'",
+            "endpoints": [
+                595,
+                597
+            ]
+        },
+        {
+            "sent_idx": 8,
+            "tkn_idx": 105,
+            "text": "infatti",
+            "endpoints": [
+                598,
+                605
+            ]
+        },
+        {
+            "sent_idx": 8,
+            "tkn_idx": 106,
+            "text": "scoperto",
+            "endpoints": [
+                606,
+                614
+            ]
+        },
+        {
+            "sent_idx": 8,
+            "tkn_idx": 107,
+            "text": "che",
+            "endpoints": [
+                615,
+                618
+            ]
+        },
+        {
+            "sent_idx": 8,
+            "tkn_idx": 108,
+            "text": "era",
+            "endpoints": [
+                619,
+                622
+            ]
+        },
+        {
+            "sent_idx": 8,
+            "tkn_idx": 109,
+            "text": "uno",
+            "endpoints": [
+                623,
+                626
+            ]
+        },
+        {
+            "sent_idx": 8,
+            "tkn_idx": 110,
+            "text": "dei",
+            "endpoints": [
+                627,
+                630
+            ]
+        },
+        {
+            "sent_idx": 8,
+            "tkn_idx": 111,
+            "text": "militari",
+            "endpoints": [
+                631,
+                639
+            ]
+        },
+        {
+            "sent_idx": 8,
+            "tkn_idx": 112,
+            "text": "adibiti",
+            "endpoints": [
+                640,
+                647
+            ]
+        },
+        {
+            "sent_idx": 8,
+            "tkn_idx": 113,
+            "text": "alla",
+            "endpoints": [
+                648,
+                652
+            ]
+        },
+        {
+            "sent_idx": 8,
+            "tkn_idx": 114,
+            "text": "sorveglianza",
+            "endpoints": [
+                653,
+                665
+            ]
+        },
+        {
+            "sent_idx": 8,
+            "tkn_idx": 115,
+            "text": "del",
+            "endpoints": [
+                666,
+                669
+            ]
+        },
+        {
+            "sent_idx": 8,
+            "tkn_idx": 116,
+            "text": "presidente",
+            "endpoints": [
+                670,
+                680
+            ]
+        },
+        {
+            "sent_idx": 8,
+            "tkn_idx": 117,
+            "text": "l'",
+            "endpoints": [
+                681,
+                683
+            ]
+        },
+        {
+            "sent_idx": 8,
+            "tkn_idx": 118,
+            "text": "autore",
+            "endpoints": [
+                684,
+                690
+            ]
+        },
+        {
+            "sent_idx": 8,
+            "tkn_idx": 119,
+            "text": "di",
+            "endpoints": [
+                691,
+                693
+            ]
+        },
+        {
+            "sent_idx": 8,
+            "tkn_idx": 120,
+            "text": "una",
+            "endpoints": [
+                694,
+                697
+            ]
+        },
+        {
+            "sent_idx": 8,
+            "tkn_idx": 121,
+            "text": "serie",
+            "endpoints": [
+                698,
+                703
+            ]
+        },
+        {
+            "sent_idx": 8,
+            "tkn_idx": 122,
+            "text": "di",
+            "endpoints": [
+                704,
+                706
+            ]
+        },
+        {
+            "sent_idx": 8,
+            "tkn_idx": 123,
+            "text": "minacciose",
+            "endpoints": [
+                707,
+                717
+            ]
+        },
+        {
+            "sent_idx": 8,
+            "tkn_idx": 124,
+            "text": "telefonate",
+            "endpoints": [
+                718,
+                728
+            ]
+        },
+        {
+            "sent_idx": 8,
+            "tkn_idx": 125,
+            "text": "anonime",
+            "endpoints": [
+                729,
+                736
+            ]
+        },
+        {
+            "sent_idx": 8,
+            "tkn_idx": 126,
+            "text": "che",
+            "endpoints": [
+                737,
+                740
+            ]
+        },
+        {
+            "sent_idx": 8,
+            "tkn_idx": 127,
+            "text": "avevano",
+            "endpoints": [
+                741,
+                748
+            ]
+        },
+        {
+            "sent_idx": 8,
+            "tkn_idx": 128,
+            "text": "per",
+            "endpoints": [
+                749,
+                752
+            ]
+        },
+        {
+            "sent_idx": 8,
+            "tkn_idx": 129,
+            "text": "obiettivo",
+            "endpoints": [
+                753,
+                762
+            ]
+        },
+        {
+            "sent_idx": 8,
+            "tkn_idx": 130,
+            "text": "lo",
+            "endpoints": [
+                763,
+                765
+            ]
+        },
+        {
+            "sent_idx": 8,
+            "tkn_idx": 131,
+            "text": "stesso",
+            "endpoints": [
+                766,
+                772
+            ]
+        },
+        {
+            "sent_idx": 8,
+            "tkn_idx": 132,
+            "text": "Scalfaro",
+            "endpoints": [
+                773,
+                781
+            ]
+        },
+        {
+            "sent_idx": 8,
+            "tkn_idx": 133,
+            "text": "e",
+            "endpoints": [
+                782,
+                783
+            ]
+        },
+        {
+            "sent_idx": 8,
+            "tkn_idx": 134,
+            "text": "sua",
+            "endpoints": [
+                784,
+                787
+            ]
+        },
+        {
+            "sent_idx": 8,
+            "tkn_idx": 135,
+            "text": "figlia",
+            "endpoints": [
+                788,
+                794
+            ]
+        },
+        {
+            "sent_idx": 8,
+            "tkn_idx": 136,
+            "text": "Marianna",
+            "endpoints": [
+                795,
+                803
+            ]
+        },
+        {
+            "sent_idx": 8,
+            "tkn_idx": 137,
+            "text": ".",
+            "endpoints": [
+                803,
+                804
+            ]
+        },
+        {
+            "sent_idx": 9,
+            "tkn_idx": 138,
+            "text": "Non",
+            "endpoints": [
+                805,
+                808
+            ]
+        },
+        {
+            "sent_idx": 9,
+            "tkn_idx": 139,
+            "text": "pago",
+            "endpoints": [
+                809,
+                813
+            ]
+        },
+        {
+            "sent_idx": 9,
+            "tkn_idx": 140,
+            "text": "degli",
+            "endpoints": [
+                814,
+                819
+            ]
+        },
+        {
+            "sent_idx": 9,
+            "tkn_idx": 141,
+            "text": "insulti",
+            "endpoints": [
+                820,
+                827
+            ]
+        },
+        {
+            "sent_idx": 9,
+            "tkn_idx": 142,
+            "text": ",",
+            "endpoints": [
+                827,
+                828
+            ]
+        },
+        {
+            "sent_idx": 9,
+            "tkn_idx": 143,
+            "text": "il",
+            "endpoints": [
+                829,
+                831
+            ]
+        },
+        {
+            "sent_idx": 9,
+            "tkn_idx": 144,
+            "text": "corazziere",
+            "endpoints": [
+                832,
+                842
+            ]
+        },
+        {
+            "sent_idx": 9,
+            "tkn_idx": 145,
+            "text": "avrebbe",
+            "endpoints": [
+                843,
+                850
+            ]
+        },
+        {
+            "sent_idx": 9,
+            "tkn_idx": 146,
+            "text": "aggiunto",
+            "endpoints": [
+                851,
+                859
+            ]
+        },
+        {
+            "sent_idx": 9,
+            "tkn_idx": 147,
+            "text": "anche",
+            "endpoints": [
+                860,
+                865
+            ]
+        },
+        {
+            "sent_idx": 9,
+            "tkn_idx": 148,
+            "text": "la",
+            "endpoints": [
+                866,
+                868
+            ]
+        },
+        {
+            "sent_idx": 9,
+            "tkn_idx": 149,
+            "text": "minaccia",
+            "endpoints": [
+                869,
+                877
+            ]
+        },
+        {
+            "sent_idx": 9,
+            "tkn_idx": 150,
+            "text": "di",
+            "endpoints": [
+                878,
+                880
+            ]
+        },
+        {
+            "sent_idx": 9,
+            "tkn_idx": 151,
+            "text": "un",
+            "endpoints": [
+                881,
+                883
+            ]
+        },
+        {
+            "sent_idx": 9,
+            "tkn_idx": 152,
+            "text": "attentato",
+            "endpoints": [
+                884,
+                893
+            ]
+        },
+        {
+            "sent_idx": 9,
+            "tkn_idx": 153,
+            "text": ",",
+            "endpoints": [
+                893,
+                894
+            ]
+        },
+        {
+            "sent_idx": 9,
+            "tkn_idx": 154,
+            "text": "parlando",
+            "endpoints": [
+                895,
+                903
+            ]
+        },
+        {
+            "sent_idx": 9,
+            "tkn_idx": 155,
+            "text": "di",
+            "endpoints": [
+                904,
+                906
+            ]
+        },
+        {
+            "sent_idx": 9,
+            "tkn_idx": 156,
+            "text": "una",
+            "endpoints": [
+                907,
+                910
+            ]
+        },
+        {
+            "sent_idx": 9,
+            "tkn_idx": 157,
+            "text": "bomba",
+            "endpoints": [
+                911,
+                916
+            ]
+        },
+        {
+            "sent_idx": 9,
+            "tkn_idx": 158,
+            "text": "pronta",
+            "endpoints": [
+                917,
+                923
+            ]
+        },
+        {
+            "sent_idx": 9,
+            "tkn_idx": 159,
+            "text": "a",
+            "endpoints": [
+                924,
+                925
+            ]
+        },
+        {
+            "sent_idx": 9,
+            "tkn_idx": 160,
+            "text": "far",
+            "endpoints": [
+                926,
+                929
+            ]
+        },
+        {
+            "sent_idx": 9,
+            "tkn_idx": 161,
+            "text": "saltare",
+            "endpoints": [
+                930,
+                937
+            ]
+        },
+        {
+            "sent_idx": 9,
+            "tkn_idx": 162,
+            "text": "in",
+            "endpoints": [
+                938,
+                940
+            ]
+        },
+        {
+            "sent_idx": 9,
+            "tkn_idx": 163,
+            "text": "aria",
+            "endpoints": [
+                941,
+                945
+            ]
+        },
+        {
+            "sent_idx": 9,
+            "tkn_idx": 164,
+            "text": "il",
+            "endpoints": [
+                946,
+                948
+            ]
+        },
+        {
+            "sent_idx": 9,
+            "tkn_idx": 165,
+            "text": "capo",
+            "endpoints": [
+                949,
+                953
+            ]
+        },
+        {
+            "sent_idx": 9,
+            "tkn_idx": 166,
+            "text": "dello",
+            "endpoints": [
+                954,
+                959
+            ]
+        },
+        {
+            "sent_idx": 9,
+            "tkn_idx": 167,
+            "text": "Stato",
+            "endpoints": [
+                960,
+                965
+            ]
+        },
+        {
+            "sent_idx": 9,
+            "tkn_idx": 168,
+            "text": ".",
+            "endpoints": [
+                965,
+                966
+            ]
+        },
+        {
+            "sent_idx": 10,
+            "tkn_idx": 169,
+            "text": "Il",
+            "endpoints": [
+                967,
+                969
+            ]
+        },
+        {
+            "sent_idx": 10,
+            "tkn_idx": 170,
+            "text": "nome",
+            "endpoints": [
+                970,
+                974
+            ]
+        },
+        {
+            "sent_idx": 10,
+            "tkn_idx": 171,
+            "text": "del",
+            "endpoints": [
+                975,
+                978
+            ]
+        },
+        {
+            "sent_idx": 10,
+            "tkn_idx": 172,
+            "text": "carabiniere",
+            "endpoints": [
+                979,
+                990
+            ]
+        },
+        {
+            "sent_idx": 10,
+            "tkn_idx": 173,
+            "text": "(",
+            "endpoints": [
+                990,
+                991
+            ]
+        },
+        {
+            "sent_idx": 10,
+            "tkn_idx": 174,
+            "text": "i",
+            "endpoints": [
+                992,
+                993
+            ]
+        },
+        {
+            "sent_idx": 10,
+            "tkn_idx": 175,
+            "text": "corazzieri",
+            "endpoints": [
+                994,
+                1004
+            ]
+        },
+        {
+            "sent_idx": 10,
+            "tkn_idx": 176,
+            "text": "sono",
+            "endpoints": [
+                1005,
+                1009
+            ]
+        },
+        {
+            "sent_idx": 10,
+            "tkn_idx": 177,
+            "text": "infatti",
+            "endpoints": [
+                1010,
+                1017
+            ]
+        },
+        {
+            "sent_idx": 10,
+            "tkn_idx": 178,
+            "text": "un",
+            "endpoints": [
+                1018,
+                1020
+            ]
+        },
+        {
+            "sent_idx": 10,
+            "tkn_idx": 179,
+            "text": "reparto",
+            "endpoints": [
+                1021,
+                1028
+            ]
+        },
+        {
+            "sent_idx": 10,
+            "tkn_idx": 180,
+            "text": "speciale",
+            "endpoints": [
+                1029,
+                1037
+            ]
+        },
+        {
+            "sent_idx": 10,
+            "tkn_idx": 181,
+            "text": "dell'",
+            "endpoints": [
+                1038,
+                1043
+            ]
+        },
+        {
+            "sent_idx": 10,
+            "tkn_idx": 182,
+            "text": "Arma",
+            "endpoints": [
+                1044,
+                1048
+            ]
+        },
+        {
+            "sent_idx": 10,
+            "tkn_idx": 183,
+            "text": ")",
+            "endpoints": [
+                1048,
+                1049
+            ]
+        },
+        {
+            "sent_idx": 10,
+            "tkn_idx": 184,
+            "text": "e'",
+            "endpoints": [
+                1050,
+                1052
+            ]
+        },
+        {
+            "sent_idx": 10,
+            "tkn_idx": 185,
+            "text": "\"",
+            "endpoints": [
+                1052,
+                1053
+            ]
+        },
+        {
+            "sent_idx": 10,
+            "tkn_idx": 186,
+            "text": "top secret",
+            "endpoints": [
+                1054,
+                1064
+            ]
+        },
+        {
+            "sent_idx": 10,
+            "tkn_idx": 187,
+            "text": "\"",
+            "endpoints": [
+                1064,
+                1065
+            ]
+        },
+        {
+            "sent_idx": 10,
+            "tkn_idx": 188,
+            "text": ",",
+            "endpoints": [
+                1065,
+                1066
+            ]
+        },
+        {
+            "sent_idx": 10,
+            "tkn_idx": 189,
+            "text": "ma",
+            "endpoints": [
+                1067,
+                1069
+            ]
+        },
+        {
+            "sent_idx": 10,
+            "tkn_idx": 190,
+            "text": "la",
+            "endpoints": [
+                1070,
+                1072
+            ]
+        },
+        {
+            "sent_idx": 10,
+            "tkn_idx": 191,
+            "text": "vicenda",
+            "endpoints": [
+                1073,
+                1080
+            ]
+        },
+        {
+            "sent_idx": 10,
+            "tkn_idx": 192,
+            "text": "e'",
+            "endpoints": [
+                1081,
+                1083
+            ]
+        },
+        {
+            "sent_idx": 10,
+            "tkn_idx": 193,
+            "text": "stata",
+            "endpoints": [
+                1084,
+                1089
+            ]
+        },
+        {
+            "sent_idx": 10,
+            "tkn_idx": 194,
+            "text": "denunciata",
+            "endpoints": [
+                1090,
+                1100
+            ]
+        },
+        {
+            "sent_idx": 10,
+            "tkn_idx": 195,
+            "text": "alla",
+            "endpoints": [
+                1101,
+                1105
+            ]
+        },
+        {
+            "sent_idx": 10,
+            "tkn_idx": 196,
+            "text": "magistratura",
+            "endpoints": [
+                1106,
+                1118
+            ]
+        },
+        {
+            "sent_idx": 10,
+            "tkn_idx": 197,
+            "text": "e",
+            "endpoints": [
+                1119,
+                1120
+            ]
+        },
+        {
+            "sent_idx": 10,
+            "tkn_idx": 198,
+            "text": "il",
+            "endpoints": [
+                1121,
+                1123
+            ]
+        },
+        {
+            "sent_idx": 10,
+            "tkn_idx": 199,
+            "text": "procuratore",
+            "endpoints": [
+                1124,
+                1135
+            ]
+        },
+        {
+            "sent_idx": 10,
+            "tkn_idx": 200,
+            "text": "militare",
+            "endpoints": [
+                1136,
+                1144
+            ]
+        },
+        {
+            "sent_idx": 10,
+            "tkn_idx": 201,
+            "text": "Antonino",
+            "endpoints": [
+                1145,
+                1153
+            ]
+        },
+        {
+            "sent_idx": 10,
+            "tkn_idx": 202,
+            "text": "Intelisano",
+            "endpoints": [
+                1154,
+                1164
+            ]
+        },
+        {
+            "sent_idx": 10,
+            "tkn_idx": 203,
+            "text": "ha",
+            "endpoints": [
+                1165,
+                1167
+            ]
+        },
+        {
+            "sent_idx": 10,
+            "tkn_idx": 204,
+            "text": "aperto",
+            "endpoints": [
+                1168,
+                1174
+            ]
+        },
+        {
+            "sent_idx": 10,
+            "tkn_idx": 205,
+            "text": "un'",
+            "endpoints": [
+                1175,
+                1178
+            ]
+        },
+        {
+            "sent_idx": 10,
+            "tkn_idx": 206,
+            "text": "inchiesta",
+            "endpoints": [
+                1179,
+                1188
+            ]
+        },
+        {
+            "sent_idx": 10,
+            "tkn_idx": 207,
+            "text": "per",
+            "endpoints": [
+                1189,
+                1192
+            ]
+        },
+        {
+            "sent_idx": 10,
+            "tkn_idx": 208,
+            "text": "il",
+            "endpoints": [
+                1193,
+                1195
+            ]
+        },
+        {
+            "sent_idx": 10,
+            "tkn_idx": 209,
+            "text": "reato",
+            "endpoints": [
+                1196,
+                1201
+            ]
+        },
+        {
+            "sent_idx": 10,
+            "tkn_idx": 210,
+            "text": "di",
+            "endpoints": [
+                1202,
+                1204
+            ]
+        },
+        {
+            "sent_idx": 10,
+            "tkn_idx": 211,
+            "text": "offesa",
+            "endpoints": [
+                1205,
+                1211
+            ]
+        },
+        {
+            "sent_idx": 10,
+            "tkn_idx": 212,
+            "text": "all'",
+            "endpoints": [
+                1212,
+                1216
+            ]
+        },
+        {
+            "sent_idx": 10,
+            "tkn_idx": 213,
+            "text": "onore",
+            "endpoints": [
+                1217,
+                1222
+            ]
+        },
+        {
+            "sent_idx": 10,
+            "tkn_idx": 214,
+            "text": "del",
+            "endpoints": [
+                1223,
+                1226
+            ]
+        },
+        {
+            "sent_idx": 10,
+            "tkn_idx": 215,
+            "text": "presidente",
+            "endpoints": [
+                1227,
+                1237
+            ]
+        },
+        {
+            "sent_idx": 10,
+            "tkn_idx": 216,
+            "text": "della",
+            "endpoints": [
+                1238,
+                1243
+            ]
+        },
+        {
+            "sent_idx": 10,
+            "tkn_idx": 217,
+            "text": "Repubblica",
+            "endpoints": [
+                1244,
+                1254
+            ]
+        },
+        {
+            "sent_idx": 10,
+            "tkn_idx": 218,
+            "text": ".",
+            "endpoints": [
+                1254,
+                1255
+            ]
+        },
+        {
+            "sent_idx": 11,
+            "tkn_idx": 219,
+            "text": "L'",
+            "endpoints": [
+                1256,
+                1258
+            ]
+        },
+        {
+            "sent_idx": 11,
+            "tkn_idx": 220,
+            "text": "allarme",
+            "endpoints": [
+                1259,
+                1266
+            ]
+        },
+        {
+            "sent_idx": 11,
+            "tkn_idx": 221,
+            "text": "e'",
+            "endpoints": [
+                1267,
+                1269
+            ]
+        },
+        {
+            "sent_idx": 11,
+            "tkn_idx": 222,
+            "text": "scattato",
+            "endpoints": [
+                1270,
+                1278
+            ]
+        },
+        {
+            "sent_idx": 11,
+            "tkn_idx": 223,
+            "text": "alla",
+            "endpoints": [
+                1279,
+                1283
+            ]
+        },
+        {
+            "sent_idx": 11,
+            "tkn_idx": 224,
+            "text": "fine",
+            "endpoints": [
+                1284,
+                1288
+            ]
+        },
+        {
+            "sent_idx": 11,
+            "tkn_idx": 225,
+            "text": "della",
+            "endpoints": [
+                1289,
+                1294
+            ]
+        },
+        {
+            "sent_idx": 11,
+            "tkn_idx": 226,
+            "text": "scorsa",
+            "endpoints": [
+                1295,
+                1301
+            ]
+        },
+        {
+            "sent_idx": 11,
+            "tkn_idx": 227,
+            "text": "settimana",
+            "endpoints": [
+                1302,
+                1311
+            ]
+        },
+        {
+            "sent_idx": 11,
+            "tkn_idx": 228,
+            "text": ".",
+            "endpoints": [
+                1311,
+                1312
+            ]
+        },
+        {
+            "sent_idx": 12,
+            "tkn_idx": 229,
+            "text": "Inizialmente",
+            "endpoints": [
+                1313,
+                1325
+            ]
+        },
+        {
+            "sent_idx": 12,
+            "tkn_idx": 230,
+            "text": "al",
+            "endpoints": [
+                1326,
+                1328
+            ]
+        },
+        {
+            "sent_idx": 12,
+            "tkn_idx": 231,
+            "text": "centralino",
+            "endpoints": [
+                1329,
+                1339
+            ]
+        },
+        {
+            "sent_idx": 12,
+            "tkn_idx": 232,
+            "text": "delle",
+            "endpoints": [
+                1340,
+                1345
+            ]
+        },
+        {
+            "sent_idx": 12,
+            "tkn_idx": 233,
+            "text": "forze",
+            "endpoints": [
+                1346,
+                1351
+            ]
+        },
+        {
+            "sent_idx": 12,
+            "tkn_idx": 234,
+            "text": "dell'",
+            "endpoints": [
+                1352,
+                1357
+            ]
+        },
+        {
+            "sent_idx": 12,
+            "tkn_idx": 235,
+            "text": "ordine",
+            "endpoints": [
+                1358,
+                1364
+            ]
+        },
+        {
+            "sent_idx": 12,
+            "tkn_idx": 236,
+            "text": "erano",
+            "endpoints": [
+                1365,
+                1370
+            ]
+        },
+        {
+            "sent_idx": 12,
+            "tkn_idx": 237,
+            "text": "arrivate",
+            "endpoints": [
+                1371,
+                1379
+            ]
+        },
+        {
+            "sent_idx": 12,
+            "tkn_idx": 238,
+            "text": "chiamate",
+            "endpoints": [
+                1380,
+                1388
+            ]
+        },
+        {
+            "sent_idx": 12,
+            "tkn_idx": 239,
+            "text": "nelle",
+            "endpoints": [
+                1389,
+                1394
+            ]
+        },
+        {
+            "sent_idx": 12,
+            "tkn_idx": 240,
+            "text": "quali",
+            "endpoints": [
+                1395,
+                1400
+            ]
+        },
+        {
+            "sent_idx": 12,
+            "tkn_idx": 241,
+            "text": "si",
+            "endpoints": [
+                1401,
+                1403
+            ]
+        },
+        {
+            "sent_idx": 12,
+            "tkn_idx": 242,
+            "text": "insultavano",
+            "endpoints": [
+                1404,
+                1415
+            ]
+        },
+        {
+            "sent_idx": 12,
+            "tkn_idx": 243,
+            "text": "pesantemente",
+            "endpoints": [
+                1416,
+                1428
+            ]
+        },
+        {
+            "sent_idx": 12,
+            "tkn_idx": 244,
+            "text": "Scalfaro",
+            "endpoints": [
+                1429,
+                1437
+            ]
+        },
+        {
+            "sent_idx": 12,
+            "tkn_idx": 245,
+            "text": "e",
+            "endpoints": [
+                1438,
+                1439
+            ]
+        },
+        {
+            "sent_idx": 12,
+            "tkn_idx": 246,
+            "text": "la",
+            "endpoints": [
+                1440,
+                1442
+            ]
+        },
+        {
+            "sent_idx": 12,
+            "tkn_idx": 247,
+            "text": "figlia",
+            "endpoints": [
+                1443,
+                1449
+            ]
+        },
+        {
+            "sent_idx": 12,
+            "tkn_idx": 248,
+            "text": ".",
+            "endpoints": [
+                1449,
+                1450
+            ]
+        },
+        {
+            "sent_idx": 13,
+            "tkn_idx": 249,
+            "text": "I",
+            "endpoints": [
+                1451,
+                1452
+            ]
+        },
+        {
+            "sent_idx": 13,
+            "tkn_idx": 250,
+            "text": "funzionari",
+            "endpoints": [
+                1453,
+                1463
+            ]
+        },
+        {
+            "sent_idx": 13,
+            "tkn_idx": 251,
+            "text": "hanno",
+            "endpoints": [
+                1464,
+                1469
+            ]
+        },
+        {
+            "sent_idx": 13,
+            "tkn_idx": 252,
+            "text": "cosi'",
+            "endpoints": [
+                1470,
+                1475
+            ]
+        },
+        {
+            "sent_idx": 13,
+            "tkn_idx": 253,
+            "text": "messo",
+            "endpoints": [
+                1476,
+                1481
+            ]
+        },
+        {
+            "sent_idx": 13,
+            "tkn_idx": 254,
+            "text": "in",
+            "endpoints": [
+                1482,
+                1484
+            ]
+        },
+        {
+            "sent_idx": 13,
+            "tkn_idx": 255,
+            "text": "moto",
+            "endpoints": [
+                1485,
+                1489
+            ]
+        },
+        {
+            "sent_idx": 13,
+            "tkn_idx": 256,
+            "text": "il",
+            "endpoints": [
+                1490,
+                1492
+            ]
+        },
+        {
+            "sent_idx": 13,
+            "tkn_idx": 257,
+            "text": "meccanismo",
+            "endpoints": [
+                1493,
+                1503
+            ]
+        },
+        {
+            "sent_idx": 13,
+            "tkn_idx": 258,
+            "text": "per",
+            "endpoints": [
+                1504,
+                1507
+            ]
+        },
+        {
+            "sent_idx": 13,
+            "tkn_idx": 259,
+            "text": "individuare",
+            "endpoints": [
+                1508,
+                1519
+            ]
+        },
+        {
+            "sent_idx": 13,
+            "tkn_idx": 260,
+            "text": "l'",
+            "endpoints": [
+                1520,
+                1522
+            ]
+        },
+        {
+            "sent_idx": 13,
+            "tkn_idx": 261,
+            "text": "autore",
+            "endpoints": [
+                1523,
+                1529
+            ]
+        },
+        {
+            "sent_idx": 13,
+            "tkn_idx": 262,
+            "text": "delle",
+            "endpoints": [
+                1530,
+                1535
+            ]
+        },
+        {
+            "sent_idx": 13,
+            "tkn_idx": 263,
+            "text": "telefonate",
+            "endpoints": [
+                1536,
+                1546
+            ]
+        },
+        {
+            "sent_idx": 13,
+            "tkn_idx": 264,
+            "text": ".",
+            "endpoints": [
+                1546,
+                1547
+            ]
+        },
+        {
+            "sent_idx": 14,
+            "tkn_idx": 265,
+            "text": "Il",
+            "endpoints": [
+                1548,
+                1550
+            ]
+        },
+        {
+            "sent_idx": 14,
+            "tkn_idx": 266,
+            "text": "pericolo",
+            "endpoints": [
+                1551,
+                1559
+            ]
+        },
+        {
+            "sent_idx": 14,
+            "tkn_idx": 267,
+            "text": "non",
+            "endpoints": [
+                1560,
+                1563
+            ]
+        },
+        {
+            "sent_idx": 14,
+            "tkn_idx": 268,
+            "text": "poteva",
+            "endpoints": [
+                1564,
+                1570
+            ]
+        },
+        {
+            "sent_idx": 14,
+            "tkn_idx": 269,
+            "text": "essere",
+            "endpoints": [
+                1571,
+                1577
+            ]
+        },
+        {
+            "sent_idx": 14,
+            "tkn_idx": 270,
+            "text": "sottovalutato",
+            "endpoints": [
+                1578,
+                1591
+            ]
+        },
+        {
+            "sent_idx": 14,
+            "tkn_idx": 271,
+            "text": ".",
+            "endpoints": [
+                1591,
+                1592
+            ]
+        },
+        {
+            "sent_idx": 15,
+            "tkn_idx": 272,
+            "text": "L'",
+            "endpoints": [
+                1593,
+                1595
+            ]
+        },
+        {
+            "sent_idx": 15,
+            "tkn_idx": 273,
+            "text": "ansia",
+            "endpoints": [
+                1596,
+                1601
+            ]
+        },
+        {
+            "sent_idx": 15,
+            "tkn_idx": 274,
+            "text": "di",
+            "endpoints": [
+                1602,
+                1604
+            ]
+        },
+        {
+            "sent_idx": 15,
+            "tkn_idx": 275,
+            "text": "rintracciare",
+            "endpoints": [
+                1605,
+                1617
+            ]
+        },
+        {
+            "sent_idx": 15,
+            "tkn_idx": 276,
+            "text": "da",
+            "endpoints": [
+                1618,
+                1620
+            ]
+        },
+        {
+            "sent_idx": 15,
+            "tkn_idx": 277,
+            "text": "dove",
+            "endpoints": [
+                1621,
+                1625
+            ]
+        },
+        {
+            "sent_idx": 15,
+            "tkn_idx": 278,
+            "text": "partissero",
+            "endpoints": [
+                1626,
+                1636
+            ]
+        },
+        {
+            "sent_idx": 15,
+            "tkn_idx": 279,
+            "text": "prima che",
+            "endpoints": [
+                1637,
+                1646
+            ]
+        },
+        {
+            "sent_idx": 15,
+            "tkn_idx": 280,
+            "text": "accadesse",
+            "endpoints": [
+                1647,
+                1656
+            ]
+        },
+        {
+            "sent_idx": 15,
+            "tkn_idx": 281,
+            "text": "qualcosa",
+            "endpoints": [
+                1657,
+                1665
+            ]
+        },
+        {
+            "sent_idx": 15,
+            "tkn_idx": 282,
+            "text": "di",
+            "endpoints": [
+                1666,
+                1668
+            ]
+        },
+        {
+            "sent_idx": 15,
+            "tkn_idx": 283,
+            "text": "irrimediabile",
+            "endpoints": [
+                1669,
+                1682
+            ]
+        },
+        {
+            "sent_idx": 15,
+            "tkn_idx": 284,
+            "text": "si",
+            "endpoints": [
+                1683,
+                1685
+            ]
+        },
+        {
+            "sent_idx": 15,
+            "tkn_idx": 285,
+            "text": "e'",
+            "endpoints": [
+                1686,
+                1688
+            ]
+        },
+        {
+            "sent_idx": 15,
+            "tkn_idx": 286,
+            "text": "trasformata",
+            "endpoints": [
+                1689,
+                1700
+            ]
+        },
+        {
+            "sent_idx": 15,
+            "tkn_idx": 287,
+            "text": "in",
+            "endpoints": [
+                1701,
+                1703
+            ]
+        },
+        {
+            "sent_idx": 15,
+            "tkn_idx": 288,
+            "text": "meraviglia",
+            "endpoints": [
+                1704,
+                1714
+            ]
+        },
+        {
+            "sent_idx": 15,
+            "tkn_idx": 289,
+            "text": "quando",
+            "endpoints": [
+                1715,
+                1721
+            ]
+        },
+        {
+            "sent_idx": 15,
+            "tkn_idx": 290,
+            "text": "e'",
+            "endpoints": [
+                1722,
+                1724
+            ]
+        },
+        {
+            "sent_idx": 15,
+            "tkn_idx": 291,
+            "text": "stato",
+            "endpoints": [
+                1725,
+                1730
+            ]
+        },
+        {
+            "sent_idx": 15,
+            "tkn_idx": 292,
+            "text": "individuato",
+            "endpoints": [
+                1731,
+                1742
+            ]
+        },
+        {
+            "sent_idx": 15,
+            "tkn_idx": 293,
+            "text": "l'",
+            "endpoints": [
+                1743,
+                1745
+            ]
+        },
+        {
+            "sent_idx": 15,
+            "tkn_idx": 294,
+            "text": "apparecchio",
+            "endpoints": [
+                1746,
+                1757
+            ]
+        },
+        {
+            "sent_idx": 15,
+            "tkn_idx": 295,
+            "text": "dal",
+            "endpoints": [
+                1758,
+                1761
+            ]
+        },
+        {
+            "sent_idx": 15,
+            "tkn_idx": 296,
+            "text": "quale",
+            "endpoints": [
+                1762,
+                1767
+            ]
+        },
+        {
+            "sent_idx": 15,
+            "tkn_idx": 297,
+            "text": "venivano",
+            "endpoints": [
+                1768,
+                1776
+            ]
+        },
+        {
+            "sent_idx": 15,
+            "tkn_idx": 298,
+            "text": "effettuate",
+            "endpoints": [
+                1777,
+                1787
+            ]
+        },
+        {
+            "sent_idx": 15,
+            "tkn_idx": 299,
+            "text": ":",
+            "endpoints": [
+                1787,
+                1788
+            ]
+        },
+        {
+            "sent_idx": 15,
+            "tkn_idx": 300,
+            "text": "era",
+            "endpoints": [
+                1789,
+                1792
+            ]
+        },
+        {
+            "sent_idx": 15,
+            "tkn_idx": 301,
+            "text": "il",
+            "endpoints": [
+                1793,
+                1795
+            ]
+        },
+        {
+            "sent_idx": 15,
+            "tkn_idx": 302,
+            "text": "cellulare",
+            "endpoints": [
+                1796,
+                1805
+            ]
+        },
+        {
+            "sent_idx": 15,
+            "tkn_idx": 303,
+            "text": "di",
+            "endpoints": [
+                1806,
+                1808
+            ]
+        },
+        {
+            "sent_idx": 15,
+            "tkn_idx": 304,
+            "text": "un",
+            "endpoints": [
+                1809,
+                1811
+            ]
+        },
+        {
+            "sent_idx": 15,
+            "tkn_idx": 305,
+            "text": "corazziere",
+            "endpoints": [
+                1812,
+                1822
+            ]
+        },
+        {
+            "sent_idx": 15,
+            "tkn_idx": 306,
+            "text": ".",
+            "endpoints": [
+                1822,
+                1823
+            ]
+        },
+        {
+            "sent_idx": 16,
+            "tkn_idx": 307,
+            "text": "E'",
+            "endpoints": [
+                1824,
+                1826
+            ]
+        },
+        {
+            "sent_idx": 16,
+            "tkn_idx": 308,
+            "text": "stato",
+            "endpoints": [
+                1827,
+                1832
+            ]
+        },
+        {
+            "sent_idx": 16,
+            "tkn_idx": 309,
+            "text": "facile",
+            "endpoints": [
+                1833,
+                1839
+            ]
+        },
+        {
+            "sent_idx": 16,
+            "tkn_idx": 310,
+            "text": "ricostruire",
+            "endpoints": [
+                1840,
+                1851
+            ]
+        },
+        {
+            "sent_idx": 16,
+            "tkn_idx": 311,
+            "text": "le",
+            "endpoints": [
+                1852,
+                1854
+            ]
+        },
+        {
+            "sent_idx": 16,
+            "tkn_idx": 312,
+            "text": "telefonate",
+            "endpoints": [
+                1855,
+                1865
+            ]
+        },
+        {
+            "sent_idx": 16,
+            "tkn_idx": 313,
+            "text": "in",
+            "endpoints": [
+                1866,
+                1868
+            ]
+        },
+        {
+            "sent_idx": 16,
+            "tkn_idx": 314,
+            "text": "partenza",
+            "endpoints": [
+                1869,
+                1877
+            ]
+        },
+        {
+            "sent_idx": 16,
+            "tkn_idx": 315,
+            "text": "dal",
+            "endpoints": [
+                1878,
+                1881
+            ]
+        },
+        {
+            "sent_idx": 16,
+            "tkn_idx": 316,
+            "text": "\"",
+            "endpoints": [
+                1881,
+                1882
+            ]
+        },
+        {
+            "sent_idx": 16,
+            "tkn_idx": 317,
+            "text": "portatile",
+            "endpoints": [
+                1883,
+                1892
+            ]
+        },
+        {
+            "sent_idx": 16,
+            "tkn_idx": 318,
+            "text": "\"",
+            "endpoints": [
+                1892,
+                1893
+            ]
+        },
+        {
+            "sent_idx": 16,
+            "tkn_idx": 319,
+            "text": "ed",
+            "endpoints": [
+                1894,
+                1896
+            ]
+        },
+        {
+            "sent_idx": 16,
+            "tkn_idx": 320,
+            "text": "e'",
+            "endpoints": [
+                1897,
+                1899
+            ]
+        },
+        {
+            "sent_idx": 16,
+            "tkn_idx": 321,
+            "text": "subito",
+            "endpoints": [
+                1900,
+                1906
+            ]
+        },
+        {
+            "sent_idx": 16,
+            "tkn_idx": 322,
+            "text": "stato",
+            "endpoints": [
+                1907,
+                1912
+            ]
+        },
+        {
+            "sent_idx": 16,
+            "tkn_idx": 323,
+            "text": "chiaro",
+            "endpoints": [
+                1913,
+                1919
+            ]
+        },
+        {
+            "sent_idx": 16,
+            "tkn_idx": 324,
+            "text": "che",
+            "endpoints": [
+                1920,
+                1923
+            ]
+        },
+        {
+            "sent_idx": 16,
+            "tkn_idx": 325,
+            "text": "il",
+            "endpoints": [
+                1924,
+                1926
+            ]
+        },
+        {
+            "sent_idx": 16,
+            "tkn_idx": 326,
+            "text": "carabiniere",
+            "endpoints": [
+                1927,
+                1938
+            ]
+        },
+        {
+            "sent_idx": 16,
+            "tkn_idx": 327,
+            "text": "addetto",
+            "endpoints": [
+                1939,
+                1946
+            ]
+        },
+        {
+            "sent_idx": 16,
+            "tkn_idx": 328,
+            "text": "alla",
+            "endpoints": [
+                1947,
+                1951
+            ]
+        },
+        {
+            "sent_idx": 16,
+            "tkn_idx": 329,
+            "text": "sicurezza",
+            "endpoints": [
+                1952,
+                1961
+            ]
+        },
+        {
+            "sent_idx": 16,
+            "tkn_idx": 330,
+            "text": "del",
+            "endpoints": [
+                1962,
+                1965
+            ]
+        },
+        {
+            "sent_idx": 16,
+            "tkn_idx": 331,
+            "text": "presidente",
+            "endpoints": [
+                1966,
+                1976
+            ]
+        },
+        {
+            "sent_idx": 16,
+            "tkn_idx": 332,
+            "text": "era",
+            "endpoints": [
+                1977,
+                1980
+            ]
+        },
+        {
+            "sent_idx": 16,
+            "tkn_idx": 333,
+            "text": "anche",
+            "endpoints": [
+                1981,
+                1986
+            ]
+        },
+        {
+            "sent_idx": 16,
+            "tkn_idx": 334,
+            "text": "colui",
+            "endpoints": [
+                1987,
+                1992
+            ]
+        },
+        {
+            "sent_idx": 16,
+            "tkn_idx": 335,
+            "text": "che",
+            "endpoints": [
+                1993,
+                1996
+            ]
+        },
+        {
+            "sent_idx": 16,
+            "tkn_idx": 336,
+            "text": "aveva",
+            "endpoints": [
+                1997,
+                2002
+            ]
+        },
+        {
+            "sent_idx": 16,
+            "tkn_idx": 337,
+            "text": "a",
+            "endpoints": [
+                2003,
+                2004
+            ]
+        },
+        {
+            "sent_idx": 16,
+            "tkn_idx": 338,
+            "text": "lungo",
+            "endpoints": [
+                2005,
+                2010
+            ]
+        },
+        {
+            "sent_idx": 16,
+            "tkn_idx": 339,
+            "text": "inveito",
+            "endpoints": [
+                2011,
+                2018
+            ]
+        },
+        {
+            "sent_idx": 16,
+            "tkn_idx": 340,
+            "text": "contro",
+            "endpoints": [
+                2019,
+                2025
+            ]
+        },
+        {
+            "sent_idx": 16,
+            "tkn_idx": 341,
+            "text": "lo",
+            "endpoints": [
+                2026,
+                2028
+            ]
+        },
+        {
+            "sent_idx": 16,
+            "tkn_idx": 342,
+            "text": "stesso",
+            "endpoints": [
+                2029,
+                2035
+            ]
+        },
+        {
+            "sent_idx": 16,
+            "tkn_idx": 343,
+            "text": "Scalfaro",
+            "endpoints": [
+                2036,
+                2044
+            ]
+        },
+        {
+            "sent_idx": 16,
+            "tkn_idx": 344,
+            "text": "e",
+            "endpoints": [
+                2045,
+                2046
+            ]
+        },
+        {
+            "sent_idx": 16,
+            "tkn_idx": 345,
+            "text": "la",
+            "endpoints": [
+                2047,
+                2049
+            ]
+        },
+        {
+            "sent_idx": 16,
+            "tkn_idx": 346,
+            "text": "figlia",
+            "endpoints": [
+                2050,
+                2056
+            ]
+        },
+        {
+            "sent_idx": 16,
+            "tkn_idx": 347,
+            "text": ".",
+            "endpoints": [
+                2056,
+                2057
+            ]
+        },
+        {
+            "sent_idx": 17,
+            "tkn_idx": 348,
+            "text": "Sorpresa",
+            "endpoints": [
+                2058,
+                2066
+            ]
+        },
+        {
+            "sent_idx": 17,
+            "tkn_idx": 349,
+            "text": "nella",
+            "endpoints": [
+                2067,
+                2072
+            ]
+        },
+        {
+            "sent_idx": 17,
+            "tkn_idx": 350,
+            "text": "sorpresa",
+            "endpoints": [
+                2073,
+                2081
+            ]
+        },
+        {
+            "sent_idx": 17,
+            "tkn_idx": 351,
+            "text": ":",
+            "endpoints": [
+                2081,
+                2082
+            ]
+        },
+        {
+            "sent_idx": 17,
+            "tkn_idx": 352,
+            "text": "sembra",
+            "endpoints": [
+                2083,
+                2089
+            ]
+        },
+        {
+            "sent_idx": 17,
+            "tkn_idx": 353,
+            "text": "che",
+            "endpoints": [
+                2090,
+                2093
+            ]
+        },
+        {
+            "sent_idx": 17,
+            "tkn_idx": 354,
+            "text": "una",
+            "endpoints": [
+                2094,
+                2097
+            ]
+        },
+        {
+            "sent_idx": 17,
+            "tkn_idx": 355,
+            "text": "delle",
+            "endpoints": [
+                2098,
+                2103
+            ]
+        },
+        {
+            "sent_idx": 17,
+            "tkn_idx": 356,
+            "text": "telefonata",
+            "endpoints": [
+                2104,
+                2114
+            ]
+        },
+        {
+            "sent_idx": 17,
+            "tkn_idx": 357,
+            "text": "sia",
+            "endpoints": [
+                2115,
+                2118
+            ]
+        },
+        {
+            "sent_idx": 17,
+            "tkn_idx": 358,
+            "text": "stata",
+            "endpoints": [
+                2119,
+                2124
+            ]
+        },
+        {
+            "sent_idx": 17,
+            "tkn_idx": 359,
+            "text": "fatta",
+            "endpoints": [
+                2125,
+                2130
+            ]
+        },
+        {
+            "sent_idx": 17,
+            "tkn_idx": 360,
+            "text": "dal",
+            "endpoints": [
+                2131,
+                2134
+            ]
+        },
+        {
+            "sent_idx": 17,
+            "tkn_idx": 361,
+            "text": "corazziere",
+            "endpoints": [
+                2135,
+                2145
+            ]
+        },
+        {
+            "sent_idx": 17,
+            "tkn_idx": 362,
+            "text": "mentre",
+            "endpoints": [
+                2146,
+                2152
+            ]
+        },
+        {
+            "sent_idx": 17,
+            "tkn_idx": 363,
+            "text": "era",
+            "endpoints": [
+                2153,
+                2156
+            ]
+        },
+        {
+            "sent_idx": 17,
+            "tkn_idx": 364,
+            "text": "in",
+            "endpoints": [
+                2157,
+                2159
+            ]
+        },
+        {
+            "sent_idx": 17,
+            "tkn_idx": 365,
+            "text": "servizio",
+            "endpoints": [
+                2160,
+                2168
+            ]
+        },
+        {
+            "sent_idx": 17,
+            "tkn_idx": 366,
+            "text": "al",
+            "endpoints": [
+                2169,
+                2171
+            ]
+        },
+        {
+            "sent_idx": 17,
+            "tkn_idx": 367,
+            "text": "Quirinale",
+            "endpoints": [
+                2172,
+                2181
+            ]
+        },
+        {
+            "sent_idx": 17,
+            "tkn_idx": 368,
+            "text": ".",
+            "endpoints": [
+                2181,
+                2182
+            ]
+        },
+        {
+            "sent_idx": 18,
+            "tkn_idx": 369,
+            "text": "Ce",
+            "endpoints": [
+                2183,
+                2185
+            ]
+        },
+        {
+            "sent_idx": 18,
+            "tkn_idx": 370,
+            "text": "n'",
+            "endpoints": [
+                2186,
+                2188
+            ]
+        },
+        {
+            "sent_idx": 18,
+            "tkn_idx": 371,
+            "text": "era",
+            "endpoints": [
+                2189,
+                2192
+            ]
+        },
+        {
+            "sent_idx": 18,
+            "tkn_idx": 372,
+            "text": "abbastanza",
+            "endpoints": [
+                2193,
+                2203
+            ]
+        },
+        {
+            "sent_idx": 18,
+            "tkn_idx": 373,
+            "text": "per",
+            "endpoints": [
+                2204,
+                2207
+            ]
+        },
+        {
+            "sent_idx": 18,
+            "tkn_idx": 374,
+            "text": "avvertire",
+            "endpoints": [
+                2208,
+                2217
+            ]
+        },
+        {
+            "sent_idx": 18,
+            "tkn_idx": 375,
+            "text": "la",
+            "endpoints": [
+                2218,
+                2220
+            ]
+        },
+        {
+            "sent_idx": 18,
+            "tkn_idx": 376,
+            "text": "magistratura",
+            "endpoints": [
+                2221,
+                2233
+            ]
+        },
+        {
+            "sent_idx": 18,
+            "tkn_idx": 377,
+            "text": ".",
+            "endpoints": [
+                2233,
+                2234
+            ]
+        },
+        {
+            "sent_idx": 19,
+            "tkn_idx": 378,
+            "text": "Secondo",
+            "endpoints": [
+                2235,
+                2242
+            ]
+        },
+        {
+            "sent_idx": 19,
+            "tkn_idx": 379,
+            "text": "indiscrezioni",
+            "endpoints": [
+                2243,
+                2256
+            ]
+        },
+        {
+            "sent_idx": 19,
+            "tkn_idx": 380,
+            "text": "la",
+            "endpoints": [
+                2257,
+                2259
+            ]
+        },
+        {
+            "sent_idx": 19,
+            "tkn_idx": 381,
+            "text": "prima",
+            "endpoints": [
+                2260,
+                2265
+            ]
+        },
+        {
+            "sent_idx": 19,
+            "tkn_idx": 382,
+            "text": "segnalazione",
+            "endpoints": [
+                2266,
+                2278
+            ]
+        },
+        {
+            "sent_idx": 19,
+            "tkn_idx": 383,
+            "text": "e'",
+            "endpoints": [
+                2279,
+                2281
+            ]
+        },
+        {
+            "sent_idx": 19,
+            "tkn_idx": 384,
+            "text": "stata",
+            "endpoints": [
+                2282,
+                2287
+            ]
+        },
+        {
+            "sent_idx": 19,
+            "tkn_idx": 385,
+            "text": "inviata",
+            "endpoints": [
+                2288,
+                2295
+            ]
+        },
+        {
+            "sent_idx": 19,
+            "tkn_idx": 386,
+            "text": "alla",
+            "endpoints": [
+                2296,
+                2300
+            ]
+        },
+        {
+            "sent_idx": 19,
+            "tkn_idx": 387,
+            "text": "procura",
+            "endpoints": [
+                2301,
+                2308
+            ]
+        },
+        {
+            "sent_idx": 19,
+            "tkn_idx": 388,
+            "text": "della",
+            "endpoints": [
+                2309,
+                2314
+            ]
+        },
+        {
+            "sent_idx": 19,
+            "tkn_idx": 389,
+            "text": "Repubblica",
+            "endpoints": [
+                2315,
+                2325
+            ]
+        },
+        {
+            "sent_idx": 19,
+            "tkn_idx": 390,
+            "text": ".",
+            "endpoints": [
+                2325,
+                2326
+            ]
+        },
+        {
+            "sent_idx": 20,
+            "tkn_idx": 391,
+            "text": "A",
+            "endpoints": [
+                2327,
+                2328
+            ]
+        },
+        {
+            "sent_idx": 20,
+            "tkn_idx": 392,
+            "text": "palazzo",
+            "endpoints": [
+                2329,
+                2336
+            ]
+        },
+        {
+            "sent_idx": 20,
+            "tkn_idx": 393,
+            "text": "di",
+            "endpoints": [
+                2337,
+                2339
+            ]
+        },
+        {
+            "sent_idx": 20,
+            "tkn_idx": 394,
+            "text": "giustizia",
+            "endpoints": [
+                2340,
+                2349
+            ]
+        },
+        {
+            "sent_idx": 20,
+            "tkn_idx": 395,
+            "text": "si",
+            "endpoints": [
+                2350,
+                2352
+            ]
+        },
+        {
+            "sent_idx": 20,
+            "tkn_idx": 396,
+            "text": "e'",
+            "endpoints": [
+                2353,
+                2355
+            ]
+        },
+        {
+            "sent_idx": 20,
+            "tkn_idx": 397,
+            "text": "ritenuto",
+            "endpoints": [
+                2356,
+                2364
+            ]
+        },
+        {
+            "sent_idx": 20,
+            "tkn_idx": 398,
+            "text": "che",
+            "endpoints": [
+                2365,
+                2368
+            ]
+        },
+        {
+            "sent_idx": 20,
+            "tkn_idx": 399,
+            "text": "il",
+            "endpoints": [
+                2369,
+                2371
+            ]
+        },
+        {
+            "sent_idx": 20,
+            "tkn_idx": 400,
+            "text": "caso",
+            "endpoints": [
+                2372,
+                2376
+            ]
+        },
+        {
+            "sent_idx": 20,
+            "tkn_idx": 401,
+            "text": "fosse",
+            "endpoints": [
+                2377,
+                2382
+            ]
+        },
+        {
+            "sent_idx": 20,
+            "tkn_idx": 402,
+            "text": "di",
+            "endpoints": [
+                2383,
+                2385
+            ]
+        },
+        {
+            "sent_idx": 20,
+            "tkn_idx": 403,
+            "text": "competenza",
+            "endpoints": [
+                2386,
+                2396
+            ]
+        },
+        {
+            "sent_idx": 20,
+            "tkn_idx": 404,
+            "text": "della",
+            "endpoints": [
+                2397,
+                2402
+            ]
+        },
+        {
+            "sent_idx": 20,
+            "tkn_idx": 405,
+            "text": "magistratura",
+            "endpoints": [
+                2403,
+                2415
+            ]
+        },
+        {
+            "sent_idx": 20,
+            "tkn_idx": 406,
+            "text": "militare",
+            "endpoints": [
+                2416,
+                2424
+            ]
+        },
+        {
+            "sent_idx": 20,
+            "tkn_idx": 407,
+            "text": "ed",
+            "endpoints": [
+                2425,
+                2427
+            ]
+        },
+        {
+            "sent_idx": 20,
+            "tkn_idx": 408,
+            "text": "e'",
+            "endpoints": [
+                2428,
+                2430
+            ]
+        },
+        {
+            "sent_idx": 20,
+            "tkn_idx": 409,
+            "text": "stato",
+            "endpoints": [
+                2431,
+                2436
+            ]
+        },
+        {
+            "sent_idx": 20,
+            "tkn_idx": 410,
+            "text": "avvertito",
+            "endpoints": [
+                2437,
+                2446
+            ]
+        },
+        {
+            "sent_idx": 20,
+            "tkn_idx": 411,
+            "text": "Intelisano",
+            "endpoints": [
+                2447,
+                2457
+            ]
+        },
+        {
+            "sent_idx": 20,
+            "tkn_idx": 412,
+            "text": ".",
+            "endpoints": [
+                2457,
+                2458
+            ]
+        },
+        {
+            "sent_idx": 21,
+            "tkn_idx": 413,
+            "text": "Il",
+            "endpoints": [
+                2459,
+                2461
+            ]
+        },
+        {
+            "sent_idx": 21,
+            "tkn_idx": 414,
+            "text": "quale",
+            "endpoints": [
+                2462,
+                2467
+            ]
+        },
+        {
+            "sent_idx": 21,
+            "tkn_idx": 415,
+            "text": "procede",
+            "endpoints": [
+                2468,
+                2475
+            ]
+        },
+        {
+            "sent_idx": 21,
+            "tkn_idx": 416,
+            "text": "per",
+            "endpoints": [
+                2476,
+                2479
+            ]
+        },
+        {
+            "sent_idx": 21,
+            "tkn_idx": 417,
+            "text": "un",
+            "endpoints": [
+                2480,
+                2482
+            ]
+        },
+        {
+            "sent_idx": 21,
+            "tkn_idx": 418,
+            "text": "reato",
+            "endpoints": [
+                2483,
+                2488
+            ]
+        },
+        {
+            "sent_idx": 21,
+            "tkn_idx": 419,
+            "text": ",",
+            "endpoints": [
+                2488,
+                2489
+            ]
+        },
+        {
+            "sent_idx": 21,
+            "tkn_idx": 420,
+            "text": "quello",
+            "endpoints": [
+                2490,
+                2496
+            ]
+        },
+        {
+            "sent_idx": 21,
+            "tkn_idx": 421,
+            "text": "appunto",
+            "endpoints": [
+                2497,
+                2504
+            ]
+        },
+        {
+            "sent_idx": 21,
+            "tkn_idx": 422,
+            "text": "di",
+            "endpoints": [
+                2505,
+                2507
+            ]
+        },
+        {
+            "sent_idx": 21,
+            "tkn_idx": 423,
+            "text": "offesa",
+            "endpoints": [
+                2508,
+                2514
+            ]
+        },
+        {
+            "sent_idx": 21,
+            "tkn_idx": 424,
+            "text": "all'",
+            "endpoints": [
+                2515,
+                2519
+            ]
+        },
+        {
+            "sent_idx": 21,
+            "tkn_idx": 425,
+            "text": "onore",
+            "endpoints": [
+                2520,
+                2525
+            ]
+        },
+        {
+            "sent_idx": 21,
+            "tkn_idx": 426,
+            "text": "del",
+            "endpoints": [
+                2526,
+                2529
+            ]
+        },
+        {
+            "sent_idx": 21,
+            "tkn_idx": 427,
+            "text": "presidente",
+            "endpoints": [
+                2530,
+                2540
+            ]
+        },
+        {
+            "sent_idx": 21,
+            "tkn_idx": 428,
+            "text": "della",
+            "endpoints": [
+                2541,
+                2546
+            ]
+        },
+        {
+            "sent_idx": 21,
+            "tkn_idx": 429,
+            "text": "Repubblica",
+            "endpoints": [
+                2547,
+                2557
+            ]
+        },
+        {
+            "sent_idx": 21,
+            "tkn_idx": 430,
+            "text": ",",
+            "endpoints": [
+                2557,
+                2558
+            ]
+        },
+        {
+            "sent_idx": 21,
+            "tkn_idx": 431,
+            "text": "che",
+            "endpoints": [
+                2559,
+                2562
+            ]
+        },
+        {
+            "sent_idx": 21,
+            "tkn_idx": 432,
+            "text": "prevede",
+            "endpoints": [
+                2563,
+                2570
+            ]
+        },
+        {
+            "sent_idx": 21,
+            "tkn_idx": 433,
+            "text": "pene",
+            "endpoints": [
+                2571,
+                2575
+            ]
+        },
+        {
+            "sent_idx": 21,
+            "tkn_idx": 434,
+            "text": "detentive",
+            "endpoints": [
+                2576,
+                2585
+            ]
+        },
+        {
+            "sent_idx": 21,
+            "tkn_idx": 435,
+            "text": "da",
+            "endpoints": [
+                2586,
+                2588
+            ]
+        },
+        {
+            "sent_idx": 21,
+            "tkn_idx": 436,
+            "text": "un",
+            "endpoints": [
+                2589,
+                2591
+            ]
+        },
+        {
+            "sent_idx": 21,
+            "tkn_idx": 437,
+            "text": "minimo",
+            "endpoints": [
+                2592,
+                2598
+            ]
+        },
+        {
+            "sent_idx": 21,
+            "tkn_idx": 438,
+            "text": "di",
+            "endpoints": [
+                2599,
+                2601
+            ]
+        },
+        {
+            "sent_idx": 21,
+            "tkn_idx": 439,
+            "text": "cinque",
+            "endpoints": [
+                2602,
+                2608
+            ]
+        },
+        {
+            "sent_idx": 21,
+            "tkn_idx": 440,
+            "text": "a",
+            "endpoints": [
+                2609,
+                2610
+            ]
+        },
+        {
+            "sent_idx": 21,
+            "tkn_idx": 441,
+            "text": "un",
+            "endpoints": [
+                2611,
+                2613
+            ]
+        },
+        {
+            "sent_idx": 21,
+            "tkn_idx": 442,
+            "text": "massimo",
+            "endpoints": [
+                2614,
+                2621
+            ]
+        },
+        {
+            "sent_idx": 21,
+            "tkn_idx": 443,
+            "text": "di",
+            "endpoints": [
+                2622,
+                2624
+            ]
+        },
+        {
+            "sent_idx": 21,
+            "tkn_idx": 444,
+            "text": "quindici",
+            "endpoints": [
+                2625,
+                2633
+            ]
+        },
+        {
+            "sent_idx": 21,
+            "tkn_idx": 445,
+            "text": "anni",
+            "endpoints": [
+                2634,
+                2638
+            ]
+        },
+        {
+            "sent_idx": 21,
+            "tkn_idx": 446,
+            "text": "di",
+            "endpoints": [
+                2639,
+                2641
+            ]
+        },
+        {
+            "sent_idx": 21,
+            "tkn_idx": 447,
+            "text": "reclusione",
+            "endpoints": [
+                2642,
+                2652
+            ]
+        },
+        {
+            "sent_idx": 21,
+            "tkn_idx": 448,
+            "text": "militare",
+            "endpoints": [
+                2653,
+                2661
+            ]
+        },
+        {
+            "sent_idx": 21,
+            "tkn_idx": 449,
+            "text": ".",
+            "endpoints": [
+                2661,
+                2662
+            ]
+        },
+        {
+            "sent_idx": 22,
+            "tkn_idx": 450,
+            "text": "Per",
+            "endpoints": [
+                2663,
+                2666
+            ]
+        },
+        {
+            "sent_idx": 22,
+            "tkn_idx": 451,
+            "text": "mandare",
+            "endpoints": [
+                2667,
+                2674
+            ]
+        },
+        {
+            "sent_idx": 22,
+            "tkn_idx": 452,
+            "text": "avanti",
+            "endpoints": [
+                2675,
+                2681
+            ]
+        },
+        {
+            "sent_idx": 22,
+            "tkn_idx": 453,
+            "text": "l'",
+            "endpoints": [
+                2682,
+                2684
+            ]
+        },
+        {
+            "sent_idx": 22,
+            "tkn_idx": 454,
+            "text": "indagine",
+            "endpoints": [
+                2685,
+                2693
+            ]
+        },
+        {
+            "sent_idx": 22,
+            "tkn_idx": 455,
+            "text": ",",
+            "endpoints": [
+                2693,
+                2694
+            ]
+        },
+        {
+            "sent_idx": 22,
+            "tkn_idx": 456,
+            "text": "Intelisano",
+            "endpoints": [
+                2695,
+                2705
+            ]
+        },
+        {
+            "sent_idx": 22,
+            "tkn_idx": 457,
+            "text": "dovra'",
+            "endpoints": [
+                2706,
+                2712
+            ]
+        },
+        {
+            "sent_idx": 22,
+            "tkn_idx": 458,
+            "text": "chiedere",
+            "endpoints": [
+                2713,
+                2721
+            ]
+        },
+        {
+            "sent_idx": 22,
+            "tkn_idx": 459,
+            "text": "l'",
+            "endpoints": [
+                2722,
+                2724
+            ]
+        },
+        {
+            "sent_idx": 22,
+            "tkn_idx": 460,
+            "text": "autorizzazione",
+            "endpoints": [
+                2725,
+                2739
+            ]
+        },
+        {
+            "sent_idx": 22,
+            "tkn_idx": 461,
+            "text": "a",
+            "endpoints": [
+                2740,
+                2741
+            ]
+        },
+        {
+            "sent_idx": 22,
+            "tkn_idx": 462,
+            "text": "procedere",
+            "endpoints": [
+                2742,
+                2751
+            ]
+        },
+        {
+            "sent_idx": 22,
+            "tkn_idx": 463,
+            "text": "al",
+            "endpoints": [
+                2752,
+                2754
+            ]
+        },
+        {
+            "sent_idx": 22,
+            "tkn_idx": 464,
+            "text": "ministro",
+            "endpoints": [
+                2755,
+                2763
+            ]
+        },
+        {
+            "sent_idx": 22,
+            "tkn_idx": 465,
+            "text": "della",
+            "endpoints": [
+                2764,
+                2769
+            ]
+        },
+        {
+            "sent_idx": 22,
+            "tkn_idx": 466,
+            "text": "Giustizia",
+            "endpoints": [
+                2770,
+                2779
+            ]
+        },
+        {
+            "sent_idx": 22,
+            "tkn_idx": 467,
+            "text": "e",
+            "endpoints": [
+                2780,
+                2781
+            ]
+        },
+        {
+            "sent_idx": 22,
+            "tkn_idx": 468,
+            "text": "il",
+            "endpoints": [
+                2782,
+                2784
+            ]
+        },
+        {
+            "sent_idx": 22,
+            "tkn_idx": 469,
+            "text": "complesso",
+            "endpoints": [
+                2785,
+                2794
+            ]
+        },
+        {
+            "sent_idx": 22,
+            "tkn_idx": 470,
+            "text": "iter",
+            "endpoints": [
+                2795,
+                2799
+            ]
+        },
+        {
+            "sent_idx": 22,
+            "tkn_idx": 471,
+            "text": "sara'",
+            "endpoints": [
+                2800,
+                2805
+            ]
+        },
+        {
+            "sent_idx": 22,
+            "tkn_idx": 472,
+            "text": "messo",
+            "endpoints": [
+                2806,
+                2811
+            ]
+        },
+        {
+            "sent_idx": 22,
+            "tkn_idx": 473,
+            "text": "in",
+            "endpoints": [
+                2812,
+                2814
+            ]
+        },
+        {
+            "sent_idx": 22,
+            "tkn_idx": 474,
+            "text": "moto",
+            "endpoints": [
+                2815,
+                2819
+            ]
+        },
+        {
+            "sent_idx": 22,
+            "tkn_idx": 475,
+            "text": "nei",
+            "endpoints": [
+                2820,
+                2823
+            ]
+        },
+        {
+            "sent_idx": 22,
+            "tkn_idx": 476,
+            "text": "prossimi",
+            "endpoints": [
+                2824,
+                2832
+            ]
+        },
+        {
+            "sent_idx": 22,
+            "tkn_idx": 477,
+            "text": "giorni",
+            "endpoints": [
+                2833,
+                2839
+            ]
+        },
+        {
+            "sent_idx": 22,
+            "tkn_idx": 478,
+            "text": ".",
+            "endpoints": [
+                2839,
+                2840
+            ]
+        },
+        {
+            "sent_idx": 23,
+            "tkn_idx": 479,
+            "text": "Il",
+            "endpoints": [
+                2841,
+                2843
+            ]
+        },
+        {
+            "sent_idx": 23,
+            "tkn_idx": 480,
+            "text": "corazziere",
+            "endpoints": [
+                2844,
+                2854
+            ]
+        },
+        {
+            "sent_idx": 23,
+            "tkn_idx": 481,
+            "text": "e'",
+            "endpoints": [
+                2855,
+                2857
+            ]
+        },
+        {
+            "sent_idx": 23,
+            "tkn_idx": 482,
+            "text": "solo",
+            "endpoints": [
+                2858,
+                2862
+            ]
+        },
+        {
+            "sent_idx": 23,
+            "tkn_idx": 483,
+            "text": "un",
+            "endpoints": [
+                2863,
+                2865
+            ]
+        },
+        {
+            "sent_idx": 23,
+            "tkn_idx": 484,
+            "text": "mitomane",
+            "endpoints": [
+                2866,
+                2874
+            ]
+        },
+        {
+            "sent_idx": 23,
+            "tkn_idx": 485,
+            "text": "o",
+            "endpoints": [
+                2875,
+                2876
+            ]
+        },
+        {
+            "sent_idx": 23,
+            "tkn_idx": 486,
+            "text": "dietro alla",
+            "endpoints": [
+                2877,
+                2888
+            ]
+        },
+        {
+            "sent_idx": 23,
+            "tkn_idx": 487,
+            "text": "vicenda",
+            "endpoints": [
+                2889,
+                2896
+            ]
+        },
+        {
+            "sent_idx": 23,
+            "tkn_idx": 488,
+            "text": "c'",
+            "endpoints": [
+                2897,
+                2899
+            ]
+        },
+        {
+            "sent_idx": 23,
+            "tkn_idx": 489,
+            "text": "e'",
+            "endpoints": [
+                2900,
+                2902
+            ]
+        },
+        {
+            "sent_idx": 23,
+            "tkn_idx": 490,
+            "text": "dell'",
+            "endpoints": [
+                2903,
+                2908
+            ]
+        },
+        {
+            "sent_idx": 23,
+            "tkn_idx": 491,
+            "text": "altro",
+            "endpoints": [
+                2909,
+                2914
+            ]
+        },
+        {
+            "sent_idx": 23,
+            "tkn_idx": 492,
+            "text": "?",
+            "endpoints": [
+                2914,
+                2915
+            ]
+        },
+        {
+            "sent_idx": 23,
+            "tkn_idx": 493,
+            "text": "Negli",
+            "endpoints": [
+                2916,
+                2921
+            ]
+        },
+        {
+            "sent_idx": 23,
+            "tkn_idx": 494,
+            "text": "ambienti",
+            "endpoints": [
+                2922,
+                2930
+            ]
+        },
+        {
+            "sent_idx": 23,
+            "tkn_idx": 495,
+            "text": "giudiziari",
+            "endpoints": [
+                2931,
+                2941
+            ]
+        },
+        {
+            "sent_idx": 23,
+            "tkn_idx": 496,
+            "text": "la",
+            "endpoints": [
+                2942,
+                2944
+            ]
+        },
+        {
+            "sent_idx": 23,
+            "tkn_idx": 497,
+            "text": "seconda",
+            "endpoints": [
+                2945,
+                2952
+            ]
+        },
+        {
+            "sent_idx": 23,
+            "tkn_idx": 498,
+            "text": "ipotesi",
+            "endpoints": [
+                2953,
+                2960
+            ]
+        },
+        {
+            "sent_idx": 23,
+            "tkn_idx": 499,
+            "text": "viene",
+            "endpoints": [
+                2961,
+                2966
+            ]
+        },
+        {
+            "sent_idx": 23,
+            "tkn_idx": 500,
+            "text": "esclusa",
+            "endpoints": [
+                2967,
+                2974
+            ]
+        },
+        {
+            "sent_idx": 23,
+            "tkn_idx": 501,
+            "text": "e",
+            "endpoints": [
+                2975,
+                2976
+            ]
+        },
+        {
+            "sent_idx": 23,
+            "tkn_idx": 502,
+            "text": "anche",
+            "endpoints": [
+                2977,
+                2982
+            ]
+        },
+        {
+            "sent_idx": 23,
+            "tkn_idx": 503,
+            "text": "il",
+            "endpoints": [
+                2983,
+                2985
+            ]
+        },
+        {
+            "sent_idx": 23,
+            "tkn_idx": 504,
+            "text": "carabiniere",
+            "endpoints": [
+                2986,
+                2997
+            ]
+        },
+        {
+            "sent_idx": 23,
+            "tkn_idx": 505,
+            "text": ",",
+            "endpoints": [
+                2997,
+                2998
+            ]
+        },
+        {
+            "sent_idx": 23,
+            "tkn_idx": 506,
+            "text": "individuato",
+            "endpoints": [
+                2999,
+                3010
+            ]
+        },
+        {
+            "sent_idx": 23,
+            "tkn_idx": 507,
+            "text": "e",
+            "endpoints": [
+                3011,
+                3012
+            ]
+        },
+        {
+            "sent_idx": 23,
+            "tkn_idx": 508,
+            "text": "subito",
+            "endpoints": [
+                3013,
+                3019
+            ]
+        },
+        {
+            "sent_idx": 23,
+            "tkn_idx": 509,
+            "text": "ascoltato",
+            "endpoints": [
+                3020,
+                3029
+            ]
+        },
+        {
+            "sent_idx": 23,
+            "tkn_idx": 510,
+            "text": "dagli",
+            "endpoints": [
+                3030,
+                3035
+            ]
+        },
+        {
+            "sent_idx": 23,
+            "tkn_idx": 511,
+            "text": "investigatori",
+            "endpoints": [
+                3036,
+                3049
+            ]
+        },
+        {
+            "sent_idx": 23,
+            "tkn_idx": 512,
+            "text": ",",
+            "endpoints": [
+                3049,
+                3050
+            ]
+        },
+        {
+            "sent_idx": 23,
+            "tkn_idx": 513,
+            "text": "avrebbe",
+            "endpoints": [
+                3051,
+                3058
+            ]
+        },
+        {
+            "sent_idx": 23,
+            "tkn_idx": 514,
+            "text": "cercato",
+            "endpoints": [
+                3059,
+                3066
+            ]
+        },
+        {
+            "sent_idx": 23,
+            "tkn_idx": 515,
+            "text": "di",
+            "endpoints": [
+                3067,
+                3069
+            ]
+        },
+        {
+            "sent_idx": 23,
+            "tkn_idx": 516,
+            "text": "accreditare",
+            "endpoints": [
+                3070,
+                3081
+            ]
+        },
+        {
+            "sent_idx": 23,
+            "tkn_idx": 517,
+            "text": "la",
+            "endpoints": [
+                3082,
+                3084
+            ]
+        },
+        {
+            "sent_idx": 23,
+            "tkn_idx": 518,
+            "text": "tesi",
+            "endpoints": [
+                3085,
+                3089
+            ]
+        },
+        {
+            "sent_idx": 23,
+            "tkn_idx": 519,
+            "text": "di",
+            "endpoints": [
+                3090,
+                3092
+            ]
+        },
+        {
+            "sent_idx": 23,
+            "tkn_idx": 520,
+            "text": "una",
+            "endpoints": [
+                3093,
+                3096
+            ]
+        },
+        {
+            "sent_idx": 23,
+            "tkn_idx": 521,
+            "text": "\"",
+            "endpoints": [
+                3096,
+                3097
+            ]
+        },
+        {
+            "sent_idx": 23,
+            "tkn_idx": 522,
+            "text": "bambinata",
+            "endpoints": [
+                3098,
+                3107
+            ]
+        },
+        {
+            "sent_idx": 23,
+            "tkn_idx": 523,
+            "text": "\"",
+            "endpoints": [
+                3107,
+                3108
+            ]
+        },
+        {
+            "sent_idx": 23,
+            "tkn_idx": 524,
+            "text": ".",
+            "endpoints": [
+                3108,
+                3109
+            ]
+        },
+        {
+            "sent_idx": 24,
+            "tkn_idx": 525,
+            "text": "Per",
+            "endpoints": [
+                3110,
+                3113
+            ]
+        },
+        {
+            "sent_idx": 24,
+            "tkn_idx": 526,
+            "text": "il",
+            "endpoints": [
+                3114,
+                3116
+            ]
+        },
+        {
+            "sent_idx": 24,
+            "tkn_idx": 527,
+            "text": "militare",
+            "endpoints": [
+                3117,
+                3125
+            ]
+        },
+        {
+            "sent_idx": 24,
+            "tkn_idx": 528,
+            "text": ",",
+            "endpoints": [
+                3125,
+                3126
+            ]
+        },
+        {
+            "sent_idx": 24,
+            "tkn_idx": 529,
+            "text": "a",
+            "endpoints": [
+                3127,
+                3128
+            ]
+        },
+        {
+            "sent_idx": 24,
+            "tkn_idx": 530,
+            "text": "questo",
+            "endpoints": [
+                3129,
+                3135
+            ]
+        },
+        {
+            "sent_idx": 24,
+            "tkn_idx": 531,
+            "text": "punto",
+            "endpoints": [
+                3136,
+                3141
+            ]
+        },
+        {
+            "sent_idx": 24,
+            "tkn_idx": 532,
+            "text": ",",
+            "endpoints": [
+                3141,
+                3142
+            ]
+        },
+        {
+            "sent_idx": 24,
+            "tkn_idx": 533,
+            "text": "sembra",
+            "endpoints": [
+                3143,
+                3149
+            ]
+        },
+        {
+            "sent_idx": 24,
+            "tkn_idx": 534,
+            "text": "comunque",
+            "endpoints": [
+                3150,
+                3158
+            ]
+        },
+        {
+            "sent_idx": 24,
+            "tkn_idx": 535,
+            "text": "inevitabile",
+            "endpoints": [
+                3159,
+                3170
+            ]
+        },
+        {
+            "sent_idx": 24,
+            "tkn_idx": 536,
+            "text": "la",
+            "endpoints": [
+                3171,
+                3173
+            ]
+        },
+        {
+            "sent_idx": 24,
+            "tkn_idx": 537,
+            "text": "sospensione",
+            "endpoints": [
+                3174,
+                3185
+            ]
+        },
+        {
+            "sent_idx": 24,
+            "tkn_idx": 538,
+            "text": "cautelare",
+            "endpoints": [
+                3186,
+                3195
+            ]
+        },
+        {
+            "sent_idx": 24,
+            "tkn_idx": 539,
+            "text": "dal",
+            "endpoints": [
+                3196,
+                3199
+            ]
+        },
+        {
+            "sent_idx": 24,
+            "tkn_idx": 540,
+            "text": "servizio",
+            "endpoints": [
+                3200,
+                3208
+            ]
+        },
+        {
+            "sent_idx": 24,
+            "tkn_idx": 541,
+            "text": ".",
+            "endpoints": [
+                3208,
+                3209
+            ]
+        }
+    ],
+    "entities": {
+        "events": [
+            {
+                "id": "e1",
+                "sent_idx": 7,
+                "tkn_idx": [
+                    59
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e2",
+                "sent_idx": 7,
+                "tkn_idx": [
+                    70
+                ],
+                "aspect": "PERFECTIVE",
+                "mood": "CONDITIONAL",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e3",
+                "sent_idx": 7,
+                "tkn_idx": [
+                    71
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e4",
+                "sent_idx": 7,
+                "tkn_idx": [
+                    80
+                ],
+                "aspect": "IMPERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PRESENT"
+            },
+            {
+                "id": "e5",
+                "sent_idx": 7,
+                "tkn_idx": [
+                    83
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e6",
+                "sent_idx": 8,
+                "tkn_idx": [
+                    94
+                ],
+                "aspect": "IMPERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PRESENT"
+            },
+            {
+                "id": "e7",
+                "sent_idx": 8,
+                "tkn_idx": [
+                    97
+                ],
+                "aspect": "PERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e8",
+                "sent_idx": 8,
+                "tkn_idx": [
+                    101
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e9",
+                "sent_idx": 8,
+                "tkn_idx": [
+                    106
+                ],
+                "aspect": "PERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PRESENT"
+            },
+            {
+                "id": "e10",
+                "sent_idx": 8,
+                "tkn_idx": [
+                    108
+                ],
+                "aspect": "IMPERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PAST"
+            },
+            {
+                "id": "e11",
+                "sent_idx": 8,
+                "tkn_idx": [
+                    112
+                ],
+                "aspect": "PERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e12",
+                "sent_idx": 8,
+                "tkn_idx": [
+                    114
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e13",
+                "sent_idx": 8,
+                "tkn_idx": [
+                    124
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e14",
+                "sent_idx": 8,
+                "tkn_idx": [
+                    127
+                ],
+                "aspect": "IMPERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PAST"
+            },
+            {
+                "id": "e15",
+                "sent_idx": 8,
+                "tkn_idx": [
+                    129
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e16",
+                "sent_idx": 9,
+                "tkn_idx": [
+                    139
+                ],
+                "aspect": "IMPERFECTIVE",
+                "mood": "NONE",
+                "polarity": "NEG",
+                "tense": "PRESENT"
+            },
+            {
+                "id": "e17",
+                "sent_idx": 9,
+                "tkn_idx": [
+                    141
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e18",
+                "sent_idx": 9,
+                "tkn_idx": [
+                    146
+                ],
+                "aspect": "PERFECTIVE",
+                "mood": "CONDITIONAL",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e19",
+                "sent_idx": 9,
+                "tkn_idx": [
+                    149
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e20",
+                "sent_idx": 9,
+                "tkn_idx": [
+                    152
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e21",
+                "sent_idx": 9,
+                "tkn_idx": [
+                    154
+                ],
+                "aspect": "IMPERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e22",
+                "sent_idx": 9,
+                "tkn_idx": [
+                    158
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e23",
+                "sent_idx": 9,
+                "tkn_idx": [
+                    160
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e24",
+                "sent_idx": 9,
+                "tkn_idx": [
+                    161
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e25",
+                "sent_idx": 10,
+                "tkn_idx": [
+                    184
+                ],
+                "aspect": "IMPERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PRESENT"
+            },
+            {
+                "id": "e26",
+                "sent_idx": 10,
+                "tkn_idx": [
+                    186
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e27",
+                "sent_idx": 10,
+                "tkn_idx": [
+                    191
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e28",
+                "sent_idx": 10,
+                "tkn_idx": [
+                    194
+                ],
+                "aspect": "PERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PRESENT"
+            },
+            {
+                "id": "e29",
+                "sent_idx": 10,
+                "tkn_idx": [
+                    204
+                ],
+                "aspect": "PERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PRESENT"
+            },
+            {
+                "id": "e30",
+                "sent_idx": 10,
+                "tkn_idx": [
+                    206
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e31",
+                "sent_idx": 10,
+                "tkn_idx": [
+                    209
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e32",
+                "sent_idx": 10,
+                "tkn_idx": [
+                    211
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e33",
+                "sent_idx": 11,
+                "tkn_idx": [
+                    220
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e34",
+                "sent_idx": 11,
+                "tkn_idx": [
+                    222
+                ],
+                "aspect": "PERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PRESENT"
+            },
+            {
+                "id": "e35",
+                "sent_idx": 12,
+                "tkn_idx": [
+                    237
+                ],
+                "aspect": "PERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PAST"
+            },
+            {
+                "id": "e36",
+                "sent_idx": 12,
+                "tkn_idx": [
+                    238
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e37",
+                "sent_idx": 12,
+                "tkn_idx": [
+                    242
+                ],
+                "aspect": "IMPERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PAST"
+            },
+            {
+                "id": "e38",
+                "sent_idx": 13,
+                "tkn_idx": [
+                    253
+                ],
+                "aspect": "PERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PRESENT"
+            },
+            {
+                "id": "e39",
+                "sent_idx": 13,
+                "tkn_idx": [
+                    254
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e40",
+                "sent_idx": 13,
+                "tkn_idx": [
+                    259
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e41",
+                "sent_idx": 13,
+                "tkn_idx": [
+                    263
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e42",
+                "sent_idx": 14,
+                "tkn_idx": [
+                    266
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e43",
+                "sent_idx": 14,
+                "tkn_idx": [
+                    268
+                ],
+                "aspect": "IMPERFECTIVE",
+                "modality": "POTERE",
+                "mood": "NONE",
+                "polarity": "NEG",
+                "tense": "PAST"
+            },
+            {
+                "id": "e44",
+                "sent_idx": 14,
+                "tkn_idx": [
+                    270
+                ],
+                "aspect": "PERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e45",
+                "sent_idx": 15,
+                "tkn_idx": [
+                    273
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e46",
+                "sent_idx": 15,
+                "tkn_idx": [
+                    275
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e47",
+                "sent_idx": 15,
+                "tkn_idx": [
+                    278
+                ],
+                "aspect": "IMPERFECTIVE",
+                "mood": "SUBJUNCTIVE",
+                "polarity": "POS",
+                "tense": "PAST"
+            },
+            {
+                "id": "e48",
+                "sent_idx": 15,
+                "tkn_idx": [
+                    280
+                ],
+                "aspect": "IMPERFECTIVE",
+                "mood": "SUBJUNCTIVE",
+                "polarity": "POS",
+                "tense": "PAST"
+            },
+            {
+                "id": "e49",
+                "sent_idx": 15,
+                "tkn_idx": [
+                    286
+                ],
+                "aspect": "PERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PRESENT"
+            },
+            {
+                "id": "e50",
+                "sent_idx": 15,
+                "tkn_idx": [
+                    288
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e51",
+                "sent_idx": 15,
+                "tkn_idx": [
+                    292
+                ],
+                "aspect": "PERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PRESENT"
+            },
+            {
+                "id": "e52",
+                "sent_idx": 15,
+                "tkn_idx": [
+                    298
+                ],
+                "aspect": "PERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PAST"
+            },
+            {
+                "id": "e53",
+                "sent_idx": 15,
+                "tkn_idx": [
+                    300
+                ],
+                "aspect": "IMPERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PAST"
+            },
+            {
+                "id": "e54",
+                "sent_idx": 16,
+                "tkn_idx": [
+                    307
+                ],
+                "aspect": "IMPERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PRESENT"
+            },
+            {
+                "id": "e55",
+                "sent_idx": 16,
+                "tkn_idx": [
+                    309
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e56",
+                "sent_idx": 16,
+                "tkn_idx": [
+                    310
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e57",
+                "sent_idx": 16,
+                "tkn_idx": [
+                    312
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e58",
+                "sent_idx": 16,
+                "tkn_idx": [
+                    313
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e59",
+                "sent_idx": 16,
+                "tkn_idx": [
+                    322
+                ],
+                "aspect": "PERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PAST"
+            },
+            {
+                "id": "e60",
+                "sent_idx": 16,
+                "tkn_idx": [
+                    323
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e61",
+                "sent_idx": 16,
+                "tkn_idx": [
+                    332
+                ],
+                "aspect": "IMPERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PAST"
+            },
+            {
+                "id": "e62",
+                "sent_idx": 16,
+                "tkn_idx": [
+                    339
+                ],
+                "aspect": "PERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PAST"
+            },
+            {
+                "id": "e63",
+                "sent_idx": 17,
+                "tkn_idx": [
+                    352
+                ],
+                "aspect": "IMPERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PRESENT"
+            },
+            {
+                "id": "e64",
+                "sent_idx": 17,
+                "tkn_idx": [
+                    356
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e65",
+                "sent_idx": 17,
+                "tkn_idx": [
+                    359
+                ],
+                "aspect": "PERFECTIVE",
+                "mood": "SUBJUNCTIVE",
+                "polarity": "POS",
+                "tense": "PAST"
+            },
+            {
+                "id": "e66",
+                "sent_idx": 17,
+                "tkn_idx": [
+                    363
+                ],
+                "aspect": "IMPERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PAST"
+            },
+            {
+                "id": "e67",
+                "sent_idx": 17,
+                "tkn_idx": [
+                    364
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e68",
+                "sent_idx": 18,
+                "tkn_idx": [
+                    371
+                ],
+                "aspect": "IMPERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PAST"
+            },
+            {
+                "id": "e69",
+                "sent_idx": 18,
+                "tkn_idx": [
+                    374
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e70",
+                "sent_idx": 19,
+                "tkn_idx": [
+                    379
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e71",
+                "sent_idx": 19,
+                "tkn_idx": [
+                    382
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e72",
+                "sent_idx": 19,
+                "tkn_idx": [
+                    385
+                ],
+                "aspect": "PERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PRESENT"
+            },
+            {
+                "id": "e73",
+                "sent_idx": 20,
+                "tkn_idx": [
+                    397
+                ],
+                "aspect": "PERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PRESENT"
+            },
+            {
+                "id": "e74",
+                "sent_idx": 20,
+                "tkn_idx": [
+                    400
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e75",
+                "sent_idx": 20,
+                "tkn_idx": [
+                    401
+                ],
+                "aspect": "IMPERFECTIVE",
+                "mood": "SUBJUNCTIVE",
+                "polarity": "POS",
+                "tense": "PAST"
+            },
+            {
+                "id": "e76",
+                "sent_idx": 20,
+                "tkn_idx": [
+                    410
+                ],
+                "aspect": "PERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PRESENT"
+            },
+            {
+                "id": "e77",
+                "sent_idx": 21,
+                "tkn_idx": [
+                    415
+                ],
+                "aspect": "IMPERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PRESENT"
+            },
+            {
+                "id": "e78",
+                "sent_idx": 21,
+                "tkn_idx": [
+                    418
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e79",
+                "sent_idx": 21,
+                "tkn_idx": [
+                    423
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e80",
+                "sent_idx": 21,
+                "tkn_idx": [
+                    432
+                ],
+                "aspect": "IMPERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PRESENT"
+            },
+            {
+                "id": "e81",
+                "sent_idx": 21,
+                "tkn_idx": [
+                    433
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e82",
+                "sent_idx": 21,
+                "tkn_idx": [
+                    447
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e83",
+                "sent_idx": 22,
+                "tkn_idx": [
+                    451
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e84",
+                "sent_idx": 22,
+                "tkn_idx": [
+                    454
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e85",
+                "sent_idx": 22,
+                "tkn_idx": [
+                    457
+                ],
+                "aspect": "PERFECTIVE",
+                "modality": "DOVERE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "FUTURE"
+            },
+            {
+                "id": "e86",
+                "sent_idx": 22,
+                "tkn_idx": [
+                    458
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e87",
+                "sent_idx": 22,
+                "tkn_idx": [
+                    460
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e88",
+                "sent_idx": 22,
+                "tkn_idx": [
+                    462
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e89",
+                "sent_idx": 22,
+                "tkn_idx": [
+                    472
+                ],
+                "aspect": "PERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "FUTURE"
+            },
+            {
+                "id": "e90",
+                "sent_idx": 22,
+                "tkn_idx": [
+                    473
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e91",
+                "sent_idx": 23,
+                "tkn_idx": [
+                    481
+                ],
+                "aspect": "IMPERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PRESENT"
+            },
+            {
+                "id": "e92",
+                "sent_idx": 23,
+                "tkn_idx": [
+                    487
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e93",
+                "sent_idx": 23,
+                "tkn_idx": [
+                    489
+                ],
+                "aspect": "IMPERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PRESENT"
+            },
+            {
+                "id": "e94",
+                "sent_idx": 23,
+                "tkn_idx": [
+                    498
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e95",
+                "sent_idx": 23,
+                "tkn_idx": [
+                    500
+                ],
+                "aspect": "IMPERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PRESENT"
+            },
+            {
+                "id": "e96",
+                "sent_idx": 23,
+                "tkn_idx": [
+                    506
+                ],
+                "aspect": "PERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e97",
+                "sent_idx": 23,
+                "tkn_idx": [
+                    509
+                ],
+                "aspect": "PERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e98",
+                "sent_idx": 23,
+                "tkn_idx": [
+                    514
+                ],
+                "aspect": "PERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PRESENT"
+            },
+            {
+                "id": "e99",
+                "sent_idx": 23,
+                "tkn_idx": [
+                    516
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e100",
+                "sent_idx": 23,
+                "tkn_idx": [
+                    518
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e101",
+                "sent_idx": 23,
+                "tkn_idx": [
+                    522
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e102",
+                "sent_idx": 24,
+                "tkn_idx": [
+                    533
+                ],
+                "aspect": "IMPERFECTIVE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "PRESENT"
+            },
+            {
+                "id": "e103",
+                "sent_idx": 24,
+                "tkn_idx": [
+                    535
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            },
+            {
+                "id": "e104",
+                "sent_idx": 24,
+                "tkn_idx": [
+                    537
+                ],
+                "aspect": "NONE",
+                "mood": "NONE",
+                "polarity": "POS",
+                "tense": "NONE"
+            }
+        ],
+        "timexs": [
+            {
+                "id": "t1",
+                "sent_idx": 11,
+                "tkn_idx": [
+                    224,
+                    225,
+                    226,
+                    227
+                ],
+                "type": "DATE",
+                "val": "1995-W31"
+            },
+            {
+                "id": "t2",
+                "sent_idx": 21,
+                "tkn_idx": [
+                    436,
+                    437,
+                    438,
+                    439
+                ],
+                "type": "DURATION",
+                "val": "P5Y"
+            },
+            {
+                "id": "t3",
+                "sent_idx": 21,
+                "tkn_idx": [
+                    441,
+                    442,
+                    443,
+                    444,
+                    445
+                ],
+                "type": "DURATION",
+                "val": "P15Y"
+            },
+            {
+                "id": "t4",
+                "sent_idx": 22,
+                "tkn_idx": [
+                    476,
+                    477
+                ],
+                "type": "DURATION",
+                "val": "PXD"
+            },
+            {
+                "id": "t0",
+                "sent_idx": 0,
+                "tkn_idx": [
+                    0
+                ],
+                "val": null,
+                "function_in_document": "CREATION_TIME"
+            }
+        ]
+    },
+    "tlinks": [
+        {
+            "from": "e1",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e2",
+            "to": "t0",
+            "relation": "before"
+        },
+        {
+            "from": "e3",
+            "to": "t0",
+            "relation": "before"
+        },
+        {
+            "from": "e4",
+            "to": "t0",
+            "relation": "overlap"
+        },
+        {
+            "from": "e5",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e6",
+            "to": "t0",
+            "relation": "overlap"
+        },
+        {
+            "from": "e7",
+            "to": "t0",
+            "relation": "overlap"
+        },
+        {
+            "from": "e8",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e9",
+            "to": "t0",
+            "relation": "before"
+        },
+        {
+            "from": "e10",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e11",
+            "to": "t0",
+            "relation": "before"
+        },
+        {
+            "from": "e12",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e13",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e14",
+            "to": "t0",
+            "relation": "before"
+        },
+        {
+            "from": "e15",
+            "to": "t0",
+            "relation": "before"
+        },
+        {
+            "from": "e16",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e17",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e18",
+            "to": "t0",
+            "relation": "before"
+        },
+        {
+            "from": "e19",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e20",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e21",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e22",
+            "to": "t0",
+            "relation": "before"
+        },
+        {
+            "from": "e23",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e24",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e25",
+            "to": "t0",
+            "relation": "overlap"
+        },
+        {
+            "from": "e26",
+            "to": "t0",
+            "relation": "overlap"
+        },
+        {
+            "from": "e27",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e28",
+            "to": "t0",
+            "relation": "before"
+        },
+        {
+            "from": "e29",
+            "to": "t0",
+            "relation": "before"
+        },
+        {
+            "from": "e30",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e31",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e32",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e33",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e34",
+            "to": "t0",
+            "relation": "before"
+        },
+        {
+            "from": "e35",
+            "to": "t0",
+            "relation": "before"
+        },
+        {
+            "from": "e36",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e37",
+            "to": "t0",
+            "relation": "before"
+        },
+        {
+            "from": "e38",
+            "to": "t0",
+            "relation": "before"
+        },
+        {
+            "from": "e39",
+            "to": "t0",
+            "relation": "before"
+        },
+        {
+            "from": "e40",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e41",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e42",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e43",
+            "to": "t0",
+            "relation": "before"
+        },
+        {
+            "from": "e44",
+            "to": "t0",
+            "relation": "before"
+        },
+        {
+            "from": "e45",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e46",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e47",
+            "to": "t0",
+            "relation": "before"
+        },
+        {
+            "from": "e48",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e49",
+            "to": "t0",
+            "relation": "before"
+        },
+        {
+            "from": "e50",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e51",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e52",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e53",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e54",
+            "to": "t0",
+            "relation": "before"
+        },
+        {
+            "from": "e55",
+            "to": "t0",
+            "relation": "before"
+        },
+        {
+            "from": "e56",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e57",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e58",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e59",
+            "to": "t0",
+            "relation": "before"
+        },
+        {
+            "from": "e60",
+            "to": "t0",
+            "relation": "before"
+        },
+        {
+            "from": "e61",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e62",
+            "to": "t0",
+            "relation": "before"
+        },
+        {
+            "from": "e63",
+            "to": "t0",
+            "relation": "overlap"
+        },
+        {
+            "from": "e64",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e65",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e66",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e67",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e68",
+            "to": "t0",
+            "relation": "before"
+        },
+        {
+            "from": "e69",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e70",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e71",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e72",
+            "to": "t0",
+            "relation": "before"
+        },
+        {
+            "from": "e73",
+            "to": "t0",
+            "relation": "before"
+        },
+        {
+            "from": "e74",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e75",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e76",
+            "to": "t0",
+            "relation": "before"
+        },
+        {
+            "from": "e77",
+            "to": "t0",
+            "relation": "overlap"
+        },
+        {
+            "from": "e78",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e79",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e80",
+            "to": "t0",
+            "relation": "overlap"
+        },
+        {
+            "from": "e81",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e82",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e83",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e84",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e85",
+            "to": "t0",
+            "relation": "after"
+        },
+        {
+            "from": "e86",
+            "to": "t0",
+            "relation": "after"
+        },
+        {
+            "from": "e87",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e88",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e89",
+            "to": "t0",
+            "relation": "after"
+        },
+        {
+            "from": "e90",
+            "to": "t0",
+            "relation": "after"
+        },
+        {
+            "from": "e91",
+            "to": "t0",
+            "relation": "overlap"
+        },
+        {
+            "from": "e92",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e93",
+            "to": "t0",
+            "relation": "overlap"
+        },
+        {
+            "from": "e94",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e95",
+            "to": "t0",
+            "relation": "overlap"
+        },
+        {
+            "from": "e96",
+            "to": "t0",
+            "relation": "before"
+        },
+        {
+            "from": "e97",
+            "to": "t0",
+            "relation": "before"
+        },
+        {
+            "from": "e98",
+            "to": "t0",
+            "relation": "before"
+        },
+        {
+            "from": "e99",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e100",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e101",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e102",
+            "to": "t0",
+            "relation": "overlap"
+        },
+        {
+            "from": "e103",
+            "to": "t0",
+            "relation": "overlap"
+        },
+        {
+            "from": "e104",
+            "to": "t0",
+            "relation": "vague"
+        },
+        {
+            "from": "e34",
+            "to": "t1",
+            "relation": "overlap"
+        },
+        {
+            "from": "e81",
+            "to": "t2",
+            "relation": "vague"
+        },
+        {
+            "from": "e82",
+            "to": "t2",
+            "relation": "vague"
+        },
+        {
+            "from": "e89",
+            "to": "t4",
+            "relation": "overlap"
+        },
+        {
+            "from": "e4",
+            "to": "e6",
+            "relation": "overlap"
+        },
+        {
+            "from": "e6",
+            "to": "e18",
+            "relation": "after"
+        },
+        {
+            "from": "e18",
+            "to": "e25",
+            "relation": "before"
+        },
+        {
+            "from": "e25",
+            "to": "e34",
+            "relation": "after"
+        },
+        {
+            "from": "e34",
+            "to": "e35",
+            "relation": "after"
+        },
+        {
+            "from": "e35",
+            "to": "e38",
+            "relation": "before"
+        },
+        {
+            "from": "e38",
+            "to": "e44",
+            "relation": "overlap"
+        },
+        {
+            "from": "e44",
+            "to": "e49",
+            "relation": "before"
+        },
+        {
+            "from": "e49",
+            "to": "e54",
+            "relation": "vague"
+        },
+        {
+            "from": "e54",
+            "to": "e63",
+            "relation": "before"
+        },
+        {
+            "from": "e63",
+            "to": "e68",
+            "relation": "overlap"
+        },
+        {
+            "from": "e68",
+            "to": "e72",
+            "relation": "before"
+        },
+        {
+            "from": "e72",
+            "to": "e73",
+            "relation": "before"
+        },
+        {
+            "from": "e73",
+            "to": "e77",
+            "relation": "before"
+        },
+        {
+            "from": "e77",
+            "to": "e86",
+            "relation": "before"
+        },
+        {
+            "from": "e86",
+            "to": "e91",
+            "relation": "vague"
+        },
+        {
+            "from": "e91",
+            "to": "e95",
+            "relation": "vague"
+        },
+        {
+            "from": "e95",
+            "to": "e102",
+            "relation": "overlap"
+        }
+    ],
+    "name": "cs.morph015"
+}
