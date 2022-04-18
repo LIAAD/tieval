@@ -1,7 +1,7 @@
 import os
 import pathlib
 
-from tieval import  datasets
+from tieval import datasets
 from tieval.datasets.datasets import read
 
 
@@ -11,7 +11,7 @@ from tieval.datasets.datasets import read
 
 
 def test_read_aquaint(tmp_path):
-    datasets.download("aquaint")
+    # datasets.download("aquaint")
     assert read("aquaint")
 
 
