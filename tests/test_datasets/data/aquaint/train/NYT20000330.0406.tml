@@ -1,0 +1,349 @@
+<TimeML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://timeml.org/timeMLdocs/TimeML_1.2.1.xsd">
+<DOCID>NYT20000330.0406</DOCID>
+<TIMEX3 tid="t0" type="TIME" value="2000-03-30" temporalFunction="false" functionInDocument="CREATION_TIME">2000-03-30</TIMEX3>
+<TITLE>IN MIAMI, THE ISSUE IS NOT A BOY, BUT A MAN: CASTRO</TITLE>
+<EXTRAINFO>
+NYT20000330.0406  NEWS STORY  2000-03-30 21:35
+A2779 &amp;Cx1f; taf-z
+u a BC-CUBAN-BOY-1STLD-WRITE     03-30 1007
+BC-CUBAN-BOY-1STLD-WRITETHRU-NYT
+IN MIAMI, THE ISSUE IS NOT A BOY, BUT A MAN: CASTRO
+(Subs for complete writethru; adds developments, quotes; note newbylines) (See also CUBAN-BOY-GORE and CUBAN-BOY OUTLOOK) (jt)
+By RICK BRAGG and LIZETTE ALVAREZ
+c.2000 N.Y. Times News Service
+</EXTRAINFO>
+<TEXT>MIAMI _
+Even miles away from sign-waving demonstrators who <EVENT eid="e2" class="OCCURRENCE" endpoints="59 63" sent_idx="1">keep</EVENT> vigil outside the tiny house in Little Havana where Elian Gonzalez lives with his great-uncle, <EVENT eid="e3" class="REPORTING" endpoints="159 163" sent_idx="1">talk</EVENT> about the <EVENT eid="e106" class="OCCURRENCE" endpoints="174 182" sent_idx="1">standoff</EVENT> between Elian's Miami relatives and Immigration and Naturalization Service officials <EVENT eid="e146" class="OCCURRENCE" endpoints="268 273" sent_idx="1">pours</EVENT> hot and quick from coffee stands on Calle Ocho and any other place Cuban Americans <EVENT eid="e5" class="OCCURRENCE" endpoints="357 363" sent_idx="1">gather</EVENT>.
+In rapid-fire Spanish, so fast that even people who <EVENT eid="e6" class="OCCURRENCE" endpoints="417 424" sent_idx="2">learned</EVENT> the language in other Hispanic cultures can have trouble <EVENT eid="e7" class="OCCURRENCE" endpoints="482 489" sent_idx="2">keeping</EVENT> up, they <EVENT eid="e147" class="OCCURRENCE" endpoints="499 506" sent_idx="2">villify</EVENT> Attorney General Janet Reno, President Clinton and others who <EVENT eid="e8" class="I_STATE" endpoints="569 573" sent_idx="2">want</EVENT> to <EVENT eid="e9" class="OCCURRENCE" endpoints="577 581" sent_idx="2">send</EVENT> the child back to his father in Cuba. And they <EVENT eid="e10" class="OCCURRENCE" endpoints="629 637" sent_idx="2">question</EVENT> _ or <EVENT eid="e108" class="OCCURRENCE" endpoints="643 651" sent_idx="2">ridicule</EVENT> _ news that the boy's father is <EVENT eid="e11" class="OCCURRENCE" endpoints="684 692" sent_idx="2">planning</EVENT> to <EVENT eid="e12" class="OCCURRENCE" endpoints="696 700" sent_idx="2">come</EVENT> here to <EVENT eid="e13" class="OCCURRENCE" endpoints="709 717" sent_idx="2">retrieve</EVENT> his son.
+It is a Communist plot <EVENT eid="e148" class="OCCURRENCE" endpoints="750 757" sent_idx="3">hatched</EVENT> by the hated dictator, Fidel Castro, they <EVENT eid="e14" class="REPORTING" endpoints="800 803" sent_idx="3">say</EVENT>. If you are not Cuban, they <EVENT eid="e15" class="REPORTING" endpoints="832 836" sent_idx="3">said</EVENT>, you just would not <EVENT eid="e16" class="I_STATE" endpoints="857 867" sent_idx="3">understand</EVENT>.
+``If it weren't Cuba, the child should <EVENT eid="e17" class="OCCURRENCE" endpoints="908 910" sent_idx="4">go</EVENT> to be with his father,'' <EVENT eid="e18" class="REPORTING" endpoints="936 940" sent_idx="4">said</EVENT> Delfina Miranda, 49, who <EVENT eid="e19" class="OCCURRENCE" endpoints="966 971" sent_idx="4">works</EVENT> at a beauty salon in Little Havana. ``But it is Cuba. That kid will <EVENT eid="e20" class="OCCURRENCE" endpoints="1040 1043" sent_idx="4">get</EVENT> nothing in Cuba. Well, maybe electro-shock treatment, so they can <EVENT eid="e149" class="OCCURRENCE" endpoints="1110 1120" sent_idx="4">brain-wash</EVENT> him.''
+Over and over, Cuban Americans <EVENT eid="e22" class="REPORTING" endpoints="1159 1163" sent_idx="5">said</EVENT> that outsiders who did not <EVENT eid="e23" class="OCCURRENCE" endpoints="1191 1197" sent_idx="5">suffer</EVENT> under the Castro regime simply could not <EVENT eid="e24" class="I_STATE" endpoints="1239 1249" sent_idx="5">understand</EVENT> their passions in the Elian <EVENT eid="e111" class="OCCURRENCE" endpoints="1278 1286" sent_idx="5">standoff</EVENT>.
+As talk on the streets <EVENT eid="e150" class="OCCURRENCE" endpoints="1311 1318" sent_idx="6">swirled</EVENT>, <EVENT eid="e25" class="REPORTING" endpoints="1320 1325" sent_idx="6">talks</EVENT> between lawyers for Elian's Miami relatives and government officials <EVENT eid="e26" class="OCCURRENCE" endpoints="1395 1400" sent_idx="6">crept</EVENT> to an uneventful <EVENT eid="e151" class="OCCURRENCE" endpoints="1418 1423" sent_idx="6">close</EVENT>.
+U.S. Immigration officials <EVENT eid="e27" class="OCCURRENCE" endpoints="1452 1461" sent_idx="7">postponed</EVENT> <SIGNAL sid="s1">until</SIGNAL> <TIMEX3 tid="t1" type="DATE" functionInDocument="NONE" temporalFunction="false" value="2000-04-04" endpoints="1468 1483" sent_idx="7">Tuesday morning</TIMEX3> any action on <EVENT eid="e28" class="OCCURRENCE" endpoints="1498 1506" sent_idx="7">revoking</EVENT> the boy's temporary permission to <EVENT eid="e29" class="OCCURRENCE" endpoints="1541 1545" sent_idx="7">stay</EVENT> in the United States, which would <EVENT eid="e30" class="OCCURRENCE" endpoints="1580 1585" sent_idx="7">allow</EVENT> federal officials to, ultimately, <EVENT eid="e31" class="OCCURRENCE" endpoints="1620 1624" sent_idx="7">take</EVENT> the boy from his relatives' house and eventually <EVENT eid="e152" class="OCCURRENCE" endpoints="1674 1680" sent_idx="7">return</EVENT> him to Cuba. ``Like the family, we are <EVENT eid="e32" class="OCCURRENCE" endpoints="1720 1730" sent_idx="7">monitoring</EVENT> <EVENT eid="e115" class="OCCURRENCE" endpoints="1731 1743" sent_idx="7">developments</EVENT> concerning the possible <EVENT eid="e116" class="OCCURRENCE" endpoints="1768 1775" sent_idx="7">arrival</EVENT> of (Elian's father) Juan Miguel Gonzalez in the United States,'' <EVENT eid="e34" class="REPORTING" endpoints="1841 1845" sent_idx="7">said</EVENT> Robert Wallis, INS director for the Miami district.
+Government officials had <EVENT eid="e35" class="I_ACTION" endpoints="1923 1933" sent_idx="8">threatened</EVENT> to <EVENT eid="e36" class="OCCURRENCE" endpoints="1937 1943" sent_idx="8">revoke</EVENT> the boy's parole if his great-uncle, Lazaro Gonzalez, did not <EVENT eid="e37" class="OCCURRENCE" endpoints="2006 2010" sent_idx="8">sign</EVENT> a document <EVENT eid="e38" class="I_ACTION" endpoints="2022 2030" sent_idx="8">agreeing</EVENT> to <EVENT eid="e39" class="OCCURRENCE" endpoints="2034 2038" sent_idx="8">hand</EVENT> Elian over to federal officials once the family's <EVENT eid="e118" class="I_ACTION" endpoints="2089 2095" sent_idx="8">appeal</EVENT> in the 11th U.S. Circuit Court of Appeals was <EVENT eid="e153" class="OCCURRENCE" endpoints="2142 2149" sent_idx="8">decided</EVENT>.
+But that <EVENT eid="e119" class="OCCURRENCE" endpoints="2160 2168" sent_idx="9">standoff</EVENT> <EVENT eid="e40" class="OCCURRENCE" endpoints="2169 2175" sent_idx="9">became</EVENT> less important in the eyes of Cuban Americans here <SIGNAL sid="s3">after</SIGNAL> Castro <EVENT eid="e41" class="REPORTING" endpoints="2240 2249" sent_idx="9">announced</EVENT> <TIMEX3 tid="t3" type="DATE" functionInDocument="NONE" temporalFunction="false" value="2000-03-29" endpoints="2250 2259" sent_idx="9">Wednesday</TIMEX3> that the boy's father, Juan Miguel Gonzalez, is ready to <EVENT eid="e42" class="OCCURRENCE" endpoints="2317 2323" sent_idx="9">travel</EVENT> to the United States to <EVENT eid="e43" class="OCCURRENCE" endpoints="2348 2352" sent_idx="9">take</EVENT> his son home.
+Gonzalez's lawyer, Greg Craig, <EVENT eid="e44" class="OCCURRENCE" endpoints="2398 2403" sent_idx="10">asked</EVENT> for a visa <TIMEX3 tid="t4" type="DATE" functionInDocument="NONE" temporalFunction="false" value="2000-03-30" endpoints="2415 2423" sent_idx="10">Thursday</TIMEX3> for his client for the expected <EVENT eid="e120" class="OCCURRENCE" endpoints="2456 2461" sent_idx="10">visit</EVENT>, but was <EVENT eid="e46" class="REPORTING" endpoints="2471 2475" sent_idx="10">told</EVENT> by U.S. State Department officials that Gonzalez himself had to <EVENT eid="e154" class="OCCURRENCE" endpoints="2540 2545" sent_idx="10">apply</EVENT> for the visa at the U.S. diplomatic mission in Havana.
+``Juan Miguel Gonzalez is ready at a moment's notice to <EVENT eid="e47" class="OCCURRENCE" endpoints="2657 2661" sent_idx="11">come</EVENT> to the United States,'' <EVENT eid="e48" class="REPORTING" endpoints="2686 2690" sent_idx="11">said</EVENT> Craig.
+But in Miami, many Cuban Americans <EVENT eid="e49" class="REPORTING" endpoints="2733 2737" sent_idx="12">said</EVENT> Castro is <EVENT eid="e50" class="OCCURRENCE" endpoints="2748 2761" sent_idx="12">orchestrating</EVENT> the <EVENT eid="e123" class="OCCURRENCE" endpoints="2766 2771" sent_idx="12">visit</EVENT>.
+Castro <EVENT eid="e51" class="REPORTING" endpoints="2780 2784" sent_idx="13">said</EVENT> Gonzalez would <EVENT eid="e52" class="OCCURRENCE" endpoints="2800 2806" sent_idx="13">travel</EVENT> with his <TIMEX3 tid="t5" type="DATE" functionInDocument="NONE" temporalFunction="true" value="PRESENT_REF" anchorTimeID="t4" endpoints="2816 2823" sent_idx="13">current</TIMEX3> wife and their son, a top government official, doctors, nurses, psychiatrists, Elian's Cuban kindergarten teacher, classmates and his old school desk.A list of 31 people <EVENT eid="e53" class="OCCURRENCE" endpoints="2994 3000" sent_idx="13">issued</EVENT> by the Cuban government <TIMEX3 tid="t6" type="DATE" functionInDocument="NONE" temporalFunction="false" value="2000-03-30" endpoints="3025 3033" sent_idx="13">Thursday</TIMEX3> included Ricardo Alarcon, president of Cuba's National Assembly. Castro has <EVENT eid="e55" class="OCCURRENCE" endpoints="3110 3119" sent_idx="13">suggested</EVENT> that Elian and his relatives <EVENT eid="e56" class="OCCURRENCE" endpoints="3149 3153" sent_idx="13">stay</EVENT> at the residence of Cuba's chief diplomat in Washington.
+Hidden in the entourage, <EVENT eid="e57" class="OCCURRENCE" endpoints="3236 3245" sent_idx="14">cautioned</EVENT> Cuban Americans here, will be Cuban security agents who will <EVENT eid="e58" class="OCCURRENCE" endpoints="3307 3311" sent_idx="14">make</EVENT> sure that Gonzalez _ and everyone else, for that matter _ does not <EVENT eid="e127" class="OCCURRENCE" endpoints="3379 3385" sent_idx="14">defect</EVENT>.
+``They are <EVENT eid="e59" class="OCCURRENCE" endpoints="3398 3404" sent_idx="15">coming</EVENT> with everyone, including psychologists,'' <EVENT eid="e61" class="REPORTING" endpoints="3447 3451" sent_idx="15">said</EVENT> Armando Sanjurjo, 73. ``You <EVENT eid="e62" class="OCCURRENCE" endpoints="3480 3484" sent_idx="15">know</EVENT> why? To <EVENT eid="e63" class="OCCURRENCE" endpoints="3493 3497" sent_idx="15">give</EVENT> Elian an injection and <EVENT eid="e64" class="OCCURRENCE" endpoints="3521 3525" sent_idx="15">take</EVENT> him back to Cuba.''
+Sanjurjo, <EVENT eid="e155" class="OCCURRENCE" endpoints="3556 3563" sent_idx="16">sipping</EVENT> a cafecito in front of Versailles restaurant, the nerve center for Cuban political discussions here in Little Havana, is <EVENT eid="e156" class="I_ACTION" endpoints="3685 3694" sent_idx="16">convinced</EVENT>, like many others here, the entourage is <EVENT eid="e65" class="OCCURRENCE" endpoints="3736 3744" sent_idx="16">designed</EVENT> to <EVENT eid="e66" class="I_ACTION" endpoints="3748 3755" sent_idx="16">prevent</EVENT> any <EVENT eid="e131" class="OCCURRENCE" endpoints="3760 3770" sent_idx="16">defections</EVENT>.
+``He's <EVENT eid="e67" class="OCCURRENCE" endpoints="3779 3785" sent_idx="17">coming</EVENT> with an entire court of people? What's that about?'' <EVENT eid="e68" class="REPORTING" endpoints="3839 3843" sent_idx="17">said</EVENT> Angela Esparragera, 71.
+Miranda <EVENT eid="e69" class="REPORTING" endpoints="3876 3880" sent_idx="18">said</EVENT> Elian's father will be ``a virtual prisoner here if he <EVENT eid="e70" class="OCCURRENCE" endpoints="3936 3941" sent_idx="18">comes</EVENT> with all those people. He'll be surrounded by people if he <EVENT eid="e71" class="OCCURRENCE" endpoints="4001 4005" sent_idx="18">goes</EVENT> to the bathroom.''
+Gloria Estefan, the wildly popular singer of Cuban descent who has <EVENT eid="e72" class="OCCURRENCE" endpoints="4092 4098" sent_idx="19">become</EVENT> an entertainment and cultural icon, was also suspicious of this <EVENT eid="e134" class="OCCURRENCE" endpoints="4163 4168" sent_idx="19">visit</EVENT>.
+``If in fact, Elian's father is <EVENT eid="e73" class="I_ACTION" endpoints="4202 4211" sent_idx="20">permitted</EVENT> by the dictatorship of Fidel Castro to <EVENT eid="e74" class="OCCURRENCE" endpoints="4251 4255" sent_idx="20">come</EVENT> to the United States, then, as a Cuban American, I <EVENT eid="e75" class="OCCURRENCE" endpoints="4307 4314" sent_idx="20">welcome</EVENT> him and <EVENT eid="e76" class="I_ACTION" endpoints="4323 4327" sent_idx="20">urge</EVENT> him to <EVENT eid="e77" class="OCCURRENCE" endpoints="4335 4339" sent_idx="20">make</EVENT> all his <EVENT eid="e135" class="OCCURRENCE" endpoints="4348 4357" sent_idx="20">decisions</EVENT> based on the well being and best interest of his son, and not that of the Cuban government,'' Estefan <EVENT eid="e79" class="REPORTING" endpoints="4460 4464" sent_idx="20">said</EVENT>.
+All week, elected officials in Washington, D.C., and at the state capital in Tallahassee have <EVENT eid="e81" class="OCCURRENCE" endpoints="4560 4566" sent_idx="21">issued</EVENT> <EVENT eid="e137" class="OCCURRENCE" endpoints="4567 4576" sent_idx="21">statement</EVENT> of support for Elian's Miami relatives, even Vice President Al Gore, <EVENT eid="e82" class="OCCURRENCE" endpoints="4646 4654" sent_idx="21">breaking</EVENT> from his own administration's stand. In Miami-Dade County, elected officials <EVENT eid="e84" class="OCCURRENCE" endpoints="4732 4736" sent_idx="21">went</EVENT> as far as to <EVENT eid="e85" class="REPORTING" endpoints="4750 4753" sent_idx="21">say</EVENT> they their police departments would have no role in <EVENT eid="e86" class="OCCURRENCE" endpoints="4806 4812" sent_idx="21">taking</EVENT> the boy from the house.
+Among non-Cuban Americans, there was a drastic shift in their feelings on the case.
+``<EVENT eid="e158" class="OCCURRENCE" endpoints="4923 4927" sent_idx="23">Send</EVENT> him back,'' <EVENT eid="e87" class="REPORTING" endpoints="4940 4944" sent_idx="23">said</EVENT> Marsha Raeber, 47, an airline employee. ``There are rules and regulations in this country. Some people are <EVENT eid="e88" class="OCCURRENCE" endpoints="5052 5056" sent_idx="23">born</EVENT> rich, some people are <EVENT eid="e89" class="OCCURRENCE" endpoints="5079 5083" sent_idx="23">born</EVENT> poor. That's the luck of the <EVENT eid="e145" class="OCCURRENCE" endpoints="5113 5117" sent_idx="23">draw</EVENT>. Who's to <EVENT eid="e90" class="REPORTING" endpoints="5128 5131" sent_idx="23">say</EVENT> that he's better off at Disney World and <EVENT eid="e91" class="OCCURRENCE" endpoints="5173 5179" sent_idx="23">eating</EVENT> fast food here instead if breathing the fresh air of Cuba.''
+Eric Pichardo, 44, is from Nicaragua, and <EVENT eid="e92" class="REPORTING" endpoints="5283 5287" sent_idx="24">said</EVENT> the Cuban-Americans ``<EVENT eid="e93" class="I_STATE" endpoints="5310 5314" sent_idx="24">need</EVENT> to <EVENT eid="e94" class="OCCURRENCE" endpoints="5318 5324" sent_idx="24">follow</EVENT> the law. What about all the other poor kids in South and Central America?''
+Not all Cuban-Americans <EVENT eid="e95" class="I_ACTION" endpoints="5425 5431" sent_idx="25">insist</EVENT> that Elian be <EVENT eid="e96" class="OCCURRENCE" endpoints="5446 5453" sent_idx="25">allowed</EVENT> to <EVENT eid="e97" class="OCCURRENCE" endpoints="5457 5461" sent_idx="25">stay</EVENT>. Diana de Cardenas, 33, was <EVENT eid="e98" class="OCCURRENCE" endpoints="5490 5494" sent_idx="25">born</EVENT> in Cuba <SIGNAL sid="s2">in</SIGNAL> <TIMEX3 tid="t7" type="DATE" functionInDocument="NONE" temporalFunction="false" value="1984" endpoints="5506 5510" sent_idx="25">1984</TIMEX3>. ``I <EVENT eid="e99" class="I_STATE" endpoints="5516 5521" sent_idx="25">think</EVENT> he deserves to be with his father,'' she <EVENT eid="e100" class="REPORTING" endpoints="5563 5567" sent_idx="25">said</EVENT>. ``It would be ideal if his father <EVENT eid="e101" class="OCCURRENCE" endpoints="5603 5607" sent_idx="25">came</EVENT>,'' and then <EVENT eid="e102" class="OCCURRENCE" endpoints="5620 5626" sent_idx="25">stayed</EVENT>, in Miami.</TEXT>
+<EXTRAINFO>
+NYT-03-30-00 2135EST &amp;QL;
+</EXTRAINFO>
+<MAKEINSTANCE eiid="ei2" eid="e2" tense="PRESENT" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei3" eid="e3" tense="PRESENT" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei5" eid="e5" tense="PRESENT" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei6" eid="e6" tense="PAST" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei7" eid="e7" tense="PRESPART" aspect="NONE" pos="VERB" polarity="NEG" />
+<MAKEINSTANCE eiid="ei8" eid="e8" tense="PRESENT" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei9" eid="e9" tense="INFINITIVE" aspect="NONE" pos="VERB" polarity="NEG" />
+<MAKEINSTANCE eiid="ei10" eid="e10" tense="PRESENT" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei11" eid="e11" tense="PRESENT" aspect="PROGRESSIVE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei12" eid="e12" tense="INFINITIVE" aspect="NONE" pos="VERB" polarity="NEG" />
+<MAKEINSTANCE eiid="ei13" eid="e13" tense="INFINITIVE" aspect="NONE" pos="VERB" polarity="NEG" />
+<MAKEINSTANCE eiid="ei14" eid="e14" tense="PRESENT" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei15" eid="e15" tense="PAST" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei16" eid="e16" tense="PAST" aspect="NONE" pos="UNKNOWN" modality="WOULD" polarity="POS" />
+<MAKEINSTANCE eiid="ei17" eid="e17" tense="PRESENT" aspect="NONE" pos="UNKNOWN" modality="SHOULD" polarity="NEG" />
+<MAKEINSTANCE eiid="ei18" eid="e18" tense="PAST" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei19" eid="e19" tense="PRESENT" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei20" eid="e20" tense="FUTURE" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei22" eid="e22" tense="PAST" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei23" eid="e23" tense="PAST" aspect="NONE" pos="UNKNOWN" polarity="POS" />
+<MAKEINSTANCE eiid="ei24" eid="e24" tense="PAST" aspect="NONE" pos="UNKNOWN" modality="COULD" polarity="POS" />
+<MAKEINSTANCE eiid="ei25" eid="e25" tense="NONE" aspect="NONE" pos="NOUN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei26" eid="e26" tense="PAST" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei27" eid="e27" tense="PAST" aspect="NONE" pos="UNKNOWN" signalID="s1" polarity="NEG" />
+<MAKEINSTANCE eiid="ei28" eid="e28" tense="PRESPART" aspect="NONE" pos="VERB" polarity="NEG" />
+<MAKEINSTANCE eiid="ei29" eid="e29" tense="INFINITIVE" aspect="NONE" pos="VERB" polarity="NEG" />
+<MAKEINSTANCE eiid="ei30" eid="e30" tense="PAST" aspect="NONE" pos="UNKNOWN" modality="WOULD" polarity="NEG" />
+<MAKEINSTANCE eiid="ei31" eid="e31" tense="INFINITIVE" aspect="NONE" pos="VERB" polarity="NEG" />
+<MAKEINSTANCE eiid="ei32" eid="e32" tense="PRESENT" aspect="PROGRESSIVE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei34" eid="e34" tense="PAST" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei35" eid="e35" tense="PAST" aspect="PERFECTIVE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei36" eid="e36" tense="INFINITIVE" aspect="NONE" pos="VERB" polarity="NEG" />
+<MAKEINSTANCE eiid="ei37" eid="e37" tense="PAST" aspect="NONE" pos="UNKNOWN" polarity="POS" />
+<MAKEINSTANCE eiid="ei38" eid="e38" tense="PRESPART" aspect="NONE" pos="VERB" polarity="NEG" />
+<MAKEINSTANCE eiid="ei39" eid="e39" tense="INFINITIVE" aspect="NONE" pos="VERB" polarity="NEG" />
+<MAKEINSTANCE eiid="ei40" eid="e40" tense="PAST" aspect="NONE" pos="UNKNOWN" signalID="s3" polarity="NEG" />
+<MAKEINSTANCE eiid="ei41" eid="e41" tense="PAST" aspect="NONE" pos="UNKNOWN" signalID="s3" polarity="NEG" />
+<MAKEINSTANCE eiid="ei42" eid="e42" tense="INFINITIVE" aspect="NONE" pos="VERB" polarity="NEG" />
+<MAKEINSTANCE eiid="ei43" eid="e43" tense="INFINITIVE" aspect="NONE" pos="VERB" polarity="NEG" />
+<MAKEINSTANCE eiid="ei44" eid="e44" tense="PAST" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei46" eid="e46" tense="PAST" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei47" eid="e47" tense="INFINITIVE" aspect="NONE" pos="VERB" polarity="NEG" />
+<MAKEINSTANCE eiid="ei48" eid="e48" tense="PAST" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei49" eid="e49" tense="PAST" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei50" eid="e50" tense="PRESENT" aspect="PROGRESSIVE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei51" eid="e51" tense="PAST" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei52" eid="e52" tense="PAST" aspect="NONE" pos="UNKNOWN" modality="WOULD" polarity="NEG" />
+<MAKEINSTANCE eiid="ei53" eid="e53" tense="PAST" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei55" eid="e55" tense="PRESENT" aspect="PERFECTIVE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei56" eid="e56" tense="PRESENT" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei57" eid="e57" tense="PAST" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei58" eid="e58" tense="FUTURE" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei59" eid="e59" tense="PRESENT" aspect="PROGRESSIVE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei61" eid="e61" tense="PAST" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei62" eid="e62" tense="PRESENT" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei63" eid="e63" tense="INFINITIVE" aspect="NONE" pos="VERB" polarity="NEG" />
+<MAKEINSTANCE eiid="ei64" eid="e64" tense="INFINITIVE" aspect="NONE" pos="VERB" polarity="NEG" />
+<MAKEINSTANCE eiid="ei65" eid="e65" tense="PAST" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei66" eid="e66" tense="INFINITIVE" aspect="NONE" pos="VERB" polarity="NEG" />
+<MAKEINSTANCE eiid="ei67" eid="e67" tense="PRESENT" aspect="PROGRESSIVE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei68" eid="e68" tense="PAST" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei69" eid="e69" tense="PAST" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei70" eid="e70" tense="PRESENT" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei71" eid="e71" tense="PRESENT" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei72" eid="e72" tense="PRESENT" aspect="PERFECTIVE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei73" eid="e73" tense="PAST" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei74" eid="e74" tense="INFINITIVE" aspect="NONE" pos="VERB" polarity="NEG" />
+<MAKEINSTANCE eiid="ei75" eid="e75" tense="PRESENT" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei76" eid="e76" tense="PRESENT" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei77" eid="e77" tense="INFINITIVE" aspect="NONE" pos="VERB" polarity="NEG" />
+<MAKEINSTANCE eiid="ei79" eid="e79" tense="PAST" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei81" eid="e81" tense="PAST" aspect="PERFECTIVE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei82" eid="e82" tense="PRESPART" aspect="NONE" pos="VERB" polarity="NEG" />
+<MAKEINSTANCE eiid="ei84" eid="e84" tense="PAST" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei85" eid="e85" tense="INFINITIVE" aspect="NONE" pos="VERB" polarity="NEG" />
+<MAKEINSTANCE eiid="ei86" eid="e86" tense="PRESPART" aspect="NONE" pos="VERB" polarity="NEG" />
+<MAKEINSTANCE eiid="ei87" eid="e87" tense="PAST" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei88" eid="e88" tense="PAST" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei89" eid="e89" tense="PAST" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei90" eid="e90" tense="INFINITIVE" aspect="NONE" pos="VERB" polarity="NEG" />
+<MAKEINSTANCE eiid="ei91" eid="e91" tense="PRESPART" aspect="NONE" pos="VERB" polarity="NEG" />
+<MAKEINSTANCE eiid="ei92" eid="e92" tense="PAST" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei93" eid="e93" tense="PRESENT" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei94" eid="e94" tense="INFINITIVE" aspect="NONE" pos="VERB" polarity="NEG" />
+<MAKEINSTANCE eiid="ei95" eid="e95" tense="PRESENT" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei96" eid="e96" tense="PAST" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei97" eid="e97" tense="INFINITIVE" aspect="NONE" pos="VERB" polarity="NEG" />
+<MAKEINSTANCE eiid="ei98" eid="e98" tense="PAST" aspect="NONE" pos="UNKNOWN" signalID="s2" polarity="NEG" />
+<MAKEINSTANCE eiid="ei99" eid="e99" tense="PRESENT" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei100" eid="e100" tense="PAST" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei101" eid="e101" tense="PAST" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei102" eid="e102" tense="PAST" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei106" eid="e106" tense="NONE" aspect="NONE" pos="NOUN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei108" eid="e108" tense="PRESENT" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei111" eid="e111" tense="NONE" aspect="NONE" pos="NOUN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei115" eid="e115" tense="NONE" aspect="NONE" pos="NOUN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei116" eid="e116" tense="NONE" aspect="NONE" pos="NOUN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei118" eid="e118" tense="NONE" aspect="NONE" pos="NOUN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei119" eid="e119" tense="NONE" aspect="NONE" pos="NOUN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei120" eid="e120" tense="NONE" aspect="NONE" pos="NOUN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei123" eid="e123" tense="NONE" aspect="NONE" pos="NOUN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei127" eid="e127" tense="PRESENT" aspect="NONE" pos="UNKNOWN" polarity="POS" />
+<MAKEINSTANCE eiid="ei131" eid="e131" tense="NONE" aspect="NONE" pos="NOUN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei134" eid="e134" tense="NONE" aspect="NONE" pos="NOUN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei135" eid="e135" tense="NONE" aspect="NONE" pos="NOUN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei137" eid="e137" tense="NONE" aspect="NONE" pos="NOUN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei145" eid="e145" tense="NONE" aspect="NONE" pos="NOUN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei146" eid="e146" tense="PRESENT" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei147" eid="e147" tense="PRESENT" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei148" eid="e148" tense="PAST" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei149" eid="e149" tense="PRESENT" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei150" eid="e150" tense="PAST" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei151" eid="e151" tense="NONE" aspect="NONE" pos="NOUN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei152" eid="e152" tense="INFINITIVE" aspect="NONE" pos="VERB" polarity="NEG" />
+<MAKEINSTANCE eiid="ei153" eid="e153" tense="PAST" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei154" eid="e154" tense="INFINITIVE" aspect="NONE" pos="VERB" polarity="NEG" />
+<MAKEINSTANCE eiid="ei155" eid="e155" tense="PRESPART" aspect="NONE" pos="VERB" polarity="NEG" />
+<MAKEINSTANCE eiid="ei156" eid="e156" tense="PAST" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<MAKEINSTANCE eiid="ei158" eid="e158" tense="PRESENT" aspect="NONE" pos="UNKNOWN" polarity="NEG" />
+<TLINK lid="l9" from="t7" to="t3" relType="BEFORE" origin="USER" />
+<TLINK lid="l10" from="t3" to="t6" relType="BEFORE" origin="USER" />
+<TLINK lid="l11" from="t6" to="t4" relType="IDENTITY" origin="USER" />
+<TLINK lid="l12" from="t4" to="t1" relType="BEFORE" origin="USER" />
+<TLINK lid="l13" from="ei2" to="t4" relType="INCLUDES" origin="USER" />
+<TLINK lid="l15" from="ei3" to="t4" relType="IS_INCLUDED" origin="USER" />
+<TLINK lid="l16" from="ei106" to="ei3" relType="BEFORE" origin="USER" />
+<TLINK lid="l17" from="ei146" to="ei3" relType="IS_INCLUDED" origin="USER" />
+<TLINK lid="l18" from="ei5" to="ei3" relType="IS_INCLUDED" origin="USER" />
+<TLINK lid="l19" from="ei6" to="ei3" relType="BEFORE" origin="USER" />
+<TLINK lid="l20" from="ei7" to="ei6" relType="AFTER" origin="USER" />
+<TLINK lid="l21" from="ei147" to="ei3" relType="IS_INCLUDED" origin="USER" />
+<TLINK lid="l22" from="ei8" to="ei147" relType="BEFORE" origin="USER" />
+<TLINK lid="l23" from="ei8" to="ei9" relType="BEFORE" origin="USER" />
+<TLINK lid="l24" from="ei147" to="ei10" relType="BEFORE" origin="USER" />
+<TLINK lid="l25" from="ei10" to="ei108" relType="BEFORE" origin="USER" />
+<TLINK lid="l26" from="ei11" to="ei10" relType="BEFORE" origin="USER" />
+<TLINK lid="l27" from="ei11" to="ei108" relType="BEFORE" origin="USER" />
+<TLINK lid="l28" from="ei11" to="ei12" relType="BEFORE" origin="USER" />
+<TLINK lid="l29" from="ei12" to="ei13" relType="BEFORE" origin="USER" />
+<TLINK lid="l30" from="ei11" to="ei3" relType="BEFORE" origin="USER" />
+<TLINK lid="l31" from="ei10" to="ei3" relType="IS_INCLUDED" origin="USER" />
+<TLINK lid="l32" from="ei108" to="ei3" relType="IS_INCLUDED" origin="USER" />
+<TLINK lid="l33" from="ei148" to="ei3" relType="BEFORE" origin="USER" />
+<TLINK lid="l34" from="ei14" to="ei3" relType="IS_INCLUDED" origin="USER" />
+<TLINK lid="l35" from="ei14" to="ei15" relType="IDENTITY" origin="USER" />
+<TLINK lid="l36" from="ei15" to="ei3" relType="IS_INCLUDED" origin="USER" />
+<TLINK lid="l37" from="ei15" to="ei16" relType="BEFORE" origin="USER" />
+<TLINK lid="l38" from="ei17" to="ei15" relType="AFTER" origin="USER" />
+<TLINK lid="l39" from="ei18" to="ei15" relType="AFTER" origin="USER" />
+<TLINK lid="l40" from="ei18" to="ei17" relType="BEFORE" origin="USER" />
+<TLINK lid="l41" from="ei19" to="t4" relType="INCLUDES" origin="USER" />
+<TLINK lid="l42" from="ei18" to="ei20" relType="BEFORE" origin="USER" />
+<TLINK lid="l43" from="ei20" to="ei149" relType="BEFORE" origin="USER" />
+<TLINK lid="l44" from="ei22" to="ei18" relType="AFTER" origin="USER" />
+<TLINK lid="l45" from="ei22" to="ei3" relType="IS_INCLUDED" origin="USER" />
+<TLINK lid="l46" from="ei23" to="ei22" relType="BEFORE" origin="USER" />
+<TLINK lid="l47" from="ei23" to="ei24" relType="BEFORE" origin="USER" />
+<TLINK lid="l48" from="ei111" to="t4" relType="INCLUDES" origin="USER" />
+<TLINK lid="l49" from="ei150" to="ei3" relType="IS_INCLUDED" origin="USER" />
+<TLINK lid="l50" from="ei150" to="ei25" relType="SIMULTANEOUS" origin="USER" />
+<TLINK lid="l51" from="ei25" to="ei26" relType="IS_INCLUDED" origin="USER" />
+<TLINK lid="l52" from="ei26" to="ei151" relType="BEFORE" origin="USER" />
+<TLINK lid="l53" from="ei27" to="t1" relType="IS_INCLUDED" origin="USER" />
+<TLINK lid="l54" from="ei27" to="ei28" relType="BEFORE" origin="USER" />
+<TLINK lid="l55" from="ei28" to="ei29" relType="BEFORE" origin="USER" />
+<TLINK lid="l56" from="ei28" to="ei30" relType="BEFORE" origin="USER" />
+<TLINK lid="l57" from="ei30" to="ei31" relType="BEFORE" origin="USER" />
+<TLINK lid="l58" from="ei31" to="ei152" relType="BEFORE" origin="USER" />
+<TLINK lid="l59" from="ei32" to="t1" relType="IS_INCLUDED" origin="USER" />
+<TLINK lid="l60" from="ei115" to="ei32" relType="BEFORE" origin="USER" />
+<TLINK lid="l61" from="ei115" to="ei116" relType="BEFORE" origin="USER" />
+<TLINK lid="l62" from="ei32" to="ei116" relType="BEFORE" origin="USER" />
+<TLINK lid="l63" from="ei34" to="ei116" relType="BEFORE" origin="USER" />
+<TLINK lid="l64" from="ei34" to="t1" relType="IS_INCLUDED" origin="USER" />
+<TLINK lid="l65" from="ei35" to="t1" relType="BEFORE" origin="USER" />
+<TLINK lid="l66" from="ei35" to="ei36" relType="BEFORE" origin="USER" />
+<TLINK lid="l67" from="ei37" to="ei36" relType="BEFORE" origin="USER" />
+<TLINK lid="l68" from="ei37" to="ei38" relType="BEFORE" origin="USER" />
+<TLINK lid="l69" from="ei38" to="ei39" relType="BEFORE" origin="USER" />
+<TLINK lid="l70" from="ei118" to="ei39" relType="BEFORE" origin="USER" />
+<TLINK lid="l71" from="ei118" to="ei153" relType="ENDED_BY" origin="USER" />
+<TLINK lid="l72" from="ei119" to="ei35" relType="INCLUDES" origin="USER" />
+<TLINK lid="l73" from="ei119" to="ei40" relType="BEFORE" origin="USER" />
+<TLINK lid="l74" from="ei40" to="t3" relType="IS_INCLUDED" origin="USER" />
+<TLINK lid="l75" from="ei41" to="t3" relType="IS_INCLUDED" origin="USER" />
+<TLINK lid="l76" from="ei41" to="ei40" relType="BEFORE" origin="USER" />
+<TLINK lid="l77" from="ei41" to="ei42" relType="BEFORE" origin="USER" />
+<TLINK lid="l78" from="ei42" to="ei43" relType="BEFORE" origin="USER" />
+<TLINK lid="l79" from="ei44" to="t6" relType="IS_INCLUDED" origin="USER" />
+<TLINK lid="l80" from="ei44" to="ei120" relType="BEFORE" origin="USER" />
+<TLINK lid="l81" from="ei44" to="ei46" relType="BEFORE" origin="USER" />
+<TLINK lid="l82" from="ei46" to="ei154" relType="BEFORE" origin="USER" />
+<TLINK lid="l83" from="ei47" to="ei120" relType="IDENTITY" origin="USER" />
+<TLINK lid="l84" from="ei48" to="t6" relType="IS_INCLUDED" origin="USER" />
+<TLINK lid="l85" from="ei48" to="ei47" relType="BEFORE" origin="USER" />
+<TLINK lid="l86" from="ei49" to="t4" relType="IS_INCLUDED" origin="USER" />
+<TLINK lid="l87" from="ei50" to="ei49" relType="BEFORE" origin="USER" />
+<TLINK lid="l88" from="ei50" to="ei123" relType="BEFORE" origin="USER" />
+<TLINK lid="l89" from="ei123" to="ei49" relType="AFTER" origin="USER" />
+<TLINK lid="l90" from="ei48" to="ei51" relType="BEFORE" origin="USER" />
+<TLINK lid="l91" from="ei51" to="ei52" relType="BEFORE" origin="USER" />
+<TLINK lid="l92" from="ei52" to="ei42" relType="IDENTITY" origin="USER" />
+<TLINK lid="l93" from="ei53" to="ei51" relType="BEFORE" origin="USER" />
+<TLINK lid="l94" from="ei53" to="t6" relType="BEFORE" origin="USER" />
+<TLINK lid="l95" from="ei55" to="t6" relType="BEFORE" origin="USER" />
+<TLINK lid="l96" from="ei55" to="ei56" relType="BEFORE" origin="USER" />
+<TLINK lid="l97" from="ei56" to="ei52" relType="AFTER" origin="USER" />
+<TLINK lid="l98" from="ei57" to="t6" relType="IS_INCLUDED" origin="USER" />
+<TLINK lid="l99" from="ei57" to="ei58" relType="BEFORE" origin="USER" />
+<TLINK lid="l100" from="ei58" to="ei127" relType="BEFORE" origin="USER" />
+<TLINK lid="l101" from="ei57" to="ei59" relType="BEFORE" origin="USER" />
+<TLINK lid="l102" from="ei61" to="ei57" relType="IS_INCLUDED" origin="USER" />
+<TLINK lid="l103" from="ei61" to="ei59" relType="BEFORE" origin="USER" />
+<TLINK lid="l104" from="ei62" to="ei61" relType="IS_INCLUDED" origin="USER" />
+<TLINK lid="l105" from="ei62" to="ei63" relType="BEFORE" origin="USER" />
+<TLINK lid="l106" from="ei63" to="ei64" relType="BEFORE" origin="USER" />
+<TLINK lid="l107" from="ei57" to="ei155" relType="BEFORE" origin="USER" />
+<TLINK lid="l108" from="ei155" to="t6" relType="IS_INCLUDED" origin="USER" />
+<TLINK lid="l109" from="ei156" to="ei155" relType="IS_INCLUDED" origin="USER" />
+<TLINK lid="l110" from="ei65" to="ei156" relType="BEFORE" origin="USER" />
+<TLINK lid="l111" from="ei65" to="ei66" relType="BEFORE" origin="USER" />
+<TLINK lid="l112" from="ei66" to="ei131" relType="BEFORE" origin="USER" />
+<TLINK lid="l113" from="ei155" to="ei68" relType="BEFORE" origin="USER" />
+<TLINK lid="l114" from="ei68" to="ei67" relType="BEFORE" origin="USER" />
+<TLINK lid="l115" from="ei68" to="ei69" relType="BEFORE" origin="USER" />
+<TLINK lid="l116" from="ei69" to="ei70" relType="BEFORE" origin="USER" />
+<TLINK lid="l117" from="ei70" to="ei67" relType="IDENTITY" origin="USER" />
+<TLINK lid="l118" from="ei70" to="ei71" relType="INCLUDES" origin="USER" />
+<TLINK lid="l119" from="ei72" to="ei69" relType="BEFORE" origin="USER" />
+<TLINK lid="l120" from="ei72" to="ei134" relType="BEFORE" origin="USER" />
+<TLINK lid="l121" from="ei134" to="ei70" relType="IDENTITY" origin="USER" />
+<TLINK lid="l122" from="ei79" to="ei69" relType="AFTER" origin="USER" />
+<TLINK lid="l123" from="ei73" to="ei79" relType="IS_INCLUDED" origin="USER" />
+<TLINK lid="l124" from="ei73" to="ei74" relType="BEFORE" origin="USER" />
+<TLINK lid="l125" from="ei75" to="ei79" relType="IS_INCLUDED" origin="USER" />
+<TLINK lid="l126" from="ei75" to="ei76" relType="BEFORE" origin="USER" />
+<TLINK lid="l127" from="ei76" to="ei77" relType="BEFORE" origin="USER" />
+<TLINK lid="l128" from="ei77" to="ei135" relType="BEFORE" origin="USER" />
+<TLINK lid="l129" from="ei81" to="t6" relType="BEFORE" origin="USER" />
+<TLINK lid="l130" from="ei81" to="ei137" relType="BEFORE" origin="USER" />
+<TLINK lid="l131" from="ei81" to="ei82" relType="BEFORE" origin="USER" />
+<TLINK lid="l132" from="ei82" to="ei84" relType="BEFORE" origin="USER" />
+<TLINK lid="l133" from="ei84" to="ei85" relType="BEFORE" origin="USER" />
+<TLINK lid="l134" from="ei85" to="ei86" relType="BEFORE" origin="USER" />
+<TLINK lid="l135" from="ei84" to="ei87" relType="BEFORE" origin="USER" />
+<TLINK lid="l136" from="ei87" to="ei158" relType="BEFORE" origin="USER" />
+<TLINK lid="l137" from="ei88" to="ei87" relType="BEFORE" origin="USER" />
+<TLINK lid="l138" from="ei89" to="ei87" relType="BEFORE" origin="USER" />
+<TLINK lid="l139" from="ei88" to="ei89" relType="BEFORE" origin="USER" />
+<TLINK lid="l140" from="ei145" to="ei87" relType="BEFORE" origin="USER" />
+<TLINK lid="l141" from="ei90" to="ei87" relType="IS_INCLUDED" origin="USER" />
+<TLINK lid="l142" from="ei91" to="ei87" relType="IS_INCLUDED" origin="USER" />
+<TLINK lid="l143" from="ei87" to="ei92" relType="BEFORE" origin="USER" />
+<TLINK lid="l144" from="ei92" to="ei93" relType="BEFORE" origin="USER" />
+<TLINK lid="l145" from="ei93" to="ei94" relType="BEFORE" origin="USER" />
+<TLINK lid="l147" from="ei95" to="ei92" relType="BEFORE" origin="USER" />
+<TLINK lid="l148" from="ei95" to="ei96" relType="BEFORE" origin="USER" />
+<TLINK lid="l150" from="ei96" to="ei97" relType="BEFORE" origin="USER" />
+<TLINK lid="l152" from="ei98" to="t7" relType="IS_INCLUDED" origin="USER" />
+<TLINK lid="l153" from="ei100" to="ei92" relType="AFTER" origin="USER" />
+<TLINK lid="l154" from="ei99" to="ei100" relType="IS_INCLUDED" origin="USER" />
+<TLINK lid="l155" from="ei100" to="ei101" relType="BEFORE" origin="USER" />
+<TLINK lid="l156" from="ei101" to="ei102" relType="BEFORE" origin="USER" />
+<SLINK lid="l1" from="ei8" to="ei9" relType="MODAL" />
+<SLINK lid="l2" from="ei11" to="ei12" relType="MODAL" />
+<SLINK lid="l3" from="ei12" to="ei13" relType="MODAL" />
+<SLINK lid="l4" from="ei37" to="ei38" relType="MODAL" />
+<SLINK lid="l5" from="ei38" to="ei39" relType="MODAL" />
+<SLINK lid="l6" from="ei42" to="ei43" relType="MODAL" />
+<SLINK lid="l7" from="ei65" to="ei66" relType="MODAL" />
+<SLINK lid="l8" from="ei66" to="ei131" relType="CONDITIONAL" />
+<SLINK lid="l146" from="ei93" to="ei94" relType="MODAL" />
+<SLINK lid="l149" from="ei95" to="ei96" relType="MODAL" />
+<SLINK lid="l151" from="ei96" to="ei97" relType="MODAL" />
+<TLINK lid="l756" relType="INCLUDES" from="ei146" to="t0" origin="user" />
+<TLINK lid="l757" relType="INCLUDES" from="ei5" to="t0" origin="user" />
+<TLINK lid="l758" relType="BEFORE" from="ei6" to="t0" origin="user" />
+<TLINK lid="l759" relType="BEFORE" from="ei148" to="t0" origin="user" />
+<TLINK lid="l760" relType="INCLUDES" from="ei14" to="t0" origin="user" />
+<TLINK lid="l761" relType="BEFORE" from="ei18" to="t0" origin="user" />
+<TLINK lid="l762" relType="INCLUDES" from="ei19" to="t0" origin="user" />
+<TLINK lid="l763" relType="BEFORE" from="ei22" to="t0" origin="user" />
+<TLINK lid="l764" relType="BEFORE" from="ei26" to="t0" origin="user" />
+<TLINK lid="l765" relType="BEFORE" from="ei34" to="t0" origin="user" />
+<TLINK lid="l766" relType="BEFORE" from="ei35" to="t0" origin="user" />
+<TLINK lid="l767" relType="BEFORE" from="ei40" to="t0" origin="user" />
+<TLINK lid="l768" relType="BEFORE" from="ei46" to="t0" origin="user" />
+<TLINK lid="l769" relType="BEFORE" from="ei48" to="t0" origin="user" />
+<TLINK lid="l770" relType="BEFORE" from="ei49" to="t0" origin="user" />
+<TLINK lid="l771" relType="BEFORE" from="ei51" to="t0" origin="user" />
+<TLINK lid="l772" relType="BEFORE" from="ei55" to="t0" origin="user" />
+<TLINK lid="l773" relType="BEFORE" from="ei57" to="t0" origin="user" />
+<TLINK lid="l774" relType="BEFORE" from="ei61" to="t0" origin="user" />
+<TLINK lid="l775" relType="INCLUDES" from="ei156" to="t0" origin="user" />
+<TLINK lid="l776" relType="BEFORE" from="ei68" to="t0" origin="user" />
+<TLINK lid="l777" relType="BEFORE" from="ei69" to="t0" origin="user" />
+<TLINK lid="l778" relType="BEFORE" from="ei72" to="t0" origin="user" />
+<TLINK lid="l779" relType="BEFORE" from="ei79" to="t0" origin="user" />
+<TLINK lid="l780" relType="BEFORE" from="ei81" to="t0" origin="user" />
+<TLINK lid="l781" relType="BEFORE" from="ei84" to="t0" origin="user" />
+<TLINK lid="l782" relType="BEFORE" from="ei85" to="t0" origin="user" />
+<TLINK lid="l783" relType="BEFORE" from="ei87" to="t0" origin="user" />
+<TLINK lid="l784" relType="BEFORE" from="ei92" to="t0" origin="user" />
+<TLINK lid="l785" relType="INCLUDES" from="ei95" to="t0" origin="user" />
+<TLINK lid="l786" relType="BEFORE" from="ei100" to="t0" origin="user" />
+</TimeML>

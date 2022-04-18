@@ -1,17 +1,12 @@
 from pathlib import Path
 
 from tieval.datasets.readers import (
-    MeanTimeDocumentReader,
-    TempEval3DocumentReader,
-    GraphEveDocumentReader,
     TempEval2DocumentReader,
     TempEval2FrenchDocumentReader,
     TimeBank12DocumentReader,
     TCRDocumentReader,
     TimeBankPTDocumentReader
 )
-
-from tieval.datasets.readers import JSONDatasetReader
 
 DATA_PATH = Path(__file__).parent.parent / "files"
 

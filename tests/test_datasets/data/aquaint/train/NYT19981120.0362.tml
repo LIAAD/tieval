@@ -1,0 +1,114 @@
+<TimeML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://timeml.org/timeMLdocs/TimeML_1.2.1.xsd">
+<DOCID>NYT19981120.0362</DOCID>
+<TIMEX3 tid="t0" type="TIME" value="1998-11-20T19:30" temporalFunction="false" functionInDocument="CREATION_TIME">1998-11-20 19:30</TIMEX3>
+<TITLE>ANTIABORTION ACTIVIST MAY BE IN MEXICO</TITLE>
+<EXTRAINFO>
+NYT19981120.0362
+NEWS STORY
+1998-11-20 19:30
+A2192 &amp;Cx1f; tdt-z
+u a &amp;Cx13;  &amp;Cx11;  BC-ABORTION-SUSPECT-BOS &amp;LR;      11-20 0316
+BC-ABORTION-SUSPECT-BOS
+ANTIABORTION ACTIVIST MAY BE IN MEXICO
+(For use by New York Times News Service clients)
+By RIC KAHN
+c.1998 The Boston Globe
+</EXTRAINFO>
+<TEXT>The antiabortion activist <EVENT eid="e1" class="I_ACTION" endpoints="26 32" sent_idx="0">wanted</EVENT> for <EVENT eid="e2" class="OCCURRENCE" endpoints="37 48" sent_idx="0">questioning</EVENT> in <TIMEX3 tid="t2" type="DATE" value="1998-10" temporalFunction="true" functionInDocument="NONE" endpoints="52 62" sent_idx="0">last month</TIMEX3>'s shooting <EVENT eid="e3" class="OCCURRENCE" endpoints="74 79" sent_idx="0">death</EVENT> of a doctor in a Buffalo suburb may have <EVENT eid="e4" class="OCCURRENCE" endpoints="121 125" sent_idx="0">fled</EVENT> to Mexico, according to a newspaper report.
+James Charles Kopp, 44, of Vermont, was <EVENT eid="e5" class="PERCEPTION" endpoints="210 214" sent_idx="1">seen</EVENT> in the car of a female associate <EVENT eid="e6" class="OCCURRENCE" endpoints="248 256" sent_idx="1">crossing</EVENT> the US border <TIMEX3 tid="t7" type="DATE" value="1998-10-XX" temporalFunction="true" functionInDocument="NONE" endpoints="271 275" sent_idx="1">days</TIMEX3> <SIGNAL sid="s1">after</SIGNAL> a sniper <EVENT eid="e7" class="OCCURRENCE" endpoints="291 297" sent_idx="1">killed</EVENT> Dr. Barnett Slepian in his kitchen, the Buffalo News <EVENT eid="e8" class="REPORTING" endpoints="351 359" sent_idx="1">reported</EVENT> <TIMEX3 tid="t3" type="DATE" value="1998-11-20" temporalFunction="true" functionInDocument="NONE" endpoints="360 366" sent_idx="1">Friday</TIMEX3>.
+Kopp has <EVENT eid="e9" class="STATE" endpoints="377 381" sent_idx="2">been</EVENT> the subject of a manhunt following reports that he was <EVENT eid="e10" class="PERCEPTION" endpoints="437 444" sent_idx="2">spotted</EVENT> in a vehicle near the scene of the <TIMEX3 tid="t4" type="DATE" value="1998-10-23" temporalFunction="true" functionInDocument="NONE" endpoints="480 487" sent_idx="2">Oct. 23</TIMEX3> <EVENT eid="e11" class="OCCURRENCE" endpoints="488 495" sent_idx="2">slaying</EVENT> of Slepian, 52, an obstetrician who also <EVENT eid="e12" class="OCCURRENCE" endpoints="537 546" sent_idx="2">performed</EVENT> abortions. The FBI <EVENT eid="e13" class="REPORTING" endpoints="566 570" sent_idx="2">says</EVENT> Kopp is <EVENT eid="e14" class="STATE" endpoints="579 585" sent_idx="2">wanted</EVENT> as a material witness in the case.
+<TIMEX3 tid="t5" type="DATE" value="1998-11-20" temporalFunction="true" functionInDocument="NONE" endpoints="621 627" sent_idx="3">Friday</TIMEX3>, an FBI official <EVENT eid="e15" class="REPORTING" endpoints="645 649" sent_idx="3">said</EVENT> authorities are <EVENT eid="e16" class="OCCURRENCE" endpoints="666 674" sent_idx="3">pursuing</EVENT> more than 400 tips but have not <EVENT eid="e17" class="OCCURRENCE" endpoints="707 713" sent_idx="3">pinned</EVENT> down Kopp's whereabouts.
+``In all candor, the FBI does not <EVENT eid="e18" class="I_STATE" endpoints="773 777" sent_idx="4">know</EVENT> where James Kopp <EVENT eid="e19" class="STATE" endpoints="795 797" sent_idx="4">is</EVENT> _ period,'' <EVENT eid="e20" class="REPORTING" endpoints="810 814" sent_idx="4">said</EVENT> Paul Moskal, a spokesman for the bureau's Buffalo office. ``He's as likely to <EVENT eid="e21" class="STATE" endpoints="893 895" sent_idx="4">be</EVENT> in Boston, Massachusetts, as in Buffalo, New York.''
+Authorities <EVENT eid="e22" class="I_STATE" endpoints="961 965" sent_idx="5">want</EVENT> to <EVENT eid="e23" class="OCCURRENCE" endpoints="969 977" sent_idx="5">question</EVENT> the unidentified woman who allegedly <EVENT eid="e24" class="OCCURRENCE" endpoints="1015 1023" sent_idx="5">traveled</EVENT> with Kopp, according to an investigator <EVENT eid="e25" class="OCCURRENCE" endpoints="1064 1070" sent_idx="5">quoted</EVENT> by the newspaper.
+``She may have <EVENT eid="e26" class="STATE" endpoints="1104 1108" sent_idx="6">been</EVENT> with Kopp sometime <SIGNAL sid="s2">after</SIGNAL> the <EVENT eid="e27" class="OCCURRENCE" endpoints="1138 1144" sent_idx="6">murder</EVENT>,'' the investigator <EVENT eid="e28" class="REPORTING" endpoints="1165 1169" sent_idx="6">said</EVENT>. ``Kopp may <EVENT eid="e29" class="STATE" endpoints="1182 1184" sent_idx="6">be</EVENT> in Mexico. He may have even <EVENT eid="e30" class="OCCURRENCE" endpoints="1213 1221" sent_idx="6">traveled</EVENT> further into Central America or South America.''
+A task force of US and Canadian officials is <EVENT eid="e31" class="I_ACTION" endpoints="1316 1329" sent_idx="7">investigating</EVENT> the similarities between the <EVENT eid="e32" class="OCCURRENCE" endpoints="1359 1365" sent_idx="7">attack</EVENT> on Slepian and four <EVENT eid="e38" class="OCCURRENCE" endpoints="1386 1392" sent_idx="7">others</EVENT> on abortion providers in Canada and upstate New York <SIGNAL sid="s3">in</SIGNAL> the past <TIMEX3 tid="t6" type="DURATION" value="P4Y" temporalFunction="false" functionInDocument="NONE" endPoint="t0" endpoints="1458 1468" sent_idx="7">four years</TIMEX3>.
+The US Justice Department is <EVENT eid="e33" class="OCCURRENCE" endpoints="1499 1507" sent_idx="8">offering</EVENT> a $500,000 reward for information <EVENT eid="e34" class="I_ACTION" endpoints="1542 1549" sent_idx="8">leading</EVENT> to the <EVENT eid="e35" class="OCCURRENCE" endpoints="1557 1563" sent_idx="8">arrest</EVENT> and <EVENT eid="e36" class="OCCURRENCE" endpoints="1568 1578" sent_idx="8">conviction</EVENT> of those responsible for Slepian's <EVENT eid="e37" class="OCCURRENCE" endpoints="1614 1621" sent_idx="8">slaying</EVENT>.</TEXT>
+<EXTRAINFO>
+&amp;QL; (Material from the Associated Press was used in this report.)
+NYT-11-20-98 1930EST &amp;QL;
+</EXTRAINFO>
+<MAKEINSTANCE eid="e1" eiid="ei1" tense="NONE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e2" eiid="ei2" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e3" eiid="ei3" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e4" eiid="ei4" tense="PRESENT" aspect="PERFECTIVE" polarity="POS" pos="UNKNOWN" modality="may" />
+<MAKEINSTANCE eid="e5" eiid="ei5" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e6" eiid="ei6" tense="PRESPART" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e7" eiid="ei7" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e8" eiid="ei8" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e9" eiid="ei9" tense="PRESENT" aspect="PERFECTIVE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e10" eiid="ei10" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e11" eiid="ei11" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e12" eiid="ei12" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e13" eiid="ei13" tense="PRESENT" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e14" eiid="ei14" tense="NONE" aspect="NONE" polarity="POS" pos="ADJECTIVE" />
+<MAKEINSTANCE eid="e15" eiid="ei15" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e16" eiid="ei16" tense="PRESENT" aspect="PROGRESSIVE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e17" eiid="ei17" tense="PRESENT" aspect="PERFECTIVE" polarity="NEG" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e18" eiid="ei18" tense="PRESENT" aspect="NONE" polarity="NEG" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e19" eiid="ei19" tense="PRESENT" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e20" eiid="ei20" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e21" eiid="ei21" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e22" eiid="ei22" tense="PRESENT" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e23" eiid="ei23" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e24" eiid="ei24" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e25" eiid="ei25" tense="NONE" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e26" eiid="ei26" tense="PRESENT" aspect="PERFECTIVE" polarity="POS" pos="UNKNOWN" modality="may" />
+<MAKEINSTANCE eid="e27" eiid="ei27" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e28" eiid="ei28" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e29" eiid="ei29" tense="PRESENT" aspect="NONE" polarity="POS" pos="UNKNOWN" modality="may" />
+<MAKEINSTANCE eid="e30" eiid="ei30" tense="PRESENT" aspect="PERFECTIVE" polarity="POS" pos="UNKNOWN" modality="may" />
+<MAKEINSTANCE eid="e31" eiid="ei31" tense="PRESENT" aspect="PROGRESSIVE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e32" eiid="ei32" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e33" eiid="ei33" tense="PRESENT" aspect="PROGRESSIVE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e34" eiid="ei34" tense="PRESPART" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e35" eiid="ei35" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e36" eiid="ei36" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e37" eiid="ei37" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e38" eiid="ei38" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<TLINK lid="l9" relType="IS_INCLUDED" from="t0" to="ei1" origin="USER" />
+<TLINK lid="l10" relType="INCLUDES" from="t2" to="ei3" origin="USER" />
+<TLINK lid="l11" relType="IS_INCLUDED" from="t0" to="ei4" origin="USER" />
+<TLINK lid="l12" relType="INCLUDES" from="t7" to="ei5" origin="USER" />
+<TLINK lid="l13" relType="INCLUDES" from="t7" to="ei6" origin="USER" />
+<TLINK lid="l14" relType="AFTER" from="ei5" to="ei7" signalID="s1" origin="USER" />
+<TLINK lid="l15" relType="INCLUDES" from="t4" to="ei7" origin="USER" />
+<TLINK lid="l16" relType="INCLUDES" from="t3" to="ei8" origin="USER" />
+<TLINK lid="l17" relType="IS_INCLUDED" from="t0" to="ei9" origin="USER" />
+<TLINK lid="l18" relType="INCLUDES" from="t4" to="ei10" origin="USER" />
+<TLINK lid="l19" relType="INCLUDES" from="t4" to="ei11" origin="USER" />
+<TLINK lid="l20" relType="AFTER" from="t0" to="ei12" origin="USER" />
+<TLINK lid="l21" relType="INCLUDES" from="t0" to="ei13" origin="USER" />
+<TLINK lid="l22" relType="IS_INCLUDED" from="t0" to="ei14" origin="USER" />
+<TLINK lid="l23" relType="INCLUDES" from="t5" to="ei15" origin="USER" />
+<TLINK lid="l24" relType="IS_INCLUDED" from="t5" to="ei16" origin="USER" />
+<TLINK lid="l25" relType="IS_INCLUDED" from="t0" to="ei18" origin="USER" />
+<TLINK lid="l26" relType="IS_INCLUDED" from="t0" to="ei19" origin="USER" />
+<TLINK lid="l27" relType="INCLUDES" from="t0" to="ei20" origin="USER" />
+<TLINK lid="l28" relType="IS_INCLUDED" from="t0" to="ei22" origin="USER" />
+<TLINK lid="l29" relType="AFTER" from="t0" to="ei24" origin="USER" />
+<TLINK lid="l30" relType="INCLUDES" from="t0" to="ei25" origin="USER" />
+<TLINK lid="l31" relType="AFTER" from="t0" to="ei26" origin="USER" />
+<TLINK lid="l32" relType="AFTER" from="ei26" to="ei27" signalID="s2" origin="USER" />
+<TLINK lid="l33" relType="INCLUDES" from="t4" to="ei27" origin="USER" />
+<TLINK lid="l34" relType="INCLUDES" from="t0" to="ei28" origin="USER" />
+<TLINK lid="l35" relType="INCLUDES" from="t0" to="ei28" origin="USER" />
+<TLINK lid="l36" relType="IS_INCLUDED" from="t0" to="ei29" origin="USER" />
+<TLINK lid="l37" relType="AFTER" from="t0" to="ei30" origin="USER" />
+<TLINK lid="l38" relType="IS_INCLUDED" from="t0" to="ei31" origin="USER" />
+<TLINK lid="l39" relType="INCLUDES" from="t4" to="ei32" origin="USER" />
+<TLINK lid="l41" relType="INCLUDES" from="t6" to="ei38" signalID="s3" origin="USER" />
+<TLINK lid="l42" relType="IS_INCLUDED" from="t0" to="ei33" origin="USER" />
+<TLINK lid="l43" relType="BEFORE" from="t0" to="ei34" origin="USER" />
+<TLINK lid="l46" relType="INCLUDES" from="t4" to="ei37" origin="USER" />
+<SLINK lid="l1" relType="MODAL" from="ei1" to="ei2" syntax="USER" />
+<SLINK lid="l2" relType="EVIDENTIAL" from="ei5" to="ei6" syntax="USER" />
+<SLINK lid="l3" relType="EVIDENTIAL" from="ei13" to="ei14" syntax="USER" />
+<SLINK lid="l4" relType="EVIDENTIAL" from="ei15" to="ei16" syntax="USER" />
+<SLINK lid="l5" relType="EVIDENTIAL" from="ei15" to="ei17" syntax="USER" />
+<SLINK lid="l6" relType="MODAL" from="ei18" to="ei19" syntax="USER" />
+<SLINK lid="l7" relType="EVIDENTIAL" from="ei20" to="ei21" syntax="USER" />
+<SLINK lid="l8" relType="MODAL" from="ei22" to="ei23" syntax="USER" />
+<SLINK lid="l40" relType="FACTIVE" from="ei31" to="ei32" syntax="USER" />
+<SLINK lid="l44" relType="MODAL" from="ei34" to="ei35" syntax="USER" />
+<SLINK lid="l45" relType="MODAL" from="ei34" to="ei36" syntax="USER" />
+</TimeML>

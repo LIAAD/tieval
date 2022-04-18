@@ -1,0 +1,109 @@
+<TimeML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://timeml.org/timeMLdocs/TimeML_1.2.1.xsd">
+<DOCID>APW19990410.0123</DOCID>
+<TIMEX3 tid="t0" type="TIME" value="1999-04-10T06:27" temporalFunction="false" functionInDocument="CREATION_TIME">1999-04-10 06:27:43</TIMEX3>
+<TITLE>Rifle Found Near Dead Doctor's Home</TITLE>
+<EXTRAINFO>
+APW19990410.0123
+1999-04-10 06:27:43
+usa
+Rifle Found Near Dead Doctor's Home
+</EXTRAINFO>
+<TEXT>AMHERST, N.Y. (AP) --
+A rifle <EVENT eid="e1" class="OCCURRENCE" endpoints="30 35" sent_idx="1">found</EVENT> near the home of a slain abortion doctor may <EVENT eid="e2" class="OCCURRENCE" endpoints="81 86" sent_idx="1">yield</EVENT> important clues for investigators <EVENT eid="e3" class="I_ACTION" endpoints="121 127" sent_idx="1">trying</EVENT> to <EVENT eid="e4" class="OCCURRENCE" endpoints="131 136" sent_idx="1">track</EVENT> down the gunman.
+Dr. Barnett Slepian was <EVENT eid="e5" class="OCCURRENCE" endpoints="178 184" sent_idx="2">killed</EVENT> in his kitchen by a sniper's bullet <TIMEX3 tid="t2" type="DATE" value="1998-FA" temporalFunction="true" functionInDocument="NONE" endpoints="221 230" sent_idx="2">last fall</TIMEX3>. Investigators <EVENT eid="e6" class="REPORTING" endpoints="246 250" sent_idx="2">said</EVENT> <TIMEX3 tid="t3" type="DATE" value="1999-04-09" temporalFunction="true" functionInDocument="NONE" endpoints="251 257" sent_idx="2">Friday</TIMEX3> they <EVENT eid="e7" class="OCCURRENCE" endpoints="263 268" sent_idx="2">found</EVENT> a rifle <EVENT eid="e8" class="STATE" endpoints="277 283" sent_idx="2">buried</EVENT> near his home in the Buffalo suburb of Amherst.
+The gun was <EVENT eid="e9" class="I_ACTION" endpoints="344 348" sent_idx="3">sent</EVENT> to the FBI laboratory in Washington to <EVENT eid="e10" class="I_ACTION" endpoints="388 397" sent_idx="3">determine</EVENT> whether it was <EVENT eid="e11" class="OCCURRENCE" endpoints="413 417" sent_idx="3">used</EVENT> to <EVENT eid="e12" class="OCCURRENCE" endpoints="421 425" sent_idx="3">kill</EVENT> Slepian.
+``If it<EVENT eid="e13" class="STATE" endpoints="442 444" sent_idx="4">'s</EVENT> not too badly rusted, they may be <EVENT eid="e14" class="I_STATE" endpoints="479 483" sent_idx="4">able</EVENT> to <EVENT eid="e15" class="OCCURRENCE" endpoints="487 492" sent_idx="4">match</EVENT> the bullet back to the weapon,'' <EVENT eid="e16" class="REPORTING" endpoints="526 530" sent_idx="4">said</EVENT> Walter Rowe, forensics sciences professor at George Washington University.
+The rifle might also <EVENT eid="e17" class="STATE" endpoints="627 631" sent_idx="5">have</EVENT> clothing fibers, fingerprints or a serial number that can be <EVENT eid="e18" class="OCCURRENCE" endpoints="693 699" sent_idx="5">traced</EVENT> to the buyer, Rowe <EVENT eid="e19" class="REPORTING" endpoints="719 723" sent_idx="5">said</EVENT>.
+<EVENT eid="e20" class="STATE" endpoints="725 731" sent_idx="6">Buried</EVENT> a foot beneath the ground, the weapon was <EVENT eid="e21" class="OCCURRENCE" endpoints="774 783" sent_idx="6">unearthed</EVENT> <SIGNAL sid="s1">during</SIGNAL> a <EVENT eid="e22" class="OCCURRENCE" endpoints="793 799" sent_idx="6">search</EVENT> of a heavily wooded, four-acre area <TIMEX3 tid="t4" type="DATE" value="1999-04-08" temporalFunction="true" functionInDocument="NONE" endpoints="836 844" sent_idx="6">Thursday</TIMEX3>. Investigators did not <EVENT eid="e23" class="REPORTING" endpoints="868 871" sent_idx="6">say</EVENT> how close the weapon <EVENT eid="e24" class="STATE" endpoints="893 896" sent_idx="6">was</EVENT> to the house.
+Anti-abortion protester James Kopp is being <EVENT eid="e25" class="OCCURRENCE" endpoints="955 961" sent_idx="7">sought</EVENT> as a material witness in the <EVENT eid="e26" class="OCCURRENCE" endpoints="991 999" sent_idx="7">shooting</EVENT>.
+Investigators <EVENT eid="e27" class="REPORTING" endpoints="1015 1019" sent_idx="8">said</EVENT> Kopp's car was <EVENT eid="e28" class="PERCEPTION" endpoints="1035 1039" sent_idx="8">seen</EVENT> in the neighborhood <SIGNAL sid="s2">in</SIGNAL> the <TIMEX3 tid="t5" type="DATE" value="1998-FA" temporalFunction="true" functionInDocument="NONE" endpoints="1067 1071" sent_idx="8">days</TIMEX3> <SIGNAL sid="s3">before</SIGNAL> the <EVENT eid="e29" class="OCCURRENCE" endpoints="1083 1090" sent_idx="8">slaying</EVENT>. Kopp <EVENT eid="e30" class="OCCURRENCE" endpoints="1097 1105" sent_idx="8">vanished</EVENT> <SIGNAL sid="s4">after</SIGNAL> the <EVENT eid="e31" class="OCCURRENCE" endpoints="1116 1124" sent_idx="8">shooting</EVENT>, and the car was <EVENT eid="e32" class="PERCEPTION" endpoints="1142 1147" sent_idx="8">found</EVENT> <EVENT eid="e33" class="OCCURRENCE" endpoints="1148 1157" sent_idx="8">abandoned</EVENT> at the Newark, N.J., airport <SIGNAL sid="s5">in</SIGNAL> <TIMEX3 tid="t6" type="DATE" value="1998-12" temporalFunction="true" functionInDocument="NONE" endpoints="1190 1198" sent_idx="8">December</TIMEX3>.
+Officials <EVENT eid="e34" class="REPORTING" endpoints="1210 1214" sent_idx="9">said</EVENT> DNA test results <EVENT eid="e35" class="OCCURRENCE" endpoints="1232 1238" sent_idx="9">showed</EVENT> a likelihood that a strand of hair <EVENT eid="e36" class="OCCURRENCE" endpoints="1274 1284" sent_idx="9">discovered</EVENT> behind Slepian's home <EVENT eid="e37" class="OCCURRENCE" endpoints="1307 1311" sent_idx="9">came</EVENT> from Kopp.</TEXT>
+<EXTRAINFO>
+</EXTRAINFO>
+<MAKEINSTANCE eid="e1" eiid="ei1" tense="NONE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e2" eiid="ei2" tense="PRESENT" aspect="NONE" polarity="POS" pos="UNKNOWN" modality="may" />
+<MAKEINSTANCE eid="e3" eiid="ei3" tense="PRESPART" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e4" eiid="ei4" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e5" eiid="ei5" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e6" eiid="ei6" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e7" eiid="ei7" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e8" eiid="ei8" tense="NONE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e9" eiid="ei9" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e10" eiid="ei10" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e11" eiid="ei11" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e12" eiid="ei12" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e13" eiid="ei13" tense="PRESENT" aspect="NONE" polarity="NEG" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e14" eiid="ei14" tense="NONE" aspect="NONE" polarity="POS" pos="ADJECTIVE" modality="may" />
+<MAKEINSTANCE eid="e15" eiid="ei15" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e16" eiid="ei16" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e17" eiid="ei17" tense="PRESENT" aspect="NONE" polarity="POS" pos="UNKNOWN" modality="might" />
+<MAKEINSTANCE eid="e18" eiid="ei18" tense="PRESENT" aspect="NONE" polarity="POS" pos="UNKNOWN" modality="can" />
+<MAKEINSTANCE eid="e19" eiid="ei19" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e20" eiid="ei20" tense="NONE" aspect="NONE" polarity="POS" pos="ADJECTIVE" />
+<MAKEINSTANCE eid="e21" eiid="ei21" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e22" eiid="ei22" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e23" eiid="ei23" tense="PAST" aspect="NONE" polarity="NEG" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e24" eiid="ei24" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e25" eiid="ei25" tense="PRESENT" aspect="PROGRESSIVE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e26" eiid="ei26" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e27" eiid="ei27" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e28" eiid="ei28" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e29" eiid="ei29" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e30" eiid="ei30" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e31" eiid="ei31" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e32" eiid="ei32" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e33" eiid="ei33" tense="NONE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e34" eiid="ei34" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e35" eiid="ei35" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e36" eiid="ei36" tense="NONE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e37" eiid="ei37" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<TLINK lid="l1" relType="AFTER" from="t0" to="ei1" origin="USER" />
+<TLINK lid="l2" relType="BEFORE" from="t0" to="ei2" origin="USER" />
+<TLINK lid="l3" relType="IS_INCLUDED" from="t0" to="ei3" origin="USER" />
+<TLINK lid="l5" relType="BEFORE" from="t0" to="ei4" origin="USER" />
+<TLINK lid="l6" relType="INCLUDES" from="t2" to="ei5" origin="USER" />
+<TLINK lid="l7" relType="INCLUDES" from="t3" to="ei6" origin="USER" />
+<TLINK lid="l8" relType="AFTER" from="t3" to="ei7" origin="USER" />
+<TLINK lid="l9" relType="AFTER" from="t3" to="ei8" origin="USER" />
+<TLINK lid="l10" relType="AFTER" from="t0" to="ei9" origin="USER" />
+<TLINK lid="l14" relType="BEFORE" from="t0" to="ei10" origin="USER" />
+<TLINK lid="l15" relType="AFTER" from="t0" to="ei11" origin="USER" />
+<TLINK lid="l16" relType="AFTER" from="t0" to="ei12" origin="USER" />
+<TLINK lid="l17" relType="IS_INCLUDED" from="t0" to="ei13" origin="USER" />
+<TLINK lid="l18" relType="BEFORE" from="t0" to="ei14" origin="USER" />
+<TLINK lid="l20" relType="BEFORE" from="t0" to="ei15" origin="USER" />
+<TLINK lid="l21" relType="INCLUDES" from="t0" to="ei16" origin="USER" />
+<TLINK lid="l22" relType="IS_INCLUDED" from="t0" to="ei17" origin="USER" />
+<TLINK lid="l23" relType="BEFORE" from="t0" to="ei18" origin="USER" />
+<TLINK lid="l24" relType="INCLUDES" from="t0" to="ei19" origin="USER" />
+<TLINK lid="l26" relType="AFTER" from="t4" to="ei20" origin="USER" />
+<TLINK lid="l27" relType="INCLUDES" from="t4" to="ei21" origin="USER" />
+<TLINK lid="l28" relType="INCLUDES" from="t4" to="ei22" origin="USER" />
+<TLINK lid="l29" relType="DURING" from="ei21" to="ei22" signalID="s1" origin="USER" />
+<TLINK lid="l30" relType="INCLUDES" from="t0" to="ei23" origin="USER" />
+<TLINK lid="l31" relType="AFTER" from="t0" to="ei24" origin="USER" />
+<TLINK lid="l33" relType="IS_INCLUDED" from="t0" to="ei25" origin="USER" />
+<TLINK lid="l34" relType="AFTER" from="t0" to="ei26" origin="USER" />
+<TLINK lid="l35" relType="INCLUDES" from="t0" to="ei27" origin="USER" />
+<TLINK lid="l37" relType="INCLUDES" from="t5" to="ei28" signalID="s2" origin="USER" />
+<TLINK lid="l38" relType="BEFORE" from="t5" to="ei29" signalID="s3" origin="USER" />
+<TLINK lid="l39" relType="BEFORE" from="ei28" to="ei29" signalID="s3" origin="USER" />
+<TLINK lid="l40" relType="AFTER" from="t0" to="ei30" origin="USER" />
+<TLINK lid="l41" relType="AFTER" from="t0" to="ei31" origin="USER" />
+<TLINK lid="l42" relType="AFTER" from="ei30" to="ei31" signalID="s4" origin="USER" />
+<TLINK lid="l43" relType="INCLUDES" from="t6" to="ei32" signalID="s5" origin="USER" />
+<TLINK lid="l44" relType="AFTER" from="t6" to="ei33" origin="USER" />
+<TLINK lid="l46" relType="INCLUDES" from="t0" to="ei34" origin="USER" />
+<TLINK lid="l48" relType="IS_INCLUDED" from="t0" to="ei35" origin="USER" />
+<TLINK lid="l49" relType="AFTER" from="t0" to="ei36" origin="USER" />
+<TLINK lid="l50" relType="IS_INCLUDED" from="t0" to="ei37" origin="USER" />
+<SLINK lid="l4" relType="MODAL" from="ei3" to="ei4" syntax="USER" />
+<SLINK lid="l11" relType="MODAL" from="ei9" to="ei10" syntax="USER" />
+<SLINK lid="l12" relType="FACTIVE" from="ei10" to="ei11" syntax="USER" />
+<SLINK lid="l13" relType="MODAL" from="ei11" to="ei12" syntax="USER" />
+<SLINK lid="l19" relType="MODAL" from="ei14" to="ei15" syntax="USER" />
+<SLINK lid="l32" relType="EVIDENTIAL" from="ei23" to="ei24" syntax="USER" />
+<SLINK lid="l36" relType="EVIDENTIAL" from="ei27" to="ei28" syntax="USER" />
+<SLINK lid="l45" relType="FACTIVE" from="ei32" to="ei33" syntax="USER" />
+<SLINK lid="l47" relType="EVIDENTIAL" from="ei34" to="ei35" syntax="USER" />
+</TimeML>

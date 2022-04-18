@@ -1,0 +1,74 @@
+<TimeML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://timeml.org/timeMLdocs/TimeML_1.2.1.xsd">
+<DOCID>APW19981205.0374</DOCID>
+<TIMEX3 tid="t0" type="TIME" functionInDocument="CREATION_TIME" temporalFunction="false" value="1998-12-05T09:42">12/05/1998 09:42:00</TIMEX3>
+<TITLE>Poland to participate in preparations for NATO summit</TITLE>
+<EXTRAINFO>
+APW19981205.0374 <DOCTYPE> NEWS STORY </DOCTYPE><DATE_TIME> 12/05/1998 09:42:00 </DATE_TIME><HEADER>w1008 &amp;Cx1f; wstm-
+r i &amp;Cx13;  &amp;Cx11;  BC-Poland-Germany-NATO     12-05 0152</HEADER><SLUG> BC-Poland-Germany-NATO </SLUG><HEADLINE>Poland to participate in preparations for NATO summit</HEADLINE> &amp;UR; AP Photos WAR150-1 &amp;QL;
+</EXTRAINFO>
+<TEXT>WARSAW, Poland (AP) _
+Poland, Hungary and the Czech Republic can now <EVENT eid="e1" class="OCCURRENCE" endpoints="69 80" sent_idx="1">participate</EVENT> in NATO strategy <EVENT eid="e24" class="OCCURRENCE" endpoints="98 106" sent_idx="1">planning</EVENT>, because all NATO member states have <EVENT eid="e2" class="I_ACTION" endpoints="144 152" sent_idx="1">approved</EVENT> their <EVENT eid="e3" class="STATE" endpoints="159 166" sent_idx="1">joining</EVENT> the alliance, German defense minister Rudolf Scharping <EVENT eid="e4" class="REPORTING" endpoints="222 226" sent_idx="1">said</EVENT> <TIMEX3 tid="t2" type="DATE" functionInDocument="NONE" temporalFunction="true" value="1998-12-05" endpoints="227 235" sent_idx="1">Saturday</TIMEX3>.
+The Netherlands <TIMEX3 tid="t3" type="DATE" functionInDocument="NONE" temporalFunction="true" value="1998-12-XX" anchorTimeID="t0" endpoints="253 268" sent_idx="2">early this week</TIMEX3> <EVENT eid="e5" class="STATE" endpoints="269 275" sent_idx="2">became</EVENT> the last country to <EVENT eid="e7" class="OCCURRENCE" endpoints="296 302" sent_idx="2">ratify</EVENT> NATO expansion to include the three former Warsaw Pact nations.
+The three are <EVENT eid="e8" class="I_STATE" endpoints="381 389" sent_idx="3">expected</EVENT> to <EVENT eid="e10" class="OCCURRENCE" endpoints="393 397" sent_idx="3">join</EVENT> <SIGNAL sid="s3">in</SIGNAL> <TIMEX3 tid="t4" type="DATE" functionInDocument="NONE" temporalFunction="true" value="1999-04" endpoints="401 406" sent_idx="3">April</TIMEX3>, as part of <EVENT eid="e11" class="OCCURRENCE" endpoints="419 426" sent_idx="3">marking</EVENT> NATO's 50th anniversary. With their membership secure, they also can <EVENT eid="e12" class="OCCURRENCE" endpoints="496 507" sent_idx="3">participate</EVENT> in <EVENT eid="e13" class="I_ACTION" endpoints="511 519" sent_idx="3">planning</EVENT> for the NATO <EVENT eid="e14" class="OCCURRENCE" endpoints="533 539" sent_idx="3">summit</EVENT> <SIGNAL sid="s4">in</SIGNAL> <TIMEX3 tid="t5" type="DATE" functionInDocument="NONE" temporalFunction="true" value="1999-04" endpoints="543 548" sent_idx="3">April</TIMEX3>.
+Scharping, <EVENT eid="e15" class="ASPECTUAL" endpoints="561 567" sent_idx="4">ending</EVENT> a <TIMEX3 tid="t6" type="DURATION" functionInDocument="NONE" temporalFunction="true" value="P2D" endpoints="570 577" sent_idx="4">two-day</TIMEX3>  <EVENT eid="e16" class="OCCURRENCE" endpoints="579 584" sent_idx="4">visit</EVENT>, <EVENT eid="e17" class="REPORTING" endpoints="586 590" sent_idx="4">said</EVENT> Poland was well <EVENT eid="e18" class="I_STATE" endpoints="607 615" sent_idx="4">prepared</EVENT> to <EVENT eid="e19" class="OCCURRENCE" endpoints="619 623" sent_idx="4">join</EVENT> the alliance. Germany has <EVENT eid="e21" class="STATE" endpoints="650 654" sent_idx="4">been</EVENT> a strong advocate of Poland's access to NATO, <EVENT eid="e22" class="REPORTING" endpoints="701 707" sent_idx="4">saying</EVENT> it will <EVENT eid="e23" class="OCCURRENCE" endpoints="716 721" sent_idx="4">serve</EVENT> European security and stability.</TEXT>
+<EXTRAINFO>
+&amp;UR; (ms-aet)  (PROFILE (WS SL:BC-Poland-Germany-NATO; CT:i; (REG:EURO;) (REG:BRIT;) (REG:SCAN;) (REG:ENGL;) (LANG:ENGLISH;)) )
+<TRAILER> AP-NY-12-05-98 0942EST </TRAILER>
+</EXTRAINFO>
+<MAKEINSTANCE eiid="ei1" eid="e1" tense="PRESENT" aspect="NONE" pos="UNKNOWN" modality="can" polarity="POS" />
+<MAKEINSTANCE eiid="ei2" eid="e2" tense="PAST" aspect="PERFECTIVE" pos="UNKNOWN" polarity="POS" />
+<MAKEINSTANCE eiid="ei3" eid="e3" tense="NONE" aspect="NONE" pos="NOUN" polarity="POS" />
+<MAKEINSTANCE eiid="ei4" eid="e4" tense="PAST" aspect="NONE" pos="UNKNOWN" polarity="POS" />
+<MAKEINSTANCE eiid="ei5" eid="e5" tense="PAST" aspect="NONE" pos="UNKNOWN" polarity="POS" />
+<MAKEINSTANCE eiid="ei7" eid="e7" tense="INFINITIVE" aspect="NONE" pos="VERB" polarity="POS" />
+<MAKEINSTANCE eiid="ei9" eid="e8" tense="PRESENT" aspect="NONE" pos="UNKNOWN" polarity="POS" />
+<MAKEINSTANCE eiid="ei12" eid="e10" tense="INFINITIVE" aspect="NONE" pos="VERB" polarity="POS" />
+<MAKEINSTANCE eiid="ei13" eid="e11" tense="NONE" aspect="NONE" pos="NOUN" polarity="POS" />
+<MAKEINSTANCE eiid="ei14" eid="e12" tense="PRESENT" aspect="NONE" pos="UNKNOWN" modality="can" polarity="POS" />
+<MAKEINSTANCE eiid="ei15" eid="e13" tense="NONE" aspect="NONE" pos="NOUN" polarity="POS" />
+<MAKEINSTANCE eiid="ei16" eid="e14" tense="NONE" aspect="NONE" pos="NOUN" polarity="POS" />
+<MAKEINSTANCE eiid="ei17" eid="e15" tense="PRESPART" aspect="NONE" pos="VERB" polarity="POS" />
+<MAKEINSTANCE eiid="ei18" eid="e16" tense="NONE" aspect="NONE" pos="NOUN" polarity="POS" />
+<MAKEINSTANCE eiid="ei19" eid="e17" tense="PAST" aspect="NONE" pos="UNKNOWN" polarity="POS" />
+<MAKEINSTANCE eiid="ei20" eid="e18" tense="PAST" aspect="NONE" pos="UNKNOWN" polarity="POS" />
+<MAKEINSTANCE eiid="ei21" eid="e19" tense="INFINITIVE" aspect="NONE" pos="VERB" polarity="POS" />
+<MAKEINSTANCE eiid="ei23" eid="e21" tense="PRESENT" aspect="PERFECTIVE" pos="UNKNOWN" polarity="POS" />
+<MAKEINSTANCE eiid="ei24" eid="e22" tense="PRESPART" aspect="NONE" pos="VERB" polarity="POS" />
+<MAKEINSTANCE eiid="ei25" eid="e23" tense="FUTURE" aspect="NONE" pos="UNKNOWN" polarity="POS" />
+<MAKEINSTANCE eiid="ei26" eid="e24" tense="NONE" aspect="NONE" pos="NOUN" polarity="POS" />
+<TLINK lid="l2" from="t0" to="ei1" relType="INCLUDES" origin="USER" />
+<TLINK lid="l3" from="ei2" to="ei1" relType="BEFORE" origin="USER" />
+<TLINK lid="l5" from="t0" to="ei2" relType="AFTER" origin="USER" />
+<TLINK lid="l6" from="t2" to="ei4" relType="INCLUDES" origin="USER" />
+<TLINK lid="l7" from="t2" to="ei4" relType="INCLUDES" origin="USER" />
+<TLINK lid="l8" from="ei4" to="ei2" relType="AFTER" origin="USER" />
+<TLINK lid="l9" from="t3" to="ei5" relType="INCLUDES" origin="USER" />
+<TLINK lid="l11" from="ei5" to="ei7" relType="SIMULTANEOUS" origin="USER" />
+<TLINK lid="l12" from="t0" to="ei9" relType="INCLUDES" origin="USER" />
+<TLINK lid="l14" from="t4" signalID="s3" to="ei12" relType="INCLUDES" origin="USER" />
+<TLINK lid="l15" from="t4" to="ei13" relType="INCLUDES" origin="USER" />
+<TLINK lid="l16" from="t0" to="ei13" relType="BEFORE" origin="USER" />
+<TLINK lid="l17" from="t0" to="ei14" relType="INCLUDES" origin="USER" />
+<TLINK lid="l20" from="t5" signalID="s4" to="ei16" relType="INCLUDES" origin="USER" />
+<TLINK lid="l21" from="t6" to="ei18" relType="INCLUDES" origin="USER" />
+<TLINK lid="l23" from="t2" to="ei19" relType="INCLUDES" origin="USER" />
+<TLINK lid="l24" from="t6" to="ei19" relType="DURING" origin="USER" />
+<TLINK lid="l26" from="ei3" to="t4" relType="INCLUDES" origin="USER" />
+<TLINK lid="l27" from="t0" to="ei26" relType="BEFORE" origin="USER" />
+<TLINK lid="l28" from="t0" to="ei15" relType="BEFORE" origin="USER" />
+<TLINK lid="l29" from="t2" to="ei17" relType="AFTER" origin="USER" />
+<TLINK lid="l32" from="t4" to="ei21" relType="INCLUDES" origin="USER" />
+<TLINK lid="l33" from="t0" to="ei20" relType="AFTER" origin="USER" />
+<TLINK lid="l35" from="t0" to="ei23" relType="AFTER" origin="USER" />
+<TLINK lid="l36" from="t0" to="ei24" relType="AFTER" origin="USER" />
+<TLINK lid="l38" from="t0" to="ei25" relType="BEFORE" origin="USER" />
+<SLINK lid="l1" from="ei2" to="ei3" relType="MODAL" />
+<SLINK lid="l10" from="ei1" to="ei26" relType="MODAL" />
+<SLINK lid="l13" from="ei9" to="ei12" relType="MODAL" />
+<SLINK lid="l18" from="ei14" to="ei15" relType="MODAL" />
+<SLINK lid="l19" from="ei15" to="ei16" relType="MODAL" />
+<SLINK lid="l30" from="ei19" to="ei20" relType="EVIDENTIAL" />
+<SLINK lid="l31" from="ei20" to="ei21" relType="MODAL" />
+<SLINK lid="l37" from="ei24" to="ei25" relType="EVIDENTIAL" />
+<ALINK lid="l22" from="ei18" to="ei17" relType="CULMINATES" />
+</TimeML>

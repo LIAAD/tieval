@@ -21,10 +21,10 @@ Datasets:
 
 """
 
+import io
 import os
 import requests
 import zipfile
-import io
 
 from tieval.datasets import DATASETS_METADATA
 from tieval import DATA_PATH

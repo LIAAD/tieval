@@ -1,0 +1,129 @@
+<TimeML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://timeml.org/timeMLdocs/TimeML_1.2.1.xsd">
+<DOCID>XIE19980814.0294</DOCID>
+<TIMEX3 tid="t0" type="DATE" value="1998-08-14" temporalFunction="false" functionInDocument="CREATION_TIME">August 13</TIMEX3>
+<TITLE>Clinton Vows to Find Embassy Bombers</TITLE>
+<EXTRAINFO>
+XIE19980814.0294
+1998-08-14
+Clinton Vows to Find Embassy Bombers
+</EXTRAINFO>
+<TEXT>WASHINGTON, August 13 (Xinhua) --
+President Bill Clinton <TIMEX3 tid="t2" type="DATE" value="1998-08-13" temporalFunction="false" functionInDocument="NONE" endpoints="57 65" sent_idx="1">Thursday</TIMEX3> <EVENT eid="e1" class="OCCURRENCE" endpoints="66 75" sent_idx="1">condemned</EVENT> terrorist bomb <EVENT eid="e34" class="OCCURRENCE" endpoints="91 98" sent_idx="1">attacks</EVENT> at U.S. embassies in Kenya and Tanzania and <EVENT eid="e55" class="I_STATE" endpoints="143 148" sent_idx="1">vowed</EVENT> to <EVENT eid="e2" class="OCCURRENCE" endpoints="152 156" sent_idx="1">find</EVENT> the bombers and <EVENT eid="e3" class="OCCURRENCE" endpoints="173 178" sent_idx="1">bring</EVENT> them to justice.
+"No matter what it takes, we must <EVENT eid="e5" class="OCCURRENCE" endpoints="230 234" sent_idx="2">find</EVENT> those responsible for these evil <EVENT eid="e35" class="OCCURRENCE" endpoints="268 272" sent_idx="2">acts</EVENT> and <EVENT eid="e6" class="PERCEPTION" endpoints="277 280" sent_idx="2">see</EVENT> that justice is done," Clinton <EVENT eid="e7" class="REPORTING" endpoints="312 316" sent_idx="2">said</EVENT> at the <EVENT eid="e36" class="OCCURRENCE" endpoints="324 332" sent_idx="2">ceremony</EVENT> marking the <EVENT eid="e37" class="OCCURRENCE" endpoints="345 351" sent_idx="2">return</EVENT> of remains of Americans who were <EVENT eid="e9" class="OCCURRENCE" endpoints="385 391" sent_idx="2">killed</EVENT> in the Kenya embassy <EVENT eid="e38" class="OCCURRENCE" endpoints="413 420" sent_idx="2">bombing</EVENT>.
+The <EVENT eid="e39" class="OCCURRENCE" endpoints="426 434" sent_idx="3">ceremony</EVENT> was <EVENT eid="e10" class="OCCURRENCE" endpoints="439 443" sent_idx="3">held</EVENT> at Andrews Air Force Base, near Washington, where 10 of 12 American victims of the Kenya embassy <EVENT eid="e40" class="OCCURRENCE" endpoints="541 548" sent_idx="3">bombing</EVENT> were <EVENT eid="e11" class="OCCURRENCE" endpoints="554 561" sent_idx="3">brought</EVENT> back by Secretary of State Madeleine Albright.
+Clinton <EVENT eid="e12" class="REPORTING" endpoints="617 621" sent_idx="4">said</EVENT> the United States will not <EVENT eid="e13" class="OCCURRENCE" endpoints="649 656" sent_idx="4">retreat</EVENT> from the world because of terrorist <EVENT eid="e41" class="OCCURRENCE" endpoints="693 700" sent_idx="4">attacks</EVENT>.
+Albright, <EVENT eid="e14" class="OCCURRENCE" endpoints="712 719" sent_idx="5">echoing</EVENT> the president, <EVENT eid="e15" class="REPORTING" endpoints="735 739" sent_idx="5">said</EVENT> the United States would "<EVENT eid="e16" class="ASPECTUAL" endpoints="765 773" sent_idx="5">continue</EVENT> to be present around the world, wherever we have interests to <EVENT eid="e17" class="OCCURRENCE" endpoints="836 842" sent_idx="5">defend</EVENT>."
+"We will <EVENT eid="e18" class="OCCURRENCE" endpoints="854 856" sent_idx="6">do</EVENT> all we can to <EVENT eid="e19" class="I_ACTION" endpoints="871 878" sent_idx="6">protect</EVENT> our diplomatic and military peoples around the world," she <EVENT eid="e20" class="REPORTING" endpoints="938 942" sent_idx="6">said</EVENT>.
+Clinton <EVENT eid="e21" class="OCCURRENCE" endpoints="952 955" sent_idx="7">met</EVENT> with his top aides <TIMEX3 tid="t3" type="DATE" value="1998-08-12" temporalFunction="false" functionInDocument="NONE" endpoints="975 984" sent_idx="7">Wednesday</TIMEX3> in the White House to <EVENT eid="e22" class="OCCURRENCE" endpoints="1007 1013" sent_idx="7">assess</EVENT> the situation following the twin <EVENT eid="e44" class="OCCURRENCE" endpoints="1047 1055" sent_idx="7">bombings</EVENT> at U.S. embassies in Kenya and Tanzania, which have <EVENT eid="e24" class="OCCURRENCE" endpoints="1108 1114" sent_idx="7">killed</EVENT> more than 250 people and <EVENT eid="e54" class="OCCURRENCE" endpoints="1140 1147" sent_idx="7">injured</EVENT> over 5,000, most of them Kenyans and Tanzanians. Twelve Americans were <EVENT eid="e25" class="OCCURRENCE" endpoints="1219 1225" sent_idx="7">killed</EVENT> in the Kenya embassy <EVENT eid="e45" class="OCCURRENCE" endpoints="1247 1254" sent_idx="7">bombing</EVENT>.
+Clinton <EVENT eid="e26" class="OCCURRENCE" endpoints="1264 1271" sent_idx="8">ordered</EVENT> an assessment of what it would cost to <EVENT eid="e28" class="OCCURRENCE" endpoints="1311 1318" sent_idx="8">rebuild</EVENT> the embassies in Kenya and Tanzania and the price tag for emergency response teams <EVENT eid="e29" class="OCCURRENCE" endpoints="1402 1406" sent_idx="8">sent</EVENT> to the two countries.
+He also <EVENT eid="e30" class="OCCURRENCE" endpoints="1437 1442" sent_idx="9">asked</EVENT> for a "list of the priorities for <EVENT eid="e31" class="OCCURRENCE" endpoints="1477 1486" sent_idx="9">improving</EVENT> security for U.S. facilities around the world."
+The State Department and the Office of Management and Budget will jointly <EVENT eid="e32" class="OCCURRENCE" endpoints="1609 1613" sent_idx="10">make</EVENT> the assessments "in the next few days," and the president will <EVENT eid="e33" class="REPORTING" endpoints="1677 1684" sent_idx="10">present</EVENT> the report to Congress for more emergency funding.</TEXT>
+<EXTRAINFO>
+</EXTRAINFO>
+<MAKEINSTANCE eid="e1" eiid="ei1" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e2" eiid="ei2" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e3" eiid="ei3" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e5" eiid="ei5" tense="PRESENT" aspect="NONE" polarity="POS" pos="UNKNOWN" modality="MUST" />
+<MAKEINSTANCE eid="e6" eiid="ei6" tense="PRESENT" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e7" eiid="ei7" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e9" eiid="ei9" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e10" eiid="ei10" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e11" eiid="ei11" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e12" eiid="ei12" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e13" eiid="ei13" tense="FUTURE" aspect="NONE" polarity="NEG" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e14" eiid="ei14" tense="PRESPART" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e15" eiid="ei15" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e16" eiid="ei16" tense="PRESENT" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e17" eiid="ei17" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e18" eiid="ei18" tense="FUTURE" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e19" eiid="ei19" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e20" eiid="ei20" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e21" eiid="ei21" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e22" eiid="ei22" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e24" eiid="ei24" tense="PAST" aspect="PERFECTIVE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e25" eiid="ei25" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e26" eiid="ei26" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e28" eiid="ei28" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e29" eiid="ei29" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e30" eiid="ei30" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e31" eiid="ei31" tense="PRESPART" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e32" eiid="ei32" tense="FUTURE" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e33" eiid="ei33" tense="FUTURE" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e34" eiid="ei34" tense="NONE" aspect="NONE" polarity="POS" cardinality="2" pos="NOUN" />
+<MAKEINSTANCE eid="e35" eiid="ei35" tense="NONE" aspect="NONE" polarity="POS" cardinality="2" pos="NOUN" />
+<MAKEINSTANCE eid="e36" eiid="ei36" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e37" eiid="ei37" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e38" eiid="ei38" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e39" eiid="ei39" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e40" eiid="ei40" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e41" eiid="ei41" tense="NONE" aspect="NONE" polarity="POS" cardinality="2" pos="NOUN" />
+<MAKEINSTANCE eid="e44" eiid="ei44" tense="NONE" aspect="NONE" polarity="POS" cardinality="2" pos="NOUN" />
+<MAKEINSTANCE eid="e45" eiid="ei45" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e54" eiid="ei54" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e55" eiid="ei55" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<TLINK lid="l2" relType="BEFORE" from="t3" to="t2" origin="USER" />
+<TLINK lid="l3" relType="IDENTITY" from="t2" to="t0" origin="USER" />
+<TLINK lid="l4" relType="IS_INCLUDED" from="ei1" to="t2" origin="USER" />
+<TLINK lid="l5" relType="BEFORE" from="ei34" to="ei1" origin="USER" />
+<TLINK lid="l6" relType="BEFORE" from="ei1" to="ei55" origin="USER" />
+<TLINK lid="l8" relType="BEFORE" from="ei55" to="ei2" origin="USER" />
+<TLINK lid="l9" relType="BEFORE" from="ei55" to="ei3" origin="USER" />
+<TLINK lid="l11" relType="BEFORE" from="ei2" to="ei3" origin="USER" />
+<TLINK lid="l12" relType="IS_INCLUDED" from="ei7" to="t0" origin="USER" />
+<TLINK lid="l13" relType="BEFORE" from="ei7" to="ei5" origin="USER" />
+<TLINK lid="l16" relType="BEFORE" from="ei35" to="ei7" origin="USER" />
+<TLINK lid="l17" relType="IDENTITY" from="ei35" to="ei34" origin="USER" />
+<TLINK lid="l18" relType="BEFORE" from="ei7" to="ei6" origin="USER" />
+<TLINK lid="l20" relType="INCLUDES" from="ei36" to="ei7" origin="USER" />
+<TLINK lid="l21" relType="IS_INCLUDED" from="ei36" to="t0" origin="USER" />
+<TLINK lid="l22" relType="BEFORE" from="ei37" to="ei36" origin="USER" />
+<TLINK lid="l23" relType="BEFORE" from="ei9" to="ei37" origin="USER" />
+<TLINK lid="l24" relType="DURING" from="ei38" to="ei9" origin="USER" />
+<TLINK lid="l25" relType="IDENTITY" from="ei39" to="ei36" origin="USER" />
+<TLINK lid="l26" relType="INCLUDES" from="ei10" to="ei39" origin="USER" />
+<TLINK lid="l27" relType="BEFORE" from="ei40" to="ei39" origin="USER" />
+<TLINK lid="l28" relType="IDENTITY" from="ei40" to="ei38" origin="USER" />
+<TLINK lid="l29" relType="AFTER" from="ei11" to="ei40" origin="USER" />
+<TLINK lid="l30" relType="BEFORE" from="ei11" to="ei39" origin="USER" />
+<TLINK lid="l31" relType="IS_INCLUDED" from="ei12" to="t0" origin="USER" />
+<TLINK lid="l33" relType="AFTER" from="ei12" to="ei41" origin="USER" />
+<TLINK lid="l34" relType="IDENTITY" from="ei41" to="ei35" origin="USER" />
+<TLINK lid="l35" relType="IS_INCLUDED" from="ei14" to="t0" origin="USER" />
+<TLINK lid="l36" relType="INCLUDES" from="ei14" to="ei15" origin="USER" />
+<TLINK lid="l38" relType="BEFORE" from="ei12" to="ei13" origin="USER" />
+<TLINK lid="l39" relType="BEFORE" from="ei15" to="ei16" origin="USER" />
+<TLINK lid="l40" relType="BEFORE" from="ei15" to="ei17" origin="USER" />
+<TLINK lid="l42" relType="IS_INCLUDED" from="ei20" to="t0" origin="USER" />
+<TLINK lid="l43" relType="BEFORE" from="ei20" to="ei18" origin="USER" />
+<TLINK lid="l44" relType="BEFORE" from="ei18" to="ei19" origin="USER" />
+<TLINK lid="l47" relType="IS_INCLUDED" from="ei21" to="t3" origin="USER" />
+<TLINK lid="l49" relType="INCLUDES" from="ei21" to="ei22" origin="USER" />
+<TLINK lid="l50" relType="BEFORE" from="ei44" to="ei21" origin="USER" />
+<TLINK lid="l51" relType="IBEFORE" from="ei44" to="ei24" origin="USER" />
+<TLINK lid="l52" relType="IBEFORE" from="ei44" to="ei54" origin="USER" />
+<TLINK lid="l53" relType="SIMULTANEOUS" from="ei24" to="ei54" origin="USER" />
+<TLINK lid="l54" relType="IDENTITY" from="ei25" to="ei24" origin="USER" />
+<TLINK lid="l55" relType="IBEFORE" from="ei45" to="ei25" origin="USER" />
+<TLINK lid="l56" relType="BEFORE" from="ei45" to="t3" origin="USER" />
+<TLINK lid="l57" relType="INCLUDES" from="ei21" to="ei26" origin="USER" />
+<TLINK lid="l59" relType="BEFORE" from="ei26" to="ei28" origin="USER" />
+<TLINK lid="l60" relType="BEFORE" from="ei29" to="ei26" origin="USER" />
+<TLINK lid="l61" relType="IS_INCLUDED" from="ei30" to="ei21" origin="USER" />
+<TLINK lid="l63" relType="BEFORE" from="ei30" to="ei31" origin="USER" />
+<TLINK lid="l64" relType="BEFORE" from="t0" to="ei32" origin="USER" />
+<TLINK lid="l65" relType="BEFORE" from="ei32" to="ei33" origin="USER" />
+<TLINK lid="l66" relType="AFTER" from="ei33" to="t0" origin="USER" />
+<SLINK lid="l7" relType="MODAL" from="ei55" to="ei2" syntax="USER" />
+<SLINK lid="l10" relType="MODAL" from="ei55" to="ei3" syntax="USER" />
+<SLINK lid="l14" relType="EVIDENTIAL" from="ei7" to="ei5" syntax="USER" />
+<SLINK lid="l15" relType="EVIDENTIAL" from="ei35" to="ei7" syntax="USER" />
+<SLINK lid="l19" relType="EVIDENTIAL" from="ei7" to="ei6" syntax="USER" />
+<SLINK lid="l32" relType="NEG_EVIDENTIAL" from="ei12" to="ei13" syntax="USER" />
+<SLINK lid="l37" relType="EVIDENTIAL" from="ei16" to="ei15" syntax="USER" />
+<SLINK lid="l41" relType="EVIDENTIAL" from="ei15" to="ei17" syntax="USER" />
+<SLINK lid="l45" relType="EVIDENTIAL" from="ei20" to="ei18" syntax="USER" />
+<SLINK lid="l46" relType="EVIDENTIAL" from="ei20" to="ei19" syntax="USER" />
+<SLINK lid="l48" relType="MODAL" from="ei21" to="ei22" syntax="USER" />
+<SLINK lid="l58" relType="MODAL" from="ei26" to="ei28" syntax="USER" />
+<SLINK lid="l62" relType="EVIDENTIAL" from="ei30" to="ei31" syntax="USER" />
+</TimeML>

@@ -1,9 +1,8 @@
-
 import abc
-import json
 import collections
-from typing import Iterable
+import json
 from pathlib import Path
+from typing import Iterable, Union
 from xml.etree import ElementTree as ET
 
 from tqdm import tqdm
@@ -13,10 +12,6 @@ from tieval.entities import Timex, Event, Entity
 from tieval.links import TLink
 from tieval.datasets.utils import xml2dict
 from tieval.temporal_relation import SUPPORTED_RELATIONS
-
-"""
-Document Readers.
-"""
 
 
 class BaseDocumentReader:
@@ -58,7 +53,7 @@ class BaseDocumentReader:
 
 class TempEval3DocumentReader(BaseDocumentReader):
 
-    def __init__(self, path):
+    def __init__(self, path: str) -> None:
         if not isinstance(path, Path):
             path = Path(path)
 
@@ -122,7 +117,6 @@ class TempEval3DocumentReader(BaseDocumentReader):
         # timexs
         if timexs:
             for timex in timexs:
-
                 s, e = timex["endpoints"].split()
 
                 entities.add(Timex(
@@ -176,7 +170,7 @@ class TempEval3DocumentReader(BaseDocumentReader):
 
 class TimeBank12DocumentReader(BaseDocumentReader):
 
-    def __init__(self, path):
+    def __init__(self, path: str) -> None:
         if not isinstance(path, Path):
             path = Path(path)
 
@@ -228,7 +222,6 @@ class TimeBank12DocumentReader(BaseDocumentReader):
 
         if timexs:
             for timex in timexs:
-
                 entities.add(Timex(
                     function_in_document=timex.get("functionInDocument"),
                     text=timex["text"],
@@ -280,7 +273,7 @@ class TimeBank12DocumentReader(BaseDocumentReader):
 
 class MeanTimeDocumentReader(BaseDocumentReader):
 
-    def __init__(self, path):
+    def __init__(self, path: str) -> None:
 
         if not isinstance(path, Path):
             path = Path(path)
@@ -335,7 +328,6 @@ class MeanTimeDocumentReader(BaseDocumentReader):
         # events
         events = self.content["Document"]["Markables"]["EVENT_MENTION"]
         for event in events:
-
             # retrieve text
             s, e = get_endpoints(event["token_anchor"], tokens)
             text = self._text[s: e]
@@ -413,7 +405,6 @@ class MeanTimeDocumentReader(BaseDocumentReader):
 
             # ensure that the relation is supported by the framework
             if relation in SUPPORTED_RELATIONS:
-
                 result.add(
                     TLink(
                         id=id,
@@ -440,7 +431,7 @@ class MeanTimeDocumentReader(BaseDocumentReader):
 # TODO: add support for EXTRA corpus
 class GraphEveDocumentReader(BaseDocumentReader):
 
-    def __init__(self, path):
+    def __init__(self, path: str) -> None:
         if not isinstance(path, Path):
             path = Path(path)
 
@@ -475,7 +466,6 @@ class GraphEveDocumentReader(BaseDocumentReader):
         # events
         events = self._root["MicroEvents"]["MicroEvent"]
         for event in events:
-
             entities.add(Event(
                 id=event["ID"],
                 text=event["EventCarrier"],
@@ -522,7 +512,6 @@ class GraphEveDocumentReader(BaseDocumentReader):
             relation = annot["RelationType"]
 
             if relation.startswith("Temporal"):
-
                 relation = relation.replace("Temporal", "")
                 source = entities_dict[annot["FirstEvent"]["ID"]]
                 target = entities_dict[annot["SecondEvent"]["ID"]]
@@ -538,7 +527,7 @@ class GraphEveDocumentReader(BaseDocumentReader):
 
 class TempEval2DocumentReader(BaseDocumentReader):
 
-    def __init__(self, path):
+    def __init__(self, path: str) -> None:
         if not isinstance(path, Path):
             path = Path(path)
 
@@ -638,7 +627,6 @@ class TempEval2DocumentReader(BaseDocumentReader):
 
         entities_dict = {ent.id: ent for ent in self._entities}
         for tlink in self.content["tlinks"]:
-
             source = entities_dict[tlink["from"]]
             target = entities_dict[tlink["to"]]
 
@@ -664,7 +652,7 @@ class TempEval2DocumentReader(BaseDocumentReader):
 
 class TCRDocumentReader(BaseDocumentReader):
 
-    def __init__(self, path):
+    def __init__(self, path: str) -> None:
         if not isinstance(path, Path):
             path = Path(path)
 
@@ -719,7 +707,6 @@ class TCRDocumentReader(BaseDocumentReader):
 
         if timexs:
             for timex in timexs:
-
                 entities.add(Timex(
                     text=timex["text"],
                     id=timex["tid"],
@@ -755,10 +742,10 @@ class TCRDocumentReader(BaseDocumentReader):
 
         for tlink in tlinks:
             result.add(TLink(
-                    id=tlink["lid"],
-                    source=entities_dict[tlink["from"]],
-                    target=entities_dict[tlink["to"]],
-                    relation=tlink["relType"]
+                id=tlink["lid"],
+                source=entities_dict[tlink["from"]],
+                target=entities_dict[tlink["to"]],
+                relation=tlink["relType"]
             ))
 
         return result
@@ -766,7 +753,7 @@ class TCRDocumentReader(BaseDocumentReader):
 
 class TempEval2FrenchDocumentReader(BaseDocumentReader):
 
-    def __init__(self, path):
+    def __init__(self, path: str) -> None:
         if not isinstance(path, Path):
             path = Path(path)
 
@@ -836,7 +823,6 @@ class TempEval2FrenchDocumentReader(BaseDocumentReader):
         else:
 
             for event in events:
-
                 entities.add(Event(
                     id=event['eid'],
                     eid=event['eid'],
@@ -868,7 +854,7 @@ class TempEval2FrenchDocumentReader(BaseDocumentReader):
             ))
 
         return entities
-    
+
     @property
     def _tlinks(self) -> Iterable[TLink]:
 
@@ -891,7 +877,7 @@ class TempEval2FrenchDocumentReader(BaseDocumentReader):
 
 class TimeBankPTDocumentReader(BaseDocumentReader):
 
-    def __init__(self, path):
+    def __init__(self, path: str) -> None:
         if not isinstance(path, Path):
             path = Path(path)
 
@@ -1005,9 +991,16 @@ class TimeBankPTDocumentReader(BaseDocumentReader):
         return result
 
 
-"""
-Dataset Readers.
-"""
+DocumentReader = Union[
+    TempEval3DocumentReader,
+    TimeBank12DocumentReader,
+    MeanTimeDocumentReader,
+    GraphEveDocumentReader,
+    TempEval2DocumentReader,
+    TCRDocumentReader,
+    TempEval2FrenchDocumentReader,
+    TimeBankPTDocumentReader,
+]
 
 DocName = str
 SourceID, TargetID = str, str
@@ -1016,7 +1009,7 @@ SourceID, TargetID = str, str
 class XMLDatasetReader:
     """Handles the process of reading any temporally annotated dataset stored with .tml or .xml extension."""
 
-    def __init__(self, doc_reader) -> None:
+    def __init__(self, doc_reader: DocumentReader) -> None:
         self.document_reader = doc_reader
 
     def read(self, path: str) -> Dataset:
@@ -1042,7 +1035,7 @@ class XMLDatasetReader:
 
 class JSONDatasetReader:
 
-    def __init__(self, doc_reader) -> None:
+    def __init__(self, doc_reader: DocumentReader) -> None:
         self.document_reader = doc_reader
 
     def read(self, path) -> Dataset:
@@ -1091,7 +1084,6 @@ class EventTimeDatasetReader:
 
         documents = []
         for doc_name, events in docs.items():
-
             document = self.base_dataset[doc_name]
 
             document.tlinks = None
@@ -1121,7 +1113,6 @@ class MATRESDatasetReader:
             with open(filepath, 'r') as fin:
 
                 for line in fin.readlines():
-
                     doc, src_token, tgt_token, src_id, tgt_id, relation = line.split()
                     src_id = "ei" + src_id
                     tgt_id = "ei" + tgt_id
@@ -1159,18 +1150,6 @@ class MATRESDatasetReader:
         return Dataset(path.name, train=documents["train"], test=documents["test"])
 
 
-class MCTacoDatasetReader:
-
-    def __init__(self, base_dataset: Dataset) -> None:
-        self.base_dataset = base_dataset
-
-    def read(self, path: str) -> Dataset:
-
-        path = Path(path)
-
-        return None
-
-
 class TDDiscourseDatasetReader:
 
     def __init__(self, base_dataset: Dataset) -> None:
@@ -1190,7 +1169,6 @@ class TDDiscourseDatasetReader:
             with open(filepath, 'r') as fin:
 
                 for line in fin.readlines():
-
                     doc, src_id, tgt_id, relation = line.split()
 
                     document = self.base_dataset[doc]
@@ -1224,15 +1202,6 @@ class TDDiscourseDatasetReader:
                 documents[split] += [document]
 
         return Dataset(path.name, train=documents["train"], test=documents["test"])
-
-
-class UDSTDatasetReader:
-
-    def __init__(self, base_dataset: Dataset) -> None:
-        self.base_dataset = base_dataset
-
-    def read(self, path: str) -> Dataset:
-        return None
 
 
 class TimeBankDenseDatasetReader:

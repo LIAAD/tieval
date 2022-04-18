@@ -19,9 +19,7 @@ from tieval.datasets.readers import (
     JSONDatasetReader,
     EventTimeDatasetReader,
     MATRESDatasetReader,
-    UDSTDatasetReader,
     TDDiscourseDatasetReader,
-    MCTacoDatasetReader,
     MeanTimeDocumentReader,
     TimeBankDenseDatasetReader,
     TimeBankPTDocumentReader
@@ -42,9 +40,7 @@ DatasetReaders = Union[
     JSONDatasetReader,
     EventTimeDatasetReader,
     MATRESDatasetReader,
-    UDSTDatasetReader,
     TDDiscourseDatasetReader,
-    MCTacoDatasetReader,
     MeanTimeDocumentReader,
     TimeBankDenseDatasetReader
 ]
@@ -118,12 +114,6 @@ DATASETS_METADATA = {
         base=["tempeval_3"],
         repo="https://github.com/qiangning/MATRES",
         reader=MATRESDatasetReader,
-    ),
-
-    "mctaco": DatasetMetadata(
-        name="MCTaco",
-        url="https://drive.inesctec.pt/s/q54BizkCwK9egEL/download",
-        reader=MCTacoDatasetReader
     ),
 
     "meantime_english": DatasetMetadata(
@@ -280,11 +270,4 @@ DATASETS_METADATA = {
         reader=XMLDatasetReader,
         doc_reader=TempEval3DocumentReader
     ),
-
-    "uds_t": DatasetMetadata(
-        name="UDS_T",
-        url="https://drive.inesctec.pt/s/JLRoMczLXcgpYKg/download",
-        reader=UDSTDatasetReader,
-        # base=English web treebank
-    )
 }

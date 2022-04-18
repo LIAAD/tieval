@@ -1,0 +1,107 @@
+<TimeML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://timeml.org/timeMLdocs/TimeML_1.2.1.xsd">
+<DOCID>APW19990206.0090</DOCID>
+<TIMEX3 tid="t0" type="TIME" value="1999-02-06T06:22" temporalFunction="false" functionInDocument="CREATION_TIME">1999-02-06 06:22:26</TIMEX3>
+<TITLE>Internet Provider Closes Web Site</TITLE>
+<EXTRAINFO>
+APW19990206.0090
+1999-02-06 06:22:26
+usa
+Internet Provider Closes Web Site
+</EXTRAINFO>
+<TEXT>ATLANTA (AP) --
+The creator of an anti-abortion Web site <EVENT eid="e1" class="OCCURRENCE" endpoints="57 62" sent_idx="1">found</EVENT> to be a threat to abortion providers <EVENT eid="e2" class="REPORTING" endpoints="100 104" sent_idx="1">says</EVENT> a <EVENT eid="e3" class="OCCURRENCE" endpoints="107 115" sent_idx="1">decision</EVENT> to <EVENT eid="e4" class="OCCURRENCE" endpoints="119 123" sent_idx="1">shut</EVENT> the site down is just a ``temporary <EVENT eid="e5" class="OCCURRENCE" endpoints="160 167" sent_idx="1">setback</EVENT>.''
+Neal Horsley <EVENT eid="e6" class="REPORTING" endpoints="184 188" sent_idx="2">said</EVENT> <TIMEX3 tid="t2" type="DATE" value="1999-02-05" temporalFunction="true" functionInDocument="NONE" endpoints="189 195" sent_idx="2">Friday</TIMEX3> that he would <EVENT eid="e7" class="OCCURRENCE" endpoints="210 214" sent_idx="2">seek</EVENT> a new Internet service for his ``Nuremburg Files'' site, which <EVENT eid="e8" class="STATE" endpoints="278 281" sent_idx="2">was</EVENT> the focus of a federal court <EVENT eid="e9" class="OCCURRENCE" endpoints="311 316" sent_idx="2">trial</EVENT> that <EVENT eid="e10" class="I_ACTION" endpoints="322 325" sent_idx="2">led</EVENT> to a $107 million <EVENT eid="e11" class="OCCURRENCE" endpoints="344 351" sent_idx="2">verdict</EVENT> <TIMEX3 tid="t3" type="DATE" value="1999-02" temporalFunction="true" functionInDocument="NONE" endpoints="352 361" sent_idx="2">this week</TIMEX3> in favor of abortion providers.
+Horsley <EVENT eid="e12" class="STATE" endpoints="402 405" sent_idx="3">was</EVENT> not a defendant in the <EVENT eid="e13" class="OCCURRENCE" endpoints="429 433" sent_idx="3">suit</EVENT>, in which the Portland, Ore., jury <EVENT eid="e14" class="I_ACTION" endpoints="469 474" sent_idx="3">ruled</EVENT> that such sites <EVENT eid="e15" class="STATE" endpoints="491 501" sent_idx="3">constitute</EVENT> threats to abortion providers.
+MindSpring, which <EVENT eid="e16" class="OCCURRENCE" endpoints="551 559" sent_idx="4">provided</EVENT> the Internet space for the site, <EVENT eid="e17" class="OCCURRENCE" endpoints="593 599" sent_idx="4">closed</EVENT> it <TIMEX3 tid="t4" type="DATE" value="1999-02-04" temporalFunction="true" functionInDocument="NONE" endpoints="603 611" sent_idx="4">Thursday</TIMEX3> night for <EVENT eid="e18" class="OCCURRENCE" endpoints="622 631" sent_idx="4">violating</EVENT> ``our appropriate use policies,'' spokesman Serge Clermont <EVENT eid="e19" class="REPORTING" endpoints="691 695" sent_idx="4">said</EVENT>.
+The Web site <EVENT eid="e20" class="OCCURRENCE" endpoints="710 718" sent_idx="5">included</EVENT> the names and addresses of abortion doctors and <EVENT eid="e21" class="I_ACTION" endpoints="767 775" sent_idx="5">featured</EVENT> <EVENT eid="e22" class="OCCURRENCE" endpoints="776 782" sent_idx="5">photos</EVENT> of mangled fetuses and <EVENT eid="e23" class="OCCURRENCE" endpoints="806 814" sent_idx="5">drawings</EVENT> of dripping blood.
+Three times, doctors whose names <EVENT eid="e24" class="OCCURRENCE" endpoints="867 875" sent_idx="6">appeared</EVENT> on the list were <EVENT eid="e25" class="OCCURRENCE" endpoints="893 899" sent_idx="6">killed</EVENT>, most recently <TIMEX3 tid="t5" type="DATE" value="1998-10" temporalFunction="true" functionInDocument="NONE" endpoints="915 927" sent_idx="6">last October</TIMEX3> when Dr. Barnett Slepian was <EVENT eid="e26" class="OCCURRENCE" endpoints="957 963" sent_idx="6">gunned</EVENT> down by sniper fire in his home outside Buffalo, N.Y. His name on the Web site was <EVENT eid="e27" class="OCCURRENCE" endpoints="1047 1054" sent_idx="6">crossed</EVENT> out <TIMEX3 tid="t6" type="DATE" value="1998-10-XX" temporalFunction="true" functionInDocument="NONE" endpoints="1059 1073" sent_idx="6">that same day.</TIMEX3>
+Pathway Communications, which has <EVENT eid="e28" class="OCCURRENCE" endpoints="1108 1118" sent_idx="7">maintained</EVENT> the site, <EVENT eid="e29" class="REPORTING" endpoints="1129 1133" sent_idx="7">said</EVENT> in a statement that ``The Nuremberg Files'' was <EVENT eid="e30" class="OCCURRENCE" endpoints="1182 1189" sent_idx="7">knocked</EVENT> off-line without notice. The company <EVENT eid="e31" class="REPORTING" endpoints="1227 1231" sent_idx="7">said</EVENT> it was <EVENT eid="e32" class="PERCEPTION" endpoints="1239 1247" sent_idx="7">informed</EVENT> <TIMEX3 tid="t7" type="DATE" value="1999-02-05" temporalFunction="true" functionInDocument="NONE" endpoints="1248 1254" sent_idx="7">Friday</TIMEX3> that it <EVENT eid="e33" class="OCCURRENCE" endpoints="1263 1271" sent_idx="7">violated</EVENT> MindSpring's policy on ``threatening and harassing language.''
+Horsley <EVENT eid="e34" class="REPORTING" endpoints="1343 1349" sent_idx="8">called</EVENT> the <EVENT eid="e36" class="OCCURRENCE" endpoints="1354 1358" sent_idx="8">move</EVENT> a ``temporary <EVENT eid="e35" class="OCCURRENCE" endpoints="1373 1380" sent_idx="8">setback</EVENT>.''
+``We are presently <EVENT eid="e37" class="I_ACTION" endpoints="1403 1412" sent_idx="9">searching</EVENT> for a bolder and more principled (Internet service provider) to <EVENT eid="e38" class="OCCURRENCE" endpoints="1477 1481" sent_idx="9">host</EVENT> the Nuremburg Files,'' the statement <EVENT eid="e39" class="REPORTING" endpoints="1519 1523" sent_idx="9">said</EVENT>.</TEXT>
+<EXTRAINFO>
+</EXTRAINFO>
+<MAKEINSTANCE eid="e1" eiid="ei1" tense="NONE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e2" eiid="ei2" tense="PRESENT" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e3" eiid="ei3" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e4" eiid="ei4" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e5" eiid="ei5" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e6" eiid="ei6" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e7" eiid="ei7" tense="PRESENT" aspect="NONE" polarity="POS" pos="UNKNOWN" modality="would" />
+<MAKEINSTANCE eid="e8" eiid="ei8" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e9" eiid="ei9" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e10" eiid="ei10" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e11" eiid="ei11" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e12" eiid="ei12" tense="PAST" aspect="NONE" polarity="NEG" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e13" eiid="ei13" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e14" eiid="ei14" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e15" eiid="ei15" tense="PRESENT" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e16" eiid="ei16" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e17" eiid="ei17" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e18" eiid="ei18" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e19" eiid="ei19" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e20" eiid="ei20" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e21" eiid="ei21" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e22" eiid="ei22" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e23" eiid="ei23" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e24" eiid="ei24" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e25" eiid="ei25" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e26" eiid="ei26" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e27" eiid="ei27" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e28" eiid="ei28" tense="PRESENT" aspect="PERFECTIVE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e29" eiid="ei29" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e30" eiid="ei30" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e31" eiid="ei31" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e32" eiid="ei32" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e33" eiid="ei33" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e34" eiid="ei34" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e35" eiid="ei35" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e36" eiid="ei36" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e37" eiid="ei37" tense="PRESENT" aspect="PROGRESSIVE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e38" eiid="ei38" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e39" eiid="ei39" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<TLINK lid="l1" relType="AFTER" from="t0" to="ei1" origin="USER" />
+<TLINK lid="l2" relType="IS_INCLUDED" from="t0" to="ei2" origin="USER" />
+<TLINK lid="l3" relType="AFTER" from="t0" to="ei3" origin="USER" />
+<TLINK lid="l4" relType="AFTER" from="t0" to="ei4" origin="USER" />
+<TLINK lid="l6" relType="IS_INCLUDED" from="t0" to="ei5" origin="USER" />
+<TLINK lid="l7" relType="INCLUDES" from="t2" to="ei6" origin="USER" />
+<TLINK lid="l9" relType="BEFORE" from="t2" to="ei7" origin="USER" />
+<TLINK lid="l10" relType="IS_INCLUDED" from="t3" to="ei8" origin="USER" />
+<TLINK lid="l11" relType="IS_INCLUDED" from="t3" to="ei9" origin="USER" />
+<TLINK lid="l12" relType="IS_INCLUDED" from="t3" to="ei10" origin="USER" />
+<TLINK lid="l13" relType="INCLUDES" from="t3" to="ei11" origin="USER" />
+<TLINK lid="l14" relType="IS_INCLUDED" from="t3" to="ei12" origin="USER" />
+<TLINK lid="l15" relType="IS_INCLUDED" from="t3" to="ei13" origin="USER" />
+<TLINK lid="l16" relType="INCLUDES" from="t3" to="ei14" origin="USER" />
+<TLINK lid="l18" relType="AFTER" from="t4" to="ei16" origin="USER" />
+<TLINK lid="l19" relType="INCLUDES" from="t4" to="ei17" origin="USER" />
+<TLINK lid="l21" relType="IS_INCLUDED" from="t4" to="ei18" origin="USER" />
+<TLINK lid="l22" relType="INCLUDES" from="t0" to="ei19" origin="USER" />
+<TLINK lid="l23" relType="IS_INCLUDED" from="t0" to="ei20" origin="USER" />
+<TLINK lid="l24" relType="IS_INCLUDED" from="t0" to="ei21" origin="USER" />
+<TLINK lid="l27" relType="AFTER" from="t0" to="ei24" origin="USER" />
+<TLINK lid="l28" relType="AFTER" from="t0" to="ei25" origin="USER" />
+<TLINK lid="l29" relType="INCLUDES" from="t5" to="ei26" origin="USER" />
+<TLINK lid="l30" relType="INCLUDES" from="t6" to="ei27" origin="USER" />
+<TLINK lid="l31" relType="AFTER" from="t0" to="ei28" origin="USER" />
+<TLINK lid="l32" relType="INCLUDES" from="t0" to="ei29" origin="USER" />
+<TLINK lid="l33" relType="AFTER" from="t0" to="ei30" origin="USER" />
+<TLINK lid="l34" relType="INCLUDES" from="t0" to="ei31" origin="USER" />
+<TLINK lid="l35" relType="INCLUDES" from="t7" to="ei32" origin="USER" />
+<TLINK lid="l37" relType="IS_INCLUDED" from="t7" to="ei33" origin="USER" />
+<TLINK lid="l38" relType="INCLUDES" from="t0" to="ei34" origin="USER" />
+<TLINK lid="l39" relType="AFTER" from="t0" to="ei36" origin="USER" />
+<TLINK lid="l41" relType="IS_INCLUDED" from="t0" to="ei35" origin="USER" />
+<TLINK lid="l42" relType="IS_INCLUDED" from="t0" to="ei37" origin="USER" />
+<TLINK lid="l44" relType="BEFORE" from="t0" to="ei38" origin="USER" />
+<TLINK lid="l45" relType="INCLUDES" from="t0" to="ei39" origin="USER" />
+<SLINK lid="l5" relType="EVIDENTIAL" from="ei2" to="ei5" syntax="USER" />
+<SLINK lid="l8" relType="EVIDENTIAL" from="ei6" to="ei7" syntax="USER" />
+<SLINK lid="l17" relType="FACTIVE" from="ei14" to="ei15" syntax="USER" />
+<SLINK lid="l20" relType="MODAL" from="ei17" to="ei18" syntax="USER" />
+<SLINK lid="l25" relType="MODAL" from="ei21" to="ei22" syntax="USER" />
+<SLINK lid="l26" relType="MODAL" from="ei21" to="ei23" syntax="USER" />
+<SLINK lid="l36" relType="EVIDENTIAL" from="ei32" to="ei33" syntax="USER" />
+<SLINK lid="l40" relType="EVIDENTIAL" from="ei34" to="ei35" syntax="USER" />
+<SLINK lid="l43" relType="MODAL" from="ei37" to="ei38" syntax="USER" />
+</TimeML>

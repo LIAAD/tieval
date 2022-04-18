@@ -91,7 +91,7 @@ class Document:
         return set(ent for ent in self.entities if isinstance(ent, Event))
 
     @property
-    def sentences(self) -> list[str]:
+    def sentences(self) -> List[str]:
         return self.text.split("\n")
 
 

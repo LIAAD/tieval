@@ -1,0 +1,105 @@
+<TimeML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://timeml.org/timeMLdocs/TimeML_1.2.1.xsd">
+<DOCID>XIE19990313.0173</DOCID>
+<TIMEX3 tid="t0" type="DATE" value="1999-03-13" temporalFunction="false" functionInDocument="CREATION_TIME">1999-03-13</TIMEX3>
+<TITLE>Hungarian Leaders Hail Entry into NATO</TITLE>
+<EXTRAINFO>
+XIE19990313.0173 <DATE_TIME> 1999-03-13 </DATE_TIME><HEADLINE> Hungarian Leaders Hail Entry into NATO </HEADLINE>
+</EXTRAINFO>
+<TEXT>BUDAPEST, <TIMEX3 tid="t111" type="DATE" value="1999-03-12" temporalFunction="false" endpoints="10 18" sent_idx="0">March 12</TIMEX3> (Xinhua) --
+Hungary's <EVENT eid="e1" class="OCCURRENCE" endpoints="41 50" sent_idx="1">accession</EVENT> to NATO has <EVENT eid="e2" class="OCCURRENCE" endpoints="63 70" sent_idx="1">brought</EVENT> about new changes to the political balance in central and eastern Europe, <EVENT eid="e3" class="OCCURRENCE" endpoints="145 155" sent_idx="1">shattering</EVENT> the world configuration under the Yalta accord <SIGNAL sid="s1">since</SIGNAL> World <EVENT eid="e4" class="OCCURRENCE" endpoints="215 218" sent_idx="1">War</EVENT> II, Hungarian Prime Minister Viktor Orban <EVENT eid="e5" class="REPORTING" endpoints="261 265" sent_idx="1">said</EVENT> here <TIMEX3 tid="t2" type="DATE" value="1999-03-12" temporalFunction="true" functionInDocument="NONE" endpoints="271 277" sent_idx="1">Friday</TIMEX3>.
+<EVENT eid="e6" class="STATE" endpoints="279 289" sent_idx="2">Addressing</EVENT> a NATO flag-lowering <EVENT eid="e7" class="OCCURRENCE" endpoints="311 319" sent_idx="2">ceremony</EVENT> at the Dutch embassy, Orban <EVENT eid="e8" class="REPORTING" endpoints="348 352" sent_idx="2">said</EVENT> the <EVENT eid="e37" class="OCCURRENCE" endpoints="357 365" sent_idx="2">occasion</EVENT> <EVENT eid="e9" class="I_ACTION" endpoints="366 375" sent_idx="2">indicated</EVENT> the <EVENT eid="e10" class="ASPECTUAL" endpoints="380 383" sent_idx="2">end</EVENT> of the embassy's <EVENT eid="e11" class="STATE" endpoints="401 408" sent_idx="2">mission</EVENT> of liaison between Hungary and NATO (North Atlantic Treaty Organization).
+The Hungarian government <EVENT eid="e12" class="OCCURRENCE" endpoints="508 514" sent_idx="3">staged</EVENT> a number of <EVENT eid="e13" class="OCCURRENCE" endpoints="527 539" sent_idx="3">celebrations</EVENT> to <EVENT eid="e14" class="I_ACTION" endpoints="543 547" sent_idx="3">mark</EVENT> the country's <EVENT eid="e15" class="OCCURRENCE" endpoints="562 567" sent_idx="3">entry</EVENT> into NATO <SIGNAL sid="s2">on</SIGNAL> <TIMEX3 tid="t3" type="DATE" value="1999-03-12" temporalFunction="true" functionInDocument="NONE" endpoints="581 587" sent_idx="3">Friday</TIMEX3>.
+In a televised <EVENT eid="e16" class="OCCURRENCE" endpoints="604 611" sent_idx="4">address</EVENT> <TIMEX3 tid="t4" type="DATE" value="1999-03-12" temporalFunction="true" functionInDocument="NONE" endpoints="612 618" sent_idx="4">Friday</TIMEX3>, President Arpad Gencz <EVENT eid="e17" class="REPORTING" endpoints="642 651" sent_idx="4">described</EVENT> the <EVENT eid="e18" class="OCCURRENCE" endpoints="656 661" sent_idx="4">entry</EVENT> as "a historic <EVENT eid="e19" class="OCCURRENCE" endpoints="677 682" sent_idx="4">event</EVENT>" which <EVENT eid="e20" class="OCCURRENCE" endpoints="690 696" sent_idx="4">proves</EVENT> the credibility and the realistic approaches of the country's foreign policy.
+Among the first three former Warsaw Pact countries to <EVENT eid="e21" class="OCCURRENCE" endpoints="829 835" sent_idx="5">accede</EVENT> to NATO <SIGNAL sid="s3">on</SIGNAL> <TIMEX3 tid="t5" type="DATE" value="1999-03-12" temporalFunction="true" functionInDocument="NONE" endpoints="847 853" sent_idx="5">Friday</TIMEX3> <EVENT eid="e22" class="STATE" endpoints="854 858" sent_idx="5">were</EVENT> also Poland and the Czech Republic.
+The ambassadors of Hungary, Poland and the Czech Republic <EVENT eid="e23" class="OCCURRENCE" endpoints="953 959" sent_idx="6">issued</EVENT> a joint statement <TIMEX3 tid="t6" type="DATE" value="1999-03-12" temporalFunction="true" functionInDocument="NONE" endpoints="978 984" sent_idx="6">Friday</TIMEX3> <EVENT eid="e24" class="REPORTING" endpoints="985 991" sent_idx="6">saying</EVENT> the three countries' <EVENT eid="e25" class="OCCURRENCE" endpoints="1013 1018" sent_idx="6">entry</EVENT> into NATO will <EVENT eid="e26" class="OCCURRENCE" endpoints="1034 1045" sent_idx="6">consolidate</EVENT> Europe's security and <EVENT eid="e27" class="I_ACTION" endpoints="1068 1072" sent_idx="6">help</EVENT> <EVENT eid="e28" class="OCCURRENCE" endpoints="1073 1082" sent_idx="6">eliminate</EVENT> threats to it.
+Five major political parties in the country <EVENT eid="e29" class="OCCURRENCE" endpoints="1142 1148" sent_idx="7">issued</EVENT> statements <EVENT eid="e30" class="I_ACTION" endpoints="1160 1170" sent_idx="7">supporting</EVENT> the country's NATO <EVENT eid="e31" class="OCCURRENCE" endpoints="1190 1200" sent_idx="7">membership</EVENT>.
+But some other parties and social organizations <EVENT eid="e32" class="STATE" endpoints="1250 1253" sent_idx="8">are</EVENT> against NATO's expansion, <EVENT eid="e33" class="REPORTING" endpoints="1280 1288" sent_idx="8">claiming</EVENT> Hungary's <EVENT eid="e34" class="OCCURRENCE" endpoints="1299 1308" sent_idx="8">accession</EVENT> to NATO would <EVENT eid="e35" class="STATE" endpoints="1323 1325" sent_idx="8">be</EVENT> detrimental to the country's independence and <EVENT eid="e36" class="OCCURRENCE" endpoints="1372 1377" sent_idx="8">bring</EVENT> about new problems and economic burdens to the country.</TEXT>
+<EXTRAINFO>
+</EXTRAINFO>
+<MAKEINSTANCE eid="e1" eiid="ei1" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e2" eiid="ei2" tense="PRESENT" aspect="PERFECTIVE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e3" eiid="ei3" tense="PRESPART" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e4" eiid="ei4" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e5" eiid="ei5" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e6" eiid="ei6" tense="PRESPART" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e7" eiid="ei7" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e8" eiid="ei8" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e9" eiid="ei9" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e10" eiid="ei10" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e11" eiid="ei11" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e12" eiid="ei12" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e13" eiid="ei13" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e14" eiid="ei14" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e15" eiid="ei15" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e16" eiid="ei16" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e17" eiid="ei17" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e18" eiid="ei18" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e19" eiid="ei19" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e20" eiid="ei20" tense="PRESENT" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e21" eiid="ei21" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e22" eiid="ei22" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e23" eiid="ei23" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e24" eiid="ei24" tense="PRESPART" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e25" eiid="ei25" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e26" eiid="ei26" tense="FUTURE" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e27" eiid="ei27" tense="FUTURE" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e28" eiid="ei28" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e29" eiid="ei29" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e30" eiid="ei30" tense="PRESPART" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e31" eiid="ei31" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e32" eiid="ei32" tense="PRESENT" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e33" eiid="ei33" tense="PRESPART" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e34" eiid="ei34" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e35" eiid="ei35" tense="PRESENT" aspect="NONE" polarity="POS" pos="UNKNOWN" modality="would" />
+<MAKEINSTANCE eid="e36" eiid="ei36" tense="PRESENT" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e37" eiid="ei37" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<TLINK lid="l1" relType="IS_INCLUDED" from="t0" to="ei1" origin="USER" />
+<TLINK lid="l2" relType="IS_INCLUDED" from="t0" to="ei2" origin="USER" />
+<TLINK lid="l3" relType="IS_INCLUDED" from="t0" to="ei3" origin="USER" />
+<TLINK lid="l4" relType="AFTER" from="t0" to="ei4" origin="USER" />
+<TLINK lid="l5" relType="AFTER" from="ei3" to="ei4" signalID="s1" origin="USER" />
+<TLINK lid="l6" relType="INCLUDES" from="t2" to="ei5" origin="USER" />
+<TLINK lid="l7" relType="INCLUDES" from="t2" to="ei6" origin="USER" />
+<TLINK lid="l8" relType="INCLUDES" from="t2" to="ei7" origin="USER" />
+<TLINK lid="l9" relType="INCLUDES" from="t2" to="ei8" origin="USER" />
+<TLINK lid="l10" relType="INCLUDES" from="t2" to="ei37" origin="USER" />
+<TLINK lid="l11" relType="INCLUDES" from="t2" to="ei9" origin="USER" />
+<TLINK lid="l12" relType="INCLUDES" from="t2" to="ei10" origin="USER" />
+<TLINK lid="l13" relType="IS_INCLUDED" from="t2" to="ei11" origin="USER" />
+<TLINK lid="l17" relType="INCLUDES" from="t3" to="ei12" signalID="s2" origin="USER" />
+<TLINK lid="l18" relType="INCLUDES" from="t3" to="ei13" origin="USER" />
+<TLINK lid="l19" relType="INCLUDES" from="t3" to="ei14" origin="USER" />
+<TLINK lid="l20" relType="INCLUDES" from="t3" to="ei15" origin="USER" />
+<TLINK lid="l22" relType="INCLUDES" from="t4" to="ei16" origin="USER" />
+<TLINK lid="l23" relType="INCLUDES" from="t4" to="ei17" origin="USER" />
+<TLINK lid="l24" relType="INCLUDES" from="t4" to="ei18" origin="USER" />
+<TLINK lid="l25" relType="IS_INCLUDED" from="t4" to="ei19" origin="USER" />
+<TLINK lid="l26" relType="IS_INCLUDED" from="t4" to="ei20" origin="USER" />
+<TLINK lid="l28" relType="INCLUDES" from="t5" to="ei21" signalID="s3" origin="USER" />
+<TLINK lid="l29" relType="INCLUDES" from="t5" to="ei22" origin="USER" />
+<TLINK lid="l30" relType="INCLUDES" from="t6" to="ei23" origin="USER" />
+<TLINK lid="l31" relType="INCLUDES" from="t6" to="ei24" origin="USER" />
+<TLINK lid="l32" relType="INCLUDES" from="t6" to="ei25" origin="USER" />
+<TLINK lid="l35" relType="BEFORE" from="t6" to="ei26" origin="USER" />
+<TLINK lid="l36" relType="BEFORE" from="t6" to="ei27" origin="USER" />
+<TLINK lid="l37" relType="BEFORE" from="t6" to="ei28" origin="USER" />
+<TLINK lid="l39" relType="INCLUDES" from="t6" to="ei29" origin="USER" />
+<TLINK lid="l40" relType="INCLUDES" from="t6" to="ei30" origin="USER" />
+<TLINK lid="l41" relType="IS_INCLUDED" from="t6" to="ei31" origin="USER" />
+<TLINK lid="l43" relType="IS_INCLUDED" from="t6" to="ei32" origin="USER" />
+<TLINK lid="l44" relType="IS_INCLUDED" from="t6" to="ei33" origin="USER" />
+<TLINK lid="l45" relType="INCLUDES" from="t6" to="ei34" origin="USER" />
+<TLINK lid="l46" relType="BEFORE" from="t6" to="ei35" origin="USER" />
+<TLINK lid="l47" relType="BEFORE" from="t6" to="ei36" origin="USER" />
+<SLINK lid="l14" relType="EVIDENTIAL" from="ei8" to="ei9" syntax="USER" />
+<SLINK lid="l15" relType="FACTIVE" from="ei9" to="ei10" syntax="USER" />
+<SLINK lid="l21" relType="FACTIVE" from="ei14" to="ei15" syntax="USER" />
+<SLINK lid="l27" relType="EVIDENTIAL" from="ei17" to="ei19" syntax="USER" />
+<SLINK lid="l33" relType="EVIDENTIAL" from="ei24" to="ei26" syntax="USER" />
+<SLINK lid="l34" relType="EVIDENTIAL" from="ei24" to="ei27" syntax="USER" />
+<SLINK lid="l38" relType="MODAL" from="ei27" to="ei28" syntax="USER" />
+<SLINK lid="l42" relType="FACTIVE" from="ei30" to="ei31" syntax="USER" />
+<SLINK lid="l48" relType="EVIDENTIAL" from="ei33" to="ei35" syntax="USER" />
+<SLINK lid="l49" relType="EVIDENTIAL" from="ei33" to="ei36" syntax="USER" />
+<ALINK lid="l16" relType="CULMINATES" from="ei10" to="ei11" syntax="USER" />
+</TimeML>

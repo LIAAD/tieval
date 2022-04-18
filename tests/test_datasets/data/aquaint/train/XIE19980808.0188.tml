@@ -1,0 +1,46 @@
+<TimeML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://timeml.org/timeMLdocs/TimeML_1.2.1.xsd">
+<DOCID>XIE19980808.0188</DOCID>
+<TIMEX3 tid="t0" type="DATE" value="1998-08-07" temporalFunction="false" functionInDocument="CREATION_TIME">August 7</TIMEX3>
+<TITLE>Cuba Condemns Bomb Blasts in Kenya, Tanzania</TITLE>
+<EXTRAINFO>
+XIE19980808.0188  1998-08-08
+Cuba Condemns Bomb Blasts in Kenya, Tanzania
+</EXTRAINFO>
+<TEXT>HAVANA, <TIMEX3 tid="t111" type="DATE" value="1998-08-07" temporalFunction="false" functionInDocument="PUBLICATION_TIME" endpoints="8 16" sent_idx="0">August 7</TIMEX3> (Xinhua) --
+The Cuban government <TIMEX3 tid="t2" type="DATE" value="1998-08-07" temporalFunction="false" functionInDocument="NONE" endpoints="50 56" sent_idx="1">Friday</TIMEX3> <EVENT eid="e1" class="OCCURRENCE" endpoints="57 66" sent_idx="1">condemned</EVENT> the two bomb <EVENT eid="e12" class="OCCURRENCE" endpoints="80 90" sent_idx="1">explosions</EVENT> near U.S. embassies in Kenya and Tanzania.
+The Foreign Ministry <EVENT eid="e2" class="REPORTING" endpoints="155 159" sent_idx="2">said</EVENT> in a statement that the Cuban government is against such kind of terrorist <EVENT eid="e14" class="OCCURRENCE" endpoints="235 242" sent_idx="2">attacks</EVENT>, which <EVENT eid="e3" class="OCCURRENCE" endpoints="250 254" sent_idx="2">pose</EVENT> potential threats to every country.
+The Cuban government also <EVENT eid="e4" class="OCCURRENCE" endpoints="317 326" sent_idx="3">expressed</EVENT> its condolences to the families of the victims.
+Two bombs <EVENT eid="e5" class="OCCURRENCE" endpoints="385 393" sent_idx="4">exploded</EVENT> outside U.S. embassies in Kenya and Tanzania <TIMEX3 tid="t3" type="DATE" value="1998-08-07" temporalFunction="false" functionInDocument="NONE" endpoints="439 445" sent_idx="4">Friday</TIMEX3>, <EVENT eid="e6" class="OCCURRENCE" endpoints="447 454" sent_idx="4">killing</EVENT> at least 81 people and injuring more than 1,700 others.
+At least 74, including eight Americans, were <EVENT eid="e8" class="OCCURRENCE" endpoints="556 562" sent_idx="5">killed</EVENT> in Nairobi, the capital of Kenya, and more then 1,640 were <EVENT eid="e9" class="OCCURRENCE" endpoints="622 629" sent_idx="5">wounded</EVENT>. At least seven were <EVENT eid="e10" class="REPORTING" endpoints="651 659" sent_idx="5">reported</EVENT> dead in the Tanzanian capital of Dar es Salaam, and 72 others were <EVENT eid="e11" class="OCCURRENCE" endpoints="727 731" sent_idx="5">hurt</EVENT>.</TEXT>
+<EXTRAINFO>
+</EXTRAINFO>
+<MAKEINSTANCE eid="e1" eiid="ei1" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e2" eiid="ei2" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e3" eiid="ei3" tense="PRESENT" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e4" eiid="ei4" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e5" eiid="ei5" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e6" eiid="ei6" tense="PRESPART" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e8" eiid="ei8" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e9" eiid="ei9" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e10" eiid="ei10" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e11" eiid="ei11" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e12" eiid="ei12" tense="NONE" aspect="NONE" polarity="POS" cardinality="2" pos="NOUN" />
+<MAKEINSTANCE eid="e14" eiid="ei14" tense="NONE" aspect="NONE" polarity="POS" cardinality="2" pos="NOUN" />
+<TLINK lid="l1" relType="IDENTITY" from="t2" to="t3" origin="USER" />
+<TLINK lid="l2" relType="IDENTITY" from="t3" to="t0" origin="USER" />
+<TLINK lid="l3" relType="IS_INCLUDED" from="ei1" to="t2" origin="USER" />
+<TLINK lid="l4" relType="BEFORE" from="ei12" to="ei1" origin="USER" />
+<TLINK lid="l5" relType="DURING" from="ei2" to="ei1" origin="USER" />
+<TLINK lid="l6" relType="IDENTITY" from="ei14" to="ei12" origin="USER" />
+<TLINK lid="l7" relType="BEFORE" from="ei12" to="ei3" origin="USER" />
+<TLINK lid="l8" relType="BEFORE" from="ei3" to="ei2" origin="USER" />
+<TLINK lid="l9" relType="DURING" from="ei4" to="ei2" origin="USER" />
+<TLINK lid="l10" relType="IDENTITY" from="ei5" to="ei12" origin="USER" />
+<TLINK lid="l11" relType="IS_INCLUDED" from="ei5" to="t3" origin="USER" />
+<TLINK lid="l12" relType="IBEFORE" from="ei5" to="ei6" origin="USER" />
+<TLINK lid="l13" relType="IS_INCLUDED" from="ei8" to="t0" origin="USER" />
+<TLINK lid="l14" relType="SIMULTANEOUS" from="ei9" to="ei8" origin="USER" />
+<TLINK lid="l15" relType="IS_INCLUDED" from="ei9" to="t0" origin="USER" />
+<TLINK lid="l16" relType="AFTER" from="ei10" to="ei9" origin="USER" />
+<TLINK lid="l17" relType="SIMULTANEOUS" from="ei11" to="ei9" origin="USER" />
+</TimeML>

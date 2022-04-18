@@ -1,0 +1,50 @@
+<TimeML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://timeml.org/timeMLdocs/TimeML_1.2.1.xsd">
+<DOCID>APW19980807.0261</DOCID>
+<TIMEX3 tid="t0" type="TIME" value="1998-08-07" temporalFunction="false" functionInDocument="CREATION_TIME">1998-08-07</TIMEX3>
+<TITLE>Explosions rock U.S. embassies in Tanzania, Kenya</TITLE>
+<EXTRAINFO>
+APW19980807.0261  NEWS STORY  08/07/1998 06:18:00
+w2213 &amp;Cx1f; wstm-
+u i &amp;Cx13;  &amp;Cx11;  URGENT     08-07 0122
+URGENT
+BC-Kenya-Explosion, 5th Ld-Writethru
+&amp;UR; Explosions rock U.S. embassies in Tanzania, Kenya &amp;QL;  &amp;UR; Eds: UPDATES with explosion near U.S. Embassy in Tanzania. &amp;QL;  &amp;UR; AP Photos Planned &amp;QL;  &amp;UR; By CHEGE MBITIRU &amp;QC;  &amp;UR; Associated Press Writer &amp;QC;
+</EXTRAINFO>
+<TEXT>NAIROBI, Kenya (AP) _
+Suspected bombs <EVENT eid="e1" class="OCCURRENCE" endpoints="38 46" sent_idx="1">exploded</EVENT> outside the U.S. embassies in the Kenyan and Tanzanian capitals <TIMEX3 tid="t1" type="DATE" value="1998-08-07" temporalFunction="false" functionInDocument="NONE" endpoints="111 117" sent_idx="1">Friday</TIMEX3>, <EVENT eid="e2" class="OCCURRENCE" endpoints="119 126" sent_idx="1">killing</EVENT> dozens of people, witnesses <EVENT eid="e3" class="REPORTING" endpoints="155 159" sent_idx="1">said</EVENT>.
+The American ambassador to Kenya was among hundreds <EVENT eid="e12" class="OCCURRENCE" endpoints="213 220" sent_idx="2">injured</EVENT>, a local TV <EVENT eid="e4" class="REPORTING" endpoints="233 237" sent_idx="2">said</EVENT>.
+``It was definitely a bomb,'' <EVENT eid="e5" class="REPORTING" endpoints="269 273" sent_idx="3">said</EVENT> a U.S. Embassy official in Nairobi, who <EVENT eid="e6" class="OCCURRENCE" endpoints="314 321" sent_idx="3">refused</EVENT> to <EVENT eid="e7" class="OCCURRENCE" endpoints="325 333" sent_idx="3">identify</EVENT> himself. ``You can <EVENT eid="e8" class="PERCEPTION" endpoints="353 356" sent_idx="3">see</EVENT> a huge crater behind the building, and a bomb <EVENT eid="e9" class="OCCURRENCE" endpoints="403 407" sent_idx="3">went</EVENT> off at the embassy in Tanzania at the same time,'' he <EVENT eid="e10" class="REPORTING" endpoints="462 466" sent_idx="3">said</EVENT>.</TEXT>
+<EXTRAINFO>
+&amp;UR; MORE
+(PROFILE (WS SL:URGENT; CT:i; (REG:EURO;) (REG:BRIT;) (REG:SCAN;) (REG:ENGL;) (REG:AFRI;) (LANG:ENGLISH;)) )
+AP-NY-08-07-98 0618EDT
+</EXTRAINFO>
+<MAKEINSTANCE eid="e1" eiid="ei1" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e2" eiid="ei2" tense="PRESPART" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e3" eiid="ei3" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e4" eiid="ei4" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e5" eiid="ei5" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e6" eiid="ei6" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e7" eiid="ei7" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e8" eiid="ei8" tense="PRESENT" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e9" eiid="ei9" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e10" eiid="ei10" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<MAKEINSTANCE eid="e12" eiid="ei12" tense="PAST" aspect="NONE" polarity="POS" pos="UNKNOWN" />
+<TLINK lid="l2" relType="IS_INCLUDED" from="ei1" to="t1" origin="USER" />
+<TLINK lid="l3" relType="IBEFORE" from="ei1" to="ei2" origin="USER" />
+<TLINK lid="l4" relType="BEFORE" from="ei2" to="ei3" origin="USER" />
+<TLINK lid="l5" relType="AFTER" from="ei3" to="ei12" origin="USER" />
+<TLINK lid="l6" relType="BEFORE" from="ei12" to="ei4" origin="USER" />
+<TLINK lid="l7" relType="BEFORE" from="ei1" to="ei5" origin="USER" />
+<TLINK lid="l8" relType="BEFORE" from="ei5" to="ei6" origin="USER" />
+<TLINK lid="l9" relType="IS_INCLUDED" from="t1" to="ei9" origin="USER" />
+<TLINK lid="l10" relType="BEFORE" from="ei9" to="ei10" origin="USER" />
+<TLINK lid="l11" relType="BEFORE" from="ei1" to="ei8" origin="USER" />
+<TLINK lid="l12" relType="AFTER" from="ei12" to="ei1" origin="USER" />
+<SLINK lid="l1" relType="MODAL" from="ei6" to="ei7" syntax="USER" />
+<TLINK lid="l301" relType="BEFORE" from="ei3" to="t0" origin="user" />
+<TLINK lid="l302" relType="BEFORE" from="ei4" to="t0" origin="user" />
+<TLINK lid="l303" relType="BEFORE" from="ei5" to="t0" origin="user" />
+<TLINK lid="l304" relType="BEFORE" from="ei6" to="t0" origin="user" />
+<TLINK lid="l305" relType="BEFORE" from="ei10" to="t0" origin="user" />
+</TimeML>
