@@ -28,8 +28,8 @@ def temporal_recall(
 
 
 def temporal_precision(
+        prediction: Set[TLink],
         annotation: Set[TLink],
-        prediction: Set[TLink]
 ):
 
     annotation_closure = temporal_closure(annotation)
@@ -41,8 +41,8 @@ def temporal_precision(
 
 
 def temporal_awareness(
-        annotation: Set[TLink],
         prediction: Set[TLink],
+        annotation: Set[TLink],
 ):
     """Compute the temporal awareness of a system.
 
