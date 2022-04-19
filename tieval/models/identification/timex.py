@@ -114,18 +114,44 @@ class TimexIdentificationBaseline(BaseTrainableModel):
 
 
 class HeidelTime(BaseModel):
+    """
+    The HeidelTime model.
 
-    def __init__(self, language='English',  document_type='news'):
+    Parameters
+    ----------
+    language : str = {"English", "Portuguese", "Spanish", "Germany", "Dutch", "Italian", "French"}
+        Language of the text that will be processed.
+    document_type : str = {"News", "Narrative", "Colloquial", "Scientific"}
+        The type of document that will be processed.
+
+    References
+    ----------
+    .. [1] Strötgen, Gertz: HeidelTime: High Qualitiy Rule-based
+        Extraction and Normalization of Temporal Expressions. SemEval'10.
+    """
+
+    def __init__(self, language="English",  document_type="news"):
         self.language = language
         self.document_type = document_type
 
     def predict(self, documents: Iterable[Document]):
+        """ Make predictions.
+
+        Parameters
+        ----------
+        documents : Iterable[Document]
+            An iterable containing the documents tto extract the temporal expressions.
+
+        Returns
+        -------
+        pred_timexs : dict[str, list[Timex]]
+            A dictionary that maps the name of each document to a list with the identified temporal expressions.
+        """
 
         pred_timexs = {}
         for doc in tqdm(documents):
 
             dct = doc.dct.value[:10]
-
             results = py_heideltime(
                 doc.text.strip(),
                 language=self.language,
