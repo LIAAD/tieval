@@ -1,7 +1,6 @@
-import string
 from pathlib import Path
+import string
 from typing import Union, List, Dict
-from xml.etree import ElementTree as ET
 
 import xmltodict
 

@@ -1,6 +1,6 @@
 
+import pathlib
 from typing import Iterable
-
 import random
 
 import spacy
@@ -8,7 +8,6 @@ from spacy.util import compounding
 from spacy.util import minibatch
 from spacy.training import Example
 
-from tieval import MODELS_PATH
 from tieval.models.base import (
     BaseModel,
     BaseTrainableModel
@@ -19,13 +18,19 @@ from tieval.entities import Event
 
 class EventIdentificationBaseline(BaseTrainableModel):
 
-    def __init__(self):
-        self.path = MODELS_PATH / "event_identification"
+    def __init__(self, path: str = "./models") -> None:
+
+        path = pathlib.Path(path)
+        self.path = path / "event_identification"
 
         self.nlp = None
 
         if self.path.is_dir():
             self.load()
+
+        else:
+            # TODO: download the model
+            pass
 
     def predict(self, documents: Iterable[Document]):
 

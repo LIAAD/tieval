@@ -1,3 +1,4 @@
+import pathlib
 import random
 from typing import Iterable
 
@@ -8,7 +9,6 @@ from spacy.util import compounding
 from spacy.training import Example
 from py_heideltime import py_heideltime
 
-from tieval import MODELS_PATH
 from tieval.models.base import BaseModel
 from tieval.models.base import BaseTrainableModel
 from tieval.base import Document
@@ -17,8 +17,10 @@ from tieval.entities import Timex
 
 class TimexIdentificationBaseline(BaseTrainableModel):
 
-    def __init__(self):
-        self.path = MODELS_PATH / "timex_identification"
+    def __init__(self, path: str = "./models"):
+
+        path = pathlib.Path(path)
+        self.path = path / "timex_identification"
 
         self.nlp = None
 

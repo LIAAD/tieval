@@ -7,7 +7,7 @@ from tieval.links import TLink
 
 class TLinkClassificationBaseline(BaseModel):
 
-    def predict(self, documents: Iterable[Document]):
+    def predict(self, documents: Iterable[Document]) -> None:
 
         predictions = {}
         for doc in documents:

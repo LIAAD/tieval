@@ -32,7 +32,6 @@ from tieval.datasets.readers import (
     TimeBank12DocumentReader,
     TCRDocumentReader
 )
-from tieval import DATA_PATH
 
 
 DatasetReaders = Union[
@@ -70,9 +69,11 @@ class DatasetMetadata:
     columns: Tuple = None
     event_index: str = None
     files: [str] = None
+    data_path: str = None
 
-    def __post_init__(self):
-        self.path = pathlib.Path(f"{DATA_PATH}/{self.name.lower()}")
+    @property
+    def path(self):
+        return pathlib.Path(f"{self.data_path}/{self.name.lower()}")
 
     @property
     def description(self):

@@ -23,14 +23,15 @@ Datasets:
 
 import io
 import os
+import pathlib
+
 import requests
 import zipfile
 
 from tieval.datasets import DATASETS_METADATA
-from tieval import DATA_PATH
 
 
-def _download_url(url: str) -> None:
+def _download_url(url: str, path: str = "./data") -> None:
     """Download dataset from url.
 
     Parameters
@@ -46,14 +47,14 @@ def _download_url(url: str) -> None:
     if response.ok:
 
         z = zipfile.ZipFile(io.BytesIO(response.content))
-        z.extractall(DATA_PATH)
+        z.extractall(path)
         print("Done.")
 
     else:
         raise Exception(f"Request code: {response.status_code}")
 
 
-def download(dataset: str) -> None:
+def download(dataset: str, path: str = "./data") -> None:
     """ Download corpus.
 
     The available datasets are:
@@ -68,8 +69,10 @@ def download(dataset: str) -> None:
 
     Parameters
     ----------
-    dataset: str
+    dataset : str
         The name of the dataset to download.
+    path : str = "data"
+        Path to store the dataset.
     """
 
     dataset = dataset.lower().strip()
@@ -79,13 +82,15 @@ def download(dataset: str) -> None:
     if metadata is None:
         raise Exception(f"{dataset} not recognized.")
 
-    # check if DATA_PATH folder exists
-    if not DATA_PATH.is_dir():
-        os.mkdir(DATA_PATH)
+    # check if path folder exists
+    path = pathlib.Path(path)
+    if not path.is_dir():
+        os.mkdir(path)
 
     # check if it has already been downloaded
+    metadata.data_path = path
     if metadata.path.is_dir():
-        print(f"Dataset {dataset} was already on {DATA_PATH}.")
+        print(f"Dataset {dataset} was already on {path}.")
         return
 
     _download_url(metadata.url)
