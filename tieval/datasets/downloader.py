@@ -31,7 +31,7 @@ import zipfile
 from tieval.datasets import DATASETS_METADATA
 
 
-def _download_url(url: str, path: str = "./data") -> None:
+def _download_url(url: str, path: str) -> None:
     """Download dataset from url.
 
     Parameters
@@ -43,7 +43,6 @@ def _download_url(url: str, path: str = "./data") -> None:
     print(f"Downloading from {url}")
 
     response = requests.get(url, stream=True)
-
     if response.ok:
 
         z = zipfile.ZipFile(io.BytesIO(response.content))
@@ -93,4 +92,4 @@ def download(dataset: str, path: str = "./data") -> None:
         print(f"Dataset {dataset} was already on {path}.")
         return
 
-    _download_url(metadata.url)
+    _download_url(metadata.url, path)
