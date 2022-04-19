@@ -34,7 +34,7 @@ pkginfo==1.8.2
 pluggy==1.0.0
 preshed==3.0.6
 py==1.11.0
-py-heideltime @ git+https://github.com/JMendes1995/py_heideltime.git@fc5a81692e73e0c6ed59bf002d1c0afa506f2d39
+py_heideltime @ git+https://github.com/JMendes1995/py_heideltime.git@fc5a81692e73e0c6ed59bf002d1c0afa506f2d39
 pycparser==2.21
 pydantic==1.8.2
 Pygments==2.11.2
