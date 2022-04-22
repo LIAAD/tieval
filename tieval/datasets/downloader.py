@@ -8,49 +8,13 @@ Description:
     human action to download a message will be printed to explain the steps necessary to
     get access to the dataset.
 
-Datasets:
----------
-    - TimeBank-1.2
-    - AQUAINT
-    - TimeBankPT
-    - TempEval-3
-    - MATRES
-    - TDDiscourse
-    - TimeBank-Dense"
-    - TCR
-
 """
 
-import io
 import os
 import pathlib
 
-import requests
-import zipfile
-
 from tieval.datasets import DATASETS_METADATA
-
-
-def _download_url(url: str, path: str) -> None:
-    """Download dataset from url.
-
-    Parameters
-    ----------
-    url: str
-        The name of the dataset to download.
-    """
-
-    print(f"Downloading from {url}")
-
-    response = requests.get(url, stream=True)
-    if response.ok:
-
-        z = zipfile.ZipFile(io.BytesIO(response.content))
-        z.extractall(path)
-        print("Done.")
-
-    else:
-        raise Exception(f"Request code: {response.status_code}")
+from tieval import utils
 
 
 def download(dataset: str, path: str = "./data") -> None:
@@ -92,4 +56,4 @@ def download(dataset: str, path: str = "./data") -> None:
         print(f"Dataset {dataset} was already on {path}.")
         return
 
-    _download_url(metadata.url, path)
+    utils._download_url(metadata.url, path)
