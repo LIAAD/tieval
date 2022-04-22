@@ -26,7 +26,7 @@ class TestTimexIdentificationBaseline:
         datasets.download("tempeval_3", tmp_path)
         te3 = datasets.read("tempeval_3")
 
-        model = TimexIdentificationBaseline()
+        model = TimexIdentificationBaseline(path=tmp_path / "models")
         pred = model.predict(te3.test)
 
         assert len(pred) == len(te3.test)
