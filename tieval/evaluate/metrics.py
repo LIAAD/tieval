@@ -48,7 +48,8 @@ def temporal_awareness(
 
     Temporal awareness is a f1 measure that takes into account the temporal
     closure of a system. For more information refer to the original paper
-    (UzZaman et al.)[https://aclanthology.org/P11-2061.pdf]"""
+    (UzZaman et al.)[https://aclanthology.org/P11-2061.pdf]
+    """
 
     recall = temporal_recall(annotation, prediction)
     precision = temporal_precision(annotation, prediction)
