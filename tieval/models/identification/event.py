@@ -8,12 +8,11 @@ from spacy.util import compounding
 from spacy.util import minibatch
 from spacy.training import Example
 
-from tieval.models.base import (
-    BaseModel,
-    BaseTrainableModel
-)
 from tieval.base import Document
 from tieval.entities import Event
+from tieval.models.base import BaseTrainableModel
+from tieval.models import metadata
+from tieval import utils
 
 
 class EventIdentificationBaseline(BaseTrainableModel):
@@ -30,7 +29,7 @@ class EventIdentificationBaseline(BaseTrainableModel):
 
         else:
             # TODO: download the model
-            pass
+            self.download()
 
     def predict(self, documents: Iterable[Document]):
 
@@ -54,20 +53,22 @@ class EventIdentificationBaseline(BaseTrainableModel):
             self,
             documents: Iterable[Document],
             n_epochs: int = 30,
+            from_scratch: bool = False
     ):
 
         train_set = self.data_pipeline(documents)
 
         # creat model
-        self.nlp = spacy.blank("en")
-        self.nlp.add_pipe("ner")
+        if from_scratch:
+            self.nlp = spacy.blank("en")
+            self.nlp.add_pipe("ner")
 
-        ner = self.nlp.get_pipe("ner")
-        ner.add_label("EVENT")
+            ner = self.nlp.get_pipe("ner")
+            ner.add_label("EVENT")
 
-        self.nlp.begin_training()
+            self.nlp.begin_training()
 
-        # train for 30 iterations
+        # train
         for epoch in range(n_epochs):
 
             # shuffle
@@ -94,10 +95,18 @@ class EventIdentificationBaseline(BaseTrainableModel):
 
     def save(self):
         """Store model in disk."""
+
+        if not self.path.is_dir():
+            self.path.mkdir()
+
         self.nlp.to_disk(self.path)
 
     def load(self):
         self.nlp = spacy.load(self.path)
+
+    def download(self):
+        url = metadata.MODELS_URL["event_identification"]
+        utils._download_url(url, self.path.parent)
 
     @staticmethod
     def data_pipeline(documents: Iterable[Document]):
@@ -106,8 +115,8 @@ class EventIdentificationBaseline(BaseTrainableModel):
         for doc in documents:
             annot = {
                 "entities": list(set([
-                    (timex.endpoints[0], timex.endpoints[1], "TIMEX")
-                    for timex in doc.timexs
+                    (event.endpoints[0], event.endpoints[1], "EVENT")
+                    for event in doc.events
                 ]))
             }
 

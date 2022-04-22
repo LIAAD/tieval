@@ -9,10 +9,14 @@ from spacy.util import compounding
 from spacy.training import Example
 from py_heideltime import py_heideltime
 
-from tieval.models.base import BaseModel
-from tieval.models.base import BaseTrainableModel
 from tieval.base import Document
 from tieval.entities import Timex
+from tieval.models.base import (
+    BaseModel,
+    BaseTrainableModel
+)
+from tieval.models import metadata
+from tieval import utils
 
 
 class TimexIdentificationBaseline(BaseTrainableModel):
@@ -24,8 +28,10 @@ class TimexIdentificationBaseline(BaseTrainableModel):
 
         self.nlp = None
 
-        if self.path.is_dir():
-            self.load()
+        if not self.path.is_dir():
+            self.download()
+
+        self.load()
 
     def predict(self, documents: Iterable[Document]):
 
@@ -50,8 +56,18 @@ class TimexIdentificationBaseline(BaseTrainableModel):
             documents: Iterable[Document],
             n_epochs: int = 30,
             from_scratch: bool = False
-    ):
+    ) -> None:
+        """Tran the model.
 
+        Parameters
+        ----------
+        documents : Iterable[Document]
+            The set of documents to train on.
+        n_epochs : int
+            Number of epochs.
+        from_scratch : bool
+            If False (the default value) it will fine-tune the model. If set to True it will train from scratch.
+        """
         train_set = self.data_pipeline(documents)
 
         # creat model
@@ -64,7 +80,7 @@ class TimexIdentificationBaseline(BaseTrainableModel):
 
             self.nlp.begin_training()
 
-        # train for 30 iterations
+        # train
         for epoch in range(n_epochs):
 
             # shuffle
@@ -91,10 +107,18 @@ class TimexIdentificationBaseline(BaseTrainableModel):
 
     def save(self):
         """Store model in disk."""
+
+        if not self.path.is_dir():
+            self.path.mkdir()
+
         self.nlp.to_disk(self.path)
 
     def load(self):
         self.nlp = spacy.load(self.path)
+
+    def download(self):
+        url = metadata.MODELS_URL["timex_identification"]
+        utils._download_url(url, self.path.parent)
 
     @staticmethod
     def data_pipeline(documents: Iterable[Document]):
@@ -103,8 +127,9 @@ class TimexIdentificationBaseline(BaseTrainableModel):
         for doc in documents:
             annot = {
                 "entities": list(set([
-                    (event.endpoints[0], event.endpoints[1], "EVENT")
-                    for event in doc.events
+                    (timex.endpoints[0], timex.endpoints[1], "TIMEX")
+                    for timex in doc.timexs
+                    if not timex.is_dct
                 ]))
             }
 
