@@ -38,6 +38,14 @@ def confusion_matrix(annotations, predictions):
     return tp, fp, fn
 
 
+def f_score(recall, precision):
+
+    if recall + precision:
+        return 2 * recall * precision / (recall + precision)
+    else:
+        return 0
+
+
 def precision(tp, fp):
     return tp / (tp + fp) if (tp + fp) else 0
 
@@ -46,12 +54,66 @@ def recall(tp, fn):
     return tp / (tp + fn) if (tp + fn) else 0
 
 
-def identification(
+def timex_identification(
         annotations: Dict[str, Entity],
         predictions: Dict[str, Entity],
         verbose=False
 ) -> Dict:
+    n_docs = len(annotations)
 
+    M_precision, M_recall = 0, 0
+    tps, fps, fns = 0, 0, 0
+    for doc in annotations:
+        true = set(t.endpoints for t in annotations[doc] if not t.is_dct)
+        pred = set(p.endpoints for p in predictions[doc])
+
+        tp = len(true & pred)
+        fp = len(pred - true)
+        fn = len(true - pred)
+
+        # update macro metrics counts
+        M_precision += tp / (tp + fp) if (tp + fp) else 0
+        M_recall += tp / (tp + fn) if (tp + fn) else 0
+
+        # update micro metrics counts
+        tps += tp
+        fps += fp
+        fns += fn
+
+    # compute macro metrics
+    M_precision /= n_docs
+    M_recall /= n_docs
+    M_f1 = f_score(M_recall, M_precision)
+
+    # compute micro metrics
+    m_precision = tps / (tps + fps)
+    m_recall = tps / (tps + fns)
+    m_f1 = f_score(m_recall, m_precision)
+
+    result = {
+        "micro": {
+            "recall": m_recall,
+            "precision": m_precision,
+            "f1": m_f1
+        },
+        "macro": {
+            "recall": M_recall,
+            "precision": M_precision,
+            "f1": M_f1
+        }
+    }
+
+    if verbose:
+        _print_table(result)
+
+    return result
+
+
+def event_identification(
+        annotations: Dict[str, Entity],
+        predictions: Dict[str, Entity],
+        verbose=False
+) -> Dict:
     n_docs = len(annotations)
 
     M_precision, M_recall = 0, 0
@@ -76,15 +138,12 @@ def identification(
     # compute macro metrics
     M_precision /= n_docs
     M_recall /= n_docs
-    M_f1 = 2 * M_recall * M_precision / (M_recall + M_precision)
+    M_f1 = f_score(M_recall, M_precision)
 
     # compute micro metrics
     m_precision = tps / (tps + fps)
     m_recall = tps / (tps + fns)
-    if m_recall + m_precision:
-        m_f1 = 2 * m_recall * m_precision / (m_recall + m_precision)
-    else:
-        m_f1 = 0
+    m_f1 = f_score(m_recall, m_precision)
 
     result = {
         "micro": {
@@ -103,22 +162,6 @@ def identification(
         _print_table(result)
 
     return result
-
-
-def timex_identification(
-        annotations: Dict[str, Entity],
-        predictions: Dict[str, Entity],
-        verbose=False
-) -> Dict:
-    return identification(annotations, predictions, verbose)
-
-
-def event_identification(
-        annotations: Dict[str, Entity],
-        predictions: Dict[str, Entity],
-        verbose=False
-) -> Dict:
-    return identification(annotations, predictions, verbose)
 
 
 def tlink_identification(
