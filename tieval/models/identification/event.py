@@ -24,12 +24,10 @@ class EventIdentificationBaseline(BaseTrainableModel):
 
         self.nlp = None
 
-        if self.path.is_dir():
-            self.load()
-
-        else:
-            # TODO: download the model
+        if not self.path.is_dir():
             self.download()
+
+        self.load()
 
     def predict(self, documents: Iterable[Document]):
 
