@@ -125,7 +125,7 @@ class Dataset:
 
     def __add__(self, other):
 
-        name = f"{self.name}+{other._name}"
+        name = f"{self.name}+{other.name}"
         train = self.train + other.train
         test = self.test + other.test
 

@@ -69,7 +69,7 @@ class DatasetMetadata:
     columns: Tuple = None
     event_index: str = None
     files: [str] = None
-    data_path: str = None
+    data_path: str = "data"
 
     @property
     def path(self):
