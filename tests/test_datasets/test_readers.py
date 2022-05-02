@@ -5,7 +5,8 @@ from tieval.datasets.readers import (
     TempEval2FrenchDocumentReader,
     TimeBank12DocumentReader,
     TCRDocumentReader,
-    TimeBankPTDocumentReader
+    TimeBankPTDocumentReader,
+    TempEval3DocumentReader
 )
 
 DATA_PATH = Path(__file__).parent.parent / "files"
@@ -13,6 +14,13 @@ DATA_PATH = Path(__file__).parent.parent / "files"
 
 class TestTempEval2DocumentReader:
     reader = TempEval2DocumentReader(DATA_PATH / "tempeval_2_italian.json")
+
+    def test_read(self):
+        self.reader.read()
+
+
+class TestTempEval3DocumentReader:
+    reader = TempEval3DocumentReader(DATA_PATH / "tempeval_3.tml")
 
     def test_read(self):
         self.reader.read()
