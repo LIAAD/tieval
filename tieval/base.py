@@ -10,10 +10,13 @@ Objects
 from dataclasses import dataclass
 from typing import Set, Optional, Union, List
 
+import nltk
+
 from tieval.entities import Event
 from tieval.entities import Timex
 from tieval.links import TLink
 from tieval.closure import temporal_closure as _temporal_closure
+from tieval import utils
 
 
 class Document:
@@ -92,7 +95,19 @@ class Document:
 
     @property
     def sentences(self) -> List[str]:
-        return self.text.split("\n")
+        return nltk.tokenize.sent_tokenize(self.text)
+
+    @property
+    def sentence_spans(self) -> List[List[int]]:
+        return utils.get_spans(self.text, self.sentences)
+
+    @property
+    def tokens(self) -> List[str]:
+        return nltk.tokenize.word_tokenize(self.text)
+
+    @property
+    def tokens_spans(self) -> List[List[str]]:
+        return utils.get_spans(self.text, self.tokens)
 
 
 @dataclass
