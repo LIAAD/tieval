@@ -28,9 +28,13 @@ def _download_url(url: str, path: str) -> None:
         raise Exception(f"Request code: {response.status_code}")
 
 
-def get_spans(text: str, elements: List[str]) -> List[List[int]]:
+def get_spans(
+        text: str,
+        elements: List[str],
+        start_idx: int = 0
+) -> List[List[int]]:
 
-    running_idx = 0
+    running_idx = start_idx
     spans = []
     for element in elements:
 

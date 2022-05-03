@@ -1,7 +1,7 @@
 
 from pathlib import Path
 
-from tieval.base import Document
+from tieval.base import Document, Sentence, Text
 from tieval.datasets.readers import TempEval3DocumentReader
 
 
@@ -12,6 +12,14 @@ class TestDocument:
 
     doc = TempEval3DocumentReader(DATA_PATH / "tempeval_3.tml").read()
 
-    def test_sentences(self):
-        sents = self.doc.sentences
-        assert len(sents) == 2
+
+class TestSentence:
+
+    sent = Sentence(
+        content="Hi, my name is.",
+        span=[100, 115]
+    )
+
+    def test_tokens(self):
+        tkns = self.sent.tokens
+        assert len(tkns) == 6

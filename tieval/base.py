@@ -19,6 +19,94 @@ from tieval.closure import temporal_closure as _temporal_closure
 from tieval import utils
 
 
+class Token:
+
+    def __init__(
+            self,
+            content: str,
+            span: List[int]
+    ) -> None:
+
+        self.content = content
+        self.span = span
+
+    def __str__(self):
+        return self.content
+
+    def __repr__(self):
+        return self.content
+
+    def __call__(self):
+        return self.content
+
+
+class Sentence:
+
+    def __init__(
+            self,
+            content: str,
+            span: List[int],
+    ):
+        self.content = content
+        self.span = span
+        self._tokens = None
+
+    def __str__(self):
+        return self.content
+
+    def __repr__(self):
+        return self.content
+
+    def __call__(self):
+        return self.content
+
+    def __getitem__(self, idx):
+        return self.content[idx]
+
+    def __len__(self):
+        return self.content.__len__()
+
+    @property
+    def tokens(self) -> List[List[str]]:
+
+        if self._tokens is None:
+
+            tkns = nltk.tokenize.word_tokenize(self.content)
+            spans = utils.get_spans(self.content, tkns, self.span[0])
+
+            self._tokens = [Token(tkn, span) for tkn, span in zip(tkns, spans)]
+
+        return self._tokens
+
+
+class Text:
+
+    def __init__(
+            self,
+            content: str,
+            language: str = "english"
+    ) -> None:
+
+        self.content = content
+        self.language = language
+
+        self.tokenizer = nltk.tokenize.sent_tokenize
+
+        self._sents = None
+
+    @property
+    def sentences(self) -> List[str]:
+
+        if self._sents is None:
+
+            sents = self.tokenizer(self.content, language=self.language)
+            spans = utils.get_spans(self.content, sents)
+
+            self._sents = [Sentence(sent, span) for sent, span in zip(sents, spans)]
+
+        return self._sents
+
+
 class Document:
     """A document with temporal annotation.
 
@@ -48,10 +136,12 @@ class Document:
             dct: Timex,
             entities: Set[Event],
             tlinks: Set[TLink],
+            language: str = "english",
             **kwargs
     ) -> None:
+
         self.name = name
-        self.text = text
+        self.text = Text(text, language)
         self.dct = dct
         self.entities = entities
         self.tlinks = tlinks
@@ -65,7 +155,7 @@ class Document:
         return f'Document(name={self.name})'
 
     def __str__(self) -> str:
-        return self.text.strip()
+        return self.text
 
     def __getitem__(self, id: str) -> Optional[Union[Timex, Event, TLink]]:
         for entity in self.entities.union(self.tlinks):
@@ -95,19 +185,15 @@ class Document:
 
     @property
     def sentences(self) -> List[str]:
-        return nltk.tokenize.sent_tokenize(self.text)
-
-    @property
-    def sentence_spans(self) -> List[List[int]]:
-        return utils.get_spans(self.text, self.sentences)
+        return self.text.sentences
 
     @property
     def tokens(self) -> List[str]:
-        return nltk.tokenize.word_tokenize(self.text)
-
-    @property
-    def tokens_spans(self) -> List[List[str]]:
-        return utils.get_spans(self.text, self.tokens)
+        return [
+            tkn
+            for sent in self.text.sentences
+            for tkn in sent.tokens
+        ]
 
 
 @dataclass
