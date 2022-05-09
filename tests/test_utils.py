@@ -1,4 +1,7 @@
-from tieval.utils import get_spans
+from tieval.utils import (
+    get_spans,
+    resolve_sentence_idxs
+)
 
 
 def test_get_spans():
@@ -15,3 +18,12 @@ def test_get_spans():
     for span, tkn in zip(spans, tokens):
         s, e = span
         assert text[s: e] == tkn
+
+
+def test_resolve_sentence_idxs():
+
+    assert resolve_sentence_idxs(None, 2) == [2]
+    assert resolve_sentence_idxs(1, None) == [1]
+    assert resolve_sentence_idxs(1, 1) == [1]
+    assert resolve_sentence_idxs(1, 2) == [1, 2]
+    assert resolve_sentence_idxs(2, 1) == [1, 2]

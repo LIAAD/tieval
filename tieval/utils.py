@@ -50,3 +50,18 @@ def get_spans(
         running_idx = end
 
     return spans
+
+
+def resolve_sentence_idxs(sent_idx1: int, sent_idx2: int) -> List[int]:
+
+    if sent_idx1 is None:
+        return [sent_idx2]
+
+    elif sent_idx2 is None:
+        return [sent_idx1]
+
+    elif sent_idx1 == sent_idx2:
+        return [sent_idx1]
+
+    else:
+        return sorted([sent_idx1, sent_idx2])
