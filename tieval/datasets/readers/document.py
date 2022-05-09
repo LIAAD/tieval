@@ -107,7 +107,7 @@ class TempEval3DocumentReader(BaseDocumentReader):
                     pos=mkinst['pos'],
                     tense=mkinst['tense'],
                     text=mkinst['text'],
-                    endpoints=(int(s), int(e)),
+                    endpoints=[int(s), int(e)],
                     sent_idx=int(mkinst.get("sent_idx"))
                 ))
 
@@ -122,7 +122,7 @@ class TempEval3DocumentReader(BaseDocumentReader):
                     id=timex["tid"],
                     type_=timex["type"],
                     value=timex["value"],
-                    endpoints=(int(s), int(e)),
+                    endpoints=[int(s), int(e)],
                     sent_idx=int(timex.get("sent_idx"))
                 ))
 
@@ -293,7 +293,7 @@ class MeanTimeDocumentReader(BaseDocumentReader):
         for tkn in self.content["Document"]["token"]:
             offset = running_text.find(tkn["text"])
             idx += offset
-            tkn["endpoints"] = (idx, idx + len(tkn["text"]))
+            tkn["endpoints"] = [idx, idx + len(tkn["text"])]
             idx += len(tkn["text"])
             running_text = running_text[offset + len(tkn["text"]):]
 
@@ -313,7 +313,7 @@ class MeanTimeDocumentReader(BaseDocumentReader):
                 for endpoint in tokens[tkn["t_id"]]["endpoints"]
             ]
 
-            return endpoints[0], endpoints[-1]
+            return [endpoints[0], endpoints[-1]]
 
         tokens = {
             tkn["t_id"]: tkn
