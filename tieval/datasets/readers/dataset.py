@@ -123,6 +123,8 @@ class MATRESDatasetReader:
                     tgt_id = "ei" + tgt_id
 
                     document = self.base_dataset[doc]
+                    if document is None:
+                        continue
                     entities_dict = {ent.id: ent for ent in document.entities}
 
                     src = entities_dict[src_id]

@@ -1,6 +1,6 @@
 from typing import Iterable
 
-from tieval.models.base import BaseModel
+from tieval.models.base import BaseModel, BaseTrainableModel
 from tieval.base import Document
 from tieval.links import TLink
 

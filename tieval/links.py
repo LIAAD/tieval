@@ -29,11 +29,13 @@ class TLink:
         The temporal relation between source and target
     """
 
-    def __init__(self,
-                 source: Union[str, Timex, Event],
-                 target: Union[str, Timex, Event],
-                 relation: Union[str, list, dict],
-                 id: str = None):
+    def __init__(
+            self,
+            source: Union[str, Timex, Event],
+            target: Union[str, Timex, Event],
+            relation: Union[str, list, dict],
+            id: str = None
+    ):
         """
 
         Parameters
