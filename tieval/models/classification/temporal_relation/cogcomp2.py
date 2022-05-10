@@ -115,9 +115,9 @@ class CogCompTime2(BaseTrainableModel):
                 # source and target indexes
                 src_idx, tgt_idx = None, None
                 for idx, tkn in enumerate(context):
-                    if tkn.span == src.endpoints:
+                    if tkn.span == list(src.endpoints):
                         src_idx = idx
-                    elif tkn.span == tgt.endpoints:
+                    elif tkn.span == list(tgt.endpoints):
                         tgt_idx = idx
 
                 # retrieve elmo character ids of context sentence(s)
