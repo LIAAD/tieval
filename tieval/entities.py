@@ -41,7 +41,7 @@ class Timex:
         return hash(self.id)
 
     def __repr__(self):
-        return f"Timex(tid={self.id})"
+        return f"Timex(\"{self.text}\")"
 
     def __lt__(self, other):
         return self.id < other.id
@@ -98,7 +98,7 @@ class Event:
         return hash(self.id)
 
     def __repr__(self):
-        return f"Event(eid={self.id})"
+        return f"Event(\"{self.text}\")"
 
     def __lt__(self, other):
         return self.id < other.id

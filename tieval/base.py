@@ -94,6 +94,9 @@ class Text:
 
         self._sents = None
 
+    def __str__(self):
+        return self.content
+
     @property
     def sentences(self) -> List[str]:
 

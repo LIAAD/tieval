@@ -12,6 +12,9 @@ class TestDocument:
 
     doc = TempEval3DocumentReader(DATA_PATH / "tempeval_3.tml").read()
 
+    def test_print(self):
+        print(self.doc)
+
 
 class TestSentence:
 
