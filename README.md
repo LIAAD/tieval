@@ -36,15 +36,19 @@ In this section we summarize how to perform the most useful operations in text2t
 ### download a dataset.
 
 ```python
+import tieval.datasets
 from tieval import datasets
-datasets.download("TimeBank")
+
+tieval.datasets.download("TimeBank")
 ```
 
 ### load a dataset.
 
 ```python
+import tieval.datasets
 from tieval import datasets
-te3 = datasets.read("TempEval-3")
+
+te3 = tieval.datasets.read("TempEval-3")
 ```
 
 ### load a model.

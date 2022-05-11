@@ -1,3 +1,4 @@
+import tieval.datasets
 from tieval import datasets
 from tieval.models.identification import (
     HeidelTime,
@@ -10,8 +11,8 @@ class TestHeidelTime:
 
     def test_predict(self, tmp_path):
 
-        datasets.download("tempeval_3", tmp_path)
-        te3 = datasets.read("tempeval_3")
+        tieval.datasets.download("tempeval_3", tmp_path)
+        te3 = tieval.datasets.read("tempeval_3")
 
         model = HeidelTime()
         pred = model.predict(te3.test)
@@ -23,8 +24,8 @@ class TestTimexIdentificationBaseline:
 
     def test_predict(self, tmp_path):
 
-        datasets.download("tempeval_3", tmp_path)
-        te3 = datasets.read("tempeval_3")
+        tieval.datasets.download("tempeval_3", tmp_path)
+        te3 = tieval.datasets.read("tempeval_3")
 
         model = TimexIdentificationBaseline(path=tmp_path / "models")
         pred = model.predict(te3.test)
@@ -40,8 +41,8 @@ class TestEventIdentificationBaseline:
 
     def test_predict(self, tmp_path):
 
-        datasets.download("tempeval_3", tmp_path)
-        te3 = datasets.read("tempeval_3")
+        tieval.datasets.download("tempeval_3", tmp_path)
+        te3 = tieval.datasets.read("tempeval_3")
 
         model = EventIdentificationBaseline(path=tmp_path / "models")
         pred = model.predict(te3.test)

@@ -6,7 +6,7 @@ import xmltodict
 
 
 def xml2dict(path: Union[str, Path]) -> Dict:
-    # parse the xml file
+    """Parse the xml file"""
     with open(path, 'r', encoding='utf-8') as f:
         xml = f.read()
 

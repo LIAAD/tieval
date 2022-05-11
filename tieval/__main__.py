@@ -19,8 +19,7 @@ Contacts:
 
 import sys
 
-from tieval.datasets import downloader
-from tieval.datasets import download
+from tieval.datasets import downloader, download
 
 
 def main():

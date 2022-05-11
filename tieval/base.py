@@ -113,23 +113,11 @@ class Text:
 class Document:
     """A document with temporal annotation.
 
-    Attributes
-    ----------
-    name: str
-        The name of the document
-    text: str
-        The raw test of the document
-    events: Set[Event]
-        The events annotated
-    timexs: Set[Timex]
-        The time expressions annotated
-    tlinks: Set[TLink]
-        The temporal links annotated
-
-    Properties
-    ----------
-    temporal_closure(sound=None)
-        Prints the animals name and what sound it makes
+    :param str name:  The name of the document
+    :param str text: The raw test of the document
+    :param Set[Event] events: The events annotated
+    :param Set[Timex] timexs: The time expressions annotated
+    :param Set[TLink] tlinks: The temporal links annotated
     """
 
     def __init__(
@@ -168,10 +156,11 @@ class Document:
 
     @property
     def temporal_closure(self) -> Set[TLink]:
-        """Compute temporal closure of the document.
-
-        Temporal closure is the process of inferring new TLinks from the
+        """Compute temporal closure of the document. Temporal closure is the process of inferring new TLinks from the
         annotated TLinks.
+
+        :return: A set that compiles the original TLinks as well as the ones inferred.
+        :rtype: Set[Tlink]
         """
 
         if self._closure is None:
@@ -204,14 +193,9 @@ class Document:
 class Dataset:
     """A compilation of documents that have temporal annotations.
 
-    Attributes
-    ----------
-    name : str
-        The name of the dataset.
-    train : list[Document]
-        A list containing the documents of the training set.
-    test : list[Document]
-        A list containing the documents of the test set.
+    :param str name:  The name of the dataset.
+    :param list[Document] train:  A list containing the documents of the training set.
+    :param list[Document] test:  A list containing the documents of the test set.
     """
 
     name: str

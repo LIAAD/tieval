@@ -3,6 +3,7 @@ from pathlib import Path
 
 from tqdm import tqdm
 
+import tieval.datasets
 from tieval.base import Dataset
 from tieval.datasets.readers.document import DocumentReader
 from tieval.entities import Event
@@ -27,7 +28,7 @@ class XMLDatasetReader:
         files = list(path.glob("**/*.[tx]ml"))
         for file in tqdm(files):
             reader = self.document_reader(file)
-            document = reader.read()
+            document = tieval.datasets.read()
 
             if "test" in file.parts:
                 test += [document]
@@ -53,7 +54,7 @@ class JSONDatasetReader:
         files = list(path.glob("**/*.json"))
         for file in tqdm(files):
             reader = self.document_reader(file)
-            document = reader.read()
+            document = tieval.datasets.read()
 
             if "test" in file.parts:
                 test += [document]
