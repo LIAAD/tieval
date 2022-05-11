@@ -101,15 +101,6 @@ Hugo Sousa - hugo.o.sousa@inesctec.pt
 
 This framework is part of the Text2Story_ project which is financed by the ERDF – European Regional Development Fund through the North Portugal Regional Operational Programme (NORTE 2020), under the PORTUGAL 2020 and by National Funds through the Portuguese funding agency, FCT - Fundação para a Ciência e a Tecnologia within project PTDC/CCI-COM/31857/2017 (NORTE-01-0145-FEDER-03185)
 
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-
 .. _Text2Story: https://text2story.inesctec.pt/
 .. _repository: https://github.com/LIAAD/tieval
 .. _PyPI:
