@@ -1,20 +1,17 @@
 tieval
 ------
 
+.. toctree::
+   :maxdepth: 2
+   :titlesonly:
+   :hidden:
+
+   tieval
+   hands_on
+
 A framework for the development of temporally aware models.
 
 .. image:: ../imgs/tieval.png
-
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
-
-   datasets
-   models
-   evaluate
-   reference_index
-   hands_on
 
 
 Installation
