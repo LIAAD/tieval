@@ -94,6 +94,9 @@ class Text:
 
         self._sents = None
 
+    def __str__(self):
+        return self.content
+
     @property
     def sentences(self) -> List[str]:
 
@@ -141,7 +144,8 @@ class Document:
     ) -> None:
 
         self.name = name
-        self.text = Text(text, language)
+        self.text = text
+        self._text = Text(text, language)
         self.dct = dct
         self.entities = entities
         self.tlinks = tlinks
@@ -185,13 +189,13 @@ class Document:
 
     @property
     def sentences(self) -> List[str]:
-        return self.text.sentences
+        return self._text.sentences
 
     @property
     def tokens(self) -> List[str]:
         return [
             tkn
-            for sent in self.text.sentences
+            for sent in self._text.sentences
             for tkn in sent.tokens
         ]
 
