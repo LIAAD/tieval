@@ -1,10 +1,3 @@
-""" Objects that represent links on TML.
-
-Objects implemented:
-    - Tlink
-
-"""
-
 from typing import Union
 
 from tieval.temporal_relation import TemporalRelation
@@ -12,21 +5,12 @@ from tieval.entities import Event, Timex
 
 
 class TLink:
-    """
-    Object that represents a temporal link.
+    """ Object that represents a temporal link.
 
-    ...
-
-    Attributes
-    -----------
-    id: str
-        Link id
-    source: Union[str, Timex, Event],
-        Source event/timex id that the link refers to
-    target: Union[str, Timex, Event]
-        Target event/timex id that the link refers to
-    relation: Union[str, list, dict, TemporalRelation]
-        The temporal relation between source and target
+    :param str id:  Link id
+    :param Union[str, Timex, Event] source: Source event/timex id that the link refers to
+    :param Union[str, Timex, Event] target: Target event/timex id that the link refers to
+    :param Union[str, list, dict, TemporalRelation] relation: The temporal relation between source and target
     """
 
     def __init__(
@@ -36,13 +20,6 @@ class TLink:
             relation: Union[str, list, dict],
             id: str = None
     ):
-        """
-
-        Parameters
-        ----------
-        id : object
-        """
-
         self.source = source
         self.target = target
         self.relation = TemporalRelation(relation)
@@ -93,7 +70,6 @@ class TLink:
 
         If a relation can be inferred it will return a Tlink between source of the first Tlink and target of the second
         Tlink.
-
         """
 
         # verify that there is one entity in common between self and other instances
@@ -114,14 +90,10 @@ class TLink:
         )
 
     def __invert__(self):
-        """
-
-        Invert TLink.
+        """ Invert TLink.
         Returns the symmetric tlink. For example, if A --Before--> B it will return a tlink with B --After--> A
 
-        :return:
-            A TLink symmetric to the current one.
-
+        :return: A TLink symmetric to the current one.
         """
 
         return TLink(

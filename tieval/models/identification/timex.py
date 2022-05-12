@@ -139,20 +139,20 @@ class TimexIdentificationBaseline(BaseTrainableModel):
 
 
 class HeidelTime(BaseModel):
-    """
-    The HeidelTime model.
+    """ The HeidelTime model. This is a wrapper class of the
+    `py_heideltime <https://github.com/JMendes1995/py_heideltime>`_ implementation. Follow the installation steps
+    provided in the py_heideltime repository in order for it ot work properly.
 
-    Parameters
-    ----------
-    language : str = {"English", "Portuguese", "Spanish", "Germany", "Dutch", "Italian", "French"}
+
+    :param str language: {"English", "Portuguese", "Spanish", "Germany", "Dutch", "Italian", "French"}
         Language of the text that will be processed.
-    document_type : str = {"News", "Narrative", "Colloquial", "Scientific"}
+    :param str document_type: {"News", "Narrative", "Colloquial", "Scientific"}
         The type of document that will be processed.
 
-    References
-    ----------
-    .. [1] Strötgen, Gertz: HeidelTime: High Qualitiy Rule-based
-        Extraction and Normalization of Temporal Expressions. SemEval'10.
+
+    .. seealso::
+        `Strötgen, Gertz: HeidelTime: High Qualitiy Rule-based
+        Extraction and Normalization of Temporal Expressions. SemEval'10. <https://aclanthology.org/S10-1071/>`_
     """
 
     def __init__(self, language="English",  document_type="news"):

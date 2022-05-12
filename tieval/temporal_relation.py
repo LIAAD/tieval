@@ -1,21 +1,3 @@
-"""All the logic to handel temporal relaitons.
-
-Constants
----------
-    _SETTLE_RELATION
-    _POINT_TRANSITIONS
-    _INVERSE_POINT_RELATION
-    _INTERVAL_TO_POINT_RELATION
-
-Objects
--------
-    Point
-    IncompleteRelationError
-    PointRelation
-    IntervalRelation
-    TemporalRelation
-"""
-
 from typing import Union
 from dataclasses import dataclass
 
@@ -77,9 +59,10 @@ _INVERSE_POINT_RELATION = {
 }
 
 
-@dataclass
 class Point:
-    value: int = 1
+
+    def __init__(self, value: int = 1):
+        self.value = value
 
 
 class IncompleteRelationError(Exception):

@@ -1,15 +1,3 @@
-""" Store metadata about datasets.
-
-Objects
--------
-    - DatasetMetadata
-
-Constants
----------
-    - DATASETS_METADATA
-
-"""
-
 import pathlib
 from dataclasses import dataclass
 from typing import Union, Tuple, Iterable

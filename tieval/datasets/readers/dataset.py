@@ -28,7 +28,7 @@ class XMLDatasetReader:
         files = list(path.glob("**/*.[tx]ml"))
         for file in tqdm(files):
             reader = self.document_reader(file)
-            document = tieval.datasets.read()
+            document = reader.read()
 
             if "test" in file.parts:
                 test += [document]
@@ -54,7 +54,7 @@ class JSONDatasetReader:
         files = list(path.glob("**/*.json"))
         for file in tqdm(files):
             reader = self.document_reader(file)
-            document = tieval.datasets.read()
+            document = reader.read()
 
             if "test" in file.parts:
                 test += [document]

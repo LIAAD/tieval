@@ -7,12 +7,8 @@ import zipfile
 def _download_url(url: str, path: str) -> None:
     """Download from url.
 
-    Parameters
-    ----------
-    url: str
-        The url to download.
-    path: str
-        The path to store the object.
+    :param str url: The url to download.
+    :param str path: The path to store the object.
     """
 
     print(f"Downloading from {url}")

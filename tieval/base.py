@@ -1,12 +1,3 @@
-"""Base objects.
-
-Objects
--------
-    - Document
-    - Dataset
-
-"""
-
 from dataclasses import dataclass
 from typing import Set, Optional, Union, List
 
@@ -159,8 +150,8 @@ class Document:
         """Compute temporal closure of the document. Temporal closure is the process of inferring new TLinks from the
         annotated TLinks.
 
-        :return: A set that compiles the original TLinks as well as the ones inferred.
-        :rtype: Set[Tlink]
+        It will call the function :py:func:`tieval.closure.temporal_closure` on the set of temporal links of the
+        current document.
         """
 
         if self._closure is None:

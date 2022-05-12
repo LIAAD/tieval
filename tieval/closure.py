@@ -14,20 +14,19 @@ def temporal_closure(
     This function infers all possible TLinks form the set of tlinks
     that is fed as input.
 
-    Parameters
-    ----------
-    tlinks: Set[TLink]
-        A set of temporal links (typically from a document)
-    allow_incomplete: bool
-        An incomplete TLink is one in which the temporal relation between the
+    :param Set[TLink] tlinks:  A set of temporal links (typically from a document)
+    :param bool allow_incomplete: An incomplete TLink is one in which the temporal relation between the
         endpoints of source and target is not totally defined.
-        That is,. one of the point relations is None. By default this parameter
+        That is, one of the point relations is None. By default, this parameter
         is set to False.
 
-    Returns
-    -------
-    result: Set[TLink]
-        The union of the tlinks given as input and the tlinks inferred.
+    :returns: The union of the tlinks given as input and the tlinks inferred.
+    :rtype: Set[TLink]
+
+    .. seealso::
+        Check this `paper`_ to learn more about temporal closure.
+
+    .. _paper: http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.468.2433&rep=rep1&type=pdf
     """
 
     result = copy.deepcopy(tlinks)
