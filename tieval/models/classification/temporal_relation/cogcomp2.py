@@ -1,4 +1,5 @@
 import logging
+import pathlib
 from typing import Iterable, List
 
 import allennlp.modules.elmo as elmo_module
@@ -19,7 +20,15 @@ CSE_EMBEDDINGS_PATH = 'embeddings_0.3_200_1_timelines.txt'
 
 class CogCompTime2(BaseTrainableModel):
 
-    def __init__(self):
+    def __init__(
+            self,
+            model_path: str = "./models",
+            resources_path: str = "./resources"
+    ) -> None:
+
+        path = pathlib.Path(path)
+        self.path = model_path / "cogcomp2"
+        self.resources_path = resources_path / "cogcomp2"
 
         self.lemmatizer = WordNetLemmatizer()
 
@@ -56,6 +65,19 @@ class CogCompTime2(BaseTrainableModel):
             output_dim=4
         )
 
+        if not self.path.is_dir():
+            self.download()
+
+        self.load()
+
+    def download(self):
+
+        url = metadata.MODELS_URL["cogcomp2"]
+        utils._download_url(url, self.path.parent)
+
+        url = metadata.MODELS_URL["cogcomp2"]
+        utils._download_url(url, self.path.parent)
+
     def predict(self, documents: Iterable[Document]):
 
         data = self.data_pipeline(documents)
@@ -82,12 +104,12 @@ class CogCompTime2(BaseTrainableModel):
     def fit(self, documents: Iterable[Document]):
         pass
 
-    def save(self, path: str) -> None:
+    def save(self) -> None:
         checkpoint = self.model.state_dict()
-        torch.save(checkpoint, path)
+        torch.save(checkpoint, self.path)
 
-    def load(self, path: str) -> None:
-        checkpoint = torch.load(path)
+    def load(self) -> None:
+        checkpoint = torch.load(self.path)
         self.model.load_state_dict(checkpoint)
 
     def data_pipeline(self, documents: Iterable[Document]):
