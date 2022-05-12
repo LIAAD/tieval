@@ -1,6 +1,6 @@
-Hands on
+hands on
 --------
-IN this section we present some toy examples that show a project pipeline with tieval.
+This section contains notebooks with different project pipelines build with ``tieval``.
 
 .. toctree::
    :maxdepth: 1

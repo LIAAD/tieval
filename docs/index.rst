@@ -24,12 +24,12 @@ The package is available on PyPI:
    pip install tieval
 
 .. note::
-    tieval requires Python 3.8 or above.
+    ``tieval`` requires Python 3.8 or above.
 
 Usage
 =====
 
-To understand its usability refer to the notebooks available [here]().
+To understand its usability refer to the notebooks available in :doc:`hands_on` section.
 
 
 Data
