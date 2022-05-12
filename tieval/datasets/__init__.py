@@ -1,24 +1,8 @@
-""" Module to download and read datasets.
-
-Contains functions to download and read temporally annotated datasets.
-The corpus available are:
-    - TimeBank
-    - TimeBank.1-2
-    - Platinum
-    - Tempeval-3
-    - TimeBank-PT
-    - Aquaint
-    - MATRES
-    - TDDiscourse
-    - TimeBank-Dense
-
-
-"""
 import os
 import pathlib
 from typing import List
 
-from tieval import utils
+from tieval.utils import _download_url
 from tieval.base import Dataset
 from tieval.datasets.readers import (
     EventTimeDatasetReader,
@@ -60,6 +44,10 @@ def read(dataset: str) -> List[Dataset]:
     if dataset not in DATASETS_METADATA:
         raise ValueError(f"{dataset} not found on datasets")
 
+    # download the corpus in case the dataset was not downloaded yet
+    if not metadata.path.is_dir():
+        download(dataset)
+
     # table dataset
     if metadata.base:
 
@@ -79,7 +67,7 @@ def read(dataset: str) -> List[Dataset]:
     return reader.read(metadata.path)
 
 
-def download(dataset: str, path: str = "./data") -> None:
+def download(dataset: str) -> None:
     """ Download corpus.
 
     This function facilitates the download of temporal annotated corpora.
@@ -100,7 +88,6 @@ def download(dataset: str, path: str = "./data") -> None:
         - TCR
 
     :param str dataset: The name of the dataset to download.
-    :param str path: Path to store the dataset.
     """
 
     dataset = dataset.lower().strip()
@@ -111,14 +98,13 @@ def download(dataset: str, path: str = "./data") -> None:
         raise Exception(f"{dataset} not recognized.")
 
     # check if path folder exists
-    path = pathlib.Path(path)
+    path = pathlib.Path("./data")
     if not path.is_dir():
         os.mkdir(path)
 
     # check if it has already been downloaded
-    metadata.data_path = path
     if metadata.path.is_dir():
         print(f"Dataset {dataset} was already on {path}.")
         return
 
-    utils._download_url(metadata.url, path)
+    _download_url(metadata.url, path)
