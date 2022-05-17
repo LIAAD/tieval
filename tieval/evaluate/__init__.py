@@ -1,6 +1,6 @@
-from typing import Dict
+from typing import Dict, List
 
-from tieval.entities import Entity
+from tieval.entities import Entity, Timex
 from tieval.links import TLink
 from tieval.evaluate.metrics import temporal_precision
 from tieval.evaluate.metrics import temporal_recall
@@ -10,15 +10,16 @@ from tieval.evaluate.metrics import temporal_awareness
 from tabulate import tabulate
 
 
-def _print_table(result):
+def _print_table(result: Dict) -> None:
     rows = list(set(result.keys()))
     rows.sort()
 
     cols = list(set(key for row in rows for key in result[row]))
     cols.sort()
 
-    content = [[row] + [round(result[row][col], 2) for col in cols]
-               for row in rows]
+    content = [
+        [row] + [round(result[row].get(col, 0), 3) for col in cols]
+        for row in rows]
 
     tabel = tabulate(
         tabular_data=content,
@@ -55,9 +56,9 @@ def recall(tp, fn):
 
 
 def timex_identification(
-        annotations: Dict[str, Entity],
-        predictions: Dict[str, Entity],
-        verbose=False
+        annotations: Dict[str, List[Timex]],
+        predictions: Dict[str, List[Timex]],
+        verbose: bool = False
 ) -> Dict:
     n_docs = len(annotations)
 
@@ -72,8 +73,8 @@ def timex_identification(
         fn = len(true - pred)
 
         # update macro metrics counts
-        M_precision += tp / (tp + fp) if (tp + fp) else 0
-        M_recall += tp / (tp + fn) if (tp + fn) else 0
+        M_precision += precision(tp, fp)
+        M_recall += recall(tp, fn)
 
         # update micro metrics counts
         tps += tp
@@ -86,8 +87,8 @@ def timex_identification(
     M_f1 = f_score(M_recall, M_precision)
 
     # compute micro metrics
-    m_precision = tps / (tps + fps)
-    m_recall = tps / (tps + fns)
+    m_precision = precision(tps, fns)
+    m_recall = recall(tps, fns)
     m_f1 = f_score(m_recall, m_precision)
 
     result = {
@@ -110,8 +111,8 @@ def timex_identification(
 
 
 def event_identification(
-        annotations: Dict[str, Entity],
-        predictions: Dict[str, Entity],
+        annotations: Dict[str, List[Entity]],
+        predictions: Dict[str, List[Entity]],
         verbose=False
 ) -> Dict:
     n_docs = len(annotations)
@@ -173,16 +174,17 @@ def tlink_identification(
 
 
 def tlink_classification(
-        annotations: Dict[str, TLink],
-        predictions: Dict[str, TLink],
+        annotations: Dict[str, List[TLink]],
+        predictions: Dict[str, List[TLink]],
         verbose=False
 ) -> Dict:
 
     n_docs = len(annotations)
 
-    M_precision, M_recall = 0, 0
+    M_accuracy, M_precision, M_recall = 0, 0, 0
     M_precision_t, M_recall_t = 0, 0
     tps, fps, fns = 0, 0, 0
+    n_relations = 0
     for doc in annotations:
         true = set(annotations[doc])
         pred = set(predictions[doc])
@@ -190,6 +192,7 @@ def tlink_classification(
         tp, fp, fn = confusion_matrix(true, pred)
 
         # update macro metrics counts
+        M_accuracy += tp / len(true)
         M_precision += precision(tp, fp)
         M_recall += recall(tp, fp)
 
@@ -200,8 +203,11 @@ def tlink_classification(
         tps += tp
         fps += fp
         fns += fn
+        n_relations += len(true)
+        print(len(true))
 
     # compute macro metrics
+    M_accuracy /= n_docs
     M_precision /= n_docs
     M_recall /= n_docs
 
@@ -209,22 +215,27 @@ def tlink_classification(
     M_recall_t /= n_docs
 
     # compute micro metrics
-    m_precision = tps / (tps + fps)
-    m_recall = tps / (tps + fns)
+    m_accuracy = tps / n_relations
+    m_precision = precision(tps, fps)
+    m_recall = recall(tps, fns)
 
     result = {
+
         "micro": {
+            "accuracy": m_accuracy,
             "recall": m_recall,
             "precision": m_precision,
-            "f1": 2 * m_recall * m_precision / (m_recall + m_precision)
+            "f1": f_score(m_recall, m_precision)
         },
+
         "macro": {
+            "accuracy": M_accuracy,
             "recall": M_recall,
             "precision": M_precision,
-            "f1": 2 * M_recall * M_precision / (M_recall + M_precision),
+            "f1": f_score(M_recall, M_precision),
             "temporal_recall": M_recall_t,
             "temporal_precision": M_precision_t,
-            "temporal_awareness": 2 * M_recall_t * M_precision_t / (M_recall_t + M_precision_t)
+            "temporal_awareness": f_score(M_recall_t, M_precision_t)
         }
     }
 
