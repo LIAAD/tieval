@@ -1,6 +1,6 @@
 import logging
 import pathlib
-from typing import Iterable, List
+from typing import Iterable, List, Dict
 
 import allennlp.modules.elmo as elmo_module
 from nltk.stem import WordNetLemmatizer
@@ -10,12 +10,17 @@ import torch.nn.functional as F
 
 from tieval.models.base import BaseTrainableModel
 from tieval.base import Document
+from tieval.models import metadata
+from tieval.utils import _download_url, download_torch_weights
+from tieval.links import TLink
 
 # elmo parameters
 OPTION_FILE = "https://s3-us-west-2.amazonaws.com/allennlp/models/elmo/2x4096_512_2048cnn_2xhighway/elmo_2x4096_512_2048cnn_2xhighway_options.json"
 WEIGHT_FILE = "https://s3-us-west-2.amazonaws.com/allennlp/models/elmo/2x4096_512_2048cnn_2xhighway/elmo_2x4096_512_2048cnn_2xhighway_weights.hdf5"
 
-CSE_EMBEDDINGS_PATH = 'embeddings_0.3_200_1_timelines.txt'
+
+LABEL2IDX = {"BEFORE": 0, "AFTER": 1, "EQUAL": 2, "VAGUE": 3}
+IDX2LABEL = {idx: label for label, idx in LABEL2IDX.items()}
 
 
 class CogCompTime2(BaseTrainableModel):
@@ -26,9 +31,8 @@ class CogCompTime2(BaseTrainableModel):
             resources_path: str = "./resources"
     ) -> None:
 
-        path = pathlib.Path(path)
-        self.path = model_path / "cogcomp2"
-        self.resources_path = resources_path / "cogcomp2"
+        self.model_path = pathlib.Path(model_path) / "cogcomp2.pt"
+        self.cse_vocab_path = pathlib.Path(resources_path) / "cogcomp2_cse_vocab.txt"
 
         self.lemmatizer = WordNetLemmatizer()
 
@@ -41,15 +45,20 @@ class CogCompTime2(BaseTrainableModel):
         elmo.requires_grad_(requires_grad=False)
 
         # Common sense encoder embeddings
-        self.cse_vocab = {}
-        with open(CSE_EMBEDDINGS_PATH) as f:
-            lines = f.readlines()
-            for i, line in enumerate(lines):
-                self.cse_vocab[line.split(" ")[0]] = i
+        if not self.cse_vocab_path.exists():
+            self.download_resources()
 
-        vocab_size = len(self.cse_vocab)
+        with open(self.cse_vocab_path) as f:
+            cse_vocab = f.read().split("\n")[:-1]  # ignore the last empty string
+
+        self.cse_tkn2idx = {
+            tkn: idx
+            for idx, tkn in enumerate(cse_vocab)
+        }
+
+        cse_vocab_size = len(cse_vocab)
         cse = CommonSenseEncoder(
-            vocab_size=vocab_size,
+            vocab_size=cse_vocab_size,
             hidden_size=120,
             emb_size=200
         )
@@ -65,39 +74,55 @@ class CogCompTime2(BaseTrainableModel):
             output_dim=4
         )
 
-        if not self.path.is_dir():
-            self.download()
+        if not self.model_path.exists():
+            self.download_model()
 
         self.load()
 
-    def download(self):
-
+    def download_model(self):
         url = metadata.MODELS_URL["cogcomp2"]
-        utils._download_url(url, self.path.parent)
+        download_torch_weights(url, self.model_path)
 
-        url = metadata.MODELS_URL["cogcomp2"]
-        utils._download_url(url, self.path.parent)
+    def download_resources(self):
+        url = metadata.MODELS_URL["cogcomp2_vocab"]
+        _download_url(url, self.cse_vocab_path.parent)
 
-    def predict(self, documents: Iterable[Document]):
+    def predict(self, documents: Iterable[Document]) -> Dict[str, List[TLink]]:
+        """ Classify the temporal relations on a set of documents.
 
+        :param documents: A set of documents with TLinks to be classified.
+        :type documents: Iterable[Document]
+        :return: A dictionary with the list of TLinks (with the predicted relations) for each document.
+        :rtype: Dict[str, List[TLink]]
+        """
         data = self.data_pipeline(documents)
 
-        predictions = []
-        for doc, doc_data in data.items():
+        n_docs = len(data)
+        predictions = {}
+        for doc_idx, (doc, doc_data) in enumerate(data.items()):
 
-            logging.info(f"Processing document {doc}")
-            for idx, sample in enumerate(doc_data):
+            doc_predictions = []
+            for sample_idx, sample in enumerate(doc_data):
 
-                if idx % 20 == 0:
-                    logging.info(f"Sample {idx}/{len(doc_data)}")
+                if sample_idx % 20 == 0:
+                    logging.info(f"Sample {sample_idx}/{len(doc_data)} of document {doc_idx}/{n_docs}")
 
-                pred = self.model(
+                logits = self.model(
                     entities_idxs=sample["entities_idxs"],
                     lemma_ids=sample["lemma_ids"],
                     context_tokens=sample["context_tokens"],
                 )
 
-                predictions += [pred]
+                pred = logits.argmax().item()
+                pred_relation = IDX2LABEL[pred]
+
+                doc_predictions += [TLink(
+                    source=sample["tlink"].source,
+                    target=sample["tlink"].target,
+                    relation=pred_relation
+                )]
+
+            predictions[doc] = doc_predictions
 
         return predictions
 
@@ -106,10 +131,10 @@ class CogCompTime2(BaseTrainableModel):
 
     def save(self) -> None:
         checkpoint = self.model.state_dict()
-        torch.save(checkpoint, self.path)
+        torch.save(checkpoint, self.model_path)
 
     def load(self) -> None:
-        checkpoint = torch.load(self.path)
+        checkpoint = torch.load(self.model_path)
         self.model.load_state_dict(checkpoint)
 
     def data_pipeline(self, documents: Iterable[Document]):
@@ -148,14 +173,15 @@ class CogCompTime2(BaseTrainableModel):
                 # transform lemma of source and target events into vocab ids
                 src_lemma = self.lemmatizer.lemmatize(src.text)
                 tgt_lemma = self.lemmatizer.lemmatize(tgt.text)
-                src_lemma_id = self.cse_vocab.get(src_lemma, 0)
-                tgt_lemma_id = self.cse_vocab.get(tgt_lemma, 0)
+                src_lemma_id = self.cse_tkn2idx.get(src_lemma, 0)
+                tgt_lemma_id = self.cse_tkn2idx.get(tgt_lemma, 0)
 
                 if src_idx is None or tgt_idx is None:
                     logging.info(f"Tlink {tlink} is missing something.")
                     continue
 
                 doc_data += [{
+                    "tlink": tlink,
                     "entities_idxs": [src_idx, tgt_idx],
                     "lemma_ids": [src_lemma_id, tgt_lemma_id],
                     "context_tokens": context_tokens,

@@ -1,5 +1,6 @@
 import io
 import requests
+from tqdm import tqdm
 from typing import List
 import zipfile
 
@@ -18,6 +19,31 @@ def _download_url(url: str, path: str) -> None:
 
         z = zipfile.ZipFile(io.BytesIO(response.content))
         z.extractall(path)
+        print("Done.")
+
+    else:
+        raise Exception(f"Request code: {response.status_code}")
+
+
+def download_torch_weights(url: str, path: str) -> None:
+
+    print(f"Downloading from {url}")
+    response = requests.get(url, stream=True)
+    total_size_in_bytes = int(response.headers.get('content-length', 0))
+    block_size = 1024
+    progress_bar = tqdm(total=total_size_in_bytes, unit='iB', unit_scale=True)
+
+    if response.ok:
+
+        if not path.parent.is_dir():
+            path.parent.mkdir()
+
+        with open(path, 'wb') as file:
+            for data in response.iter_content(block_size):
+                progress_bar.update(len(data))
+                file.write(data)
+        progress_bar.close()
+
         print("Done.")
 
     else:
