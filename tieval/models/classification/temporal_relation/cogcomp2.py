@@ -162,9 +162,13 @@ class CogCompTime2(BaseTrainableModel):
                 # source and target indexes
                 src_idx, tgt_idx = None, None
                 for idx, tkn in enumerate(context):
-                    if tkn.span == list(src.endpoints):
+
+                    # the src and tgt entities can have multiple tokens, in this model
+                    # the first token is used in that scenario.
+                    if tkn.span[0] == src.endpoints[0]:
                         src_idx = idx
-                    elif tkn.span == list(tgt.endpoints):
+
+                    elif tkn.span[0] == tgt.endpoints[0]:
                         tgt_idx = idx
 
                 # retrieve elmo character ids of context sentence(s)
