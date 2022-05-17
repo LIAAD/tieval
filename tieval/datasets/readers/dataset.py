@@ -80,20 +80,32 @@ class EventTimeDatasetReader:
             docs = collections.defaultdict(list)
             for line in fin.readlines():
                 doc, sent_idx, tkn_idx, entity_type, id_, _, type_, value = line.split()
-                docs[doc] += [Event(
-                    id=id_,
-                    sent_idx=sent_idx,
-                    tkn_idx=tkn_idx,
-                    type=type_,
-                    value=value
-                )]
+                docs[doc] += [{
+                    "id": id_,
+                    "sent_idx": sent_idx,
+                    "tkn_idx": tkn_idx,
+                    "type": type_,
+                    "value": value,
+                }]
 
         documents = []
         for doc_name, events in docs.items():
             document = self.base_dataset[doc_name]
 
+            update_events = []
             document.tlinks = None
-            document.entities = events
+            original_events_dict = {event.eid: event for event in document.events}
+            for event in events:
+                original_event = original_events_dict.get(event["id"])
+
+                if original_event is None:
+                    print(f"Document {doc_name}\nEvent {event['id']} missing on original document.")
+                    continue
+
+                original_event.value = event["value"]
+                original_event.type = event["type"]
+                update_events += [original_event]
+            document.entities = set(update_events)
 
             documents += [document]
 

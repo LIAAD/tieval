@@ -29,3 +29,14 @@ def detokenize(tokens: List[str]) -> str:
     ]
 
     return "".join(text).strip()
+
+
+def assert_list(obj):
+
+    if obj is None:
+        return obj
+
+    if obj and not isinstance(obj, list):
+        return [obj]
+
+    return obj

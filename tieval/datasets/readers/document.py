@@ -5,7 +5,7 @@ from typing import Iterable, Union
 from xml.etree import ElementTree as ET
 
 from tieval.base import Document
-from tieval.datasets.utils import xml2dict
+from tieval.datasets.utils import xml2dict, assert_list
 from tieval.entities import Timex, Entity, Event
 from tieval.links import TLink
 from tieval.temporal_relation import SUPPORTED_RELATIONS
@@ -71,13 +71,6 @@ class TempEval3DocumentReader(BaseDocumentReader):
 
     @property
     def _entities(self) -> Iterable[Entity]:
-
-        def assert_list(entities):
-
-            if entities and not isinstance(entities, list):
-                return [entities]
-
-            return entities
 
         entities = set()
 
@@ -174,13 +167,18 @@ class TimeBank12DocumentReader(BaseDocumentReader):
         self.path = path
         self.content = xml2dict(self.path)
 
+        self.xml = ET.parse(self.path)
+
+
     @property
     def _name(self) -> str:
         return self.path.name.replace(".tml", "")
 
     @property
     def _text(self) -> str:
-        return self.content["TimeML"]["text"]
+        root = self.xml.getroot()
+        text_tag = root.find("TEXT")
+        return "".join(e for e in text_tag.itertext())
 
     @property
     def _entities(self) -> Iterable[Entity]:
@@ -188,7 +186,7 @@ class TimeBank12DocumentReader(BaseDocumentReader):
         entities = set()
 
         # events
-        events = self.content["TimeML"].get("EVENT")
+        events = self.content["TimeML"]["TEXT"].get("EVENT")
         events_dict = {event["eid"]: event for event in events}
         mkinsts = self.content["TimeML"].get("MAKEINSTANCE")
         if mkinsts:
@@ -200,31 +198,35 @@ class TimeBank12DocumentReader(BaseDocumentReader):
                 if event:
                     mkinst.update(event)
 
+                s, e = mkinst.get("endpoints").split()
                 entities.add(Event(
                     aspect=mkinst['aspect'],
-                    class_=mkinst['class'],
+                    class_=mkinst.get('class'),
                     id=mkinst['eiid'],
                     eid=mkinst['eid'],
                     eiid=mkinst['eiid'],
                     polarity=mkinst['polarity'],
                     pos=mkinst['pos'],
                     tense=mkinst['tense'],
-                    text=mkinst['text']
+                    text=mkinst['text'],
+                    endpoints=(int(s), int(e))
                 ))
 
         # timexs
-        timexs = self.content["TimeML"].get("TIMEX3")
-        if not isinstance(timexs, list):
-            timexs = [timexs]
+        timexs = self.content["TimeML"]["TEXT"].get("TIMEX3")
+        timexs = assert_list(timexs)
 
         if timexs:
             for timex in timexs:
+                s, e = timex.get("endpoints").split()
+
                 entities.add(Timex(
                     function_in_document=timex.get("functionInDocument"),
                     text=timex["text"],
                     id=timex["tid"],
                     type_=timex["type"],
                     value=timex["value"],
+                    endpoints=(int(s), int(e))
                 ))
 
         # dct
@@ -235,8 +237,6 @@ class TimeBank12DocumentReader(BaseDocumentReader):
     @property
     def _dct(self) -> Timex:
         attrib = self.content["TimeML"]["TIMEX3"]
-        if isinstance(attrib, list):
-            attrib = attrib[0]
 
         return Timex(
             function_in_document=attrib["functionInDocument"],
@@ -435,15 +435,8 @@ class GraphEveDocumentReader(BaseDocumentReader):
         self.content = xml2dict(self.path)
 
     @property
-    def _root(self):
-        if "Article" in self.content:
-            return self.content["Article"]
-
-        return self.content["ProcessedArticle"]
-
-    @property
     def _name(self) -> str:
-        return self.path.parts[-1]
+        return self.path.parts[-1].replace(".xml", "")
 
     @property
     def _dct(self) -> Timex:
@@ -451,8 +444,18 @@ class GraphEveDocumentReader(BaseDocumentReader):
 
     @property
     def _text(self) -> str:
-        self.content.values()
-        return self._root["Text"]
+        tokens = self.content["Article"]["Tokens"]["Token"]
+
+        last_tkn = tokens[-1]
+        text_len = int(last_tkn["StartIndex"]) + len(last_tkn["Value"])
+
+        text = [" "] * text_len
+        for tkn in tokens:
+            start_idx = int(tkn["StartIndex"])
+            end_idx = start_idx + len(tkn["Value"])
+            text[start_idx: end_idx] = tkn["Value"]
+
+        return "".join(text)
 
     @property
     def _entities(self) -> Iterable[Entity]:
@@ -460,8 +463,9 @@ class GraphEveDocumentReader(BaseDocumentReader):
         entities = set()
 
         # events
-        events = self._root["MicroEvents"]["MicroEvent"]
+        events = self.content["Article"]["MicroEvents"]["MicroEvent"]
         for event in events:
+
             entities.add(Event(
                 id=event["ID"],
                 text=event["EventCarrier"],
@@ -474,24 +478,25 @@ class GraphEveDocumentReader(BaseDocumentReader):
                 )
             ))
 
+        # TODO: figure out how to identify temporal expressions span/endpoints
         # timexs
-        timexs = []
-        sentences = self._root["Sentences"]["Sentence"]
-        for sentence in sentences:
-            if sentence["TemporalExpressions"]:
-                timex = sentence["TemporalExpressions"]["TemporalExpression"]
-                if isinstance(timex, list):
-                    timexs += timex
-                else:
-                    timexs += [timex]
-
-        for timex in timexs:
-            entities.add(Timex(
-                id=timex["TimexID"],
-                value=timex.get("Value"),
-                text=timex["Text"],
-                type_=timex["Type"]
-            ))
+        # timexs = []
+        # sentences = self.content["Article"]["Sentences"]["Sentence"]
+        # for sentence in sentences:
+        #     if sentence["TemporalExpressions"]:
+        #         timex = sentence["TemporalExpressions"]["TemporalExpression"]
+        #         if isinstance(timex, list):
+        #             timexs += timex
+        #         else:
+        #             timexs += [timex]
+        #
+        # for timex in timexs:
+        #     entities.add(Timex(
+        #         id=timex["TimexID"],
+        #         value=timex.get("Value"),
+        #         text=timex["Text"],
+        #         type_=timex["Type"]
+        #     ))
 
         return entities
 
@@ -502,7 +507,7 @@ class GraphEveDocumentReader(BaseDocumentReader):
 
         entities_dict = {ent.id: ent for ent in self._entities}
 
-        annotations = self._root["Relations"]["Relation"]
+        annotations = self.content["Article"]["Relations"]["Relation"]
         for annot in annotations:
 
             relation = annot["RelationType"]
@@ -529,6 +534,7 @@ class TempEval2DocumentReader(BaseDocumentReader):
 
         self.path = path
         self.content = json.load(self.path.open())
+        print(path)
 
     @property
     def _name(self) -> str:
@@ -557,8 +563,8 @@ class TempEval2DocumentReader(BaseDocumentReader):
 
         entities = set()
 
-        token_dict = {
-            f"s{tkn['sent_idx']}t{tkn['tkn_idx']}": tkn
+        endpoints_map = {
+            (tkn["sent_idx"], tkn["tkn_idx"]): tkn["endpoints"]
             for tkn in self.content["tokens"]
         }
 
@@ -566,14 +572,8 @@ class TempEval2DocumentReader(BaseDocumentReader):
         for event in self.content["entities"]["events"]:
 
             # find entity endpoints
-            endpoints = []
-            for idx in event["tkn_idx"]:
-                key = f"s{event['sent_idx']}t{idx}"
-                token = token_dict[key]
-                endpoints += [*token["endpoints"]]
-            s, e = endpoints[0], endpoints[-1]
-
-            event["endpoints"] = [s, e]
+            s, e = self._get_endpoints(event, endpoints_map)
+            event["endpoints"] = (s, e)
             event["text"] = self._text[s: e]
 
             entities.add(Event(
@@ -589,18 +589,14 @@ class TempEval2DocumentReader(BaseDocumentReader):
             ))
 
         # timexs
-        for timex in self.content["entities"]["timexs"]:
+        timexs = self.content["entities"]["timexs"]
+        for timex in timexs:
 
             # find entity endpoints
-            if timex["sent_idx"] != 0 and timex["tkn_idx"] != [0]:  # ignore dct as it is not explicit in raw text
-                endpoints = []
-                for idx in timex["tkn_idx"]:
-                    key = f"s{timex['sent_idx']}t{idx}"
-                    token = token_dict[key]
-                    endpoints += [*token["endpoints"]]
-                s, e = endpoints[0], endpoints[-1]
+            if "function_in_document" not in timex:  # ignore dct since it is not explicit in raw text
+                s, e = self._get_endpoints(timex, endpoints_map)
 
-                timex["endpoints"] = [s, e]
+                timex["endpoints"] = (s, e)
                 timex["text"] = self._text[s: e]
 
             entities.add(Timex(
@@ -614,12 +610,19 @@ class TempEval2DocumentReader(BaseDocumentReader):
                 text=timex.get("text")
             ))
 
+        # dct
+        entities.add(self._dct)
+
         return entities
 
     @property
     def _tlinks(self) -> Iterable[TLink]:
 
         tlinks = set()
+
+        for ent in self._entities:
+            if ent is None:
+                print()
 
         entities_dict = {ent.id: ent for ent in self._entities}
         for tlink in self.content["tlinks"]:
@@ -634,15 +637,13 @@ class TempEval2DocumentReader(BaseDocumentReader):
 
         return tlinks
 
-    def _get_endpoints(self, entity):
+    def _get_endpoints(self, entity, endpoints_map):
 
-        endpoints = []
-        for token in self.content["tokens"]:
-            cond1 = token["sent_idx"] == entity["sent_idx"]
-            cond2 = token["tkn_idx"] in entity["tkn_idx"]
-            if cond1 and cond2:
-                endpoints += [*token["endpoints"]]
-
+        endpoints = [
+            endpoint
+            for tkn_idx in entity["tkn_idx"]
+            for endpoint in endpoints_map[(entity["sent_idx"], tkn_idx)]
+        ]
         return endpoints[0], endpoints[-1]
 
 
@@ -684,6 +685,7 @@ class TCRDocumentReader(BaseDocumentReader):
                 if event:
                     mkinst.update(event)
 
+                s, e = mkinst["endpoints"].split(" ")
                 entities.add(Event(
                     aspect=mkinst.get('aspect'),
                     class_=mkinst.get('class'),
@@ -693,21 +695,25 @@ class TCRDocumentReader(BaseDocumentReader):
                     polarity=mkinst.get('polarity'),
                     pos=mkinst.get('pos'),
                     tense=mkinst.get('tense'),
-                    text=mkinst.get('text')
+                    text=mkinst.get('text'),
+                    endpoints=(int(s), int(e))
                 ))
 
         # timexs
         timexs = self.content["TimeML"]["TEXT"].get("TIMEX3")
-        if not isinstance(timexs, list) and timexs is not None:
-            timexs = [timexs]
+        timexs = assert_list(timexs)
 
         if timexs:
             for timex in timexs:
+
+                s, e = timex["endpoints"].split(" ")
+
                 entities.add(Timex(
                     text=timex["text"],
                     id=timex["tid"],
                     type_=timex["type"],
                     value=timex["value"],
+                    endpoints=(int(s), int(e))
                 ))
 
         # dct
@@ -758,6 +764,8 @@ class TempEval2FrenchDocumentReader(BaseDocumentReader):
 
         self.xml = ET.parse(self.path)
 
+        print(path)
+
     @property
     def _name(self) -> str:
         return self.path.name.replace(".xml", "")
@@ -765,18 +773,14 @@ class TempEval2FrenchDocumentReader(BaseDocumentReader):
     @property
     def _dct(self) -> Timex:
 
-        timexs = self.content["TimeML"]["TEXT"]["TIMEX3"]
-        if not isinstance(timexs, list):
-            timexs = [timexs]
+        timex = self.content["TimeML"]["TIMEX3"]
 
-        for timex in timexs:
-            if timex.get("functionInDocument") == "CREATION_TIME":
-                return Timex(
-                    id=timex["tid"],
-                    function_in_document=timex["functionInDocument"],
-                    value=timex["value"],
-                    type=timex["type"],
-                )
+        return Timex(
+            id=timex["tid"],
+            function_in_document=timex["functionInDocument"],
+            value=timex["value"],
+            type=timex["type"],
+        )
 
     @property
     def _text(self) -> str:
@@ -801,11 +805,14 @@ class TempEval2FrenchDocumentReader(BaseDocumentReader):
                 if event:
                     mkinst.update(event)
 
+                s, e = mkinst.get("endpoints").split()
+
                 entities.add(Event(
                     id=mkinst['eiid'],
                     eid=mkinst['eid'],
                     eiid=mkinst['eiid'],
                     text=mkinst['text'],
+                    endpoints=(int(s), int(e)),
                     aspect=mkinst.get('aspect'),
                     class_=mkinst.get('class'),
                     modality=mkinst.get('modality'),
@@ -819,10 +826,13 @@ class TempEval2FrenchDocumentReader(BaseDocumentReader):
         else:
 
             for event in events:
+                s, e = event.get("endpoints").split()
+
                 entities.add(Event(
                     id=event['eid'],
                     eid=event['eid'],
                     text=event['text'],
+                    endpoints=(int(s), int(e)),
                     aspect=event.get('aspect'),
                     class_=event.get('class'),
                     modality=event.get('modality'),
@@ -833,21 +843,27 @@ class TempEval2FrenchDocumentReader(BaseDocumentReader):
                     tense=event.get('tense'),
                 ))
 
-        timexs = self.content["TimeML"]["TEXT"]["TIMEX3"]
-        if not isinstance(timexs, list):
-            timexs = [timexs]
+        timexs = self.content["TimeML"]["TEXT"].get("TIMEX3")
+        timexs = assert_list(timexs)
 
-        for timex in timexs:
-            entities.add(Timex(
-                id=timex["tid"],
-                text=timex.get("text"),
-                value=timex.get("value"),
-                type=timex.get("type"),
-                function_in_document=timex.get("functionInDocument"),
-                anchor_time_id=timex.get("anchorTimeID"),
-                temporal_function=timex.get("temporalFunction"),
-                value_from_function=timex.get("valueFromFunction"),
-            ))
+        if timexs:
+            for timex in timexs:
+
+                s, e = timex.get("endpoints").split()
+                entities.add(Timex(
+                    id=timex["tid"],
+                    text=timex.get("text"),
+                    endpoints=(int(s), int(e)),
+                    value=timex.get("value"),
+                    type=timex.get("type"),
+                    function_in_document=timex.get("functionInDocument"),
+                    anchor_time_id=timex.get("anchorTimeID"),
+                    temporal_function=timex.get("temporalFunction"),
+                    value_from_function=timex.get("valueFromFunction"),
+                ))
+
+        # dct
+        entities.add(self._dct)
 
         return entities
 
@@ -902,7 +918,6 @@ class TimeBankPTDocumentReader(BaseDocumentReader):
     def _text(self) -> str:
 
         sentences = self.xml.findall("s")
-
         text = "\n".join(
             "".join(e for e in sent.itertext())
             for sent in sentences
@@ -932,10 +947,12 @@ class TimeBankPTDocumentReader(BaseDocumentReader):
                 timexs += sent_timexs
 
         for event in events:
+            s, e = event.get("endpoints").split()
             entities.add(Event(
                 id=event['eid'],
                 eid=event['eid'],
                 text=event['text'],
+                endpoints=(int(s), int(e)),
                 aspect=event.get('aspect'),
                 class_=event.get('class'),
                 modality=event.get('modality'),
@@ -947,11 +964,13 @@ class TimeBankPTDocumentReader(BaseDocumentReader):
             ))
 
         for timex in timexs:
+            s, e = timex.get("endpoints").split()
             entities.add(Timex(
                 id=timex["tid"],
                 text=timex.get("text"),
                 value=timex.get("value"),
                 type=timex.get("type"),
+                endpoints=(int(s), int(e)),
                 function_in_document=timex.get("functionInDocument"),
                 anchor_time_id=timex.get("anchorTimeID"),
                 temporal_function=timex.get("temporalFunction"),
