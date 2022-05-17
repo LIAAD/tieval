@@ -6,7 +6,7 @@ A framework for the development of temporally aware models.
 
 ## Installation
 
-The package is available on [PyPI]():
+The package is available on [PyPI](https://pypi.org/project/tieval/):
 
 ```shell
 pip install tieval
