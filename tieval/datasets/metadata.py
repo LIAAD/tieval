@@ -208,16 +208,6 @@ DATASETS_METADATA = {
         doc_reader=TempEval3DocumentReader,
     ),
 
-    "tempqa": DatasetMetadata(
-        name="TempQA",
-        url="https://drive.inesctec.pt/s/PQJD7KfEgKTYMXR/download"
-    ),
-
-    "tempquestions": DatasetMetadata(
-        name="TempQuestions",
-        url="https://drive.inesctec.pt/s/RCYzmwQapHJMaa4/download"
-    ),
-
     "timebank_1.2": DatasetMetadata(
         name="TimeBank_1.2",
         url="https://drive.inesctec.pt/s/QHiBgZmi45B72AB/download",
@@ -246,11 +236,6 @@ DATASETS_METADATA = {
         url="https://drive.inesctec.pt/s/KmeTs6LqnmzRr2s/download",
         reader=XMLDatasetReader,
         doc_reader=TempEval3DocumentReader,
-    ),
-
-    "torque": DatasetMetadata(
-        name="TORQUE",
-        url="https://drive.inesctec.pt/s/EfJ2YeB7wQKxdjM/download",
     ),
 
     "traint3": DatasetMetadata(
