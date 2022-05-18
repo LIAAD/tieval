@@ -178,7 +178,6 @@ termcolor==1.1.0
 terminado==0.13.3
 thinc==8.0.15
 threadpoolctl==3.1.0
--e git+git@github.com:LIAAD/tieval.git@ca9ddeb35fc1437542ff224c1ad2c256371cbf04#egg=tieval
 tinycss2==1.1.1
 tokenizers==0.12.1
 toml==0.10.2
