@@ -204,7 +204,6 @@ def tlink_classification(
         fps += fp
         fns += fn
         n_relations += len(true)
-        print(len(true))
 
     # compute macro metrics
     M_accuracy /= n_docs
