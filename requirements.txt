@@ -117,7 +117,7 @@ psutil==5.9.0
 ptyprocess==0.7.0
 pure-eval==0.2.2
 py==1.11.0
-py-heideltime==2.0
+git+https://github.com/JMendes1995/py_heideltime
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
 pycparser==2.21
