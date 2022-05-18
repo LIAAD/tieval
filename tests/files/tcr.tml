@@ -1,188 +1,160 @@
-<?xml version="1.0" ?>
 <TimeML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://timeml.org/timeMLdocs/TimeML_1.2.1.xsd">
-<DOCID>2010.03.23.how.get.headhunted</DOCID>
-<DCT><TIMEX3 tid="t0" type="DATE" value="2010-03-23" temporalFunction="false" functionInDocument="CREATION_TIME">2010-03-23</TIMEX3></DCT>
-<TEXT>Rather than <EVENT class="OCCURRENCE" eid="e1">getting</EVENT> their hands dirty in the cutthroat job market, savvy executives get the job offers to come to them.
-Executive search firms are <EVENT class="OCCURRENCE" eid="e6">hired</EVENT> by companies to find the best personnel to fill a vacancy.
-But you wo n't find these jobs <EVENT class="OCCURRENCE" eid="e10">advertised</EVENT> in newspapers or on Internet job boards.
-The only way to take advantage of this hidden job market is to get <EVENT class="OCCURRENCE" eid="e13">noticed</EVENT> by the executive recruiters.
-With the economy <EVENT class="I_ACTION" eid="e14">picking</EVENT> up it's time to get on the headhunters' radar.
-Three industry experts <EVENT class="REPORTING" eid="e16">tell</EVENT> us how Success breeds success The one thing you absolutely have to do to get a headhunter's attention is be good at your job.
-Kit Bingham, principal at executive search firm Odgers Berndtson, <EVENT class="REPORTING" eid="e21">told</EVENT> CNN, " What gets <EVENT class="OCCURRENCE" eid="e22">noticed</EVENT> is success, so the way to get noticed [ by search firms ] is to be very good at your job.
-" In time that gets <EVENT class="OCCURRENCE" eid="e26">noticed</EVENT> within your organization, and when it gets <EVENT class="OCCURRENCE" eid="e27">noticed</EVENT> within an organization, it <EVENT class="OCCURRENCE" eid="e28">tends</EVENT> to <EVENT class="OCCURRENCE" eid="e29">get</EVENT> <EVENT class="OCCURRENCE" eid="e30">noticed</EVENT> outside. "
-Why being a CEO " should carry a health warning " Speak up There are a number of ways to raise your profile outside your organization.
-Industry events are a good place to get your name <EVENT class="OCCURRENCE" eid="e35">known</EVENT> and <EVENT class="OCCURRENCE" eid="e36">make</EVENT> your voice <EVENT class="OCCURRENCE" eid="e37">heard</EVENT>.
-" Most sectors have industry associations that <EVENT class="OCCURRENCE" eid="e38">hold</EVENT> conferences, " <EVENT class="REPORTING" eid="e39">said</EVENT> Felix.
-" <EVENT class="OCCURRENCE" eid="e40">Put</EVENT> yourself forward to speak at events and be on panels. "
-<EVENT class="OCCURRENCE" eid="e42">Get</EVENT> your name into print " Being <EVENT class="REPORTING" eid="e43">quoted</EVENT> in the media is something the executive search firms will pick up on and take notice of, " <EVENT class="REPORTING" eid="e48">said</EVENT> Ispahani.
-He <EVENT class="I_ACTION" eid="e49">suggested</EVENT> writing an article or think piece for publication.
-Trade publications are a good place to <EVENT class="ASPECTUAL" eid="e52">start</EVENT> and Ispahani <EVENT class="REPORTING" eid="e53">said</EVENT> letting your company's PR or marketing department <EVENT class="I_STATE" eid="e54">know</EVENT> you are interested in contributing to industry journals can help get things moving.
-" If you really believe a business issue is interesting, writing a letter to an editor of a newspaper and <EVENT class="OCCURRENCE" eid="e62">getting</EVENT> it <EVENT class="OCCURRENCE" eid="e63">published</EVENT> is a way of <EVENT class="OCCURRENCE" eid="e64">raising</EVENT> your profile.
-It's useful to be seen as someone with a considered opinion, " <EVENT class="REPORTING" eid="e66">said</EVENT> Ispahani.
-Show you're an expert -- write a book Build your network The more people know your name, the more chance a headhunter will <EVENT class="OCCURRENCE" eid="e69">get</EVENT> to hear about you.
-But networking is n't about getting to know as many people as possible, it's about getting to know the right people.
-Peter Felix, president of the Association of Executive Search Consultants, <EVENT class="REPORTING" eid="e75">told</EVENT> CNN.
-" Networking is a research-based activity.
-It's not just a matter of randomly talking to a few people you know -- it's a proactive process.
-You need to be well <EVENT class="OCCURRENCE" eid="e79">organized</EVENT> and build momentum.
-" It's very time consuming and if you are <EVENT class="OCCURRENCE" eid="e81">employed</EVENT> you have to do it subtly and find the time to do it. "
-Seminars and conferences are good places to make new contacts, but do n't forget to develop a network within your own company.
-There is also a wealth of ways to network online ; just be aware that not all of them will be appropriate for you.
-" Online networks like LinkedIn, which is for professionals, are a good way of sharing your network, joining other people's, and <EVENT class="OCCURRENCE" eid="e91">raising</EVENT> your visibility, " <EVENT class="REPORTING" eid="e92">said</EVENT> Iraj Ispahani, of executive search firm Korn / Ferry Whitehead Mann.
-" But there are other sorts of social networking that do n't fall into the professional category.
-There should be judicious use of networking -- not all networking is good networking, " he <EVENT class="REPORTING" eid="e95">told</EVENT> CNN.
-<EVENT class="OCCURRENCE" eid="e96">Find</EVENT> a champion Having friends in high places who can vouch for your professional ability can help establish your credibility.
-" A useful thing to do is to have a champion.
-That could be a senior mentor in the company, or someone who you've <EVENT class="OCCURRENCE" eid="e101">worked</EVENT> with that recruitment companies may already <EVENT class="I_STATE" eid="e102">know</EVENT>, " <EVENT class="REPORTING" eid="e103">said</EVENT> Bingham.
-" Having that person as a trusted third party endorsement can help enormously. "
-Working with a mentor Reach out to the recruiters Executive search firms have extensive databases of potential candidates and if you want the recruiters to know you <EVENT class="OCCURRENCE" eid="e108">exist</EVENT> you need to be in their records.
-But do n't just set about sending your resume to every search firm you can find.
-" Identifying consultants who are relevant to your industry and career is an important part of career research, " <EVENT class="REPORTING" eid="e113">said</EVENT> Felix.
-A Web search will <EVENT class="I_ACTION" eid="e115">help</EVENT> <EVENT class="OCCURRENCE" eid="e116">find</EVENT> the firms that fit your needs.
-Once you've found the right firms to contact, Ispahani <EVENT class="I_ACTION" eid="e118">suggested</EVENT> emailing an introduction and following up with a phone call.
-If you've <EVENT class="OCCURRENCE" eid="e121">written</EVENT> an article or achieved something you think they should be aware of, <EVENT class="OCCURRENCE" eid="e124">let</EVENT> them know and ask them to make a note of it on their database.
-Do n't wait until you're looking for a new job " It's important that executives should start to build relationships with executive search firms not just when they're looking for a job, " <EVENT class="REPORTING" eid="e134">said</EVENT> Ispahani.
-" They need to build those relationships and keep in touch with the researchers and partners at the search firm as their career is developing. "
-If you get a call from a search firm wanting to know your opinion of a former colleague, use it as an opportunity to connect with the headhunter.
-" If someone calls you from an executive search firm to ask your perspective on someone you've <EVENT class="OCCURRENCE" eid="e149">worked</EVENT> with in the past, be helpful, return the phone call.
-" Those things are appreciated and <EVENT class="OCCURRENCE" eid="e152">remembered</EVENT>.
-If you're <EVENT class="OCCURRENCE" eid="e153">perceived</EVENT> to have been helpful, people will try to <EVENT class="I_ACTION" eid="e155">help</EVENT> you. "</TEXT>
-<MAKEINSTANCE aspect="NONE" eiid="ei1" eid="e1" polarity="POS"  tense="PRESPART" />
-<MAKEINSTANCE aspect="NONE" eiid="ei6" eid="e6" polarity="POS"  tense="PRESENT" />
-<MAKEINSTANCE aspect="NONE" eiid="ei10" eid="e10" polarity="POS"  tense="PAST" />
-<MAKEINSTANCE aspect="NONE" eiid="ei13" eid="e13" polarity="POS"  tense="PASTPART" />
-<MAKEINSTANCE aspect="NONE" eiid="ei14" eid="e14" polarity="POS"  tense="PRESPART" />
-<MAKEINSTANCE aspect="NONE" eiid="ei16" eid="e16" polarity="POS"  tense="PRESENT" />
-<MAKEINSTANCE aspect="NONE" eiid="ei21" eid="e21" polarity="POS"  tense="PAST" />
-<MAKEINSTANCE aspect="NONE" eiid="ei22" eid="e22" polarity="POS"  tense="PASTPART" />
-<MAKEINSTANCE aspect="NONE" eiid="ei26" eid="e26" polarity="POS"  tense="PAST" />
-<MAKEINSTANCE aspect="NONE" eiid="ei27" eid="e27" polarity="POS"  tense="PASTPART" />
-<MAKEINSTANCE aspect="NONE" eiid="ei28" eid="e28" polarity="POS"  tense="PRESENT" />
-<MAKEINSTANCE aspect="NONE" eiid="ei29" eid="e29" polarity="POS"  tense="INFINITIVE" />
-<MAKEINSTANCE aspect="NONE" eiid="ei30" eid="e30" polarity="POS"  tense="PASTPART" />
-<MAKEINSTANCE aspect="NONE" eiid="ei35" eid="e35" polarity="POS"  tense="PRESENT" />
-<MAKEINSTANCE aspect="NONE" eiid="ei36" eid="e36" polarity="POS"  tense="NONE" />
-<MAKEINSTANCE aspect="NONE" eiid="ei37" eid="e37" polarity="POS"  tense="PAST" />
-<MAKEINSTANCE aspect="NONE" eiid="ei38" eid="e38" polarity="POS"  tense="PRESENT" />
-<MAKEINSTANCE aspect="NONE" eiid="ei39" eid="e39" polarity="POS"  tense="PAST" />
-<MAKEINSTANCE aspect="NONE" eiid="ei40" eid="e40" polarity="POS"  tense="PRESENT" />
-<MAKEINSTANCE aspect="NONE" eiid="ei42" eid="e42" polarity="POS"  tense="PRESENT" />
-<MAKEINSTANCE aspect="NONE" eiid="ei43" eid="e43" polarity="POS"  tense="PASTPART" />
-<MAKEINSTANCE aspect="NONE" eiid="ei48" eid="e48" polarity="POS"  tense="PAST" />
-<MAKEINSTANCE aspect="NONE" eiid="ei49" eid="e49" polarity="POS"  tense="PAST" />
-<MAKEINSTANCE aspect="NONE" eiid="ei52" eid="e52" polarity="POS"  tense="INFINITIVE" />
-<MAKEINSTANCE aspect="NONE" eiid="ei53" eid="e53" polarity="POS"  tense="PAST" />
-<MAKEINSTANCE aspect="NONE" eiid="ei54" eid="e54" polarity="POS"  tense="PRESENT" />
-<MAKEINSTANCE aspect="NONE" eiid="ei62" eid="e62" polarity="POS"  tense="PRESPART" />
-<MAKEINSTANCE aspect="NONE" eiid="ei63" eid="e63" polarity="POS"  tense="PASTPART" />
-<MAKEINSTANCE aspect="NONE" eiid="ei64" eid="e64" polarity="POS"  tense="PRESPART" />
-<MAKEINSTANCE aspect="NONE" eiid="ei66" eid="e66" polarity="POS"  tense="PAST" />
-<MAKEINSTANCE aspect="NONE" eiid="ei69" eid="e69" polarity="POS"  tense="FUTURE" />
-<MAKEINSTANCE aspect="NONE" eiid="ei75" eid="e75" polarity="POS"  tense="PAST" />
-<MAKEINSTANCE aspect="NONE" eiid="ei79" eid="e79" polarity="POS"  tense="PASTPART" />
-<MAKEINSTANCE aspect="NONE" eiid="ei81" eid="e81" polarity="POS"  tense="PRESENT" />
-<MAKEINSTANCE aspect="NONE" eiid="ei91" eid="e91" polarity="POS"  tense="PRESPART" />
-<MAKEINSTANCE aspect="NONE" eiid="ei92" eid="e92" polarity="POS"  tense="PAST" />
-<MAKEINSTANCE aspect="NONE" eiid="ei95" eid="e95" polarity="POS"  tense="PAST" />
-<MAKEINSTANCE aspect="NONE" eiid="ei96" eid="e96" polarity="POS"  tense="PRESENT" />
-<MAKEINSTANCE aspect="PERFECTIVE" eiid="ei101" eid="e101" polarity="POS"  tense="PASTPART" />
-<MAKEINSTANCE aspect="NONE" eiid="ei102" eid="e102" polarity="POS"  tense="NONE" />
-<MAKEINSTANCE aspect="NONE" eiid="ei103" eid="e103" polarity="POS"  tense="PAST" />
-<MAKEINSTANCE aspect="NONE" eiid="ei108" eid="e108" polarity="POS"  tense="PRESENT" />
-<MAKEINSTANCE aspect="NONE" eiid="ei113" eid="e113" polarity="POS"  tense="PAST" />
-<MAKEINSTANCE aspect="NONE" eiid="ei115" eid="e115" polarity="POS"  tense="FUTURE" />
-<MAKEINSTANCE aspect="NONE" eiid="ei116" eid="e116" polarity="POS"  tense="FUTURE" />
-<MAKEINSTANCE aspect="NONE" eiid="ei118" eid="e118" polarity="POS"  tense="PAST" />
-<MAKEINSTANCE aspect="PERFECTIVE" eiid="ei121" eid="e121" polarity="POS"  tense="PASTPART" />
-<MAKEINSTANCE aspect="NONE" eiid="ei124" eid="e124" polarity="POS"  tense="INFINITIVE" />
-<MAKEINSTANCE aspect="NONE" eiid="ei134" eid="e134" polarity="POS"  tense="PAST" />
-<MAKEINSTANCE aspect="PERFECTIVE" eiid="ei149" eid="e149" polarity="POS"  tense="PASTPART" />
-<MAKEINSTANCE aspect="NONE" eiid="ei152" eid="e152" polarity="POS"  tense="PASTPART" />
-<MAKEINSTANCE aspect="NONE" eiid="ei153" eid="e153" polarity="POS"  tense="PRESENT" />
-<MAKEINSTANCE aspect="NONE" eiid="ei155" eid="e155" polarity="POS"  tense="INFINITIVE" />
-<TLINK from="ei10" lid="l0" relType="SIMULTANEOUS" to="ei13" />
-<TLINK from="ei14" lid="l1" relType="BEFORE" to="ei16" />
-<TLINK from="ei16" lid="l2" relType="AFTER" to="ei22" />
-<TLINK from="ei21" lid="l3" relType="AFTER" to="ei22" />
-<TLINK from="ei21" lid="l4" relType="AFTER" to="ei26" />
-<TLINK from="ei21" lid="l5" relType="AFTER" to="ei27" />
-<TLINK from="ei21" lid="l6" relType="AFTER" to="ei28" />
-<TLINK from="ei21" lid="l7" relType="BEFORE" to="ei30" />
-<TLINK from="ei22" lid="l8" relType="BEFORE" to="ei26" />
-<TLINK from="ei22" lid="l9" relType="BEFORE" to="ei27" />
-<TLINK from="ei22" lid="l10" relType="BEFORE" to="ei28" />
-<TLINK from="ei22" lid="l11" relType="BEFORE" to="ei29" />
-<TLINK from="ei22" lid="l12" relType="BEFORE" to="ei30" />
-<TLINK from="ei26" lid="l13" relType="BEFORE" to="ei27" />
-<TLINK from="ei26" lid="l14" relType="BEFORE" to="ei28" />
-<TLINK from="ei26" lid="l15" relType="BEFORE" to="ei29" />
-<TLINK from="ei26" lid="l16" relType="BEFORE" to="ei30" />
-<TLINK from="ei27" lid="l17" relType="BEFORE" to="ei28" />
-<TLINK from="ei27" lid="l18" relType="BEFORE" to="ei29" />
-<TLINK from="ei27" lid="l19" relType="BEFORE" to="ei30" />
-<TLINK from="ei28" lid="l20" relType="BEFORE" to="ei29" />
-<TLINK from="ei28" lid="l21" relType="BEFORE" to="ei30" />
-<TLINK from="ei29" lid="l22" relType="BEFORE" to="ei30" />
-<TLINK from="ei35" lid="l23" relType="BEFORE" to="ei36" />
-<TLINK from="ei35" lid="l24" relType="BEFORE" to="ei37" />
-<TLINK from="ei35" lid="l25" relType="AFTER" to="ei38" />
-<TLINK from="ei35" lid="l26" relType="AFTER" to="ei39" />
-<TLINK from="ei36" lid="l27" relType="BEFORE" to="ei37" />
-<TLINK from="ei36" lid="l28" relType="AFTER" to="ei38" />
-<TLINK from="ei36" lid="l29" relType="BEFORE" to="ei39" />
-<TLINK from="ei37" lid="l30" relType="AFTER" to="ei38" />
-<TLINK from="ei37" lid="l31" relType="BEFORE" to="ei39" />
-<TLINK from="ei38" lid="l32" relType="BEFORE" to="ei39" />
-<TLINK from="ei38" lid="l33" relType="BEFORE" to="ei40" />
-<TLINK from="ei39" lid="l34" relType="BEFORE" to="ei40" />
-<TLINK from="ei40" lid="l35" relType="BEFORE" to="ei42" />
-<TLINK from="ei40" lid="l36" relType="BEFORE" to="ei43" />
-<TLINK from="ei40" lid="l37" relType="BEFORE" to="ei48" />
-<TLINK from="ei42" lid="l38" relType="BEFORE" to="ei43" />
-<TLINK from="ei42" lid="l39" relType="AFTER" to="ei48" />
-<TLINK from="ei42" lid="l40" relType="AFTER" to="ei49" />
-<TLINK from="ei43" lid="l41" relType="BEFORE" to="ei48" />
-<TLINK from="ei43" lid="l42" relType="BEFORE" to="ei49" />
-<TLINK from="ei48" lid="l43" relType="BEFORE" to="ei49" />
-<TLINK from="ei49" lid="l44" relType="BEFORE" to="ei52" />
-<TLINK from="ei49" lid="l45" relType="BEFORE" to="ei53" />
-<TLINK from="ei49" lid="l46" relType="BEFORE" to="ei54" />
-<TLINK from="ei52" lid="l47" relType="BEFORE" to="ei53" />
-<TLINK from="ei52" lid="l48" relType="BEFORE" to="ei54" />
-<TLINK from="ei52" lid="l49" relType="BEFORE" to="ei62" />
-<TLINK from="ei52" lid="l50" relType="BEFORE" to="ei63" />
-<TLINK from="ei52" lid="l51" relType="BEFORE" to="ei64" />
-<TLINK from="ei53" lid="l52" relType="BEFORE" to="ei54" />
-<TLINK from="ei53" lid="l53" relType="BEFORE" to="ei62" />
-<TLINK from="ei53" lid="l54" relType="BEFORE" to="ei63" />
-<TLINK from="ei53" lid="l55" relType="BEFORE" to="ei64" />
-<TLINK from="ei54" lid="l56" relType="BEFORE" to="ei62" />
-<TLINK from="ei54" lid="l57" relType="BEFORE" to="ei63" />
-<TLINK from="ei54" lid="l58" relType="BEFORE" to="ei64" />
-<TLINK from="ei62" lid="l59" relType="BEFORE" to="ei63" />
-<TLINK from="ei62" lid="l60" relType="BEFORE" to="ei64" />
-<TLINK from="ei62" lid="l61" relType="BEFORE" to="ei66" />
-<TLINK from="ei63" lid="l62" relType="BEFORE" to="ei64" />
-<TLINK from="ei63" lid="l63" relType="BEFORE" to="ei66" />
-<TLINK from="ei64" lid="l64" relType="BEFORE" to="ei66" />
-<TLINK from="ei66" lid="l65" relType="BEFORE" to="ei69" />
-<TLINK from="ei91" lid="l66" relType="BEFORE" to="ei92" />
-<TLINK from="ei95" lid="l67" relType="BEFORE" to="ei96" />
-<TLINK from="ei101" lid="l68" relType="BEFORE" to="ei102" />
-<TLINK from="ei101" lid="l69" relType="BEFORE" to="ei103" />
-<TLINK from="ei102" lid="l70" relType="BEFORE" to="ei103" />
-<TLINK from="ei113" lid="l71" relType="BEFORE" to="ei115" />
-<TLINK from="ei113" lid="l72" relType="BEFORE" to="ei116" />
-<TLINK from="ei115" lid="l73" relType="BEFORE" to="ei116" />
-<TLINK from="ei115" lid="l74" relType="BEFORE" to="ei118" />
-<TLINK from="ei116" lid="l75" relType="BEFORE" to="ei118" />
-<TLINK from="ei118" lid="l76" relType="AFTER" to="ei121" />
-<TLINK from="ei118" lid="l77" relType="BEFORE" to="ei124" />
-<TLINK from="ei121" lid="l78" relType="BEFORE" to="ei124" />
-<TLINK from="ei121" lid="l79" relType="BEFORE" to="ei134" />
-<TLINK from="ei124" lid="l80" relType="BEFORE" to="ei134" />
-<TLINK from="ei149" lid="l81" relType="BEFORE" to="ei152" />
-<TLINK from="ei152" lid="l82" relType="BEFORE" to="ei153" />
-<TLINK from="ei152" lid="l83" relType="BEFORE" to="ei155" />
-<TLINK from="ei153" lid="l84" relType="BEFORE" to="ei155" />
+<DOCID>2010.01.08.facebook.bra.color</DOCID>
+<DCT><TIMEX3 tid="t0" type="DATE" value="2010-01-08" temporalFunction="false" functionInDocument="CREATION_TIME">2010-01-08</TIMEX3></DCT>
+<TEXT>Facebook <EVENT class="OCCURRENCE" eid="e1" endpoints="9 13">took</EVENT> a colorful turn <TIMEX3 tid="t1" type="DATE" value="" endpoints="30 39">this week</TIMEX3>, when its female users <EVENT class="ASPECTUAL" eid="e2" endpoints="63 68">began</EVENT> <EVENT class="OCCURRENCE" eid="e3" endpoints="69 76">posting</EVENT> cryptic status updates.
+" Beige, " " sexy black and gold, " " crimson red, " " turquoise, " " nude with a lot of padding, " <EVENT class="OCCURRENCE" eid="e5" endpoints="201 205">read</EVENT> some.
+The color scheme has <EVENT class="OCCURRENCE" eid="e6" endpoints="233 237">left</EVENT> male users <EVENT class="OCCURRENCE" eid="e7" endpoints="249 259">scratching</EVENT> their heads and <EVENT class="OCCURRENCE" eid="e8" endpoints="276 282">asking</EVENT> " Huh ? "
+So, what is behind the trend ?
+It's all part of an effort to raise awareness for breast cancer by asking women to post the color of the bra they're <EVENT class="OCCURRENCE" eid="e12" endpoints="441 448">wearing</EVENT>.
+Female Facebookers <EVENT class="ASPECTUAL" eid="e13" endpoints="469 476">started</EVENT> <EVENT class="I_ACTION" eid="e14" endpoints="477 485">catching</EVENT> on <TIMEX3 tid="t2" type="DATE" value="" endpoints="489 498">this week</TIMEX3> as a message <EVENT class="OCCURRENCE" eid="e15" endpoints="512 516">made</EVENT> its rounds through the inboxes of the social media network.
+" We are <EVENT class="OCCURRENCE" eid="e16" endpoints="586 593">playing</EVENT> a game for Breast Cancer Awareness, " one form of the message read.
+" Write the color of your bra as your status -- just the color, nothing else !!
+Copy this and pass it on to all girls -- NO MEN !!
+This will be fun to see how it spreads. "
+By <TIMEX3 tid="t3" type="DATE" value="" endpoints="838 844">Friday</TIMEX3>, all the colors of the Victoria's Secret rainbow were present in users' news feeds when they <EVENT class="OCCURRENCE" eid="e23" endpoints="938 944">logged</EVENT> in.
+A spokeswoman for Facebook <EVENT class="REPORTING" eid="e24" endpoints="976 980">said</EVENT> it's not clear where or how the message <EVENT class="ASPECTUAL" eid="e25" endpoints="1021 1028">started</EVENT>, <EVENT class="I_ACTION" eid="e26" endpoints="1030 1037">calling</EVENT> it an example of a grass-roots movement beginning on the social networking site.
+" What is particularly unique about this grass-roots campaign is that it seems to have been <EVENT class="ASPECTUAL" eid="e27" endpoints="1211 1218">started</EVENT> by a user or group of users, as <EVENT class="OCCURRENCE" eid="e28" endpoints="1251 1258">opposed</EVENT> to an official entity, and <EVENT class="OCCURRENCE" eid="e29" endpoints="1286 1292">spread</EVENT> virally throughout Facebook, " Facebook's Malorie Lucich <EVENT class="REPORTING" eid="e30" endpoints="1350 1354">said</EVENT>.
+" It's an ideal example of how an individual voice can be <EVENT class="OCCURRENCE" eid="e31" endpoints="1414 1423">magnified</EVENT> to create awareness for a good cause and ignite action among millions by <EVENT class="OCCURRENCE" eid="e34" endpoints="1497 1502">using</EVENT> a site like Facebook. "
+Breast cancer groups say they are happy that the disease, which <EVENT class="OCCURRENCE" eid="e36" endpoints="1591 1598">affects</EVENT> more than 200,000 women in the United States <TIMEX3 tid="t4" type="DURATION" value="" endpoints="1644 1650">a year</TIMEX3>, is <EVENT class="OCCURRENCE" eid="e37" endpoints="1655 1662">getting</EVENT> attention.
+" It's not one of our campaigns, but we're all for it, " <EVENT class="REPORTING" eid="e38" endpoints="1731 1735">said</EVENT> Andrea Rader, a spokeswoman for Susan G. Komen for the Cure.
+" Just about anything that <EVENT class="OCCURRENCE" eid="e39" endpoints="1824 1830">raises</EVENT> this issue in a positive, fun way is just terrific. "
+Lucich <EVENT class="REPORTING" eid="e40" endpoints="1892 1896">said</EVENT> hundreds, if not thousands, of users were <EVENT class="OCCURRENCE" eid="e41" endpoints="1939 1946">posting</EVENT> their color choices directly to the Susan G. Komen and Breast Cancer Awareness Facebook pages.
+Rader <EVENT class="OCCURRENCE" eid="e42" endpoints="2048 2058">encouraged</EVENT> women to take the trend one step further by visiting the Komen Web site and getting more information about ways to <EVENT class="OCCURRENCE" eid="e46" endpoints="2174 2179">raise</EVENT> awareness.
+Meanwhile, some tech blogs were <EVENT class="I_ACTION" eid="e47" endpoints="2223 2230">calling</EVENT> the color string the new " 25 Things, " a meme -- Internet speak for a concept or catchphrase that spreads quickly on the Web -- that <EVENT class="OCCURRENCE" eid="e52" endpoints="2365 2369">went</EVENT> viral in early <TIMEX3 tid="t5" type="DATE" value="" endpoints="2385 2389">2009</TIMEX3>.
+Users were <EVENT class="OCCURRENCE" eid="e53" endpoints="2402 2407">asked</EVENT> to <EVENT class="OCCURRENCE" eid="e54" endpoints="2411 2415">post</EVENT> notes with random tidbits about themselves and then " tag " other users to do the same.
+The " 25 Things " note was virtually unavoidable for <TIMEX3 tid="t6" type="DURATION" value="" endpoints="2557 2576">a three-week period</TIMEX3> as users <EVENT class="OCCURRENCE" eid="e57" endpoints="2586 2592">passed</EVENT> it on, sort of like <TIMEX3 tid="t7" type="DURATION" value="" endpoints="2613 2625">a modern-day</TIMEX3> chain letter.
+It's unclear whether the color meme will have the same popularity if half of Facebook's 350 million active users ca n't participate.</TEXT>
+<MAKEINSTANCE aspect="NONE" eiid="ei1" eid="e1" polarity="POS" tense="PAST" />
+<MAKEINSTANCE aspect="NONE" eiid="ei2" eid="e2" polarity="POS" tense="PAST" />
+<MAKEINSTANCE aspect="NONE" eiid="ei3" eid="e3" polarity="POS" tense="PRESPART" />
+<MAKEINSTANCE aspect="NONE" eiid="ei5" eid="e5" polarity="POS" tense="PAST" />
+<MAKEINSTANCE aspect="PERFECTIVE" eiid="ei6" eid="e6" polarity="POS" tense="PRESENT" />
+<MAKEINSTANCE aspect="NONE" eiid="ei7" eid="e7" polarity="POS" tense="PRESPART" />
+<MAKEINSTANCE aspect="NONE" eiid="ei8" eid="e8" polarity="POS" tense="PRESPART" />
+<MAKEINSTANCE aspect="PROGRESSIVE" eiid="ei12" eid="e12" polarity="POS" tense="PRESENT" />
+<MAKEINSTANCE aspect="NONE" eiid="ei13" eid="e13" polarity="POS" tense="PAST" />
+<MAKEINSTANCE aspect="NONE" eiid="ei14" eid="e14" polarity="POS" tense="PRESPART" />
+<MAKEINSTANCE aspect="NONE" eiid="ei15" eid="e15" polarity="POS" tense="NONE" />
+<MAKEINSTANCE aspect="PROGRESSIVE" eiid="ei16" eid="e16" polarity="POS" tense="PRESENT" />
+<MAKEINSTANCE aspect="NONE" eiid="ei23" eid="e23" polarity="POS" tense="PAST" />
+<MAKEINSTANCE aspect="NONE" eiid="ei24" eid="e24" polarity="POS" tense="PAST" />
+<MAKEINSTANCE aspect="NONE" eiid="ei25" eid="e25" polarity="POS" tense="PAST" />
+<MAKEINSTANCE aspect="NONE" eiid="ei26" eid="e26" polarity="POS" tense="PRESPART" />
+<MAKEINSTANCE aspect="PERFECTIVE" eiid="ei27" eid="e27" polarity="POS" tense="PRESENT" />
+<MAKEINSTANCE aspect="NONE" eiid="ei28" eid="e28" polarity="POS" tense="PASTPART" />
+<MAKEINSTANCE aspect="NONE" eiid="ei29" eid="e29" polarity="POS" tense="PAST" />
+<MAKEINSTANCE aspect="NONE" eiid="ei30" eid="e30" polarity="POS" tense="PAST" />
+<MAKEINSTANCE aspect="NONE" eiid="ei31" eid="e31" polarity="POS" tense="NONE" />
+<MAKEINSTANCE aspect="NONE" eiid="ei34" eid="e34" polarity="POS" tense="PRESPART" />
+<MAKEINSTANCE aspect="NONE" eiid="ei36" eid="e36" polarity="POS" tense="PRESENT" />
+<MAKEINSTANCE aspect="PROGRESSIVE" eiid="ei37" eid="e37" polarity="POS" tense="PRESENT" />
+<MAKEINSTANCE aspect="NONE" eiid="ei38" eid="e38" polarity="POS" tense="PAST" />
+<MAKEINSTANCE aspect="NONE" eiid="ei39" eid="e39" polarity="POS" tense="PRESENT" />
+<MAKEINSTANCE aspect="NONE" eiid="ei40" eid="e40" polarity="POS" tense="PAST" />
+<MAKEINSTANCE aspect="NONE" eiid="ei41" eid="e41" polarity="POS" tense="PAST" />
+<MAKEINSTANCE aspect="NONE" eiid="ei42" eid="e42" polarity="POS" tense="PAST" />
+<MAKEINSTANCE aspect="NONE" eiid="ei46" eid="e46" polarity="POS" tense="INFINITIVE" />
+<MAKEINSTANCE aspect="NONE" eiid="ei47" eid="e47" polarity="POS" tense="PAST" />
+<MAKEINSTANCE aspect="NONE" eiid="ei52" eid="e52" polarity="POS" tense="PAST" />
+<MAKEINSTANCE aspect="NONE" eiid="ei53" eid="e53" polarity="POS" tense="PAST" />
+<MAKEINSTANCE aspect="NONE" eiid="ei54" eid="e54" polarity="POS" tense="INFINITIVE" />
+<MAKEINSTANCE aspect="NONE" eiid="ei57" eid="e57" polarity="POS" tense="PAST" />
+<TLINK from="ei1" lid="l0" relType="AFTER" to="ei2" />
+<TLINK from="ei1" lid="l1" relType="AFTER" to="ei3" />
+<TLINK from="ei1" lid="l2" relType="BEFORE" to="ei5" />
+<TLINK from="ei2" lid="l3" relType="BEFORE" to="ei5" />
+<TLINK from="ei3" lid="l4" relType="BEFORE" to="ei5" />
+<TLINK from="ei5" lid="l5" relType="BEFORE" to="ei6" />
+<TLINK from="ei5" lid="l6" relType="BEFORE" to="ei7" />
+<TLINK from="ei5" lid="l7" relType="BEFORE" to="ei8" />
+<TLINK from="ei6" lid="l8" relType="BEFORE" to="ei7" />
+<TLINK from="ei6" lid="l9" relType="BEFORE" to="ei8" />
+<TLINK from="ei7" lid="l10" relType="BEFORE" to="ei8" />
+<TLINK from="ei12" lid="l11" relType="BEFORE" to="ei13" />
+<TLINK from="ei12" lid="l12" relType="BEFORE" to="ei14" />
+<TLINK from="ei12" lid="l13" relType="BEFORE" to="ei15" />
+<TLINK from="ei13" lid="l14" relType="BEFORE" to="ei14" />
+<TLINK from="ei13" lid="l15" relType="AFTER" to="ei15" />
+<TLINK from="ei13" lid="l16" relType="AFTER" to="ei16" />
+<TLINK from="ei14" lid="l17" relType="AFTER" to="ei15" />
+<TLINK from="ei14" lid="l18" relType="BEFORE" to="ei16" />
+<TLINK from="ei15" lid="l19" relType="AFTER" to="ei16" />
+<TLINK from="ei23" lid="l20" relType="BEFORE" to="ei24" />
+<TLINK from="ei23" lid="l21" relType="BEFORE" to="ei25" />
+<TLINK from="ei23" lid="l22" relType="BEFORE" to="ei26" />
+<TLINK from="ei24" lid="l23" relType="AFTER" to="ei25" />
+<TLINK from="ei24" lid="l24" relType="BEFORE" to="ei26" />
+<TLINK from="ei24" lid="l25" relType="AFTER" to="ei27" />
+<TLINK from="ei24" lid="l26" relType="AFTER" to="ei28" />
+<TLINK from="ei24" lid="l27" relType="AFTER" to="ei29" />
+<TLINK from="ei24" lid="l28" relType="BEFORE" to="ei30" />
+<TLINK from="ei25" lid="l29" relType="BEFORE" to="ei26" />
+<TLINK from="ei25" lid="l30" relType="BEFORE" to="ei27" />
+<TLINK from="ei25" lid="l31" relType="BEFORE" to="ei28" />
+<TLINK from="ei25" lid="l32" relType="BEFORE" to="ei29" />
+<TLINK from="ei25" lid="l33" relType="BEFORE" to="ei30" />
+<TLINK from="ei26" lid="l34" relType="BEFORE" to="ei27" />
+<TLINK from="ei26" lid="l35" relType="BEFORE" to="ei28" />
+<TLINK from="ei26" lid="l36" relType="AFTER" to="ei29" />
+<TLINK from="ei26" lid="l37" relType="BEFORE" to="ei30" />
+<TLINK from="ei27" lid="l38" relType="BEFORE" to="ei28" />
+<TLINK from="ei27" lid="l39" relType="BEFORE" to="ei29" />
+<TLINK from="ei27" lid="l40" relType="BEFORE" to="ei30" />
+<TLINK from="ei27" lid="l41" relType="BEFORE" to="ei31" />
+<TLINK from="ei27" lid="l42" relType="BEFORE" to="ei34" />
+<TLINK from="ei28" lid="l43" relType="BEFORE" to="ei29" />
+<TLINK from="ei28" lid="l44" relType="BEFORE" to="ei30" />
+<TLINK from="ei28" lid="l45" relType="BEFORE" to="ei31" />
+<TLINK from="ei28" lid="l46" relType="AFTER" to="ei34" />
+<TLINK from="ei29" lid="l47" relType="BEFORE" to="ei30" />
+<TLINK from="ei29" lid="l48" relType="BEFORE" to="ei31" />
+<TLINK from="ei30" lid="l49" relType="AFTER" to="ei31" />
+<TLINK from="ei30" lid="l50" relType="AFTER" to="ei34" />
+<TLINK from="ei31" lid="l51" relType="AFTER" to="ei34" />
+<TLINK from="ei31" lid="l52" relType="AFTER" to="ei36" />
+<TLINK from="ei31" lid="l53" relType="BEFORE" to="ei37" />
+<TLINK from="ei34" lid="l54" relType="AFTER" to="ei36" />
+<TLINK from="ei34" lid="l55" relType="BEFORE" to="ei37" />
+<TLINK from="ei36" lid="l56" relType="BEFORE" to="ei37" />
+<TLINK from="ei36" lid="l57" relType="BEFORE" to="ei38" />
+<TLINK from="ei37" lid="l58" relType="BEFORE" to="ei38" />
+<TLINK from="ei38" lid="l59" relType="BEFORE" to="ei39" />
+<TLINK from="ei39" lid="l60" relType="BEFORE" to="ei40" />
+<TLINK from="ei39" lid="l61" relType="AFTER" to="ei41" />
+<TLINK from="ei40" lid="l62" relType="AFTER" to="ei41" />
+<TLINK from="ei40" lid="l63" relType="AFTER" to="ei42" />
+<TLINK from="ei40" lid="l64" relType="AFTER" to="ei46" />
+<TLINK from="ei41" lid="l65" relType="BEFORE" to="ei42" />
+<TLINK from="ei41" lid="l66" relType="BEFORE" to="ei46" />
+<TLINK from="ei42" lid="l67" relType="BEFORE" to="ei46" />
+<TLINK from="ei42" lid="l68" relType="BEFORE" to="ei47" />
+<TLINK from="ei42" lid="l69" relType="AFTER" to="ei52" />
+<TLINK from="ei46" lid="l70" relType="AFTER" to="ei47" />
+<TLINK from="ei46" lid="l71" relType="AFTER" to="ei52" />
+<TLINK from="ei47" lid="l72" relType="AFTER" to="ei52" />
+<TLINK from="ei47" lid="l73" relType="BEFORE" to="ei54" />
+<TLINK from="ei52" lid="l74" relType="BEFORE" to="ei53" />
+<TLINK from="ei52" lid="l75" relType="BEFORE" to="ei54" />
+<TLINK from="ei53" lid="l76" relType="BEFORE" to="ei54" />
+<TLINK from="ei53" lid="l77" relType="BEFORE" to="ei57" />
+<TLINK from="ei54" lid="l78" relType="BEFORE" to="ei57" />
+<TLINK from="ei52" lid="l79" relType="AFTER" to="t5" />
+<TLINK from="ei23" lid="l80" relType="AFTER" to="t3" />
+<TLINK from="ei46" lid="l81" relType="AFTER" to="t5" />
+<TLINK from="ei14" lid="l82" relType="AFTER" to="t2" />
+<TLINK from="t1" lid="l83" relType="AFTER" to="ei5" />
+<TLINK from="ei15" lid="l84" relType="BEFORE" to="t2" />
+<TLINK from="ei2" lid="l85" relType="AFTER" to="t1" />
+<TLINK from="ei12" lid="l86" relType="BEFORE" to="t2" />
+<TLINK from="t5" lid="l87" relType="BEFORE" to="ei54" />
+<TLINK from="ei3" lid="l88" relType="AFTER" to="t1" />
+<TLINK from="t5" lid="l89" relType="BEFORE" to="ei53" />
+<TLINK from="ei42" lid="l90" relType="AFTER" to="t5" />
+<TLINK from="ei13" lid="l91" relType="BEFORE" to="t2" />
+<TLINK from="t2" lid="l92" relType="BEFORE" to="ei16" />
+<TLINK from="t3" lid="l93" relType="BEFORE" to="ei24" />
+<TLINK from="ei1" lid="l94" relType="BEFORE" to="t1" />
+<TLINK from="t3" lid="l95" relType="AFTER" to="ei25" />
+<TLINK from="t3" lid="l96" relType="BEFORE" to="ei26" />
+<TLINK from="ei47" lid="l97" relType="AFTER" to="t5" />
 </TimeML>

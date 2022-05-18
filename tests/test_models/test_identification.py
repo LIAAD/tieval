@@ -1,3 +1,5 @@
+import os
+
 import tieval.datasets
 from tieval import datasets
 from tieval.models.identification import (
@@ -11,7 +13,8 @@ class TestHeidelTime:
 
     def test_predict(self, tmp_path):
 
-        tieval.datasets.download("tempeval_3", tmp_path)
+        os.chdir(tmp_path)
+
         te3 = tieval.datasets.read("tempeval_3")
 
         model = HeidelTime()
@@ -24,16 +27,20 @@ class TestTimexIdentificationBaseline:
 
     def test_predict(self, tmp_path):
 
-        tieval.datasets.download("tempeval_3", tmp_path)
+        os.chdir(tmp_path)
+
         te3 = tieval.datasets.read("tempeval_3")
 
-        model = TimexIdentificationBaseline(path=tmp_path / "models")
+        model = TimexIdentificationBaseline()
         pred = model.predict(te3.test)
 
         assert len(pred) == len(te3.test)
 
     def test_download(self, tmp_path):
-        model = TimexIdentificationBaseline(path=tmp_path / "models")
+
+        os.chdir(tmp_path)
+
+        model = TimexIdentificationBaseline()
         assert model.path.is_dir()
 
 
@@ -41,15 +48,16 @@ class TestEventIdentificationBaseline:
 
     def test_predict(self, tmp_path):
 
-        tieval.datasets.download("tempeval_3", tmp_path)
+        os.chdir(tmp_path)
+
         te3 = tieval.datasets.read("tempeval_3")
 
-        model = EventIdentificationBaseline(path=tmp_path / "models")
+        model = EventIdentificationBaseline()
         pred = model.predict(te3.test)
 
         assert len(pred) == len(te3.test)
 
     def test_download(self, tmp_path):
 
-        model = EventIdentificationBaseline(path=tmp_path / "models")
+        model = EventIdentificationBaseline()
         assert model.path.is_dir()

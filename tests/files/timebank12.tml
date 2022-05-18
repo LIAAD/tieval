@@ -1,32 +1,251 @@
-<?xml version="1.0" ?>
-<TimeML
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:noNamespaceSchemaLocation="http://timeml.org/timeMLdocs/TimeML_1.2.1.xsd">
-WSJ891030-0010
-= 891030
-891030-0010.
-CNW Acquisition Completed
-<TIMEX3 tid="t11" type="DATE" value="1989-10-30" temporalFunction="false" functionInDocument="CREATION_TIME">10/30/89</TIMEX3>
-WALL STREET JOURNAL (J)
-CNW
-TENDER OFFERS, MERGERS, ACQUISITIONS (TNM)
-TRANSPORTATION, TRUCK AND SHIP LINES, RAILROADS (TRA)
-CHICAGO
-CNW Corp. <EVENT eid="e1" class="REPORTING">said</EVENT> the final step in the <EVENT eid="e3" class="OCCURRENCE">acquisition</EVENT> of the company has been <EVENT eid="e5" class="ASPECTUAL">completed</EVENT> with the <EVENT eid="e6" class="OCCURRENCE">merger</EVENT> of CNW with a subsidiary of Chicago amp North Western Holdings Corp.
-As <EVENT eid="e13" class="REPORTING">reported</EVENT>, CNW <EVENT eid="e7" class="I_ACTION">agreed</EVENT> to be <EVENT eid="e9" class="OCCURRENCE">acquired</EVENT> by a group of investors led by Blackstone Capital Partners Limited Partnership for $50 a share, or about $950 million.
-<MAKEINSTANCE eid="e3" eiid="ei54" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN"/>
-<MAKEINSTANCE eid="e1" eiid="ei53" tense="PAST" aspect="NONE" polarity="POS" pos="VERB"/>
-<MAKEINSTANCE eid="e6" eiid="ei56" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN"/>
-<MAKEINSTANCE eid="e9" eiid="ei59" tense="PASTPART" aspect="NONE" polarity="POS" pos="VERB"/>
-<MAKEINSTANCE eid="e5" eiid="ei55" tense="PRESENT" aspect="PERFECTIVE" polarity="POS" pos="VERB"/>
-<MAKEINSTANCE eid="e13" eiid="ei57" tense="PASTPART" aspect="NONE" polarity="POS" pos="VERB"/>
-<MAKEINSTANCE eid="e7" eiid="ei58" tense="PAST" aspect="NONE" polarity="POS" pos="VERB"/>
-<TLINK lid="l1" relType="BEFORE" from="ei57" to="t11"/>
-<TLINK lid="l2" relType="AFTER" from="t11" to="ei53"/>
-<TLINK lid="l3" relType="INCLUDES" from="ei54" to="ei56"/>
-<TLINK lid="l4" relType="IDENTITY" from="ei59" to="ei54"/>
-<SLINK lid="l5" relType="EVIDENTIAL" from="ei53" to="ei55"/>
-<SLINK lid="l6" relType="EVIDENTIAL" from="ei57" to="ei58"/>
-<SLINK lid="l7" relType="MODAL" from="ei58" to="ei59"/>
-<ALINK lid="l8" relType="CULMINATES" from="ei55" to="ei54"/>
+<TimeML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://timeml.org/timeMLdocs/TimeML_1.2.1.xsd">
+APW19980213.1310
+NEWS STORY<TIMEX3 tid="t109" type="TIME" value="1998-02-13T14:26:00" temporalFunction="false" functionInDocument="CREATION_TIME" endpoints="0 19">02/13/1998 14:26:00</TIMEX3>
+w2112 Cx1f wstm-
+r i Cx13  Cx11  BC-Australia-Republic 4thLd-Writethru   02-13 0603
+BC-Australia-Republic, 4th Ld-Writethru,0602
+Constitutional convention votes for republic, against links to
+British monarchy QL
+UR Eds: ADDS 2 grafs at end with reaction from former prime minister
+Paul Keating QL
+UR AP Photo CANB101,102,103 QL
+UR By ALAN THORNHILL QC
+UR Associated Press Writer QC
+CANBERRA, Australia (AP) _ <TEXT><EVENT eid="e1" class="OCCURRENCE" endpoints="0 7">Turning</EVENT> its back on <TIMEX3 tid="t110" type="DURATION" value="P210Y" temporalFunction="false" functionInDocument="NONE" endpoints="20 29">210 years</TIMEX3> of
+loyalty to the British royal family, a constitutional convention
+<EVENT eid="e2" class="OCCURRENCE" endpoints="98 103">voted</EVENT> overwhelmingly <TIMEX3 tid="t111" type="DATE" value="1998-02-13" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t109" endpoints="119 125">Friday</TIMEX3> to <EVENT eid="e4" class="OCCURRENCE" endpoints="129 133">make</EVENT> Australia a republic under its
+own president.
+Prime Minister John Howard, a monarchist himself, <EVENT eid="e5" class="I_ACTION" endpoints="230 238">promised</EVENT> to <EVENT eid="e7" class="OCCURRENCE" endpoints="242 245">put</EVENT> the <EVENT eid="e8" class="OCCURRENCE" endpoints="250 258">question</EVENT> to a national <EVENT eid="e9" class="OCCURRENCE" endpoints="273 283">referendum</EVENT> <TIMEX3 tid="t112" type="DATE" value="1999" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t109" endpoints="284 293">next year</TIMEX3> <SIGNAL sid="s113" endpoints="294 299">after</SIGNAL>
+convention delegates <EVENT eid="e10" class="OCCURRENCE" endpoints="321 326">voted</EVENT> 89-52 for a republic, with 11
+abstentions.
+Spontaneous <EVENT eid="e11" class="OCCURRENCE" endpoints="382 390">applause</EVENT> <EVENT eid="e12" class="OCCURRENCE" endpoints="391 397">echoed</EVENT> through the chamber and public
+galleries as the crucial <EVENT eid="e13" class="OCCURRENCE" endpoints="454 458">vote</EVENT> <EVENT eid="e14" class="OCCURRENCE" endpoints="459 465">passed</EVENT> by a wide margin.
+``I <EVENT eid="e15" class="I_STATE" endpoints="488 492">want</EVENT> a <EVENT eid="e16" class="OCCURRENCE" endpoints="495 505">referendum</EVENT>,'' Howard <EVENT eid="e17" class="REPORTING" endpoints="516 520">said</EVENT>. ``The Australian people
+are <EVENT eid="e18" class="I_STATE" endpoints="550 554">owed</EVENT> the opportunity of <EVENT eid="e19" class="OCCURRENCE" endpoints="574 584">expressing</EVENT> an opinion on this.''
+``It would be a <EVENT eid="e21" class="OCCURRENCE" endpoints="623 631">travesty</EVENT> in common sense terms of Australian
+democracy for that <EVENT eid="e23" class="OCCURRENCE" endpoints="687 698">proposition</EVENT> not to be <EVENT eid="e24" class="OCCURRENCE" endpoints="709 712">put</EVENT> to the Australian
+people,'' Howard <EVENT eid="e25" class="REPORTING" endpoints="748 752">said</EVENT>.
+Even in his own Cabinet, Howard is <EVENT eid="e26" class="ASPECTUAL" endpoints="789 797">becoming</EVENT> increasingly <EVENT eid="e27" class="OCCURRENCE" endpoints="811 819">isolated</EVENT> with his monarchist stance. Treasurer Peter Costello,
+Environment Minister Robert Hill and Attorney General Daryl
+Williams all <EVENT eid="e28" class="OCCURRENCE" endpoints="947 952">voted</EVENT> to <EVENT eid="e30" class="OCCURRENCE" endpoints="956 963">support</EVENT> the republic <TIMEX3 tid="t114" type="DATE" value="1998-02-13" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t109" endpoints="977 983">Friday</TIMEX3>.
+``This convention will be <EVENT eid="e31" class="PERCEPTION" endpoints="1011 1015">seen</EVENT> as a turning point in our
+history,'' Australian Republican Movement spokeswoman Mary
+Delahunty <EVENT eid="e32" class="REPORTING" endpoints="1111 1115">said</EVENT>.
+Pro-republicans <EVENT eid="e33" class="I_STATE" endpoints="1133 1137">hope</EVENT> to <EVENT eid="e35" class="OCCURRENCE" endpoints="1141 1145">have</EVENT> an Australian president <SIGNAL sid="s250" endpoints="1170 1172">by</SIGNAL> the
+<EVENT eid="e36" class="OCCURRENCE" endpoints="1177 1184">opening</EVENT> of the <TIMEX3 tid="t121" type="DATE" value="2000" temporalFunction="false" functionInDocument="NONE" endpoints="1192 1196">2000</TIMEX3> Olympics and the 100th anniversary of
+Australian federation.
+<EVENT eid="e37" class="I_ACTION" endpoints="1258 1265">Calling</EVENT> for an <EVENT eid="e257" class="OCCURRENCE" endpoints="1273 1280">amended</EVENT> constitution with a new preamble, to be <EVENT eid="e41" class="OCCURRENCE" endpoints="1321 1328">written</EVENT> by Australian poets, republican Janet Holmes a Court <EVENT eid="e115" class="REPORTING" endpoints="1382 1386">said</EVENT>,
+``We <EVENT eid="e42" class="OCCURRENCE" endpoints="1393 1397">need</EVENT> the smell of eucalyptus in this, and the feel of red
+dust.''
+Monarchists <EVENT eid="e43" class="I_STATE" endpoints="1471 1475">hope</EVENT> to <EVENT eid="e45" class="OCCURRENCE" endpoints="1479 1485">defeat</EVENT> the republic <SIGNAL sid="s47" endpoints="1499 1501">at</SIGNAL> the <EVENT eid="e46" class="OCCURRENCE" endpoints="1506 1516">referendum</EVENT>.
+``The phony <EVENT eid="e48" class="OCCURRENCE" endpoints="1530 1533">war</EVENT> has <EVENT eid="e49" class="ASPECTUAL" endpoints="1538 1546">finished</EVENT> and the real referendum <EVENT eid="e50" class="OCCURRENCE" endpoints="1571 1579">campaign</EVENT>
+has clearly <EVENT eid="e51" class="ASPECTUAL" endpoints="1592 1597">begun</EVENT>,'' Australians for a Constitutional Monarchy
+executive director Kerry Jones <EVENT eid="e52" class="REPORTING" endpoints="1674 1678">said</EVENT>.
+``Well may  we <EVENT eid="e53" class="OCCURRENCE" endpoints="1695 1698">say</EVENT>  `God save the Queen,' for nothing will <EVENT eid="e57" class="OCCURRENCE" endpoints="1739 1743">save</EVENT>
+the republic,'' outraged monarchist delegate David Mitchell <EVENT eid="e58" class="REPORTING" endpoints="1804 1808">said</EVENT>.
+``The idea of a republic will <EVENT eid="e319" class="OCCURRENCE" endpoints="1840 1844">fall</EVENT> to <EVENT eid="e60" class="STATE" endpoints="1848 1852">dust</EVENT> through the grace of
+almighty God.''
+Polls have <EVENT eid="e62" class="REPORTING" endpoints="1901 1906">shown</EVENT> public <EVENT eid="e63" class="OCCURRENCE" endpoints="1914 1921">support</EVENT> for a republic <EVENT eid="e64" class="OCCURRENCE" endpoints="1937 1947">increasing</EVENT>,
+<EVENT eid="e65" class="OCCURRENCE" endpoints="1949 1955">rising</EVENT> from about <EVENT eid="e460" class="STATE" endpoints="1967 1969">35</EVENT> percent <TIMEX3 tid="t117" type="DATE" value="PAST_REF" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t109" endpoints="1978 1995">several years ago</TIMEX3> to about <EVENT eid="e461" class="STATE" endpoints="2005 2007">51</EVENT> percent
+<TIMEX3 tid="t358" type="DATE" value="1998" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t109" endpoints="2016 2025">this year</TIMEX3>, <SIGNAL sid="s369" endpoints="2027 2029">as</SIGNAL> pro-monarchist sentiment <EVENT eid="e66" class="OCCURRENCE" endpoints="2055 2065">diminishes</EVENT>.
+Australia has been <EVENT eid="e374" class="STATE" endpoints="2086 2097">independent</EVENT> since <TIMEX3 tid="t118" type="DATE" value="1901" temporalFunction="false" functionInDocument="NONE" endpoints="2104 2108">1901</TIMEX3>, but like many
+Commonwealth nations it still <EVENT eid="e67" class="OCCURRENCE" endpoints="2154 2164">recognizes</EVENT> the British monarch as its
+head of state.
+Howard <EVENT eid="e68" class="REPORTING" endpoints="2214 2218">said</EVENT> Queen Elizabeth II is <EVENT eid="e69" class="OCCURRENCE" endpoints="2241 2247">taking</EVENT> a great interest in the
+<EVENT eid="e387" class="OCCURRENCE" endpoints="2272 2282">convention</EVENT>.
+``She is, I can <EVENT eid="e70" class="I_ACTION" endpoints="2300 2306">assure</EVENT> you, from what I've been <EVENT eid="e72" class="REPORTING" endpoints="2332 2336">told</EVENT>, she's <EVENT eid="e73" class="OCCURRENCE" endpoints="2344 2353">following</EVENT> the <EVENT eid="e74" class="OCCURRENCE" endpoints="2358 2363">thing</EVENT> very closely and <EVENT eid="e75" class="OCCURRENCE" endpoints="2381 2387">taking</EVENT> the view it's our
+<EVENT eid="e76" class="OCCURRENCE" endpoints="2406 2414">business</EVENT>.
+``It's no secret that she's <EVENT eid="e78" class="I_ACTION" endpoints="2444 2453">indicated</EVENT> to me ... she is a 20th
+century democrat, <EVENT eid="e79" class="I_STATE" endpoints="2496 2507">understands</EVENT> that the role of the crown in
+Australia <EVENT eid="e82" class="OCCURRENCE" endpoints="2548 2553">rests</EVENT> in the hands of the Australian people as it <EVENT eid="e85" class="STATE" endpoints="2598 2601">has</EVENT> for
+<TIMEX3 tid="t119" type="DURATION" value="P100Y" mod="LESS_THAN" temporalFunction="false" functionInDocument="NONE" endpoints="2606 2628">almost a hundred years</TIMEX3>.''
+The model for a republic, <EVENT eid="e86" class="OCCURRENCE" endpoints="2658 2665">adopted</EVENT> over bitter <EVENT eid="e87" class="OCCURRENCE" endpoints="2678 2688">objections</EVENT> from
+those <EVENT eid="e88" class="OCCURRENCE" endpoints="2700 2710">advocating</EVENT> direct election of a president, is for
+presidential nominations to be made with public input and the
+winning candidate decided by a two-thirds majority of Parliament.
+Former prime minister Paul Keating, who <EVENT eid="e95" class="OCCURRENCE" endpoints="2918 2921">put</EVENT> the republic issue
+in the spotlight in his unsuccessful <TIMEX3 tid="t120" type="DATE" value="1996" temporalFunction="false" functionInDocument="NONE" endpoints="2978 2982">1996</TIMEX3> <EVENT eid="e97" class="OCCURRENCE" endpoints="2983 2991">campaign</EVENT> for re-election,
+<EVENT eid="e98" class="OCCURRENCE" endpoints="3009 3017">welcomed</EVENT> the <EVENT eid="e99" class="OCCURRENCE" endpoints="3022 3028">result</EVENT>.
+``This is an important step along the path towards Australia
+claiming its full sovereignty, and due recognition that the
+monarchy can no longer serve us appropriately,'' Keating said.
+(PROFILE
+(WS SL:BC-Australia-Republic, 4th Ld-Writethru; CT:i;
+(REG:EURO;)
+(REG:BRIT;)
+(REG:SCAN;)
+(REG:MEST;)
+(REG:AFRI;)
+(REG:INDI;)
+(REG:ENGL;)
+(LANG:ENGLISH;))
+)
+AP-NY-02-13-98 1426EST</TEXT>
+<MAKEINSTANCE eid="e62" eiid="ei2049" tense="PRESENT" aspect="PERFECTIVE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e63" eiid="ei2050" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e374" eiid="ei2056" tense="PRESENT" aspect="NONE" polarity="POS" pos="ADJECTIVE" />
+<MAKEINSTANCE eid="e74" eiid="ei2064" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e387" eiid="ei2060" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e99" eiid="ei2079" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e26" eiid="ei2021" tense="PRESENT" aspect="PROGRESSIVE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e48" eiid="ei2038" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e33" eiid="ei2027" tense="PRESENT" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e43" eiid="ei2035" tense="PRESENT" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e95" eiid="ei2076" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e1" eiid="ei2000" tense="PRESPART" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e37" eiid="ei2030" tense="PRESPART" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e11" eiid="ei2008" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e60" eiid="ei2048" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e36" eiid="ei2029" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e87" eiid="ei2073" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e8" eiid="ei2005" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e23" eiid="ei2018" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e7" eiid="ei2004" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e14" eiid="ei2011" tense="PASTPART" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e65" eiid="ei2052" tense="PRESPART" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e70" eiid="ei2061" tense="NONE" aspect="NONE" polarity="POS" pos="VERB" modality="can" />
+<MAKEINSTANCE eid="e64" eiid="ei2051" tense="PRESPART" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e67" eiid="ei2057" tense="PRESENT" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e68" eiid="ei2058" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e76" eiid="ei2066" tense="PRESENT" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e58" eiid="ei2046" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e88" eiid="ei2074" tense="PRESPART" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e73" eiid="ei2063" tense="PRESENT" aspect="PROGRESSIVE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e31" eiid="ei2025" tense="FUTURE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e57" eiid="ei2045" tense="FUTURE" aspect="NONE" polarity="NEG" pos="VERB" />
+<MAKEINSTANCE eid="e97" eiid="ei2077" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e5" eiid="ei2003" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e28" eiid="ei2023" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e115" eiid="ei2033" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e319" eiid="ei2047" tense="FUTURE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e79" eiid="ei2069" tense="PRESENT" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e41" eiid="ei2032" tense="PASTPART" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e19" eiid="ei2016" tense="PRESPART" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e21" eiid="ei2017" tense="NONE" aspect="NONE" polarity="POS" pos="VERB" modality="would" />
+<MAKEINSTANCE eid="e13" eiid="ei2010" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e51" eiid="ei2041" tense="PRESENT" aspect="PERFECTIVE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e98" eiid="ei2078" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e15" eiid="ei2012" tense="PRESENT" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e24" eiid="ei2019" tense="PASTPART" aspect="NONE" polarity="NEG" pos="VERB" />
+<MAKEINSTANCE eid="e4" eiid="ei2002" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e49" eiid="ei2039" tense="PRESENT" aspect="PERFECTIVE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e69" eiid="ei2059" tense="PRESENT" aspect="PROGRESSIVE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e42" eiid="ei2034" tense="PRESENT" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e25" eiid="ei2020" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e17" eiid="ei2014" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e50" eiid="ei2040" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e32" eiid="ei2026" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e72" eiid="ei2062" tense="PRESENT" aspect="PERFECTIVE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e30" eiid="ei2024" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e18" eiid="ei2015" tense="PRESENT" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e85" eiid="ei2071" tense="PRESENT" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e12" eiid="ei2009" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e2" eiid="ei2001" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e9" eiid="ei2006" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e78" eiid="ei2067" tense="PRESENT" aspect="PERFECTIVE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e66" eiid="ei2055" tense="PRESENT" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e53" eiid="ei2043" tense="PRESENT" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e75" eiid="ei2065" tense="PRESPART" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e82" eiid="ei2070" tense="PRESENT" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e10" eiid="ei2007" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e257" eiid="ei2031" tense="NONE" aspect="NONE" polarity="POS" pos="ADJECTIVE" />
+<MAKEINSTANCE eid="e52" eiid="ei2042" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e35" eiid="ei2028" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e45" eiid="ei2036" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e16" eiid="ei2013" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e86" eiid="ei2072" tense="PASTPART" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e46" eiid="ei2037" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e27" eiid="ei2022" tense="PASTPART" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e460" eiid="ei2080" tense="NONE" aspect="NONE" polarity="POS" pos="OTHER" />
+<MAKEINSTANCE eid="e461" eiid="ei2081" tense="NONE" aspect="NONE" polarity="POS" pos="OTHER" />
+<TLINK lid="l91" relType="DURING" from="ei2069" to="ei2067" />
+<TLINK lid="l90" relType="IS_INCLUDED" from="ei2058" to="t114" />
+<TLINK lid="l89" relType="IS_INCLUDED" from="ei2080" to="t117" />
+<TLINK lid="l88" relType="IS_INCLUDED" from="ei2081" to="t358" />
+<TLINK lid="l87" relType="BEFORE" from="ei2046" to="t114" />
+<TLINK lid="l86" relType="ENDED_BY" from="ei2038" to="ei2001" />
+<TLINK lid="l85" relType="AFTER" from="ei2040" to="ei2038" />
+<TLINK lid="l84" relType="BEFORE" from="ei2042" to="t114" />
+<TLINK lid="l83" relType="IS_INCLUDED" from="ei2035" to="t109" />
+<TLINK lid="l82" relType="BEFORE" from="ei2033" to="t114" />
+<TLINK lid="l81" relType="DURING" from="ei2030" to="ei2033" />
+<TLINK lid="l80" relType="IS_INCLUDED" from="ei2027" to="t109" />
+<TLINK lid="l79" relType="BEFORE" from="ei2026" to="t114" />
+<TLINK lid="l78" relType="IS_INCLUDED" from="ei2022" to="t109" />
+<TLINK lid="l77" relType="IS_INCLUDED" from="ei2021" to="t109" />
+<TLINK lid="l76" relType="IS_INCLUDED" from="ei2020" to="t111" />
+<TLINK lid="l75" relType="IS_INCLUDED" from="ei2015" to="t109" />
+<TLINK lid="l1" relType="IDENTITY" from="ei2079" to="ei2001" />
+<TLINK lid="l2" relType="AFTER" from="t109" to="ei2000" />
+<TLINK lid="l3" relType="ENDED_BY" from="t110" to="ei2001" />
+<TLINK lid="l4" relType="IS_INCLUDED" from="ei2001" to="t111" />
+<TLINK lid="l5" relType="BEFORE" from="ei2001" to="ei2002" />
+<TLINK lid="l6" relType="BEFORE" from="ei2003" to="ei2004" />
+<TLINK lid="l7" relType="SIMULTANEOUS" from="ei2004" to="ei2005" />
+<TLINK lid="l8" relType="IS_INCLUDED" from="ei2006" to="t112" />
+<TLINK lid="l9" relType="AFTER" from="ei2003" to="ei2007" signalID="s113" />
+<TLINK lid="l10" relType="BEFORE" from="ei2008" to="ei2009" />
+<TLINK lid="l11" relType="BEFORE" from="ei2010" to="ei2008" />
+<TLINK lid="l12" relType="SIMULTANEOUS" from="ei2010" to="ei2011" />
+<TLINK lid="l13" relType="DURING" from="ei2012" to="ei2014" />
+<TLINK lid="l14" relType="BEFORE" from="ei2019" to="ei2017" />
+<TLINK lid="l15" relType="SIMULTANEOUS" from="ei2018" to="ei2019" />
+<TLINK lid="l16" relType="BEFORE" from="ei2023" to="ei2024" />
+<TLINK lid="l17" relType="IS_INCLUDED" from="ei2023" to="t114" />
+<TLINK lid="l18" relType="AFTER" from="ei2025" to="t109" />
+<TLINK lid="l19" relType="BEFORE" from="ei2028" to="ei2029" signalID="s250" />
+<TLINK lid="l20" relType="SIMULTANEOUS" from="ei2031" to="ei2032" />
+<TLINK lid="l21" relType="IS_INCLUDED" from="ei2036" to="ei2037" signalID="s47" />
+<TLINK lid="l22" relType="SIMULTANEOUS" from="ei2039" to="ei2041" />
+<TLINK lid="l23" relType="BEFORE" from="ei2047" to="ei2048" />
+<TLINK lid="l24" relType="BEFORE" from="ei2049" to="t109" />
+<TLINK lid="l25" relType="DURING" from="ei2051" to="t109" />
+<TLINK lid="l26" relType="IDENTITY" from="ei2052" to="ei2051" />
+<TLINK lid="l27" relType="SIMULTANEOUS" from="ei2055" to="ei2051" signalID="s369" />
+<TLINK lid="l28" relType="AFTER" from="ei2056" to="t118" />
+<TLINK lid="l29" relType="DURING" from="ei2057" to="t109" />
+<TLINK lid="l30" relType="SIMULTANEOUS" from="ei2060" to="ei2059" />
+<TLINK lid="l31" relType="BEFORE" from="ei2062" to="ei2061" />
+<TLINK lid="l32" relType="DURING" from="ei2063" to="ei2061" />
+<TLINK lid="l33" relType="SIMULTANEOUS" from="ei2063" to="ei2064" />
+<TLINK lid="l34" relType="IDENTITY" from="ei2064" to="ei2060" />
+<TLINK lid="l35" relType="SIMULTANEOUS" from="ei2065" to="ei2064" />
+<TLINK lid="l36" relType="SIMULTANEOUS" from="ei2065" to="ei2066" />
+<TLINK lid="l37" relType="DURING" from="ei2071" to="t119" />
+<TLINK lid="l38" relType="SIMULTANEOUS" from="ei2070" to="ei2071" />
+<TLINK lid="l39" relType="DURING" from="ei2070" to="t109" />
+<TLINK lid="l40" relType="AFTER" from="ei2072" to="ei2073" />
+<TLINK lid="l41" relType="SIMULTANEOUS" from="ei2074" to="ei2073" />
+<TLINK lid="l42" relType="IS_INCLUDED" from="ei2076" to="ei2077" />
+<TLINK lid="l43" relType="INCLUDES" from="t120" to="ei2077" />
+<TLINK lid="l44" relType="BEFORE" from="ei2078" to="t109" />
+<SLINK lid="l74" relType="FACTIVE" from="ei2078" to="ei2079" />
+<SLINK lid="l73" relType="EVIDENTIAL" from="ei2062" to="ei2065" />
+<SLINK lid="l72" relType="EVIDENTIAL" from="ei2062" to="ei2063" />
+<SLINK lid="l71" relType="FACTIVE" from="ei2059" to="ei2060" />
+<SLINK lid="l70" relType="MODAL" from="ei2050" to="ei2051" />
+<SLINK lid="l69" relType="MODAL" from="ei2023" to="ei2024" />
+<SLINK lid="l68" relType="EVIDENTIAL" from="ei2014" to="ei2015" />
+<SLINK lid="l67" relType="MODAL" from="ei2003" to="ei2004" />
+<SLINK lid="l66" relType="MODAL" from="ei2001" to="ei2002" />
+<SLINK lid="l45" relType="MODAL" from="ei2012" to="ei2013" />
+<SLINK lid="l46" relType="EVIDENTIAL" from="ei2014" to="ei2012" />
+<SLINK lid="l47" relType="MODAL" from="ei2015" to="ei2016" />
+<SLINK lid="l48" relType="EVIDENTIAL" from="ei2020" to="ei2017" />
+<SLINK lid="l49" relType="EVIDENTIAL" from="ei2026" to="ei2025" />
+<SLINK lid="l50" relType="MODAL" from="ei2027" to="ei2028" />
+<SLINK lid="l51" relType="MODAL" from="ei2030" to="ei2031" />
+<SLINK lid="l52" relType="EVIDENTIAL" from="ei2033" to="ei2034" />
+<SLINK lid="l53" relType="MODAL" from="ei2035" to="ei2036" />
+<SLINK lid="l54" relType="EVIDENTIAL" from="ei2042" to="ei2039" />
+<SLINK lid="l55" relType="EVIDENTIAL" from="ei2042" to="ei2041" />
+<SLINK lid="l57" relType="EVIDENTIAL" from="ei2046" to="ei2043" />
+<SLINK lid="l58" relType="EVIDENTIAL" from="ei2046" to="ei2045" />
+<SLINK lid="l59" relType="EVIDENTIAL" from="ei2049" to="ei2050" />
+<SLINK lid="l60" relType="EVIDENTIAL" from="ei2058" to="ei2059" />
+<SLINK lid="l61" relType="EVIDENTIAL" from="ei2058" to="ei2067" />
+<SLINK lid="l62" relType="FACTIVE" from="ei2069" to="ei2070" />
+<ALINK lid="l63" relType="INITIATES" from="ei2021" to="ei2022" />
+<ALINK lid="l64" relType="TERMINATES" from="ei2039" to="ei2038" />
+<ALINK lid="l65" relType="INITIATES" from="ei2041" to="ei2040" />
 </TimeML>

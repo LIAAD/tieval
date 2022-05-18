@@ -1,32 +1,375 @@
 <TimeML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://timeml.org/timeMLdocs/TimeML_1.2.1.xsd">
-<DOCID>wsj_0006</DOCID>
-<TIMEX3 tid="t0" type="DATE" value="1989-11-02" temporalFunction="false" functionInDocument="CREATION_TIME">11/02/89</TIMEX3>
+<DOCID>AP900816-0139</DOCID>
+<TIMEX3 tid="t0" type="TIME" value="1990-08-16T20:41" temporalFunction="false" functionInDocument="CREATION_TIME">08-16-90 2041EDT</TIMEX3>
 <EXTRAINFO>
-WSJ891102-0188 = 891102 891102-0188.
-Pacific First Financial Corp. 11/02/89 WALL STREET JOURNAL (J) PFFS T.RYL TENDER OFFERS, MERGERS, ACQUISITIONS (TNM) SAVINGS AND LOANS, THRIFTS, CREDIT UNIONS (SAL) SEATTLE
+AP900816-0139 AP-NR-08-16-90 2041EDT u i AM-GulfRdp 3rdLd-Writethru a0723 08-16 1350 AM-Gulf Rdp, 3rd Ld-Writethru, a0723,1392 Gulf Showdown Takes More Personal Tack: Saddam Calls Bush a `Liar' Eds: LEADS throughout to RECAST, ADDS background on oil reserves, food imports, UPDATES with State Department reax to Saddam, EDITS to trim.
+No pickup LaserPhotos By ROBERT DVORCHAK Associated Press Writer
 </EXTRAINFO>
-<TEXT>Pacific First Financial Corp. <EVENT eid="e1" class="REPORTING" endpoints="30 34" sent_idx="0">said</EVENT> shareholders <EVENT eid="e2" class="OCCURRENCE" endpoints="48 56" sent_idx="0">approved</EVENT> its <EVENT eid="e8" class="OCCURRENCE" endpoints="61 72" sent_idx="0">acquisition</EVENT> by Royal Trustco Ltd. of Toronto for $27 a share, or $212 million.
-The thrift holding company <EVENT eid="e4" class="REPORTING" endpoints="167 171" sent_idx="1">said</EVENT> it <EVENT eid="e5" class="I_STATE" endpoints="175 182" sent_idx="1">expects</EVENT> to <EVENT eid="e6" class="OCCURRENCE" endpoints="186 192" sent_idx="1">obtain</EVENT> regulatory <EVENT eid="e19" class="OCCURRENCE" endpoints="204 212" sent_idx="1">approval</EVENT> and <EVENT eid="e7" class="ASPECTUAL" endpoints="217 225" sent_idx="1">complete</EVENT> the <EVENT eid="e20" class="OCCURRENCE" endpoints="230 241" sent_idx="1">transaction</EVENT> by <TIMEX3 tid="t10" type="DATE" value="1989-12-31" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t0" endpoints="245 253" sent_idx="1">year-end</TIMEX3>.</TEXT>
-<MAKEINSTANCE eid="e19" eiid="ei79" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
-<MAKEINSTANCE eid="e4" eiid="ei76" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
-<MAKEINSTANCE eid="e5" eiid="ei77" tense="PRESENT" aspect="NONE" polarity="POS" pos="VERB" />
-<MAKEINSTANCE eid="e1" eiid="ei73" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
-<MAKEINSTANCE eid="e20" eiid="ei81" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
-<MAKEINSTANCE eid="e2" eiid="ei74" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
-<MAKEINSTANCE eid="e7" eiid="ei80" tense="PRESENT" aspect="NONE" polarity="POS" pos="VERB" />
-<MAKEINSTANCE eid="e6" eiid="ei78" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="VERB" />
-<MAKEINSTANCE eid="e8" eiid="ei75" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
-<TLINK lid="l1" relType="BEFORE" from="ei80" to="t10" />
-<TLINK lid="l2" relType="BEFORE" from="ei73" to="t0" />
-<TLINK lid="l3" relType="BEFORE" from="ei74" to="ei73" />
-<TLINK lid="l4" relType="AFTER" from="ei74" to="ei75" />
-<TLINK lid="l5" relType="SIMULTANEOUS" from="ei76" to="ei73" />
-<TLINK lid="l6" relType="ENDS" from="ei80" to="ei81" />
-<SLINK lid="l13" relType="MODAL" from="ei74" to="ei75" />
-<SLINK lid="l7" relType="EVIDENTIAL" from="ei73" to="ei74" />
-<SLINK lid="l8" relType="EVIDENTIAL" from="ei76" to="ei77" />
-<SLINK lid="l9" relType="MODAL" from="ei77" to="ei78" />
-<SLINK lid="l10" relType="FACTIVE" from="ei78" to="ei79" />
-<SLINK lid="l11" relType="MODAL" from="ei77" to="ei80" />
-<ALINK lid="l12" relType="CULMINATES" from="ei80" to="ei81" />
+<TEXT>The Persian Gulf <EVENT eid="e199" class="OCCURRENCE" endpoints="17 25" sent_idx="0">showdown</EVENT> between Iraq and the United States <EVENT eid="e1" class="OCCURRENCE" endpoints="61 65" sent_idx="0">took</EVENT> a more personal turn <TIMEX3 tid="t288" type="DATE" value="1990-08-16" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t0" endpoints="87 95" sent_idx="0">Thursday</TIMEX3> when Iraq's Saddam Hussein <EVENT eid="e3" class="I_ACTION" endpoints="123 129" sent_idx="0">called</EVENT> President Bush a liar and <EVENT eid="e4" class="REPORTING" endpoints="156 160" sent_idx="0">said</EVENT> the outbreak of holy <EVENT eid="e202" class="OCCURRENCE" endpoints="182 185" sent_idx="0">war</EVENT> could <EVENT eid="e5" class="OCCURRENCE" endpoints="192 197" sent_idx="0">bring</EVENT> thousands of Americans home in coffins. Bush, <EVENT eid="e7" class="I_ACTION" endpoints="244 254" sent_idx="0">commenting</EVENT> on the <TIMEX3 tid="t289" type="DURATION" value="P2W" temporalFunction="false" functionInDocument="NONE" endpoints="262 270" sent_idx="0">two-week</TIMEX3> gulf <EVENT eid="e8" class="OCCURRENCE" endpoints="276 282" sent_idx="0">crisis</EVENT> from his vacation home in Maine, <EVENT eid="e11" class="REPORTING" endpoints="316 320" sent_idx="0">said</EVENT> he <EVENT eid="e12" class="I_STATE" endpoints="324 327" sent_idx="0">saw</EVENT> little reason to be <EVENT eid="e205" class="STATE" endpoints="348 358" sent_idx="0">optimistic</EVENT> about a <EVENT eid="e206" class="ASPECTUAL" endpoints="367 377" sent_idx="0">settlement</EVENT> of the <EVENT eid="e207" class="OCCURRENCE" endpoints="385 392" sent_idx="0">dispute</EVENT>, which <EVENT eid="e13" class="OCCURRENCE" endpoints="400 405" sent_idx="0">stems</EVENT> from Iraq's <EVENT eid="e208" class="OCCURRENCE" endpoints="418 426" sent_idx="0">invasion</EVENT> of oil-wealthy Kuwait and its subsequent military <EVENT eid="e209" class="OCCURRENCE" endpoints="477 484" sent_idx="0">buildup</EVENT> on the border of Saudi Arabia. After a <TIMEX3 tid="t290" type="DURATION" value="PT2H" temporalFunction="false" functionInDocument="NONE" endpoints="524 532" sent_idx="0">two-hour</TIMEX3> <EVENT eid="e210" class="OCCURRENCE" endpoints="533 540" sent_idx="0">meeting</EVENT> at his Kennebunkport home with King Hussein of Jordan, Bush <EVENT eid="e14" class="REPORTING" endpoints="601 605" sent_idx="0">said</EVENT>, ``I did not <EVENT eid="e15" class="OCCURRENCE" endpoints="619 623" sent_idx="0">come</EVENT> away with any feeling of hope'' that Iraq would <EVENT eid="e17" class="OCCURRENCE" endpoints="672 680" sent_idx="0">withdraw</EVENT> its army from Kuwait. Bush also <EVENT eid="e19" class="REPORTING" endpoints="713 717" sent_idx="0">said</EVENT> <TIMEX3 tid="t291" type="DATE" value="1990-08-16" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t0" endpoints="718 726" sent_idx="0">Thursday</TIMEX3> that King Hussein <EVENT eid="e20" class="I_ACTION" endpoints="745 752" sent_idx="0">assured</EVENT> him Jordan would <EVENT eid="e21" class="OCCURRENCE" endpoints="770 775" sent_idx="0">close</EVENT> the last remaining free port to most Iraqi trade as the economic <EVENT eid="e213" class="OCCURRENCE" endpoints="841 848" sent_idx="0">embargo</EVENT> on materials to Iraq <EVENT eid="e25" class="ASPECTUAL" endpoints="870 879" sent_idx="0">continued</EVENT> unabated. Foodstuffs are among the goods being <EVENT eid="e26" class="OCCURRENCE" endpoints="927 934" sent_idx="0">blocked</EVENT> from entry; Iraq imports about three-quarters of its food. Pentagon sources in Washington meanwhile <EVENT eid="e29" class="REPORTING" endpoints="1035 1039" sent_idx="0">said</EVENT> the Bush administration <EVENT eid="e216" class="I_STATE" endpoints="1064 1069" sent_idx="0">plans</EVENT> to <EVENT eid="e30" class="OCCURRENCE" endpoints="1073 1079" sent_idx="0">deploy</EVENT> 45,000 Marines to the region to <EVENT eid="e217" class="OCCURRENCE" endpoints="1112 1116" sent_idx="0">back</EVENT> up the thousands of Army, Navy and Air Force troops already in place in the gulf and the Saudi desert. At a news <EVENT eid="e220" class="OCCURRENCE" endpoints="1230 1240" sent_idx="0">conference</EVENT>, Secretary of State James A. Baker III <EVENT eid="e32" class="REPORTING" endpoints="1280 1284" sent_idx="0">said</EVENT> Jordan `` is <EVENT eid="e33" class="I_ACTION" endpoints="1298 1305" sent_idx="0">seeking</EVENT> some guidance'' about a provision in the U.N.-backed trade embargo that <EVENT eid="e35" class="STATE" endpoints="1378 1384" sent_idx="0">allows</EVENT> food for humanitarian purposes. Worries however <EVENT eid="e36" class="OCCURRENCE" endpoints="1433 1437" sent_idx="0">grew</EVENT> about the safety of Americans and other Westerners <EVENT eid="e37" class="STATE" endpoints="1489 1496" sent_idx="0">trapped</EVENT> in Kuwait. Iraqi military authorities <EVENT eid="e38" class="I_ACTION" endpoints="1535 1542" sent_idx="0">ordered</EVENT> all Americans and Britons in Kuwait to <EVENT eid="e39" class="OCCURRENCE" endpoints="1582 1590" sent_idx="0">assemble</EVENT> at a hotel, officials <EVENT eid="e40" class="REPORTING" endpoints="1613 1617" sent_idx="0">said</EVENT>. ``Very few'' of the 2,500 Americans in occupied Kuwait <EVENT eid="e41" class="OCCURRENCE" endpoints="1674 1682" sent_idx="0">complied</EVENT> with the order, a senior U.S. official <EVENT eid="e42" class="REPORTING" endpoints="1722 1726" sent_idx="0">told</EVENT> The Associated Press. Iraq <EVENT eid="e43" class="REPORTING" endpoints="1754 1758" sent_idx="0">said</EVENT> the <EVENT eid="e225" class="OCCURRENCE" endpoints="1763 1770" sent_idx="0">roundup</EVENT> was to <EVENT eid="e44" class="OCCURRENCE" endpoints="1778 1785" sent_idx="0">protect</EVENT> them from unspecified <EVENT eid="e45" class="OCCURRENCE" endpoints="1808 1815" sent_idx="0">threats</EVENT>; British Foreign Office minister William Waldegrave <EVENT eid="e47" class="I_ACTION" endpoints="1868 1874" sent_idx="0">called</EVENT> the order ``grave and sinister.'' ``What we <EVENT eid="e227" class="I_STATE" endpoints="1919 1923" sent_idx="0">fear</EVENT> is that they will be <EVENT eid="e48" class="OCCURRENCE" endpoints="1945 1953" sent_idx="0">interned</EVENT> somewhere, most likely in Iraq,'' Waldegrave <EVENT eid="e49" class="REPORTING" endpoints="1999 2003" sent_idx="0">said</EVENT>. A total of about 3,000 Americans, 3,000 Britons and more than 450 Japanese are in Iraq and Kuwait. Overall, more than 2 million foreigners are in both countries. Iraq has called them ``restrictees.'' In addition to the estimated 45,000 Marines to ultimately be part of Operation Desert Shield, Stealth fighter planes and the aircraft carrier John F. Kennedy are also <EVENT eid="e51" class="OCCURRENCE" endpoints="2372 2378" sent_idx="0">headed</EVENT> to Saudi Arabia to <EVENT eid="e52" class="I_ACTION" endpoints="2398 2405" sent_idx="0">protect</EVENT> it from Iraqi expansionism. In Washington, Pentagon spokesman Pete Williams <EVENT eid="e53" class="REPORTING" endpoints="2482 2486" sent_idx="0">said</EVENT> Iraq has <EVENT eid="e54" class="ASPECTUAL" endpoints="2496 2505" sent_idx="0">continued</EVENT> to <EVENT eid="e55" class="OCCURRENCE" endpoints="2509 2517" sent_idx="0">increase</EVENT> its armed forces in Kuwait and they <TIMEX3 tid="t316" type="DATE" value="PRESENT_REF" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t0" endpoints="2554 2557" sent_idx="0">now</TIMEX3> number about 160,000. Saddam has been under international quarantine since his <TIMEX3 tid="t292" type="DATE" value="1990-08-02" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t0" endpoints="2637 2643" sent_idx="0">Aug. 2</TIMEX3> <EVENT eid="e239" class="OCCURRENCE" endpoints="2644 2654" sent_idx="0">power-grab</EVENT>, or what he <EVENT eid="e56" class="I_ACTION" endpoints="2667 2672" sent_idx="0">calls</EVENT> an ``eternal <EVENT eid="e1507" class="OCCURRENCE" endpoints="2686 2692" sent_idx="0">merger</EVENT>'' with Kuwait. In a long verbal <EVENT eid="e237" class="OCCURRENCE" endpoints="2725 2731" sent_idx="0">attack</EVENT> read on Iraqi television <TIMEX3 tid="t293" type="DATE" value="1990-08-16" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t0" endpoints="2757 2765" sent_idx="0">Thursday</TIMEX3>, Saddam repeatedly <EVENT eid="e57" class="I_ACTION" endpoints="2785 2791" sent_idx="0">called</EVENT> Bush ``a liar'' and <EVENT eid="e58" class="REPORTING" endpoints="2812 2816" sent_idx="0">said</EVENT> a shooting <EVENT eid="e242" class="OCCURRENCE" endpoints="2828 2831" sent_idx="0">war</EVENT> could <EVENT eid="e59" class="OCCURRENCE" endpoints="2838 2845" sent_idx="0">produce</EVENT> body bags courtesy of Baghdad. ``We <EVENT eid="e61" class="ASPECTUAL" endpoints="2882 2890" sent_idx="0">continue</EVENT> to <EVENT eid="e320" class="I_ACTION" endpoints="2894 2898" sent_idx="0">pray</EVENT> and <EVENT eid="e63" class="I_ACTION" endpoints="2903 2907" sent_idx="0">pray</EVENT> hard to God so that there will be no <EVENT eid="e64" class="OCCURRENCE" endpoints="2945 2958" sent_idx="0">confrontation</EVENT> whereby you will <EVENT eid="e65" class="OCCURRENCE" endpoints="2976 2983" sent_idx="0">receive</EVENT> thousands of Americans wrapped in sad coffins after you had <EVENT eid="e67" class="OCCURRENCE" endpoints="3044 3050" sent_idx="0">pushed</EVENT> them into a dark tunnel,'' Saddam <EVENT eid="e69" class="REPORTING" endpoints="3085 3089" sent_idx="0">said</EVENT>. He <EVENT eid="e70" class="I_ACTION" endpoints="3094 3100" sent_idx="0">called</EVENT> U.S. soldiers <EVENT eid="e71" class="OCCURRENCE" endpoints="3115 3122" sent_idx="0">massing</EVENT> in Saudi Arabia the real occupiers in the Persian Gulf. <EVENT eid="e72" class="REPORTING" endpoints="3179 3186" sent_idx="0">Replied</EVENT> State Department deputy spokesman Richard Boucher, ``We haven't really <EVENT eid="e73" class="I_ACTION" endpoints="3258 3266" sent_idx="0">analyzed</EVENT> the statement in detail but it <EVENT eid="e76" class="I_STATE" endpoints="3298 3305" sent_idx="0">appears</EVENT> to be just another example of his outlandish rhetoric and his <EVENT eid="e246" class="I_ACTION" endpoints="3368 3376" sent_idx="0">attempts</EVENT> to <EVENT eid="e77" class="I_ACTION" endpoints="3380 3387" sent_idx="0">distort</EVENT> the truth. ``We <EVENT eid="e78" class="I_STATE" endpoints="3404 3411" sent_idx="0">believe</EVENT> that his words cannot <EVENT eid="e80" class="I_STATE" endpoints="3434 3442" sent_idx="0">distract</EVENT> the world from the facts of Iraqi aggression.'' An international land, sea and air force has <EVENT eid="e83" class="OCCURRENCE" endpoints="3536 3545" sent_idx="0">mobilized</EVENT> since Iraq's <EVENT eid="e249" class="OCCURRENCE" endpoints="3559 3567" sent_idx="0">invasion</EVENT>, which was <EVENT eid="e84" class="OCCURRENCE" endpoints="3579 3586" sent_idx="0">sparked</EVENT> by <EVENT eid="e250" class="OCCURRENCE" endpoints="3590 3598" sent_idx="0">disputes</EVENT> over oil, land and repayment of war loans. In the largest U.S. military <EVENT eid="e251" class="OCCURRENCE" endpoints="3671 3680" sent_idx="0">operation</EVENT> since Vietnam, an estimated 20,000 American GIs have already <EVENT eid="e85" class="OCCURRENCE" endpoints="3742 3748" sent_idx="0">massed</EVENT> to <EVENT eid="e86" class="OCCURRENCE" endpoints="3752 3758" sent_idx="0">defend</EVENT> Saudi Arabia. ``We don't just <EVENT eid="e87" class="OCCURRENCE" endpoints="3789 3795" sent_idx="0">arrive</EVENT>,'' <EVENT eid="e89" class="REPORTING" endpoints="3799 3803" sent_idx="0">said</EVENT> four-star Gen. John Dailey, assistant commandant of the U.S. Marine Corps. ``We're there to <EVENT eid="e90" class="OCCURRENCE" endpoints="3896 3900" sent_idx="0">stay</EVENT> for <TIMEX3 tid="t339" type="DURATION" value="PXX" temporalFunction="false" functionInDocument="NONE" endpoints="3905 3928" sent_idx="0">a fairly lengthy period</TIMEX3>.'' Egypt, Syria, Morocco and Bangladesh also <EVENT eid="e91" class="OCCURRENCE" endpoints="3974 3983" sent_idx="0">committed</EVENT> ground troops, to a much lesser degree. The U.S. Navy <EVENT eid="e253" class="STATE" endpoints="4038 4041" sent_idx="0">has</EVENT> 27 ships in the maritime barricade of Iraq. They are <EVENT eid="e254" class="STATE" endpoints="4095 4100" sent_idx="0">aided</EVENT> by Britain, West Germany, Australia, Canada, the Netherlands and Belgium. Bush was <EVENT eid="e95" class="I_STATE" endpoints="4184 4192" sent_idx="0">expected</EVENT> to <EVENT eid="e96" class="I_ACTION" endpoints="4196 4205" sent_idx="0">authorize</EVENT> naval commanders to <EVENT eid="e97" class="OCCURRENCE" endpoints="4226 4229" sent_idx="0">use</EVENT> ``the minimum force necessary'' to <EVENT eid="e98" class="OCCURRENCE" endpoints="4265 4274" sent_idx="0">interdict</EVENT> shipments to and from Iraq, a U.S. official <EVENT eid="e99" class="REPORTING" endpoints="4319 4323" sent_idx="0">said</EVENT>. That could include <EVENT eid="e255" class="OCCURRENCE" endpoints="4344 4350" sent_idx="0">firing</EVENT> across the bow to <EVENT eid="e256" class="OCCURRENCE" endpoints="4369 4373" sent_idx="0">halt</EVENT> a ship. In the air, U.S. Air Force fliers <EVENT eid="e102" class="REPORTING" endpoints="4416 4419" sent_idx="0">say</EVENT> they have <EVENT eid="e103" class="OCCURRENCE" endpoints="4430 4437" sent_idx="0">engaged</EVENT> in ``a little cat and mouse'' with Iraqi warplanes, which have <EVENT eid="e104" class="OCCURRENCE" endpoints="4501 4510" sent_idx="0">retreated</EVENT> when weapons radar <EVENT eid="e257" class="OCCURRENCE" endpoints="4530 4535" sent_idx="0">locks</EVENT> onto them. ``They don't <EVENT eid="e107" class="I_STATE" endpoints="4560 4564" sent_idx="0">want</EVENT> to <EVENT eid="e109" class="OCCURRENCE" endpoints="4568 4572" sent_idx="0">play</EVENT> with us,'' one U.S. crew chief <EVENT eid="e110" class="REPORTING" endpoints="4604 4608" sent_idx="0">said</EVENT>. In Kuwait, the Iraqis have <EVENT eid="e111" class="OCCURRENCE" endpoints="4637 4643" sent_idx="0">rimmed</EVENT> the capital city with an air-defense system, <EVENT eid="e258" class="REPORTING" endpoints="4689 4698" sent_idx="0">according</EVENT> to a U.S. official who spoke on the condition of anonymity. He <EVENT eid="e114" class="I_ACTION" endpoints="4762 4770" sent_idx="0">declined</EVENT> to <EVENT eid="e115" class="REPORTING" endpoints="4774 4777" sent_idx="0">say</EVENT> if the weapons <EVENT eid="e117" class="OCCURRENCE" endpoints="4793 4801" sent_idx="0">included</EVENT> missiles, but the Iraqis have them in their arsenal. The Iraqis also possess chemical weapons. The combined <EVENT eid="e1138" class="OCCURRENCE" endpoints="4910 4920" sent_idx="0">operations</EVENT> are designed to <EVENT eid="e122" class="OCCURRENCE" endpoints="4937 4944" sent_idx="0">isolate</EVENT> and <EVENT eid="e259" class="OCCURRENCE" endpoints="4949 4957" sent_idx="0">strangle</EVENT> Iraq until it <EVENT eid="e123" class="OCCURRENCE" endpoints="4972 4980" sent_idx="0">retreats</EVENT> from Kuwait. The quarantine <EVENT eid="e125" class="I_STATE" endpoints="5009 5014" sent_idx="0">hopes</EVENT> to <EVENT eid="e126" class="ASPECTUAL" endpoints="5018 5025" sent_idx="0">staunch</EVENT> the <EVENT eid="e261" class="OCCURRENCE" endpoints="5030 5034" sent_idx="0">flow</EVENT> of Iraqi oil, which is Iraq's economic lifeblood, and <EVENT eid="e127" class="ASPECTUAL" endpoints="5089 5094" sent_idx="0">clamp</EVENT> down on food and supplies <EVENT eid="e128" class="OCCURRENCE" endpoints="5121 5126" sent_idx="0">going</EVENT> in. Iraq <TIMEX3 tid="t295" type="DATE" value="PRESENT_REF" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t0" endpoints="5136 5139" sent_idx="0">now</TIMEX3> <EVENT eid="e129" class="STATE" endpoints="5140 5148" sent_idx="0">controls</EVENT> 20 percent of the world's oil reserves with its <EVENT eid="e262" class="OCCURRENCE" endpoints="5197 5205" sent_idx="0">conquest</EVENT> of Kuwait. Only Saudi Arabia <EVENT eid="e263" class="STATE" endpoints="5235 5238" sent_idx="0">has</EVENT> more oil reserves. The economic <EVENT eid="e1214" class="STATE" endpoints="5271 5280" sent_idx="0">chokehold</EVENT> appears to be working. The Lloyd's List International newspaper, which monitors worldwide shipping, <EVENT eid="e134" class="REPORTING" endpoints="5381 5385" sent_idx="0">said</EVENT> Iraq's fleet of 80 tankers and cargo ships has <EVENT eid="e135" class="ASPECTUAL" endpoints="5433 5440" sent_idx="0">stopped</EVENT> regular <EVENT eid="e136" class="OCCURRENCE" endpoints="5449 5456" sent_idx="0">trading</EVENT>. John Prescott, a shipping correspondent, <EVENT eid="e137" class="REPORTING" endpoints="5499 5503" sent_idx="0">said</EVENT> there was no <EVENT eid="e138" class="STATE" endpoints="5517 5525" sent_idx="0">shipping</EVENT> in Kuwaiti or Iraqi ports and that activity was <EVENT eid="e139" class="OCCURRENCE" endpoints="5574 5582" sent_idx="0">trailing</EVENT> off in the Jordanian port of Aqaba. Bush's chief objective in his <EVENT eid="e140" class="OCCURRENCE" endpoints="5649 5656" sent_idx="0">meeting</EVENT> with Hussein was to <EVENT eid="e266" class="I_ACTION" endpoints="5677 5682" sent_idx="0">press</EVENT> the king to <EVENT eid="e142" class="OCCURRENCE" endpoints="5695 5699" sent_idx="0">shut</EVENT> down Iraq's food and oil supply route from Aqaba on the Red Sea. Aqaba is Iraq's only <EVENT eid="e267" class="STATE" endpoints="5786 5792" sent_idx="0">outlet</EVENT> <TIMEX3 tid="t299" type="DATE" value="PRESENT_REF" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t0" endpoints="5793 5796" sent_idx="0">now</TIMEX3> that an international noose has <EVENT eid="e143" class="OCCURRENCE" endpoints="5829 5838" sent_idx="0">tightened</EVENT>. Bush has <EVENT eid="e144" class="REPORTING" endpoints="5849 5858" sent_idx="0">indicated</EVENT> the U.S. Navy will <EVENT eid="e145" class="OCCURRENCE" endpoints="5878 5887" sent_idx="0">barricade</EVENT> the port from Iraqi ships. The president also has <EVENT eid="e147" class="I_ACTION" endpoints="5938 5945" sent_idx="0">offered</EVENT> to <EVENT eid="e148" class="I_ACTION" endpoints="5949 5953" sent_idx="0">help</EVENT> <EVENT eid="e149" class="I_ACTION" endpoints="5954 5960" sent_idx="0">offset</EVENT> Jordan's costs because 40 percent of its exports <EVENT eid="e1307" class="OCCURRENCE" endpoints="6010 6012" sent_idx="0">go</EVENT> to Iraq and 90 percent of its oil <EVENT eid="e1306" class="OCCURRENCE" endpoints="6047 6052" sent_idx="0">comes</EVENT> from there. ``It's our only outlet to the sea and the rest of the world,'' Hussein <EVENT eid="e152" class="REPORTING" endpoints="6136 6140" sent_idx="0">said</EVENT>. He also <EVENT eid="e153" class="REPORTING" endpoints="6150 6154" sent_idx="0">said</EVENT> of trade with Iraq: ``There are no shipments at the moment.'' <TIMEX3 tid="t352" type="DURATION" value="P1D" temporalFunction="false" functionInDocument="NONE" endpoints="6217 6230" sent_idx="0">A day earlier</TIMEX3>, scores of trucks, many with Iraqi license plates, <EVENT eid="e156" class="OCCURRENCE" endpoints="6282 6290" sent_idx="0">streamed</EVENT> north out of Aqaba to Amman and onto the desert highway bound for Iraq. The Jordanian monarch <EVENT eid="e158" class="OCCURRENCE" endpoints="6385 6388" sent_idx="0">met</EVENT> <TIMEX3 tid="t300" type="DATE" value="1990-W33" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t0" endpoints="6389 6398" sent_idx="0">this week</TIMEX3> with Saddam, but he <EVENT eid="e159" class="REPORTING" endpoints="6419 6423" sent_idx="0">told</EVENT> reporters he had no message from Baghdad. ``I am not <EVENT eid="e161" class="OCCURRENCE" endpoints="6477 6484" sent_idx="0">talking</EVENT> on behalf of anyone in the area... but myself,'' Hussein <EVENT eid="e165" class="REPORTING" endpoints="6542 6546" sent_idx="0">said</EVENT>. In the United Nations, Libya <EVENT eid="e166" class="I_ACTION" endpoints="6577 6583" sent_idx="0">called</EVENT> for the <EVENT eid="e271" class="OCCURRENCE" endpoints="6592 6603" sent_idx="0">replacement</EVENT> of U.S. forces in the Persian Gulf with Arab League forces and U.N. soldiers. Libyan leader Moammar Gadhafi, in a letter to the U.N. Secretary-General, also <EVENT eid="e169" class="I_ACTION" endpoints="6761 6767" sent_idx="0">called</EVENT> for an emergency Security Council <EVENT eid="e272" class="OCCURRENCE" endpoints="6802 6809" sent_idx="0">meeting</EVENT> in Geneva to <EVENT eid="e170" class="OCCURRENCE" endpoints="6823 6829" sent_idx="0">remove</EVENT> U.S. forces. There was no <EVENT eid="e171" class="STATE" endpoints="6856 6864" sent_idx="0">decision</EVENT> on a <EVENT eid="e173" class="OCCURRENCE" endpoints="6870 6877" sent_idx="0">meeting</EVENT>. Thirty-two of the 159 U.N. members had <EVENT eid="e175" class="OCCURRENCE" endpoints="6918 6923" sent_idx="0">filed</EVENT> compliance reports by <TIMEX3 tid="t301" type="DATE" value="1990-08-15" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t0" endpoints="6946 6955" sent_idx="0">Wednesday</TIMEX3>, and all were <EVENT eid="e274" class="I_ACTION" endpoints="6970 6978" sent_idx="0">honoring</EVENT> the sanctions Iraq. Also <TIMEX3 tid="t302" type="DATE" value="1990-08-16" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t0" endpoints="7004 7012" sent_idx="0">Thursday</TIMEX3>, Saudi Arabia <EVENT eid="e177" class="I_ACTION" endpoints="7027 7033" sent_idx="0">called</EVENT> for an emergency <EVENT eid="e276" class="OCCURRENCE" endpoints="7051 7061" sent_idx="0">conference</EVENT> of the Organization of Petroleum Exporting Countries to <EVENT eid="e178" class="I_ACTION" endpoints="7118 7125" sent_idx="0">discuss</EVENT> how much oil to <EVENT eid="e179" class="OCCURRENCE" endpoints="7142 7146" sent_idx="0">pump</EVENT>. The minister <EVENT eid="e180" class="I_ACTION" endpoints="7161 7167" sent_idx="0">denied</EVENT> the kingdom had <EVENT eid="e3000" class="I_ACTION" endpoints="7184 7192" sent_idx="0">notified</EVENT> notified any of its customers of any <EVENT eid="e278" class="OCCURRENCE" endpoints="7230 7238" sent_idx="0">cutbacks</EVENT> in oil supply. Reports attributed to the Japanese foreign ministry <EVENT eid="e185" class="REPORTING" endpoints="7306 7310" sent_idx="0">said</EVENT> Saudi Arabia <EVENT eid="e186" class="REPORTING" endpoints="7324 7328" sent_idx="0">told</EVENT> U.S., European and Japanese oil companies of a 15-20 percent <EVENT eid="e279" class="OCCURRENCE" endpoints="7390 7397" sent_idx="0">cutback</EVENT> in its oil supply in <TIMEX3 tid="t303" type="DATE" value="1990-09" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t0" endpoints="7419 7428" sent_idx="0">September</TIMEX3>. Meanwhile, Egypt's official Middle East News Agency <EVENT eid="e188" class="REPORTING" endpoints="7482 7486" sent_idx="0">said</EVENT> <TIMEX3 tid="t304" type="DATE" value="1990-08-16" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t0" endpoints="7487 7495" sent_idx="0">Thursday</TIMEX3> that Saddam was the <EVENT eid="e189" class="STATE" endpoints="7516 7522" sent_idx="0">target</EVENT> of an assassination <EVENT eid="e280" class="I_ACTION" endpoints="7543 7550" sent_idx="0">attempt</EVENT>, which <EVENT eid="e190" class="OCCURRENCE" endpoints="7558 7561" sent_idx="0">led</EVENT> to ``large-scale'' <EVENT eid="e282" class="OCCURRENCE" endpoints="7581 7588" sent_idx="0">arrests</EVENT>, including some close associates of the Iraqi strongman. The agency <EVENT eid="e192" class="REPORTING" endpoints="7657 7663" sent_idx="0">quoted</EVENT> witnesses as <EVENT eid="e193" class="REPORTING" endpoints="7677 7683" sent_idx="0">saying</EVENT> tanks and armored cars are <EVENT eid="e283" class="OCCURRENCE" endpoints="7711 7721" sent_idx="0">patrolling</EVENT> the streets of Baghdad. There was no independent <EVENT eid="e194" class="I_ACTION" endpoints="7771 7783" sent_idx="0">confirmation</EVENT> of the report by the government-run news agency, which did not <EVENT eid="e195" class="REPORTING" endpoints="7847 7850" sent_idx="0">say</EVENT> when the reported <EVENT eid="e286" class="I_ACTION" endpoints="7869 7876" sent_idx="0">attempt</EVENT> <EVENT eid="e198" class="OCCURRENCE" endpoints="7877 7885" sent_idx="0">occurred</EVENT>.</TEXT>
+<MAKEINSTANCE eid="e199" eiid="ei1522" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e1" eiid="ei1523" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e3" eiid="ei1524" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e4" eiid="ei1526" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e202" eiid="ei1528" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e5" eiid="ei1529" tense="NONE" aspect="NONE" polarity="POS" pos="VERB" modality="could" />
+<MAKEINSTANCE eid="e7" eiid="ei1531" tense="PRESPART" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e8" eiid="ei1532" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e11" eiid="ei1533" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e12" eiid="ei1534" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e205" eiid="ei1536" tense="PRESENT" aspect="NONE" polarity="POS" pos="ADJECTIVE" />
+<MAKEINSTANCE eid="e206" eiid="ei1537" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e207" eiid="ei1538" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e13" eiid="ei1539" tense="PRESENT" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e208" eiid="ei1540" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e209" eiid="ei1541" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e210" eiid="ei1542" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e14" eiid="ei1543" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e15" eiid="ei1544" tense="PAST" aspect="NONE" polarity="NEG" pos="VERB" />
+<MAKEINSTANCE eid="e17" eiid="ei1546" tense="NONE" aspect="NONE" polarity="POS" pos="VERB" modality="would" />
+<MAKEINSTANCE eid="e19" eiid="ei1547" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e20" eiid="ei1548" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e21" eiid="ei1549" tense="NONE" aspect="NONE" polarity="POS" pos="VERB" modality="would" />
+<MAKEINSTANCE eid="e213" eiid="ei1550" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e25" eiid="ei1551" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e26" eiid="ei1553" tense="PRESPART" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e29" eiid="ei1555" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e216" eiid="ei1556" tense="PRESENT" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e30" eiid="ei1557" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e217" eiid="ei1558" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e220" eiid="ei1560" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e32" eiid="ei1561" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e33" eiid="ei1562" tense="PRESENT" aspect="PROGRESSIVE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e35" eiid="ei1566" tense="PRESENT" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e36" eiid="ei1567" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e37" eiid="ei1569" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e38" eiid="ei1570" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e39" eiid="ei1571" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e40" eiid="ei1572" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e41" eiid="ei1573" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e42" eiid="ei1574" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e43" eiid="ei1575" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e225" eiid="ei1576" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e44" eiid="ei1577" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e45" eiid="ei1578" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e47" eiid="ei1579" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e227" eiid="ei1581" tense="PRESENT" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e48" eiid="ei1582" tense="FUTURE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e49" eiid="ei1583" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e51" eiid="ei1586" tense="PRESENT" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e52" eiid="ei1587" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e53" eiid="ei1589" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e54" eiid="ei1590" tense="PRESENT" aspect="PERFECTIVE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e55" eiid="ei1591" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e239" eiid="ei1594" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e56" eiid="ei1595" tense="PRESENT" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e237" eiid="ei1597" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e57" eiid="ei1598" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e58" eiid="ei1600" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e242" eiid="ei1601" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e59" eiid="ei1602" tense="NONE" aspect="NONE" polarity="POS" pos="VERB" modality="could" />
+<MAKEINSTANCE eid="e61" eiid="ei1603" tense="PRESENT" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e320" eiid="ei1604" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e63" eiid="ei1605" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e64" eiid="ei1606" tense="FUTURE" aspect="NONE" polarity="NEG" pos="VERB" />
+<MAKEINSTANCE eid="e65" eiid="ei1607" tense="FUTURE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e67" eiid="ei1609" tense="PAST" aspect="PERFECTIVE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e69" eiid="ei1610" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e70" eiid="ei1611" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e71" eiid="ei1612" tense="PRESPART" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e72" eiid="ei1614" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e73" eiid="ei1615" tense="PRESENT" aspect="PERFECTIVE" polarity="NEG" pos="VERB" />
+<MAKEINSTANCE eid="e76" eiid="ei1617" tense="PRESENT" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e246" eiid="ei1618" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e77" eiid="ei1619" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e78" eiid="ei1621" tense="PRESENT" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e80" eiid="ei1622" tense="NONE" aspect="NONE" polarity="NEG" pos="VERB" modality="can" />
+<MAKEINSTANCE eid="e83" eiid="ei1624" tense="PRESENT" aspect="PERFECTIVE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e249" eiid="ei1625" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e84" eiid="ei1626" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e250" eiid="ei1627" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e251" eiid="ei1628" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e85" eiid="ei1630" tense="PRESENT" aspect="PERFECTIVE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e86" eiid="ei1631" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e87" eiid="ei1632" tense="PRESENT" aspect="NONE" polarity="NEG" pos="VERB" />
+<MAKEINSTANCE eid="e89" eiid="ei1633" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e90" eiid="ei1635" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e91" eiid="ei1636" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e253" eiid="ei1637" tense="PRESENT" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e254" eiid="ei1638" tense="PRESENT" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e95" eiid="ei1639" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e96" eiid="ei1640" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e97" eiid="ei1641" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e98" eiid="ei1642" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e99" eiid="ei1643" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e255" eiid="ei1644" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" modality="could" />
+<MAKEINSTANCE eid="e256" eiid="ei1645" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e102" eiid="ei1646" tense="PRESENT" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e103" eiid="ei1647" tense="PRESENT" aspect="PERFECTIVE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e104" eiid="ei1648" tense="PRESENT" aspect="PERFECTIVE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e257" eiid="ei1649" tense="PRESENT" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e107" eiid="ei1650" tense="PRESENT" aspect="NONE" polarity="NEG" pos="VERB" />
+<MAKEINSTANCE eid="e109" eiid="ei1651" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e110" eiid="ei1652" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e111" eiid="ei1653" tense="PRESENT" aspect="PERFECTIVE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e258" eiid="ei1654" tense="PRESPART" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e114" eiid="ei1655" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e115" eiid="ei1656" tense="PRESENT" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e117" eiid="ei1657" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e1138" eiid="ei1658" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e122" eiid="ei1659" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e259" eiid="ei1660" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e123" eiid="ei1661" tense="PRESENT" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e125" eiid="ei1663" tense="PRESENT" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e126" eiid="ei1664" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e261" eiid="ei1665" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e127" eiid="ei1666" tense="PRESENT" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e128" eiid="ei1667" tense="PRESPART" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e129" eiid="ei1668" tense="PRESENT" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e262" eiid="ei1669" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e263" eiid="ei1670" tense="PRESENT" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e1214" eiid="ei1671" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e134" eiid="ei1672" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e135" eiid="ei1673" tense="PRESENT" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e136" eiid="ei1674" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e137" eiid="ei1675" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e138" eiid="ei1676" tense="PAST" aspect="NONE" polarity="NEG" pos="NOUN" />
+<MAKEINSTANCE eid="e139" eiid="ei1677" tense="PAST" aspect="PROGRESSIVE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e140" eiid="ei1679" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e266" eiid="ei1680" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e142" eiid="ei1681" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e267" eiid="ei1682" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e143" eiid="ei1683" tense="PRESENT" aspect="PERFECTIVE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e144" eiid="ei1684" tense="PRESENT" aspect="PERFECTIVE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e145" eiid="ei1685" tense="FUTURE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e147" eiid="ei1686" tense="PRESENT" aspect="PERFECTIVE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e148" eiid="ei1687" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e149" eiid="ei1688" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e1307" eiid="ei1690" tense="PRESENT" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e1306" eiid="ei1692" tense="PRESENT" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e152" eiid="ei1694" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e153" eiid="ei1695" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e156" eiid="ei1697" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e158" eiid="ei1698" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e159" eiid="ei1699" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e161" eiid="ei1701" tense="PRESENT" aspect="PROGRESSIVE" polarity="NEG" pos="VERB" />
+<MAKEINSTANCE eid="e165" eiid="ei1703" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e166" eiid="ei1704" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e271" eiid="ei1705" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e169" eiid="ei1706" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e272" eiid="ei1707" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e170" eiid="ei1708" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e171" eiid="ei1709" tense="PAST" aspect="NONE" polarity="NEG" pos="VERB" />
+<MAKEINSTANCE eid="e173" eiid="ei1710" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e175" eiid="ei1711" tense="PAST" aspect="PERFECTIVE" polarity="POS" cardinality="32" pos="VERB" />
+<MAKEINSTANCE eid="e274" eiid="ei1712" tense="PAST" aspect="PROGRESSIVE" polarity="POS" cardinality="159" pos="VERB" />
+<MAKEINSTANCE eid="e177" eiid="ei1714" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e276" eiid="ei1715" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e178" eiid="ei1716" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e179" eiid="ei1717" tense="INFINITIVE" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e180" eiid="ei1718" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e278" eiid="ei1720" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e185" eiid="ei1721" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e186" eiid="ei1722" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e279" eiid="ei1723" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e188" eiid="ei1724" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e189" eiid="ei1725" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e280" eiid="ei1727" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e190" eiid="ei1728" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e282" eiid="ei1729" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e192" eiid="ei1730" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e193" eiid="ei1731" tense="PRESPART" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e283" eiid="ei1732" tense="PRESENT" aspect="PROGRESSIVE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e194" eiid="ei1733" tense="PAST" aspect="NONE" polarity="NEG" pos="NOUN" />
+<MAKEINSTANCE eid="e195" eiid="ei1736" tense="PAST" aspect="NONE" polarity="NEG" pos="VERB" />
+<MAKEINSTANCE eid="e286" eiid="ei1737" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e198" eiid="ei1738" tense="PAST" aspect="NONE" polarity="POS" pos="VERB" />
+<MAKEINSTANCE eid="e1507" eiid="ei1742" tense="NONE" aspect="NONE" polarity="POS" pos="NOUN" />
+<MAKEINSTANCE eid="e3000" eiid="ei3000" tense="NONE" aspect="NONE" polarity="POS" pos="VERB" />
+<TLINK lid="l239" relType="IDENTITY" from="ei1736" to="ei1724" />
+<TLINK lid="l238" relType="AFTER" from="ei1733" to="ei1730" />
+<TLINK lid="l236" relType="IS_INCLUDED" from="ei1721" to="t304" />
+<TLINK lid="l235" relType="BEFORE" from="ei1686" to="t0" />
+<TLINK lid="l234" relType="BEFORE" from="ei1684" to="t0" />
+<TLINK lid="l233" relType="IDENTITY" from="ei1674" to="ei1665" />
+<TLINK lid="l232" relType="IS_INCLUDED" from="ei1667" to="t0" />
+<TLINK lid="l230" relType="IS_INCLUDED" from="ei1663" to="t0" />
+<TLINK lid="l229" relType="IDENTITY" from="ei1658" to="ei1647" />
+<TLINK lid="l226" relType="BEGUN_BY" from="ei1602" to="ei1601" />
+<TLINK lid="l225" relType="IS_INCLUDED" from="ei1595" to="t0" />
+<TLINK lid="l224" relType="IDENTITY" from="ei1742" to="ei1594" />
+<TLINK lid="l221" relType="AFTER" from="ei1574" to="ei1573" />
+<TLINK lid="l220" relType="AFTER" from="ei1572" to="ei1570" />
+<TLINK lid="l219" relType="IS_INCLUDED" from="ei1551" to="ei1550" />
+<TLINK lid="l1" relType="IDENTITY" from="ei1737" to="ei1738" />
+<TLINK lid="l2" relType="INCLUDES" from="ei1522" to="t0" />
+<TLINK lid="l3" relType="INCLUDES" from="ei1522" to="ei1523" />
+<TLINK lid="l4" relType="IS_INCLUDED" from="ei1523" to="t288" />
+<TLINK lid="l5" relType="BEGUN_BY" from="ei1523" to="ei1524" />
+<TLINK lid="l6" relType="BEGUN_BY" from="ei1523" to="ei1526" />
+<TLINK lid="l7" relType="SIMULTANEOUS" from="ei1524" to="ei1526" />
+<TLINK lid="l9" relType="DURING" from="t289" to="ei1532" />
+<TLINK lid="l10" relType="INCLUDES" from="ei1531" to="ei1533" />
+<TLINK lid="l11" relType="BEFORE" from="ei1531" to="t0" />
+<TLINK lid="l12" relType="IDENTITY" from="ei1539" to="ei1540" />
+<TLINK lid="l13" relType="BEFORE" from="ei1540" to="ei1538" />
+<TLINK lid="l14" relType="IAFTER" from="ei1541" to="ei1540" />
+<TLINK lid="l15" relType="BEFORE" from="ei1541" to="ei1538" />
+<TLINK lid="l16" relType="DURING" from="ei1542" to="t290" />
+<TLINK lid="l17" relType="IAFTER" from="ei1543" to="ei1542" />
+<TLINK lid="l19" relType="IS_INCLUDED" from="ei1547" to="t291" />
+<TLINK lid="l22" relType="INCLUDES" from="ei1550" to="ei1553" />
+<TLINK lid="l23" relType="INCLUDES" from="ei1553" to="t0" />
+<TLINK lid="l24" relType="BEFORE" from="ei1555" to="t0" />
+<TLINK lid="l26" relType="IBEFORE" from="ei1560" to="t0" />
+<TLINK lid="l27" relType="INCLUDES" from="ei1560" to="ei1561" />
+<TLINK lid="l29" relType="BEFORE" from="ei1567" to="t0" />
+<TLINK lid="l32" relType="IS_INCLUDED" from="ei1570" to="ei1569" />
+<TLINK lid="l33" relType="AFTER" from="ei1573" to="ei1570" />
+<TLINK lid="l34" relType="BEFORE" from="ei1575" to="t0" />
+<TLINK lid="l35" relType="AFTER" from="ei1579" to="ei1570" />
+<TLINK lid="l36" relType="BEFORE" from="ei1579" to="t0" />
+<TLINK lid="l37" relType="SIMULTANEOUS" from="ei1583" to="ei1579" />
+<TLINK lid="l39" relType="INCLUDES" from="ei1586" to="t0" />
+<TLINK lid="l40" relType="BEFORE" from="ei1589" to="t0" />
+<TLINK lid="l43" relType="IS_INCLUDED" from="ei1594" to="t292" />
+<TLINK lid="l44" relType="IS_INCLUDED" from="ei1597" to="t293" />
+<TLINK lid="l45" relType="INCLUDES" from="ei1597" to="ei1598" />
+<TLINK lid="l46" relType="INCLUDES" from="ei1597" to="ei1600" />
+<TLINK lid="l47" relType="INCLUDES" from="ei1597" to="ei1610" />
+<TLINK lid="l48" relType="IDENTITY" from="ei1604" to="ei1605" />
+<TLINK lid="l49" relType="AFTER" from="ei1607" to="ei1606" />
+<TLINK lid="l51" relType="AFTER" from="ei1607" to="ei1609" />
+<TLINK lid="l52" relType="INCLUDES" from="ei1606" to="ei1609" />
+<TLINK lid="l53" relType="SIMULTANEOUS" from="ei1611" to="ei1610" />
+<TLINK lid="l54" relType="INCLUDES" from="ei1612" to="t0" />
+<TLINK lid="l55" relType="AFTER" from="ei1614" to="ei1597" />
+<TLINK lid="l56" relType="AFTER" from="ei1624" to="ei1625" />
+<TLINK lid="l57" relType="IDENTITY" from="ei1540" to="ei1625" />
+<TLINK lid="l58" relType="IDENTITY" from="ei1626" to="ei1627" />
+<TLINK lid="l59" relType="BEFORE" from="ei1627" to="ei1625" />
+<TLINK lid="l61" relType="INCLUDES" from="ei1628" to="ei1630" />
+<TLINK lid="l62" relType="IDENTITY" from="ei1612" to="ei1630" />
+<TLINK lid="l63" relType="BEFORE" from="ei1630" to="t0" />
+<TLINK lid="l64" relType="BEFORE" from="ei1633" to="t0" />
+<TLINK lid="l65" relType="DURING" from="ei1635" to="t339" />
+<TLINK lid="l66" relType="SIMULTANEOUS" from="ei1636" to="ei1628" />
+<TLINK lid="l67" relType="INCLUDES" from="ei1637" to="t0" />
+<TLINK lid="l68" relType="SIMULTANEOUS" from="ei1638" to="ei1637" />
+<TLINK lid="l69" relType="BEFORE" from="ei1643" to="t0" />
+<TLINK lid="l70" relType="INCLUDES" from="ei1641" to="ei1644" />
+<TLINK lid="l71" relType="SIMULTANEOUS" from="ei1646" to="t0" />
+<TLINK lid="l72" relType="AFTER" from="ei1648" to="ei1647" />
+<TLINK lid="l73" relType="AFTER" from="ei1648" to="ei1649" />
+<TLINK lid="l74" relType="IBEFORE" from="ei1649" to="ei1647" />
+<TLINK lid="l75" relType="AFTER" from="ei1652" to="ei1648" />
+<TLINK lid="l76" relType="BEFORE" from="ei1653" to="t0" />
+<TLINK lid="l77" relType="INCLUDES" from="ei1654" to="ei1655" />
+<TLINK lid="l78" relType="ENDED_BY" from="ei1659" to="ei1661" />
+<TLINK lid="l79" relType="ENDED_BY" from="ei1660" to="ei1661" />
+<TLINK lid="l82" relType="INCLUDES" from="t295" to="ei1668" />
+<TLINK lid="l83" relType="BEGUN_BY" from="ei1668" to="ei1669" />
+<TLINK lid="l84" relType="SIMULTANEOUS" from="ei1670" to="ei1668" />
+<TLINK lid="l86" relType="BEFORE" from="ei1672" to="t0" />
+<TLINK lid="l87" relType="BEFORE" from="ei1675" to="t0" />
+<TLINK lid="l88" relType="IDENTITY" from="ei1679" to="ei1542" />
+<TLINK lid="l90" relType="IS_INCLUDED" from="ei1682" to="t299" />
+<TLINK lid="l91" relType="BEGUN_BY" from="ei1682" to="ei1683" />
+<TLINK lid="l92" relType="INCLUDES" from="t299" to="ei1683" />
+<TLINK lid="l93" relType="INCLUDES" from="ei1690" to="t0" />
+<TLINK lid="l94" relType="INCLUDES" from="ei1692" to="t0" />
+<TLINK lid="l95" relType="SIMULTANEOUS" from="ei1695" to="ei1694" />
+<TLINK lid="l97" relType="AFTER" from="ei1694" to="ei1697" />
+<TLINK lid="l98" relType="IS_INCLUDED" from="ei1698" to="t300" />
+<TLINK lid="l99" relType="BEFORE" from="ei1698" to="ei1699" />
+<TLINK lid="l100" relType="IDENTITY" from="ei1703" to="ei1699" />
+<TLINK lid="l101" relType="BEFORE" from="ei1704" to="t0" />
+<TLINK lid="l102" relType="SIMULTANEOUS" from="ei1706" to="ei1704" />
+<TLINK lid="l103" relType="BEFORE" from="ei1709" to="ei1710" />
+<TLINK lid="l104" relType="ENDED_BY" from="ei1711" to="t301" />
+<TLINK lid="l105" relType="INCLUDES" from="ei1712" to="ei1711" />
+<TLINK lid="l106" relType="INCLUDES" from="t302" to="ei1714" />
+<TLINK lid="l107" relType="BEFORE" from="ei1718" to="t0" />
+<TLINK lid="l108" relType="IS_INCLUDED" from="ei1723" to="t303" />
+<TLINK lid="l109" relType="IS_INCLUDED" from="ei1724" to="t304" />
+<TLINK lid="l110" relType="IS_INCLUDED" from="ei1725" to="ei1727" />
+<TLINK lid="l111" relType="IDENTITY" from="ei1727" to="ei1728" />
+<TLINK lid="l112" relType="BEFORE" from="ei1727" to="ei1729" />
+<TLINK lid="l114" relType="BEGINS" from="ei1697" to="t352" />
+<TLINK lid="l115" relType="ENDS" from="ei1694" to="t352" />
+<SLINK lid="l215" relType="MODAL" from="ei1709" to="ei1710" />
+<SLINK lid="l213" relType="MODAL" from="ei1595" to="ei1742" />
+<SLINK lid="l117" relType="EVIDENTIAL" from="ei1526" to="ei1529" />
+<SLINK lid="l118" relType="FACTIVE" from="ei1531" to="ei1532" />
+<SLINK lid="l119" relType="EVIDENTIAL" from="ei1533" to="ei1534" />
+<SLINK lid="l121" relType="MODAL" from="ei1536" to="ei1537" />
+<SLINK lid="l122" relType="EVIDENTIAL" from="ei1543" to="ei1544" />
+<SLINK lid="l124" relType="EVIDENTIAL" from="ei1547" to="ei1548" />
+<SLINK lid="l125" relType="EVIDENTIAL" from="ei1548" to="ei1549" />
+<SLINK lid="l127" relType="EVIDENTIAL" from="ei1555" to="ei1556" />
+<SLINK lid="l128" relType="MODAL" from="ei1556" to="ei1557" />
+<SLINK lid="l129" relType="MODAL" from="ei1557" to="ei1558" />
+<SLINK lid="l130" relType="EVIDENTIAL" from="ei1561" to="ei1562" />
+<SLINK lid="l134" relType="MODAL" from="ei1570" to="ei1571" />
+<SLINK lid="l135" relType="EVIDENTIAL" from="ei1572" to="ei1570" />
+<SLINK lid="l136" relType="EVIDENTIAL" from="ei1574" to="ei1573" />
+<SLINK lid="l137" relType="EVIDENTIAL" from="ei1575" to="ei1576" />
+<SLINK lid="l138" relType="MODAL" from="ei1576" to="ei1577" />
+<SLINK lid="l139" relType="MODAL" from="ei1577" to="ei1578" />
+<SLINK lid="l140" relType="MODAL" from="ei1581" to="ei1582" />
+<SLINK lid="l141" relType="EVIDENTIAL" from="ei1583" to="ei1581" />
+<SLINK lid="l142" relType="MODAL" from="ei1586" to="ei1587" />
+<SLINK lid="l144" relType="EVIDENTIAL" from="ei1589" to="ei1590" />
+<SLINK lid="l146" relType="EVIDENTIAL" from="ei1600" to="ei1602" />
+<SLINK lid="l147" relType="EVIDENTIAL" from="ei1610" to="ei1603" />
+<SLINK lid="l148" relType="MODAL" from="ei1605" to="ei1606" />
+<SLINK lid="l150" relType="EVIDENTIAL" from="ei1614" to="ei1615" />
+<SLINK lid="l152" relType="EVIDENTIAL" from="ei1614" to="ei1617" />
+<SLINK lid="l153" relType="MODAL" from="ei1617" to="ei1618" />
+<SLINK lid="l154" relType="MODAL" from="ei1618" to="ei1619" />
+<SLINK lid="l155" relType="EVIDENTIAL" from="ei1614" to="ei1621" />
+<SLINK lid="l156" relType="MODAL" from="ei1621" to="ei1622" />
+<SLINK lid="l158" relType="MODAL" from="ei1630" to="ei1631" />
+<SLINK lid="l159" relType="EVIDENTIAL" from="ei1633" to="ei1632" />
+<SLINK lid="l161" relType="MODAL" from="ei1639" to="ei1640" />
+<SLINK lid="l162" relType="MODAL" from="ei1640" to="ei1641" />
+<SLINK lid="l163" relType="MODAL" from="ei1641" to="ei1642" />
+<SLINK lid="l164" relType="EVIDENTIAL" from="ei1643" to="ei1639" />
+<SLINK lid="l165" relType="MODAL" from="ei1644" to="ei1645" />
+<SLINK lid="l166" relType="EVIDENTIAL" from="ei1646" to="ei1647" />
+<SLINK lid="l167" relType="EVIDENTIAL" from="ei1652" to="ei1650" />
+<SLINK lid="l168" relType="MODAL" from="ei1650" to="ei1651" />
+<SLINK lid="l169" relType="EVIDENTIAL" from="ei1654" to="ei1653" />
+<SLINK lid="l170" relType="COUNTER_FACTIVE" from="ei1655" to="ei1656" />
+<SLINK lid="l171" relType="EVIDENTIAL" from="ei1656" to="ei1657" />
+<SLINK lid="l172" relType="MODAL" from="ei1658" to="ei1659" />
+<SLINK lid="l173" relType="MODAL" from="ei1658" to="ei1660" />
+<SLINK lid="l174" relType="MODAL" from="ei1663" to="ei1664" />
+<SLINK lid="l175" relType="MODAL" from="ei1663" to="ei1666" />
+<SLINK lid="l176" relType="EVIDENTIAL" from="ei1672" to="ei1673" />
+<SLINK lid="l177" relType="EVIDENTIAL" from="ei1675" to="ei1676" />
+<SLINK lid="l178" relType="EVIDENTIAL" from="ei1675" to="ei1677" />
+<SLINK lid="l180" relType="MODAL" from="ei1680" to="ei1681" />
+<SLINK lid="l181" relType="EVIDENTIAL" from="ei1684" to="ei1685" />
+<SLINK lid="l182" relType="MODAL" from="ei1686" to="ei1687" />
+<SLINK lid="l183" relType="MODAL" from="ei1687" to="ei1688" />
+<SLINK lid="l187" relType="EVIDENTIAL" from="ei1703" to="ei1701" />
+<SLINK lid="l188" relType="MODAL" from="ei1704" to="ei1705" />
+<SLINK lid="l189" relType="MODAL" from="ei1706" to="ei1707" />
+<SLINK lid="l190" relType="MODAL" from="ei1707" to="ei1708" />
+<SLINK lid="l192" relType="MODAL" from="ei1714" to="ei1715" />
+<SLINK lid="l193" relType="MODAL" from="ei1715" to="ei1716" />
+<SLINK lid="l194" relType="MODAL" from="ei1716" to="ei1717" />
+<SLINK lid="l197" relType="EVIDENTIAL" from="ei1721" to="ei1722" />
+<SLINK lid="l198" relType="EVIDENTIAL" from="ei1722" to="ei1723" />
+<SLINK lid="l199" relType="EVIDENTIAL" from="ei1724" to="ei1725" />
+<SLINK lid="l201" relType="EVIDENTIAL" from="ei1730" to="ei1731" />
+<SLINK lid="l202" relType="EVIDENTIAL" from="ei1731" to="ei1732" />
+<SLINK lid="l204" relType="EVIDENTIAL" from="ei1736" to="ei1738" />
+<ALINK lid="l206" relType="TERMINATES" from="ei1537" to="ei1538" />
+<ALINK lid="l207" relType="CONTINUES" from="ei1551" to="ei1550" />
+<ALINK lid="l208" relType="CONTINUES" from="ei1590" to="ei1591" />
+<ALINK lid="l209" relType="CONTINUES" from="ei1603" to="ei1604" />
+<ALINK lid="l210" relType="TERMINATES" from="ei1664" to="ei1665" />
+<ALINK lid="l211" relType="TERMINATES" from="ei1666" to="ei1667" />
+<ALINK lid="l212" relType="TERMINATES" from="ei1673" to="ei1674" />
 </TimeML>
