@@ -24,7 +24,15 @@ setup(
 
     packages=find_packages(exclude=('tests*',)),
 
-    install_requires=[],
+    install_requires=[
+        "allennlp==2.9.3",
+        "nltk==3.6.7",
+        "allennlp==2.9.3",
+        "py_heideltime @ git+https://github.com/JMendes1995/py_heideltime",
+        "tabulate==0.8.9",
+        "torch==1.11.0",
+        "xmltodict==0.12.0"
+    ],
 
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
