@@ -19,7 +19,7 @@ Contacts:
 
 import sys
 
-from tieval.datasets import downloader, download
+from tieval.datasets import download
 
 
 def main():
@@ -33,7 +33,7 @@ def main():
     if download_cmd:
 
         if help_msg:
-            print(downloader.__doc__)
+            print(download.__doc__)
             return None
 
         args.remove("download")

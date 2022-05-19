@@ -8,7 +8,7 @@ README = open("README.md").read()
 
 setup(
     name="tieval",
-    version="0.0.2",
+    version="0.0.3",
     url="https://github.com/LIAAD/tieval",
     license='MIT',
 
@@ -28,7 +28,6 @@ setup(
         "allennlp==2.9.3",
         "nltk==3.6.7",
         "allennlp==2.9.3",
-        "py_heideltime @ git+https://github.com/JMendes1995/py_heideltime",
         "tabulate==0.8.9",
         "torch==1.11.0",
         "xmltodict==0.12.0"
