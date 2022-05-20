@@ -38,7 +38,7 @@ class TLink:
         return f"{self.source} ---{self.relation}--> {self.target}"
 
     def __repr__(self):
-        return f"TLink(id={self.id})"
+        return f"TLink({self.source} ---{self.relation}--> {self.target})"
 
     @staticmethod
     def _resolve_inference(self, other):
