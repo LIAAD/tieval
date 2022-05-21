@@ -234,10 +234,6 @@ class PointRelation:
 
         return [[s_src.value, e_src.value], [s_tgt.value, e_tgt.value]]
 
-    @property
-    def minimal(self):
-        pass
-
 
 # Mapping from interval relation names to point relations.
 # For example, BEFORE means that the first interval"s end is before the second

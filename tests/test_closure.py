@@ -1,12 +1,13 @@
 import pytest
 
+
 from tieval.links import TLink
 from tieval.closure import temporal_closure
 
 
-@pytest.fixture
-def annotation():
-    sample1 = {
+def test_temporal_closure_1():
+
+    annotation = {
         TLink("B", "A", "before"),
         TLink("D", "H", "ends"),
         TLink("D", "G", "before"),
@@ -15,25 +16,7 @@ def annotation():
         TLink("B", "E", "after"),
     }
 
-    sample2 = {
-        TLink("A", "B", "before"),
-        TLink("B", "C", "is_included"),
-        TLink("D", "C", "includes"),
-        TLink("E", "D", "contains"),
-        TLink("F", "E", "after"),
-        TLink("G", "H", "begins-on"),
-        TLink("I", "G", "before"),
-        TLink("J", "K", "ibefore"),
-        TLink("K", "L", "begun_by"),
-        TLink("L", "K", "begins")
-    }
-
-    return sample1, sample2
-
-
-@pytest.fixture
-def closure():
-    sample1 = {
+    closure = {
         TLink("B", "A", "before"),
         TLink("D", "H", "ends"),
         TLink("D", "G", "before"),
@@ -49,7 +32,26 @@ def closure():
         TLink("F", "C", "after"),
     }
 
-    sample2 = {
+    inferred = temporal_closure(annotation)
+    assert inferred == closure
+
+
+def test_temporal_closure_2():
+
+    annotation = {
+        TLink("A", "B", "before"),
+        TLink("B", "C", "is_included"),
+        TLink("D", "C", "includes"),
+        TLink("E", "D", "contains"),
+        TLink("F", "E", "after"),
+        TLink("G", "H", "begins-on"),
+        TLink("I", "G", "before"),
+        TLink("J", "K", "ibefore"),
+        TLink("K", "L", "begun_by"),
+        TLink("L", "K", "begins")
+    }
+
+    closure = {
         TLink("A", "B", "before"),
         TLink("A", "F", "before"),
         TLink("B", "F", "before"),
@@ -70,13 +72,5 @@ def closure():
         TLink("J", "K", "ibefore"),
     }
 
-    return sample1, sample2
-
-
-def test_temporal_closure(annotation, closure):
-
-    for ann, clo in zip(annotation, closure):
-
-        inferred = temporal_closure(ann)
-
-        assert inferred == clo
+    inferred = temporal_closure(annotation)
+    assert inferred == closure
