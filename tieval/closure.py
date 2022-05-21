@@ -1,14 +1,13 @@
 from collections import defaultdict
-import copy
 from typing import Set
 
+import networkx as nx
+
 from tieval.links import TLink
+from tieval.temporal_relation import _INVERSE_POINT_RELATION, TemporalRelation
 
 
-def temporal_closure(
-        tlinks: Set[TLink],
-        allow_incomplete: bool = False
-) -> Set[TLink]:
+def temporal_closure(tlinks: Set[TLink]):
     """Compute temporal closure from a set of temporal links.
 
     This function infers all possible TLinks form the set of tlinks
@@ -29,86 +28,130 @@ def temporal_closure(
     .. _paper: http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.468.2433&rep=rep1&type=pdf
     """
 
-    result = copy.deepcopy(tlinks)
-
-    # build a dictionary of entities and their tlinks
-    entities_tlinks = defaultdict(set)
+    edges_triplets = set()
     for tlink in tlinks:
-        entities_tlinks[tlink.source].add(tlink)
-        entities_tlinks[tlink.target].add(tlink)
 
-    old_tlinks = tlinks
-    while True:
-
-        inferred_tlinks = set()
-        for tlink1 in old_tlinks:
-
-            connected_tlinks = set.union(
-                entities_tlinks[tlink1.source],
-                entities_tlinks[tlink1.target]
-            )
-            connected_tlinks.discard(tlink1)
-
-            for tlink2 in connected_tlinks:
-
-                inferred_tlink = tlink1 & tlink2
-
-                if inferred_tlink is not None:
-                    continue
-
-                # check if the inferred tlink is novel
-                cond = (inferred_tlink in result)
-                if not allow_incomplete:
-                    cond = cond and inferred_tlink.relation.is_complete()
-
-                if cond:
-
-                    inferred_tlinks.add(inferred_tlink)
-
-                    # update entities_tlinks dict
-                    entities_tlinks[inferred_tlink.source].add(inferred_tlink)
-                    entities_tlinks[inferred_tlink.target].add(inferred_tlink)
-
-        if inferred_tlinks:
-            result.update(inferred_tlinks)
-            old_tlinks = inferred_tlinks
+        if isinstance(tlink.source, str):
+            sx = f"s{tlink.source}"
+            ex = f"e{tlink.source}"
+            sy = f"s{tlink.target}"
+            ey = f"e{tlink.target}"
 
         else:
-            break
+            sx = f"s{tlink.source.id}"
+            ex = f"e{tlink.source.id}"
+            sy = f"s{tlink.target.id}"
+            ey = f"e{tlink.target.id}"
 
-    # remove inferred tlinks that are an incomplete inference of existing ones.
-    # example: A --BEFORE--> B and A --BEFORE-OR-OVERLAP--> B
-    to_remove = []
-    entity_pairs = {}
-    for tlink in result:
-        key = tuple(sorted([tlink.source.id, tlink.target.id]))
+        p_relations = tlink.relation.point.relation
 
-        if key not in entity_pairs:
-            entity_pairs[key] = tlink
+        edges_triplets.update([
+            (sx, p_relations[0], sy),
+            (sx, p_relations[1], ey),
+            (ex, p_relations[2], sy),
+            (ex, p_relations[3], ey)
+        ])
 
-        else:
-            prev_tlink = entity_pairs[key]
+    # make all relations "<" or "="
+    edges = set()
+    equal_nodes = set()
+    for node1, relation, node2 in edges_triplets:
 
-            if tlink.source != prev_tlink.source:
-                prev_tlink = ~prev_tlink
+        if relation == "<":
+            edges.add((node1, node2))
 
-            print(f"{tlink}\n{prev_tlink}")
+        if relation == ">":
+            edges.add((node2, node1))
 
-            # check if one point relation is contained in the other
-            # example: point relation [<, <, None, <] is contained in [<, <, <, <]
-            # an example that would not be removed: ['<', '<', '>', '>'] and ['>', '>', '>', '>']
-            # we don't what this links to be removed as they expose errors in the annotation
-            is_contained = True
-            for p1, p2 in zip(prev_tlink.relation.point, tlink.relation.point):
+        elif relation == "=":
+            sorted_nodes = tuple(sorted((node1, node2)))
+            equal_nodes.add(sorted_nodes)
 
-                if p1 is None or p2 is None:
-                    continue
+    # apply transitivity to equal nodes
+    equal_graph = nx.DiGraph()
+    equal_graph.add_edges_from(equal_nodes)
 
-                elif p1 != p2:
-                    is_contained = False
-                    break
+    equal_point_relations = get_connected_nodes(equal_graph)
+    equal_point_relations = set((n1, "=", n2) for n1, n2 in equal_point_relations)
 
-            if is_contained:
-                to_remove += [tlink]
+    # build temporal graph
+    tempgraph = nx.DiGraph()
+    tempgraph.add_edges_from(edges)
 
-    return result
+    inferred_point_relations = get_connected_nodes(tempgraph)
+    inferred_point_relations = set((n1, "<", n2) for n1, n2 in inferred_point_relations)
+
+    # add relations to points that are equivalent
+    new_point_relations = set()
+    for relation in inferred_point_relations:
+        for node1_eq, _, node2_eq in equal_point_relations:
+
+            if node2_eq in relation:
+                new_point_relations.update([tuple(map(lambda x: x.replace(node2_eq, node1_eq), relation))])
+
+            if node1_eq in relation:
+                new_point_relations.update([tuple(map(lambda x: x.replace(node1_eq, node2_eq), relation))])
+
+    inferred_point_relations.update(new_point_relations)
+    inferred_point_relations.update(equal_point_relations)
+
+    # aggregate the point relations by entity pairs
+    tlinks_point_relations = defaultdict(set)
+    for source, relation, target in inferred_point_relations:
+        key = tuple(sorted((source[1:], target[1:])))
+        tlinks_point_relations[key].add((source, relation, target))
+
+    # assert if the point relations found form a valid interval relation
+    inferred_tlinks = set()
+    for entities, point_relations in tlinks_point_relations.items():
+
+        source, target = sorted(entities)
+
+        # map the point relations to the original structure
+        xs_ys, xs_ye, xe_ys, xe_ye = None, None, None, None
+        for node1, relation, node2 in point_relations:
+
+            if node1 == f"s{source}" and node2 == f"s{target}":
+                xs_ys = relation
+            elif node2 == f"s{source}" and node1 == f"s{target}":
+                xs_ys = _INVERSE_POINT_RELATION[relation]
+
+            elif node1 == f"s{source}" and node2 == f"e{target}":
+                xs_ye = relation
+            elif node2 == f"s{source}" and node1 == f"e{target}":
+                xs_ye = _INVERSE_POINT_RELATION[relation]
+
+            elif node1 == f"e{source}" and node2 == f"s{target}":
+                xe_ys = relation
+            elif node2 == f"e{source}" and node1 == f"s{target}":
+                xe_ys = _INVERSE_POINT_RELATION[relation]
+
+            elif node1 == f"e{source}" and node2 == f"e{target}":
+                xe_ye = relation
+            elif node2 == f"e{source}" and node1 == f"e{target}":
+                xe_ye = _INVERSE_POINT_RELATION[relation]
+
+        relation = TemporalRelation([xs_ys, xs_ye, xe_ys, xe_ye])
+        if relation.is_complete():
+            tlink = TLink(source, target, relation)
+            inferred_tlinks.add(tlink)
+
+    return inferred_tlinks
+
+
+def get_connected_nodes(graph):
+
+    # segment the temporal graph in disconnected graphs
+    undirected = graph.to_undirected()
+    sub_graphs_nodes = nx.connected_components(undirected)
+    sub_graphs = [graph.subgraph(nodes) for nodes in sub_graphs_nodes]
+
+    # retrieve all the possible paths between root and leaf nodes
+    node_pairs = set()
+    for sub_graph in sub_graphs:
+
+        for node in sub_graph.nodes:
+            descendants = nx.algorithms.descendants(sub_graph, node)
+            node_pairs.update(list(zip([node] * len(descendants), descendants)))
+
+    return node_pairs
