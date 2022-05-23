@@ -1,5 +1,5 @@
 from collections import defaultdict
-from typing import Set
+from typing import Set, Tuple
 
 import networkx as nx
 
@@ -7,7 +7,7 @@ from tieval.links import TLink
 from tieval.temporal_relation import _INVERSE_POINT_RELATION, TemporalRelation
 
 
-def temporal_closure(tlinks: Set[TLink]):
+def temporal_closure(tlinks: Set[TLink]) -> Set[TLink]:
     """Compute temporal closure from a set of temporal links.
 
     This function infers all possible TLinks form the set of tlinks
@@ -67,18 +67,16 @@ def temporal_closure(tlinks: Set[TLink]):
             sorted_nodes = tuple(sorted((node1, node2)))
             equal_nodes.add(sorted_nodes)
 
-    # apply transitivity to equal nodes
+    # build to equal graph
     equal_graph = nx.DiGraph()
     equal_graph.add_edges_from(equal_nodes)
-
-    equal_point_relations = get_connected_nodes(equal_graph)
+    equal_point_relations = _get_connected_nodes(equal_graph)
     equal_point_relations = set((n1, "=", n2) for n1, n2 in equal_point_relations)
 
     # build temporal graph
     tempgraph = nx.DiGraph()
     tempgraph.add_edges_from(edges)
-
-    inferred_point_relations = get_connected_nodes(tempgraph)
+    inferred_point_relations = _get_connected_nodes(tempgraph)
     inferred_point_relations = set((n1, "<", n2) for n1, n2 in inferred_point_relations)
 
     # add relations to points that are equivalent
@@ -103,33 +101,10 @@ def temporal_closure(tlinks: Set[TLink]):
 
     # assert if the point relations found form a valid interval relation
     inferred_tlinks = set()
-    for entities, point_relations in tlinks_point_relations.items():
+    for entities, point_relation in tlinks_point_relations.items():
 
         source, target = sorted(entities)
-
-        # map the point relations to the original structure
-        xs_ys, xs_ye, xe_ys, xe_ye = None, None, None, None
-        for node1, relation, node2 in point_relations:
-
-            if node1 == f"s{source}" and node2 == f"s{target}":
-                xs_ys = relation
-            elif node2 == f"s{source}" and node1 == f"s{target}":
-                xs_ys = _INVERSE_POINT_RELATION[relation]
-
-            elif node1 == f"s{source}" and node2 == f"e{target}":
-                xs_ye = relation
-            elif node2 == f"s{source}" and node1 == f"e{target}":
-                xs_ye = _INVERSE_POINT_RELATION[relation]
-
-            elif node1 == f"e{source}" and node2 == f"s{target}":
-                xe_ys = relation
-            elif node2 == f"e{source}" and node1 == f"s{target}":
-                xe_ys = _INVERSE_POINT_RELATION[relation]
-
-            elif node1 == f"e{source}" and node2 == f"e{target}":
-                xe_ye = relation
-            elif node2 == f"e{source}" and node1 == f"e{target}":
-                xe_ye = _INVERSE_POINT_RELATION[relation]
+        xs_ys, xs_ye, xe_ys, xe_ye = _structure_point_relation(source, target, point_relation)
 
         relation = TemporalRelation([xs_ys, xs_ye, xe_ys, xe_ye])
         if relation.is_complete():
@@ -139,7 +114,14 @@ def temporal_closure(tlinks: Set[TLink]):
     return inferred_tlinks
 
 
-def get_connected_nodes(graph):
+def _get_connected_nodes(graph: nx.Graph) -> Set[Tuple[str, str]]:
+    """Retrieve the pairs of nodes that are connected by a path
+
+    :param graph: A directed graph.
+    :type: nx.Graph
+
+    :return: Set[Tuple[str, str]]
+    """
 
     # segment the temporal graph in disconnected graphs
     undirected = graph.to_undirected()
@@ -155,3 +137,37 @@ def get_connected_nodes(graph):
             node_pairs.update(list(zip([node] * len(descendants), descendants)))
 
     return node_pairs
+
+
+def _structure_point_relation(
+        source: str,
+        target: str,
+        point_relation: Tuple[str, str, str]
+) -> Tuple[str, str, str, str]:
+    """Map the point relations to the original structure.
+    """
+
+    xs_ys, xs_ye, xe_ys, xe_ye = None, None, None, None
+    for node1, relation, node2 in point_relation:
+
+        if node1 == f"s{source}" and node2 == f"s{target}":
+            xs_ys = relation
+        elif node2 == f"s{source}" and node1 == f"s{target}":
+            xs_ys = _INVERSE_POINT_RELATION[relation]
+
+        elif node1 == f"s{source}" and node2 == f"e{target}":
+            xs_ye = relation
+        elif node2 == f"s{source}" and node1 == f"e{target}":
+            xs_ye = _INVERSE_POINT_RELATION[relation]
+
+        elif node1 == f"e{source}" and node2 == f"s{target}":
+            xe_ys = relation
+        elif node2 == f"e{source}" and node1 == f"s{target}":
+            xe_ys = _INVERSE_POINT_RELATION[relation]
+
+        elif node1 == f"e{source}" and node2 == f"e{target}":
+            xe_ye = relation
+        elif node2 == f"e{source}" and node1 == f"e{target}":
+            xe_ye = _INVERSE_POINT_RELATION[relation]
+
+    return xs_ys, xs_ye, xe_ys, xe_ye
