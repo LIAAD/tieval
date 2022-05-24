@@ -40,31 +40,6 @@ class TLink:
     def __repr__(self):
         return f"TLink({self.source} ---{self.relation}--> {self.target})"
 
-    @staticmethod
-    def _resolve_inference(self, other):
-
-        if self.source == other.source:
-            source = self.target
-            target = other.target
-            relation = (~self.relation) & other.relation
-
-        elif self.source == other.target:
-            source = self.target
-            target = other.source
-            relation = ~self.relation & ~other.relation
-
-        elif self.target == other.source:
-            source = self.source
-            target = other.target
-            relation = self.relation & other.relation
-
-        elif self.target == other.target:
-            source = self.source
-            target = other.source
-            relation = self.relation & ~other.relation
-
-        return source, target, relation
-
     def __and__(self, other):
         """ Infer the relation between two TLinks.
 
@@ -120,3 +95,32 @@ class TLink:
             relation = ~self.relation.point
 
         return hash((src, tgt, relation))
+
+    @staticmethod
+    def _resolve_inference(self, other):
+
+        if self.source == other.source:
+            source = self.target
+            target = other.target
+            relation = (~self.relation) & other.relation
+
+        elif self.source == other.target:
+            source = self.target
+            target = other.source
+            relation = ~self.relation & ~other.relation
+
+        elif self.target == other.source:
+            source = self.source
+            target = other.target
+            relation = self.relation & other.relation
+
+        elif self.target == other.target:
+            source = self.source
+            target = other.source
+            relation = self.relation & ~other.relation
+
+        return source, target, relation
+
+    @property
+    def entities(self):
+        return self.source, self.target

@@ -48,16 +48,14 @@ def test_closure(tmp_path):
 
             entity_pairs = collections.defaultdict(list)
             for tl in tls_inf:
-                # sorted is to ensure that the assertation is independent of the source and target order.
+                # sorted is to ensure that the assertion is independent of the source and target order.
                 key = tuple(sorted([tl.source.id, tl.target.id]))
                 entity_pairs[key] += [tl]
 
             for key, value in entity_pairs.items():
                 msg = f"Inferred tlinks contains more than one relation for the same entity pair in {doc.name} in dataset {dataset}"
-                if len(value) > 1:
-                    for v in value:
-                        print(v.id)
-                    print()
+                # if len(value) > 1:
+                #     print(value)
 
 
 

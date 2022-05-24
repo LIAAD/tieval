@@ -74,13 +74,26 @@ class PointRelation:
 
     def __init__(
             self,
-            start_start: str = None,
-            start_end: str = None,
-            end_start: str = None,
-            end_end: str = None
+            xs_ys: str = None,
+            xs_ye: str = None,
+            xe_ys: str = None,
+            xe_ye: str = None
     ) -> None:
+        """ Point relation.
+        Every interval relation can be decomposed into four point relations between the entities endpoints:
+        start of entity x; end of entity x; start of entity y; end of entity y.
 
-        self.relation = [start_start, start_end, end_start, end_end]
+        :param xs_ys: Relation between start of x and start of y.
+        :type xs_ys: str {"<", "=", ">"}
+        :param xs_ye: Relation between start of x and end of y.
+        :type xs_ye: str {"<", "=", ">"}
+        :param xe_ys: Relation between end of x and start of y.
+        :type xe_ys: str {"<", "=", ">"}
+        :param xe_ye: Relation between end of x and end of y.
+        :type xe_ye: str {"<", "=", ">"}
+        """
+
+        self.relation = [xs_ys, xs_ye, xe_ys, xe_ye]
         self.order = self._relative_position()
 
     def __hash__(self):
@@ -130,6 +143,9 @@ class PointRelation:
         ee = _POINT_TRANSITIONS[r3][r6] or _POINT_TRANSITIONS[r4][r8]
 
         return PointRelation(ss, se, es, ee)
+
+    def __iter__(self):
+        return self.relation.__iter__()
 
     @property
     def relation(self):
@@ -218,33 +234,29 @@ class PointRelation:
 
         return [[s_src.value, e_src.value], [s_tgt.value, e_tgt.value]]
 
-    @property
-    def minimal(self):
-        pass
-
 
 # Mapping from interval relation names to point relations.
 # For example, BEFORE means that the first interval"s end is before the second
 # interval"s start
 _INTERVAL_TO_POINT_RELATION = {
-    "BEFORE": PointRelation(end_start="<"),
-    "AFTER": PointRelation(start_end=">"),
-    "IBEFORE": PointRelation(end_start="="),
-    "IAFTER": PointRelation(start_end="="),
-    "INCLUDES": PointRelation(start_start="<", end_end=">"),
-    "IS_INCLUDED": PointRelation(start_start=">", end_end="<"),
+    "BEFORE": PointRelation(xe_ys="<"),
+    "AFTER": PointRelation(xs_ye=">"),
+    "IBEFORE": PointRelation(xe_ys="="),
+    "IAFTER": PointRelation(xs_ye="="),
+    "INCLUDES": PointRelation(xs_ys="<", xe_ye=">"),
+    "IS_INCLUDED": PointRelation(xs_ys=">", xe_ye="<"),
     # "ENDS-ON": PointRelation(end_end="="),
-    "BEGINS": PointRelation(start_start="=", end_end="<"),
-    "BEGUN_BY": PointRelation(start_start="=", end_end=">"),
+    "BEGINS": PointRelation(xs_ys="=", xe_ye="<"),
+    "BEGUN_BY": PointRelation(xs_ys="=", xe_ye=">"),
     # "BEGINS-ON": PointRelation(start_start="="),
-    "ENDS": PointRelation(start_start=">", end_end="="),
-    "ENDED_BY": PointRelation(start_start="<", end_end="="),
-    "SIMULTANEOUS": PointRelation(start_start="=", end_end="="),
-    "OVERLAP": PointRelation(start_start="<", end_start=">", end_end="<"),
-    "OVERLAPPED": PointRelation(start_start=">", start_end="<", end_end=">"),
+    "ENDS": PointRelation(xs_ys=">", xe_ye="="),
+    "ENDED_BY": PointRelation(xs_ys="<", xe_ye="="),
+    "SIMULTANEOUS": PointRelation(xs_ys="=", xe_ye="="),
+    "OVERLAP": PointRelation(xs_ys="<", xe_ys=">", xe_ye="<"),
+    "OVERLAPPED": PointRelation(xs_ys=">", xs_ye="<", xe_ye=">"),
     "VAGUE": PointRelation(),
-    "BEFORE-OR-OVERLAP": PointRelation(start_start="<", end_end="<"),
-    "OVERLAP-OR-AFTER": PointRelation(start_start=">", end_end=">")
+    "BEFORE-OR-OVERLAP": PointRelation(xs_ys="<", xe_ye="<"),
+    "OVERLAP-OR-AFTER": PointRelation(xs_ys=">", xe_ye=">")
 }
 
 
