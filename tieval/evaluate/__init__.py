@@ -68,9 +68,7 @@ def timex_identification(
         true = set(t.endpoints for t in annotations[doc] if not t.is_dct)
         pred = set(p.endpoints for p in predictions[doc])
 
-        tp = len(true & pred)
-        fp = len(pred - true)
-        fn = len(true - pred)
+        tp, fp, fn = confusion_matrix(true, pred)
 
         # update macro metrics counts
         M_precision += precision(tp, fp)
@@ -87,7 +85,7 @@ def timex_identification(
     M_f1 = f_score(M_recall, M_precision)
 
     # compute micro metrics
-    m_precision = precision(tps, fns)
+    m_precision = precision(tps, fps)
     m_recall = recall(tps, fns)
     m_f1 = f_score(m_recall, m_precision)
 
@@ -123,13 +121,11 @@ def event_identification(
         true = set(t.endpoints for t in annotations[doc])
         pred = set(p.endpoints for p in predictions[doc])
 
-        tp = len(true & pred)
-        fp = len(pred - true)
-        fn = len(true - pred)
+        tp, fp, fn = confusion_matrix(true, pred)
 
         # update macro metrics counts
-        M_precision += tp / (tp + fp) if (tp + fp) else 0
-        M_recall += tp / (tp + fn) if (tp + fn) else 0
+        M_precision += precision(tp, fp)
+        M_recall += recall(tp, fn)
 
         # update micro metrics counts
         tps += tp
@@ -142,8 +138,8 @@ def event_identification(
     M_f1 = f_score(M_recall, M_precision)
 
     # compute micro metrics
-    m_precision = tps / (tps + fps)
-    m_recall = tps / (tps + fns)
+    m_precision = precision(tps, fps)
+    m_recall = recall(tps, fns)
     m_f1 = f_score(m_recall, m_precision)
 
     result = {
@@ -219,7 +215,6 @@ def tlink_classification(
     m_recall = recall(tps, fns)
 
     result = {
-
         "micro": {
             "accuracy": m_accuracy,
             "recall": m_recall,
