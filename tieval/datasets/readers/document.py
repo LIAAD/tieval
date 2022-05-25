@@ -534,7 +534,6 @@ class TempEval2DocumentReader(BaseDocumentReader):
 
         self.path = path
         self.content = json.load(self.path.open())
-        print(path)
 
     @property
     def _name(self) -> str:
@@ -619,10 +618,6 @@ class TempEval2DocumentReader(BaseDocumentReader):
     def _tlinks(self) -> Iterable[TLink]:
 
         tlinks = set()
-
-        for ent in self._entities:
-            if ent is None:
-                print()
 
         entities_dict = {ent.id: ent for ent in self._entities}
         for tlink in self.content["tlinks"]:
@@ -763,8 +758,6 @@ class TempEval2FrenchDocumentReader(BaseDocumentReader):
         self.content = xml2dict(self.path)
 
         self.xml = ET.parse(self.path)
-
-        print(path)
 
     @property
     def _name(self) -> str:

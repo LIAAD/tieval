@@ -97,11 +97,6 @@ class EventTimeDatasetReader:
             original_events_dict = {event.eid: event for event in document.events}
             for event in events:
                 original_event = original_events_dict.get(event["id"])
-
-                if original_event is None:
-                    print(f"Document {doc_name}\nEvent {event['id']} missing on original document.")
-                    continue
-
                 original_event.value = event["value"]
                 original_event.type = event["type"]
                 update_events += [original_event]
