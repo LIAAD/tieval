@@ -1,6 +1,3 @@
-import pytest
-
-
 from tieval.links import TLink
 from tieval.closure import temporal_closure
 
@@ -73,4 +70,38 @@ def test_temporal_closure_2():
     }
 
     inferred = temporal_closure(annotation)
+    assert inferred == closure
+
+
+def test_temporal_closure_3():
+
+    annotation = {
+        TLink("A", "B", "before"),
+        TLink("A", "B", "before"),
+        TLink("B", "A", "after"),
+        TLink("B", "E", "contains"),
+        TLink("B", "E", "includes"),
+        TLink("B", "F", "before"),
+        TLink("F", "D", "after"),
+        TLink("H", "I", "after"),
+        TLink("J", "L", "ibefore"),
+        TLink("K", "L", "begun_by"),
+    }
+
+    closure = {
+        TLink("A", "B", "before"),
+        TLink("A", "E", "before"),
+        TLink("A", "F", "before"),
+        TLink("B", "E", "includes"),
+        TLink("B", "F", "before"),
+        TLink("D", "F", "before"),
+        TLink("E", "F", "before"),
+        TLink("H", "I", "after"),
+        TLink("J", "L", "ibefore"),
+        TLink("K", "L", "begun_by"),
+        TLink("J", "K", "ibefore"),
+    }
+
+    inferred = temporal_closure(annotation)
+
     assert inferred == closure

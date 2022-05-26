@@ -68,10 +68,15 @@ def temporal_closure(tlinks: Set[TLink]) -> Set[TLink]:
             equal_nodes.add(sorted_nodes)
 
     # build to equal graph
-    equal_graph = nx.DiGraph()
+    equal_graph = nx.Graph()
     equal_graph.add_edges_from(equal_nodes)
-    equal_point_relations = _get_connected_nodes(equal_graph)
-    equal_point_relations = set((n1, "=", n2) for n1, n2 in equal_point_relations)
+
+    equal_point_relations = set()
+    for connected_nodes in nx.connected_components(equal_graph):
+        while len(connected_nodes) > 1:
+            n1 = connected_nodes.pop()
+            for n2 in connected_nodes:
+                equal_point_relations.add((n1, "=", n2))
 
     # build temporal graph
     tempgraph = nx.DiGraph()
