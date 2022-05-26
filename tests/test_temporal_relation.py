@@ -55,7 +55,7 @@ class TestTemporalRelation:
 
         assert TemporalRelation("before").interval == "BEFORE"
         assert TemporalRelation(["<", "<", "<", "<"]).interval == "BEFORE"
-        assert TemporalRelation({"end_start": "<"}).interval == "BEFORE"
+        assert TemporalRelation({"xe_ys": "<"}).interval == "BEFORE"
         assert TemporalRelation(PointRelation(xe_ys="<")).interval == "BEFORE"
         assert TemporalRelation(TemporalRelation("before")).interval == "BEFORE"
 

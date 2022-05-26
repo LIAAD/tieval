@@ -34,3 +34,7 @@ Added endpoints to each entity.
 Moved document creation time TIMEX3 out of the TEXT tag.
 
 Changed function_in_document="PUBLICATION_TIME" to function_in_document="CREATION_TIME".
+
+Removed relations on file baldwin_frratrain_15.xml since the event "ei14" does no exist.
+<TLINK from="ei14" lid="l19" origin="USER" relType="OVERLAPS" to="e15" />
+<SLINK from="ei4" lid="l10" origin="USER" relType="MODAL" subordinatedEventInstance="ei5" />
