@@ -30,7 +30,8 @@ setup(
         "allennlp==2.9.3",
         "tabulate==0.8.9",
         "torch==1.11.0",
-        "xmltodict==0.12.0"
+        "xmltodict==0.12.0",
+        "networkx==2.8.1"
     ],
 
     classifiers=[
