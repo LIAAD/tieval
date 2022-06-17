@@ -50,11 +50,23 @@ class EventIdentificationBaseline(BaseTrainableModel):
     def fit(
             self,
             documents: Iterable[Document],
-            n_epochs: int = 30,
+            dev_documents: Iterable[Document] = None,
+            dropout: float = 0,
             from_scratch: bool = False
-    ):
+    ) -> None:
+        """Tran the model.
 
+        Parameters
+        ----------
+        documents : Iterable[Document]
+            The set of documents to train on.
+        from_scratch : bool
+            If False (the default value) it will fine-tune the model. If set to True it will train from scratch.
+        """
+
+        # preprocess data
         train_set = self.data_pipeline(documents)
+        n_train_entities = sum(len(doc[1]["entities"]) for doc in train_set)
 
         # creat model
         if from_scratch:
@@ -67,29 +79,44 @@ class EventIdentificationBaseline(BaseTrainableModel):
             self.nlp.begin_training()
 
         # train
-        for epoch in range(n_epochs):
+        random.shuffle(train_set)
 
-            # shuffle
-            random.shuffle(train_set)
+        losses = {}
+        batches = minibatch(train_set, size=compounding(4., 32., 1.001))
+        for batch in batches:
+            texts, annotations = zip(*batch)
 
-            losses = {}
-            batches = minibatch(train_set, size=compounding(4., 32., 1.001))
-            print(f"Epoch {epoch}")
-            for batch in batches:
-                texts, annotations = zip(*batch)
+            example = []
+            for i in range(len(texts)):
+                doc = self.nlp.make_doc(texts[i])
+                example += [Example.from_dict(doc, annotations[i])]
+
+            self.nlp.update(example, drop=dropout, losses=losses)
+
+        if dev_documents:  # validate on the development set
+
+            dev_set = self.data_pipeline(dev_documents)
+            n_dev_entities = sum(len(doc[1]["entities"]) for doc in dev_set)
+
+            dev_losses = {}
+            dev_batches = minibatch(dev_set, size=32)
+            for dev_batch in dev_batches:
+
+                texts, annotations = zip(*dev_batch)
 
                 example = []
                 for i in range(len(texts)):
                     doc = self.nlp.make_doc(texts[i])
                     example += [Example.from_dict(doc, annotations[i])]
 
-                self.nlp.update(
-                    example,
-                    drop=0.5,
-                    losses=losses
-                )
+                self.nlp.update(example, sgd=None, losses=dev_losses)
 
-            print("\tLosses", losses)
+            print(f"Losses:\t"
+                  f"Train {losses['ner'] / n_train_entities:.5f}\t"
+                  f"Dev {dev_losses['ner'] / n_dev_entities:.5f}")
+
+        else:  # in case no dev set is provided just print the train losses
+            print(f"\tLosses Train {losses['ner'] / n_train_entities:.5f}")
 
     def save(self):
         """Store model in disk."""
