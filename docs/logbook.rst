@@ -38,3 +38,11 @@ Changed function_in_document="PUBLICATION_TIME" to function_in_document="CREATIO
 Removed relations on file baldwin_frratrain_15.xml since the event "ei14" does no exist.
 <TLINK from="ei14" lid="l19" origin="USER" relType="OVERLAPS" to="e15" />
 <SLINK from="ei4" lid="l10" origin="USER" relType="MODAL" subordinatedEventInstance="ei5" />
+
+MeanTime English
+----------------
+
+Document 120578_Automobile_sales_in_the_United_States_down_sharply.xml replaced
+<TIMEX3 anchorTimeID="" beginPoint="" comment="" endPoint="" functionInDocument="CREATION_TIME" m_id="14" type="DATE" value="03-02-2009">
+by
+<TIMEX3 anchorTimeID="" beginPoint="" comment="" endPoint="" functionInDocument="CREATION_TIME" m_id="14" type="DATE" value="2009-02-03">
