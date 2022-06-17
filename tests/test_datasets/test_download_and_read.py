@@ -27,3 +27,11 @@ def test_download_and_read_matres(tmp_path):
     matres = read("matres")
     assert len(matres.documents) == 274  # number of documents
 
+
+def test_download_and_read_grapheve(tmp_path):
+
+    os.chdir(tmp_path)
+
+    download("grapheve")
+    data_path = tmp_path / "data/grapheve"
+    assert data_path.is_dir()

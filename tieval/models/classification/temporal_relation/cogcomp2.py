@@ -147,8 +147,17 @@ class CogCompTime2(BaseTrainableModel):
                 tgt = tlink.target
 
                 context = []
-                tlink_endpoints = [min(src.endpoints + tgt.endpoints),
-                                   max(src.endpoints + tgt.endpoints)]
+                if src.endpoints is None:
+                    tlink_endpoints = list(tgt.endpoints)
+
+                elif tgt.endpoints is None:
+                    tlink_endpoints = list(src.endpoints)
+
+                else:
+                    src_tgt_endpoints = src.endpoints + tgt.endpoints
+                    tlink_endpoints = [min(src_tgt_endpoints),
+                                       max(src_tgt_endpoints)]
+
                 s_tl, e_tl = tlink_endpoints
                 for sent in doc.sentences:
                     s_sent, e_sent = sent.span
@@ -160,16 +169,18 @@ class CogCompTime2(BaseTrainableModel):
                         context += sent.tokens
 
                 # source and target indexes
-                src_idx, tgt_idx = None, None
+                src_idx, tgt_idx = 0, 0
                 for idx, tkn in enumerate(context):
 
                     # the src and tgt entities can have multiple tokens, in this model
                     # the first token is used in that scenario.
-                    if tkn.span[0] == src.endpoints[0]:
-                        src_idx = idx
+                    if src.endpoints:
+                        if tkn.span[0] == src.endpoints[0]:
+                            src_idx = idx
 
-                    elif tkn.span[0] == tgt.endpoints[0]:
-                        tgt_idx = idx
+                    if tgt.endpoints:
+                        if tkn.span[0] == tgt.endpoints[0]:
+                            tgt_idx = idx
 
                 # retrieve elmo character ids of context sentence(s)
                 context_tokens = [tkn.content for tkn in context]

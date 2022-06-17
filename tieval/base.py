@@ -3,8 +3,7 @@ from typing import Set, Optional, Union, List
 
 import nltk
 
-from tieval.entities import Event
-from tieval.entities import Timex
+from tieval.entities import Entity, Event, Timex
 from tieval.links import TLink
 from tieval.closure import temporal_closure as _temporal_closure
 from tieval import utils
@@ -106,8 +105,7 @@ class Document:
 
     :param str name:  The name of the document
     :param str text: The raw test of the document
-    :param Set[Event] events: The events annotated
-    :param Set[Timex] timexs: The time expressions annotated
+    :param Set[Event, Timex] entities: The events annotated
     :param Set[TLink] tlinks: The temporal links annotated
     """
 
@@ -116,7 +114,7 @@ class Document:
             name: str,
             text: str,
             dct: Timex,
-            entities: Set[Event],
+            entities: Set[Entity],
             tlinks: Set[TLink],
             language: str = "english",
             **kwargs
@@ -140,7 +138,7 @@ class Document:
     def __str__(self) -> str:
         return self.text
 
-    def __getitem__(self, id: str) -> Optional[Union[Timex, Event, TLink]]:
+    def __getitem__(self, id: str) -> Optional[Union[Entity, TLink]]:
         for entity in self.entities.union(self.tlinks):
             if entity.id == id:
                 return entity
