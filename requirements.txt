@@ -110,7 +110,7 @@ pathy==0.6.1
 pep517==0.12.0
 pexpect==4.8.0
 pickleshare==0.7.5
-Pillow==9.1.0
+Pillow==9.1.1
 pkginfo==1.8.2
 pluggy==1.0.0
 preshed==3.0.6
