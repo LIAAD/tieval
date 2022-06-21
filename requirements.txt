@@ -99,7 +99,7 @@ nbsphinx==0.8.8
 nest-asyncio==1.5.5
 networkx==2.8.1
 nltk==3.6.7
-notebook==6.4.10
+notebook==6.4.12
 notebook-shim==0.1.0
 numpy==1.22.3
 packaging==21.3
