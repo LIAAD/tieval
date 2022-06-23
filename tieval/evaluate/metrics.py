@@ -19,7 +19,7 @@ def temporal_recall(
     numerator = len(annotation & prediction_closure)
     denominator = len(annotation)
 
-    return numerator / denominator
+    return numerator, denominator
 
 
 def temporal_precision(
@@ -37,7 +37,7 @@ def temporal_precision(
     numerator = len(prediction & annotation_closure)
     denominator = len(prediction)
 
-    return numerator / denominator
+    return numerator, denominator
 
 
 def temporal_awareness(
@@ -59,7 +59,3 @@ def temporal_awareness(
     precision = temporal_precision(annotation, prediction)
 
     return 2 * recall * precision / (recall + precision)
-
-
-
-
