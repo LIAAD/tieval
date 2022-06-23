@@ -75,17 +75,17 @@ def system():
 
 def test_temporal_recall(system, annotation):
 
-    recall = temporal_recall(prediction=system, annotation=annotation)
-    assert recall == (4 / 9)
+    numerator, denominator = temporal_recall(prediction=system, annotation=annotation)
+    assert (numerator / denominator) == (4 / 9)
 
 
 def test_temporal_precision(system, annotation):
 
-    precision = temporal_precision(prediction=system, annotation=annotation)
-    assert precision == (6 / 7)
+    numerator, denominator = temporal_precision(prediction=system, annotation=annotation)
+    assert (numerator / denominator) == (6 / 7)
 
 
 def test_temporal_awareness(system, annotation):
 
-    awareness = round(temporal_awareness(prediction=system, annotation=annotation), 3)
-    assert awareness == round(24 / 41, 3)
+    numerator, denominator = round(temporal_awareness(prediction=system, annotation=annotation), 3)
+    assert (numerator / denominator) == round(24 / 41, 3)
