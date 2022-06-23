@@ -180,26 +180,37 @@ def tlink_classification(
     M_accuracy, M_precision, M_recall = 0, 0, 0
     M_precision_t, M_recall_t = 0, 0
     tps, fps, fns = 0, 0, 0
+    r_nums, r_dens = 0, 0  # temporal recall numerator and denominator
+    p_nums, p_dens = 0, 0  # temporal recall numerator and denominator
     n_relations = 0
     for doc in annotations:
         true = set(annotations[doc])
         pred = set(predictions[doc])
 
+        # standard metrics
         tp, fp, fn = confusion_matrix(true, pred)
+        # update micro metrics counts
+        tps += tp
+        fps += fp
+        fns += fn
+        n_relations += len(true)
 
         # update macro metrics counts
         M_accuracy += tp / len(true)
         M_precision += precision(tp, fp)
         M_recall += recall(tp, fp)
 
-        M_precision_t += temporal_precision(true, pred)
-        M_recall_t += temporal_recall(true, pred)
+        # temporal metrics
+        p_numerator, p_denominator = temporal_precision(true, pred)
+        r_numerator, r_denominator  = temporal_recall(true, pred)
 
-        # update micro metrics counts
-        tps += tp
-        fps += fp
-        fns += fn
-        n_relations += len(true)
+        p_nums += p_numerator
+        p_dens += p_denominator
+        r_nums += r_numerator
+        r_dens += r_denominator
+
+        M_precision_t += p_numerator / p_denominator
+        M_recall_t += r_numerator / r_denominator
 
     # compute macro metrics
     M_accuracy /= n_docs
@@ -214,12 +225,18 @@ def tlink_classification(
     m_precision = precision(tps, fps)
     m_recall = recall(tps, fns)
 
+    m_precision_t = p_nums / p_dens
+    m_recall_t = r_nums / r_dens
+
     result = {
         "micro": {
             "accuracy": m_accuracy,
             "recall": m_recall,
             "precision": m_precision,
-            "f1": f_score(m_recall, m_precision)
+            "f1": f_score(m_recall, m_precision),
+            "temporal_recall": m_recall_t,
+            "temporal_precision": m_precision_t,
+            "temporal_awareness": f_score(m_recall_t, m_precision_t)
         },
 
         "macro": {

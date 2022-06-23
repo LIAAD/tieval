@@ -184,6 +184,8 @@ class CogCompTime2(BaseTrainableModel):
 
                 # retrieve elmo character ids of context sentence(s)
                 context_tokens = [tkn.content for tkn in context]
+                if len(context_tokens) == 0:  # ignore tlinks for which no context was found
+                    continue
 
                 # transform lemma of source and target events into vocab ids
                 src_lemma = self.lemmatizer.lemmatize(src.text)
