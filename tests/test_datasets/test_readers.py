@@ -6,7 +6,8 @@ from tieval.datasets.readers import (
     TimeBank12DocumentReader,
     TCRDocumentReader,
     TimeBankPTDocumentReader,
-    TempEval3DocumentReader
+    TempEval3DocumentReader,
+    MeanTimeDocumentReader
 )
 
 DATA_PATH = Path(__file__).parent.parent / "files"
@@ -52,3 +53,13 @@ class TestTempEval2FrenchDocumentReader:
 
     def test_read(self):
         self.reader.read()
+
+
+class TestMeanTimeDocumentReader:
+    reader = MeanTimeDocumentReader(DATA_PATH / "meantime.xml")
+
+    def test_read(self):
+        doc = self.reader.read()
+        tlink = next(iter(doc.tlinks))
+        tlink.source
+        tlink.target
