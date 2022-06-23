@@ -270,6 +270,13 @@ class TimeBank12DocumentReader(BaseDocumentReader):
 
 class MeanTimeDocumentReader(BaseDocumentReader):
 
+    LANGUAGE_MAP = {
+        "en": "english",
+        "es": "spanish",
+        "nl": "dutch",
+        "it": "italian"
+    }
+
     def __init__(self, path: str) -> None:
 
         if not isinstance(path, Path):
@@ -402,11 +409,18 @@ class MeanTimeDocumentReader(BaseDocumentReader):
 
             # ensure that the relation is supported by the framework
             if relation in SUPPORTED_RELATIONS:
+
+                if (entities_dict.get(source["m_id"]) is None) or \
+                        (entities_dict.get(target["m_id"]) is None):
+                    # TODO: There are some files where the source or target of the tlinks are not descriminated as an
+                    #  event mention. Check if those tokens are miss annotated.
+                    continue
+
                 result.add(
                     TLink(
                         id=id,
-                        source=source["m_id"],
-                        target=target["m_id"],
+                        source=entities_dict[source["m_id"]],
+                        target=entities_dict[target["m_id"]],
                         relation=relation
                     )
                 )
@@ -415,13 +429,15 @@ class MeanTimeDocumentReader(BaseDocumentReader):
 
     def read(self) -> Document:
 
+        language = self.LANGUAGE_MAP[self.content["Document"]["lang"]]
+
         return Document(
             name=self._name,
             dct=self._dct,
             text=self._text,
             entities=self._entities,
             tlinks=self._tlinks,
-            language=self.content["Document"]["lang"]
+            language=language
         )
 
 
