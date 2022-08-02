@@ -607,23 +607,23 @@ class TempEval2DocumentReader(BaseDocumentReader):
         timexs = self.content["entities"]["timexs"]
         for timex in timexs:
 
-            # find entity endpoints
             if "function_in_document" not in timex:  # ignore dct since it is not explicit in raw text
-                s, e = self._get_endpoints(timex, endpoints_map)
 
+                # find entity endpoints
+                s, e = self._get_endpoints(timex, endpoints_map)
                 timex["endpoints"] = (s, e)
                 timex["text"] = self._text[s: e]
 
-            entities.add(Timex(
-                id=timex["id"],
-                sent_idx=timex["sent_idx"],
-                tkn_idx=timex["tkn_idx"],
-                type=timex["id"],
-                value=timex.get("val"),
-                function_in_document=timex.get("function_in_document"),
-                endpoints=timex.get("endpoints"),
-                text=timex.get("text")
-            ))
+                entities.add(Timex(
+                    id=timex["id"],
+                    sent_idx=timex["sent_idx"],
+                    tkn_idx=timex["tkn_idx"],
+                    type=timex["id"],
+                    value=timex.get("val"),
+                    function_in_document=timex.get("function_in_document"),
+                    endpoints=timex.get("endpoints"),
+                    text=timex.get("text")
+                ))
 
         # dct
         entities.add(self._dct)
