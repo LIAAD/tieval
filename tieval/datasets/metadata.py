@@ -101,6 +101,14 @@ DATASETS_METADATA = {
         doc_reader=GraphEveDocumentReader
     ),
 
+    "krauts": DatasetMetadata(
+        name="KRAUTS",
+        language="german",
+        url="",
+        reader=XMLDatasetReader,
+        doc_reader=TempEval3DocumentReader
+    ),
+
     "matres": DatasetMetadata(
         name="matres",
         language="english",

@@ -13,6 +13,7 @@ from tieval.datasets.readers import (
     TimeBankDenseDatasetReader,
     TimeBank12DocumentReader,
     MeanTimeDocumentReader,
+    KRAUTSDocumentReader
 )
 from tieval.datasets.metadata import DATASETS_METADATA
 

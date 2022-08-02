@@ -7,6 +7,7 @@ from tieval.datasets.readers.document import (
     TempEval3DocumentReader,
     TempEval2FrenchDocumentReader,
     TempEval2DocumentReader,
+    KRAUTSDocumentReader
 )
 from tieval.datasets.readers.dataset import (
     XMLDatasetReader,

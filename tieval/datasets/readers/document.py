@@ -1015,6 +1015,70 @@ class TimeBankPTDocumentReader(BaseDocumentReader):
         return result
 
 
+class KRAUTSDocumentReader(BaseDocumentReader):
+
+    def __init__(self, path: str) -> None:
+        if not isinstance(path, Path):
+            path = Path(path)
+
+        self.path = path
+        self.content = xml2dict(self.path)
+
+        self.xml = ET.parse(self.path)
+
+    @property
+    def _name(self) -> str:
+        return self.path.name.replace(".tml", "")
+
+    @property
+    def _text(self) -> str:
+        text_tag = self.xml.find("TEXT")
+        text_blocks = list(text_tag.itertext())
+        return "".join(text_blocks).strip()
+
+    @property
+    def _entities(self) -> Iterable[Entity]:
+
+        entities = set()
+
+        timexs = assert_list(self.content["TimeML"]["TEXT"].get("TIMEX3"))
+
+        # timexs
+        if timexs:
+            for timex in timexs:
+                s, e = timex["endpoints"].split()
+
+                entities.add(Timex(
+                    function_in_document=timex.get("functionInDocument"),
+                    text=timex["text"],
+                    id=timex["tid"],
+                    type_=timex["type"],
+                    value=timex["value"],
+                    endpoints=(int(s), int(e)),
+                    sent_idx=int(timex.get("sent_idx"))
+                ))
+
+        # dct
+        entities.add(self._dct)
+
+        return entities
+
+    @property
+    def _dct(self) -> Timex:
+        attrib = self.content["TimeML"]["DCT"]["TIMEX3"]
+        return Timex(
+            function_in_document=attrib["functionInDocument"],
+            text=attrib["text"],
+            id=attrib["tid"],
+            type_=attrib["type"],
+            value=attrib["value"],
+        )
+
+    @property
+    def _tlinks(self) -> Iterable[TLink]:
+        return set()
+
+
 DocumentReader = Union[
     TempEval3DocumentReader,
     TimeBank12DocumentReader,
@@ -1024,4 +1088,5 @@ DocumentReader = Union[
     TCRDocumentReader,
     TempEval2FrenchDocumentReader,
     TimeBankPTDocumentReader,
+    KRAUTSDocumentReader,
 ]

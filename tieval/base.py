@@ -222,3 +222,7 @@ class Dataset:
 
     def __len__(self):
         return self.documents.__len__()
+
+    @property
+    def language(self):
+        return self.documents[0].language
