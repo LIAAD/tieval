@@ -51,7 +51,7 @@ class DatasetMetadata:
     doc_reader: DocumentReaders = None
     url: str = None
     repo: str = None
-    language: str
+    language: str = None
     reference: str = None
     base: Iterable[str] = None
     extension: str = None
