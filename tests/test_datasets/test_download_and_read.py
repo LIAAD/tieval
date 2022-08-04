@@ -1,5 +1,4 @@
 import os
-import pytest
 
 from tieval.datasets import download, read
 
