@@ -68,6 +68,3 @@ class TestKRAUTSDocumentReader:
 
     def test_read(self):
         doc = self.reader.read()
-        tlink = next(iter(doc.tlinks))
-        tlink.source
-        tlink.target
