@@ -10,7 +10,8 @@ from tieval.datasets.readers import (
     TDDiscourseDatasetReader,
     MeanTimeDocumentReader,
     TimeBankDenseDatasetReader,
-    TimeBankPTDocumentReader
+    TimeBankPTDocumentReader,
+    KRAUTSDocumentReader
 )
 from tieval.datasets.readers import (
     TempEval3DocumentReader,
@@ -36,7 +37,8 @@ DocumentReaders = Union[
     TempEval3DocumentReader,
     GraphEveDocumentReader,
     TempEval2DocumentReader,
-    TempEval2FrenchDocumentReader
+    TempEval2FrenchDocumentReader,
+    KRAUTSDocumentReader
 ]
 
 TMLDocumentReader = None
@@ -104,9 +106,9 @@ DATASETS_METADATA = {
     "krauts": DatasetMetadata(
         name="KRAUTS",
         language="german",
-        url="",
+        url="https://drive.inesctec.pt/s/cFNiJ2CLnBFYr5a/download",
         reader=XMLDatasetReader,
-        doc_reader=TempEval3DocumentReader
+        doc_reader=KRAUTSDocumentReader
     ),
 
     "matres": DatasetMetadata(
