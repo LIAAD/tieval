@@ -1041,25 +1041,28 @@ class KRAUTSDocumentReader(BaseDocumentReader):
 
         entities = set()
 
-        timexs = assert_list(self.content["TimeML"]["TEXT"].get("TIMEX3"))
-
-        # timexs
-        if timexs:
-            for timex in timexs:
-                s, e = timex["endpoints"].split()
-
-                entities.add(Timex(
-                    function_in_document=timex.get("functionInDocument"),
-                    text=timex["text"],
-                    id=timex["tid"],
-                    type_=timex["type"],
-                    value=timex["value"],
-                    endpoints=(int(s), int(e)),
-                    sent_idx=int(timex.get("sent_idx"))
-                ))
-
         # dct
         entities.add(self._dct)
+
+        text = self.content["TimeML"]["TEXT"]
+        if isinstance(text, str):  # no timexs in the text
+            return entities
+        else:
+
+            timexs = assert_list(text["TIMEX3"])
+            for timex in timexs:
+
+                if "text" in timex:  # ignore empty timexs
+                    s, e = timex["endpoints"].split()
+
+                    entities.add(Timex(
+                        function_in_document=timex.get("functionInDocument"),
+                        text=timex["text"],
+                        id=timex["tid"],
+                        type_=timex["type"],
+                        value=timex["value"],
+                        endpoints=(int(s), int(e)),
+                    ))
 
         return entities
 
