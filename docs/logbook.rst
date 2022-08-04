@@ -39,8 +39,13 @@ Removed relations on file baldwin_frratrain_15.xml since the event "ei14" does n
 <TLINK from="ei14" lid="l19" origin="USER" relType="OVERLAPS" to="e15" />
 <SLINK from="ei4" lid="l10" origin="USER" relType="MODAL" subordinatedEventInstance="ei5" />
 
-MeanTime English
-----------------
+Formatted dates for documents bove.xml, baldwin_frratrain_15.xml, and algerie.xml
+
+Replaced value of DCT in bio_butler.xml from "PRESENT_REF" to "2003-01-15" (this date is consistent with the tlink annotations)
+
+
+MeanTime (all languages)
+------------------------
 
 Document 120578_Automobile_sales_in_the_United_States_down_sharply.xml replaced
 <TIMEX3 anchorTimeID="" beginPoint="" comment="" endPoint="" functionInDocument="CREATION_TIME" m_id="14" type="DATE" value="03-02-2009">
