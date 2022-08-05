@@ -117,3 +117,20 @@ def test_download_and_read_grapheve(tmp_path):
     download("grapheve")
     data_path = tmp_path / "data/grapheve"
     assert data_path.is_dir()
+
+
+def test_download_and_read_spanish_timebank(tmp_path):
+
+    os.chdir(tmp_path)
+
+    download("spanish_timebank")
+    data_path = tmp_path / "data/spanish_timebank"
+    assert data_path.is_dir()
+
+    stb = read("spanish_timebank")
+    assert len(stb.documents) == 210
+
+    test_docs = set(doc.name for doc in stb.test)
+    train_docs = set(doc.name for doc in stb.train)
+    assert len(test_docs & train_docs) == 0
+    assert len(train_docs & test_docs) == 0

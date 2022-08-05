@@ -160,6 +160,14 @@ DATASETS_METADATA = {
         doc_reader=TempEval3DocumentReader,
     ),
 
+    "spanish_timebank": DatasetMetadata(
+        name="spanish_timebank",
+        language="spanish",
+        url="https://drive.inesctec.pt/s/9jYWY44Nokd6axn/download",
+        reader=JSONDatasetReader,
+        doc_reader=TempEval2DocumentReader,
+    ),
+
     "tcr": DatasetMetadata(
         name="TCR",
         language="english",
