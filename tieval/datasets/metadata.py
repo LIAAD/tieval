@@ -13,6 +13,7 @@ from tieval.datasets.readers import (
     TimeBankPTDocumentReader,
     KRAUTSDocumentReader,
     NarrativeContainerDocumentReader,
+    WikiWarsDocumentReader,
     DocumentReaders
 )
 from tieval.datasets.readers import (
@@ -275,5 +276,13 @@ DATASETS_METADATA = {
         url="https://drive.inesctec.pt/s/SaPzJxD2b9PzxY4/download",
         reader=XMLDatasetReader,
         doc_reader=TempEval3DocumentReader
+    ),
+
+    "wikiwars_de": DatasetMetadata(
+        name="wikiwars_de",
+        language="german",
+        url="https://drive.inesctec.pt/s/ysw4DGrpX9RT6ec/download",
+        reader=XMLDatasetReader,
+        doc_reader=WikiWarsDocumentReader
     ),
 }

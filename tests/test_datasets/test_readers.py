@@ -8,7 +8,8 @@ from tieval.datasets.readers import (
     TimeBankPTDocumentReader,
     TempEval3DocumentReader,
     MeanTimeDocumentReader,
-    KRAUTSDocumentReader
+    KRAUTSDocumentReader,
+    WikiWarsDocumentReader
 )
 
 DATA_PATH = Path(__file__).parent.parent / "files"
@@ -68,3 +69,15 @@ class TestKRAUTSDocumentReader:
 
     def test_read(self):
         doc = self.reader.read()
+
+
+class TestWikiWarsDocumentReader:
+    reader = WikiWarsDocumentReader(DATA_PATH / "wikiwars_de.xml")
+
+    def test_read(self):
+        doc = self.reader.read()
+
+        for timex in doc.timexs:
+            if not timex.is_dct:
+                s, e = timex.endpoints
+                assert doc.text[s:e] == timex.text

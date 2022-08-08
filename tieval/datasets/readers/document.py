@@ -1266,6 +1266,66 @@ class KRAUTSDocumentReader(BaseDocumentReader):
         return set()
 
 
+class WikiWarsDocumentReader(BaseDocumentReader):
+
+    def __init__(self, path: str) -> None:
+        if not isinstance(path, Path):
+            path = Path(path)
+
+        self.path = path
+        self.content = xml2dict(self.path)
+
+        self.xml = ET.parse(self.path)
+
+    @property
+    def _name(self) -> str:
+        print(self.content["DOC"]["DOCID"])
+        return self.content["DOC"]["DOCID"]
+
+    @property
+    def _text(self) -> str:
+        text_tag = self.xml.find("TEXT")
+        text_blocks = list(text_tag.itertext())
+        return "".join(text_blocks)
+
+    @property
+    def _entities(self) -> Iterable[Entity]:
+
+        entities = set()
+
+        timexs = assert_list(self.content["DOC"]["TEXT"].get("TIMEX2"))
+
+        # timexs
+        if timexs:
+            for timex in timexs:
+                s, e = timex["endpoints"].split()
+                entities.add(Timex(
+                    function_in_document=timex.get("functionInDocument"),
+                    text=timex["text"],
+                    value=timex["val"] if "val" in timex else timex.get("anchor_val"),
+                    endpoints=(int(s), int(e))
+                ))
+
+        # dct
+        entities.add(self._dct)
+
+        return entities
+
+    @property
+    def _dct(self) -> Timex:
+        attrib = self.content["DOC"]["DATETIME"]["TIMEX2"]
+        return Timex(
+            function_in_document="CREATION_TIME",
+            text=attrib["text"],
+            type_="DATE",
+            value=attrib["val"],
+        )
+
+    @property
+    def _tlinks(self) -> Iterable[TLink]:
+        return set()
+
+
 DocumentReaders = Union[
     TempEval3DocumentReader,
     TimeBank12DocumentReader,
@@ -1276,5 +1336,6 @@ DocumentReaders = Union[
     TempEval2FrenchDocumentReader,
     TimeBankPTDocumentReader,
     KRAUTSDocumentReader,
-    NarrativeContainerDocumentReader
+    NarrativeContainerDocumentReader,
+    WikiWarsDocumentReader
 ]
