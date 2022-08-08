@@ -4,6 +4,8 @@ from pathlib import Path
 from typing import Iterable, Union
 from xml.etree import ElementTree as ET
 
+from nltk.tokenize.treebank import TreebankWordDetokenizer
+
 from tieval.base import Document
 from tieval.datasets.utils import xml2dict, assert_list
 from tieval.entities import Timex, Entity, Event
@@ -1264,7 +1266,7 @@ class KRAUTSDocumentReader(BaseDocumentReader):
         return set()
 
 
-DocumentReader = Union[
+DocumentReaders = Union[
     TempEval3DocumentReader,
     TimeBank12DocumentReader,
     MeanTimeDocumentReader,

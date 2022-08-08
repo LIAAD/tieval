@@ -4,17 +4,6 @@ from typing import List
 
 from tieval.utils import _download_url
 from tieval.base import Dataset
-from tieval.datasets.readers import (
-    EventTimeDatasetReader,
-    TempEval3DocumentReader,
-    GraphEveDocumentReader,
-    XMLDatasetReader,
-    JSONDatasetReader,
-    TimeBankDenseDatasetReader,
-    TimeBank12DocumentReader,
-    MeanTimeDocumentReader,
-    KRAUTSDocumentReader
-)
 from tieval.datasets.metadata import DATASETS_METADATA
 
 SUPPORTED_DATASETS = list(DATASETS_METADATA)

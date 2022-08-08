@@ -1,12 +1,11 @@
 import collections
 from pathlib import Path
+from typing import Union
 
 from tqdm import tqdm
 
-import tieval.datasets
 from tieval.base import Dataset
-from tieval.datasets.readers.document import DocumentReader
-from tieval.entities import Event
+from tieval.datasets.readers.document import DocumentReaders
 from tieval.links import TLink
 
 DocName = str
@@ -15,7 +14,7 @@ DocName = str
 class XMLDatasetReader:
     """Handles the process of reading any temporally annotated dataset stored with .tml or .xml extension."""
 
-    def __init__(self, doc_reader: DocumentReader) -> None:
+    def __init__(self, doc_reader: DocumentReaders) -> None:
         self.document_reader = doc_reader
 
     def read(self, path: str) -> Dataset:
@@ -41,7 +40,7 @@ class XMLDatasetReader:
 
 class JSONDatasetReader:
 
-    def __init__(self, doc_reader: DocumentReader) -> None:
+    def __init__(self, doc_reader: DocumentReaders) -> None:
         self.document_reader = doc_reader
 
     def read(self, path) -> Dataset:
@@ -279,3 +278,13 @@ class TimeBankDenseDatasetReader:
                 documents[split] += [document]
 
         return Dataset(path.name, train=documents["train"], test=documents["test"])
+
+
+DatasetReaders = Union[
+    XMLDatasetReader,
+    JSONDatasetReader,
+    EventTimeDatasetReader,
+    MATRESDatasetReader,
+    TDDiscourseDatasetReader,
+    TimeBankDenseDatasetReader
+]

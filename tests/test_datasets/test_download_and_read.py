@@ -42,6 +42,23 @@ def test_download_and_read_te2_spanish(tmp_path):
     assert len(te2.documents) == 193
 
 
+def test_download_and_read_te2_italian(tmp_path):
+
+    os.chdir(tmp_path)
+
+    download("tempeval_2_italian")
+    data_path = tmp_path / "data/tempeval_2_italian"
+    assert data_path.is_dir()
+
+    te2 = read("tempeval_2_italian")
+    assert len(te2.documents) == 59
+
+    test_docs = set(doc.name for doc in te2.test)
+    train_docs = set(doc.name for doc in te2.train)
+    assert len(test_docs & train_docs) == 0
+    assert len(train_docs & test_docs) == 0
+
+
 def test_download_and_read_meantime_italian(tmp_path):
 
     os.chdir(tmp_path)
