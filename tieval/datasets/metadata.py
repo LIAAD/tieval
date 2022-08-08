@@ -11,7 +11,9 @@ from tieval.datasets.readers import (
     MeanTimeDocumentReader,
     TimeBankDenseDatasetReader,
     TimeBankPTDocumentReader,
-    KRAUTSDocumentReader
+    KRAUTSDocumentReader,
+    NarrativeContainerDocumentReader,
+    DocumentReaders
 )
 from tieval.datasets.readers import (
     TempEval3DocumentReader,
@@ -19,29 +21,9 @@ from tieval.datasets.readers import (
     TempEval2DocumentReader,
     TempEval2FrenchDocumentReader,
     TimeBank12DocumentReader,
-    TCRDocumentReader
+    TCRDocumentReader,
+    DatasetReaders
 )
-
-
-DatasetReaders = Union[
-    XMLDatasetReader,
-    JSONDatasetReader,
-    EventTimeDatasetReader,
-    MATRESDatasetReader,
-    TDDiscourseDatasetReader,
-    MeanTimeDocumentReader,
-    TimeBankDenseDatasetReader
-]
-
-DocumentReaders = Union[
-    TempEval3DocumentReader,
-    GraphEveDocumentReader,
-    TempEval2DocumentReader,
-    TempEval2FrenchDocumentReader,
-    KRAUTSDocumentReader
-]
-
-TMLDocumentReader = None
 
 
 @dataclass
@@ -150,6 +132,14 @@ DATASETS_METADATA = {
         url="https://drive.inesctec.pt/s/kabifjEcQboKbBA/download",
         reader=XMLDatasetReader,
         doc_reader=MeanTimeDocumentReader
+    ),
+
+    "narrative_container": DatasetMetadata(
+        name="narrative_container",
+        language="italian",
+        url="https://drive.inesctec.pt/s/mKZsejEmLESCPCQ/download",
+        reader=XMLDatasetReader,
+        doc_reader=NarrativeContainerDocumentReader
     ),
 
     "platinum": DatasetMetadata(

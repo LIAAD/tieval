@@ -134,3 +134,21 @@ def test_download_and_read_spanish_timebank(tmp_path):
     train_docs = set(doc.name for doc in stb.train)
     assert len(test_docs & train_docs) == 0
     assert len(train_docs & test_docs) == 0
+
+
+def test_download_and_read_narrative_container(tmp_path):
+
+    os.chdir(tmp_path)
+    corpus_name = "narrative_container"
+
+    download(corpus_name)
+    data_path = tmp_path / f"data/{corpus_name}"
+    assert data_path.is_dir()
+
+    data = read(corpus_name)
+    assert len(data.documents) == 63
+
+    test_docs = set(doc.name for doc in data.test)
+    train_docs = set(doc.name for doc in data.train)
+    assert len(test_docs & train_docs) == 0
+    assert len(train_docs & test_docs) == 0

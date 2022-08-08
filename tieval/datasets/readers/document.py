@@ -441,6 +441,188 @@ class MeanTimeDocumentReader(BaseDocumentReader):
         )
 
 
+class NarrativeContainerDocumentReader(BaseDocumentReader):
+
+    def __init__(self, path: str) -> None:
+
+        if not isinstance(path, Path):
+            path = Path(path)
+
+        self.path = path
+        self.content = xml2dict(self.path)
+
+    @property
+    def _name(self) -> str:
+        print(self.path.name)
+        return self.content["Document"]["doc_name"]
+
+    @property
+    def _text(self) -> str:
+        def reconstruct_raw_text(tkns):
+            runnnig_sent_idx = 0
+            sent, sent_tkns = [], []
+            for tkn in tkns:
+
+                if "text" not in tkn:  # some tokens are missing the "text" field
+                    tkn["text"] = ""
+
+                if tkn["sentence"] != runnnig_sent_idx:
+                    sent_tkns += [sent]
+                    runnnig_sent_idx = tkn["sentence"]
+                    sent = [tkn["text"]]
+                else:
+                    sent += [tkn["text"]]
+            sent_tkns += [sent]
+
+            sents = []
+            for sent_tkn in sent_tkns:
+                sent = TreebankWordDetokenizer().detokenize(sent_tkn)
+                sents += [sent]
+
+            return "\n".join(sents).strip()
+
+        tkns = self.content["Document"]["token"]
+        text = reconstruct_raw_text(tkns)
+
+        # add endpoints to tokens
+        idx = 0
+        running_text = text
+        for tkn in self.content["Document"]["token"]:
+            offset = running_text.find(tkn["text"])
+            idx += offset
+            tkn["endpoints"] = (idx, idx + len(tkn["text"]))
+            idx += len(tkn["text"])
+            running_text = running_text[offset + len(tkn["text"]):]
+
+        return text
+
+    @property
+    def _entities(self) -> Iterable[Entity]:
+
+        def get_endpoints(token_anchor, tokens):
+
+            if not isinstance(token_anchor, list):
+                token_anchor = [token_anchor]
+
+            endpoints = [
+                endpoint
+                for tkn in token_anchor
+                for endpoint in tokens[tkn["t_id"]]["endpoints"]
+            ]
+
+            return endpoints[0], endpoints[-1]
+
+        tokens = {
+            tkn["t_id"]: tkn
+            for tkn in self.content["Document"]["token"]
+        }
+
+        entities = set()
+
+        # events
+        events = self.content["Document"]["Markables"]["EVENT"]
+        for event in events:
+
+            if event.get("TAG_DESCRIPTOR") == "Empty_Mark":
+                continue
+
+            # retrieve text
+            s, e = get_endpoints(event["token_anchor"], tokens)
+            text = self._text[s: e]
+
+            entities.add(Event(
+                id=event["m_id"],
+                tense=event.get("tense"),
+                pos=event.get("pos"),
+                text=text,
+                endpoints=(s, e)
+            ))
+
+        # timex
+        timexs = self.content["Document"]["Markables"]["TIMEX3"]
+        if not isinstance(timexs, list):
+            timexs = [timexs]
+
+        for timex in timexs:
+
+            is_dct = (timex["functionInDocument"] == "CREATION_TIME")
+            is_descriptor = ("TAG_DESCRIPTOR" in timex)  # empty timex
+            if is_dct or is_descriptor:
+                continue
+
+            # retrieve endpoints and text
+            s, e = get_endpoints(timex["token_anchor"], tokens)
+            text = self._text[s: e]
+
+            entities.add(Timex(
+                id=timex["m_id"],
+                text=text,
+                endpoints=(s, e),
+                type_=timex["type"],
+                function_in_document=timex["functionInDocument"]),
+            )
+
+        return entities
+
+    @property
+    def _dct(self) -> Timex:
+
+        timexs = self.content["Document"]["Markables"]["TIMEX3"]
+        if not isinstance(timexs, list):
+            timexs = [timexs]
+
+        for timex in timexs:
+            if timex["functionInDocument"] in ["CREATION_TIME", "PUBLICATION_TIME"]:
+                return Timex(
+                    id=timex["m_id"],
+                    text=timex["value"],
+                    value=timex["value"],
+                    function_in_document=timex["functionInDocument"]
+                )
+
+    @property
+    def _tlinks(self) -> Iterable[TLink]:
+
+        tlinks = self.content["Document"]["Relations"]["TLINK"]
+
+        entities_dict = {entity.id: entity for entity in self._entities}
+        entities_dict[self._dct.id] = self._dct
+
+        result = set()
+        for tlink in tlinks:
+            id = tlink.get("r_id")
+            relation = tlink.get("relType")
+            source = tlink.get("source")
+            target = tlink.get("target")
+
+            # proceed in case any of the required information is missing.
+            if not all([relation, source, target, id]):
+                continue
+
+            # ensure that the relation is supported by the framework
+            if (relation in SUPPORTED_RELATIONS) and \
+                    (source["m_id"] in entities_dict) and \
+                    (target["m_id"] in entities_dict):
+                result.add(TLink(
+                    id=id,
+                    source=entities_dict[source["m_id"]],
+                    target=entities_dict[target["m_id"]],
+                    relation=relation
+                ))
+
+        return result
+
+    def read(self) -> Document:
+        return Document(
+            name=self._name,
+            dct=self._dct,
+            text=self._text,
+            entities=self._entities,
+            tlinks=self._tlinks,
+            language="italian"
+        )
+
+
 class GraphEveDocumentReader(BaseDocumentReader):
 
     def __init__(self, path: str) -> None:
@@ -1092,4 +1274,5 @@ DocumentReader = Union[
     TempEval2FrenchDocumentReader,
     TimeBankPTDocumentReader,
     KRAUTSDocumentReader,
+    NarrativeContainerDocumentReader
 ]
