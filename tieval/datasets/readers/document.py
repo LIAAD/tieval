@@ -455,7 +455,6 @@ class NarrativeContainerDocumentReader(BaseDocumentReader):
 
     @property
     def _name(self) -> str:
-        print(self.path.name)
         return self.content["Document"]["doc_name"]
 
     @property
@@ -1279,7 +1278,6 @@ class WikiWarsDocumentReader(BaseDocumentReader):
 
     @property
     def _name(self) -> str:
-        print(self.content["DOC"]["DOCID"])
         return self.content["DOC"]["DOCID"]
 
     @property
