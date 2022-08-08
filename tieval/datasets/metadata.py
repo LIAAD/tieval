@@ -278,6 +278,14 @@ DATASETS_METADATA = {
         doc_reader=TempEval3DocumentReader
     ),
 
+    "wikiwars": DatasetMetadata(
+        name="wikiwars",
+        language="english",
+        url="https://drive.inesctec.pt/s/8ZPnNPfofwyyLT9/download",
+        reader=XMLDatasetReader,
+        doc_reader=WikiWarsDocumentReader
+    ),
+
     "wikiwars_de": DatasetMetadata(
         name="wikiwars_de",
         language="german",
