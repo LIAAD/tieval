@@ -271,7 +271,7 @@ DATASETS_METADATA = {
 
     "traint3": DatasetMetadata(
         name="Traint3",
-        language="english",
+        language="spanish",
         url="https://drive.inesctec.pt/s/SaPzJxD2b9PzxY4/download",
         reader=XMLDatasetReader,
         doc_reader=TempEval3DocumentReader
