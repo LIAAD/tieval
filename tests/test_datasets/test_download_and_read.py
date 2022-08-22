@@ -115,6 +115,42 @@ def test_download_and_read_krauts(tmp_path):
                 assert timex.text == doc.text[s: e]
 
 
+def test_download_and_read_krauts_diezeit(tmp_path):
+
+    os.chdir(tmp_path)
+
+    download("krauts_diezeit")
+    data_path = tmp_path / "data/krauts_diezeit"
+    assert data_path.is_dir()
+
+    krauts = read("krauts_diezeit")
+    assert len(krauts.documents) == 50
+
+
+def test_download_and_read_krauts_dolomiten_42(tmp_path):
+
+    os.chdir(tmp_path)
+
+    download("krauts_dolomiten_42")
+    data_path = tmp_path / "data/krauts_dolomiten_42"
+    assert data_path.is_dir()
+
+    krauts = read("krauts_dolomiten_42")
+    assert len(krauts.documents) == 42
+
+
+def test_download_and_read_krauts_dolomiten_100(tmp_path):
+
+    os.chdir(tmp_path)
+
+    download("krauts_dolomiten_100")
+    data_path = tmp_path / "data/krauts_dolomiten_100"
+    assert data_path.is_dir()
+
+    krauts = read("krauts_dolomiten_100")
+    assert len(krauts.documents) == 100
+
+
 def test_download_and_read_matres(tmp_path):
 
     os.chdir(tmp_path)

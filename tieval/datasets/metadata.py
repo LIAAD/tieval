@@ -94,6 +94,32 @@ DATASETS_METADATA = {
         doc_reader=KRAUTSDocumentReader
     ),
 
+    "krauts_diezeit": DatasetMetadata(
+        name="krauts_diezeit",
+        language="german",
+        url="https://drive.inesctec.pt/s/f98ZDGLqEjqCXEp/download",
+        reader=XMLDatasetReader,
+        doc_reader=KRAUTSDocumentReader
+    ),
+
+
+    "krauts_dolomiten_42": DatasetMetadata(
+        name="krauts_dolomiten_42",
+        language="german",
+        url="https://drive.inesctec.pt/s/AEwAod8Wn2L9E9G/download",
+        reader=XMLDatasetReader,
+        doc_reader=KRAUTSDocumentReader
+    ),
+
+
+    "krauts_dolomiten_100": DatasetMetadata(
+        name="krauts_dolomiten_100",
+        language="german",
+        url="https://drive.inesctec.pt/s/x3N7Kf446RFeDse/download",
+        reader=XMLDatasetReader,
+        doc_reader=KRAUTSDocumentReader
+    ),
+
     "matres": DatasetMetadata(
         name="matres",
         language="english",
