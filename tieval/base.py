@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import Set, Optional, Union, List
+from typing import Set, Optional, Union, List, Tuple
 
 import nltk
 
@@ -35,7 +35,7 @@ class Sentence:
     def __init__(
             self,
             content: str,
-            span: List[int],
+            span: Tuple[int, int],
     ):
         self.content = content
         self.span = span
@@ -222,7 +222,3 @@ class Dataset:
 
     def __len__(self):
         return self.documents.__len__()
-
-    @property
-    def language(self):
-        return self.documents[0].language

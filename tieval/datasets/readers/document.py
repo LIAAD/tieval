@@ -1,7 +1,7 @@
 import abc
 import json
 from pathlib import Path
-from typing import Iterable, Union
+from typing import Iterable, Union, Set
 from xml.etree import ElementTree as ET
 
 from nltk.tokenize.treebank import TreebankWordDetokenizer
@@ -32,12 +32,12 @@ class BaseDocumentReader:
 
     @property
     @abc.abstractmethod
-    def _entities(self) -> Iterable[Entity]:
+    def _entities(self) -> Set[Entity]:
         pass
 
     @property
     @abc.abstractmethod
-    def _tlinks(self) -> Iterable[TLink]:
+    def _tlinks(self) -> Set[TLink]:
         pass
 
     def read(self) -> Document:
@@ -52,7 +52,7 @@ class BaseDocumentReader:
 
 class TempEval3DocumentReader(BaseDocumentReader):
 
-    def __init__(self, path: str) -> None:
+    def __init__(self, path: Union[str, Path]) -> None:
         if not isinstance(path, Path):
             path = Path(path)
 
@@ -72,7 +72,7 @@ class TempEval3DocumentReader(BaseDocumentReader):
         return "".join(text_blocks)
 
     @property
-    def _entities(self) -> Iterable[Entity]:
+    def _entities(self) -> Set[Entity]:
 
         entities = set()
 
@@ -138,7 +138,7 @@ class TempEval3DocumentReader(BaseDocumentReader):
         )
 
     @property
-    def _tlinks(self) -> Iterable[TLink]:
+    def _tlinks(self) -> Set[TLink]:
 
         entities = set.union(self._entities, {self._dct})
         entities_dict = {ent.id: ent for ent in entities}
@@ -162,7 +162,7 @@ class TempEval3DocumentReader(BaseDocumentReader):
 
 class TimeBank12DocumentReader(BaseDocumentReader):
 
-    def __init__(self, path: str) -> None:
+    def __init__(self, path: Union[str, Path]) -> None:
         if not isinstance(path, Path):
             path = Path(path)
 
@@ -170,7 +170,6 @@ class TimeBank12DocumentReader(BaseDocumentReader):
         self.content = xml2dict(self.path)
 
         self.xml = ET.parse(self.path)
-
 
     @property
     def _name(self) -> str:
@@ -271,7 +270,6 @@ class TimeBank12DocumentReader(BaseDocumentReader):
 
 
 class MeanTimeDocumentReader(BaseDocumentReader):
-
     LANGUAGE_MAP = {
         "en": "english",
         "es": "spanish",
@@ -279,7 +277,7 @@ class MeanTimeDocumentReader(BaseDocumentReader):
         "it": "italian"
     }
 
-    def __init__(self, path: str) -> None:
+    def __init__(self, path: Union[str, Path]) -> None:
 
         if not isinstance(path, Path):
             path = Path(path)
@@ -309,7 +307,7 @@ class MeanTimeDocumentReader(BaseDocumentReader):
         return text
 
     @property
-    def _entities(self) -> Iterable[Entity]:
+    def _entities(self) -> Set[Entity]:
 
         def get_endpoints(token_anchor, tokens):
 
@@ -390,7 +388,7 @@ class MeanTimeDocumentReader(BaseDocumentReader):
                 )
 
     @property
-    def _tlinks(self) -> Iterable[TLink]:
+    def _tlinks(self) -> Set[TLink]:
 
         tlinks = self.content["Document"]["Relations"]["TLINK"]
 
@@ -445,7 +443,7 @@ class MeanTimeDocumentReader(BaseDocumentReader):
 
 class NarrativeContainerDocumentReader(BaseDocumentReader):
 
-    def __init__(self, path: str) -> None:
+    def __init__(self, path: Union[str, Path]) -> None:
 
         if not isinstance(path, Path):
             path = Path(path)
@@ -498,7 +496,7 @@ class NarrativeContainerDocumentReader(BaseDocumentReader):
         return text
 
     @property
-    def _entities(self) -> Iterable[Entity]:
+    def _entities(self) -> Set[Entity]:
 
         def get_endpoints(token_anchor, tokens):
 
@@ -582,7 +580,7 @@ class NarrativeContainerDocumentReader(BaseDocumentReader):
                 )
 
     @property
-    def _tlinks(self) -> Iterable[TLink]:
+    def _tlinks(self) -> Set[TLink]:
 
         tlinks = self.content["Document"]["Relations"]["TLINK"]
 
@@ -626,7 +624,7 @@ class NarrativeContainerDocumentReader(BaseDocumentReader):
 
 class GraphEveDocumentReader(BaseDocumentReader):
 
-    def __init__(self, path: str) -> None:
+    def __init__(self, path: Union[str, Path]) -> None:
         if not isinstance(path, Path):
             path = Path(path)
 
@@ -639,6 +637,7 @@ class GraphEveDocumentReader(BaseDocumentReader):
 
     @property
     def _dct(self) -> Timex:
+        # TODO: where can the dct be found?
         return None
 
     @property
@@ -664,7 +663,6 @@ class GraphEveDocumentReader(BaseDocumentReader):
         # events
         events = self.content["Article"]["MicroEvents"]["MicroEvent"]
         for event in events:
-
             entities.add(Event(
                 id=event["ID"],
                 text=event["EventCarrier"],
@@ -727,7 +725,7 @@ class GraphEveDocumentReader(BaseDocumentReader):
 
 class TempEval2DocumentReader(BaseDocumentReader):
 
-    def __init__(self, path: str) -> None:
+    def __init__(self, path: Union[str, Path]) -> None:
         if not isinstance(path, Path):
             path = Path(path)
 
@@ -768,7 +766,6 @@ class TempEval2DocumentReader(BaseDocumentReader):
 
         # events
         for event in self.content["entities"]["events"]:
-
             # find entity endpoints
             s, e = self._get_endpoints(event, endpoints_map)
             event["endpoints"] = (s, e)
@@ -831,7 +828,8 @@ class TempEval2DocumentReader(BaseDocumentReader):
 
         return tlinks
 
-    def _get_endpoints(self, entity, endpoints_map):
+    @staticmethod
+    def _get_endpoints(entity, endpoints_map):
 
         endpoints = [
             endpoint
@@ -843,7 +841,7 @@ class TempEval2DocumentReader(BaseDocumentReader):
 
 class TCRDocumentReader(BaseDocumentReader):
 
-    def __init__(self, path: str) -> None:
+    def __init__(self, path: Union[str, Path]) -> None:
         if not isinstance(path, Path):
             path = Path(path)
 
@@ -899,7 +897,6 @@ class TCRDocumentReader(BaseDocumentReader):
 
         if timexs:
             for timex in timexs:
-
                 s, e = timex["endpoints"].split(" ")
 
                 entities.add(Timex(
@@ -949,7 +946,7 @@ class TCRDocumentReader(BaseDocumentReader):
 
 class TempEval2FrenchDocumentReader(BaseDocumentReader):
 
-    def __init__(self, path: str) -> None:
+    def __init__(self, path: Union[str, Path]) -> None:
         if not isinstance(path, Path):
             path = Path(path)
 
@@ -1040,7 +1037,6 @@ class TempEval2FrenchDocumentReader(BaseDocumentReader):
 
         if timexs:
             for timex in timexs:
-
                 s, e = timex.get("endpoints").split()
                 entities.add(Timex(
                     id=timex["tid"],
@@ -1081,7 +1077,7 @@ class TempEval2FrenchDocumentReader(BaseDocumentReader):
 
 class TimeBankPTDocumentReader(BaseDocumentReader):
 
-    def __init__(self, path: str) -> None:
+    def __init__(self, path: Union[str, Path]) -> None:
         if not isinstance(path, Path):
             path = Path(path)
 
@@ -1200,7 +1196,7 @@ class TimeBankPTDocumentReader(BaseDocumentReader):
 
 class KRAUTSDocumentReader(BaseDocumentReader):
 
-    def __init__(self, path: str) -> None:
+    def __init__(self, path: Union[str, Path]) -> None:
         if not isinstance(path, Path):
             path = Path(path)
 
@@ -1267,7 +1263,7 @@ class KRAUTSDocumentReader(BaseDocumentReader):
 
 class WikiWarsDocumentReader(BaseDocumentReader):
 
-    def __init__(self, path: str) -> None:
+    def __init__(self, path: Union[str, Path]) -> None:
         if not isinstance(path, Path):
             path = Path(path)
 
@@ -1291,16 +1287,19 @@ class WikiWarsDocumentReader(BaseDocumentReader):
 
         entities = set()
 
-        timexs = assert_list(self.content["DOC"]["TEXT"].get("TIMEX2"))
+        root = self.xml.getroot()
+        [text] = list(root.iterfind("TEXT"))
 
         # timexs
+        timexs = list(text.iterfind("TIMEX2")) + list(text.iterfind("*//TIMEX2"))
         if timexs:
             for timex in timexs:
-                s, e = timex["endpoints"].split()
+                s, e = timex.attrib["endpoints"].split()
+                timex_text = "".join(timex.itertext())
                 entities.add(Timex(
-                    function_in_document=timex.get("functionInDocument"),
-                    text=timex["text"],
-                    value=timex["val"] if "val" in timex else timex.get("anchor_val"),
+                    function_in_document=timex.attrib.get("functionInDocument"),
+                    text=timex_text,
+                    value=timex.attrib["val"] if "val" in timex else timex.attrib.get("anchor_val"),
                     endpoints=(int(s), int(e))
                 ))
 

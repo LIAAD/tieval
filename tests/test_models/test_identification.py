@@ -1,7 +1,6 @@
 import os
 
 import tieval.datasets
-from tieval import datasets
 from tieval.models.identification import (
     HeidelTime,
     TimexIdentificationBaseline,
@@ -18,9 +17,9 @@ class TestHeidelTime:
         te3 = tieval.datasets.read("tempeval_3")
 
         model = HeidelTime()
-        pred = model.predict(te3.test)
+        pred = model.predict([te3.test[0]])
 
-        assert len(pred) == len(te3.test)
+        assert len(pred) == 1
 
 
 class TestTimexIdentificationBaseline:
@@ -32,9 +31,9 @@ class TestTimexIdentificationBaseline:
         te3 = tieval.datasets.read("tempeval_3")
 
         model = TimexIdentificationBaseline()
-        pred = model.predict(te3.test)
+        pred = model.predict([te3.test[0]])
 
-        assert len(pred) == len(te3.test)
+        assert len(pred) == 1
 
     def test_download(self, tmp_path):
 
@@ -53,9 +52,9 @@ class TestEventIdentificationBaseline:
         te3 = tieval.datasets.read("tempeval_3")
 
         model = EventIdentificationBaseline()
-        pred = model.predict(te3.test)
+        pred = model.predict([te3.test[0]])
 
-        assert len(pred) == len(te3.test)
+        assert len(pred) == 1
 
     def test_download(self, tmp_path):
 

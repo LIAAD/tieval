@@ -62,6 +62,8 @@ class EventIdentificationBaseline(BaseTrainableModel):
             The set of documents to train on.
         from_scratch : bool
             If False (the default value) it will fine-tune the model. If set to True it will train from scratch.
+        dropout : float
+        dev_documents : Iterable[Document]
         """
 
         # preprocess data
@@ -109,7 +111,7 @@ class EventIdentificationBaseline(BaseTrainableModel):
                     doc = self.nlp.make_doc(texts[i])
                     example += [Example.from_dict(doc, annotations[i])]
 
-                self.nlp.update(example, sgd=None, losses=dev_losses)
+                self.nlp.update(example, losses=dev_losses)
 
             print(f"Losses:\t"
                   f"Train {losses['ner'] / n_train_entities:.5f}\t"
@@ -131,7 +133,7 @@ class EventIdentificationBaseline(BaseTrainableModel):
 
     def download(self):
         url = metadata.MODELS_URL["event_identification"]
-        utils._download_url(url, self.path.parent)
+        utils.download_url(url, self.path.parent)
 
     @staticmethod
     def data_pipeline(documents: Iterable[Document]):

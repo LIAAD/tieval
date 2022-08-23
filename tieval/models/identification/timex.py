@@ -58,15 +58,7 @@ class TimexIdentificationBaseline(BaseTrainableModel):
             dropout: float = 0,
             from_scratch: bool = False
     ) -> None:
-        """Tran the model.
-
-        Parameters
-        ----------
-        documents : Iterable[Document]
-            The set of documents to train on.
-        from_scratch : bool
-            If False (the default value) it will fine-tune the model. If set to True it will train from scratch.
-        """
+        """Tran the model."""
 
         # preprocess data
         train_set = self.data_pipeline(documents)
@@ -113,7 +105,7 @@ class TimexIdentificationBaseline(BaseTrainableModel):
                     doc = self.nlp.make_doc(texts[i])
                     example += [Example.from_dict(doc, annotations[i])]
 
-                self.nlp.update(example, sgd=None, losses=dev_losses)
+                self.nlp.update(example, losses=dev_losses)
 
             print(f"Losses:\t"
                   f"Train {losses['ner'] / n_train_entities:.5f}\t"
@@ -135,7 +127,7 @@ class TimexIdentificationBaseline(BaseTrainableModel):
 
     def download(self):
         url = metadata.MODELS_URL["timex_identification"]
-        utils._download_url(url, self.path.parent)
+        utils.download_url(url, self.path.parent)
 
     @staticmethod
     def data_pipeline(documents: Iterable[Document]):

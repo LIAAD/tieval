@@ -1,4 +1,4 @@
-from typing import Union, Iterable
+from typing import Union, Tuple
 
 
 class Timex:
@@ -9,7 +9,7 @@ class Timex:
             id: str = None,
             text: str = None,
             value: str = None,
-            endpoints: Iterable[int] = None,
+            endpoints: Tuple[int, int] = None,
             type_: str = None,
             function_in_document: str = None,
             anchor_time_id: str = None,
@@ -53,7 +53,7 @@ class Event:
             self,
             id: str = None,
             text: str = None,
-            endpoints: Iterable[int] = None,
+            endpoints: Tuple[int, int] = None,
             family: str = None,
             stem: str = None,
             lemma: str = None,

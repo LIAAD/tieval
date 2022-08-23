@@ -1,6 +1,6 @@
 import pathlib
 from dataclasses import dataclass
-from typing import Union, Tuple, Iterable
+from typing import Tuple, Iterable, Union
 
 from tieval.datasets.readers import (
     XMLDatasetReader,
@@ -32,8 +32,8 @@ class DatasetMetadata:
     """ Store dataset metadata."""
 
     name: str
-    reader: DatasetReaders = None
-    doc_reader: DocumentReaders = None
+    reader: Union[DatasetReaders] = None
+    doc_reader: Union[DocumentReaders] = None
     url: str = None
     repo: str = None
     language: str = None

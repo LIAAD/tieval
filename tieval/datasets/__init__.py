@@ -2,7 +2,7 @@ import os
 import pathlib
 from typing import List
 
-from tieval.utils import _download_url
+from tieval.utils import download_url
 from tieval.base import Dataset
 from tieval.datasets.metadata import DATASETS_METADATA
 
@@ -97,4 +97,4 @@ def download(dataset: str) -> None:
         print(f"Dataset {dataset} was already on {path}.")
         return
 
-    _download_url(metadata.url, path)
+    download_url(metadata.url, path)

@@ -3,8 +3,8 @@ from tieval.evaluate import confusion_matrix
 
 def test_confusion_matrix():
 
-    pred = set([1, 2, 3])
-    true = set([3, 4])
+    pred = {1, 2, 3}
+    true = {3, 4}
 
     tp, fp, fn = confusion_matrix(true, pred)
 

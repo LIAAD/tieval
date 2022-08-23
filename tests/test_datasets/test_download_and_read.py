@@ -39,7 +39,7 @@ def test_download_and_read_te2_spanish(tmp_path):
     assert data_path.is_dir()
 
     te2 = read("tempeval_2_spanish")
-    assert len(te2.documents) == 193
+    assert len(te2.documents) == 210
 
 
 def test_download_and_read_te2_italian(tmp_path):
@@ -51,7 +51,7 @@ def test_download_and_read_te2_italian(tmp_path):
     assert data_path.is_dir()
 
     te2 = read("tempeval_2_italian")
-    assert len(te2.documents) == 59
+    assert len(te2.documents) == 64
 
     test_docs = set(doc.name for doc in te2.test)
     train_docs = set(doc.name for doc in te2.train)
@@ -69,14 +69,6 @@ def test_download_and_read_meantime_italian(tmp_path):
 
     meantime = read("meantime_italian")
     assert len(meantime.documents) == 120
-
-    for doc in meantime.documents:
-        for timex in doc.timexs:
-            if not timex.is_dct:
-                s, e = timex.endpoints
-                print(timex.type)
-                print(timex.text)
-                print()
 
 
 def test_download_and_read_meantime_spanish(tmp_path):

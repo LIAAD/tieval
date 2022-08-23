@@ -1,5 +1,4 @@
 from typing import Union
-from dataclasses import dataclass
 
 # map interval relations to unique names
 _SETTLE_RELATION = {
@@ -154,7 +153,7 @@ class PointRelation:
     @relation.setter
     def relation(self, relations):
 
-        # if the complete relation inferred a point relation different than the original
+        # if the complete relation inferred a point relation different of the original
         # relations, the point relation is inconsistent a.k.a. not valid
         complete_relations = self._complete(*relations)
         for rel, inferred_rel in zip(relations, complete_relations):
@@ -262,7 +261,7 @@ _INTERVAL_TO_POINT_RELATION = {
 
 class TemporalRelation:
 
-    def __init__(self, relation: Union[str, list, dict]):
+    def __init__(self, relation: Union[str, list, dict, PointRelation]):
 
         self.point = self._handle(relation)
         self._interval = None

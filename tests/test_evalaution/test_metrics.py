@@ -87,5 +87,5 @@ def test_temporal_precision(system, annotation):
 
 def test_temporal_awareness(system, annotation):
 
-    numerator, denominator = round(temporal_awareness(prediction=system, annotation=annotation), 3)
-    assert (numerator / denominator) == round(24 / 41, 3)
+    ta = temporal_awareness(prediction=system, annotation=annotation)
+    assert round(ta, 3) == round(24 / 41, 3)

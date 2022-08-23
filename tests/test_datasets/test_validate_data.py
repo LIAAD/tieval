@@ -1,4 +1,3 @@
-import collections
 import os
 
 from tieval import datasets

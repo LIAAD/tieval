@@ -1,7 +1,7 @@
 from typing import Union
 
 from tieval.temporal_relation import TemporalRelation
-from tieval.entities import Event, Timex
+from tieval.entities import Entity
 
 
 class TLink:
@@ -15,9 +15,9 @@ class TLink:
 
     def __init__(
             self,
-            source: Union[str, Timex, Event],
-            target: Union[str, Timex, Event],
-            relation: Union[str, list, dict],
+            source: Union[str, Entity],
+            target: Union[str, Entity],
+            relation: Union[str, list, dict, TemporalRelation],
             id: str = None
     ):
         self.source = source
@@ -82,7 +82,7 @@ class TLink:
         return self.__hash__() == other.__hash__()
 
     def __hash__(self):
-        """Define an unique encoding depending on source, target and relation.
+        """Define a unique encoding depending on source, target and relation.
          This encoding is necessary for hashing and equality.
          """
         entities = [self.source, self.target]
@@ -114,7 +114,7 @@ class TLink:
             target = other.target
             relation = self.relation & other.relation
 
-        elif self.target == other.target:
+        else:  # self.target == other.target
             source = self.source
             target = other.source
             relation = self.relation & ~other.relation

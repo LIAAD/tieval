@@ -1,2 +1,1 @@
-
 from tieval.models.classification.temporal_relation import CogCompTime2

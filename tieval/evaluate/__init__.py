@@ -6,7 +6,6 @@ from tieval.evaluate.metrics import temporal_precision
 from tieval.evaluate.metrics import temporal_recall
 from tieval.evaluate.metrics import temporal_awareness
 
-
 from tabulate import tabulate
 
 
@@ -31,7 +30,6 @@ def _print_table(result: Dict) -> None:
 
 
 def confusion_matrix(annotations, predictions):
-
     tp = len(annotations & predictions)
     fp = len(predictions - annotations)
     fn = len(annotations - predictions)
@@ -40,7 +38,6 @@ def confusion_matrix(annotations, predictions):
 
 
 def f_score(recall, precision):
-
     if recall + precision:
         return 2 * recall * precision / (recall + precision)
     else:
@@ -166,7 +163,7 @@ def tlink_identification(
         predictions: Dict[str, TLink],
         verbose=False
 ) -> Dict:
-    return None
+    return {}
 
 
 def tlink_classification(
@@ -174,7 +171,6 @@ def tlink_classification(
         predictions: Dict[str, List[TLink]],
         verbose=False
 ) -> Dict:
-
     n_docs = len(annotations)
 
     M_accuracy, M_precision, M_recall = 0, 0, 0
@@ -202,7 +198,7 @@ def tlink_classification(
 
         # temporal metrics
         p_numerator, p_denominator = temporal_precision(true, pred)
-        r_numerator, r_denominator  = temporal_recall(true, pred)
+        r_numerator, r_denominator = temporal_recall(true, pred)
 
         p_nums += p_numerator
         p_dens += p_denominator

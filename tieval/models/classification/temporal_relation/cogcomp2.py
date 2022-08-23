@@ -11,7 +11,7 @@ import torch.nn.functional as F
 from tieval.models.base import BaseTrainableModel
 from tieval.base import Document
 from tieval.models import metadata
-from tieval.utils import _download_url, download_torch_weights
+from tieval.utils import download_url, download_torch_weights
 from tieval.links import TLink
 
 # elmo parameters
@@ -85,7 +85,7 @@ class CogCompTime2(BaseTrainableModel):
 
     def download_resources(self):
         url = metadata.MODELS_URL["cogcomp2_vocab"]
-        _download_url(url, self.cse_vocab_path.parent)
+        download_url(url, self.cse_vocab_path.parent)
 
     def predict(self, documents: Iterable[Document]) -> Dict[str, List[TLink]]:
         """ Classify the temporal relations on a set of documents.

@@ -1,11 +1,12 @@
 import io
+from pathlib import Path
 import requests
 from tqdm import tqdm
-from typing import List
+from typing import List, Union
 import zipfile
 
 
-def _download_url(url: str, path: str) -> None:
+def download_url(url: str, path: Union[str, Path]) -> None:
     """Download from url.
 
     :param str url: The url to download.
@@ -25,7 +26,7 @@ def _download_url(url: str, path: str) -> None:
         raise Exception(f"Request code: {response.status_code}")
 
 
-def download_torch_weights(url: str, path: str) -> None:
+def download_torch_weights(url: str, path: Union[str, Path]) -> None:
 
     print(f"Downloading from {url}")
     response = requests.get(url, stream=True)

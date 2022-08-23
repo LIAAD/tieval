@@ -14,18 +14,7 @@ def temporal_closure(tlinks: Set[TLink]) -> Set[TLink]:
     that is fed as input.
 
     :param Set[TLink] tlinks:  A set of temporal links (typically from a document)
-    :param bool allow_incomplete: An incomplete TLink is one in which the temporal relation between the
-        endpoints of source and target is not totally defined.
-        That is, one of the point relations is None. By default, this parameter
-        is set to False.
-
-    :returns: The union of the tlinks given as input and the tlinks inferred.
-    :rtype: Set[TLink]
-
-    .. seealso::
-        Check this `paper`_ to learn more about temporal closure.
-
-    .. _paper: http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.468.2433&rep=rep1&type=pdf
+ep1&type=pdf
     """
 
     edges_triplets = set()
@@ -147,7 +136,7 @@ def _get_connected_nodes(graph: nx.Graph) -> Set[Tuple[str, str]]:
 def _structure_point_relation(
         source: str,
         target: str,
-        point_relation: Tuple[str, str, str]
+        point_relation: Set[str]
 ) -> Tuple[str, str, str, str]:
     """Map the point relations to the original structure.
     """

@@ -1,7 +1,7 @@
 
 from pathlib import Path
 
-from tieval.base import Document, Sentence, Text
+from tieval.base import Sentence
 from tieval.datasets.readers import TempEval3DocumentReader
 
 
@@ -20,7 +20,7 @@ class TestSentence:
 
     sent = Sentence(
         content="Hi, my name is.",
-        span=[100, 115]
+        span=(100, 115)
     )
 
     def test_tokens(self):

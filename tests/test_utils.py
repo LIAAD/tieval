@@ -5,10 +5,9 @@ from tieval.utils import (
 
 
 def test_get_spans():
-
-    text = 'Pacific First Financial Corp. said shareholders approved its acquisition by Royal Trustco Ltd. of Toronto ' \
-           'for $27 a share, or $212 million.\nThe thrift holding company said it expects to obtain regulatory ' \
-           'approval and complete the transaction by year-end. '
+    text = 'Pacific First Financial Corp. said shareholders approved its acquisition by Royal Trustco Ltd. of ' \
+           'Toronto for $27 a share, or $212 million.\nThe thrift holding company said it expects to obtain ' \
+           'regulatory approval and complete the transaction by year-end. '
     tokens = ['Pacific', 'First', 'Financial', 'Corp.', 'said', 'shareholders', 'approved', 'its', 'acquisition', 'by',
               'Royal', 'Trustco', 'Ltd.', 'of', 'Toronto', 'for', '$', '27', 'a', 'share', ',', 'or', '$', '212',
               'million', '.', 'The', 'thrift', 'holding', 'company', 'said', 'it', 'expects', 'to', 'obtain',
@@ -21,7 +20,6 @@ def test_get_spans():
 
 
 def test_resolve_sentence_idxs():
-
     assert resolve_sentence_idxs(None, 2) == [2]
     assert resolve_sentence_idxs(1, None) == [1]
     assert resolve_sentence_idxs(1, 1) == [1]

@@ -17,7 +17,7 @@ class XMLDatasetReader:
     def __init__(self, doc_reader: DocumentReaders) -> None:
         self.document_reader = doc_reader
 
-    def read(self, path: str) -> Dataset:
+    def read(self, path: Union[str, Path]) -> Dataset:
 
         path = Path(path)
         if not path.is_dir():
@@ -69,7 +69,7 @@ class EventTimeDatasetReader:
     def __init__(self, base_dataset: Dataset) -> None:
         self.base_dataset = base_dataset
 
-    def read(self, path: str) -> Dataset:
+    def read(self, path: Union[str, Path]) -> Dataset:
 
         path = Path(path)
 
@@ -111,7 +111,7 @@ class MATRESDatasetReader:
     def __init__(self, base_dataset: Dataset) -> None:
         self.base_dataset = base_dataset
 
-    def read(self, path: str) -> Dataset:
+    def read(self, path: Union[str, Path]) -> Dataset:
 
         path = Path(path)
 
@@ -169,7 +169,7 @@ class TDDiscourseDatasetReader:
     def __init__(self, base_dataset: Dataset) -> None:
         self.base_dataset = base_dataset
 
-    def read(self, path: str) -> Dataset:
+    def read(self, path: Union[str, Path]) -> Dataset:
 
         path = Path(path)
 
@@ -223,7 +223,7 @@ class TimeBankDenseDatasetReader:
     def __init__(self, base_dataset: Dataset) -> None:
         self.base_dataset = base_dataset
 
-    def read(self, path: str) -> Dataset:
+    def read(self, path: Union[str, Path]) -> Dataset:
 
         path = Path(path)
 

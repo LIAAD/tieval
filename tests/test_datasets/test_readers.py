@@ -63,12 +63,22 @@ class TestMeanTimeDocumentReader:
     def test_read(self):
         doc = self.reader.read()
 
+        for timex in doc.timexs:
+            if not timex.is_dct:
+                s, e = timex.endpoints
+                assert doc.text[s:e] == timex.text
+
 
 class TestKRAUTSDocumentReader:
     reader = KRAUTSDocumentReader(DATA_PATH / "krauts.tml")
 
     def test_read(self):
         doc = self.reader.read()
+
+        for timex in doc.timexs:
+            if not timex.is_dct:
+                s, e = timex.endpoints
+                assert doc.text[s:e] == timex.text
 
 
 class TestWikiWarsDocumentReader:
