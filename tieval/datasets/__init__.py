@@ -9,7 +9,7 @@ from tieval.datasets.metadata import DATASETS_METADATA
 SUPPORTED_DATASETS = list(DATASETS_METADATA)
 
 
-def read(dataset: str) -> List[Dataset]:
+def read(dataset: str) -> Dataset:
     """Load temporally annotated dataset.
     The supported datasets are:
         TimeBank
