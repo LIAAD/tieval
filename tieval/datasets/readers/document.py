@@ -287,69 +287,40 @@ class MeanTimeDocumentReader(BaseDocumentReader):
 
     @property
     def _name(self) -> str:
-        return self.path.parts[-1]
+        return self.path.name.replace(".xml", "")
 
     @property
     def _text(self) -> str:
-
         text = self.content["Document"]["raw"]
-
-        # add endpoints to tokens
-        idx = 0
-        running_text = text
-        for tkn in self.content["Document"]["token"]:
-            offset = running_text.find(tkn["text"])
-            idx += offset
-            tkn["endpoints"] = (idx, idx + len(tkn["text"]))
-            idx += len(tkn["text"])
-            running_text = running_text[offset + len(tkn["text"]):]
-
         return text
 
     @property
     def _entities(self) -> Set[Entity]:
-
-        def get_endpoints(token_anchor, tokens):
-
-            if not isinstance(token_anchor, list):
-                token_anchor = [token_anchor]
-
-            endpoints = [
-                endpoint
-                for tkn in token_anchor
-                for endpoint in tokens[tkn["t_id"]]["endpoints"]
-            ]
-
-            return endpoints[0], endpoints[-1]
-
-        tokens = {
-            tkn["t_id"]: tkn
-            for tkn in self.content["Document"]["token"]
-        }
-
         entities = set()
 
         # events
         events = self.content["Document"]["Markables"]["EVENT_MENTION"]
         for event in events:
-            # retrieve text
-            s, e = get_endpoints(event["token_anchor"], tokens)
-            text = self._text[s: e]
 
+            # events that do not conatian endpoints are in the title (which is not included in the raw text)
+            # we ignore such instances.
+            if event.get("endpoints") is None:
+                continue
+
+            s, e = event["endpoints"].split(" ")
+            s, e = int(s), int(e)
             entities.add(Event(
                 id=event["m_id"],
                 tense=event.get("tense"),
                 pos=event.get("pos"),
-                text=text,
+                text=self._text[s:e],
                 endpoints=(s, e)
             ))
 
         # timex
         timexs = self.content["Document"]["Markables"]["TIMEX3"]
-
         if not isinstance(timexs, list):
             timexs = [timexs]
-
         for timex in timexs:
 
             is_dct = timex["functionInDocument"] == "CREATION_TIME"
@@ -357,13 +328,18 @@ class MeanTimeDocumentReader(BaseDocumentReader):
             if is_dct or is_descriptor:
                 continue
 
+            # timexs that do not contian endpoints are in the title (which is not included in the raw text)
+            # we ignore such instances.
+            if timex.get("endpoints") is None:
+                continue
+
             # retrieve endpoints and text
-            s, e = get_endpoints(timex["token_anchor"], tokens)
-            text = self._text[s: e]
+            s, e = timex["endpoints"].split(" ")
+            s, e = int(s), int(e)
 
             entities.add(Timex(
                 id=timex["m_id"],
-                text=text,
+                text=self._text[s: e],
                 endpoints=(s, e),
                 type_=timex["type"],
                 function_in_document=timex["functionInDocument"]),
@@ -676,24 +652,6 @@ class GraphEveDocumentReader(BaseDocumentReader):
             ))
 
         # TODO: figure out how to identify temporal expressions span/endpoints
-        # timexs
-        # timexs = []
-        # sentences = self.content["Article"]["Sentences"]["Sentence"]
-        # for sentence in sentences:
-        #     if sentence["TemporalExpressions"]:
-        #         timex = sentence["TemporalExpressions"]["TemporalExpression"]
-        #         if isinstance(timex, list):
-        #             timexs += timex
-        #         else:
-        #             timexs += [timex]
-        #
-        # for timex in timexs:
-        #     entities.add(Timex(
-        #         id=timex["TimexID"],
-        #         value=timex.get("Value"),
-        #         text=timex["Text"],
-        #         type_=timex["Type"]
-        #     ))
 
         return entities
 

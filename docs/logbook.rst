@@ -51,3 +51,24 @@ Document 120578_Automobile_sales_in_the_United_States_down_sharply.xml replaced
 <TIMEX3 anchorTimeID="" beginPoint="" comment="" endPoint="" functionInDocument="CREATION_TIME" m_id="14" type="DATE" value="03-02-2009">
 by
 <TIMEX3 anchorTimeID="" beginPoint="" comment="" endPoint="" functionInDocument="CREATION_TIME" m_id="14" type="DATE" value="2009-02-03">
+
+ENGLISH Corpus
+
+Document 8951_World_largest_passenger_airliner_makes_first_flight replaced
+<TIMEX3 anchorTimeID="29" beginPoint="" comment="" endPoint="" functionInDocument="NONE" m_id="29" type="DATE" value="2005-04-27">
+by
+<TIMEX3 anchorTimeID="29" beginPoint="" comment="" endPoint="" functionInDocument="CREATION_TIME" m_id="29" type="DATE" value="2005-04-27">
+
+Document 8951_World_largest_passenger_airliner_makes_first_flight replaced
+<TIMEX3 anchorTimeID="" beginPoint="" comment="" endPoint="" functionInDocument="NONE" m_id="46" type="DATE" value="2007-09-01">
+by
+<TIMEX3 anchorTimeID="" beginPoint="" comment="" endPoint="" functionInDocument="CREATION_TIME" m_id="46" type="DATE" value="2007-09-01">
+
+
+DUTCH corpus
+
+deleted file 60658_DaimlerChrysler_plans_to_cut_13,000_jobs.xml
+renamed 60658_DaimlerChrysler_plans_to_cut_13,000_jobs_dutch_utf8.xml to 60658_DaimlerChrysler_plans_to_cut_13,000_jobs.xml
+
+Spanish
+Fixed 114864_Global_markets_plunge.naf file: added date in the second line and removed unknown characters.

@@ -24,10 +24,7 @@ def test_download_and_read_te2_french(tmp_path):
     assert data_path.is_dir()
 
     te2 = read("tempeval_2_french")
-    assert len(te2.documents) == 83  # number of documents
-
-    for doc in te2.documents:
-        print(doc.dct.value, doc.name)
+    assert len(te2.documents) == 83
 
 
 def test_download_and_read_te2_spanish(tmp_path):
@@ -70,6 +67,57 @@ def test_download_and_read_meantime_italian(tmp_path):
     meantime = read("meantime_italian")
     assert len(meantime.documents) == 120
 
+    n_timexs = sum(len(doc.timexs) for doc in meantime.documents)
+    assert n_timexs == 338
+
+    for doc in meantime.documents:
+        for timex in doc.timexs:
+            if not timex.is_dct:
+                s, e = timex.endpoints
+                assert timex.text == doc.text[s: e]
+
+
+def test_download_and_read_meantime_dutch(tmp_path):
+
+    os.chdir(tmp_path)
+
+    download("meantime_dutch")
+    data_path = tmp_path / "data/meantime_dutch"
+    assert data_path.is_dir()
+
+    meantime = read("meantime_dutch")
+    assert len(meantime.documents) == 120
+
+    n_timexs = sum(len(doc.timexs) for doc in meantime.documents)
+    assert n_timexs == 346
+
+    for doc in meantime.documents:
+        for timex in doc.timexs:
+            if not timex.is_dct:
+                s, e = timex.endpoints
+                assert timex.text == doc.text[s: e]
+
+
+def test_download_and_read_meantime_english(tmp_path):
+
+    os.chdir(tmp_path)
+
+    download("meantime_english")
+    data_path = tmp_path / "data/meantime_english"
+    assert data_path.is_dir()
+
+    meantime = read("meantime_english")
+    assert len(meantime.documents) == 120
+
+    n_timexs = sum(len(doc.timexs) for doc in meantime.documents)
+    assert n_timexs == 350
+
+    for doc in meantime.documents:
+        for timex in doc.timexs:
+            if not timex.is_dct:
+                s, e = timex.endpoints
+                assert timex.text == doc.text[s: e]
+
 
 def test_download_and_read_meantime_spanish(tmp_path):
 
@@ -81,6 +129,9 @@ def test_download_and_read_meantime_spanish(tmp_path):
 
     meantime = read("meantime_spanish")
     assert len(meantime.documents) == 120
+
+    n_timexs = sum(len(doc.timexs) for doc in meantime.documents)
+    assert n_timexs == 344
 
     for doc in meantime.documents:
         for timex in doc.timexs:
