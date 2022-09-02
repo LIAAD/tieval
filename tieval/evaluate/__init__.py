@@ -38,18 +38,15 @@ def confusion_matrix(annotations, predictions):
 
 
 def f_score(recall, precision):
-    if recall + precision:
-        return 2 * recall * precision / (recall + precision)
-    else:
-        return 0
+    return 2 * recall * precision / (recall + precision) if recall + precision else 0.0
 
 
 def precision(tp, fp):
-    return tp / (tp + fp) if (tp + fp) else 0
+    return tp / (tp + fp) if (tp + fp) else 1.0
 
 
 def recall(tp, fn):
-    return tp / (tp + fn) if (tp + fn) else 0
+    return tp / (tp + fn) if (tp + fn) else 1.0
 
 
 def timex_identification(

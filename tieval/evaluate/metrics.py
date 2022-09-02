@@ -61,4 +61,4 @@ def temporal_awareness(
     p_n, p_d = temporal_precision(annotation, prediction)
     precision = p_n / p_d
 
-    return 2 * recall * precision / (recall + precision)
+    return 2 * recall * precision / (recall + precision) if (recall + precision) else 0.0
