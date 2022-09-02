@@ -64,6 +64,14 @@ Document 8951_World_largest_passenger_airliner_makes_first_flight replaced
 by
 <TIMEX3 anchorTimeID="" beginPoint="" comment="" endPoint="" functionInDocument="CREATION_TIME" m_id="46" type="DATE" value="2007-09-01">
 
+File 8951 removed the following lines:
+    <token number="12" sentence="2" t_id="13">The</token>
+    <token number="13" sentence="2" t_id="14">A380</token>
+    <token number="14" sentence="2" t_id="15">was</token>
+    <token number="15" sentence="2" t_id="16">revealed</token>
+    <token number="16" sentence="2" t_id="17">in</token>
+    <token number="17" sentence="2" t_id="18">January</token>
+    <token number="18" sentence="2" t_id="19">2005</token>
 
 DUTCH corpus
 
@@ -72,3 +80,9 @@ renamed 60658_DaimlerChrysler_plans_to_cut_13,000_jobs_dutch_utf8.xml to 60658_D
 
 Spanish
 Fixed 114864_Global_markets_plunge.naf file: added date in the second line and removed unknown characters.
+
+Italian
+Fixed raw text of file 102977_Airbus_parent_EADS_wins_13_billion_UK_RAF_airtanker_contract as it missmatched with the annotated corpus
+Same for file 101354
+60658
+279494
