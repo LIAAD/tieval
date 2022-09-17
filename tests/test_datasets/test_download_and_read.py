@@ -278,3 +278,21 @@ def test_download_and_read_fr_timebank(tmp_path):
     assert n_events == 2115
     n_tlinks = sum(len(doc.tlinks) for doc in corpus.documents)
     assert n_tlinks == 2303
+
+
+def test_download_and_read_tcr(tmp_path):
+    os.chdir(tmp_path)
+
+    download("tcr")
+    data_path = tmp_path / "data/tcr"
+    assert data_path.is_dir()
+
+    corpus = read("tcr")
+    assert len(corpus.documents) == 25
+
+    n_timexs = sum(len(doc.timexs) for doc in corpus.documents)
+    assert n_timexs == 242
+    n_events = sum(len(doc.events) for doc in corpus.documents)
+    assert n_events == 1134
+    n_tlinks = sum(len(doc.tlinks) for doc in corpus.documents)
+    assert n_tlinks == 3515
