@@ -260,3 +260,21 @@ def test_download_and_read_wikiwars_de(tmp_path):
 
     data = read(corpus_name)
     assert len(data.documents) == 22
+
+
+def test_download_and_read_fr_timebank(tmp_path):
+    os.chdir(tmp_path)
+
+    download("fr_timebank")
+    data_path = tmp_path / "data/fr_timebank"
+    assert data_path.is_dir()
+
+    corpus = read("fr_timebank")
+    assert len(corpus.documents) == 108
+
+    n_timexs = sum(len(doc.timexs) for doc in corpus.documents)
+    assert n_timexs == 533
+    n_events = sum(len(doc.events) for doc in corpus.documents)
+    assert n_events == 2115
+    n_tlinks = sum(len(doc.tlinks) for doc in corpus.documents)
+    assert n_tlinks == 2303

@@ -1281,6 +1281,111 @@ class WikiWarsDocumentReader(BaseDocumentReader):
         return set()
 
 
+class FRTimeBankDocumentReader(BaseDocumentReader):
+
+    def __init__(self, path: Union[str, Path]) -> None:
+        if not isinstance(path, Path):
+            path = Path(path)
+
+        self.path = path
+        self.content = xml2dict(self.path)
+
+        self.xml = ET.parse(self.path)
+
+    @property
+    def _name(self) -> str:
+        name = self.path.name.replace(".tml", "")
+        return name
+
+    @property
+    def _text(self) -> str:
+        root = self.xml.getroot()
+        text_tag = root.find("TEXT")
+        text = "".join(e for e in text_tag.itertext())
+        return text.strip()
+
+    @property
+    def _entities(self) -> Iterable[Entity]:
+
+        entities = set()
+
+        # events
+        events = self.content["TimeML"]["TEXT"].get("EVENT")
+        for event in events:
+            s, e = event.get("endpoints").split()
+            entities.add(Event(
+                class_=event.get('class'),
+                id=event['eiid'],
+                eid=event['eid'],
+                eiid=event['eiid'],
+                pos=event['pos'],
+                tense=event.get('tense'),
+                text=event['text'],
+                pred=event.get("pred"),
+                vform=event.get("vform"),
+                endpoints=(int(s), int(e))
+            ))
+
+        # timexs
+        timexs = self.content["TimeML"]["TEXT"].get("TIMEX3")
+        timexs = assert_list(timexs)
+
+        if timexs:
+            for timex in timexs[1:]:  # first timex is dct
+                s, e = timex.get("endpoints").split()
+
+                entities.add(Timex(
+                    function_in_document=timex.get("functionInDocument"),
+                    text=timex["text"],
+                    id=timex["tid"],
+                    type_=timex["type"],
+                    value=timex["value"],
+                    endpoints=(int(s), int(e))
+                ))
+
+        # dct
+        entities.add(self._dct)
+
+        return entities
+
+    @property
+    def _dct(self) -> Timex:
+
+        timexs = self.content["TimeML"]["TEXT"]["TIMEX3"]
+        timexs = assert_list(timexs)
+        attrib = timexs[0]
+        assert attrib["functionInDocument"] == "CREATION_TIME", \
+            f"Document {self._name} is missing document creation time."
+
+        return Timex(
+            function_in_document=attrib["functionInDocument"],
+            id=attrib["tid"],
+            type_=attrib["type"],
+            value=attrib["value"],
+        )
+
+    @property
+    def _tlinks(self) -> Iterable[TLink]:
+
+        entities_dict = {ent.id: ent for ent in self._entities}
+
+        tlinks = self.content["TimeML"].get("TLINK")
+
+        result = set()
+
+        for tlink in tlinks:
+            result.add(
+                TLink(
+                    id=tlink["lid"],
+                    source=entities_dict[tlink["from"]],
+                    target=entities_dict[tlink["to"]],
+                    relation=tlink["relType"]
+                )
+            )
+
+        return result
+
+
 DocumentReaders = Union[
     TempEval3DocumentReader,
     TimeBank12DocumentReader,
@@ -1292,5 +1397,6 @@ DocumentReaders = Union[
     TimeBankPTDocumentReader,
     KRAUTSDocumentReader,
     NarrativeContainerDocumentReader,
-    WikiWarsDocumentReader
+    WikiWarsDocumentReader,
+    FRTimeBankDocumentReader
 ]
