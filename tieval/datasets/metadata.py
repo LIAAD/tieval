@@ -14,6 +14,7 @@ from tieval.datasets.readers import (
     KRAUTSDocumentReader,
     NarrativeContainerDocumentReader,
     WikiWarsDocumentReader,
+    FRTimeBankDocumentReader,
     DocumentReaders
 )
 from tieval.datasets.readers import (
@@ -51,7 +52,6 @@ class DatasetMetadata:
 
     @property
     def description(self):
-
         readme_path = self.path / "README.md"
 
         with open(readme_path) as f:
@@ -78,6 +78,14 @@ DATASETS_METADATA = {
         base=["timebank"]
     ),
 
+    "fr_timebank": DatasetMetadata(
+        name="FR_Timebank",
+        language="french",
+        url="https://drive.inesctec.pt/s/crZ8cTrZRobKsLK/download",
+        reader=XMLDatasetReader,
+        doc_reader=FRTimeBankDocumentReader,
+    ),
+
     "grapheve": DatasetMetadata(
         name="GraphEve",
         language="english",
@@ -102,7 +110,6 @@ DATASETS_METADATA = {
         doc_reader=KRAUTSDocumentReader
     ),
 
-
     "krauts_dolomiten_42": DatasetMetadata(
         name="krauts_dolomiten_42",
         language="german",
@@ -110,7 +117,6 @@ DATASETS_METADATA = {
         reader=XMLDatasetReader,
         doc_reader=KRAUTSDocumentReader
     ),
-
 
     "krauts_dolomiten_100": DatasetMetadata(
         name="krauts_dolomiten_100",
@@ -209,7 +215,6 @@ DATASETS_METADATA = {
         doc_reader=TempEval2DocumentReader,
     ),
 
-
     "tempeval_2_english": DatasetMetadata(
         name="tempeval_2_english",
         language="english",
@@ -217,7 +222,6 @@ DATASETS_METADATA = {
         reader=JSONDatasetReader,
         doc_reader=TempEval2DocumentReader,
     ),
-
 
     "tempeval_2_french": DatasetMetadata(
         name="tempeval_2_french",
@@ -227,7 +231,6 @@ DATASETS_METADATA = {
         doc_reader=TempEval2FrenchDocumentReader,
     ),
 
-
     "tempeval_2_italian": DatasetMetadata(
         name="tempeval_2_italian",
         language="italian",
@@ -236,7 +239,6 @@ DATASETS_METADATA = {
         doc_reader=TempEval2DocumentReader,
     ),
 
-
     "tempeval_2_korean": DatasetMetadata(
         name="tempeval_2_korean",
         language="korean",
@@ -244,7 +246,6 @@ DATASETS_METADATA = {
         reader=JSONDatasetReader,
         doc_reader=TempEval2DocumentReader,
     ),
-
 
     "tempeval_2_spanish": DatasetMetadata(
         name="tempeval_2_spanish",

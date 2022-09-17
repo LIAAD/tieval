@@ -4,7 +4,6 @@ from tieval.datasets import download, read
 
 
 def test_download_and_read_te3(tmp_path):
-
     os.chdir(tmp_path)
 
     download("tempeval_3")
@@ -16,7 +15,6 @@ def test_download_and_read_te3(tmp_path):
 
 
 def test_download_and_read_te2_french(tmp_path):
-
     os.chdir(tmp_path)
 
     download("tempeval_2_french")
@@ -28,7 +26,6 @@ def test_download_and_read_te2_french(tmp_path):
 
 
 def test_download_and_read_te2_spanish(tmp_path):
-
     os.chdir(tmp_path)
 
     download("tempeval_2_spanish")
@@ -40,7 +37,6 @@ def test_download_and_read_te2_spanish(tmp_path):
 
 
 def test_download_and_read_te2_italian(tmp_path):
-
     os.chdir(tmp_path)
 
     download("tempeval_2_italian")
@@ -57,7 +53,6 @@ def test_download_and_read_te2_italian(tmp_path):
 
 
 def test_download_and_read_meantime_italian(tmp_path):
-
     os.chdir(tmp_path)
 
     download("meantime_italian")
@@ -78,7 +73,6 @@ def test_download_and_read_meantime_italian(tmp_path):
 
 
 def test_download_and_read_meantime_dutch(tmp_path):
-
     os.chdir(tmp_path)
 
     download("meantime_dutch")
@@ -99,7 +93,6 @@ def test_download_and_read_meantime_dutch(tmp_path):
 
 
 def test_download_and_read_meantime_english(tmp_path):
-
     os.chdir(tmp_path)
 
     download("meantime_english")
@@ -110,7 +103,7 @@ def test_download_and_read_meantime_english(tmp_path):
     assert len(meantime.documents) == 120
 
     n_timexs = sum(len(doc.timexs) for doc in meantime.documents)
-    assert n_timexs == 350
+    assert n_timexs == 349
 
     for doc in meantime.documents:
         for timex in doc.timexs:
@@ -120,7 +113,6 @@ def test_download_and_read_meantime_english(tmp_path):
 
 
 def test_download_and_read_meantime_spanish(tmp_path):
-
     os.chdir(tmp_path)
 
     download("meantime_spanish")
@@ -141,7 +133,6 @@ def test_download_and_read_meantime_spanish(tmp_path):
 
 
 def test_download_and_read_krauts(tmp_path):
-
     os.chdir(tmp_path)
 
     download("krauts")
@@ -159,7 +150,6 @@ def test_download_and_read_krauts(tmp_path):
 
 
 def test_download_and_read_krauts_diezeit(tmp_path):
-
     os.chdir(tmp_path)
 
     download("krauts_diezeit")
@@ -171,7 +161,6 @@ def test_download_and_read_krauts_diezeit(tmp_path):
 
 
 def test_download_and_read_krauts_dolomiten_42(tmp_path):
-
     os.chdir(tmp_path)
 
     download("krauts_dolomiten_42")
@@ -183,7 +172,6 @@ def test_download_and_read_krauts_dolomiten_42(tmp_path):
 
 
 def test_download_and_read_krauts_dolomiten_100(tmp_path):
-
     os.chdir(tmp_path)
 
     download("krauts_dolomiten_100")
@@ -195,7 +183,6 @@ def test_download_and_read_krauts_dolomiten_100(tmp_path):
 
 
 def test_download_and_read_matres(tmp_path):
-
     os.chdir(tmp_path)
 
     download("matres")
@@ -207,7 +194,6 @@ def test_download_and_read_matres(tmp_path):
 
 
 def test_download_and_read_grapheve(tmp_path):
-
     os.chdir(tmp_path)
 
     download("grapheve")
@@ -216,7 +202,6 @@ def test_download_and_read_grapheve(tmp_path):
 
 
 def test_download_and_read_spanish_timebank(tmp_path):
-
     os.chdir(tmp_path)
 
     download("spanish_timebank")
@@ -233,7 +218,6 @@ def test_download_and_read_spanish_timebank(tmp_path):
 
 
 def test_download_and_read_narrative_container(tmp_path):
-
     os.chdir(tmp_path)
     corpus_name = "narrative_container"
 
@@ -251,7 +235,6 @@ def test_download_and_read_narrative_container(tmp_path):
 
 
 def test_download_and_read_wikiwars(tmp_path):
-
     os.chdir(tmp_path)
     corpus_name = "wikiwars"
 
@@ -264,7 +247,6 @@ def test_download_and_read_wikiwars(tmp_path):
 
 
 def test_download_and_read_wikiwars_de(tmp_path):
-
     os.chdir(tmp_path)
     corpus_name = "wikiwars_de"
 
@@ -274,3 +256,21 @@ def test_download_and_read_wikiwars_de(tmp_path):
 
     data = read(corpus_name)
     assert len(data.documents) == 22
+
+
+def test_download_and_read_fr_timebank(tmp_path):
+    os.chdir(tmp_path)
+
+    download("fr_timebank")
+    data_path = tmp_path / "data/fr_timebank"
+    assert data_path.is_dir()
+
+    corpus = read("fr_timebank")
+    assert len(corpus.documents) == 108
+
+    n_timexs = sum(len(doc.timexs) for doc in corpus.documents)
+    assert n_timexs == 533
+    n_events = sum(len(doc.events) for doc in corpus.documents)
+    assert n_events == 2115
+    n_tlinks = sum(len(doc.tlinks) for doc in corpus.documents)
+    assert n_tlinks == 2303
