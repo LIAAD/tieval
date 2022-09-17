@@ -193,6 +193,10 @@ class HeidelTime(BaseModel):
                 document_creation_time=dct
             )
 
+            if results is None:
+                pred_timexs[doc.name] = []
+                continue
+
             # format heideltime outputs to Timex instances
             idx, timexs = 0, []
             for value, text in results[0]:
