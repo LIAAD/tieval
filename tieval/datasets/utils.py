@@ -1,5 +1,5 @@
-from pathlib import Path
 import string
+from pathlib import Path
 from typing import Union, List, Dict
 
 import xmltodict
@@ -32,7 +32,6 @@ def detokenize(tokens: List[str]) -> str:
 
 
 def assert_list(obj):
-
     if obj is None:
         return obj
 

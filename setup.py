@@ -1,10 +1,8 @@
-
 from setuptools import find_packages
 from setuptools import setup
 
-
-README = open("README.md").read()
-
+with open("README.md", encoding="utf-8") as f:
+    README = f.read()
 
 setup(
     name="tieval",

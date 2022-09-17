@@ -1,10 +1,9 @@
 import os
 import pathlib
-from typing import List
 
-from tieval.utils import download_url
 from tieval.base import Dataset
 from tieval.datasets.metadata import DATASETS_METADATA
+from tieval.utils import download_url
 
 SUPPORTED_DATASETS = list(DATASETS_METADATA)
 
