@@ -408,3 +408,93 @@ def test_download_and_read_ancient_time_vietnamese(tmp_path):
 
     n_timexs = sum(len(doc.timexs) for doc in corpus.documents)
     assert n_timexs == 120
+
+
+def test_download_and_read_ph_english(tmp_path):
+    os.chdir(tmp_path)
+
+    dataset_name = "ph_english"
+    download(dataset_name)
+    data_path = tmp_path / f"data/{dataset_name}"
+    assert data_path.is_dir()
+
+    corpus = read(dataset_name)
+    assert len(corpus.documents) == 24_642
+
+    n_timexs = sum(len(doc.timexs) for doc in corpus.documents)
+    assert n_timexs == 254_803
+
+
+def test_download_and_read_ph_french(tmp_path):
+    os.chdir(tmp_path)
+
+    dataset_name = "ph_french"
+    download(dataset_name)
+    data_path = tmp_path / f"data/{dataset_name}"
+    assert data_path.is_dir()
+
+    corpus = read(dataset_name)
+    assert len(corpus.documents) == 27_154
+
+    n_timexs = sum(len(doc.timexs) for doc in corpus.documents)
+    assert n_timexs == 83_431
+
+
+def test_download_and_read_ph_german(tmp_path):
+    os.chdir(tmp_path)
+
+    dataset_name = "ph_german"
+    download(dataset_name)
+    data_path = tmp_path / f"data/{dataset_name}"
+    assert data_path.is_dir()
+
+    corpus = read(dataset_name)
+    assert len(corpus.documents) == 19_095
+
+    n_timexs = sum(len(doc.timexs) for doc in corpus.documents)
+    assert n_timexs == 194_043
+
+
+def test_download_and_read_ph_italian(tmp_path):
+    os.chdir(tmp_path)
+
+    dataset_name = "ph_italian"
+    download(dataset_name)
+    data_path = tmp_path / f"data/{dataset_name}"
+    assert data_path.is_dir()
+
+    corpus = read(dataset_name)
+    assert len(corpus.documents) == 9_619
+
+    n_timexs = sum(len(doc.timexs) for doc in corpus.documents)
+    assert n_timexs == 58_823
+
+
+def test_download_and_read_ph_portuguese(tmp_path):
+    os.chdir(tmp_path)
+
+    dataset_name = "ph_portuguese"
+    download(dataset_name)
+    data_path = tmp_path / f"data/{dataset_name}"
+    assert data_path.is_dir()
+
+    corpus = read(dataset_name)
+    assert len(corpus.documents) == 24_293
+
+    n_timexs = sum(len(doc.timexs) for doc in corpus.documents)
+    assert n_timexs == 111_810
+
+
+def test_download_and_read_ph_spanish(tmp_path):
+    os.chdir(tmp_path)
+
+    dataset_name = "ph_spanish"
+    download(dataset_name)
+    data_path = tmp_path / f"data/{dataset_name}"
+    assert data_path.is_dir()
+
+    corpus = read(dataset_name)
+    assert len(corpus.documents) == 33_266
+
+    n_timexs = sum(len(doc.timexs) for doc in corpus.documents)
+    assert n_timexs == 348_011

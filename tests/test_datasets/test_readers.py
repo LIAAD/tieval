@@ -10,7 +10,8 @@ from tieval.datasets.readers import (
     TempEval3DocumentReader,
     MeanTimeDocumentReader,
     KRAUTSDocumentReader,
-    WikiWarsDocumentReader
+    WikiWarsDocumentReader,
+    ProfessorHeidelTimeDocumentReader
 )
 
 DATA_PATH = Path(__file__).parent.parent / "files"
@@ -96,6 +97,18 @@ class TestWikiWarsDocumentReader:
 
 class TestAncientTimeDocumentReader:
     reader = AncientTimeDocumentReader(DATA_PATH / "ancient_time.tml")
+
+    def test_read(self):
+        doc = self.reader.read()
+
+        for timex in doc.timexs:
+            if not timex.is_dct:
+                s, e = timex.endpoints
+                assert doc.text[s:e] == timex.text
+
+
+class TestProfessorHeidelTimeDocumentReader:
+    reader = ProfessorHeidelTimeDocumentReader(DATA_PATH / "professor_heideltime.json")
 
     def test_read(self):
         doc = self.reader.read()

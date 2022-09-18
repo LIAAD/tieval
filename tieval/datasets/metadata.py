@@ -3,6 +3,7 @@ from dataclasses import dataclass
 from typing import Tuple, Iterable, Union
 
 from tieval.datasets.readers import (
+    ProfessorHeidelTimeDocumentReader,
     TempEval3DocumentReader,
     GraphEveDocumentReader,
     TempEval2DocumentReader,
@@ -236,6 +237,54 @@ DATASETS_METADATA = {
         url="https://drive.inesctec.pt/s/mKZsejEmLESCPCQ/download",
         reader=XMLDatasetReader,
         doc_reader=NarrativeContainerDocumentReader
+    ),
+
+    "ph_english": DatasetMetadata(
+        name="ph_english",
+        language="english",
+        url="https://drive.inesctec.pt/s/ZnPeygpJT3X4pMX/download",
+        reader=JSONDatasetReader,
+        doc_reader=ProfessorHeidelTimeDocumentReader,
+    ),
+
+    "ph_french": DatasetMetadata(
+        name="ph_french",
+        language="french",
+        url="https://drive.inesctec.pt/s/85npxdnKPc9Bomk/download",
+        reader=JSONDatasetReader,
+        doc_reader=ProfessorHeidelTimeDocumentReader,
+    ),
+
+    "ph_german": DatasetMetadata(
+        name="ph_german",
+        language="german",
+        url="https://drive.inesctec.pt/s/NYsjP4yepifzZaF/download",
+        reader=JSONDatasetReader,
+        doc_reader=ProfessorHeidelTimeDocumentReader,
+    ),
+
+    "ph_italian": DatasetMetadata(
+        name="ph_italian",
+        language="italian",
+        url="https://drive.inesctec.pt/s/qMrMQGPLTeEJb5A/download",
+        reader=JSONDatasetReader,
+        doc_reader=ProfessorHeidelTimeDocumentReader,
+    ),
+
+    "ph_portuguese": DatasetMetadata(
+        name="ph_portuguese",
+        language="portuguese",
+        url="https://drive.inesctec.pt/s/p9dNZ58YQ4enQNa/download",
+        reader=JSONDatasetReader,
+        doc_reader=ProfessorHeidelTimeDocumentReader,
+    ),
+
+    "ph_spanish": DatasetMetadata(
+        name="ph_spanish",
+        language="spanish",
+        url="https://drive.inesctec.pt/s/jFqpWdTj9r3RAXP/download",
+        reader=JSONDatasetReader,
+        doc_reader=ProfessorHeidelTimeDocumentReader,
     ),
 
     "platinum": DatasetMetadata(

@@ -1449,6 +1449,69 @@ class AncientTimeDocumentReader(BaseDocumentReader):
         return set()
 
 
+class ProfessorHeidelTimeDocumentReader(BaseDocumentReader):
+
+    def __init__(self, path: Union[str, Path]) -> None:
+
+        if not isinstance(path, Path):
+            path = Path(path)
+
+        self.path = path
+        with open(path) as fin:
+            self.content = json.load(fin)
+
+    @property
+    def _name(self) -> str:
+        name = self.path.name.replace(".json", "")
+        return name
+
+    @property
+    def _text(self) -> str:
+        text = self.content["text"]
+        return text
+
+    @property
+    def _entities(self) -> Iterable[Entity]:
+
+        entities = set()
+
+        # timexs
+        timexs = self.content["timexs"]
+        for text, (s, e) in timexs:
+
+            # the annotations contain some files were the annotation is shifted.
+            if self._text[s:e] != text:
+                if self._text[s - 1:e - 1] == text:
+                    s, e = s - 1, e - 1
+                elif self._text[s + 1:e + 1] == text:
+                    s, e = s + 1, e + 1
+                else:
+                    continue
+
+            entities.add(Timex(
+                text=text,
+                endpoints=(s, e)
+            ))
+
+        # dct
+        entities.add(self._dct)
+
+        return entities
+
+    @property
+    def _dct(self) -> Timex:
+
+        value = self.content["dct"]
+        return Timex(
+            function_in_document="CREATION_TIME",
+            value=value,
+        )
+
+    @property
+    def _tlinks(self) -> Iterable[TLink]:
+        return set()
+
+
 DocumentReaders = Union[
     AncientTimeDocumentReader,
     TempEval3DocumentReader,
@@ -1462,5 +1525,6 @@ DocumentReaders = Union[
     KRAUTSDocumentReader,
     NarrativeContainerDocumentReader,
     WikiWarsDocumentReader,
-    FRTimeBankDocumentReader
+    FRTimeBankDocumentReader,
+    ProfessorHeidelTimeDocumentReader
 ]
