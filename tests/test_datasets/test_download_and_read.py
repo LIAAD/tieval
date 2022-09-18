@@ -199,10 +199,19 @@ def test_download_and_read_matres(tmp_path):
 
 def test_download_and_read_grapheve(tmp_path):
     os.chdir(tmp_path)
-
-    download("grapheve")
-    data_path = tmp_path / "data/grapheve"
+    dataset_name = "grapheve"
+    download(dataset_name)
+    data_path = tmp_path / f"data/{dataset_name}"
     assert data_path.is_dir()
+
+    corpus = read(dataset_name)
+    assert len(corpus.documents) == 103
+    n_timexs = sum(len(doc.timexs) for doc in corpus.documents)
+    assert n_timexs == 0
+    n_events = sum(len(doc.events) for doc in corpus.documents)
+    assert n_events == 4_298
+    n_tlinks = sum(len(doc.tlinks) for doc in corpus.documents)
+    assert n_tlinks == 18_204
 
 
 def test_download_and_read_spanish_timebank(tmp_path):
@@ -498,3 +507,20 @@ def test_download_and_read_ph_spanish(tmp_path):
 
     n_timexs = sum(len(doc.timexs) for doc in corpus.documents)
     assert n_timexs == 348_011
+
+
+def test_download_and_read_ph_eventtime(tmp_path):
+    os.chdir(tmp_path)
+
+    dataset_name = "eventtime"
+    download(dataset_name)
+    data_path = tmp_path / f"data/{dataset_name}"
+    assert data_path.is_dir()
+
+    corpus = read(dataset_name)
+    assert len(corpus.documents) == 36
+
+    n_timexs = sum(len(doc.timexs) for doc in corpus.documents)
+    assert n_timexs == 0
+    n_events = sum(len(doc.events) for doc in corpus.documents)
+    assert n_events == 1_498
