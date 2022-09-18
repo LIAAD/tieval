@@ -1,6 +1,7 @@
 from pathlib import Path
 
 from tieval.datasets.readers import (
+    AncientTimeDocumentReader,
     TempEval2DocumentReader,
     TempEval2FrenchDocumentReader,
     TimeBank12DocumentReader,
@@ -83,6 +84,18 @@ class TestKRAUTSDocumentReader:
 
 class TestWikiWarsDocumentReader:
     reader = WikiWarsDocumentReader(DATA_PATH / "wikiwars_de.xml")
+
+    def test_read(self):
+        doc = self.reader.read()
+
+        for timex in doc.timexs:
+            if not timex.is_dct:
+                s, e = timex.endpoints
+                assert doc.text[s:e] == timex.text
+
+
+class TestAncientTimeDocumentReader:
+    reader = AncientTimeDocumentReader(DATA_PATH / "ancient_time.tml")
 
     def test_read(self):
         doc = self.reader.read()

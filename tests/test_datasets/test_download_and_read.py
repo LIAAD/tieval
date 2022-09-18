@@ -296,3 +296,115 @@ def test_download_and_read_tcr(tmp_path):
     assert n_events == 1134
     n_tlinks = sum(len(doc.tlinks) for doc in corpus.documents)
     assert n_tlinks == 3515
+
+
+def test_download_and_read_ancient_time_arabic(tmp_path):
+    os.chdir(tmp_path)
+
+    download("ancient_time_arabic")
+    data_path = tmp_path / "data/ancient_time_arabic"
+    assert data_path.is_dir()
+
+    corpus = read("ancient_time_arabic")
+    assert len(corpus.documents) == 5
+
+    n_timexs = sum(len(doc.timexs) for doc in corpus.documents)
+    assert n_timexs == 106
+
+
+def test_download_and_read_ancient_time_dutch(tmp_path):
+    os.chdir(tmp_path)
+
+    download("ancient_time_dutch")
+    data_path = tmp_path / "data/ancient_time_dutch"
+    assert data_path.is_dir()
+
+    corpus = read("ancient_time_dutch")
+    assert len(corpus.documents) == 5
+
+    n_timexs = sum(len(doc.timexs) for doc in corpus.documents)
+    assert n_timexs == 130
+
+
+def test_download_and_read_ancient_time_english(tmp_path):
+    os.chdir(tmp_path)
+
+    download("ancient_time_english")
+    data_path = tmp_path / "data/ancient_time_english"
+    assert data_path.is_dir()
+
+    corpus = read("ancient_time_english")
+    assert len(corpus.documents) == 5
+
+    n_timexs = sum(len(doc.timexs) for doc in corpus.documents)
+    assert n_timexs == 311
+
+
+def test_download_and_read_ancient_time_french(tmp_path):
+    os.chdir(tmp_path)
+
+    download("ancient_time_french")
+    data_path = tmp_path / "data/ancient_time_french"
+    assert data_path.is_dir()
+
+    corpus = read("ancient_time_french")
+    assert len(corpus.documents) == 5
+
+    n_timexs = sum(len(doc.timexs) for doc in corpus.documents)
+    assert n_timexs == 290
+
+
+def test_download_and_read_ancient_time_german(tmp_path):
+    os.chdir(tmp_path)
+
+    download("ancient_time_german")
+    data_path = tmp_path / "data/ancient_time_german"
+    assert data_path.is_dir()
+
+    corpus = read("ancient_time_german")
+    assert len(corpus.documents) == 5
+
+    n_timexs = sum(len(doc.timexs) for doc in corpus.documents)
+    assert n_timexs == 196
+
+
+def test_download_and_read_ancient_time_italian(tmp_path):
+    os.chdir(tmp_path)
+
+    download("ancient_time_italian")
+    data_path = tmp_path / "data/ancient_time_italian"
+    assert data_path.is_dir()
+
+    corpus = read("ancient_time_italian")
+    assert len(corpus.documents) == 5
+
+    n_timexs = sum(len(doc.timexs) for doc in corpus.documents)
+    assert n_timexs == 234
+
+
+def test_download_and_read_ancient_time_spanish(tmp_path):
+    os.chdir(tmp_path)
+
+    download("ancient_time_spanish")
+    data_path = tmp_path / "data/ancient_time_spanish"
+    assert data_path.is_dir()
+
+    corpus = read("ancient_time_spanish")
+    assert len(corpus.documents) == 5
+
+    n_timexs = sum(len(doc.timexs) for doc in corpus.documents)
+    assert n_timexs == 217
+
+
+def test_download_and_read_ancient_time_vietnamese(tmp_path):
+    os.chdir(tmp_path)
+
+    download("ancient_time_vietnamese")
+    data_path = tmp_path / "data/ancient_time_vietnamese"
+    assert data_path.is_dir()
+
+    corpus = read("ancient_time_vietnamese")
+    assert len(corpus.documents) == 4
+
+    n_timexs = sum(len(doc.timexs) for doc in corpus.documents)
+    assert n_timexs == 120

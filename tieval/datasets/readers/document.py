@@ -1386,7 +1386,71 @@ class FRTimeBankDocumentReader(BaseDocumentReader):
         return result
 
 
+class AncientTimeDocumentReader(BaseDocumentReader):
+
+    def __init__(self, path: Union[str, Path]) -> None:
+        if not isinstance(path, Path):
+            path = Path(path)
+
+        self.path = path
+        self.content = xml2dict(self.path)
+
+        self.xml = ET.parse(self.path)
+
+    @property
+    def _name(self) -> str:
+        name = self.path.name.replace(".tml", "")
+        return name
+
+    @property
+    def _text(self) -> str:
+        root = self.xml.getroot()
+        text_tag = root.find("TEXT")
+        text = "".join(e for e in text_tag.itertext())
+        return text
+
+    @property
+    def _entities(self) -> Iterable[Entity]:
+
+        entities = set()
+
+        # timexs
+        timexs = self.content["TimeML"]["TEXT"].get("TIMEX3")
+        for timex in timexs:
+            s, e = timex.get("endpoints").split()
+
+            entities.add(Timex(
+                function_in_document=timex.get("functionInDocument"),
+                text=timex["text"],
+                id=timex["tid"],
+                type_=timex["type"],
+                value=timex["value"],
+                endpoints=(int(s), int(e))
+            ))
+
+        # dct
+        entities.add(self._dct)
+
+        return entities
+
+    @property
+    def _dct(self) -> Timex:
+
+        attrib = self.content["TimeML"]["DCT"]["TIMEX3"]
+        return Timex(
+            function_in_document=attrib["functionInDocument"],
+            id=attrib["tid"],
+            type_=attrib["type"],
+            value=attrib["value"],
+        )
+
+    @property
+    def _tlinks(self) -> Iterable[TLink]:
+        return set()
+
+
 DocumentReaders = Union[
+    AncientTimeDocumentReader,
     TempEval3DocumentReader,
     TimeBank12DocumentReader,
     MeanTimeDocumentReader,

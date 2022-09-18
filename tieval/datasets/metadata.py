@@ -3,6 +3,14 @@ from dataclasses import dataclass
 from typing import Tuple, Iterable, Union
 
 from tieval.datasets.readers import (
+    TempEval3DocumentReader,
+    GraphEveDocumentReader,
+    TempEval2DocumentReader,
+    TempEval2FrenchDocumentReader,
+    TimeBank12DocumentReader,
+    TCRDocumentReader,
+    DatasetReaders,
+    AncientTimeDocumentReader,
     XMLDatasetReader,
     JSONDatasetReader,
     EventTimeDatasetReader,
@@ -16,15 +24,6 @@ from tieval.datasets.readers import (
     WikiWarsDocumentReader,
     FRTimeBankDocumentReader,
     DocumentReaders
-)
-from tieval.datasets.readers import (
-    TempEval3DocumentReader,
-    GraphEveDocumentReader,
-    TempEval2DocumentReader,
-    TempEval2FrenchDocumentReader,
-    TimeBank12DocumentReader,
-    TCRDocumentReader,
-    DatasetReaders
 )
 
 
@@ -62,6 +61,70 @@ class DatasetMetadata:
 
 # datasets that only have a table with the temporal links
 DATASETS_METADATA = {
+    "ancient_time_arabic": DatasetMetadata(
+        name="ancient_time_arabic",
+        language="arabic",
+        reader=XMLDatasetReader,
+        doc_reader=AncientTimeDocumentReader,
+        url="https://drive.inesctec.pt/s/LTZbYe6jFWcZXyj/download",
+    ),
+
+    "ancient_time_dutch": DatasetMetadata(
+        name="ancient_time_dutch",
+        language="dutch",
+        reader=XMLDatasetReader,
+        doc_reader=AncientTimeDocumentReader,
+        url="https://drive.inesctec.pt/s/SR5CWgjfgJaY22B/download",
+    ),
+
+    "ancient_time_english": DatasetMetadata(
+        name="ancient_time_english",
+        language="english",
+        reader=XMLDatasetReader,
+        doc_reader=AncientTimeDocumentReader,
+        url="https://drive.inesctec.pt/s/FjHtY3wBYPwciSL/download",
+    ),
+
+    "ancient_time_french": DatasetMetadata(
+        name="ancient_time_french",
+        language="french",
+        reader=XMLDatasetReader,
+        doc_reader=AncientTimeDocumentReader,
+        url="https://drive.inesctec.pt/s/ggpACrLRzwSz5ks/download",
+    ),
+
+    "ancient_time_german": DatasetMetadata(
+        name="ancient_time_german",
+        language="german",
+        reader=XMLDatasetReader,
+        doc_reader=AncientTimeDocumentReader,
+        url="https://drive.inesctec.pt/s/r6Z6KwwKgjmLNJR/download",
+    ),
+
+    "ancient_time_italian": DatasetMetadata(
+        name="ancient_time_italian",
+        language="italian",
+        reader=XMLDatasetReader,
+        doc_reader=AncientTimeDocumentReader,
+        url="https://drive.inesctec.pt/s/JbcHfaDqQgiW59T/download",
+    ),
+
+    "ancient_time_spanish": DatasetMetadata(
+        name="ancient_time_spanish",
+        language="spanish",
+        reader=XMLDatasetReader,
+        doc_reader=AncientTimeDocumentReader,
+        url="https://drive.inesctec.pt/s/C3bcfp8g7C23fPg/download",
+    ),
+
+    "ancient_time_vietnamese": DatasetMetadata(
+        name="ancient_time_vietnamese",
+        language="vietnamese",
+        reader=XMLDatasetReader,
+        doc_reader=AncientTimeDocumentReader,
+        url="https://drive.inesctec.pt/s/LyMLHoRQbL9zndt/download",
+    ),
+
     "aquaint": DatasetMetadata(
         name="AQUAINT",
         language="english",
