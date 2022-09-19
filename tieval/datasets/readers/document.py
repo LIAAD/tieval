@@ -1249,9 +1249,11 @@ class WikiWarsDocumentReader(BaseDocumentReader):
         [text] = list(root.iterfind("TEXT"))
 
         # timexs
-        timexs = list(text.iterfind("TIMEX2")) + list(text.iterfind("*//TIMEX2"))
+        timexs = list(text.iter("TIMEX2"))
         if timexs:
             for timex in timexs:
+                if "endpoints" not in timex.attrib:  # ignore parents of nested timexs
+                    continue
                 s, e = timex.attrib["endpoints"].split()
                 timex_text = "".join(timex.itertext())
                 entities.add(Timex(

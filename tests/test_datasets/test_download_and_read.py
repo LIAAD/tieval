@@ -255,8 +255,11 @@ def test_download_and_read_wikiwars(tmp_path):
     data_path = tmp_path / f"data/{corpus_name}"
     assert data_path.is_dir()
 
-    data = read(corpus_name)
-    assert len(data.documents) == 22
+    corpus = read(corpus_name)
+    assert len(corpus.documents) == 22
+
+    n_timexs = sum(len(doc.timexs) for doc in corpus.documents)
+    assert n_timexs == 2662
 
 
 def test_download_and_read_wikiwars_de(tmp_path):
@@ -267,8 +270,11 @@ def test_download_and_read_wikiwars_de(tmp_path):
     data_path = tmp_path / f"data/{corpus_name}"
     assert data_path.is_dir()
 
-    data = read(corpus_name)
-    assert len(data.documents) == 22
+    corpus = read(corpus_name)
+    assert len(corpus.documents) == 22
+
+    n_timexs = sum(len(doc.timexs) for doc in corpus.documents)
+    assert n_timexs == 2239
 
 
 def test_download_and_read_fr_timebank(tmp_path):
