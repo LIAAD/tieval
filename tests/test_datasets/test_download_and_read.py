@@ -1,532 +1,335 @@
-import os
+from pathlib import Path
 
 from tieval.datasets import download, read
 
 
+def _test_download_and_read(corpus: str, path: Path):
+    download(corpus, path)
+    corpus_path = path / corpus
+    assert corpus_path.is_dir()
+
+    corpus = read(corpus, corpus_path)
+
+    train_docs = set(doc.text for doc in corpus.train)
+    test_docs = set(doc.text for doc in corpus.test)
+    assert len(test_docs & train_docs) == 0
+    assert len(train_docs & test_docs) == 0
+
+    n_docs = len(corpus.documents)
+    n_timexs = sum(len(doc.timexs) for doc in corpus.documents)
+    n_events = sum(len(doc.events) for doc in corpus.documents)
+    n_tlinks = sum(len(doc.tlinks) for doc in corpus.documents)
+    return n_docs, n_events, n_timexs, n_tlinks
+
+
 def test_download_and_read_te3(tmp_path):
-    os.chdir(tmp_path)
-
-    download("tempeval_3")
-    data_path = tmp_path / "data/tempeval_3"
-    assert data_path.is_dir()
-
-    te3 = read("tempeval_3")
-    assert len(te3.documents) == 275  # number of documents
+    corpus = "tempeval_3"
+    n_docs, n_events, n_timexs, n_tlinks = _test_download_and_read(corpus, tmp_path)
+    assert n_docs == 275
+    assert n_events == 11_780
+    assert n_timexs == 2_223
+    assert n_tlinks == 11_881
 
 
 def test_download_and_read_te2_french(tmp_path):
-    os.chdir(tmp_path)
-
-    download("tempeval_2_french")
-    data_path = tmp_path / "data/tempeval_2_french"
-    assert data_path.is_dir()
-
-    te2 = read("tempeval_2_french")
-    assert len(te2.documents) == 83
+    corpus = "tempeval_2_french"
+    n_docs, n_events, n_timexs, n_tlinks = _test_download_and_read(corpus, tmp_path)
+    assert n_docs == 83
+    assert n_events == 1301
+    assert n_timexs == 367
+    assert n_tlinks == 372
 
 
 def test_download_and_read_te2_spanish(tmp_path):
-    os.chdir(tmp_path)
-
-    download("tempeval_2_spanish")
-    data_path = tmp_path / "data/tempeval_2_spanish"
-    assert data_path.is_dir()
-
-    te2 = read("tempeval_2_spanish")
-    assert len(te2.documents) == 210
+    corpus = "tempeval_2_spanish"
+    n_docs, n_events, n_timexs, n_tlinks = _test_download_and_read(corpus, tmp_path)
+    assert n_docs == 210
+    assert n_events == 12_384
+    assert n_timexs == 1502
+    assert n_tlinks == 13_304
 
 
 def test_download_and_read_te2_italian(tmp_path):
-    os.chdir(tmp_path)
-
-    download("tempeval_2_italian")
-    data_path = tmp_path / "data/tempeval_2_italian"
-    assert data_path.is_dir()
-
-    te2 = read("tempeval_2_italian")
-    assert len(te2.documents) == 64
-
-    test_docs = set(doc.name for doc in te2.test)
-    train_docs = set(doc.name for doc in te2.train)
-    assert len(test_docs & train_docs) == 0
-    assert len(train_docs & test_docs) == 0
+    corpus = "tempeval_2_italian"
+    n_docs, n_events, n_timexs, n_tlinks = _test_download_and_read(corpus, tmp_path)
+    assert n_docs == 64
+    assert n_events == 5_377
+    assert n_timexs == 653
+    assert n_tlinks == 6_884
 
 
 def test_download_and_read_meantime_italian(tmp_path):
-    os.chdir(tmp_path)
-
-    download("meantime_italian")
-    data_path = tmp_path / "data/meantime_italian"
-    assert data_path.is_dir()
-
-    meantime = read("meantime_italian")
-    assert len(meantime.documents) == 120
-
-    n_timexs = sum(len(doc.timexs) for doc in meantime.documents)
+    corpus = "meantime_italian"
+    n_docs, n_events, n_timexs, n_tlinks = _test_download_and_read(corpus, tmp_path)
+    assert n_docs == 120
+    assert n_events == 1_980
     assert n_timexs == 338
-
-    for doc in meantime.documents:
-        for timex in doc.timexs:
-            if not timex.is_dct:
-                assert timex.text != ""
-                s, e = timex.endpoints
-                assert timex.text == doc.text[s: e]
+    assert n_tlinks == 1_675
 
 
 def test_download_and_read_meantime_dutch(tmp_path):
-    os.chdir(tmp_path)
-
-    download("meantime_dutch")
-    data_path = tmp_path / "data/meantime_dutch"
-    assert data_path.is_dir()
-
-    meantime = read("meantime_dutch")
-    assert len(meantime.documents) == 120
-
-    n_timexs = sum(len(doc.timexs) for doc in meantime.documents)
+    corpus = "meantime_dutch"
+    n_docs, n_events, n_timexs, n_tlinks = _test_download_and_read(corpus, tmp_path)
+    assert n_docs == 120
+    assert n_events == 1_346
     assert n_timexs == 346
-
-    for doc in meantime.documents:
-        for timex in doc.timexs:
-            if not timex.is_dct:
-                assert timex.text != ""
-                s, e = timex.endpoints
-                assert timex.text == doc.text[s: e]
+    assert n_tlinks == 1_487
 
 
 def test_download_and_read_meantime_english(tmp_path):
-    os.chdir(tmp_path)
-
-    download("meantime_english")
-    data_path = tmp_path / "data/meantime_english"
-    assert data_path.is_dir()
-
-    meantime = read("meantime_english")
-    assert len(meantime.documents) == 120
-
-    n_timexs = sum(len(doc.timexs) for doc in meantime.documents)
+    corpus = "meantime_english"
+    n_docs, n_events, n_timexs, n_tlinks = _test_download_and_read(corpus, tmp_path)
+    assert n_docs == 120
+    assert n_events == 1882
     assert n_timexs == 349
-
-    for doc in meantime.documents:
-        for timex in doc.timexs:
-            if not timex.is_dct:
-                assert timex.text != ""
-                s, e = timex.endpoints
-                assert timex.text == doc.text[s: e]
+    assert n_tlinks == 1753
 
 
 def test_download_and_read_meantime_spanish(tmp_path):
-    os.chdir(tmp_path)
-
-    download("meantime_spanish")
-    data_path = tmp_path / "data/meantime_spanish"
-    assert data_path.is_dir()
-
-    meantime = read("meantime_spanish")
-    assert len(meantime.documents) == 120
-
-    n_timexs = sum(len(doc.timexs) for doc in meantime.documents)
+    corpus = "meantime_spanish"
+    n_docs, n_events, n_timexs, n_tlinks = _test_download_and_read(corpus, tmp_path)
+    assert n_docs == 120
+    assert n_events == 2000
     assert n_timexs == 344
-
-    for doc in meantime.documents:
-        for timex in doc.timexs:
-            if timex.endpoints:
-                assert timex.text != ""
-                s, e = timex.endpoints
-                assert timex.text == doc.text[s: e]
+    assert n_tlinks == 1975
 
 
 def test_download_and_read_krauts(tmp_path):
-    os.chdir(tmp_path)
-
-    download("krauts")
-    data_path = tmp_path / "data/krauts"
-    assert data_path.is_dir()
-
-    krauts = read("krauts")
-    assert len(krauts.documents) == 192
-
-    for doc in krauts.documents:
-        for timex in doc.timexs:
-            if timex.endpoints:
-                s, e = timex.endpoints
-                assert timex.text == doc.text[s: e]
+    corpus = "krauts"
+    n_docs, n_events, n_timexs, n_tlinks = _test_download_and_read(corpus, tmp_path)
+    assert n_docs == 192
+    assert n_events == 0
+    assert n_timexs == 1282
+    assert n_tlinks == 0
 
 
 def test_download_and_read_krauts_diezeit(tmp_path):
-    os.chdir(tmp_path)
-
-    download("krauts_diezeit")
-    data_path = tmp_path / "data/krauts_diezeit"
-    assert data_path.is_dir()
-
-    krauts = read("krauts_diezeit")
-    assert len(krauts.documents) == 50
+    corpus = "krauts_diezeit"
+    n_docs, n_events, n_timexs, n_tlinks = _test_download_and_read(corpus, tmp_path)
+    assert n_docs == 50
+    assert n_events == 0
+    assert n_timexs == 553
+    assert n_tlinks == 0
 
 
 def test_download_and_read_krauts_dolomiten_42(tmp_path):
-    os.chdir(tmp_path)
-
-    download("krauts_dolomiten_42")
-    data_path = tmp_path / "data/krauts_dolomiten_42"
-    assert data_path.is_dir()
-
-    krauts = read("krauts_dolomiten_42")
-    assert len(krauts.documents) == 42
+    corpus = "krauts_dolomiten_42"
+    n_docs, n_events, n_timexs, n_tlinks = _test_download_and_read(corpus, tmp_path)
+    assert n_docs == 42
+    assert n_events == 0
+    assert n_timexs == 228
+    assert n_tlinks == 0
 
 
 def test_download_and_read_krauts_dolomiten_100(tmp_path):
-    os.chdir(tmp_path)
-
-    download("krauts_dolomiten_100")
-    data_path = tmp_path / "data/krauts_dolomiten_100"
-    assert data_path.is_dir()
-
-    krauts = read("krauts_dolomiten_100")
-    assert len(krauts.documents) == 100
+    corpus = "krauts_dolomiten_100"
+    n_docs, n_events, n_timexs, n_tlinks = _test_download_and_read(corpus, tmp_path)
+    assert n_docs == 100
+    assert n_events == 0
+    assert n_timexs == 501
+    assert n_tlinks == 0
 
 
 def test_download_and_read_matres(tmp_path):
-    os.chdir(tmp_path)
-
-    download("matres")
-    data_path = tmp_path / "data/matres"
-    assert data_path.is_dir()
-
-    matres = read("matres")
-    assert len(matres.documents) == 274  # number of documents
+    corpus = "matres"
+    n_docs, n_events, n_timexs, n_tlinks = _test_download_and_read(corpus, tmp_path)
+    assert n_docs == 274
+    assert n_events == 6065
+    assert n_timexs == 0
+    assert n_tlinks == 13504
 
 
 def test_download_and_read_grapheve(tmp_path):
-    os.chdir(tmp_path)
-    dataset_name = "grapheve"
-    download(dataset_name)
-    data_path = tmp_path / f"data/{dataset_name}"
-    assert data_path.is_dir()
-
-    corpus = read(dataset_name)
-    assert len(corpus.documents) == 103
-    n_timexs = sum(len(doc.timexs) for doc in corpus.documents)
+    corpus = "grapheve"
+    n_docs, n_events, n_timexs, n_tlinks = _test_download_and_read(corpus, tmp_path)
+    assert n_docs == 103
+    assert n_events == 4298
     assert n_timexs == 0
-    n_events = sum(len(doc.events) for doc in corpus.documents)
-    assert n_events == 4_298
-    n_tlinks = sum(len(doc.tlinks) for doc in corpus.documents)
-    assert n_tlinks == 18_204
+    assert n_tlinks == 18204
 
 
 def test_download_and_read_spanish_timebank(tmp_path):
-    os.chdir(tmp_path)
-
-    download("spanish_timebank")
-    data_path = tmp_path / "data/spanish_timebank"
-    assert data_path.is_dir()
-
-    stb = read("spanish_timebank")
-    assert len(stb.documents) == 210
-
-    test_docs = set(doc.name for doc in stb.test)
-    train_docs = set(doc.name for doc in stb.train)
-    assert len(test_docs & train_docs) == 0
-    assert len(train_docs & test_docs) == 0
+    corpus = "spanish_timebank"
+    n_docs, n_events, n_timexs, n_tlinks = _test_download_and_read(corpus, tmp_path)
+    assert n_docs == 210
+    assert n_events == 12384
+    assert n_timexs == 1532
+    assert n_tlinks == 21107
 
 
 def test_download_and_read_narrative_container(tmp_path):
-    os.chdir(tmp_path)
-    corpus_name = "narrative_container"
-
-    download(corpus_name)
-    data_path = tmp_path / f"data/{corpus_name}"
-    assert data_path.is_dir()
-
-    data = read(corpus_name)
-    assert len(data.documents) == 63
-
-    test_docs = set(doc.name for doc in data.test)
-    train_docs = set(doc.name for doc in data.train)
-    assert len(test_docs & train_docs) == 0
-    assert len(train_docs & test_docs) == 0
+    corpus = "narrative_container"
+    n_docs, n_events, n_timexs, n_tlinks = _test_download_and_read(corpus, tmp_path)
+    assert n_docs == 63
+    assert n_events == 3559
+    assert n_timexs == 439
+    assert n_tlinks == 737
 
 
 def test_download_and_read_wikiwars(tmp_path):
-    os.chdir(tmp_path)
-    corpus_name = "wikiwars"
-
-    download(corpus_name)
-    data_path = tmp_path / f"data/{corpus_name}"
-    assert data_path.is_dir()
-
-    corpus = read(corpus_name)
-    assert len(corpus.documents) == 22
-
-    n_timexs = sum(len(doc.timexs) for doc in corpus.documents)
-    assert n_timexs == 2662
+    corpus = "wikiwars"
+    n_docs, n_events, n_timexs, n_tlinks = _test_download_and_read(corpus, tmp_path)
+    assert n_docs == 22
+    assert n_events == 0
+    assert n_timexs == 2_662
+    assert n_tlinks == 0
 
 
 def test_download_and_read_wikiwars_de(tmp_path):
-    os.chdir(tmp_path)
-    corpus_name = "wikiwars_de"
-
-    download(corpus_name)
-    data_path = tmp_path / f"data/{corpus_name}"
-    assert data_path.is_dir()
-
-    corpus = read(corpus_name)
-    assert len(corpus.documents) == 22
-
-    n_timexs = sum(len(doc.timexs) for doc in corpus.documents)
-    assert n_timexs == 2239
+    corpus = "wikiwars_de"
+    n_docs, n_events, n_timexs, n_tlinks = _test_download_and_read(corpus, tmp_path)
+    assert n_docs == 22
+    assert n_events == 0
+    assert n_timexs == 2_239
+    assert n_tlinks == 0
 
 
 def test_download_and_read_fr_timebank(tmp_path):
-    os.chdir(tmp_path)
-
-    download("fr_timebank")
-    data_path = tmp_path / "data/fr_timebank"
-    assert data_path.is_dir()
-
-    corpus = read("fr_timebank")
-    assert len(corpus.documents) == 108
-
-    n_timexs = sum(len(doc.timexs) for doc in corpus.documents)
+    corpus = "fr_timebank"
+    n_docs, n_events, n_timexs, n_tlinks = _test_download_and_read(corpus, tmp_path)
+    assert n_docs == 108
     assert n_timexs == 533
-    n_events = sum(len(doc.events) for doc in corpus.documents)
     assert n_events == 2115
-    n_tlinks = sum(len(doc.tlinks) for doc in corpus.documents)
     assert n_tlinks == 2303
 
 
 def test_download_and_read_tcr(tmp_path):
-    os.chdir(tmp_path)
-
-    download("tcr")
-    data_path = tmp_path / "data/tcr"
-    assert data_path.is_dir()
-
-    corpus = read("tcr")
-    assert len(corpus.documents) == 25
-
-    n_timexs = sum(len(doc.timexs) for doc in corpus.documents)
+    corpus = "tcr"
+    n_docs, n_events, n_timexs, n_tlinks = _test_download_and_read(corpus, tmp_path)
+    assert n_docs == 25
     assert n_timexs == 242
-    n_events = sum(len(doc.events) for doc in corpus.documents)
     assert n_events == 1134
-    n_tlinks = sum(len(doc.tlinks) for doc in corpus.documents)
     assert n_tlinks == 3515
 
 
 def test_download_and_read_ancient_time_arabic(tmp_path):
-    os.chdir(tmp_path)
-
-    download("ancient_time_arabic")
-    data_path = tmp_path / "data/ancient_time_arabic"
-    assert data_path.is_dir()
-
-    corpus = read("ancient_time_arabic")
-    assert len(corpus.documents) == 5
-
-    n_timexs = sum(len(doc.timexs) for doc in corpus.documents)
+    corpus = "ancient_time_arabic"
+    n_docs, n_events, n_timexs, n_tlinks = _test_download_and_read(corpus, tmp_path)
+    assert n_docs == 5
     assert n_timexs == 106
+    assert n_events == 0
+    assert n_tlinks == 0
 
 
 def test_download_and_read_ancient_time_dutch(tmp_path):
-    os.chdir(tmp_path)
-
-    download("ancient_time_dutch")
-    data_path = tmp_path / "data/ancient_time_dutch"
-    assert data_path.is_dir()
-
-    corpus = read("ancient_time_dutch")
-    assert len(corpus.documents) == 5
-
-    n_timexs = sum(len(doc.timexs) for doc in corpus.documents)
+    corpus = "ancient_time_dutch"
+    n_docs, n_events, n_timexs, n_tlinks = _test_download_and_read(corpus, tmp_path)
+    assert n_docs == 5
     assert n_timexs == 130
+    assert n_events == 0
+    assert n_tlinks == 0
 
 
 def test_download_and_read_ancient_time_english(tmp_path):
-    os.chdir(tmp_path)
-
-    download("ancient_time_english")
-    data_path = tmp_path / "data/ancient_time_english"
-    assert data_path.is_dir()
-
-    corpus = read("ancient_time_english")
-    assert len(corpus.documents) == 5
-
-    n_timexs = sum(len(doc.timexs) for doc in corpus.documents)
+    corpus = "ancient_time_english"
+    n_docs, n_events, n_timexs, n_tlinks = _test_download_and_read(corpus, tmp_path)
+    assert n_docs == 5
     assert n_timexs == 311
 
 
 def test_download_and_read_ancient_time_french(tmp_path):
-    os.chdir(tmp_path)
-
-    download("ancient_time_french")
-    data_path = tmp_path / "data/ancient_time_french"
-    assert data_path.is_dir()
-
-    corpus = read("ancient_time_french")
-    assert len(corpus.documents) == 5
-
-    n_timexs = sum(len(doc.timexs) for doc in corpus.documents)
+    corpus = "ancient_time_french"
+    n_docs, n_events, n_timexs, n_tlinks = _test_download_and_read(corpus, tmp_path)
+    assert n_docs == 5
     assert n_timexs == 290
+    assert n_events == 0
+    assert n_tlinks == 0
 
 
 def test_download_and_read_ancient_time_german(tmp_path):
-    os.chdir(tmp_path)
-
-    download("ancient_time_german")
-    data_path = tmp_path / "data/ancient_time_german"
-    assert data_path.is_dir()
-
-    corpus = read("ancient_time_german")
-    assert len(corpus.documents) == 5
-
-    n_timexs = sum(len(doc.timexs) for doc in corpus.documents)
+    corpus = "ancient_time_german"
+    n_docs, n_events, n_timexs, n_tlinks = _test_download_and_read(corpus, tmp_path)
+    assert n_docs == 5
     assert n_timexs == 196
+    assert n_events == 0
+    assert n_tlinks == 0
 
 
 def test_download_and_read_ancient_time_italian(tmp_path):
-    os.chdir(tmp_path)
-
-    download("ancient_time_italian")
-    data_path = tmp_path / "data/ancient_time_italian"
-    assert data_path.is_dir()
-
-    corpus = read("ancient_time_italian")
-    assert len(corpus.documents) == 5
-
-    n_timexs = sum(len(doc.timexs) for doc in corpus.documents)
+    corpus = "ancient_time_italian"
+    n_docs, n_events, n_timexs, n_tlinks = _test_download_and_read(corpus, tmp_path)
+    assert n_docs == 5
     assert n_timexs == 234
+    assert n_events == 0
+    assert n_tlinks == 0
 
 
 def test_download_and_read_ancient_time_spanish(tmp_path):
-    os.chdir(tmp_path)
-
-    download("ancient_time_spanish")
-    data_path = tmp_path / "data/ancient_time_spanish"
-    assert data_path.is_dir()
-
-    corpus = read("ancient_time_spanish")
-    assert len(corpus.documents) == 5
-
-    n_timexs = sum(len(doc.timexs) for doc in corpus.documents)
+    corpus = "ancient_time_spanish"
+    n_docs, n_events, n_timexs, n_tlinks = _test_download_and_read(corpus, tmp_path)
+    assert n_docs == 5
     assert n_timexs == 217
+    assert n_events == 0
+    assert n_tlinks == 0
 
 
 def test_download_and_read_ancient_time_vietnamese(tmp_path):
-    os.chdir(tmp_path)
-
-    download("ancient_time_vietnamese")
-    data_path = tmp_path / "data/ancient_time_vietnamese"
-    assert data_path.is_dir()
-
-    corpus = read("ancient_time_vietnamese")
-    assert len(corpus.documents) == 4
-
-    n_timexs = sum(len(doc.timexs) for doc in corpus.documents)
+    corpus = "ancient_time_vietnamese"
+    n_docs, n_events, n_timexs, n_tlinks = _test_download_and_read(corpus, tmp_path)
+    assert n_docs == 4
     assert n_timexs == 120
+    assert n_events == 0
+    assert n_tlinks == 0
 
 
 def test_download_and_read_ph_english(tmp_path):
-    os.chdir(tmp_path)
-
-    dataset_name = "ph_english"
-    download(dataset_name)
-    data_path = tmp_path / f"data/{dataset_name}"
-    assert data_path.is_dir()
-
-    corpus = read(dataset_name)
-    assert len(corpus.documents) == 24_642
-
-    n_timexs = sum(len(doc.timexs) for doc in corpus.documents)
+    corpus = "ph_english"
+    n_docs, n_events, n_timexs, n_tlinks = _test_download_and_read(corpus, tmp_path)
+    assert n_docs == 24_642
     assert n_timexs == 254_803
+    assert n_events == 0
+    assert n_tlinks == 0
 
 
 def test_download_and_read_ph_french(tmp_path):
-    os.chdir(tmp_path)
-
-    dataset_name = "ph_french"
-    download(dataset_name)
-    data_path = tmp_path / f"data/{dataset_name}"
-    assert data_path.is_dir()
-
-    corpus = read(dataset_name)
-    assert len(corpus.documents) == 27_154
-
-    n_timexs = sum(len(doc.timexs) for doc in corpus.documents)
+    corpus = "ph_french"
+    n_docs, n_events, n_timexs, n_tlinks = _test_download_and_read(corpus, tmp_path)
+    assert n_docs == 27_154
     assert n_timexs == 83_431
+    assert n_events == 0
+    assert n_tlinks == 0
 
 
 def test_download_and_read_ph_german(tmp_path):
-    os.chdir(tmp_path)
-
-    dataset_name = "ph_german"
-    download(dataset_name)
-    data_path = tmp_path / f"data/{dataset_name}"
-    assert data_path.is_dir()
-
-    corpus = read(dataset_name)
-    assert len(corpus.documents) == 19_095
-
-    n_timexs = sum(len(doc.timexs) for doc in corpus.documents)
+    corpus = "ph_german"
+    n_docs, n_events, n_timexs, n_tlinks = _test_download_and_read(corpus, tmp_path)
+    assert n_docs == 19_095
     assert n_timexs == 194_043
+    assert n_events == 0
+    assert n_tlinks == 0
 
 
 def test_download_and_read_ph_italian(tmp_path):
-    os.chdir(tmp_path)
-
-    dataset_name = "ph_italian"
-    download(dataset_name)
-    data_path = tmp_path / f"data/{dataset_name}"
-    assert data_path.is_dir()
-
-    corpus = read(dataset_name)
-    assert len(corpus.documents) == 9_619
-
-    n_timexs = sum(len(doc.timexs) for doc in corpus.documents)
+    corpus = "ph_italian"
+    n_docs, n_events, n_timexs, n_tlinks = _test_download_and_read(corpus, tmp_path)
+    assert n_docs == 9_619
     assert n_timexs == 58_823
+    assert n_events == 0
+    assert n_tlinks == 0
 
 
 def test_download_and_read_ph_portuguese(tmp_path):
-    os.chdir(tmp_path)
-
-    dataset_name = "ph_portuguese"
-    download(dataset_name)
-    data_path = tmp_path / f"data/{dataset_name}"
-    assert data_path.is_dir()
-
-    corpus = read(dataset_name)
-    assert len(corpus.documents) == 24_293
-
-    n_timexs = sum(len(doc.timexs) for doc in corpus.documents)
+    corpus = "ph_portuguese"
+    n_docs, n_events, n_timexs, n_tlinks = _test_download_and_read(corpus, tmp_path)
+    assert n_docs == 24_293
     assert n_timexs == 111_810
+    assert n_events == 0
+    assert n_tlinks == 0
 
 
 def test_download_and_read_ph_spanish(tmp_path):
-    os.chdir(tmp_path)
-
-    dataset_name = "ph_spanish"
-    download(dataset_name)
-    data_path = tmp_path / f"data/{dataset_name}"
-    assert data_path.is_dir()
-
-    corpus = read(dataset_name)
-    assert len(corpus.documents) == 33_266
-
-    n_timexs = sum(len(doc.timexs) for doc in corpus.documents)
+    corpus = "ph_spanish"
+    n_docs, n_events, n_timexs, n_tlinks = _test_download_and_read(corpus, tmp_path)
+    assert n_docs == 33_266
     assert n_timexs == 348_011
+    assert n_events == 0
+    assert n_tlinks == 0
 
 
-def test_download_and_read_ph_eventtime(tmp_path):
-    os.chdir(tmp_path)
-
-    dataset_name = "eventtime"
-    download(dataset_name)
-    data_path = tmp_path / f"data/{dataset_name}"
-    assert data_path.is_dir()
-
-    corpus = read(dataset_name)
-    assert len(corpus.documents) == 36
-
-    n_timexs = sum(len(doc.timexs) for doc in corpus.documents)
+def test_download_and_read_eventtime(tmp_path):
+    corpus = "eventtime"
+    n_docs, n_events, n_timexs, n_tlinks = _test_download_and_read(corpus, tmp_path)
+    assert n_docs == 36
     assert n_timexs == 0
-    n_events = sum(len(doc.events) for doc in corpus.documents)
     assert n_events == 1_498
+    assert n_tlinks == 0

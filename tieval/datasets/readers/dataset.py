@@ -73,9 +73,8 @@ class EventTimeDatasetReader:
 
         path = Path(path)
 
-        events_table = path / "train/event-times_normalized.tab"
-        with open(events_table, 'r') as fin:
-
+        events_table_path = path / "train" / "event-times_normalized.tab"
+        with open(events_table_path, 'r') as fin:
             docs = collections.defaultdict(list)
             for line in fin.readlines():
                 doc, sent_idx, tkn_idx, entity_type, id_, _, type_, value = line.split()
@@ -92,7 +91,7 @@ class EventTimeDatasetReader:
             document = self.base_dataset[doc_name]
 
             update_events = []
-            document.tlinks = None
+            document.tlinks = set()
             original_events_dict = {event.eid: event for event in document.events}
             for event in events:
                 original_event = original_events_dict.get(event["id"])

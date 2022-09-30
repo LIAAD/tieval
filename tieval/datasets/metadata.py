@@ -1,4 +1,3 @@
-import pathlib
 from dataclasses import dataclass
 from typing import Tuple, Iterable, Union
 
@@ -44,20 +43,6 @@ class DatasetMetadata:
     columns: Tuple = None
     event_index: str = None
     files: [str] = None
-    data_path: str = "data"
-
-    @property
-    def path(self):
-        return pathlib.Path(f"{self.data_path}/{self.name.lower()}")
-
-    @property
-    def description(self):
-        readme_path = self.path / "README.md"
-
-        with open(readme_path) as f:
-            readme = f.read()
-
-        return readme
 
 
 # datasets that only have a table with the temporal links
