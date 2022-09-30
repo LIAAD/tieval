@@ -56,7 +56,7 @@ def read(dataset: str) -> Dataset:
     return reader.read(metadata.path)
 
 
-def download(dataset: str) -> None:
+def download(dataset: str, path: str = None) -> None:
     """ Download corpus.
 
     This function facilitates the download of temporal annotated corpora.
@@ -82,18 +82,14 @@ def download(dataset: str) -> None:
     dataset = dataset.lower().strip()
     metadata = DATASETS_METADATA.get(dataset)
 
-    # check that the dataset is supported
     if metadata is None:
         raise Exception(f"{dataset} not recognized.")
 
-    # check if path folder exists
-    path = pathlib.Path("./data")
-    if not path.is_dir():
-        os.mkdir(path)
+    if path:
+        path = pathlib.Path(path)
+    else:
+        path = pathlib.Path("./data")
 
-    # check if it has already been downloaded
-    if metadata.path.is_dir():
-        print(f"Dataset {dataset} was already on {path}.")
-        return
+    path.mkdir(exist_ok=True, parents=True)
 
     download_url(metadata.url, path)
