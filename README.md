@@ -18,28 +18,29 @@ It requires Python 3.8 or above.
 
 To understand its usability refer to the notebooks available [here]().
 
-
 ## Data
 
 Throughout the last two decades many datasets have been developed to train this task.
-text2timeline provides an easy interface to download the available corpus.
+tieval provides an easy interface to download the available corpus.
 
 To know more about the module run the following code on the terminal.
+
 ```shell
 python -m tieval download --help
 ```
 
 ## How to ...
 
-In this section we summarize how to perform the most useful operations in text2timeline.
+In this section we summarize how to perform the most useful operations in tieval.
 
 ### download a dataset.
 
 ```python
-import tieval.datasets
+from pathlib import Path
 from tieval import datasets
 
-tieval.datasets.download("TimeBank")
+data_path = Path("data/")
+datasets.download("TimeBank", data_path)
 ```
 
 ### load a dataset.
@@ -60,6 +61,7 @@ heideltime = models.identification.HeidelTime()
 ```
 
 ### make predictions.
+
 ```python
 predictions = heideltime.predict(te3.test)
 ```
