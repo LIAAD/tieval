@@ -1,4 +1,4 @@
-from typing import Dict, List
+from typing import Dict, List, Tuple
 
 from tieval.entities import Entity, Timex
 from tieval.links import TLink
@@ -245,5 +245,52 @@ def tlink_classification(
 
     if verbose:
         _print_table(result)
+
+    return result
+
+
+def span_identification(
+        annotations: List[List[Tuple[int, int]]],
+        predictions: List[List[Tuple[int, int]]],
+) -> Dict:
+    n_docs = len(annotations)
+    M_precision, M_recall = 0, 0
+    tps, fps, fns = 0, 0, 0
+    for annot, pred in zip(annotations, predictions):
+        annot = set(annot)
+        pred = set(pred)
+        tp, fp, fn = confusion_matrix(annot, pred)
+
+        # update macro metrics counts
+        M_precision += precision(tp, fp)
+        M_recall += recall(tp, fn)
+
+        # update micro metrics counts
+        tps += tp
+        fps += fp
+        fns += fn
+
+    # compute macro metrics
+    M_precision /= n_docs
+    M_recall /= n_docs
+    M_f1 = f_score(M_recall, M_precision)
+
+    # compute micro metrics
+    m_precision = precision(tps, fps)
+    m_recall = recall(tps, fns)
+    m_f1 = f_score(m_recall, m_precision)
+
+    result = {
+        "micro": {
+            "recall": m_recall,
+            "precision": m_precision,
+            "f1": m_f1
+        },
+        "macro": {
+            "recall": M_recall,
+            "precision": M_precision,
+            "f1": M_f1
+        }
+    }
 
     return result
