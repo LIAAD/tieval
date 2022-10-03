@@ -1,22 +1,21 @@
 import pathlib
 import random
-from typing import Iterable
+from typing import Iterable, List
 
 import spacy
-from tqdm import tqdm
-from spacy.util import minibatch
-from spacy.util import compounding
-from spacy.training import Example
 from py_heideltime import py_heideltime
+from spacy.training import Example
+from spacy.util import compounding
+from spacy.util import minibatch
 
+from tieval import utils
 from tieval.base import Document
 from tieval.entities import Timex
+from tieval.models import metadata
 from tieval.models.base import (
     BaseModel,
     BaseTrainableModel
 )
-from tieval.models import metadata
-from tieval import utils
 
 
 class TimexIdentificationBaseline(BaseTrainableModel):
@@ -41,7 +40,6 @@ class TimexIdentificationBaseline(BaseTrainableModel):
 
             timexs = []
             for entity in prediction.ents:
-
                 timexs += [Timex(
                     text=entity.text,
                     endpoints=(entity.start_char, entity.end_char)
@@ -164,54 +162,36 @@ class HeidelTime(BaseModel):
         Extraction and Normalization of Temporal Expressions. SemEval'10. <https://aclanthology.org/S10-1071/>`_
     """
 
-    def __init__(self, language="English",  document_type="news"):
+    def __init__(self, language="English", document_type="news"):
         self.language = language
         self.document_type = document_type
 
-    def predict(self, documents: Iterable[Document]):
-        """ Make predictions.
+    def predict(self, texts: List[str], dcts: List[str] = None):
+        """ Make predictions on strings."""
 
-        Parameters
-        ----------
-        documents : Iterable[Document]
-            An iterable containing the documents tto extract the temporal expressions.
+        if dcts is None:
+            dcts = ["yyyy-mm-dd"] * len(texts)
 
-        Returns
-        -------
-        pred_timexs : dict[str, list[Timex]]
-            A dictionary that maps the name of each document to a list with the identified temporal expressions.
-        """
-
-        pred_timexs = {}
-        for doc in tqdm(documents):
-
-            dct = doc.dct.value[:10]
-            results = py_heideltime(
-                doc.text.strip(),
+        predictions = []
+        for text, dct in zip(texts, dcts):
+            prediction = py_heideltime(
+                text=text,
                 language=self.language,
                 document_type=self.document_type,
-                document_creation_time=dct
+                document_creation_time=dct,
+                date_granularity="full"
             )
-
-            if results is None:
-                pred_timexs[doc.name] = []
+            if prediction is None:
+                predictions.append([])
                 continue
 
-            # format heideltime outputs to Timex instances
-            idx, timexs = 0, []
-            for value, text in results[0]:
-
-                s = doc.text[idx:].find(text)
-                e = s + len(text)
+            idx, timexs = 0, []  # format heideltime outputs
+            for value, tmx in prediction[0]:
+                s = text[idx:].find(tmx)
+                e = s + len(tmx)
                 endpoints = (s + idx, e + idx)
+                timexs.append(endpoints)
                 idx += e
+            predictions.append(timexs)
 
-                timexs += [Timex(
-                    value=value,
-                    text=text,
-                    endpoints=endpoints
-                )]
-
-            pred_timexs[doc.name] = timexs
-
-        return pred_timexs
+        return predictions
