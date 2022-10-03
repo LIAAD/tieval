@@ -30,10 +30,9 @@ def _print_table(result: Dict) -> None:
 
 
 def confusion_matrix(annotations, predictions):
-    tp = len(annotations & predictions)
-    fp = len(predictions - annotations)
-    fn = len(annotations - predictions)
-
+    tp = sum(1 for pred in predictions if pred in annotations)
+    fp = sum(1 for pred in predictions if pred not in annotations)
+    fn = sum(1 for annot in annotations if annot not in predictions)
     return tp, fp, fn
 
 
@@ -252,6 +251,7 @@ def tlink_classification(
 def span_identification(
         annotations: List[List[Tuple[int, int]]],
         predictions: List[List[Tuple[int, int]]],
+        strict: bool = True
 ) -> Dict:
     n_docs = len(annotations)
     M_precision, M_recall = 0, 0
@@ -259,7 +259,12 @@ def span_identification(
     for annot, pred in zip(annotations, predictions):
         annot = set(annot)
         pred = set(pred)
-        tp, fp, fn = confusion_matrix(annot, pred)
+        if strict:
+            tp, fp, fn = confusion_matrix(annot, pred)
+        else:  # relaxed
+            span_annot = [Span(s_annot, e_annot) for s_annot, e_annot in annot]
+            span_pred = [Span(s_pred, e_pred) for s_pred, e_pred in pred]
+            tp, fp, fn = confusion_matrix(span_annot, span_pred)
 
         # update macro metrics counts
         M_precision += precision(tp, fp)
@@ -294,3 +299,20 @@ def span_identification(
     }
 
     return result
+
+
+class Span:
+    """An annotation span build to check if two entities overlap."""
+
+    def __init__(self, start: int, end: int):
+        self.start = start
+        self.end = end
+
+    def __repr__(self):
+        return f"Span({self.start}, {self.end})"
+
+    def __eq__(self, other) -> bool:
+        """If the offsets overlap, the spans are considered equal."""
+        if (self.end < other.start) or (other.end < self.start):
+            return False
+        return True
