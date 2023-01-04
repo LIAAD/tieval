@@ -1,12 +1,12 @@
 from typing import Dict, List, Tuple
 
+from tabulate import tabulate
+
 from tieval.entities import Entity, Timex
-from tieval.links import TLink
+from tieval.evaluate.metrics import temporal_awareness
 from tieval.evaluate.metrics import temporal_precision
 from tieval.evaluate.metrics import temporal_recall
-from tieval.evaluate.metrics import temporal_awareness
-
-from tabulate import tabulate
+from tieval.links import TLink
 
 
 def _print_table(result: Dict) -> None:

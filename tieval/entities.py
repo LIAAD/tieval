@@ -67,7 +67,6 @@ class Event:
             sent_idx: int = None,
             **kwargs
     ):
-
         self.id = id
         self.family = family
         self.stem = stem

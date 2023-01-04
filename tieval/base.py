@@ -3,10 +3,10 @@ from typing import Set, Optional, Union, List, Tuple
 
 import nltk
 
+from tieval import utils
+from tieval.closure import temporal_closure as _temporal_closure
 from tieval.entities import Entity, Event, Timex
 from tieval.links import TLink
-from tieval.closure import temporal_closure as _temporal_closure
-from tieval import utils
 
 
 class Token:
@@ -16,7 +16,6 @@ class Token:
             content: str,
             span: List[int]
     ) -> None:
-
         self.content = content
         self.span = span
 
@@ -58,9 +57,7 @@ class Sentence:
 
     @property
     def tokens(self) -> List[List[str]]:
-
         if self._tokens is None:
-
             tkns = nltk.tokenize.word_tokenize(self.content)
             spans = utils.get_spans(self.content, tkns, self.span[0])
 
@@ -76,7 +73,6 @@ class Text:
             content: str,
             language: str = "english"
     ) -> None:
-
         self.content = content
         self.language = language
 
@@ -89,9 +85,7 @@ class Text:
 
     @property
     def sentences(self) -> List[str]:
-
         if self._sents is None:
-
             sents = self.tokenizer(self.content, language=self.language)
             spans = utils.get_spans(self.content, sents)
 

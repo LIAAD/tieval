@@ -1,18 +1,17 @@
-
 import pathlib
-from typing import Iterable
 import random
+from typing import Iterable
 
 import spacy
+from spacy.training import Example
 from spacy.util import compounding
 from spacy.util import minibatch
-from spacy.training import Example
 
+from tieval import utils
 from tieval.base import Document
 from tieval.entities import Event
-from tieval.models.base import BaseTrainableModel
 from tieval.models import metadata
-from tieval import utils
+from tieval.models.base import BaseTrainableModel
 
 
 class EventIdentificationBaseline(BaseTrainableModel):
@@ -37,7 +36,6 @@ class EventIdentificationBaseline(BaseTrainableModel):
 
             events = []
             for entity in prediction.ents:
-
                 events += [Event(
                     text=entity.text,
                     endpoints=(entity.start_char, entity.end_char)

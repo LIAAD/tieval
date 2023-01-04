@@ -1,9 +1,13 @@
 import io
+import logging
+import zipfile
 from pathlib import Path
+from typing import List, Union
+
 import requests
 from tqdm import tqdm
-from typing import List, Union
-import zipfile
+
+logger = logging.getLogger(__name__)
 
 
 def download_url(url: str, path: Union[str, Path]) -> None:
@@ -13,22 +17,21 @@ def download_url(url: str, path: Union[str, Path]) -> None:
     :param str path: The path to store the object.
     """
 
-    print(f"Downloading from {url}")
+    logger.info(f"Downloading from {url}")
 
     response = requests.get(url, stream=True)
     if response.ok:
 
         z = zipfile.ZipFile(io.BytesIO(response.content))
         z.extractall(path)
-        print("Done.")
+        logger.info("Download complete.")
 
     else:
         raise Exception(f"Request code: {response.status_code}")
 
 
 def download_torch_weights(url: str, path: Union[str, Path]) -> None:
-
-    print(f"Downloading from {url}")
+    logger.info(f"Downloading from {url}")
     response = requests.get(url, stream=True)
     total_size_in_bytes = int(response.headers.get('content-length', 0))
     block_size = 1024
@@ -45,7 +48,7 @@ def download_torch_weights(url: str, path: Union[str, Path]) -> None:
                 file.write(data)
         progress_bar.close()
 
-        print("Done.")
+        logger.info("Done.")
 
     else:
         raise Exception(f"Request code: {response.status_code}")
@@ -56,11 +59,9 @@ def get_spans(
         elements: List[str],
         start_idx: int = 0
 ) -> List[List[int]]:
-
     running_idx = start_idx
     spans = []
     for element in elements:
-
         offset = text.find(element)
         start = running_idx + offset
 
@@ -76,7 +77,6 @@ def get_spans(
 
 
 def resolve_sentence_idxs(sent_idx1: int, sent_idx2: int) -> List[int]:
-
     if sent_idx1 is None:
         return [sent_idx2]
 

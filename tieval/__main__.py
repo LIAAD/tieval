@@ -24,7 +24,6 @@ from tieval.datasets import download
 
 
 def main():
-
     args = [a for a in sys.argv[1:] if not a.startswith("-")]
     opts = [o for o in sys.argv[1:] if o.startswith("-")]
 

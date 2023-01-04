@@ -3,21 +3,20 @@ import pathlib
 from typing import Iterable, List, Dict
 
 import allennlp.modules.elmo as elmo_module
-from nltk.stem import WordNetLemmatizer
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+from nltk.stem import WordNetLemmatizer
 
-from tieval.models.base import BaseTrainableModel
 from tieval.base import Document
-from tieval.models import metadata
-from tieval.utils import download_url, download_torch_weights
 from tieval.links import TLink
+from tieval.models import metadata
+from tieval.models.base import BaseTrainableModel
+from tieval.utils import download_url, download_torch_weights
 
 # elmo parameters
 OPTION_FILE = "https://s3-us-west-2.amazonaws.com/allennlp/models/elmo/2x4096_512_2048cnn_2xhighway/elmo_2x4096_512_2048cnn_2xhighway_options.json"
 WEIGHT_FILE = "https://s3-us-west-2.amazonaws.com/allennlp/models/elmo/2x4096_512_2048cnn_2xhighway/elmo_2x4096_512_2048cnn_2xhighway_weights.hdf5"
-
 
 LABEL2IDX = {"BEFORE": 0, "AFTER": 1, "EQUAL": 2, "VAGUE": 3}
 IDX2LABEL = {idx: label for label, idx in LABEL2IDX.items()}
@@ -250,7 +249,6 @@ class TemporalRelationClassifier(nn.Module):
             lemma_ids: List[int],
             context_tokens: List[str],
     ):
-
         # common sense module
         src_tgt_tensor = torch.LongTensor([lemma_ids])
         tgt_src_tensor = torch.LongTensor([lemma_ids[::-1]])

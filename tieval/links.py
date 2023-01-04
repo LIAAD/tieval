@@ -1,7 +1,7 @@
 from typing import Union
 
-from tieval.temporal_relation import TemporalRelation
 from tieval.entities import Entity
+from tieval.temporal_relation import TemporalRelation
 
 
 class TLink:
