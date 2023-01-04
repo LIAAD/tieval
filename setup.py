@@ -14,7 +14,7 @@ setup(
     author_email="hugo.o.sousa@inesctec.pt",
 
     description=
-    "This framework facilitates the development and test of temporal aware models",
+    "This framework facilitates the development and test of temporal-aware models.",
 
     long_description_content_type='text/markdown',
 
@@ -25,7 +25,6 @@ setup(
     install_requires=[
         "allennlp==2.9.3",
         "nltk==3.6.7",
-        "allennlp==2.9.3",
         "tabulate==0.8.9",
         "torch==1.11.0",
         "xmltodict==0.12.0",
