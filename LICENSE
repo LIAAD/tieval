@@ -1,6 +1,17 @@
-The MIT License (MIT)
+Copyright (C) 2023, INESC TEC
 
-Copyright (c) 2021 Hugo Sousa
+tieval: An Evaluation Framework for Temporal Information Extraction Systems
+
+This software is authored by:
+Hugo Sousa
+
+You can reach INESC TEC Technology Licensing Office (TLO) at info.sal@inesctec.pt, or
+Campus da Faculdade de Engenharia da Universidade do Porto
+Rua Dr. Roberto Frias
+4200-465 Porto
+Portugal
+
+Licensed under the terms of MIT License
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
