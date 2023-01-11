@@ -1,5 +1,10 @@
 # tieval
 
+[![PyPI](https://img.shields.io/pypi/v/tieval)](https://pypi.org/project/tieval/)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/tieval)
+[![PyPI - License](https://img.shields.io/pypi/l/tieval)](LICENSE)
+![GitHub repo size](https://img.shields.io/github/repo-size/LIAAD/tieval)
+
 A framework for the development of temporally aware models.
 
 ![](imgs/tieval.png)
