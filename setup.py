@@ -18,12 +18,11 @@ setup(
     packages=find_packages(exclude=('tests*',)),
     install_requires=[
         "allennlp==2.9.3",
-        "nltk==3.6.7",
-        "tabulate==0.8.9",
-        "torch==1.11.0",
-        "xmltodict==0.12.0",
-        "networkx==2.8.1",
-        "py-heideltime @ git+https://github.com/JMendes1995/py_heideltime.git",
+        "nltk",
+        "tabulate",
+        "xmltodict",
+        "networkx>=2.8.1",
+        "py_heideltime",
         "cached-path==1.1.2"
     ],
 
