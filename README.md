@@ -5,7 +5,7 @@
 [![PyPI - License](https://img.shields.io/pypi/l/tieval)](LICENSE)
 ![GitHub repo size](https://img.shields.io/github/repo-size/LIAAD/tieval)
 
-A framework for the development of temporally aware models.
+A framework for evaluation and development of temporally aware models.
 
 ![](imgs/tieval.png)
 
