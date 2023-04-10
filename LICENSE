@@ -1,3 +1,5 @@
+MIT License
+
 Copyright (C) 2023, INESC TEC
 
 tieval: An Evaluation Framework for Temporal Information Extraction Systems
@@ -10,8 +12,6 @@ Campus da Faculdade de Engenharia da Universidade do Porto
 Rua Dr. Roberto Frias
 4200-465 Porto
 Portugal
-
-Licensed under the terms of MIT License
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

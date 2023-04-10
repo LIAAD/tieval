@@ -15,13 +15,11 @@ import sys
 
 sys.path.insert(0, os.path.abspath('..'))
 
-
 # -- Project information -----------------------------------------------------
 
 project = 'tieval'
 copyright = '2022, Hugo Sousa'
 author = 'Hugo Sousa'
-
 
 # -- General configuration ---------------------------------------------------
 
@@ -33,7 +31,8 @@ extensions = [
     "sphinx.ext.coverage",
     "sphinx_copybutton",
     "nbsphinx",
-    "sphinx.ext.mathjax"
+    "sphinx.ext.mathjax",
+    "IPython.sphinxext.ipython_console_highlighting"
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -43,7 +42,6 @@ templates_path = ['_templates']
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', '**.ipynb_checkpoints']
-
 
 # -- Options for HTML output -------------------------------------------------
 

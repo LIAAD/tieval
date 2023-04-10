@@ -1,6 +1,13 @@
 # tieval
 
-A framework for the development of temporally aware models.
+[![PyPI](https://img.shields.io/pypi/v/tieval)](https://pypi.org/project/tieval/)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/tieval)
+[![PyPI - License](https://img.shields.io/pypi/l/tieval)](LICENSE)
+![GitHub repo size](https://img.shields.io/github/repo-size/LIAAD/tieval)
+
+[![Paper](https://img.shields.io/badge/-paper-9cf)](https://arxiv.org/pdf/2301.04643.pdf)
+
+A framework for evaluation and development of temporally aware models.
 
 ![](imgs/tieval.png)
 
@@ -91,3 +98,9 @@ This framework is part of the [Text2Story](https://text2story.inesctec.pt/) proj
 European Regional Development Fund through the North Portugal Regional Operational Programme (NORTE 2020), under the
 PORTUGAL 2020 and by National Funds through the Portuguese funding agency, FCT - Fundação para a Ciência e a Tecnologia
 within project PTDC/CCI-COM/31857/2017 (NORTE-01-0145-FEDER-03185) 
+
+## Publications
+
+If you use `tieval` in your work please site the following article:
+
+Sousa, H., Jorge, A.M., & Campos, R. (2023). tieval: An Evaluation Framework for Temporal Information Extraction Systems. [pdf](https://arxiv.org/pdf/2301.04643.pdf)
