@@ -99,7 +99,6 @@ tensorboardX==2.5.1
 termcolor==1.1.0
 thinc==8.0.17
 threadpoolctl==3.1.0
--e git+ssh://git@github.com/LIAAD/tieval.git@4be4599cccba294b0f04d24eb53e7bae961be16f#egg=tieval
 tokenizers==0.12.1
 tomli==2.0.1
 torch==1.11.0
