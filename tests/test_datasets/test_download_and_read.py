@@ -333,3 +333,12 @@ def test_download_and_read_eventtime(tmp_path):
     assert n_timexs == 0
     assert n_events == 1_498
     assert n_tlinks == 0
+
+
+def test_download_and_read_timebank(tmp_path):
+    corpus = "timebank"
+    n_docs, n_events, n_timexs, n_tlinks = _test_download_and_read(corpus, tmp_path)
+    assert n_docs == 183
+    assert n_timexs == 1_426
+    assert n_events == 6_681
+    assert n_tlinks == 5_120
