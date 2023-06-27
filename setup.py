@@ -6,7 +6,7 @@ with open("README.md", encoding="utf-8") as f:
 
 setup(
     name="tieval",
-    version="0.0.4",
+    version="0.0.6",
     url="https://github.com/LIAAD/tieval",
     license='MIT',
     author="Hugo Sousa",
