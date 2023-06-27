@@ -116,13 +116,13 @@ DATASETS_METADATA = {
         language="english",
         reader=XMLDatasetReader,
         doc_reader=TempEval3DocumentReader,
-        url="https://drive.inesctec.pt/s/fxRfPfLcKKJ74Dn/download",
+        url="https://drive.inesctec.pt/s/EsCsL6bayxsg5Co/download",
     ),
 
     "eventtime": DatasetMetadata(
         name="EventTime",
         language="english",
-        url="https://drive.inesctec.pt/s/wbGtJceye6ntkiS/download",
+        url="https://drive.inesctec.pt/s/8HyHGnLE7QbWRCF/download",
         reader=EventTimeDatasetReader,
         base=["timebank"]
     ),
@@ -138,7 +138,7 @@ DATASETS_METADATA = {
     "grapheve": DatasetMetadata(
         name="GraphEve",
         language="english",
-        url="https://drive.inesctec.pt/s/eKSHKB6gMozCP4Q/download",
+        url="https://drive.inesctec.pt/s/C5i2aBPyjWcqpms/download",
         reader=XMLDatasetReader,
         doc_reader=GraphEveDocumentReader
     ),
@@ -178,7 +178,7 @@ DATASETS_METADATA = {
     "matres": DatasetMetadata(
         name="matres",
         language="english",
-        url="https://drive.inesctec.pt/s/7g68GBTECiD2XYK/download",
+        url="https://drive.inesctec.pt/s/9kpP6oy8y4jZPyN/download",
         base=["tempeval_3"],
         repo="https://github.com/qiangning/MATRES",
         reader=MATRESDatasetReader,
@@ -187,7 +187,7 @@ DATASETS_METADATA = {
     "meantime_english": DatasetMetadata(
         name="meantime_english",
         language="english",
-        url="https://drive.inesctec.pt/s/QoLwqgdTLkfia7L/download",
+        url="https://drive.inesctec.pt/s/jbHfZYpb3Y3Cs5T/download",
         reader=XMLDatasetReader,
         doc_reader=MeanTimeDocumentReader
     ),
@@ -195,7 +195,7 @@ DATASETS_METADATA = {
     "meantime_spanish": DatasetMetadata(
         name="meantime_spanish",
         language="spanish",
-        url="https://drive.inesctec.pt/s/xEPGnqygP6FEFkP/download",
+        url="https://drive.inesctec.pt/s/HE7qxH6BP6nPEkg/download",
         reader=XMLDatasetReader,
         doc_reader=MeanTimeDocumentReader
     ),
@@ -203,7 +203,7 @@ DATASETS_METADATA = {
     "meantime_dutch": DatasetMetadata(
         name="meantime_dutch",
         language="dutch",
-        url="https://drive.inesctec.pt/s/HyFfxEwryj6Fffq/download",
+        url="https://drive.inesctec.pt/s/pQA3RcKiko2GcMX/download",
         reader=XMLDatasetReader,
         doc_reader=MeanTimeDocumentReader
     ),
@@ -211,7 +211,7 @@ DATASETS_METADATA = {
     "meantime_italian": DatasetMetadata(
         name="meantime_italian",
         language="italian",
-        url="https://drive.inesctec.pt/s/kabifjEcQboKbBA/download",
+        url="https://drive.inesctec.pt/s/m4jckQLrYSxmTEq/download",
         reader=XMLDatasetReader,
         doc_reader=MeanTimeDocumentReader
     ),
@@ -275,7 +275,7 @@ DATASETS_METADATA = {
     "platinum": DatasetMetadata(
         name="Platinum",
         language="english",
-        url="https://drive.inesctec.pt/s/ppCdTWijAYFbRiL/download",
+        url="https://drive.inesctec.pt/s/jpj3iwBDqiW2rWM/download",
         reader=XMLDatasetReader,
         doc_reader=TempEval3DocumentReader,
     ),
@@ -291,7 +291,7 @@ DATASETS_METADATA = {
     "tcr": DatasetMetadata(
         name="TCR",
         language="english",
-        url="https://drive.inesctec.pt/s/mSGaNyYSiMRTfGH/download",
+        url="https://drive.inesctec.pt/s/WCFxDPc9JeQxG3e/download",
         reader=XMLDatasetReader,
         doc_reader=TCRDocumentReader,
     ),
@@ -299,7 +299,7 @@ DATASETS_METADATA = {
     "tddiscourse": DatasetMetadata(
         name="TDDiscourse",
         language="english",
-        url="https://drive.inesctec.pt/s/9nXDNqt3Sa8bkDk/download",
+        url="https://drive.inesctec.pt/s/fqjsffnrk8TrCLg/download",
         base=["timebank_1.2"],
         reader=TDDiscourseDatasetReader,
     ),
@@ -307,7 +307,7 @@ DATASETS_METADATA = {
     "tempeval_2_chinese": DatasetMetadata(
         name="tempeval_2_chinese",
         language="chinese",
-        url="https://drive.inesctec.pt/s/s4HMWnntet8z2bS/download",
+        url="https://drive.inesctec.pt/s/L7TqZeJC4cG7yfs/download",
         reader=JSONDatasetReader,
         doc_reader=TempEval2DocumentReader,
     ),
@@ -315,7 +315,7 @@ DATASETS_METADATA = {
     "tempeval_2_english": DatasetMetadata(
         name="tempeval_2_english",
         language="english",
-        url="https://drive.inesctec.pt/s/Z2q5oEYf4cAM2ji/download",
+        url="https://drive.inesctec.pt/s/sgGpwHYjHNXqjmp/download",
         reader=JSONDatasetReader,
         doc_reader=TempEval2DocumentReader,
     ),
@@ -323,7 +323,7 @@ DATASETS_METADATA = {
     "tempeval_2_french": DatasetMetadata(
         name="tempeval_2_french",
         language="french",
-        url="https://drive.inesctec.pt/s/mNoo2YFWG4X8tD4/download",
+        url="https://drive.inesctec.pt/s/nNeYpe9BCcj6aCg/download",
         reader=XMLDatasetReader,
         doc_reader=TempEval2FrenchDocumentReader,
     ),
@@ -331,7 +331,7 @@ DATASETS_METADATA = {
     "tempeval_2_italian": DatasetMetadata(
         name="tempeval_2_italian",
         language="italian",
-        url="https://drive.inesctec.pt/s/PkADwaWEogapSWW/download",
+        url="https://drive.inesctec.pt/s/roFgne7kTCdgpoj/download",
         reader=JSONDatasetReader,
         doc_reader=TempEval2DocumentReader,
     ),
@@ -339,7 +339,7 @@ DATASETS_METADATA = {
     "tempeval_2_korean": DatasetMetadata(
         name="tempeval_2_korean",
         language="korean",
-        url="https://drive.inesctec.pt/s/RwMLseDt4GnnfKr/download",
+        url="https://drive.inesctec.pt/s/HL9ie4nqebpLf8Q/download",
         reader=JSONDatasetReader,
         doc_reader=TempEval2DocumentReader,
     ),
@@ -347,7 +347,7 @@ DATASETS_METADATA = {
     "tempeval_2_spanish": DatasetMetadata(
         name="tempeval_2_spanish",
         language="spanish",
-        url="https://drive.inesctec.pt/s/H7otpwJCFCsjM9r/download",
+        url="https://drive.inesctec.pt/s/MNBoR9w29kZTo9T/download",
         reader=JSONDatasetReader,
         doc_reader=TempEval2DocumentReader,
     ),
@@ -355,7 +355,7 @@ DATASETS_METADATA = {
     "tempeval_3": DatasetMetadata(
         name="tempeval_3",
         language="english",
-        url="https://drive.inesctec.pt/s/ebp27ZjfCgDTxwG/download",
+        url="https://drive.inesctec.pt/s/yyDxHXpqkCZA6Cn/download",
         reader=XMLDatasetReader,
         doc_reader=TempEval3DocumentReader,
     ),
@@ -363,7 +363,7 @@ DATASETS_METADATA = {
     "timebank_1.2": DatasetMetadata(
         name="TimeBank_1.2",
         language="english",
-        url="https://drive.inesctec.pt/s/QHiBgZmi45B72AB/download",
+        url="https://drive.inesctec.pt/s/AJKjcCwEED6X9ae/download",
         reader=XMLDatasetReader,
         doc_reader=TimeBank12DocumentReader,
 
@@ -372,7 +372,7 @@ DATASETS_METADATA = {
     "timebank_dense": DatasetMetadata(
         name="TimeBank_Dense",
         language="english",
-        url="https://drive.inesctec.pt/s/dtztXXBpPPXyzLX/download",
+        url="https://drive.inesctec.pt/s/4AbX8n25Dc3MyGy/download",
         base=["timebank_1.2"],
         reader=TimeBankDenseDatasetReader,
 
@@ -381,7 +381,7 @@ DATASETS_METADATA = {
     "timebankpt": DatasetMetadata(
         name="TimeBankPT",
         language="portuguese",
-        url="https://drive.inesctec.pt/s/jCcpQGXzLdnL9Tx/download",
+        url="https://drive.inesctec.pt/s/BBQmStdTCL5FSMA/download",
         reader=XMLDatasetReader,
         doc_reader=TimeBankPTDocumentReader,
     ),
@@ -389,7 +389,7 @@ DATASETS_METADATA = {
     "timebank": DatasetMetadata(
         name="TimeBank",
         language="english",
-        url="https://drive.inesctec.pt/s/KmeTs6LqnmzRr2s/download",
+        url="https://drive.inesctec.pt/s/dAttMwk9TiESCt2/download",
         reader=XMLDatasetReader,
         doc_reader=TempEval3DocumentReader,
     ),
@@ -397,7 +397,7 @@ DATASETS_METADATA = {
     "traint3": DatasetMetadata(
         name="Traint3",
         language="spanish",
-        url="https://drive.inesctec.pt/s/SaPzJxD2b9PzxY4/download",
+        url="https://drive.inesctec.pt/s/CFwAqZ8T8ZArHyC/download",
         reader=XMLDatasetReader,
         doc_reader=TempEval3DocumentReader
     ),
