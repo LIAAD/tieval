@@ -6,7 +6,7 @@
 [![PyPI - License](https://img.shields.io/pypi/l/tieval)](LICENSE)
 ![GitHub repo size](https://img.shields.io/github/repo-size/LIAAD/tieval)
 
-[![Paper](https://img.shields.io/badge/-paper-9cf)](https://arxiv.org/pdf/2301.04643.pdf)
+[![Paper](https://img.shields.io/badge/-paper-9cf)](https://dl.acm.org/doi/abs/10.1145/3539618.3591892)
 
 A framework for evaluation and development of temporally aware models.
 
@@ -39,7 +39,7 @@ python -m tieval download --help
 
 ## How to ...
 
-In this section we summarize how to perform the most useful operations in tieval.
+In this section, we summarize how to perform the most useful operations in tieval.
 
 ### download a dataset.
 
@@ -54,10 +54,9 @@ datasets.download("TimeBank", data_path)
 ### load a dataset.
 
 ```python
-import tieval.datasets
 from tieval import datasets
 
-te3 = tieval.datasets.read("TempEval-3")
+te3 = datasets.read("tempeval_3")
 ```
 
 ### load a model.
@@ -65,13 +64,13 @@ te3 = tieval.datasets.read("TempEval-3")
 ```python
 from tieval import models
 
-heideltime = models.identification.HeidelTime()
+model = models.TimexIdentificationBaseline()
 ```
 
 ### make predictions.
 
 ```python
-predictions = heideltime.predict(te3.test)
+pred = model.predict(te3.test)
 ```
 
 ### evaluate predictions.
@@ -79,8 +78,8 @@ predictions = heideltime.predict(te3.test)
 ```python
 from tieval import evaluate
 
-evaluator = evaluate.Evaluator(te3.test)
-result = evaluator.timex_identification(predictions)
+annot = {doc.name: doc.timexs for doc in te3.test}
+results = evaluate.timex_identification(annot, pred)
 ```
 
 ## Contributing
@@ -104,4 +103,22 @@ within project PTDC/CCI-COM/31857/2017 (NORTE-01-0145-FEDER-03185)
 
 If you use `tieval` in your work please site the following article:
 
-Sousa, H., Jorge, A.M., & Campos, R. (2023). tieval: An Evaluation Framework for Temporal Information Extraction Systems. [pdf](https://arxiv.org/pdf/2301.04643.pdf)
+
+```bibtex
+@inproceedings{10.1145/3539618.3591892,
+    author = {Sousa, Hugo and Campos, Ricardo and Jorge, Al\'{\i}pio M\'{a}rio},
+    title = {Tieval: An Evaluation Framework for Temporal Information Extraction Systems},
+    year = {2023},
+    isbn = {9781450394086},
+    publisher = {Association for Computing Machinery},
+    address = {New York, NY, USA},
+    url = {https://doi.org/10.1145/3539618.3591892},
+    doi = {10.1145/3539618.3591892},
+    booktitle = {Proceedings of the 46th International ACM SIGIR Conference on Research and Development in Information Retrieval},
+    pages = {2871–2879},
+    numpages = {9},
+    keywords = {temporal information extraction, evaluation, python package},
+    location = {Taipei, Taiwan},
+    series = {SIGIR '23}
+}
+```
