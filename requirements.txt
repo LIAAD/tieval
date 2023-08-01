@@ -18,7 +18,7 @@ botocore==1.27.28
 cached-path==1.1.5
 cachetools==5.2.0
 catalogue==2.0.7
-certifi==2022.6.15
+certifi==2023.7.22
 cffi==1.15.1
 charset-normalizer==2.1.0
 click==8.0.4
