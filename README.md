@@ -39,7 +39,7 @@ python -m tieval download --help
 
 ## How to ...
 
-In this section we summarize how to perform the most useful operations in tieval.
+In this section, we summarize how to perform the most useful operations in tieval.
 
 ### download a dataset.
 
@@ -54,10 +54,9 @@ datasets.download("TimeBank", data_path)
 ### load a dataset.
 
 ```python
-import tieval.datasets
 from tieval import datasets
 
-te3 = tieval.datasets.read("TempEval-3")
+te3 = datasets.read("tempeval_3")
 ```
 
 ### load a model.
@@ -65,13 +64,13 @@ te3 = tieval.datasets.read("TempEval-3")
 ```python
 from tieval import models
 
-heideltime = models.identification.HeidelTime()
+model = models.TimexIdentificationBaseline()
 ```
 
 ### make predictions.
 
 ```python
-predictions = heideltime.predict(te3.test)
+pred = model.predict(te3.test)
 ```
 
 ### evaluate predictions.
@@ -79,8 +78,8 @@ predictions = heideltime.predict(te3.test)
 ```python
 from tieval import evaluate
 
-evaluator = evaluate.Evaluator(te3.test)
-result = evaluator.timex_identification(predictions)
+annot = {doc.name: doc.timexs for doc in te3.test}
+results = evaluate.timex_identification(annot, pred)
 ```
 
 ## Contributing
