@@ -1,25 +1,44 @@
-from setuptools import find_packages
-from setuptools import setup
+from setuptools import find_packages, setup
+import subprocess
+import os
+from pathlib import Path
 
-with open("README.md", encoding="utf-8") as f:
-    README = f.read()
+PWD = Path(__file__).parent.resolve()
+
+README = (PWD / "README.md").read_text(encoding="utf-8")
+
+
+version = (
+    subprocess.run(["git", "describe", "--tags"], stdout=subprocess.PIPE)
+    .stdout.decode("utf-8")
+    .strip()
+)
+
+if "-" in version:
+    # See: https://peps.python.org/pep-0440/#local-version-segments
+    v, i, s = version.split("-")
+    version = v + "+" + i + ".git." + s
+
+# assert os.path.isfile("tieval/version.py")
+version_path = PWD / "tieval" / "VERSION"
+version_path.write_text(f"{version}\n", encoding="utf-8")
+
 
 setup(
     name="tieval",
-    version='{{VERSION_PLACEHOLDER}}',
+    version=version,
     url="https://github.com/LIAAD/tieval",
     license='MIT',
     author="Hugo Sousa",
     author_email="hugo.o.sousa@inesctec.pt",
-    description=
-    "This framework facilitates the development and test of temporal-aware models.",
+    description="This framework facilitates the development and test of temporal-aware models.",
     long_description_content_type='text/markdown',
     long_description=README,
     packages=find_packages(exclude=('tests*',)),
+    package_data={"tieval": ["VERSION"]},
     install_requires=[
-        "allennlp==2.9.3",
+        # "allennlp==2.9.3",
         "nltk",
-        "tabulate",
         "xmltodict",
         "networkx>=2.8.1",
         "py_heideltime",
