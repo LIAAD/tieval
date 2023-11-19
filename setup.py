@@ -1,7 +1,6 @@
-from setuptools import find_packages, setup
 import subprocess
-import os
 from pathlib import Path
+from setuptools import find_packages, setup
 
 PWD = Path(__file__).parent.resolve()
 
@@ -19,10 +18,11 @@ if "-" in version:
     v, i, s = version.split("-")
     version = v + "+" + i + ".git." + s
 
-# assert os.path.isfile("tieval/version.py")
 version_path = PWD / "tieval" / "VERSION"
-version_path.write_text(f"{version}\n", encoding="utf-8")
-
+if not version:
+    version = version_path.read_text(encoding="utf-8").strip()
+else:
+    version_path.write_text(f"{version}\n", encoding="utf-8")
 
 setup(
     name="tieval",
@@ -54,12 +54,4 @@ setup(
         'Programming Language :: Python :: 3.10',
     ],
     python_requires=">=3.8",
-    extras_requires={
-        "dev": [
-            "py_test>=3.7",
-            "check-manifest",
-            "twine"
-        ]
-    },
-
 )
