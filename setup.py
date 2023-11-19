@@ -37,7 +37,6 @@ setup(
     packages=find_packages(exclude=('tests*',)),
     package_data={"tieval": ["VERSION"]},
     install_requires=[
-        # "allennlp==2.9.3",
         "nltk",
         "xmltodict",
         "networkx>=2.8.1",
