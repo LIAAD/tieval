@@ -104,7 +104,8 @@ class CogCompTime2(BaseTrainableModel):
             for sample_idx, sample in enumerate(doc_data):
 
                 if sample_idx % 20 == 0:
-                    logging.info(f"Sample {sample_idx}/{len(doc_data)} of document {doc_idx}/{n_docs}")
+                    logging.info(
+                        f"Sample {sample_idx}/{len(doc_data)} of document {doc_idx}/{n_docs}")
 
                 logits = self.model(
                     entities_idxs=sample["entities_idxs"],
@@ -146,18 +147,18 @@ class CogCompTime2(BaseTrainableModel):
                 tgt = tlink.target
 
                 context = []
-                if src.endpoints is None:
-                    tlink_endpoints = list(tgt.endpoints)
+                if src.offsets is None:
+                    tlink_offsets = list(tgt.offsets)
 
-                elif tgt.endpoints is None:
-                    tlink_endpoints = list(src.endpoints)
+                elif tgt.offsets is None:
+                    tlink_offsets = list(src.offsets)
 
                 else:
-                    src_tgt_endpoints = src.endpoints + tgt.endpoints
-                    tlink_endpoints = [min(src_tgt_endpoints),
-                                       max(src_tgt_endpoints)]
+                    src_tgt_offsets = src.offsets + tgt.offsets
+                    tlink_offsets = [min(src_tgt_offsets),
+                                     max(src_tgt_offsets)]
 
-                s_tl, e_tl = tlink_endpoints
+                s_tl, e_tl = tlink_offsets
                 for sent in doc.sentences:
                     s_sent, e_sent = sent.span
 
@@ -173,12 +174,12 @@ class CogCompTime2(BaseTrainableModel):
 
                     # the src and tgt entities can have multiple tokens, in this model
                     # the first token is used in that scenario.
-                    if src.endpoints:
-                        if tkn.span[0] == src.endpoints[0]:
+                    if src.offsets:
+                        if tkn.span[0] == src.offsets[0]:
                             src_idx = idx
 
-                    if tgt.endpoints:
-                        if tkn.span[0] == tgt.endpoints[0]:
+                    if tgt.offsets:
+                        if tkn.span[0] == tgt.offsets[0]:
                             tgt_idx = idx
 
                 # retrieve elmo character ids of context sentence(s)

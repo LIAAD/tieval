@@ -29,7 +29,7 @@ Added <MAKEINSTANCE eid="e3001" eiid="ei3001" tense="NONE" aspect="NONE" polarit
 
 TempEval2 French
 ----------------
-Added endpoints to each entity.
+Added offsets to each entity.
 
 Moved document creation time TIMEX3 out of the TEXT tag.
 

@@ -1,10 +1,10 @@
 from tieval.utils import (
-    get_spans,
+    get_offsets,
     resolve_sentence_idxs
 )
 
 
-def test_get_spans():
+def test_get_offsets():
     text = 'Pacific First Financial Corp. said shareholders approved its acquisition by Royal Trustco Ltd. of ' \
            'Toronto for $27 a share, or $212 million.\nThe thrift holding company said it expects to obtain ' \
            'regulatory approval and complete the transaction by year-end. '
@@ -13,8 +13,8 @@ def test_get_spans():
               'million', '.', 'The', 'thrift', 'holding', 'company', 'said', 'it', 'expects', 'to', 'obtain',
               'regulatory', 'approval', 'and', 'complete', 'the', 'transaction', 'by', 'year-end', '.']
 
-    spans = get_spans(text, tokens)
-    for span, tkn in zip(spans, tokens):
+    offsets = get_offsets(text, tokens)
+    for span, tkn in zip(offsets, tokens):
         s, e = span
         assert text[s: e] == tkn
 

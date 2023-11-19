@@ -7,349 +7,349 @@
 <token number="5" sentence="1" t_id="6">7</token>
 <token number="6" sentence="1" t_id="7">,</token>
 <token number="7" sentence="1" t_id="8">2005</token>
-<token number="8" sentence="0" t_id="9" endpoints="(0, 5)">Apple</token>
-<token number="9" sentence="0" t_id="10" endpoints="(6, 11)">today</token>
-<token number="10" sentence="0" t_id="11" endpoints="(12, 20)">unveiled</token>
-<token number="11" sentence="0" t_id="12" endpoints="(21, 24)">its</token>
-<token number="12" sentence="0" t_id="13" endpoints="(25, 31)">latest</token>
-<token number="13" sentence="0" t_id="14" endpoints="(32, 40)">addition</token>
-<token number="14" sentence="0" t_id="15" endpoints="(41, 43)">to</token>
-<token number="15" sentence="0" t_id="16" endpoints="(44, 47)">the</token>
-<token number="16" sentence="0" t_id="17" endpoints="(48, 52)">iPod</token>
-<token number="17" sentence="0" t_id="18" endpoints="(53, 57)">line</token>
-<token number="18" sentence="0" t_id="19" endpoints="(57, 58)">,</token>
-<token number="19" sentence="0" t_id="20" endpoints="(59, 62)">the</token>
-<token number="20" sentence="0" t_id="21" endpoints="(63, 67)">iPod</token>
-<token number="21" sentence="0" t_id="22" endpoints="(68, 72)">nano</token>
-<token number="22" sentence="0" t_id="23" endpoints="(72, 73)">.</token>
-<token number="23" sentence="1" t_id="24" endpoints="(74, 77)">The</token>
-<token number="24" sentence="1" t_id="25" endpoints="(78, 90)">announcement</token>
-<token number="25" sentence="1" t_id="26" endpoints="(91, 95)">came</token>
-<token number="26" sentence="1" t_id="27" endpoints="(96, 101)">today</token>
-<token number="27" sentence="1" t_id="28" endpoints="(102, 104)">at</token>
-<token number="28" sentence="1" t_id="29" endpoints="(105, 106)">a</token>
-<token number="29" sentence="1" t_id="30" endpoints="(107, 114)">special</token>
-<token number="30" sentence="1" t_id="31" endpoints="(115, 120)">music</token>
-<token number="31" sentence="1" t_id="32" endpoints="(121, 126)">event</token>
-<token number="32" sentence="1" t_id="33" endpoints="(127, 133)">hosted</token>
-<token number="33" sentence="1" t_id="34" endpoints="(134, 136)">by</token>
-<token number="34" sentence="1" t_id="35" endpoints="(137, 142)">Apple</token>
-<token number="35" sentence="1" t_id="36" endpoints="(142, 143)">,</token>
-<token number="36" sentence="1" t_id="37" endpoints="(144, 148)">held</token>
-<token number="37" sentence="1" t_id="38" endpoints="(149, 151)">in</token>
-<token number="38" sentence="1" t_id="39" endpoints="(152, 155)">the</token>
-<token number="39" sentence="1" t_id="40" endpoints="(156, 163)">Moscone</token>
-<token number="40" sentence="1" t_id="41" endpoints="(164, 168)">West</token>
-<token number="41" sentence="1" t_id="42" endpoints="(169, 179)">Convention</token>
-<token number="42" sentence="1" t_id="43" endpoints="(180, 186)">Center</token>
-<token number="43" sentence="1" t_id="44" endpoints="(187, 189)">in</token>
-<token number="44" sentence="1" t_id="45" endpoints="(190, 193)">San</token>
-<token number="45" sentence="1" t_id="46" endpoints="(194, 203)">Francisco</token>
-<token number="46" sentence="1" t_id="47" endpoints="(203, 204)">.</token>
-<token number="47" sentence="2" t_id="48" endpoints="(205, 208)">The</token>
-<token number="48" sentence="2" t_id="49" endpoints="(209, 213)">iPod</token>
-<token number="49" sentence="2" t_id="50" endpoints="(214, 218)">Nano</token>
-<token number="50" sentence="2" t_id="51" endpoints="(219, 224)">comes</token>
-<token number="51" sentence="2" t_id="52" endpoints="(225, 227)">in</token>
-<token number="52" sentence="2" t_id="53" endpoints="(228, 231)">two</token>
-<token number="53" sentence="2" t_id="54" endpoints="(232, 238)">colors</token>
-<token number="54" sentence="2" t_id="55" endpoints="(238, 239)">,</token>
-<token number="55" sentence="2" t_id="56" endpoints="(240, 245)">white</token>
-<token number="56" sentence="2" t_id="57" endpoints="(246, 249)">and</token>
-<token number="57" sentence="2" t_id="58" endpoints="(250, 255)">black</token>
-<token number="58" sentence="2" t_id="59" endpoints="(255, 256)">,</token>
-<token number="59" sentence="2" t_id="60" endpoints="(257, 259)">as</token>
-<token number="60" sentence="2" t_id="61" endpoints="(260, 264)">well</token>
-<token number="61" sentence="2" t_id="62" endpoints="(265, 267)">as</token>
-<token number="62" sentence="2" t_id="63" endpoints="(268, 271)">two</token>
-<token number="63" sentence="2" t_id="64" endpoints="(272, 277)">sizes</token>
-<token number="64" sentence="2" t_id="65" endpoints="(277, 278)">,</token>
-<token number="65" sentence="2" t_id="66" endpoints="(279, 280)">a</token>
-<token number="66" sentence="2" t_id="67" endpoints="(281, 284)">2GB</token>
-<token number="67" sentence="2" t_id="68" endpoints="(285, 288)">and</token>
-<token number="68" sentence="2" t_id="69" endpoints="(289, 290)">a</token>
-<token number="69" sentence="2" t_id="70" endpoints="(291, 294)">4GB</token>
-<token number="70" sentence="2" t_id="71" endpoints="(294, 295)">,</token>
-<token number="71" sentence="2" t_id="72" endpoints="(296, 303)">capable</token>
-<token number="72" sentence="2" t_id="73" endpoints="(304, 306)">of</token>
-<token number="73" sentence="2" t_id="74" endpoints="(307, 314)">holding</token>
-<token number="74" sentence="2" t_id="75" endpoints="(315, 318)">500</token>
-<token number="75" sentence="2" t_id="76" endpoints="(319, 322)">and</token>
-<token number="76" sentence="2" t_id="77" endpoints="(323, 328)">1,000</token>
-<token number="77" sentence="2" t_id="78" endpoints="(329, 334)">songs</token>
-<token number="78" sentence="2" t_id="79" endpoints="(335, 338)">and</token>
-<token number="79" sentence="2" t_id="80" endpoints="(339, 343)">will</token>
-<token number="80" sentence="2" t_id="81" endpoints="(344, 348)">cost</token>
-<token number="81" sentence="2" t_id="82" endpoints="(349, 350)">$</token>
-<token number="82" sentence="2" t_id="83" endpoints="(350, 353)">199</token>
-<token number="83" sentence="2" t_id="84" endpoints="(354, 357)">and</token>
-<token number="84" sentence="2" t_id="85" endpoints="(358, 359)">$</token>
-<token number="85" sentence="2" t_id="86" endpoints="(359, 362)">249</token>
-<token number="86" sentence="2" t_id="87" endpoints="(363, 366)">USD</token>
-<token number="87" sentence="2" t_id="88" endpoints="(367, 379)">respectively</token>
-<token number="88" sentence="2" t_id="89" endpoints="(379, 380)">.</token>
-<token number="89" sentence="3" t_id="90" endpoints="(381, 384)">The</token>
-<token number="90" sentence="3" t_id="91" endpoints="(385, 389)">iPod</token>
-<token number="91" sentence="3" t_id="92" endpoints="(390, 394)">nano</token>
-<token number="92" sentence="3" t_id="93" endpoints="(395, 397)">is</token>
-<token number="93" sentence="3" t_id="94" endpoints="(398, 401)">the</token>
-<token number="94" sentence="3" t_id="95" endpoints="(402, 408)">second</token>
-<token number="95" sentence="3" t_id="96" endpoints="(409, 414)">model</token>
-<token number="96" sentence="3" t_id="97" endpoints="(415, 417)">of</token>
-<token number="97" sentence="3" t_id="98" endpoints="(418, 421)">the</token>
-<token number="98" sentence="3" t_id="99" endpoints="(422, 426)">iPod</token>
-<token number="99" sentence="3" t_id="100" endpoints="(427, 433)">family</token>
-<token number="100" sentence="3" t_id="101" endpoints="(434, 436)">to</token>
-<token number="101" sentence="3" t_id="102" endpoints="(437, 444)">utilize</token>
-<token number="102" sentence="3" t_id="103" endpoints="(445, 450)">flash</token>
-<token number="103" sentence="3" t_id="104" endpoints="(451, 457)">memory</token>
-<token number="104" sentence="3" t_id="105" endpoints="(457, 458)">,</token>
-<token number="105" sentence="3" t_id="106" endpoints="(459, 464)">after</token>
-<token number="106" sentence="3" t_id="107" endpoints="(465, 468)">the</token>
-<token number="107" sentence="3" t_id="108" endpoints="(469, 476)">Shuffle</token>
-<token number="108" sentence="3" t_id="109" endpoints="(477, 480)">was</token>
-<token number="109" sentence="3" t_id="110" endpoints="(481, 491)">introduced</token>
-<token number="110" sentence="3" t_id="111" endpoints="(492, 494)">in</token>
-<token number="111" sentence="3" t_id="112" endpoints="(495, 502)">January</token>
-<token number="112" sentence="3" t_id="113" endpoints="(502, 503)">.</token>
-<token number="113" sentence="4" t_id="114" endpoints="(504, 507)">The</token>
-<token number="114" sentence="4" t_id="115" endpoints="(508, 512)">iPod</token>
-<token number="115" sentence="4" t_id="116" endpoints="(513, 517)">nano</token>
-<token number="116" sentence="4" t_id="117" endpoints="(518, 526)">replaces</token>
-<token number="117" sentence="4" t_id="118" endpoints="(527, 530)">the</token>
-<token number="118" sentence="4" t_id="119" endpoints="(531, 538)">similar</token>
-<token number="119" sentence="4" t_id="120" endpoints="(539, 543)">iPod</token>
-<token number="120" sentence="4" t_id="121" endpoints="(544, 548)">Mini</token>
-<token number="121" sentence="4" t_id="122" endpoints="(549, 551)">in</token>
-<token number="122" sentence="4" t_id="123" endpoints="(552, 555)">the</token>
-<token number="123" sentence="4" t_id="124" endpoints="(556, 560)">iPod</token>
-<token number="124" sentence="4" t_id="125" endpoints="(561, 567)">family</token>
-<token number="125" sentence="4" t_id="126" endpoints="(567, 568)">.</token>
-<token number="126" sentence="5" t_id="127" endpoints="(569, 572)">The</token>
-<token number="127" sentence="5" t_id="128" endpoints="(573, 577)">iPod</token>
-<token number="128" sentence="5" t_id="129" endpoints="(578, 582)">nano</token>
-<token number="129" sentence="5" t_id="130" endpoints="(582, 584)">'s</token>
-<token number="130" sentence="5" t_id="131" endpoints="(585, 592)">maximum</token>
-<token number="131" sentence="5" t_id="132" endpoints="(593, 601)">capacity</token>
-<token number="132" sentence="5" t_id="133" endpoints="(602, 604)">is</token>
-<token number="133" sentence="5" t_id="134" endpoints="(605, 608)">2GB</token>
-<token number="134" sentence="5" t_id="135" endpoints="(609, 616)">smaller</token>
-<token number="135" sentence="5" t_id="136" endpoints="(617, 621)">than</token>
-<token number="136" sentence="5" t_id="137" endpoints="(622, 626)">that</token>
-<token number="137" sentence="5" t_id="138" endpoints="(627, 629)">of</token>
-<token number="138" sentence="5" t_id="139" endpoints="(630, 633)">the</token>
-<token number="139" sentence="5" t_id="140" endpoints="(634, 638)">last</token>
-<token number="140" sentence="5" t_id="141" endpoints="(639, 646)">version</token>
-<token number="141" sentence="5" t_id="142" endpoints="(647, 649)">of</token>
-<token number="142" sentence="5" t_id="143" endpoints="(650, 653)">the</token>
-<token number="143" sentence="5" t_id="144" endpoints="(654, 658)">iPod</token>
-<token number="144" sentence="5" t_id="145" endpoints="(659, 663)">Mini</token>
-<token number="145" sentence="5" t_id="146" endpoints="(663, 664)">,</token>
-<token number="146" sentence="5" t_id="147" endpoints="(665, 670)">which</token>
-<token number="147" sentence="5" t_id="148" endpoints="(671, 675)">held</token>
-<token number="148" sentence="5" t_id="149" endpoints="(676, 679)">6GB</token>
-<token number="149" sentence="5" t_id="150" endpoints="(680, 683)">for</token>
-<token number="150" sentence="5" t_id="151" endpoints="(684, 687)">the</token>
-<token number="151" sentence="5" t_id="152" endpoints="(688, 692)">same</token>
-<token number="152" sentence="5" t_id="153" endpoints="(693, 698)">price</token>
-<token number="153" sentence="5" t_id="154" endpoints="(699, 701)">of</token>
-<token number="154" sentence="5" t_id="155" endpoints="(702, 703)">$</token>
-<token number="155" sentence="5" t_id="156" endpoints="(703, 706)">249</token>
-<token number="156" sentence="5" t_id="157" endpoints="(706, 707)">.</token>
-<token number="157" sentence="6" t_id="158" endpoints="(708, 713)">Apple</token>
-<token number="158" sentence="6" t_id="159" endpoints="(714, 718)">also</token>
-<token number="159" sentence="6" t_id="160" endpoints="(719, 728)">announced</token>
-<token number="160" sentence="6" t_id="161" endpoints="(729, 731)">an</token>
-<token number="161" sentence="6" t_id="162" endpoints="(732, 738)">iTunes</token>
-<token number="162" sentence="6" t_id="163" endpoints="(738, 739)">-</token>
-<token number="163" sentence="6" t_id="164" endpoints="(739, 749)">compatible</token>
-<token number="164" sentence="6" t_id="165" endpoints="(750, 754)">cell</token>
-<token number="165" sentence="6" t_id="166" endpoints="(755, 760)">phone</token>
-<token number="166" sentence="6" t_id="167" endpoints="(760, 761)">,</token>
-<token number="167" sentence="6" t_id="168" endpoints="(762, 765)">the</token>
-<token number="168" sentence="6" t_id="169" endpoints="(766, 774)">Motorola</token>
-<token number="169" sentence="6" t_id="170" endpoints="(775, 779)">ROKR</token>
-<token number="170" sentence="6" t_id="171" endpoints="(780, 782)">E1</token>
-<token number="171" sentence="6" t_id="172" endpoints="(782, 783)">,</token>
-<token number="172" sentence="6" t_id="173" endpoints="(784, 789)">which</token>
-<token number="173" sentence="6" t_id="174" endpoints="(790, 794)">will</token>
-<token number="174" sentence="6" t_id="175" endpoints="(795, 797)">be</token>
-<token number="175" sentence="6" t_id="176" endpoints="(798, 807)">available</token>
-<token number="176" sentence="6" t_id="177" endpoints="(808, 819)">exclusively</token>
-<token number="177" sentence="6" t_id="178" endpoints="(820, 824)">from</token>
-<token number="178" sentence="6" t_id="179" endpoints="(825, 833)">Cingular</token>
-<token number="179" sentence="6" t_id="180" endpoints="(834, 842)">Wireless</token>
-<token number="180" sentence="6" t_id="181" endpoints="(843, 845)">in</token>
-<token number="181" sentence="6" t_id="182" endpoints="(846, 849)">the</token>
-<token number="182" sentence="6" t_id="183" endpoints="(850, 856)">United</token>
-<token number="183" sentence="6" t_id="184" endpoints="(857, 863)">States</token>
-<token number="184" sentence="6" t_id="185" endpoints="(863, 864)">,</token>
-<token number="185" sentence="6" t_id="186" endpoints="(865, 871)">Virgin</token>
-<token number="186" sentence="6" t_id="187" endpoints="(872, 876)">will</token>
-<token number="187" sentence="6" t_id="188" endpoints="(877, 879)">be</token>
-<token number="188" sentence="6" t_id="189" endpoints="(880, 882)">in</token>
-<token number="189" sentence="6" t_id="190" endpoints="(883, 886)">the</token>
-<token number="190" sentence="6" t_id="191" endpoints="(887, 889)">UK</token>
-<token number="191" sentence="6" t_id="192" endpoints="(889, 890)">.</token>
-<token number="192" sentence="7" t_id="193" endpoints="(891, 894)">The</token>
-<token number="193" sentence="7" t_id="194" endpoints="(895, 899)">ROKR</token>
-<token number="194" sentence="7" t_id="195" endpoints="(900, 903)">has</token>
-<token number="195" sentence="7" t_id="196" endpoints="(904, 905)">a</token>
-<token number="196" sentence="7" t_id="197" endpoints="(906, 911)">color</token>
-<token number="197" sentence="7" t_id="198" endpoints="(912, 919)">display</token>
-<token number="198" sentence="7" t_id="199" endpoints="(920, 923)">for</token>
-<token number="199" sentence="7" t_id="200" endpoints="(924, 931)">viewing</token>
-<token number="200" sentence="7" t_id="201" endpoints="(932, 937)">album</token>
-<token number="201" sentence="7" t_id="202" endpoints="(938, 941)">art</token>
-<token number="202" sentence="7" t_id="203" endpoints="(942, 945)">and</token>
-<token number="203" sentence="7" t_id="204" endpoints="(946, 954)">features</token>
-<token number="204" sentence="7" t_id="205" endpoints="(955, 963)">built-in</token>
-<token number="205" sentence="7" t_id="206" endpoints="(964, 970)">stereo</token>
-<token number="206" sentence="7" t_id="207" endpoints="(971, 979)">speakers</token>
-<token number="207" sentence="7" t_id="208" endpoints="(979, 980)">,</token>
-<token number="208" sentence="7" t_id="209" endpoints="(981, 983)">as</token>
-<token number="209" sentence="7" t_id="210" endpoints="(984, 988)">well</token>
-<token number="210" sentence="7" t_id="211" endpoints="(989, 991)">as</token>
-<token number="211" sentence="7" t_id="212" endpoints="(992, 998)">stereo</token>
-<token number="212" sentence="7" t_id="213" endpoints="(999, 1009)">headphones</token>
-<token number="213" sentence="7" t_id="214" endpoints="(1010, 1014)">that</token>
-<token number="214" sentence="7" t_id="215" endpoints="(1015, 1019)">also</token>
-<token number="215" sentence="7" t_id="216" endpoints="(1020, 1025)">serve</token>
-<token number="216" sentence="7" t_id="217" endpoints="(1026, 1028)">as</token>
-<token number="217" sentence="7" t_id="218" endpoints="(1029, 1030)">a</token>
-<token number="218" sentence="7" t_id="219" endpoints="(1031, 1037)">mobile</token>
-<token number="219" sentence="7" t_id="220" endpoints="(1038, 1045)">headset</token>
-<token number="220" sentence="7" t_id="221" endpoints="(1046, 1050)">with</token>
-<token number="221" sentence="7" t_id="222" endpoints="(1051, 1061)">microphone</token>
-<token number="222" sentence="7" t_id="223" endpoints="(1061, 1062)">.</token>
-<token number="223" sentence="8" t_id="224" endpoints="(1063, 1068)">Users</token>
-<token number="224" sentence="8" t_id="225" endpoints="(1069, 1072)">can</token>
-<token number="225" sentence="8" t_id="226" endpoints="(1073, 1081)">randomly</token>
-<token number="226" sentence="8" t_id="227" endpoints="(1082, 1090)">autofill</token>
-<token number="227" sentence="8" t_id="228" endpoints="(1091, 1093)">or</token>
-<token number="228" sentence="8" t_id="229" endpoints="(1094, 1102)">manually</token>
-<token number="229" sentence="8" t_id="230" endpoints="(1103, 1107)">fill</token>
-<token number="230" sentence="8" t_id="231" endpoints="(1108, 1111)">the</token>
-<token number="231" sentence="8" t_id="232" endpoints="(1112, 1118)">mobile</token>
-<token number="232" sentence="8" t_id="233" endpoints="(1119, 1124)">phone</token>
-<token number="233" sentence="8" t_id="234" endpoints="(1125, 1129)">with</token>
-<token number="234" sentence="8" t_id="235" endpoints="(1130, 1139)">playlists</token>
-<token number="235" sentence="8" t_id="236" endpoints="(1140, 1142)">of</token>
-<token number="236" sentence="8" t_id="237" endpoints="(1143, 1148)">music</token>
-<token number="237" sentence="8" t_id="238" endpoints="(1148, 1149)">,</token>
-<token number="238" sentence="8" t_id="239" endpoints="(1150, 1160)">audiobooks</token>
-<token number="239" sentence="8" t_id="240" endpoints="(1161, 1164)">and</token>
-<token number="240" sentence="8" t_id="241" endpoints="(1165, 1173)">Podcasts</token>
-<token number="241" sentence="8" t_id="242" endpoints="(1174, 1178)">from</token>
-<token number="242" sentence="8" t_id="243" endpoints="(1179, 1184)">their</token>
-<token number="243" sentence="8" t_id="244" endpoints="(1185, 1191)">iTunes</token>
-<token number="244" sentence="8" t_id="245" endpoints="(1192, 1199)">library</token>
-<token number="245" sentence="8" t_id="246" endpoints="(1200, 1203)">via</token>
-<token number="246" sentence="8" t_id="247" endpoints="(1204, 1205)">a</token>
-<token number="247" sentence="8" t_id="248" endpoints="(1206, 1209)">USB</token>
-<token number="248" sentence="8" t_id="249" endpoints="(1210, 1213)">1.1</token>
-<token number="249" sentence="8" t_id="250" endpoints="(1214, 1224)">connection</token>
-<token number="250" sentence="8" t_id="251" endpoints="(1224, 1225)">.</token>
-<token number="251" sentence="9" t_id="252" endpoints="(1226, 1229)">The</token>
-<token number="252" sentence="9" t_id="253" endpoints="(1230, 1238)">Motorola</token>
-<token number="253" sentence="9" t_id="254" endpoints="(1239, 1243)">ROKR</token>
-<token number="254" sentence="9" t_id="255" endpoints="(1244, 1250)">pauses</token>
-<token number="255" sentence="9" t_id="256" endpoints="(1251, 1256)">music</token>
-<token number="256" sentence="9" t_id="257" endpoints="(1257, 1270)">automatically</token>
-<token number="257" sentence="9" t_id="258" endpoints="(1271, 1275)">when</token>
-<token number="258" sentence="9" t_id="259" endpoints="(1276, 1281)">users</token>
-<token number="259" sentence="9" t_id="260" endpoints="(1282, 1286)">take</token>
-<token number="260" sentence="9" t_id="261" endpoints="(1287, 1288)">a</token>
-<token number="261" sentence="9" t_id="262" endpoints="(1289, 1293)">call</token>
-<token number="262" sentence="9" t_id="263" endpoints="(1294, 1297)">and</token>
-<token number="263" sentence="9" t_id="264" endpoints="(1298, 1304)">offers</token>
-<token number="264" sentence="9" t_id="265" endpoints="(1305, 1308)">the</token>
-<token number="265" sentence="9" t_id="266" endpoints="(1309, 1316)">ability</token>
-<token number="266" sentence="9" t_id="267" endpoints="(1317, 1319)">to</token>
-<token number="267" sentence="9" t_id="268" endpoints="(1320, 1326)">listen</token>
-<token number="268" sentence="9" t_id="269" endpoints="(1327, 1329)">to</token>
-<token number="269" sentence="9" t_id="270" endpoints="(1330, 1335)">music</token>
-<token number="270" sentence="9" t_id="271" endpoints="(1336, 1341)">while</token>
-<token number="271" sentence="9" t_id="272" endpoints="(1342, 1351)">messaging</token>
-<token number="272" sentence="9" t_id="273" endpoints="(1352, 1354)">or</token>
-<token number="273" sentence="9" t_id="274" endpoints="(1355, 1361)">taking</token>
-<token number="274" sentence="9" t_id="275" endpoints="(1362, 1363)">a</token>
-<token number="275" sentence="9" t_id="276" endpoints="(1364, 1369)">photo</token>
-<token number="276" sentence="9" t_id="277" endpoints="(1369, 1370)">.</token>
-<token number="277" sentence="10" t_id="278" endpoints="(1371, 1373)">It</token>
-<token number="278" sentence="10" t_id="279" endpoints="(1374, 1378)">will</token>
-<token number="279" sentence="10" t_id="280" endpoints="(1379, 1383)">cost</token>
-<token number="280" sentence="10" t_id="281" endpoints="(1384, 1385)">$</token>
-<token number="281" sentence="10" t_id="282" endpoints="(1385, 1388)">250</token>
-<token number="282" sentence="10" t_id="283" endpoints="(1389, 1393)">with</token>
-<token number="283" sentence="10" t_id="284" endpoints="(1394, 1395)">a</token>
-<token number="284" sentence="10" t_id="285" endpoints="(1396, 1404)">two-year</token>
-<token number="285" sentence="10" t_id="286" endpoints="(1405, 1409)">cell</token>
-<token number="286" sentence="10" t_id="287" endpoints="(1410, 1417)">service</token>
-<token number="287" sentence="10" t_id="288" endpoints="(1418, 1426)">contract</token>
-<token number="288" sentence="10" t_id="289" endpoints="(1426, 1427)">.</token>
-<token number="289" sentence="11" t_id="290" endpoints="(1428, 1429)">A</token>
-<token number="290" sentence="11" t_id="291" endpoints="(1430, 1433)">new</token>
-<token number="291" sentence="11" t_id="292" endpoints="(1434, 1441)">version</token>
-<token number="292" sentence="11" t_id="293" endpoints="(1442, 1444)">of</token>
-<token number="293" sentence="11" t_id="294" endpoints="(1445, 1451)">iTunes</token>
-<token number="294" sentence="11" t_id="295" endpoints="(1452, 1455)">was</token>
-<token number="295" sentence="11" t_id="296" endpoints="(1456, 1460)">also</token>
-<token number="296" sentence="11" t_id="297" endpoints="(1461, 1470)">announced</token>
-<token number="297" sentence="11" t_id="298" endpoints="(1471, 1473)">at</token>
-<token number="298" sentence="11" t_id="299" endpoints="(1474, 1477)">the</token>
-<token number="299" sentence="11" t_id="300" endpoints="(1478, 1483)">event</token>
-<token number="300" sentence="11" t_id="301" endpoints="(1483, 1484)">,</token>
-<token number="301" sentence="11" t_id="302" endpoints="(1485, 1493)">bringing</token>
-<token number="302" sentence="11" t_id="303" endpoints="(1494, 1496)">it</token>
-<token number="303" sentence="11" t_id="304" endpoints="(1497, 1499)">to</token>
-<token number="304" sentence="11" t_id="305" endpoints="(1500, 1507)">version</token>
-<token number="305" sentence="11" t_id="306" endpoints="(1508, 1509)">5</token>
-<token number="306" sentence="11" t_id="307" endpoints="(1509, 1510)">.</token>
-<token number="307" sentence="12" t_id="308" endpoints="(1511, 1516)">Along</token>
-<token number="308" sentence="12" t_id="309" endpoints="(1517, 1521)">with</token>
-<token number="309" sentence="12" t_id="310" endpoints="(1522, 1523)">a</token>
-<token number="310" sentence="12" t_id="311" endpoints="(1524, 1527)">new</token>
-<token number="311" sentence="12" t_id="312" endpoints="(1528, 1532)">look</token>
-<token number="312" sentence="12" t_id="313" endpoints="(1532, 1533)">,</token>
-<token number="313" sentence="12" t_id="314" endpoints="(1534, 1536)">it</token>
-<token number="314" sentence="12" t_id="315" endpoints="(1537, 1541)">also</token>
-<token number="315" sentence="12" t_id="316" endpoints="(1542, 1550)">features</token>
-<token number="316" sentence="12" t_id="317" endpoints="(1551, 1552)">a</token>
-<token number="317" sentence="12" t_id="318" endpoints="(1553, 1565)">customizable</token>
-<token number="318" sentence="12" t_id="319" endpoints="(1566, 1579)">randomization</token>
-<token number="319" sentence="12" t_id="320" endpoints="(1579, 1580)">,</token>
-<token number="320" sentence="12" t_id="321" endpoints="(1581, 1589)">improved</token>
-<token number="321" sentence="12" t_id="322" endpoints="(1590, 1596)">search</token>
-<token number="322" sentence="12" t_id="323" endpoints="(1597, 1600)">for</token>
-<token number="323" sentence="12" t_id="324" endpoints="(1601, 1604)">the</token>
-<token number="324" sentence="12" t_id="325" endpoints="(1605, 1612)">Library</token>
-<token number="325" sentence="12" t_id="326" endpoints="(1613, 1616)">and</token>
-<token number="326" sentence="12" t_id="327" endpoints="(1617, 1622)">Music</token>
-<token number="327" sentence="12" t_id="328" endpoints="(1623, 1628)">Store</token>
-<token number="328" sentence="12" t_id="329" endpoints="(1628, 1629)">,</token>
-<token number="329" sentence="12" t_id="330" endpoints="(1630, 1633)">and</token>
-<token number="330" sentence="12" t_id="331" endpoints="(1634, 1641)">greater</token>
-<token number="331" sentence="12" t_id="332" endpoints="(1642, 1650)">parental</token>
-<token number="332" sentence="12" t_id="333" endpoints="(1651, 1659)">controls</token>
-<token number="333" sentence="12" t_id="334" endpoints="(1660, 1662)">on</token>
-<token number="334" sentence="12" t_id="335" endpoints="(1663, 1668)">songs</token>
-<token number="335" sentence="12" t_id="336" endpoints="(1669, 1673)">with</token>
-<token number="336" sentence="12" t_id="337" endpoints="(1674, 1682)">explicit</token>
-<token number="337" sentence="12" t_id="338" endpoints="(1683, 1689)">lyrics</token>
-<token number="338" sentence="12" t_id="339" endpoints="(1690, 1692)">in</token>
-<token number="339" sentence="12" t_id="340" endpoints="(1693, 1696)">the</token>
-<token number="340" sentence="12" t_id="341" endpoints="(1697, 1703)">iTunes</token>
-<token number="341" sentence="12" t_id="342" endpoints="(1704, 1709)">Music</token>
-<token number="342" sentence="12" t_id="343" endpoints="(1710, 1715)">Store</token>
-<token number="343" sentence="12" t_id="344" endpoints="(1716, 1718)">as</token>
-<token number="344" sentence="12" t_id="345" endpoints="(1719, 1723)">well</token>
-<token number="345" sentence="12" t_id="346" endpoints="(1724, 1726)">as</token>
-<token number="346" sentence="12" t_id="347" endpoints="(1727, 1738)">controlling</token>
-<token number="347" sentence="12" t_id="348" endpoints="(1739, 1746)">content</token>
-<token number="348" sentence="12" t_id="349" endpoints="(1747, 1749)">of</token>
-<token number="349" sentence="12" t_id="350" endpoints="(1750, 1758)">Podcasts</token>
-<token number="350" sentence="12" t_id="351" endpoints="(1758, 1759)">.</token>
+<token number="8" sentence="0" t_id="9" offsets="(0, 5)">Apple</token>
+<token number="9" sentence="0" t_id="10" offsets="(6, 11)">today</token>
+<token number="10" sentence="0" t_id="11" offsets="(12, 20)">unveiled</token>
+<token number="11" sentence="0" t_id="12" offsets="(21, 24)">its</token>
+<token number="12" sentence="0" t_id="13" offsets="(25, 31)">latest</token>
+<token number="13" sentence="0" t_id="14" offsets="(32, 40)">addition</token>
+<token number="14" sentence="0" t_id="15" offsets="(41, 43)">to</token>
+<token number="15" sentence="0" t_id="16" offsets="(44, 47)">the</token>
+<token number="16" sentence="0" t_id="17" offsets="(48, 52)">iPod</token>
+<token number="17" sentence="0" t_id="18" offsets="(53, 57)">line</token>
+<token number="18" sentence="0" t_id="19" offsets="(57, 58)">,</token>
+<token number="19" sentence="0" t_id="20" offsets="(59, 62)">the</token>
+<token number="20" sentence="0" t_id="21" offsets="(63, 67)">iPod</token>
+<token number="21" sentence="0" t_id="22" offsets="(68, 72)">nano</token>
+<token number="22" sentence="0" t_id="23" offsets="(72, 73)">.</token>
+<token number="23" sentence="1" t_id="24" offsets="(74, 77)">The</token>
+<token number="24" sentence="1" t_id="25" offsets="(78, 90)">announcement</token>
+<token number="25" sentence="1" t_id="26" offsets="(91, 95)">came</token>
+<token number="26" sentence="1" t_id="27" offsets="(96, 101)">today</token>
+<token number="27" sentence="1" t_id="28" offsets="(102, 104)">at</token>
+<token number="28" sentence="1" t_id="29" offsets="(105, 106)">a</token>
+<token number="29" sentence="1" t_id="30" offsets="(107, 114)">special</token>
+<token number="30" sentence="1" t_id="31" offsets="(115, 120)">music</token>
+<token number="31" sentence="1" t_id="32" offsets="(121, 126)">event</token>
+<token number="32" sentence="1" t_id="33" offsets="(127, 133)">hosted</token>
+<token number="33" sentence="1" t_id="34" offsets="(134, 136)">by</token>
+<token number="34" sentence="1" t_id="35" offsets="(137, 142)">Apple</token>
+<token number="35" sentence="1" t_id="36" offsets="(142, 143)">,</token>
+<token number="36" sentence="1" t_id="37" offsets="(144, 148)">held</token>
+<token number="37" sentence="1" t_id="38" offsets="(149, 151)">in</token>
+<token number="38" sentence="1" t_id="39" offsets="(152, 155)">the</token>
+<token number="39" sentence="1" t_id="40" offsets="(156, 163)">Moscone</token>
+<token number="40" sentence="1" t_id="41" offsets="(164, 168)">West</token>
+<token number="41" sentence="1" t_id="42" offsets="(169, 179)">Convention</token>
+<token number="42" sentence="1" t_id="43" offsets="(180, 186)">Center</token>
+<token number="43" sentence="1" t_id="44" offsets="(187, 189)">in</token>
+<token number="44" sentence="1" t_id="45" offsets="(190, 193)">San</token>
+<token number="45" sentence="1" t_id="46" offsets="(194, 203)">Francisco</token>
+<token number="46" sentence="1" t_id="47" offsets="(203, 204)">.</token>
+<token number="47" sentence="2" t_id="48" offsets="(205, 208)">The</token>
+<token number="48" sentence="2" t_id="49" offsets="(209, 213)">iPod</token>
+<token number="49" sentence="2" t_id="50" offsets="(214, 218)">Nano</token>
+<token number="50" sentence="2" t_id="51" offsets="(219, 224)">comes</token>
+<token number="51" sentence="2" t_id="52" offsets="(225, 227)">in</token>
+<token number="52" sentence="2" t_id="53" offsets="(228, 231)">two</token>
+<token number="53" sentence="2" t_id="54" offsets="(232, 238)">colors</token>
+<token number="54" sentence="2" t_id="55" offsets="(238, 239)">,</token>
+<token number="55" sentence="2" t_id="56" offsets="(240, 245)">white</token>
+<token number="56" sentence="2" t_id="57" offsets="(246, 249)">and</token>
+<token number="57" sentence="2" t_id="58" offsets="(250, 255)">black</token>
+<token number="58" sentence="2" t_id="59" offsets="(255, 256)">,</token>
+<token number="59" sentence="2" t_id="60" offsets="(257, 259)">as</token>
+<token number="60" sentence="2" t_id="61" offsets="(260, 264)">well</token>
+<token number="61" sentence="2" t_id="62" offsets="(265, 267)">as</token>
+<token number="62" sentence="2" t_id="63" offsets="(268, 271)">two</token>
+<token number="63" sentence="2" t_id="64" offsets="(272, 277)">sizes</token>
+<token number="64" sentence="2" t_id="65" offsets="(277, 278)">,</token>
+<token number="65" sentence="2" t_id="66" offsets="(279, 280)">a</token>
+<token number="66" sentence="2" t_id="67" offsets="(281, 284)">2GB</token>
+<token number="67" sentence="2" t_id="68" offsets="(285, 288)">and</token>
+<token number="68" sentence="2" t_id="69" offsets="(289, 290)">a</token>
+<token number="69" sentence="2" t_id="70" offsets="(291, 294)">4GB</token>
+<token number="70" sentence="2" t_id="71" offsets="(294, 295)">,</token>
+<token number="71" sentence="2" t_id="72" offsets="(296, 303)">capable</token>
+<token number="72" sentence="2" t_id="73" offsets="(304, 306)">of</token>
+<token number="73" sentence="2" t_id="74" offsets="(307, 314)">holding</token>
+<token number="74" sentence="2" t_id="75" offsets="(315, 318)">500</token>
+<token number="75" sentence="2" t_id="76" offsets="(319, 322)">and</token>
+<token number="76" sentence="2" t_id="77" offsets="(323, 328)">1,000</token>
+<token number="77" sentence="2" t_id="78" offsets="(329, 334)">songs</token>
+<token number="78" sentence="2" t_id="79" offsets="(335, 338)">and</token>
+<token number="79" sentence="2" t_id="80" offsets="(339, 343)">will</token>
+<token number="80" sentence="2" t_id="81" offsets="(344, 348)">cost</token>
+<token number="81" sentence="2" t_id="82" offsets="(349, 350)">$</token>
+<token number="82" sentence="2" t_id="83" offsets="(350, 353)">199</token>
+<token number="83" sentence="2" t_id="84" offsets="(354, 357)">and</token>
+<token number="84" sentence="2" t_id="85" offsets="(358, 359)">$</token>
+<token number="85" sentence="2" t_id="86" offsets="(359, 362)">249</token>
+<token number="86" sentence="2" t_id="87" offsets="(363, 366)">USD</token>
+<token number="87" sentence="2" t_id="88" offsets="(367, 379)">respectively</token>
+<token number="88" sentence="2" t_id="89" offsets="(379, 380)">.</token>
+<token number="89" sentence="3" t_id="90" offsets="(381, 384)">The</token>
+<token number="90" sentence="3" t_id="91" offsets="(385, 389)">iPod</token>
+<token number="91" sentence="3" t_id="92" offsets="(390, 394)">nano</token>
+<token number="92" sentence="3" t_id="93" offsets="(395, 397)">is</token>
+<token number="93" sentence="3" t_id="94" offsets="(398, 401)">the</token>
+<token number="94" sentence="3" t_id="95" offsets="(402, 408)">second</token>
+<token number="95" sentence="3" t_id="96" offsets="(409, 414)">model</token>
+<token number="96" sentence="3" t_id="97" offsets="(415, 417)">of</token>
+<token number="97" sentence="3" t_id="98" offsets="(418, 421)">the</token>
+<token number="98" sentence="3" t_id="99" offsets="(422, 426)">iPod</token>
+<token number="99" sentence="3" t_id="100" offsets="(427, 433)">family</token>
+<token number="100" sentence="3" t_id="101" offsets="(434, 436)">to</token>
+<token number="101" sentence="3" t_id="102" offsets="(437, 444)">utilize</token>
+<token number="102" sentence="3" t_id="103" offsets="(445, 450)">flash</token>
+<token number="103" sentence="3" t_id="104" offsets="(451, 457)">memory</token>
+<token number="104" sentence="3" t_id="105" offsets="(457, 458)">,</token>
+<token number="105" sentence="3" t_id="106" offsets="(459, 464)">after</token>
+<token number="106" sentence="3" t_id="107" offsets="(465, 468)">the</token>
+<token number="107" sentence="3" t_id="108" offsets="(469, 476)">Shuffle</token>
+<token number="108" sentence="3" t_id="109" offsets="(477, 480)">was</token>
+<token number="109" sentence="3" t_id="110" offsets="(481, 491)">introduced</token>
+<token number="110" sentence="3" t_id="111" offsets="(492, 494)">in</token>
+<token number="111" sentence="3" t_id="112" offsets="(495, 502)">January</token>
+<token number="112" sentence="3" t_id="113" offsets="(502, 503)">.</token>
+<token number="113" sentence="4" t_id="114" offsets="(504, 507)">The</token>
+<token number="114" sentence="4" t_id="115" offsets="(508, 512)">iPod</token>
+<token number="115" sentence="4" t_id="116" offsets="(513, 517)">nano</token>
+<token number="116" sentence="4" t_id="117" offsets="(518, 526)">replaces</token>
+<token number="117" sentence="4" t_id="118" offsets="(527, 530)">the</token>
+<token number="118" sentence="4" t_id="119" offsets="(531, 538)">similar</token>
+<token number="119" sentence="4" t_id="120" offsets="(539, 543)">iPod</token>
+<token number="120" sentence="4" t_id="121" offsets="(544, 548)">Mini</token>
+<token number="121" sentence="4" t_id="122" offsets="(549, 551)">in</token>
+<token number="122" sentence="4" t_id="123" offsets="(552, 555)">the</token>
+<token number="123" sentence="4" t_id="124" offsets="(556, 560)">iPod</token>
+<token number="124" sentence="4" t_id="125" offsets="(561, 567)">family</token>
+<token number="125" sentence="4" t_id="126" offsets="(567, 568)">.</token>
+<token number="126" sentence="5" t_id="127" offsets="(569, 572)">The</token>
+<token number="127" sentence="5" t_id="128" offsets="(573, 577)">iPod</token>
+<token number="128" sentence="5" t_id="129" offsets="(578, 582)">nano</token>
+<token number="129" sentence="5" t_id="130" offsets="(582, 584)">'s</token>
+<token number="130" sentence="5" t_id="131" offsets="(585, 592)">maximum</token>
+<token number="131" sentence="5" t_id="132" offsets="(593, 601)">capacity</token>
+<token number="132" sentence="5" t_id="133" offsets="(602, 604)">is</token>
+<token number="133" sentence="5" t_id="134" offsets="(605, 608)">2GB</token>
+<token number="134" sentence="5" t_id="135" offsets="(609, 616)">smaller</token>
+<token number="135" sentence="5" t_id="136" offsets="(617, 621)">than</token>
+<token number="136" sentence="5" t_id="137" offsets="(622, 626)">that</token>
+<token number="137" sentence="5" t_id="138" offsets="(627, 629)">of</token>
+<token number="138" sentence="5" t_id="139" offsets="(630, 633)">the</token>
+<token number="139" sentence="5" t_id="140" offsets="(634, 638)">last</token>
+<token number="140" sentence="5" t_id="141" offsets="(639, 646)">version</token>
+<token number="141" sentence="5" t_id="142" offsets="(647, 649)">of</token>
+<token number="142" sentence="5" t_id="143" offsets="(650, 653)">the</token>
+<token number="143" sentence="5" t_id="144" offsets="(654, 658)">iPod</token>
+<token number="144" sentence="5" t_id="145" offsets="(659, 663)">Mini</token>
+<token number="145" sentence="5" t_id="146" offsets="(663, 664)">,</token>
+<token number="146" sentence="5" t_id="147" offsets="(665, 670)">which</token>
+<token number="147" sentence="5" t_id="148" offsets="(671, 675)">held</token>
+<token number="148" sentence="5" t_id="149" offsets="(676, 679)">6GB</token>
+<token number="149" sentence="5" t_id="150" offsets="(680, 683)">for</token>
+<token number="150" sentence="5" t_id="151" offsets="(684, 687)">the</token>
+<token number="151" sentence="5" t_id="152" offsets="(688, 692)">same</token>
+<token number="152" sentence="5" t_id="153" offsets="(693, 698)">price</token>
+<token number="153" sentence="5" t_id="154" offsets="(699, 701)">of</token>
+<token number="154" sentence="5" t_id="155" offsets="(702, 703)">$</token>
+<token number="155" sentence="5" t_id="156" offsets="(703, 706)">249</token>
+<token number="156" sentence="5" t_id="157" offsets="(706, 707)">.</token>
+<token number="157" sentence="6" t_id="158" offsets="(708, 713)">Apple</token>
+<token number="158" sentence="6" t_id="159" offsets="(714, 718)">also</token>
+<token number="159" sentence="6" t_id="160" offsets="(719, 728)">announced</token>
+<token number="160" sentence="6" t_id="161" offsets="(729, 731)">an</token>
+<token number="161" sentence="6" t_id="162" offsets="(732, 738)">iTunes</token>
+<token number="162" sentence="6" t_id="163" offsets="(738, 739)">-</token>
+<token number="163" sentence="6" t_id="164" offsets="(739, 749)">compatible</token>
+<token number="164" sentence="6" t_id="165" offsets="(750, 754)">cell</token>
+<token number="165" sentence="6" t_id="166" offsets="(755, 760)">phone</token>
+<token number="166" sentence="6" t_id="167" offsets="(760, 761)">,</token>
+<token number="167" sentence="6" t_id="168" offsets="(762, 765)">the</token>
+<token number="168" sentence="6" t_id="169" offsets="(766, 774)">Motorola</token>
+<token number="169" sentence="6" t_id="170" offsets="(775, 779)">ROKR</token>
+<token number="170" sentence="6" t_id="171" offsets="(780, 782)">E1</token>
+<token number="171" sentence="6" t_id="172" offsets="(782, 783)">,</token>
+<token number="172" sentence="6" t_id="173" offsets="(784, 789)">which</token>
+<token number="173" sentence="6" t_id="174" offsets="(790, 794)">will</token>
+<token number="174" sentence="6" t_id="175" offsets="(795, 797)">be</token>
+<token number="175" sentence="6" t_id="176" offsets="(798, 807)">available</token>
+<token number="176" sentence="6" t_id="177" offsets="(808, 819)">exclusively</token>
+<token number="177" sentence="6" t_id="178" offsets="(820, 824)">from</token>
+<token number="178" sentence="6" t_id="179" offsets="(825, 833)">Cingular</token>
+<token number="179" sentence="6" t_id="180" offsets="(834, 842)">Wireless</token>
+<token number="180" sentence="6" t_id="181" offsets="(843, 845)">in</token>
+<token number="181" sentence="6" t_id="182" offsets="(846, 849)">the</token>
+<token number="182" sentence="6" t_id="183" offsets="(850, 856)">United</token>
+<token number="183" sentence="6" t_id="184" offsets="(857, 863)">States</token>
+<token number="184" sentence="6" t_id="185" offsets="(863, 864)">,</token>
+<token number="185" sentence="6" t_id="186" offsets="(865, 871)">Virgin</token>
+<token number="186" sentence="6" t_id="187" offsets="(872, 876)">will</token>
+<token number="187" sentence="6" t_id="188" offsets="(877, 879)">be</token>
+<token number="188" sentence="6" t_id="189" offsets="(880, 882)">in</token>
+<token number="189" sentence="6" t_id="190" offsets="(883, 886)">the</token>
+<token number="190" sentence="6" t_id="191" offsets="(887, 889)">UK</token>
+<token number="191" sentence="6" t_id="192" offsets="(889, 890)">.</token>
+<token number="192" sentence="7" t_id="193" offsets="(891, 894)">The</token>
+<token number="193" sentence="7" t_id="194" offsets="(895, 899)">ROKR</token>
+<token number="194" sentence="7" t_id="195" offsets="(900, 903)">has</token>
+<token number="195" sentence="7" t_id="196" offsets="(904, 905)">a</token>
+<token number="196" sentence="7" t_id="197" offsets="(906, 911)">color</token>
+<token number="197" sentence="7" t_id="198" offsets="(912, 919)">display</token>
+<token number="198" sentence="7" t_id="199" offsets="(920, 923)">for</token>
+<token number="199" sentence="7" t_id="200" offsets="(924, 931)">viewing</token>
+<token number="200" sentence="7" t_id="201" offsets="(932, 937)">album</token>
+<token number="201" sentence="7" t_id="202" offsets="(938, 941)">art</token>
+<token number="202" sentence="7" t_id="203" offsets="(942, 945)">and</token>
+<token number="203" sentence="7" t_id="204" offsets="(946, 954)">features</token>
+<token number="204" sentence="7" t_id="205" offsets="(955, 963)">built-in</token>
+<token number="205" sentence="7" t_id="206" offsets="(964, 970)">stereo</token>
+<token number="206" sentence="7" t_id="207" offsets="(971, 979)">speakers</token>
+<token number="207" sentence="7" t_id="208" offsets="(979, 980)">,</token>
+<token number="208" sentence="7" t_id="209" offsets="(981, 983)">as</token>
+<token number="209" sentence="7" t_id="210" offsets="(984, 988)">well</token>
+<token number="210" sentence="7" t_id="211" offsets="(989, 991)">as</token>
+<token number="211" sentence="7" t_id="212" offsets="(992, 998)">stereo</token>
+<token number="212" sentence="7" t_id="213" offsets="(999, 1009)">headphones</token>
+<token number="213" sentence="7" t_id="214" offsets="(1010, 1014)">that</token>
+<token number="214" sentence="7" t_id="215" offsets="(1015, 1019)">also</token>
+<token number="215" sentence="7" t_id="216" offsets="(1020, 1025)">serve</token>
+<token number="216" sentence="7" t_id="217" offsets="(1026, 1028)">as</token>
+<token number="217" sentence="7" t_id="218" offsets="(1029, 1030)">a</token>
+<token number="218" sentence="7" t_id="219" offsets="(1031, 1037)">mobile</token>
+<token number="219" sentence="7" t_id="220" offsets="(1038, 1045)">headset</token>
+<token number="220" sentence="7" t_id="221" offsets="(1046, 1050)">with</token>
+<token number="221" sentence="7" t_id="222" offsets="(1051, 1061)">microphone</token>
+<token number="222" sentence="7" t_id="223" offsets="(1061, 1062)">.</token>
+<token number="223" sentence="8" t_id="224" offsets="(1063, 1068)">Users</token>
+<token number="224" sentence="8" t_id="225" offsets="(1069, 1072)">can</token>
+<token number="225" sentence="8" t_id="226" offsets="(1073, 1081)">randomly</token>
+<token number="226" sentence="8" t_id="227" offsets="(1082, 1090)">autofill</token>
+<token number="227" sentence="8" t_id="228" offsets="(1091, 1093)">or</token>
+<token number="228" sentence="8" t_id="229" offsets="(1094, 1102)">manually</token>
+<token number="229" sentence="8" t_id="230" offsets="(1103, 1107)">fill</token>
+<token number="230" sentence="8" t_id="231" offsets="(1108, 1111)">the</token>
+<token number="231" sentence="8" t_id="232" offsets="(1112, 1118)">mobile</token>
+<token number="232" sentence="8" t_id="233" offsets="(1119, 1124)">phone</token>
+<token number="233" sentence="8" t_id="234" offsets="(1125, 1129)">with</token>
+<token number="234" sentence="8" t_id="235" offsets="(1130, 1139)">playlists</token>
+<token number="235" sentence="8" t_id="236" offsets="(1140, 1142)">of</token>
+<token number="236" sentence="8" t_id="237" offsets="(1143, 1148)">music</token>
+<token number="237" sentence="8" t_id="238" offsets="(1148, 1149)">,</token>
+<token number="238" sentence="8" t_id="239" offsets="(1150, 1160)">audiobooks</token>
+<token number="239" sentence="8" t_id="240" offsets="(1161, 1164)">and</token>
+<token number="240" sentence="8" t_id="241" offsets="(1165, 1173)">Podcasts</token>
+<token number="241" sentence="8" t_id="242" offsets="(1174, 1178)">from</token>
+<token number="242" sentence="8" t_id="243" offsets="(1179, 1184)">their</token>
+<token number="243" sentence="8" t_id="244" offsets="(1185, 1191)">iTunes</token>
+<token number="244" sentence="8" t_id="245" offsets="(1192, 1199)">library</token>
+<token number="245" sentence="8" t_id="246" offsets="(1200, 1203)">via</token>
+<token number="246" sentence="8" t_id="247" offsets="(1204, 1205)">a</token>
+<token number="247" sentence="8" t_id="248" offsets="(1206, 1209)">USB</token>
+<token number="248" sentence="8" t_id="249" offsets="(1210, 1213)">1.1</token>
+<token number="249" sentence="8" t_id="250" offsets="(1214, 1224)">connection</token>
+<token number="250" sentence="8" t_id="251" offsets="(1224, 1225)">.</token>
+<token number="251" sentence="9" t_id="252" offsets="(1226, 1229)">The</token>
+<token number="252" sentence="9" t_id="253" offsets="(1230, 1238)">Motorola</token>
+<token number="253" sentence="9" t_id="254" offsets="(1239, 1243)">ROKR</token>
+<token number="254" sentence="9" t_id="255" offsets="(1244, 1250)">pauses</token>
+<token number="255" sentence="9" t_id="256" offsets="(1251, 1256)">music</token>
+<token number="256" sentence="9" t_id="257" offsets="(1257, 1270)">automatically</token>
+<token number="257" sentence="9" t_id="258" offsets="(1271, 1275)">when</token>
+<token number="258" sentence="9" t_id="259" offsets="(1276, 1281)">users</token>
+<token number="259" sentence="9" t_id="260" offsets="(1282, 1286)">take</token>
+<token number="260" sentence="9" t_id="261" offsets="(1287, 1288)">a</token>
+<token number="261" sentence="9" t_id="262" offsets="(1289, 1293)">call</token>
+<token number="262" sentence="9" t_id="263" offsets="(1294, 1297)">and</token>
+<token number="263" sentence="9" t_id="264" offsets="(1298, 1304)">offers</token>
+<token number="264" sentence="9" t_id="265" offsets="(1305, 1308)">the</token>
+<token number="265" sentence="9" t_id="266" offsets="(1309, 1316)">ability</token>
+<token number="266" sentence="9" t_id="267" offsets="(1317, 1319)">to</token>
+<token number="267" sentence="9" t_id="268" offsets="(1320, 1326)">listen</token>
+<token number="268" sentence="9" t_id="269" offsets="(1327, 1329)">to</token>
+<token number="269" sentence="9" t_id="270" offsets="(1330, 1335)">music</token>
+<token number="270" sentence="9" t_id="271" offsets="(1336, 1341)">while</token>
+<token number="271" sentence="9" t_id="272" offsets="(1342, 1351)">messaging</token>
+<token number="272" sentence="9" t_id="273" offsets="(1352, 1354)">or</token>
+<token number="273" sentence="9" t_id="274" offsets="(1355, 1361)">taking</token>
+<token number="274" sentence="9" t_id="275" offsets="(1362, 1363)">a</token>
+<token number="275" sentence="9" t_id="276" offsets="(1364, 1369)">photo</token>
+<token number="276" sentence="9" t_id="277" offsets="(1369, 1370)">.</token>
+<token number="277" sentence="10" t_id="278" offsets="(1371, 1373)">It</token>
+<token number="278" sentence="10" t_id="279" offsets="(1374, 1378)">will</token>
+<token number="279" sentence="10" t_id="280" offsets="(1379, 1383)">cost</token>
+<token number="280" sentence="10" t_id="281" offsets="(1384, 1385)">$</token>
+<token number="281" sentence="10" t_id="282" offsets="(1385, 1388)">250</token>
+<token number="282" sentence="10" t_id="283" offsets="(1389, 1393)">with</token>
+<token number="283" sentence="10" t_id="284" offsets="(1394, 1395)">a</token>
+<token number="284" sentence="10" t_id="285" offsets="(1396, 1404)">two-year</token>
+<token number="285" sentence="10" t_id="286" offsets="(1405, 1409)">cell</token>
+<token number="286" sentence="10" t_id="287" offsets="(1410, 1417)">service</token>
+<token number="287" sentence="10" t_id="288" offsets="(1418, 1426)">contract</token>
+<token number="288" sentence="10" t_id="289" offsets="(1426, 1427)">.</token>
+<token number="289" sentence="11" t_id="290" offsets="(1428, 1429)">A</token>
+<token number="290" sentence="11" t_id="291" offsets="(1430, 1433)">new</token>
+<token number="291" sentence="11" t_id="292" offsets="(1434, 1441)">version</token>
+<token number="292" sentence="11" t_id="293" offsets="(1442, 1444)">of</token>
+<token number="293" sentence="11" t_id="294" offsets="(1445, 1451)">iTunes</token>
+<token number="294" sentence="11" t_id="295" offsets="(1452, 1455)">was</token>
+<token number="295" sentence="11" t_id="296" offsets="(1456, 1460)">also</token>
+<token number="296" sentence="11" t_id="297" offsets="(1461, 1470)">announced</token>
+<token number="297" sentence="11" t_id="298" offsets="(1471, 1473)">at</token>
+<token number="298" sentence="11" t_id="299" offsets="(1474, 1477)">the</token>
+<token number="299" sentence="11" t_id="300" offsets="(1478, 1483)">event</token>
+<token number="300" sentence="11" t_id="301" offsets="(1483, 1484)">,</token>
+<token number="301" sentence="11" t_id="302" offsets="(1485, 1493)">bringing</token>
+<token number="302" sentence="11" t_id="303" offsets="(1494, 1496)">it</token>
+<token number="303" sentence="11" t_id="304" offsets="(1497, 1499)">to</token>
+<token number="304" sentence="11" t_id="305" offsets="(1500, 1507)">version</token>
+<token number="305" sentence="11" t_id="306" offsets="(1508, 1509)">5</token>
+<token number="306" sentence="11" t_id="307" offsets="(1509, 1510)">.</token>
+<token number="307" sentence="12" t_id="308" offsets="(1511, 1516)">Along</token>
+<token number="308" sentence="12" t_id="309" offsets="(1517, 1521)">with</token>
+<token number="309" sentence="12" t_id="310" offsets="(1522, 1523)">a</token>
+<token number="310" sentence="12" t_id="311" offsets="(1524, 1527)">new</token>
+<token number="311" sentence="12" t_id="312" offsets="(1528, 1532)">look</token>
+<token number="312" sentence="12" t_id="313" offsets="(1532, 1533)">,</token>
+<token number="313" sentence="12" t_id="314" offsets="(1534, 1536)">it</token>
+<token number="314" sentence="12" t_id="315" offsets="(1537, 1541)">also</token>
+<token number="315" sentence="12" t_id="316" offsets="(1542, 1550)">features</token>
+<token number="316" sentence="12" t_id="317" offsets="(1551, 1552)">a</token>
+<token number="317" sentence="12" t_id="318" offsets="(1553, 1565)">customizable</token>
+<token number="318" sentence="12" t_id="319" offsets="(1566, 1579)">randomization</token>
+<token number="319" sentence="12" t_id="320" offsets="(1579, 1580)">,</token>
+<token number="320" sentence="12" t_id="321" offsets="(1581, 1589)">improved</token>
+<token number="321" sentence="12" t_id="322" offsets="(1590, 1596)">search</token>
+<token number="322" sentence="12" t_id="323" offsets="(1597, 1600)">for</token>
+<token number="323" sentence="12" t_id="324" offsets="(1601, 1604)">the</token>
+<token number="324" sentence="12" t_id="325" offsets="(1605, 1612)">Library</token>
+<token number="325" sentence="12" t_id="326" offsets="(1613, 1616)">and</token>
+<token number="326" sentence="12" t_id="327" offsets="(1617, 1622)">Music</token>
+<token number="327" sentence="12" t_id="328" offsets="(1623, 1628)">Store</token>
+<token number="328" sentence="12" t_id="329" offsets="(1628, 1629)">,</token>
+<token number="329" sentence="12" t_id="330" offsets="(1630, 1633)">and</token>
+<token number="330" sentence="12" t_id="331" offsets="(1634, 1641)">greater</token>
+<token number="331" sentence="12" t_id="332" offsets="(1642, 1650)">parental</token>
+<token number="332" sentence="12" t_id="333" offsets="(1651, 1659)">controls</token>
+<token number="333" sentence="12" t_id="334" offsets="(1660, 1662)">on</token>
+<token number="334" sentence="12" t_id="335" offsets="(1663, 1668)">songs</token>
+<token number="335" sentence="12" t_id="336" offsets="(1669, 1673)">with</token>
+<token number="336" sentence="12" t_id="337" offsets="(1674, 1682)">explicit</token>
+<token number="337" sentence="12" t_id="338" offsets="(1683, 1689)">lyrics</token>
+<token number="338" sentence="12" t_id="339" offsets="(1690, 1692)">in</token>
+<token number="339" sentence="12" t_id="340" offsets="(1693, 1696)">the</token>
+<token number="340" sentence="12" t_id="341" offsets="(1697, 1703)">iTunes</token>
+<token number="341" sentence="12" t_id="342" offsets="(1704, 1709)">Music</token>
+<token number="342" sentence="12" t_id="343" offsets="(1710, 1715)">Store</token>
+<token number="343" sentence="12" t_id="344" offsets="(1716, 1718)">as</token>
+<token number="344" sentence="12" t_id="345" offsets="(1719, 1723)">well</token>
+<token number="345" sentence="12" t_id="346" offsets="(1724, 1726)">as</token>
+<token number="346" sentence="12" t_id="347" offsets="(1727, 1738)">controlling</token>
+<token number="347" sentence="12" t_id="348" offsets="(1739, 1746)">content</token>
+<token number="348" sentence="12" t_id="349" offsets="(1747, 1749)">of</token>
+<token number="349" sentence="12" t_id="350" offsets="(1750, 1758)">Podcasts</token>
+<token number="350" sentence="12" t_id="351" offsets="(1758, 1759)">.</token>
 <Markables>
 <ENTITY_MENTION comment="" head="family" m_id="1" syntactic_type="NOM">
 <token_anchor t_id="98" />
@@ -461,47 +461,47 @@
 <token_anchor t_id="103" />
 <token_anchor t_id="104" />
 </ENTITY_MENTION>
-<EVENT_MENTION aspect="NONE" certainty="CERTAIN" comment="" m_id="29" modality="" polarity="POS" pos="VERB" pred="be" special_cases="GEN" tense="PRESENT" time="NON_FUTURE" endpoints="395 397">
+<EVENT_MENTION aspect="NONE" certainty="CERTAIN" comment="" m_id="29" modality="" polarity="POS" pos="VERB" pred="be" special_cases="GEN" tense="PRESENT" time="NON_FUTURE" offsets="395 397">
 <token_anchor t_id="93" />
 </EVENT_MENTION>
-<EVENT_MENTION aspect="NONE" certainty="CERTAIN" comment="" m_id="30" modality="" polarity="POS" pos="VERB" pred="utilize" special_cases="NONE" tense="INFINITIVE" time="UNDERSPECIFIED" endpoints="437 444">
+<EVENT_MENTION aspect="NONE" certainty="CERTAIN" comment="" m_id="30" modality="" polarity="POS" pos="VERB" pred="utilize" special_cases="NONE" tense="INFINITIVE" time="UNDERSPECIFIED" offsets="437 444">
 <token_anchor t_id="102" />
 </EVENT_MENTION>
-<EVENT_MENTION aspect="NONE" certainty="CERTAIN" comment="" m_id="31" modality="" polarity="POS" pos="VERB" pred="introduce" special_cases="NONE" tense="PAST" time="NON_FUTURE" endpoints="481 491">
+<EVENT_MENTION aspect="NONE" certainty="CERTAIN" comment="" m_id="31" modality="" polarity="POS" pos="VERB" pred="introduce" special_cases="NONE" tense="PAST" time="NON_FUTURE" offsets="481 491">
 <token_anchor t_id="110" />
 </EVENT_MENTION>
-<EVENT_MENTION aspect="NONE" certainty="CERTAIN" comment="" m_id="32" modality="" polarity="POS" pos="VERB" pred="host" special_cases="NONE" tense="PASTPART" time="NON_FUTURE" endpoints="127 133">
+<EVENT_MENTION aspect="NONE" certainty="CERTAIN" comment="" m_id="32" modality="" polarity="POS" pos="VERB" pred="host" special_cases="NONE" tense="PASTPART" time="NON_FUTURE" offsets="127 133">
 <token_anchor t_id="33" />
 </EVENT_MENTION>
-<EVENT_MENTION aspect="NONE" certainty="CERTAIN" comment="" m_id="33" modality="" polarity="POS" pos="NOUN" pred="announcement" special_cases="NONE" tense="NONE" time="NON_FUTURE" endpoints="78 90">
+<EVENT_MENTION aspect="NONE" certainty="CERTAIN" comment="" m_id="33" modality="" polarity="POS" pos="NOUN" pred="announcement" special_cases="NONE" tense="NONE" time="NON_FUTURE" offsets="78 90">
 <token_anchor t_id="25" />
 </EVENT_MENTION>
-<EVENT_MENTION aspect="" certainty="" comment="" m_id="71" modality="" polarity="" pos="" pred="" special_cases="NONE" tense="" time="" endpoints="219 224">
+<EVENT_MENTION aspect="" certainty="" comment="" m_id="71" modality="" polarity="" pos="" pred="" special_cases="NONE" tense="" time="" offsets="219 224">
 <token_anchor t_id="51" />
 <token_anchor t_id="81" />
 </EVENT_MENTION>
 <EVENT_MENTION aspect="NONE" certainty="CERTAIN" comment="" m_id="21" modality="" polarity="POS" pos="VERB" pred="unveil" special_cases="NONE" tense="PRESENT" time="NON_FUTURE">
 <token_anchor t_id="2" />
 </EVENT_MENTION>
-<EVENT_MENTION aspect="NONE" certainty="CERTAIN" comment="" m_id="22" modality="" polarity="POS" pos="VERB" pred="unveil" special_cases="NONE" tense="PAST" time="NON_FUTURE" endpoints="12 20">
+<EVENT_MENTION aspect="NONE" certainty="CERTAIN" comment="" m_id="22" modality="" polarity="POS" pos="VERB" pred="unveil" special_cases="NONE" tense="PAST" time="NON_FUTURE" offsets="12 20">
 <token_anchor t_id="11" />
 </EVENT_MENTION>
-<EVENT_MENTION aspect="NONE" certainty="CERTAIN" comment="" m_id="23" modality="" polarity="POS" pos="VERB" pred="come" special_cases="NONE" tense="PAST" time="NON_FUTURE" endpoints="91 95">
+<EVENT_MENTION aspect="NONE" certainty="CERTAIN" comment="" m_id="23" modality="" polarity="POS" pos="VERB" pred="come" special_cases="NONE" tense="PAST" time="NON_FUTURE" offsets="91 95">
 <token_anchor t_id="26" />
 </EVENT_MENTION>
-<EVENT_MENTION aspect="NONE" certainty="CERTAIN" comment="" m_id="24" modality="" polarity="POS" pos="NOUN" pred="event" special_cases="NONE" tense="NONE" time="NON_FUTURE" endpoints="121 126">
+<EVENT_MENTION aspect="NONE" certainty="CERTAIN" comment="" m_id="24" modality="" polarity="POS" pos="NOUN" pred="event" special_cases="NONE" tense="NONE" time="NON_FUTURE" offsets="121 126">
 <token_anchor t_id="32" />
 </EVENT_MENTION>
-<EVENT_MENTION aspect="NONE" certainty="CERTAIN" comment="" m_id="25" modality="" polarity="POS" pos="VERB" pred="hold" special_cases="NONE" tense="PASTPART" time="NON_FUTURE" endpoints="144 148">
+<EVENT_MENTION aspect="NONE" certainty="CERTAIN" comment="" m_id="25" modality="" polarity="POS" pos="VERB" pred="hold" special_cases="NONE" tense="PASTPART" time="NON_FUTURE" offsets="144 148">
 <token_anchor t_id="37" />
 </EVENT_MENTION>
-<EVENT_MENTION aspect="NONE" certainty="CERTAIN" comment="" m_id="26" modality="" polarity="POS" pos="VERB" pred="come" special_cases="GEN" tense="PRESENT" time="NON_FUTURE" endpoints="219 224">
+<EVENT_MENTION aspect="NONE" certainty="CERTAIN" comment="" m_id="26" modality="" polarity="POS" pos="VERB" pred="come" special_cases="GEN" tense="PRESENT" time="NON_FUTURE" offsets="219 224">
 <token_anchor t_id="51" />
 </EVENT_MENTION>
-<EVENT_MENTION aspect="NONE" certainty="CERTAIN" comment="" m_id="27" modality="" polarity="POS" pos="VERB" pred="hold" special_cases="NONE" tense="PRESPART" time="FUTURE" endpoints="307 314">
+<EVENT_MENTION aspect="NONE" certainty="CERTAIN" comment="" m_id="27" modality="" polarity="POS" pos="VERB" pred="hold" special_cases="NONE" tense="PRESPART" time="FUTURE" offsets="307 314">
 <token_anchor t_id="74" />
 </EVENT_MENTION>
-<EVENT_MENTION aspect="NONE" certainty="CERTAIN" comment="" m_id="28" modality="" polarity="POS" pos="VERB" pred="cost" special_cases="NONE" tense="FUTURE" time="FUTURE" endpoints="344 348">
+<EVENT_MENTION aspect="NONE" certainty="CERTAIN" comment="" m_id="28" modality="" polarity="POS" pos="VERB" pred="cost" special_cases="NONE" tense="FUTURE" time="FUTURE" offsets="344 348">
 <token_anchor t_id="81" />
 </EVENT_MENTION>
 <SIGNAL comment="" m_id="34">
@@ -516,13 +516,13 @@
 <token_anchor t_id="7" />
 <token_anchor t_id="8" />
 </TIMEX3>
-<TIMEX3 anchorTimeID="36" beginPoint="" comment="" endPoint="" functionInDocument="NONE" m_id="37" type="DATE" value="2005-09-07" endpoints="6 11">
+<TIMEX3 anchorTimeID="36" beginPoint="" comment="" endPoint="" functionInDocument="NONE" m_id="37" type="DATE" value="2005-09-07" offsets="6 11">
 <token_anchor t_id="10" />
 </TIMEX3>
-<TIMEX3 anchorTimeID="36" beginPoint="" comment="" endPoint="" functionInDocument="NONE" m_id="38" type="DATE" value="2005-09-07" endpoints="96 101">
+<TIMEX3 anchorTimeID="36" beginPoint="" comment="" endPoint="" functionInDocument="NONE" m_id="38" type="DATE" value="2005-09-07" offsets="96 101">
 <token_anchor t_id="27" />
 </TIMEX3>
-<TIMEX3 anchorTimeID="36" beginPoint="" comment="" endPoint="" functionInDocument="NONE" m_id="39" type="DATE" value="2005-01" endpoints="495 502">
+<TIMEX3 anchorTimeID="36" beginPoint="" comment="" endPoint="" functionInDocument="NONE" m_id="39" type="DATE" value="2005-01" offsets="495 502">
 <token_anchor t_id="112" />
 </TIMEX3>
 <VALUE comment="" m_id="40" type="QUANTITY">

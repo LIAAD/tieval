@@ -67,7 +67,7 @@ class TestMeanTimeDocumentReader:
 
         for timex in doc.timexs:
             if not timex.is_dct:
-                s, e = timex.endpoints
+                s, e = timex.offsets
                 assert doc.text[s:e] == timex.text
 
 
@@ -79,7 +79,7 @@ class TestKRAUTSDocumentReader:
 
         for timex in doc.timexs:
             if not timex.is_dct:
-                s, e = timex.endpoints
+                s, e = timex.offsets
                 assert doc.text[s:e] == timex.text
 
 
@@ -91,7 +91,7 @@ class TestWikiWarsDocumentReader:
 
         for timex in doc.timexs:
             if not timex.is_dct:
-                s, e = timex.endpoints
+                s, e = timex.offsets
                 assert doc.text[s:e] == timex.text
 
 
@@ -103,7 +103,7 @@ class TestAncientTimeDocumentReader:
 
         for timex in doc.timexs:
             if not timex.is_dct:
-                s, e = timex.endpoints
+                s, e = timex.offsets
                 assert doc.text[s:e] == timex.text
 
 
@@ -115,5 +115,5 @@ class TestProfessorHeidelTimeDocumentReader:
 
         for timex in doc.timexs:
             if not timex.is_dct:
-                s, e = timex.endpoints
+                s, e = timex.offsets
                 assert doc.text[s:e] == timex.text

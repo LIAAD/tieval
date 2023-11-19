@@ -1,6 +1,6 @@
 <TimeML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://timeml.org/timeMLdocs/TimeML_1.2.1.xsd">
 APW19980213.1310
-NEWS STORY<TIMEX3 tid="t109" type="TIME" value="1998-02-13T14:26:00" temporalFunction="false" functionInDocument="CREATION_TIME" endpoints="0 19">02/13/1998 14:26:00</TIMEX3>
+NEWS STORY<TIMEX3 tid="t109" type="TIME" value="1998-02-13T14:26:00" temporalFunction="false" functionInDocument="CREATION_TIME" offsets="0 19">02/13/1998 14:26:00</TIMEX3>
 w2112 Cx1f wstm-
 r i Cx13  Cx11  BC-Australia-Republic 4thLd-Writethru   02-13 0603
 BC-Australia-Republic, 4th Ld-Writethru,0602
@@ -11,61 +11,61 @@ Paul Keating QL
 UR AP Photo CANB101,102,103 QL
 UR By ALAN THORNHILL QC
 UR Associated Press Writer QC
-CANBERRA, Australia (AP) _ <TEXT><EVENT eid="e1" class="OCCURRENCE" endpoints="0 7">Turning</EVENT> its back on <TIMEX3 tid="t110" type="DURATION" value="P210Y" temporalFunction="false" functionInDocument="NONE" endpoints="20 29">210 years</TIMEX3> of
+CANBERRA, Australia (AP) _ <TEXT><EVENT eid="e1" class="OCCURRENCE" offsets="0 7">Turning</EVENT> its back on <TIMEX3 tid="t110" type="DURATION" value="P210Y" temporalFunction="false" functionInDocument="NONE" offsets="20 29">210 years</TIMEX3> of
 loyalty to the British royal family, a constitutional convention
-<EVENT eid="e2" class="OCCURRENCE" endpoints="98 103">voted</EVENT> overwhelmingly <TIMEX3 tid="t111" type="DATE" value="1998-02-13" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t109" endpoints="119 125">Friday</TIMEX3> to <EVENT eid="e4" class="OCCURRENCE" endpoints="129 133">make</EVENT> Australia a republic under its
+<EVENT eid="e2" class="OCCURRENCE" offsets="98 103">voted</EVENT> overwhelmingly <TIMEX3 tid="t111" type="DATE" value="1998-02-13" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t109" offsets="119 125">Friday</TIMEX3> to <EVENT eid="e4" class="OCCURRENCE" offsets="129 133">make</EVENT> Australia a republic under its
 own president.
-Prime Minister John Howard, a monarchist himself, <EVENT eid="e5" class="I_ACTION" endpoints="230 238">promised</EVENT> to <EVENT eid="e7" class="OCCURRENCE" endpoints="242 245">put</EVENT> the <EVENT eid="e8" class="OCCURRENCE" endpoints="250 258">question</EVENT> to a national <EVENT eid="e9" class="OCCURRENCE" endpoints="273 283">referendum</EVENT> <TIMEX3 tid="t112" type="DATE" value="1999" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t109" endpoints="284 293">next year</TIMEX3> <SIGNAL sid="s113" endpoints="294 299">after</SIGNAL>
-convention delegates <EVENT eid="e10" class="OCCURRENCE" endpoints="321 326">voted</EVENT> 89-52 for a republic, with 11
+Prime Minister John Howard, a monarchist himself, <EVENT eid="e5" class="I_ACTION" offsets="230 238">promised</EVENT> to <EVENT eid="e7" class="OCCURRENCE" offsets="242 245">put</EVENT> the <EVENT eid="e8" class="OCCURRENCE" offsets="250 258">question</EVENT> to a national <EVENT eid="e9" class="OCCURRENCE" offsets="273 283">referendum</EVENT> <TIMEX3 tid="t112" type="DATE" value="1999" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t109" offsets="284 293">next year</TIMEX3> <SIGNAL sid="s113" offsets="294 299">after</SIGNAL>
+convention delegates <EVENT eid="e10" class="OCCURRENCE" offsets="321 326">voted</EVENT> 89-52 for a republic, with 11
 abstentions.
-Spontaneous <EVENT eid="e11" class="OCCURRENCE" endpoints="382 390">applause</EVENT> <EVENT eid="e12" class="OCCURRENCE" endpoints="391 397">echoed</EVENT> through the chamber and public
-galleries as the crucial <EVENT eid="e13" class="OCCURRENCE" endpoints="454 458">vote</EVENT> <EVENT eid="e14" class="OCCURRENCE" endpoints="459 465">passed</EVENT> by a wide margin.
-``I <EVENT eid="e15" class="I_STATE" endpoints="488 492">want</EVENT> a <EVENT eid="e16" class="OCCURRENCE" endpoints="495 505">referendum</EVENT>,'' Howard <EVENT eid="e17" class="REPORTING" endpoints="516 520">said</EVENT>. ``The Australian people
-are <EVENT eid="e18" class="I_STATE" endpoints="550 554">owed</EVENT> the opportunity of <EVENT eid="e19" class="OCCURRENCE" endpoints="574 584">expressing</EVENT> an opinion on this.''
-``It would be a <EVENT eid="e21" class="OCCURRENCE" endpoints="623 631">travesty</EVENT> in common sense terms of Australian
-democracy for that <EVENT eid="e23" class="OCCURRENCE" endpoints="687 698">proposition</EVENT> not to be <EVENT eid="e24" class="OCCURRENCE" endpoints="709 712">put</EVENT> to the Australian
-people,'' Howard <EVENT eid="e25" class="REPORTING" endpoints="748 752">said</EVENT>.
-Even in his own Cabinet, Howard is <EVENT eid="e26" class="ASPECTUAL" endpoints="789 797">becoming</EVENT> increasingly <EVENT eid="e27" class="OCCURRENCE" endpoints="811 819">isolated</EVENT> with his monarchist stance. Treasurer Peter Costello,
+Spontaneous <EVENT eid="e11" class="OCCURRENCE" offsets="382 390">applause</EVENT> <EVENT eid="e12" class="OCCURRENCE" offsets="391 397">echoed</EVENT> through the chamber and public
+galleries as the crucial <EVENT eid="e13" class="OCCURRENCE" offsets="454 458">vote</EVENT> <EVENT eid="e14" class="OCCURRENCE" offsets="459 465">passed</EVENT> by a wide margin.
+``I <EVENT eid="e15" class="I_STATE" offsets="488 492">want</EVENT> a <EVENT eid="e16" class="OCCURRENCE" offsets="495 505">referendum</EVENT>,'' Howard <EVENT eid="e17" class="REPORTING" offsets="516 520">said</EVENT>. ``The Australian people
+are <EVENT eid="e18" class="I_STATE" offsets="550 554">owed</EVENT> the opportunity of <EVENT eid="e19" class="OCCURRENCE" offsets="574 584">expressing</EVENT> an opinion on this.''
+``It would be a <EVENT eid="e21" class="OCCURRENCE" offsets="623 631">travesty</EVENT> in common sense terms of Australian
+democracy for that <EVENT eid="e23" class="OCCURRENCE" offsets="687 698">proposition</EVENT> not to be <EVENT eid="e24" class="OCCURRENCE" offsets="709 712">put</EVENT> to the Australian
+people,'' Howard <EVENT eid="e25" class="REPORTING" offsets="748 752">said</EVENT>.
+Even in his own Cabinet, Howard is <EVENT eid="e26" class="ASPECTUAL" offsets="789 797">becoming</EVENT> increasingly <EVENT eid="e27" class="OCCURRENCE" offsets="811 819">isolated</EVENT> with his monarchist stance. Treasurer Peter Costello,
 Environment Minister Robert Hill and Attorney General Daryl
-Williams all <EVENT eid="e28" class="OCCURRENCE" endpoints="947 952">voted</EVENT> to <EVENT eid="e30" class="OCCURRENCE" endpoints="956 963">support</EVENT> the republic <TIMEX3 tid="t114" type="DATE" value="1998-02-13" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t109" endpoints="977 983">Friday</TIMEX3>.
-``This convention will be <EVENT eid="e31" class="PERCEPTION" endpoints="1011 1015">seen</EVENT> as a turning point in our
+Williams all <EVENT eid="e28" class="OCCURRENCE" offsets="947 952">voted</EVENT> to <EVENT eid="e30" class="OCCURRENCE" offsets="956 963">support</EVENT> the republic <TIMEX3 tid="t114" type="DATE" value="1998-02-13" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t109" offsets="977 983">Friday</TIMEX3>.
+``This convention will be <EVENT eid="e31" class="PERCEPTION" offsets="1011 1015">seen</EVENT> as a turning point in our
 history,'' Australian Republican Movement spokeswoman Mary
-Delahunty <EVENT eid="e32" class="REPORTING" endpoints="1111 1115">said</EVENT>.
-Pro-republicans <EVENT eid="e33" class="I_STATE" endpoints="1133 1137">hope</EVENT> to <EVENT eid="e35" class="OCCURRENCE" endpoints="1141 1145">have</EVENT> an Australian president <SIGNAL sid="s250" endpoints="1170 1172">by</SIGNAL> the
-<EVENT eid="e36" class="OCCURRENCE" endpoints="1177 1184">opening</EVENT> of the <TIMEX3 tid="t121" type="DATE" value="2000" temporalFunction="false" functionInDocument="NONE" endpoints="1192 1196">2000</TIMEX3> Olympics and the 100th anniversary of
+Delahunty <EVENT eid="e32" class="REPORTING" offsets="1111 1115">said</EVENT>.
+Pro-republicans <EVENT eid="e33" class="I_STATE" offsets="1133 1137">hope</EVENT> to <EVENT eid="e35" class="OCCURRENCE" offsets="1141 1145">have</EVENT> an Australian president <SIGNAL sid="s250" offsets="1170 1172">by</SIGNAL> the
+<EVENT eid="e36" class="OCCURRENCE" offsets="1177 1184">opening</EVENT> of the <TIMEX3 tid="t121" type="DATE" value="2000" temporalFunction="false" functionInDocument="NONE" offsets="1192 1196">2000</TIMEX3> Olympics and the 100th anniversary of
 Australian federation.
-<EVENT eid="e37" class="I_ACTION" endpoints="1258 1265">Calling</EVENT> for an <EVENT eid="e257" class="OCCURRENCE" endpoints="1273 1280">amended</EVENT> constitution with a new preamble, to be <EVENT eid="e41" class="OCCURRENCE" endpoints="1321 1328">written</EVENT> by Australian poets, republican Janet Holmes a Court <EVENT eid="e115" class="REPORTING" endpoints="1382 1386">said</EVENT>,
-``We <EVENT eid="e42" class="OCCURRENCE" endpoints="1393 1397">need</EVENT> the smell of eucalyptus in this, and the feel of red
+<EVENT eid="e37" class="I_ACTION" offsets="1258 1265">Calling</EVENT> for an <EVENT eid="e257" class="OCCURRENCE" offsets="1273 1280">amended</EVENT> constitution with a new preamble, to be <EVENT eid="e41" class="OCCURRENCE" offsets="1321 1328">written</EVENT> by Australian poets, republican Janet Holmes a Court <EVENT eid="e115" class="REPORTING" offsets="1382 1386">said</EVENT>,
+``We <EVENT eid="e42" class="OCCURRENCE" offsets="1393 1397">need</EVENT> the smell of eucalyptus in this, and the feel of red
 dust.''
-Monarchists <EVENT eid="e43" class="I_STATE" endpoints="1471 1475">hope</EVENT> to <EVENT eid="e45" class="OCCURRENCE" endpoints="1479 1485">defeat</EVENT> the republic <SIGNAL sid="s47" endpoints="1499 1501">at</SIGNAL> the <EVENT eid="e46" class="OCCURRENCE" endpoints="1506 1516">referendum</EVENT>.
-``The phony <EVENT eid="e48" class="OCCURRENCE" endpoints="1530 1533">war</EVENT> has <EVENT eid="e49" class="ASPECTUAL" endpoints="1538 1546">finished</EVENT> and the real referendum <EVENT eid="e50" class="OCCURRENCE" endpoints="1571 1579">campaign</EVENT>
-has clearly <EVENT eid="e51" class="ASPECTUAL" endpoints="1592 1597">begun</EVENT>,'' Australians for a Constitutional Monarchy
-executive director Kerry Jones <EVENT eid="e52" class="REPORTING" endpoints="1674 1678">said</EVENT>.
-``Well may  we <EVENT eid="e53" class="OCCURRENCE" endpoints="1695 1698">say</EVENT>  `God save the Queen,' for nothing will <EVENT eid="e57" class="OCCURRENCE" endpoints="1739 1743">save</EVENT>
-the republic,'' outraged monarchist delegate David Mitchell <EVENT eid="e58" class="REPORTING" endpoints="1804 1808">said</EVENT>.
-``The idea of a republic will <EVENT eid="e319" class="OCCURRENCE" endpoints="1840 1844">fall</EVENT> to <EVENT eid="e60" class="STATE" endpoints="1848 1852">dust</EVENT> through the grace of
+Monarchists <EVENT eid="e43" class="I_STATE" offsets="1471 1475">hope</EVENT> to <EVENT eid="e45" class="OCCURRENCE" offsets="1479 1485">defeat</EVENT> the republic <SIGNAL sid="s47" offsets="1499 1501">at</SIGNAL> the <EVENT eid="e46" class="OCCURRENCE" offsets="1506 1516">referendum</EVENT>.
+``The phony <EVENT eid="e48" class="OCCURRENCE" offsets="1530 1533">war</EVENT> has <EVENT eid="e49" class="ASPECTUAL" offsets="1538 1546">finished</EVENT> and the real referendum <EVENT eid="e50" class="OCCURRENCE" offsets="1571 1579">campaign</EVENT>
+has clearly <EVENT eid="e51" class="ASPECTUAL" offsets="1592 1597">begun</EVENT>,'' Australians for a Constitutional Monarchy
+executive director Kerry Jones <EVENT eid="e52" class="REPORTING" offsets="1674 1678">said</EVENT>.
+``Well may  we <EVENT eid="e53" class="OCCURRENCE" offsets="1695 1698">say</EVENT>  `God save the Queen,' for nothing will <EVENT eid="e57" class="OCCURRENCE" offsets="1739 1743">save</EVENT>
+the republic,'' outraged monarchist delegate David Mitchell <EVENT eid="e58" class="REPORTING" offsets="1804 1808">said</EVENT>.
+``The idea of a republic will <EVENT eid="e319" class="OCCURRENCE" offsets="1840 1844">fall</EVENT> to <EVENT eid="e60" class="STATE" offsets="1848 1852">dust</EVENT> through the grace of
 almighty God.''
-Polls have <EVENT eid="e62" class="REPORTING" endpoints="1901 1906">shown</EVENT> public <EVENT eid="e63" class="OCCURRENCE" endpoints="1914 1921">support</EVENT> for a republic <EVENT eid="e64" class="OCCURRENCE" endpoints="1937 1947">increasing</EVENT>,
-<EVENT eid="e65" class="OCCURRENCE" endpoints="1949 1955">rising</EVENT> from about <EVENT eid="e460" class="STATE" endpoints="1967 1969">35</EVENT> percent <TIMEX3 tid="t117" type="DATE" value="PAST_REF" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t109" endpoints="1978 1995">several years ago</TIMEX3> to about <EVENT eid="e461" class="STATE" endpoints="2005 2007">51</EVENT> percent
-<TIMEX3 tid="t358" type="DATE" value="1998" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t109" endpoints="2016 2025">this year</TIMEX3>, <SIGNAL sid="s369" endpoints="2027 2029">as</SIGNAL> pro-monarchist sentiment <EVENT eid="e66" class="OCCURRENCE" endpoints="2055 2065">diminishes</EVENT>.
-Australia has been <EVENT eid="e374" class="STATE" endpoints="2086 2097">independent</EVENT> since <TIMEX3 tid="t118" type="DATE" value="1901" temporalFunction="false" functionInDocument="NONE" endpoints="2104 2108">1901</TIMEX3>, but like many
-Commonwealth nations it still <EVENT eid="e67" class="OCCURRENCE" endpoints="2154 2164">recognizes</EVENT> the British monarch as its
+Polls have <EVENT eid="e62" class="REPORTING" offsets="1901 1906">shown</EVENT> public <EVENT eid="e63" class="OCCURRENCE" offsets="1914 1921">support</EVENT> for a republic <EVENT eid="e64" class="OCCURRENCE" offsets="1937 1947">increasing</EVENT>,
+<EVENT eid="e65" class="OCCURRENCE" offsets="1949 1955">rising</EVENT> from about <EVENT eid="e460" class="STATE" offsets="1967 1969">35</EVENT> percent <TIMEX3 tid="t117" type="DATE" value="PAST_REF" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t109" offsets="1978 1995">several years ago</TIMEX3> to about <EVENT eid="e461" class="STATE" offsets="2005 2007">51</EVENT> percent
+<TIMEX3 tid="t358" type="DATE" value="1998" temporalFunction="true" functionInDocument="NONE" anchorTimeID="t109" offsets="2016 2025">this year</TIMEX3>, <SIGNAL sid="s369" offsets="2027 2029">as</SIGNAL> pro-monarchist sentiment <EVENT eid="e66" class="OCCURRENCE" offsets="2055 2065">diminishes</EVENT>.
+Australia has been <EVENT eid="e374" class="STATE" offsets="2086 2097">independent</EVENT> since <TIMEX3 tid="t118" type="DATE" value="1901" temporalFunction="false" functionInDocument="NONE" offsets="2104 2108">1901</TIMEX3>, but like many
+Commonwealth nations it still <EVENT eid="e67" class="OCCURRENCE" offsets="2154 2164">recognizes</EVENT> the British monarch as its
 head of state.
-Howard <EVENT eid="e68" class="REPORTING" endpoints="2214 2218">said</EVENT> Queen Elizabeth II is <EVENT eid="e69" class="OCCURRENCE" endpoints="2241 2247">taking</EVENT> a great interest in the
-<EVENT eid="e387" class="OCCURRENCE" endpoints="2272 2282">convention</EVENT>.
-``She is, I can <EVENT eid="e70" class="I_ACTION" endpoints="2300 2306">assure</EVENT> you, from what I've been <EVENT eid="e72" class="REPORTING" endpoints="2332 2336">told</EVENT>, she's <EVENT eid="e73" class="OCCURRENCE" endpoints="2344 2353">following</EVENT> the <EVENT eid="e74" class="OCCURRENCE" endpoints="2358 2363">thing</EVENT> very closely and <EVENT eid="e75" class="OCCURRENCE" endpoints="2381 2387">taking</EVENT> the view it's our
-<EVENT eid="e76" class="OCCURRENCE" endpoints="2406 2414">business</EVENT>.
-``It's no secret that she's <EVENT eid="e78" class="I_ACTION" endpoints="2444 2453">indicated</EVENT> to me ... she is a 20th
-century democrat, <EVENT eid="e79" class="I_STATE" endpoints="2496 2507">understands</EVENT> that the role of the crown in
-Australia <EVENT eid="e82" class="OCCURRENCE" endpoints="2548 2553">rests</EVENT> in the hands of the Australian people as it <EVENT eid="e85" class="STATE" endpoints="2598 2601">has</EVENT> for
-<TIMEX3 tid="t119" type="DURATION" value="P100Y" mod="LESS_THAN" temporalFunction="false" functionInDocument="NONE" endpoints="2606 2628">almost a hundred years</TIMEX3>.''
-The model for a republic, <EVENT eid="e86" class="OCCURRENCE" endpoints="2658 2665">adopted</EVENT> over bitter <EVENT eid="e87" class="OCCURRENCE" endpoints="2678 2688">objections</EVENT> from
-those <EVENT eid="e88" class="OCCURRENCE" endpoints="2700 2710">advocating</EVENT> direct election of a president, is for
+Howard <EVENT eid="e68" class="REPORTING" offsets="2214 2218">said</EVENT> Queen Elizabeth II is <EVENT eid="e69" class="OCCURRENCE" offsets="2241 2247">taking</EVENT> a great interest in the
+<EVENT eid="e387" class="OCCURRENCE" offsets="2272 2282">convention</EVENT>.
+``She is, I can <EVENT eid="e70" class="I_ACTION" offsets="2300 2306">assure</EVENT> you, from what I've been <EVENT eid="e72" class="REPORTING" offsets="2332 2336">told</EVENT>, she's <EVENT eid="e73" class="OCCURRENCE" offsets="2344 2353">following</EVENT> the <EVENT eid="e74" class="OCCURRENCE" offsets="2358 2363">thing</EVENT> very closely and <EVENT eid="e75" class="OCCURRENCE" offsets="2381 2387">taking</EVENT> the view it's our
+<EVENT eid="e76" class="OCCURRENCE" offsets="2406 2414">business</EVENT>.
+``It's no secret that she's <EVENT eid="e78" class="I_ACTION" offsets="2444 2453">indicated</EVENT> to me ... she is a 20th
+century democrat, <EVENT eid="e79" class="I_STATE" offsets="2496 2507">understands</EVENT> that the role of the crown in
+Australia <EVENT eid="e82" class="OCCURRENCE" offsets="2548 2553">rests</EVENT> in the hands of the Australian people as it <EVENT eid="e85" class="STATE" offsets="2598 2601">has</EVENT> for
+<TIMEX3 tid="t119" type="DURATION" value="P100Y" mod="LESS_THAN" temporalFunction="false" functionInDocument="NONE" offsets="2606 2628">almost a hundred years</TIMEX3>.''
+The model for a republic, <EVENT eid="e86" class="OCCURRENCE" offsets="2658 2665">adopted</EVENT> over bitter <EVENT eid="e87" class="OCCURRENCE" offsets="2678 2688">objections</EVENT> from
+those <EVENT eid="e88" class="OCCURRENCE" offsets="2700 2710">advocating</EVENT> direct election of a president, is for
 presidential nominations to be made with public input and the
 winning candidate decided by a two-thirds majority of Parliament.
-Former prime minister Paul Keating, who <EVENT eid="e95" class="OCCURRENCE" endpoints="2918 2921">put</EVENT> the republic issue
-in the spotlight in his unsuccessful <TIMEX3 tid="t120" type="DATE" value="1996" temporalFunction="false" functionInDocument="NONE" endpoints="2978 2982">1996</TIMEX3> <EVENT eid="e97" class="OCCURRENCE" endpoints="2983 2991">campaign</EVENT> for re-election,
-<EVENT eid="e98" class="OCCURRENCE" endpoints="3009 3017">welcomed</EVENT> the <EVENT eid="e99" class="OCCURRENCE" endpoints="3022 3028">result</EVENT>.
+Former prime minister Paul Keating, who <EVENT eid="e95" class="OCCURRENCE" offsets="2918 2921">put</EVENT> the republic issue
+in the spotlight in his unsuccessful <TIMEX3 tid="t120" type="DATE" value="1996" temporalFunction="false" functionInDocument="NONE" offsets="2978 2982">1996</TIMEX3> <EVENT eid="e97" class="OCCURRENCE" offsets="2983 2991">campaign</EVENT> for re-election,
+<EVENT eid="e98" class="OCCURRENCE" offsets="3009 3017">welcomed</EVENT> the <EVENT eid="e99" class="OCCURRENCE" offsets="3022 3028">result</EVENT>.
 ``This is an important step along the path towards Australia
 claiming its full sovereignty, and due recognition that the
 monarchy can no longer serve us appropriately,'' Keating said.

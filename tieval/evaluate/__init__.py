@@ -36,8 +36,8 @@ def timex_identification(
     M_precision, M_recall = 0, 0
     tps, fps, fns = 0, 0, 0
     for doc in annotations:
-        true = set(t.endpoints for t in annotations[doc] if not t.is_dct)
-        pred = set(p.endpoints for p in predictions[doc])
+        true = set(t.offsets for t in annotations[doc] if not t.is_dct)
+        pred = set(p.offsets for p in predictions[doc])
 
         tp, fp, fn = confusion_matrix(true, pred)
 
@@ -89,8 +89,8 @@ def event_identification(
     M_precision, M_recall = 0, 0
     tps, fps, fns = 0, 0, 0
     for doc in annotations:
-        true = set(t.endpoints for t in annotations[doc])
-        pred = set(p.endpoints for p in predictions[doc])
+        true = set(t.offsets for t in annotations[doc])
+        pred = set(p.offsets for p in predictions[doc])
 
         tp, fp, fn = confusion_matrix(true, pred)
 
@@ -290,7 +290,7 @@ class Span:
         return f"Span({self.start}, {self.end})"
 
     def __eq__(self, other) -> bool:
-        """If the offsets overlap, the spans are considered equal."""
+        """If the offsets overlap, the offsets are considered equal."""
         if (self.end < other.start) or (other.end < self.start):
             return False
         return True

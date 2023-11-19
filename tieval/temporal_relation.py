@@ -79,7 +79,7 @@ class PointRelation:
             xe_ye: str = None
     ) -> None:
         """ Point relation.
-        Every interval relation can be decomposed into four point relations between the entities endpoints:
+        Every interval relation can be decomposed into four point relations between the entities offsets:
         start of entity x; end of entity x; start of entity y; end of entity y.
 
         :param xs_ys: Relation between start of x and start of y.

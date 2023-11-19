@@ -42,7 +42,7 @@ class TimexIdentificationBaseline(BaseTrainableModel):
             for entity in prediction.ents:
                 timexs += [Timex(
                     text=entity.text,
-                    endpoints=(entity.start_char, entity.end_char)
+                    offsets=(entity.start_char, entity.end_char)
                 )]
 
             result[doc.name] = timexs
@@ -134,7 +134,7 @@ class TimexIdentificationBaseline(BaseTrainableModel):
         for doc in documents:
             annot = {
                 "entities": list(set([
-                    (timex.endpoints[0], timex.endpoints[1], "TIMEX")
+                    (timex.offsets[0], timex.offsets[1], "TIMEX")
                     for timex in doc.timexs
                     if not timex.is_dct
                 ]))

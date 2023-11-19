@@ -38,7 +38,7 @@ class EventIdentificationBaseline(BaseTrainableModel):
             for entity in prediction.ents:
                 events += [Event(
                     text=entity.text,
-                    endpoints=(entity.start_char, entity.end_char)
+                    offsets=(entity.start_char, entity.end_char)
                 )]
 
             result[doc.name] = events
@@ -140,7 +140,7 @@ class EventIdentificationBaseline(BaseTrainableModel):
         for doc in documents:
             annot = {
                 "entities": list(set([
-                    (event.endpoints[0], event.endpoints[1], "EVENT")
+                    (event.offsets[0], event.offsets[1], "EVENT")
                     for event in doc.events
                 ]))
             }

@@ -10,7 +10,7 @@ def event():
         id="e1",
         class_="OCCURRENCE",
         text="expansion",
-        endpoints=(82, 91),
+        offsets=(82, 91),
         eiid="ei50001",
         tense="NONE",
         aspect="NONE",

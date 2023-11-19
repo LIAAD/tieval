@@ -9,7 +9,7 @@ class Timex:
             id: str = None,
             text: str = None,
             value: str = None,
-            endpoints: Tuple[int, int] = None,
+            offsets: Tuple[int, int] = None,
             type_: str = None,
             function_in_document: str = None,
             anchor_time_id: str = None,
@@ -23,7 +23,7 @@ class Timex:
         self.function_in_document = function_in_document
         self.anchor_time_id = anchor_time_id
         self.text = text
-        self.endpoints = endpoints
+        self.offsets = offsets
         self.sent_idx = sent_idx
 
         for key, value in kwargs.items():
@@ -53,7 +53,7 @@ class Event:
             self,
             id: str = None,
             text: str = None,
-            endpoints: Tuple[int, int] = None,
+            offsets: Tuple[int, int] = None,
             family: str = None,
             stem: str = None,
             lemma: str = None,
@@ -76,7 +76,7 @@ class Event:
         self.polarity = polarity
         self.pos = pos
         self.text = text
-        self.endpoints = endpoints
+        self.offsets = offsets
         self.class_ = class_
         self.start_time = start_time
         self.end_time = end_time

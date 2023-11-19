@@ -54,13 +54,13 @@ def download_torch_weights(url: str, path: Union[str, Path]) -> None:
         raise Exception(f"Request code: {response.status_code}")
 
 
-def get_spans(
+def get_offsets(
         text: str,
         elements: List[str],
         start_idx: int = 0
 ) -> List[List[int]]:
     running_idx = start_idx
-    spans = []
+    offsets = []
     for element in elements:
         offset = text.find(element)
         start = running_idx + offset
@@ -68,12 +68,12 @@ def get_spans(
         element_len = len(element)
         end = start + element_len
 
-        spans += [[start, end]]
+        offsets += [[start, end]]
 
         text = text[offset + element_len:]
         running_idx = end
 
-    return spans
+    return offsets
 
 
 def resolve_sentence_idxs(sent_idx1: int, sent_idx2: int) -> List[int]:

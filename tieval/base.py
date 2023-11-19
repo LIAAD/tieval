@@ -59,9 +59,9 @@ class Sentence:
     def tokens(self) -> List[List[str]]:
         if self._tokens is None:
             tkns = nltk.tokenize.word_tokenize(self.content)
-            spans = utils.get_spans(self.content, tkns, self.span[0])
+            offsets = utils.get_offsets(self.content, tkns, self.span[0])
 
-            self._tokens = [Token(tkn, span) for tkn, span in zip(tkns, spans)]
+            self._tokens = [Token(tkn, span) for tkn, span in zip(tkns, offsets)]
 
         return self._tokens
 
@@ -87,9 +87,9 @@ class Text:
     def sentences(self) -> List[str]:
         if self._sents is None:
             sents = self.tokenizer(self.content, language=self.language)
-            spans = utils.get_spans(self.content, sents)
+            offsets = utils.get_offsets(self.content, sents)
 
-            self._sents = [Sentence(sent, span) for sent, span in zip(sents, spans)]
+            self._sents = [Sentence(sent, span) for sent, span in zip(sents, offsets)]
 
         return self._sents
 

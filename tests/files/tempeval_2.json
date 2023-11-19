@@ -5,7 +5,7 @@
             "sent_idx": "1",
             "tkn_idx": "7",
             "text": "LA",
-            "endpoints": [
+            "offsets": [
                 0,
                 2
             ]
@@ -14,7 +14,7 @@
             "sent_idx": "1",
             "tkn_idx": "8",
             "text": "CRISI",
-            "endpoints": [
+            "offsets": [
                 3,
                 8
             ]
@@ -23,7 +23,7 @@
             "sent_idx": "1",
             "tkn_idx": "9",
             "text": "MICHELIN",
-            "endpoints": [
+            "offsets": [
                 9,
                 17
             ]
@@ -32,7 +32,7 @@
             "sent_idx": "1",
             "tkn_idx": "10",
             "text": "COLPIRA'",
-            "endpoints": [
+            "offsets": [
                 18,
                 26
             ]
@@ -41,7 +41,7 @@
             "sent_idx": "1",
             "tkn_idx": "11",
             "text": "SOPRATTUTTO",
-            "endpoints": [
+            "offsets": [
                 27,
                 38
             ]
@@ -50,7 +50,7 @@
             "sent_idx": "1",
             "tkn_idx": "12",
             "text": "LE",
-            "endpoints": [
+            "offsets": [
                 39,
                 41
             ]
@@ -59,7 +59,7 @@
             "sent_idx": "1",
             "tkn_idx": "13",
             "text": "FILIALI",
-            "endpoints": [
+            "offsets": [
                 42,
                 49
             ]
@@ -68,7 +68,7 @@
             "sent_idx": "1",
             "tkn_idx": "14",
             "text": "ITALIANE",
-            "endpoints": [
+            "offsets": [
                 50,
                 58
             ]
@@ -77,7 +77,7 @@
             "sent_idx": "1",
             "tkn_idx": "15",
             "text": ".",
-            "endpoints": [
+            "offsets": [
                 58,
                 59
             ]
@@ -86,7 +86,7 @@
             "sent_idx": "2",
             "tkn_idx": "16",
             "text": "La",
-            "endpoints": [
+            "offsets": [
                 60,
                 62
             ]
@@ -95,7 +95,7 @@
             "sent_idx": "2",
             "tkn_idx": "17",
             "text": "multinazionale",
-            "endpoints": [
+            "offsets": [
                 63,
                 77
             ]
@@ -104,7 +104,7 @@
             "sent_idx": "2",
             "tkn_idx": "18",
             "text": "francese",
-            "endpoints": [
+            "offsets": [
                 78,
                 86
             ]
@@ -113,7 +113,7 @@
             "sent_idx": "2",
             "tkn_idx": "19",
             "text": "ha",
-            "endpoints": [
+            "offsets": [
                 87,
                 89
             ]
@@ -122,7 +122,7 @@
             "sent_idx": "2",
             "tkn_idx": "20",
             "text": "perso",
-            "endpoints": [
+            "offsets": [
                 90,
                 95
             ]
@@ -131,7 +131,7 @@
             "sent_idx": "2",
             "tkn_idx": "21",
             "text": "lo",
-            "endpoints": [
+            "offsets": [
                 96,
                 98
             ]
@@ -140,7 +140,7 @@
             "sent_idx": "2",
             "tkn_idx": "22",
             "text": "scorso",
-            "endpoints": [
+            "offsets": [
                 99,
                 105
             ]
@@ -149,7 +149,7 @@
             "sent_idx": "2",
             "tkn_idx": "23",
             "text": "anno",
-            "endpoints": [
+            "offsets": [
                 106,
                 110
             ]
@@ -158,7 +158,7 @@
             "sent_idx": "2",
             "tkn_idx": "24",
             "text": "circa",
-            "endpoints": [
+            "offsets": [
                 111,
                 116
             ]
@@ -167,7 +167,7 @@
             "sent_idx": "2",
             "tkn_idx": "25",
             "text": "400",
-            "endpoints": [
+            "offsets": [
                 117,
                 120
             ]
@@ -176,7 +176,7 @@
             "sent_idx": "2",
             "tkn_idx": "26",
             "text": "miliardi",
-            "endpoints": [
+            "offsets": [
                 121,
                 129
             ]
@@ -185,7 +185,7 @@
             "sent_idx": "2",
             "tkn_idx": "27",
             "text": "di",
-            "endpoints": [
+            "offsets": [
                 130,
                 132
             ]
@@ -194,7 +194,7 @@
             "sent_idx": "2",
             "tkn_idx": "28",
             "text": "lire",
-            "endpoints": [
+            "offsets": [
                 133,
                 137
             ]
@@ -203,7 +203,7 @@
             "sent_idx": "2",
             "tkn_idx": "29",
             "text": ".",
-            "endpoints": [
+            "offsets": [
                 137,
                 138
             ]
@@ -212,7 +212,7 @@
             "sent_idx": "3",
             "tkn_idx": "30",
             "text": "TORINO",
-            "endpoints": [
+            "offsets": [
                 139,
                 145
             ]
@@ -221,7 +221,7 @@
             "sent_idx": "3",
             "tkn_idx": "31",
             "text": "­",
-            "endpoints": [
+            "offsets": [
                 146,
                 147
             ]
@@ -230,7 +230,7 @@
             "sent_idx": "3",
             "tkn_idx": "32",
             "text": "Emanuel",
-            "endpoints": [
+            "offsets": [
                 148,
                 155
             ]
@@ -239,7 +239,7 @@
             "sent_idx": "3",
             "tkn_idx": "33",
             "text": "Daubre'",
-            "endpoints": [
+            "offsets": [
                 156,
                 163
             ]
@@ -248,7 +248,7 @@
             "sent_idx": "3",
             "tkn_idx": "34",
             "text": ",",
-            "endpoints": [
+            "offsets": [
                 163,
                 164
             ]
@@ -257,7 +257,7 @@
             "sent_idx": "3",
             "tkn_idx": "35",
             "text": "presidente",
-            "endpoints": [
+            "offsets": [
                 165,
                 175
             ]
@@ -266,7 +266,7 @@
             "sent_idx": "3",
             "tkn_idx": "36",
             "text": "della",
-            "endpoints": [
+            "offsets": [
                 176,
                 181
             ]
@@ -275,7 +275,7 @@
             "sent_idx": "3",
             "tkn_idx": "37",
             "text": "Michelin",
-            "endpoints": [
+            "offsets": [
                 182,
                 190
             ]
@@ -284,7 +284,7 @@
             "sent_idx": "3",
             "tkn_idx": "38",
             "text": "Italiana",
-            "endpoints": [
+            "offsets": [
                 191,
                 199
             ]
@@ -293,7 +293,7 @@
             "sent_idx": "3",
             "tkn_idx": "39",
             "text": ",",
-            "endpoints": [
+            "offsets": [
                 199,
                 200
             ]
@@ -302,7 +302,7 @@
             "sent_idx": "3",
             "tkn_idx": "40",
             "text": "ha",
-            "endpoints": [
+            "offsets": [
                 201,
                 203
             ]
@@ -311,7 +311,7 @@
             "sent_idx": "3",
             "tkn_idx": "41",
             "text": "deciso",
-            "endpoints": [
+            "offsets": [
                 204,
                 210
             ]
@@ -320,7 +320,7 @@
             "sent_idx": "3",
             "tkn_idx": "42",
             "text": "di",
-            "endpoints": [
+            "offsets": [
                 211,
                 213
             ]
@@ -329,7 +329,7 @@
             "sent_idx": "3",
             "tkn_idx": "43",
             "text": "tenere",
-            "endpoints": [
+            "offsets": [
                 214,
                 220
             ]
@@ -338,7 +338,7 @@
             "sent_idx": "3",
             "tkn_idx": "44",
             "text": "sulla",
-            "endpoints": [
+            "offsets": [
                 221,
                 226
             ]
@@ -347,7 +347,7 @@
             "sent_idx": "3",
             "tkn_idx": "45",
             "text": "corda",
-            "endpoints": [
+            "offsets": [
                 227,
                 232
             ]
@@ -356,7 +356,7 @@
             "sent_idx": "3",
             "tkn_idx": "46",
             "text": "il",
-            "endpoints": [
+            "offsets": [
                 233,
                 235
             ]
@@ -365,7 +365,7 @@
             "sent_idx": "3",
             "tkn_idx": "47",
             "text": "sindacato",
-            "endpoints": [
+            "offsets": [
                 236,
                 245
             ]
@@ -374,7 +374,7 @@
             "sent_idx": "3",
             "tkn_idx": "48",
             "text": ",",
-            "endpoints": [
+            "offsets": [
                 245,
                 246
             ]
@@ -383,7 +383,7 @@
             "sent_idx": "3",
             "tkn_idx": "49",
             "text": "lasciando",
-            "endpoints": [
+            "offsets": [
                 247,
                 256
             ]
@@ -392,7 +392,7 @@
             "sent_idx": "3",
             "tkn_idx": "50",
             "text": "priva",
-            "endpoints": [
+            "offsets": [
                 257,
                 262
             ]
@@ -401,7 +401,7 @@
             "sent_idx": "3",
             "tkn_idx": "51",
             "text": "di",
-            "endpoints": [
+            "offsets": [
                 263,
                 265
             ]
@@ -410,7 +410,7 @@
             "sent_idx": "3",
             "tkn_idx": "52",
             "text": "qualsiasi",
-            "endpoints": [
+            "offsets": [
                 266,
                 275
             ]
@@ -419,7 +419,7 @@
             "sent_idx": "3",
             "tkn_idx": "53",
             "text": "conferma",
-            "endpoints": [
+            "offsets": [
                 276,
                 284
             ]
@@ -428,7 +428,7 @@
             "sent_idx": "3",
             "tkn_idx": "54",
             "text": "ufficiale",
-            "endpoints": [
+            "offsets": [
                 285,
                 294
             ]
@@ -437,7 +437,7 @@
             "sent_idx": "3",
             "tkn_idx": "55",
             "text": "la",
-            "endpoints": [
+            "offsets": [
                 295,
                 297
             ]
@@ -446,7 +446,7 @@
             "sent_idx": "3",
             "tkn_idx": "56",
             "text": "notizia",
-            "endpoints": [
+            "offsets": [
                 298,
                 305
             ]
@@ -455,7 +455,7 @@
             "sent_idx": "3",
             "tkn_idx": "57",
             "text": "dei",
-            "endpoints": [
+            "offsets": [
                 306,
                 309
             ]
@@ -464,7 +464,7 @@
             "sent_idx": "3",
             "tkn_idx": "58",
             "text": "01:05:00",
-            "endpoints": [
+            "offsets": [
                 310,
                 318
             ]
@@ -473,7 +473,7 @@
             "sent_idx": "3",
             "tkn_idx": "59",
             "text": "licenziamenti",
-            "endpoints": [
+            "offsets": [
                 319,
                 332
             ]
@@ -482,7 +482,7 @@
             "sent_idx": "3",
             "tkn_idx": "60",
             "text": "nelle",
-            "endpoints": [
+            "offsets": [
                 333,
                 338
             ]
@@ -491,7 +491,7 @@
             "sent_idx": "3",
             "tkn_idx": "61",
             "text": "fabbriche",
-            "endpoints": [
+            "offsets": [
                 339,
                 348
             ]
@@ -500,7 +500,7 @@
             "sent_idx": "3",
             "tkn_idx": "62",
             "text": "italiane",
-            "endpoints": [
+            "offsets": [
                 349,
                 357
             ]
@@ -509,7 +509,7 @@
             "sent_idx": "3",
             "tkn_idx": "63",
             "text": "della",
-            "endpoints": [
+            "offsets": [
                 358,
                 363
             ]
@@ -518,7 +518,7 @@
             "sent_idx": "3",
             "tkn_idx": "64",
             "text": "multinazionale",
-            "endpoints": [
+            "offsets": [
                 364,
                 378
             ]
@@ -527,7 +527,7 @@
             "sent_idx": "3",
             "tkn_idx": "65",
             "text": "di",
-            "endpoints": [
+            "offsets": [
                 379,
                 381
             ]
@@ -536,7 +536,7 @@
             "sent_idx": "3",
             "tkn_idx": "66",
             "text": "Clermont-Ferrand",
-            "endpoints": [
+            "offsets": [
                 382,
                 398
             ]
@@ -545,7 +545,7 @@
             "sent_idx": "3",
             "tkn_idx": "67",
             "text": ".",
-            "endpoints": [
+            "offsets": [
                 398,
                 399
             ]
@@ -554,7 +554,7 @@
             "sent_idx": "4",
             "tkn_idx": "68",
             "text": "La",
-            "endpoints": [
+            "offsets": [
                 400,
                 402
             ]
@@ -563,7 +563,7 @@
             "sent_idx": "4",
             "tkn_idx": "69",
             "text": "scelta",
-            "endpoints": [
+            "offsets": [
                 403,
                 409
             ]
@@ -572,7 +572,7 @@
             "sent_idx": "4",
             "tkn_idx": "70",
             "text": "del",
-            "endpoints": [
+            "offsets": [
                 410,
                 413
             ]
@@ -581,7 +581,7 @@
             "sent_idx": "4",
             "tkn_idx": "71",
             "text": "silenzio",
-            "endpoints": [
+            "offsets": [
                 414,
                 422
             ]
@@ -590,7 +590,7 @@
             "sent_idx": "4",
             "tkn_idx": "72",
             "text": "non",
-            "endpoints": [
+            "offsets": [
                 423,
                 426
             ]
@@ -599,7 +599,7 @@
             "sent_idx": "4",
             "tkn_idx": "73",
             "text": "e'",
-            "endpoints": [
+            "offsets": [
                 427,
                 429
             ]
@@ -608,7 +608,7 @@
             "sent_idx": "4",
             "tkn_idx": "74",
             "text": "nuova",
-            "endpoints": [
+            "offsets": [
                 430,
                 435
             ]
@@ -617,7 +617,7 @@
             "sent_idx": "4",
             "tkn_idx": "75",
             "text": ",",
-            "endpoints": [
+            "offsets": [
                 435,
                 436
             ]
@@ -626,7 +626,7 @@
             "sent_idx": "4",
             "tkn_idx": "76",
             "text": "fa",
-            "endpoints": [
+            "offsets": [
                 437,
                 439
             ]
@@ -635,7 +635,7 @@
             "sent_idx": "4",
             "tkn_idx": "77",
             "text": "parte",
-            "endpoints": [
+            "offsets": [
                 440,
                 445
             ]
@@ -644,7 +644,7 @@
             "sent_idx": "4",
             "tkn_idx": "78",
             "text": "della",
-            "endpoints": [
+            "offsets": [
                 446,
                 451
             ]
@@ -653,7 +653,7 @@
             "sent_idx": "4",
             "tkn_idx": "79",
             "text": "politica",
-            "endpoints": [
+            "offsets": [
                 452,
                 460
             ]
@@ -662,7 +662,7 @@
             "sent_idx": "4",
             "tkn_idx": "80",
             "text": "di",
-            "endpoints": [
+            "offsets": [
                 461,
                 463
             ]
@@ -671,7 +671,7 @@
             "sent_idx": "4",
             "tkn_idx": "81",
             "text": "Francois",
-            "endpoints": [
+            "offsets": [
                 464,
                 472
             ]
@@ -680,7 +680,7 @@
             "sent_idx": "4",
             "tkn_idx": "82",
             "text": "Michelin",
-            "endpoints": [
+            "offsets": [
                 473,
                 481
             ]
@@ -689,7 +689,7 @@
             "sent_idx": "4",
             "tkn_idx": "83",
             "text": ",",
-            "endpoints": [
+            "offsets": [
                 481,
                 482
             ]
@@ -698,7 +698,7 @@
             "sent_idx": "4",
             "tkn_idx": "84",
             "text": "un",
-            "endpoints": [
+            "offsets": [
                 483,
                 485
             ]
@@ -707,7 +707,7 @@
             "sent_idx": "4",
             "tkn_idx": "85",
             "text": "padrone",
-            "endpoints": [
+            "offsets": [
                 486,
                 493
             ]
@@ -716,7 +716,7 @@
             "sent_idx": "4",
             "tkn_idx": "86",
             "text": "vecchia",
-            "endpoints": [
+            "offsets": [
                 494,
                 501
             ]
@@ -725,7 +725,7 @@
             "sent_idx": "4",
             "tkn_idx": "87",
             "text": "maniera",
-            "endpoints": [
+            "offsets": [
                 502,
                 509
             ]
@@ -734,7 +734,7 @@
             "sent_idx": "4",
             "tkn_idx": "88",
             "text": "che",
-            "endpoints": [
+            "offsets": [
                 510,
                 513
             ]
@@ -743,7 +743,7 @@
             "sent_idx": "4",
             "tkn_idx": "89",
             "text": "non",
-            "endpoints": [
+            "offsets": [
                 514,
                 517
             ]
@@ -752,7 +752,7 @@
             "sent_idx": "4",
             "tkn_idx": "90",
             "text": "ha",
-            "endpoints": [
+            "offsets": [
                 518,
                 520
             ]
@@ -761,7 +761,7 @@
             "sent_idx": "4",
             "tkn_idx": "91",
             "text": "mai",
-            "endpoints": [
+            "offsets": [
                 521,
                 524
             ]
@@ -770,7 +770,7 @@
             "sent_idx": "4",
             "tkn_idx": "92",
             "text": "amato",
-            "endpoints": [
+            "offsets": [
                 525,
                 530
             ]
@@ -779,7 +779,7 @@
             "sent_idx": "4",
             "tkn_idx": "93",
             "text": "i",
-            "endpoints": [
+            "offsets": [
                 531,
                 532
             ]
@@ -788,7 +788,7 @@
             "sent_idx": "4",
             "tkn_idx": "94",
             "text": "rapporti",
-            "endpoints": [
+            "offsets": [
                 533,
                 541
             ]
@@ -797,7 +797,7 @@
             "sent_idx": "4",
             "tkn_idx": "95",
             "text": "col",
-            "endpoints": [
+            "offsets": [
                 542,
                 545
             ]
@@ -806,7 +806,7 @@
             "sent_idx": "4",
             "tkn_idx": "96",
             "text": "sindacato",
-            "endpoints": [
+            "offsets": [
                 546,
                 555
             ]
@@ -815,7 +815,7 @@
             "sent_idx": "4",
             "tkn_idx": "97",
             "text": ":",
-            "endpoints": [
+            "offsets": [
                 555,
                 556
             ]
@@ -824,7 +824,7 @@
             "sent_idx": "4",
             "tkn_idx": "98",
             "text": "Daubre'",
-            "endpoints": [
+            "offsets": [
                 557,
                 564
             ]
@@ -833,7 +833,7 @@
             "sent_idx": "4",
             "tkn_idx": "99",
             "text": "si",
-            "endpoints": [
+            "offsets": [
                 565,
                 567
             ]
@@ -842,7 +842,7 @@
             "sent_idx": "4",
             "tkn_idx": "100",
             "text": "e'",
-            "endpoints": [
+            "offsets": [
                 568,
                 570
             ]
@@ -851,7 +851,7 @@
             "sent_idx": "4",
             "tkn_idx": "101",
             "text": "limitato",
-            "endpoints": [
+            "offsets": [
                 571,
                 579
             ]
@@ -860,7 +860,7 @@
             "sent_idx": "4",
             "tkn_idx": "102",
             "text": "a",
-            "endpoints": [
+            "offsets": [
                 580,
                 581
             ]
@@ -869,7 +869,7 @@
             "sent_idx": "4",
             "tkn_idx": "103",
             "text": "far",
-            "endpoints": [
+            "offsets": [
                 582,
                 585
             ]
@@ -878,7 +878,7 @@
             "sent_idx": "4",
             "tkn_idx": "104",
             "text": "sapere",
-            "endpoints": [
+            "offsets": [
                 586,
                 592
             ]
@@ -887,7 +887,7 @@
             "sent_idx": "4",
             "tkn_idx": "105",
             "text": "in",
-            "endpoints": [
+            "offsets": [
                 593,
                 595
             ]
@@ -896,7 +896,7 @@
             "sent_idx": "4",
             "tkn_idx": "106",
             "text": "questa",
-            "endpoints": [
+            "offsets": [
                 596,
                 602
             ]
@@ -905,7 +905,7 @@
             "sent_idx": "4",
             "tkn_idx": "107",
             "text": "occasione",
-            "endpoints": [
+            "offsets": [
                 603,
                 612
             ]
@@ -914,7 +914,7 @@
             "sent_idx": "4",
             "tkn_idx": "108",
             "text": "che",
-            "endpoints": [
+            "offsets": [
                 613,
                 616
             ]
@@ -923,7 +923,7 @@
             "sent_idx": "4",
             "tkn_idx": "109",
             "text": "e'",
-            "endpoints": [
+            "offsets": [
                 617,
                 619
             ]
@@ -932,7 +932,7 @@
             "sent_idx": "4",
             "tkn_idx": "110",
             "text": "stato",
-            "endpoints": [
+            "offsets": [
                 620,
                 625
             ]
@@ -941,7 +941,7 @@
             "sent_idx": "4",
             "tkn_idx": "111",
             "text": "interpretato",
-            "endpoints": [
+            "offsets": [
                 626,
                 638
             ]
@@ -950,7 +950,7 @@
             "sent_idx": "4",
             "tkn_idx": "112",
             "text": "come",
-            "endpoints": [
+            "offsets": [
                 639,
                 643
             ]
@@ -959,7 +959,7 @@
             "sent_idx": "4",
             "tkn_idx": "113",
             "text": "licenziamento",
-            "endpoints": [
+            "offsets": [
                 644,
                 657
             ]
@@ -968,7 +968,7 @@
             "sent_idx": "4",
             "tkn_idx": "114",
             "text": "quello",
-            "endpoints": [
+            "offsets": [
                 658,
                 664
             ]
@@ -977,7 +977,7 @@
             "sent_idx": "4",
             "tkn_idx": "115",
             "text": "che",
-            "endpoints": [
+            "offsets": [
                 665,
                 668
             ]
@@ -986,7 +986,7 @@
             "sent_idx": "4",
             "tkn_idx": "116",
             "text": "per",
-            "endpoints": [
+            "offsets": [
                 669,
                 672
             ]
@@ -995,7 +995,7 @@
             "sent_idx": "4",
             "tkn_idx": "117",
             "text": "ora",
-            "endpoints": [
+            "offsets": [
                 673,
                 676
             ]
@@ -1004,7 +1004,7 @@
             "sent_idx": "4",
             "tkn_idx": "118",
             "text": "e'",
-            "endpoints": [
+            "offsets": [
                 677,
                 679
             ]
@@ -1013,7 +1013,7 @@
             "sent_idx": "4",
             "tkn_idx": "119",
             "text": "solo",
-            "endpoints": [
+            "offsets": [
                 680,
                 684
             ]
@@ -1022,7 +1022,7 @@
             "sent_idx": "4",
             "tkn_idx": "120",
             "text": "un",
-            "endpoints": [
+            "offsets": [
                 685,
                 687
             ]
@@ -1031,7 +1031,7 @@
             "sent_idx": "4",
             "tkn_idx": "121",
             "text": "lungo",
-            "endpoints": [
+            "offsets": [
                 688,
                 693
             ]
@@ -1040,7 +1040,7 @@
             "sent_idx": "4",
             "tkn_idx": "122",
             "text": "periodo",
-            "endpoints": [
+            "offsets": [
                 694,
                 701
             ]
@@ -1049,7 +1049,7 @@
             "sent_idx": "4",
             "tkn_idx": "123",
             "text": "di",
-            "endpoints": [
+            "offsets": [
                 702,
                 704
             ]
@@ -1058,7 +1058,7 @@
             "sent_idx": "4",
             "tkn_idx": "124",
             "text": "cassa",
-            "endpoints": [
+            "offsets": [
                 705,
                 710
             ]
@@ -1067,7 +1067,7 @@
             "sent_idx": "4",
             "tkn_idx": "125",
             "text": "integrazione",
-            "endpoints": [
+            "offsets": [
                 711,
                 723
             ]
@@ -1076,7 +1076,7 @@
             "sent_idx": "4",
             "tkn_idx": "126",
             "text": ".",
-            "endpoints": [
+            "offsets": [
                 723,
                 724
             ]
@@ -1085,7 +1085,7 @@
             "sent_idx": "5",
             "tkn_idx": "127",
             "text": "In",
-            "endpoints": [
+            "offsets": [
                 725,
                 727
             ]
@@ -1094,7 +1094,7 @@
             "sent_idx": "5",
             "tkn_idx": "128",
             "text": "questo",
-            "endpoints": [
+            "offsets": [
                 728,
                 734
             ]
@@ -1103,7 +1103,7 @@
             "sent_idx": "5",
             "tkn_idx": "129",
             "text": "caso",
-            "endpoints": [
+            "offsets": [
                 735,
                 739
             ]
@@ -1112,7 +1112,7 @@
             "sent_idx": "5",
             "tkn_idx": "130",
             "text": "pero'",
-            "endpoints": [
+            "offsets": [
                 740,
                 745
             ]
@@ -1121,7 +1121,7 @@
             "sent_idx": "5",
             "tkn_idx": "131",
             "text": "c'",
-            "endpoints": [
+            "offsets": [
                 746,
                 748
             ]
@@ -1130,7 +1130,7 @@
             "sent_idx": "5",
             "tkn_idx": "132",
             "text": "e'",
-            "endpoints": [
+            "offsets": [
                 749,
                 751
             ]
@@ -1139,7 +1139,7 @@
             "sent_idx": "5",
             "tkn_idx": "133",
             "text": "qualcosa",
-            "endpoints": [
+            "offsets": [
                 752,
                 760
             ]
@@ -1148,7 +1148,7 @@
             "sent_idx": "5",
             "tkn_idx": "134",
             "text": "di",
-            "endpoints": [
+            "offsets": [
                 761,
                 763
             ]
@@ -1157,7 +1157,7 @@
             "sent_idx": "5",
             "tkn_idx": "135",
             "text": "piu'",
-            "endpoints": [
+            "offsets": [
                 764,
                 768
             ]
@@ -1166,7 +1166,7 @@
             "sent_idx": "5",
             "tkn_idx": "136",
             "text": "dell'",
-            "endpoints": [
+            "offsets": [
                 769,
                 774
             ]
@@ -1175,7 +1175,7 @@
             "sent_idx": "5",
             "tkn_idx": "137",
             "text": "avversione",
-            "endpoints": [
+            "offsets": [
                 775,
                 785
             ]
@@ -1184,7 +1184,7 @@
             "sent_idx": "5",
             "tkn_idx": "138",
             "text": "per",
-            "endpoints": [
+            "offsets": [
                 786,
                 789
             ]
@@ -1193,7 +1193,7 @@
             "sent_idx": "5",
             "tkn_idx": "139",
             "text": "le",
-            "endpoints": [
+            "offsets": [
                 790,
                 792
             ]
@@ -1202,7 +1202,7 @@
             "sent_idx": "5",
             "tkn_idx": "140",
             "text": "relazioni",
-            "endpoints": [
+            "offsets": [
                 793,
                 802
             ]
@@ -1211,7 +1211,7 @@
             "sent_idx": "5",
             "tkn_idx": "141",
             "text": "industriali",
-            "endpoints": [
+            "offsets": [
                 803,
                 814
             ]
@@ -1220,7 +1220,7 @@
             "sent_idx": "5",
             "tkn_idx": "142",
             "text": ",",
-            "endpoints": [
+            "offsets": [
                 814,
                 815
             ]
@@ -1229,7 +1229,7 @@
             "sent_idx": "5",
             "tkn_idx": "143",
             "text": "nel senso che",
-            "endpoints": [
+            "offsets": [
                 816,
                 829
             ]
@@ -1238,7 +1238,7 @@
             "sent_idx": "5",
             "tkn_idx": "144",
             "text": "dietro",
-            "endpoints": [
+            "offsets": [
                 830,
                 836
             ]
@@ -1247,7 +1247,7 @@
             "sent_idx": "5",
             "tkn_idx": "145",
             "text": "la",
-            "endpoints": [
+            "offsets": [
                 837,
                 839
             ]
@@ -1256,7 +1256,7 @@
             "sent_idx": "5",
             "tkn_idx": "146",
             "text": "notizia",
-            "endpoints": [
+            "offsets": [
                 840,
                 847
             ]
@@ -1265,7 +1265,7 @@
             "sent_idx": "5",
             "tkn_idx": "147",
             "text": "dei",
-            "endpoints": [
+            "offsets": [
                 848,
                 851
             ]
@@ -1274,7 +1274,7 @@
             "sent_idx": "5",
             "tkn_idx": "148",
             "text": "tagli",
-            "endpoints": [
+            "offsets": [
                 852,
                 857
             ]
@@ -1283,7 +1283,7 @@
             "sent_idx": "5",
             "tkn_idx": "149",
             "text": "occupazionali",
-            "endpoints": [
+            "offsets": [
                 858,
                 871
             ]
@@ -1292,7 +1292,7 @@
             "sent_idx": "5",
             "tkn_idx": "150",
             "text": "riferiti",
-            "endpoints": [
+            "offsets": [
                 872,
                 880
             ]
@@ -1301,7 +1301,7 @@
             "sent_idx": "5",
             "tkn_idx": "151",
             "text": "dal",
-            "endpoints": [
+            "offsets": [
                 881,
                 884
             ]
@@ -1310,7 +1310,7 @@
             "sent_idx": "5",
             "tkn_idx": "152",
             "text": "quotidiano",
-            "endpoints": [
+            "offsets": [
                 885,
                 895
             ]
@@ -1319,7 +1319,7 @@
             "sent_idx": "5",
             "tkn_idx": "153",
             "text": "Le",
-            "endpoints": [
+            "offsets": [
                 896,
                 898
             ]
@@ -1328,7 +1328,7 @@
             "sent_idx": "5",
             "tkn_idx": "154",
             "text": "Monde",
-            "endpoints": [
+            "offsets": [
                 899,
                 904
             ]
@@ -1337,7 +1337,7 @@
             "sent_idx": "5",
             "tkn_idx": "155",
             "text": "c'",
-            "endpoints": [
+            "offsets": [
                 905,
                 907
             ]
@@ -1346,7 +1346,7 @@
             "sent_idx": "5",
             "tkn_idx": "156",
             "text": "e'",
-            "endpoints": [
+            "offsets": [
                 908,
                 910
             ]
@@ -1355,7 +1355,7 @@
             "sent_idx": "5",
             "tkn_idx": "157",
             "text": "un",
-            "endpoints": [
+            "offsets": [
                 911,
                 913
             ]
@@ -1364,7 +1364,7 @@
             "sent_idx": "5",
             "tkn_idx": "158",
             "text": "progetto",
-            "endpoints": [
+            "offsets": [
                 914,
                 922
             ]
@@ -1373,7 +1373,7 @@
             "sent_idx": "5",
             "tkn_idx": "159",
             "text": "che",
-            "endpoints": [
+            "offsets": [
                 923,
                 926
             ]
@@ -1382,7 +1382,7 @@
             "sent_idx": "5",
             "tkn_idx": "160",
             "text": "va",
-            "endpoints": [
+            "offsets": [
                 927,
                 929
             ]
@@ -1391,7 +1391,7 @@
             "sent_idx": "5",
             "tkn_idx": "161",
             "text": "oltre",
-            "endpoints": [
+            "offsets": [
                 930,
                 935
             ]
@@ -1400,7 +1400,7 @@
             "sent_idx": "5",
             "tkn_idx": "162",
             "text": "il",
-            "endpoints": [
+            "offsets": [
                 936,
                 938
             ]
@@ -1409,7 +1409,7 @@
             "sent_idx": "5",
             "tkn_idx": "163",
             "text": "ridimensionamento",
-            "endpoints": [
+            "offsets": [
                 939,
                 956
             ]
@@ -1418,7 +1418,7 @@
             "sent_idx": "5",
             "tkn_idx": "164",
             "text": "previsto",
-            "endpoints": [
+            "offsets": [
                 957,
                 965
             ]
@@ -1427,7 +1427,7 @@
             "sent_idx": "5",
             "tkn_idx": "165",
             "text": "negli",
-            "endpoints": [
+            "offsets": [
                 966,
                 971
             ]
@@ -1436,7 +1436,7 @@
             "sent_idx": "5",
             "tkn_idx": "166",
             "text": "stabilimenti",
-            "endpoints": [
+            "offsets": [
                 972,
                 984
             ]
@@ -1445,7 +1445,7 @@
             "sent_idx": "5",
             "tkn_idx": "167",
             "text": "italiani",
-            "endpoints": [
+            "offsets": [
                 985,
                 993
             ]
@@ -1454,7 +1454,7 @@
             "sent_idx": "5",
             "tkn_idx": "168",
             "text": "del",
-            "endpoints": [
+            "offsets": [
                 994,
                 997
             ]
@@ -1463,7 +1463,7 @@
             "sent_idx": "5",
             "tkn_idx": "169",
             "text": "gruppo",
-            "endpoints": [
+            "offsets": [
                 998,
                 1004
             ]
@@ -1472,7 +1472,7 @@
             "sent_idx": "5",
             "tkn_idx": "170",
             "text": ".",
-            "endpoints": [
+            "offsets": [
                 1004,
                 1005
             ]
@@ -1481,7 +1481,7 @@
             "sent_idx": "6",
             "tkn_idx": "171",
             "text": "Nel",
-            "endpoints": [
+            "offsets": [
                 1006,
                 1009
             ]
@@ -1490,7 +1490,7 @@
             "sent_idx": "6",
             "tkn_idx": "172",
             "text": "giugno",
-            "endpoints": [
+            "offsets": [
                 1010,
                 1016
             ]
@@ -1499,7 +1499,7 @@
             "sent_idx": "6",
             "tkn_idx": "173",
             "text": "del",
-            "endpoints": [
+            "offsets": [
                 1017,
                 1020
             ]
@@ -1508,7 +1508,7 @@
             "sent_idx": "6",
             "tkn_idx": "174",
             "text": "1984",
-            "endpoints": [
+            "offsets": [
                 1021,
                 1025
             ]
@@ -1517,7 +1517,7 @@
             "sent_idx": "6",
             "tkn_idx": "175",
             "text": "c'",
-            "endpoints": [
+            "offsets": [
                 1026,
                 1028
             ]
@@ -1526,7 +1526,7 @@
             "sent_idx": "6",
             "tkn_idx": "176",
             "text": "e'",
-            "endpoints": [
+            "offsets": [
                 1029,
                 1031
             ]
@@ -1535,7 +1535,7 @@
             "sent_idx": "6",
             "tkn_idx": "177",
             "text": "stato",
-            "endpoints": [
+            "offsets": [
                 1032,
                 1037
             ]
@@ -1544,7 +1544,7 @@
             "sent_idx": "6",
             "tkn_idx": "178",
             "text": "a",
-            "endpoints": [
+            "offsets": [
                 1038,
                 1039
             ]
@@ -1553,7 +1553,7 @@
             "sent_idx": "6",
             "tkn_idx": "179",
             "text": "Clermont-Ferrand",
-            "endpoints": [
+            "offsets": [
                 1040,
                 1056
             ]
@@ -1562,7 +1562,7 @@
             "sent_idx": "6",
             "tkn_idx": "180",
             "text": "un",
-            "endpoints": [
+            "offsets": [
                 1057,
                 1059
             ]
@@ -1571,7 +1571,7 @@
             "sent_idx": "6",
             "tkn_idx": "181",
             "text": "incontro",
-            "endpoints": [
+            "offsets": [
                 1060,
                 1068
             ]
@@ -1580,7 +1580,7 @@
             "sent_idx": "6",
             "tkn_idx": "182",
             "text": "tra",
-            "endpoints": [
+            "offsets": [
                 1069,
                 1072
             ]
@@ -1589,7 +1589,7 @@
             "sent_idx": "6",
             "tkn_idx": "183",
             "text": "i",
-            "endpoints": [
+            "offsets": [
                 1073,
                 1074
             ]
@@ -1598,7 +1598,7 @@
             "sent_idx": "6",
             "tkn_idx": "184",
             "text": "sindacati",
-            "endpoints": [
+            "offsets": [
                 1075,
                 1084
             ]
@@ -1607,7 +1607,7 @@
             "sent_idx": "6",
             "tkn_idx": "185",
             "text": "italiani",
-            "endpoints": [
+            "offsets": [
                 1085,
                 1093
             ]
@@ -1616,7 +1616,7 @@
             "sent_idx": "6",
             "tkn_idx": "186",
             "text": "e",
-            "endpoints": [
+            "offsets": [
                 1094,
                 1095
             ]
@@ -1625,7 +1625,7 @@
             "sent_idx": "6",
             "tkn_idx": "187",
             "text": "francesi",
-            "endpoints": [
+            "offsets": [
                 1096,
                 1104
             ]
@@ -1634,7 +1634,7 @@
             "sent_idx": "6",
             "tkn_idx": "188",
             "text": "e",
-            "endpoints": [
+            "offsets": [
                 1105,
                 1106
             ]
@@ -1643,7 +1643,7 @@
             "sent_idx": "6",
             "tkn_idx": "189",
             "text": "gia'",
-            "endpoints": [
+            "offsets": [
                 1107,
                 1111
             ]
@@ -1652,7 +1652,7 @@
             "sent_idx": "6",
             "tkn_idx": "190",
             "text": "allora",
-            "endpoints": [
+            "offsets": [
                 1112,
                 1118
             ]
@@ -1661,7 +1661,7 @@
             "sent_idx": "6",
             "tkn_idx": "191",
             "text": "si",
-            "endpoints": [
+            "offsets": [
                 1119,
                 1121
             ]
@@ -1670,7 +1670,7 @@
             "sent_idx": "6",
             "tkn_idx": "192",
             "text": "prevedeva",
-            "endpoints": [
+            "offsets": [
                 1122,
                 1131
             ]
@@ -1679,7 +1679,7 @@
             "sent_idx": "6",
             "tkn_idx": "193",
             "text": "per",
-            "endpoints": [
+            "offsets": [
                 1132,
                 1135
             ]
@@ -1688,7 +1688,7 @@
             "sent_idx": "6",
             "tkn_idx": "194",
             "text": "i",
-            "endpoints": [
+            "offsets": [
                 1136,
                 1137
             ]
@@ -1697,7 +1697,7 @@
             "sent_idx": "6",
             "tkn_idx": "195",
             "text": "prossimi",
-            "endpoints": [
+            "offsets": [
                 1138,
                 1146
             ]
@@ -1706,7 +1706,7 @@
             "sent_idx": "6",
             "tkn_idx": "196",
             "text": "due",
-            "endpoints": [
+            "offsets": [
                 1147,
                 1150
             ]
@@ -1715,7 +1715,7 @@
             "sent_idx": "6",
             "tkn_idx": "197",
             "text": "anni",
-            "endpoints": [
+            "offsets": [
                 1151,
                 1155
             ]
@@ -1724,7 +1724,7 @@
             "sent_idx": "6",
             "tkn_idx": "198",
             "text": "un",
-            "endpoints": [
+            "offsets": [
                 1156,
                 1158
             ]
@@ -1733,7 +1733,7 @@
             "sent_idx": "6",
             "tkn_idx": "199",
             "text": "calo",
-            "endpoints": [
+            "offsets": [
                 1159,
                 1163
             ]
@@ -1742,7 +1742,7 @@
             "sent_idx": "6",
             "tkn_idx": "200",
             "text": "dell'",
-            "endpoints": [
+            "offsets": [
                 1164,
                 1169
             ]
@@ -1751,7 +1751,7 @@
             "sent_idx": "6",
             "tkn_idx": "201",
             "text": "occupazione",
-            "endpoints": [
+            "offsets": [
                 1170,
                 1181
             ]
@@ -1760,7 +1760,7 @@
             "sent_idx": "6",
             "tkn_idx": "202",
             "text": ".",
-            "endpoints": [
+            "offsets": [
                 1181,
                 1182
             ]
@@ -1769,7 +1769,7 @@
             "sent_idx": "7",
             "tkn_idx": "203",
             "text": "Adesso",
-            "endpoints": [
+            "offsets": [
                 1183,
                 1189
             ]
@@ -1778,7 +1778,7 @@
             "sent_idx": "7",
             "tkn_idx": "204",
             "text": "pero'",
-            "endpoints": [
+            "offsets": [
                 1190,
                 1195
             ]
@@ -1787,7 +1787,7 @@
             "sent_idx": "7",
             "tkn_idx": "205",
             "text": "si",
-            "endpoints": [
+            "offsets": [
                 1196,
                 1198
             ]
@@ -1796,7 +1796,7 @@
             "sent_idx": "7",
             "tkn_idx": "206",
             "text": "teme",
-            "endpoints": [
+            "offsets": [
                 1199,
                 1203
             ]
@@ -1805,7 +1805,7 @@
             "sent_idx": "7",
             "tkn_idx": "207",
             "text": "che",
-            "endpoints": [
+            "offsets": [
                 1204,
                 1207
             ]
@@ -1814,7 +1814,7 @@
             "sent_idx": "7",
             "tkn_idx": "208",
             "text": "il",
-            "endpoints": [
+            "offsets": [
                 1208,
                 1210
             ]
@@ -1823,7 +1823,7 @@
             "sent_idx": "7",
             "tkn_idx": "209",
             "text": "prezzo",
-            "endpoints": [
+            "offsets": [
                 1211,
                 1217
             ]
@@ -1832,7 +1832,7 @@
             "sent_idx": "7",
             "tkn_idx": "210",
             "text": "piu'",
-            "endpoints": [
+            "offsets": [
                 1218,
                 1222
             ]
@@ -1841,7 +1841,7 @@
             "sent_idx": "7",
             "tkn_idx": "211",
             "text": "alto",
-            "endpoints": [
+            "offsets": [
                 1223,
                 1227
             ]
@@ -1850,7 +1850,7 @@
             "sent_idx": "7",
             "tkn_idx": "212",
             "text": "lo",
-            "endpoints": [
+            "offsets": [
                 1228,
                 1230
             ]
@@ -1859,7 +1859,7 @@
             "sent_idx": "7",
             "tkn_idx": "213",
             "text": "si",
-            "endpoints": [
+            "offsets": [
                 1231,
                 1233
             ]
@@ -1868,7 +1868,7 @@
             "sent_idx": "7",
             "tkn_idx": "214",
             "text": "voglia",
-            "endpoints": [
+            "offsets": [
                 1234,
                 1240
             ]
@@ -1877,7 +1877,7 @@
             "sent_idx": "7",
             "tkn_idx": "215",
             "text": "far",
-            "endpoints": [
+            "offsets": [
                 1241,
                 1244
             ]
@@ -1886,7 +1886,7 @@
             "sent_idx": "7",
             "tkn_idx": "216",
             "text": "pagare",
-            "endpoints": [
+            "offsets": [
                 1245,
                 1251
             ]
@@ -1895,7 +1895,7 @@
             "sent_idx": "7",
             "tkn_idx": "217",
             "text": "ai",
-            "endpoints": [
+            "offsets": [
                 1252,
                 1254
             ]
@@ -1904,7 +1904,7 @@
             "sent_idx": "7",
             "tkn_idx": "218",
             "text": "lavoratori",
-            "endpoints": [
+            "offsets": [
                 1255,
                 1265
             ]
@@ -1913,7 +1913,7 @@
             "sent_idx": "7",
             "tkn_idx": "219",
             "text": "italiani",
-            "endpoints": [
+            "offsets": [
                 1266,
                 1274
             ]
@@ -1922,7 +1922,7 @@
             "sent_idx": "7",
             "tkn_idx": "220",
             "text": "del",
-            "endpoints": [
+            "offsets": [
                 1275,
                 1278
             ]
@@ -1931,7 +1931,7 @@
             "sent_idx": "7",
             "tkn_idx": "221",
             "text": "gruppo",
-            "endpoints": [
+            "offsets": [
                 1279,
                 1285
             ]
@@ -1940,7 +1940,7 @@
             "sent_idx": "7",
             "tkn_idx": "222",
             "text": "che",
-            "endpoints": [
+            "offsets": [
                 1286,
                 1289
             ]
@@ -1949,7 +1949,7 @@
             "sent_idx": "7",
             "tkn_idx": "223",
             "text": "sono",
-            "endpoints": [
+            "offsets": [
                 1290,
                 1294
             ]
@@ -1958,7 +1958,7 @@
             "sent_idx": "7",
             "tkn_idx": "224",
             "text": "complessivamente",
-            "endpoints": [
+            "offsets": [
                 1295,
                 1311
             ]
@@ -1967,7 +1967,7 @@
             "sent_idx": "7",
             "tkn_idx": "225",
             "text": "12126",
-            "endpoints": [
+            "offsets": [
                 1312,
                 1317
             ]
@@ -1976,7 +1976,7 @@
             "sent_idx": "7",
             "tkn_idx": "226",
             "text": "distribuiti",
-            "endpoints": [
+            "offsets": [
                 1318,
                 1329
             ]
@@ -1985,7 +1985,7 @@
             "sent_idx": "7",
             "tkn_idx": "227",
             "text": "negli",
-            "endpoints": [
+            "offsets": [
                 1330,
                 1335
             ]
@@ -1994,7 +1994,7 @@
             "sent_idx": "7",
             "tkn_idx": "228",
             "text": "stabilimenti",
-            "endpoints": [
+            "offsets": [
                 1336,
                 1348
             ]
@@ -2003,7 +2003,7 @@
             "sent_idx": "7",
             "tkn_idx": "229",
             "text": "di",
-            "endpoints": [
+            "offsets": [
                 1349,
                 1351
             ]
@@ -2012,7 +2012,7 @@
             "sent_idx": "7",
             "tkn_idx": "230",
             "text": "Torino",
-            "endpoints": [
+            "offsets": [
                 1352,
                 1358
             ]
@@ -2021,7 +2021,7 @@
             "sent_idx": "7",
             "tkn_idx": "231",
             "text": ",",
-            "endpoints": [
+            "offsets": [
                 1358,
                 1359
             ]
@@ -2030,7 +2030,7 @@
             "sent_idx": "7",
             "tkn_idx": "232",
             "text": "Cuneo",
-            "endpoints": [
+            "offsets": [
                 1360,
                 1365
             ]
@@ -2039,7 +2039,7 @@
             "sent_idx": "7",
             "tkn_idx": "233",
             "text": ",",
-            "endpoints": [
+            "offsets": [
                 1365,
                 1366
             ]
@@ -2048,7 +2048,7 @@
             "sent_idx": "7",
             "tkn_idx": "234",
             "text": "Alessandria",
-            "endpoints": [
+            "offsets": [
                 1367,
                 1378
             ]
@@ -2057,7 +2057,7 @@
             "sent_idx": "7",
             "tkn_idx": "235",
             "text": ",",
-            "endpoints": [
+            "offsets": [
                 1378,
                 1379
             ]
@@ -2066,7 +2066,7 @@
             "sent_idx": "7",
             "tkn_idx": "236",
             "text": "Fossano",
-            "endpoints": [
+            "offsets": [
                 1380,
                 1387
             ]
@@ -2075,7 +2075,7 @@
             "sent_idx": "7",
             "tkn_idx": "237",
             "text": ",",
-            "endpoints": [
+            "offsets": [
                 1387,
                 1388
             ]
@@ -2084,7 +2084,7 @@
             "sent_idx": "7",
             "tkn_idx": "238",
             "text": "Trento",
-            "endpoints": [
+            "offsets": [
                 1389,
                 1395
             ]
@@ -2093,7 +2093,7 @@
             "sent_idx": "7",
             "tkn_idx": "239",
             "text": "e",
-            "endpoints": [
+            "offsets": [
                 1396,
                 1397
             ]
@@ -2102,7 +2102,7 @@
             "sent_idx": "7",
             "tkn_idx": "240",
             "text": "Milano",
-            "endpoints": [
+            "offsets": [
                 1398,
                 1404
             ]
@@ -2111,7 +2111,7 @@
             "sent_idx": "7",
             "tkn_idx": "241",
             "text": ".",
-            "endpoints": [
+            "offsets": [
                 1404,
                 1405
             ]
@@ -2120,7 +2120,7 @@
             "sent_idx": "8",
             "tkn_idx": "242",
             "text": "Tra",
-            "endpoints": [
+            "offsets": [
                 1406,
                 1409
             ]
@@ -2129,7 +2129,7 @@
             "sent_idx": "8",
             "tkn_idx": "243",
             "text": "l'",
-            "endpoints": [
+            "offsets": [
                 1410,
                 1412
             ]
@@ -2138,7 +2138,7 @@
             "sent_idx": "8",
             "tkn_idx": "244",
             "text": "81",
-            "endpoints": [
+            "offsets": [
                 1413,
                 1415
             ]
@@ -2147,7 +2147,7 @@
             "sent_idx": "8",
             "tkn_idx": "245",
             "text": "e",
-            "endpoints": [
+            "offsets": [
                 1416,
                 1417
             ]
@@ -2156,7 +2156,7 @@
             "sent_idx": "8",
             "tkn_idx": "246",
             "text": "l'",
-            "endpoints": [
+            "offsets": [
                 1418,
                 1420
             ]
@@ -2165,7 +2165,7 @@
             "sent_idx": "8",
             "tkn_idx": "247",
             "text": "83",
-            "endpoints": [
+            "offsets": [
                 1421,
                 1423
             ]
@@ -2174,7 +2174,7 @@
             "sent_idx": "8",
             "tkn_idx": "248",
             "text": "la",
-            "endpoints": [
+            "offsets": [
                 1424,
                 1426
             ]
@@ -2183,7 +2183,7 @@
             "sent_idx": "8",
             "tkn_idx": "249",
             "text": "riduzione",
-            "endpoints": [
+            "offsets": [
                 1427,
                 1436
             ]
@@ -2192,7 +2192,7 @@
             "sent_idx": "8",
             "tkn_idx": "250",
             "text": "del",
-            "endpoints": [
+            "offsets": [
                 1437,
                 1440
             ]
@@ -2201,7 +2201,7 @@
             "sent_idx": "8",
             "tkn_idx": "251",
             "text": "personale",
-            "endpoints": [
+            "offsets": [
                 1441,
                 1450
             ]
@@ -2210,7 +2210,7 @@
             "sent_idx": "8",
             "tkn_idx": "252",
             "text": "era",
-            "endpoints": [
+            "offsets": [
                 1451,
                 1454
             ]
@@ -2219,7 +2219,7 @@
             "sent_idx": "8",
             "tkn_idx": "253",
             "text": "stata",
-            "endpoints": [
+            "offsets": [
                 1455,
                 1460
             ]
@@ -2228,7 +2228,7 @@
             "sent_idx": "8",
             "tkn_idx": "254",
             "text": "infatti",
-            "endpoints": [
+            "offsets": [
                 1461,
                 1468
             ]
@@ -2237,7 +2237,7 @@
             "sent_idx": "8",
             "tkn_idx": "255",
             "text": "del",
-            "endpoints": [
+            "offsets": [
                 1469,
                 1472
             ]
@@ -2246,7 +2246,7 @@
             "sent_idx": "8",
             "tkn_idx": "256",
             "text": "7.5",
-            "endpoints": [
+            "offsets": [
                 1473,
                 1476
             ]
@@ -2255,7 +2255,7 @@
             "sent_idx": "8",
             "tkn_idx": "257",
             "text": "per cento",
-            "endpoints": [
+            "offsets": [
                 1477,
                 1486
             ]
@@ -2264,7 +2264,7 @@
             "sent_idx": "8",
             "tkn_idx": "258",
             "text": "in",
-            "endpoints": [
+            "offsets": [
                 1487,
                 1489
             ]
@@ -2273,7 +2273,7 @@
             "sent_idx": "8",
             "tkn_idx": "259",
             "text": "Italia",
-            "endpoints": [
+            "offsets": [
                 1490,
                 1496
             ]
@@ -2282,7 +2282,7 @@
             "sent_idx": "8",
             "tkn_idx": "260",
             "text": "e",
-            "endpoints": [
+            "offsets": [
                 1497,
                 1498
             ]
@@ -2291,7 +2291,7 @@
             "sent_idx": "8",
             "tkn_idx": "261",
             "text": "del",
-            "endpoints": [
+            "offsets": [
                 1499,
                 1502
             ]
@@ -2300,7 +2300,7 @@
             "sent_idx": "8",
             "tkn_idx": "262",
             "text": "7.7",
-            "endpoints": [
+            "offsets": [
                 1503,
                 1506
             ]
@@ -2309,7 +2309,7 @@
             "sent_idx": "8",
             "tkn_idx": "263",
             "text": "in",
-            "endpoints": [
+            "offsets": [
                 1507,
                 1509
             ]
@@ -2318,7 +2318,7 @@
             "sent_idx": "8",
             "tkn_idx": "264",
             "text": "Francia",
-            "endpoints": [
+            "offsets": [
                 1510,
                 1517
             ]
@@ -2327,7 +2327,7 @@
             "sent_idx": "8",
             "tkn_idx": "265",
             "text": ",",
-            "endpoints": [
+            "offsets": [
                 1517,
                 1518
             ]
@@ -2336,7 +2336,7 @@
             "sent_idx": "8",
             "tkn_idx": "266",
             "text": "ma",
-            "endpoints": [
+            "offsets": [
                 1519,
                 1521
             ]
@@ -2345,7 +2345,7 @@
             "sent_idx": "8",
             "tkn_idx": "267",
             "text": "per",
-            "endpoints": [
+            "offsets": [
                 1522,
                 1525
             ]
@@ -2354,7 +2354,7 @@
             "sent_idx": "8",
             "tkn_idx": "268",
             "text": "il",
-            "endpoints": [
+            "offsets": [
                 1526,
                 1528
             ]
@@ -2363,7 +2363,7 @@
             "sent_idx": "8",
             "tkn_idx": "269",
             "text": "periodo",
-            "endpoints": [
+            "offsets": [
                 1529,
                 1536
             ]
@@ -2372,7 +2372,7 @@
             "sent_idx": "8",
             "tkn_idx": "270",
             "text": "che",
-            "endpoints": [
+            "offsets": [
                 1537,
                 1540
             ]
@@ -2381,7 +2381,7 @@
             "sent_idx": "8",
             "tkn_idx": "271",
             "text": "va",
-            "endpoints": [
+            "offsets": [
                 1541,
                 1543
             ]
@@ -2390,7 +2390,7 @@
             "sent_idx": "8",
             "tkn_idx": "272",
             "text": "dall'",
-            "endpoints": [
+            "offsets": [
                 1544,
                 1549
             ]
@@ -2399,7 +2399,7 @@
             "sent_idx": "8",
             "tkn_idx": "273",
             "text": "83",
-            "endpoints": [
+            "offsets": [
                 1550,
                 1552
             ]
@@ -2408,7 +2408,7 @@
             "sent_idx": "8",
             "tkn_idx": "274",
             "text": "all'",
-            "endpoints": [
+            "offsets": [
                 1553,
                 1557
             ]
@@ -2417,7 +2417,7 @@
             "sent_idx": "8",
             "tkn_idx": "275",
             "text": "86",
-            "endpoints": [
+            "offsets": [
                 1558,
                 1560
             ]
@@ -2426,7 +2426,7 @@
             "sent_idx": "8",
             "tkn_idx": "276",
             "text": "le",
-            "endpoints": [
+            "offsets": [
                 1561,
                 1563
             ]
@@ -2435,7 +2435,7 @@
             "sent_idx": "8",
             "tkn_idx": "277",
             "text": "previsioni",
-            "endpoints": [
+            "offsets": [
                 1564,
                 1574
             ]
@@ -2444,7 +2444,7 @@
             "sent_idx": "8",
             "tkn_idx": "278",
             "text": "vogliono",
-            "endpoints": [
+            "offsets": [
                 1575,
                 1583
             ]
@@ -2453,7 +2453,7 @@
             "sent_idx": "8",
             "tkn_idx": "279",
             "text": "tagli",
-            "endpoints": [
+            "offsets": [
                 1584,
                 1589
             ]
@@ -2462,7 +2462,7 @@
             "sent_idx": "8",
             "tkn_idx": "280",
             "text": "del",
-            "endpoints": [
+            "offsets": [
                 1590,
                 1593
             ]
@@ -2471,7 +2471,7 @@
             "sent_idx": "8",
             "tkn_idx": "281",
             "text": "22",
-            "endpoints": [
+            "offsets": [
                 1594,
                 1596
             ]
@@ -2480,7 +2480,7 @@
             "sent_idx": "8",
             "tkn_idx": "282",
             "text": "per cento",
-            "endpoints": [
+            "offsets": [
                 1597,
                 1606
             ]
@@ -2489,7 +2489,7 @@
             "sent_idx": "8",
             "tkn_idx": "283",
             "text": "nel",
-            "endpoints": [
+            "offsets": [
                 1607,
                 1610
             ]
@@ -2498,7 +2498,7 @@
             "sent_idx": "8",
             "tkn_idx": "284",
             "text": "nostro",
-            "endpoints": [
+            "offsets": [
                 1611,
                 1617
             ]
@@ -2507,7 +2507,7 @@
             "sent_idx": "8",
             "tkn_idx": "285",
             "text": "paese",
-            "endpoints": [
+            "offsets": [
                 1618,
                 1623
             ]
@@ -2516,7 +2516,7 @@
             "sent_idx": "8",
             "tkn_idx": "286",
             "text": "e",
-            "endpoints": [
+            "offsets": [
                 1624,
                 1625
             ]
@@ -2525,7 +2525,7 @@
             "sent_idx": "8",
             "tkn_idx": "287",
             "text": "del",
-            "endpoints": [
+            "offsets": [
                 1626,
                 1629
             ]
@@ -2534,7 +2534,7 @@
             "sent_idx": "8",
             "tkn_idx": "288",
             "text": "10",
-            "endpoints": [
+            "offsets": [
                 1630,
                 1632
             ]
@@ -2543,7 +2543,7 @@
             "sent_idx": "8",
             "tkn_idx": "289",
             "text": "per cento",
-            "endpoints": [
+            "offsets": [
                 1633,
                 1642
             ]
@@ -2552,7 +2552,7 @@
             "sent_idx": "8",
             "tkn_idx": "290",
             "text": "nella",
-            "endpoints": [
+            "offsets": [
                 1643,
                 1648
             ]
@@ -2561,7 +2561,7 @@
             "sent_idx": "8",
             "tkn_idx": "291",
             "text": "madrepatria",
-            "endpoints": [
+            "offsets": [
                 1649,
                 1660
             ]
@@ -2570,7 +2570,7 @@
             "sent_idx": "8",
             "tkn_idx": "292",
             "text": "della",
-            "endpoints": [
+            "offsets": [
                 1661,
                 1666
             ]
@@ -2579,7 +2579,7 @@
             "sent_idx": "8",
             "tkn_idx": "293",
             "text": "Michelin",
-            "endpoints": [
+            "offsets": [
                 1667,
                 1675
             ]
@@ -2588,7 +2588,7 @@
             "sent_idx": "8",
             "tkn_idx": "294",
             "text": ".",
-            "endpoints": [
+            "offsets": [
                 1675,
                 1676
             ]
@@ -2597,7 +2597,7 @@
             "sent_idx": "9",
             "tkn_idx": "295",
             "text": "Nel",
-            "endpoints": [
+            "offsets": [
                 1677,
                 1680
             ]
@@ -2606,7 +2606,7 @@
             "sent_idx": "9",
             "tkn_idx": "296",
             "text": "1984",
-            "endpoints": [
+            "offsets": [
                 1681,
                 1685
             ]
@@ -2615,7 +2615,7 @@
             "sent_idx": "9",
             "tkn_idx": "297",
             "text": "la",
-            "endpoints": [
+            "offsets": [
                 1686,
                 1688
             ]
@@ -2624,7 +2624,7 @@
             "sent_idx": "9",
             "tkn_idx": "298",
             "text": "Michelin",
-            "endpoints": [
+            "offsets": [
                 1689,
                 1697
             ]
@@ -2633,7 +2633,7 @@
             "sent_idx": "9",
             "tkn_idx": "299",
             "text": "ha",
-            "endpoints": [
+            "offsets": [
                 1698,
                 1700
             ]
@@ -2642,7 +2642,7 @@
             "sent_idx": "9",
             "tkn_idx": "300",
             "text": "perduto",
-            "endpoints": [
+            "offsets": [
                 1701,
                 1708
             ]
@@ -2651,7 +2651,7 @@
             "sent_idx": "9",
             "tkn_idx": "301",
             "text": "400",
-            "endpoints": [
+            "offsets": [
                 1709,
                 1712
             ]
@@ -2660,7 +2660,7 @@
             "sent_idx": "9",
             "tkn_idx": "302",
             "text": "miliardi",
-            "endpoints": [
+            "offsets": [
                 1713,
                 1721
             ]
@@ -2669,7 +2669,7 @@
             "sent_idx": "9",
             "tkn_idx": "303",
             "text": ",",
-            "endpoints": [
+            "offsets": [
                 1721,
                 1722
             ]
@@ -2678,7 +2678,7 @@
             "sent_idx": "9",
             "tkn_idx": "304",
             "text": "con",
-            "endpoints": [
+            "offsets": [
                 1723,
                 1726
             ]
@@ -2687,7 +2687,7 @@
             "sent_idx": "9",
             "tkn_idx": "305",
             "text": "un",
-            "endpoints": [
+            "offsets": [
                 1727,
                 1729
             ]
@@ -2696,7 +2696,7 @@
             "sent_idx": "9",
             "tkn_idx": "306",
             "text": "leggero",
-            "endpoints": [
+            "offsets": [
                 1730,
                 1737
             ]
@@ -2705,7 +2705,7 @@
             "sent_idx": "9",
             "tkn_idx": "307",
             "text": "miglioramento",
-            "endpoints": [
+            "offsets": [
                 1738,
                 1751
             ]
@@ -2714,7 +2714,7 @@
             "sent_idx": "9",
             "tkn_idx": "308",
             "text": "rispetto all'",
-            "endpoints": [
+            "offsets": [
                 1752,
                 1765
             ]
@@ -2723,7 +2723,7 @@
             "sent_idx": "9",
             "tkn_idx": "309",
             "text": "anno",
-            "endpoints": [
+            "offsets": [
                 1766,
                 1770
             ]
@@ -2732,7 +2732,7 @@
             "sent_idx": "9",
             "tkn_idx": "310",
             "text": "precedente",
-            "endpoints": [
+            "offsets": [
                 1771,
                 1781
             ]
@@ -2741,7 +2741,7 @@
             "sent_idx": "9",
             "tkn_idx": "311",
             "text": ";",
-            "endpoints": [
+            "offsets": [
                 1781,
                 1782
             ]
@@ -2750,7 +2750,7 @@
             "sent_idx": "9",
             "tkn_idx": "312",
             "text": "conserva",
-            "endpoints": [
+            "offsets": [
                 1783,
                 1791
             ]
@@ -2759,7 +2759,7 @@
             "sent_idx": "9",
             "tkn_idx": "313",
             "text": "saldamente",
-            "endpoints": [
+            "offsets": [
                 1792,
                 1802
             ]
@@ -2768,7 +2768,7 @@
             "sent_idx": "9",
             "tkn_idx": "314",
             "text": "il",
-            "endpoints": [
+            "offsets": [
                 1803,
                 1805
             ]
@@ -2777,7 +2777,7 @@
             "sent_idx": "9",
             "tkn_idx": "315",
             "text": "secondo",
-            "endpoints": [
+            "offsets": [
                 1806,
                 1813
             ]
@@ -2786,7 +2786,7 @@
             "sent_idx": "9",
             "tkn_idx": "316",
             "text": "posto",
-            "endpoints": [
+            "offsets": [
                 1814,
                 1819
             ]
@@ -2795,7 +2795,7 @@
             "sent_idx": "9",
             "tkn_idx": "317",
             "text": "dopo",
-            "endpoints": [
+            "offsets": [
                 1820,
                 1824
             ]
@@ -2804,7 +2804,7 @@
             "sent_idx": "9",
             "tkn_idx": "318",
             "text": "la",
-            "endpoints": [
+            "offsets": [
                 1825,
                 1827
             ]
@@ -2813,7 +2813,7 @@
             "sent_idx": "9",
             "tkn_idx": "319",
             "text": "Goodyear",
-            "endpoints": [
+            "offsets": [
                 1828,
                 1836
             ]
@@ -2822,7 +2822,7 @@
             "sent_idx": "9",
             "tkn_idx": "320",
             "text": "tra",
-            "endpoints": [
+            "offsets": [
                 1837,
                 1840
             ]
@@ -2831,7 +2831,7 @@
             "sent_idx": "9",
             "tkn_idx": "321",
             "text": "i",
-            "endpoints": [
+            "offsets": [
                 1841,
                 1842
             ]
@@ -2840,7 +2840,7 @@
             "sent_idx": "9",
             "tkn_idx": "322",
             "text": "colossi",
-            "endpoints": [
+            "offsets": [
                 1843,
                 1850
             ]
@@ -2849,7 +2849,7 @@
             "sent_idx": "9",
             "tkn_idx": "323",
             "text": "mondiali",
-            "endpoints": [
+            "offsets": [
                 1851,
                 1859
             ]
@@ -2858,7 +2858,7 @@
             "sent_idx": "9",
             "tkn_idx": "324",
             "text": "della",
-            "endpoints": [
+            "offsets": [
                 1860,
                 1865
             ]
@@ -2867,7 +2867,7 @@
             "sent_idx": "9",
             "tkn_idx": "325",
             "text": "gomma",
-            "endpoints": [
+            "offsets": [
                 1866,
                 1871
             ]
@@ -2876,7 +2876,7 @@
             "sent_idx": "9",
             "tkn_idx": "326",
             "text": "e",
-            "endpoints": [
+            "offsets": [
                 1872,
                 1873
             ]
@@ -2885,7 +2885,7 @@
             "sent_idx": "9",
             "tkn_idx": "327",
             "text": "detiene",
-            "endpoints": [
+            "offsets": [
                 1874,
                 1881
             ]
@@ -2894,7 +2894,7 @@
             "sent_idx": "9",
             "tkn_idx": "328",
             "text": "piu'",
-            "endpoints": [
+            "offsets": [
                 1882,
                 1886
             ]
@@ -2903,7 +2903,7 @@
             "sent_idx": "9",
             "tkn_idx": "329",
             "text": "d'",
-            "endpoints": [
+            "offsets": [
                 1887,
                 1889
             ]
@@ -2912,7 +2912,7 @@
             "sent_idx": "9",
             "tkn_idx": "330",
             "text": "un",
-            "endpoints": [
+            "offsets": [
                 1890,
                 1892
             ]
@@ -2921,7 +2921,7 @@
             "sent_idx": "9",
             "tkn_idx": "331",
             "text": "terzo",
-            "endpoints": [
+            "offsets": [
                 1893,
                 1898
             ]
@@ -2930,7 +2930,7 @@
             "sent_idx": "9",
             "tkn_idx": "332",
             "text": "del",
-            "endpoints": [
+            "offsets": [
                 1899,
                 1902
             ]
@@ -2939,7 +2939,7 @@
             "sent_idx": "9",
             "tkn_idx": "333",
             "text": "mercato",
-            "endpoints": [
+            "offsets": [
                 1903,
                 1910
             ]
@@ -2948,7 +2948,7 @@
             "sent_idx": "9",
             "tkn_idx": "334",
             "text": "europeo",
-            "endpoints": [
+            "offsets": [
                 1911,
                 1918
             ]
@@ -2957,7 +2957,7 @@
             "sent_idx": "9",
             "tkn_idx": "335",
             "text": "del",
-            "endpoints": [
+            "offsets": [
                 1919,
                 1922
             ]
@@ -2966,7 +2966,7 @@
             "sent_idx": "9",
             "tkn_idx": "336",
             "text": "settore",
-            "endpoints": [
+            "offsets": [
                 1923,
                 1930
             ]
@@ -2975,7 +2975,7 @@
             "sent_idx": "9",
             "tkn_idx": "337",
             "text": ".",
-            "endpoints": [
+            "offsets": [
                 1930,
                 1931
             ]
@@ -2984,7 +2984,7 @@
             "sent_idx": "10",
             "tkn_idx": "338",
             "text": "Ma",
-            "endpoints": [
+            "offsets": [
                 1932,
                 1934
             ]
@@ -2993,7 +2993,7 @@
             "sent_idx": "10",
             "tkn_idx": "339",
             "text": "la",
-            "endpoints": [
+            "offsets": [
                 1935,
                 1937
             ]
@@ -3002,7 +3002,7 @@
             "sent_idx": "10",
             "tkn_idx": "340",
             "text": "crisi",
-            "endpoints": [
+            "offsets": [
                 1938,
                 1943
             ]
@@ -3011,7 +3011,7 @@
             "sent_idx": "10",
             "tkn_idx": "341",
             "text": "dell'",
-            "endpoints": [
+            "offsets": [
                 1944,
                 1949
             ]
@@ -3020,7 +3020,7 @@
             "sent_idx": "10",
             "tkn_idx": "342",
             "text": "industria",
-            "endpoints": [
+            "offsets": [
                 1950,
                 1959
             ]
@@ -3029,7 +3029,7 @@
             "sent_idx": "10",
             "tkn_idx": "343",
             "text": "automobilistica",
-            "endpoints": [
+            "offsets": [
                 1960,
                 1975
             ]
@@ -3038,7 +3038,7 @@
             "sent_idx": "10",
             "tkn_idx": "344",
             "text": "francese",
-            "endpoints": [
+            "offsets": [
                 1976,
                 1984
             ]
@@ -3047,7 +3047,7 @@
             "sent_idx": "10",
             "tkn_idx": "345",
             "text": "e",
-            "endpoints": [
+            "offsets": [
                 1985,
                 1986
             ]
@@ -3056,7 +3056,7 @@
             "sent_idx": "10",
             "tkn_idx": "346",
             "text": "in particolare",
-            "endpoints": [
+            "offsets": [
                 1987,
                 2001
             ]
@@ -3065,7 +3065,7 @@
             "sent_idx": "10",
             "tkn_idx": "347",
             "text": "le",
-            "endpoints": [
+            "offsets": [
                 2002,
                 2004
             ]
@@ -3074,7 +3074,7 @@
             "sent_idx": "10",
             "tkn_idx": "348",
             "text": "difficolta'",
-            "endpoints": [
+            "offsets": [
                 2005,
                 2016
             ]
@@ -3083,7 +3083,7 @@
             "sent_idx": "10",
             "tkn_idx": "349",
             "text": "della",
-            "endpoints": [
+            "offsets": [
                 2017,
                 2022
             ]
@@ -3092,7 +3092,7 @@
             "sent_idx": "10",
             "tkn_idx": "350",
             "text": "Renault",
-            "endpoints": [
+            "offsets": [
                 2023,
                 2030
             ]
@@ -3101,7 +3101,7 @@
             "sent_idx": "10",
             "tkn_idx": "351",
             "text": ",",
-            "endpoints": [
+            "offsets": [
                 2030,
                 2031
             ]
@@ -3110,7 +3110,7 @@
             "sent_idx": "10",
             "tkn_idx": "352",
             "text": "accompagnata",
-            "endpoints": [
+            "offsets": [
                 2032,
                 2044
             ]
@@ -3119,7 +3119,7 @@
             "sent_idx": "10",
             "tkn_idx": "353",
             "text": "ai",
-            "endpoints": [
+            "offsets": [
                 2045,
                 2047
             ]
@@ -3128,7 +3128,7 @@
             "sent_idx": "10",
             "tkn_idx": "354",
             "text": "problemi",
-            "endpoints": [
+            "offsets": [
                 2048,
                 2056
             ]
@@ -3137,7 +3137,7 @@
             "sent_idx": "10",
             "tkn_idx": "355",
             "text": "internazionali",
-            "endpoints": [
+            "offsets": [
                 2057,
                 2071
             ]
@@ -3146,7 +3146,7 @@
             "sent_idx": "10",
             "tkn_idx": "356",
             "text": "di",
-            "endpoints": [
+            "offsets": [
                 2072,
                 2074
             ]
@@ -3155,7 +3155,7 @@
             "sent_idx": "10",
             "tkn_idx": "357",
             "text": "tutto",
-            "endpoints": [
+            "offsets": [
                 2075,
                 2080
             ]
@@ -3164,7 +3164,7 @@
             "sent_idx": "10",
             "tkn_idx": "358",
             "text": "il",
-            "endpoints": [
+            "offsets": [
                 2081,
                 2083
             ]
@@ -3173,7 +3173,7 @@
             "sent_idx": "10",
             "tkn_idx": "359",
             "text": "settore",
-            "endpoints": [
+            "offsets": [
                 2084,
                 2091
             ]
@@ -3182,7 +3182,7 @@
             "sent_idx": "10",
             "tkn_idx": "360",
             "text": "dell'",
-            "endpoints": [
+            "offsets": [
                 2092,
                 2097
             ]
@@ -3191,7 +3191,7 @@
             "sent_idx": "10",
             "tkn_idx": "361",
             "text": "auto",
-            "endpoints": [
+            "offsets": [
                 2098,
                 2102
             ]
@@ -3200,7 +3200,7 @@
             "sent_idx": "10",
             "tkn_idx": "362",
             "text": ",",
-            "endpoints": [
+            "offsets": [
                 2102,
                 2103
             ]
@@ -3209,7 +3209,7 @@
             "sent_idx": "10",
             "tkn_idx": "363",
             "text": "devono",
-            "endpoints": [
+            "offsets": [
                 2104,
                 2110
             ]
@@ -3218,7 +3218,7 @@
             "sent_idx": "10",
             "tkn_idx": "364",
             "text": "avere",
-            "endpoints": [
+            "offsets": [
                 2111,
                 2116
             ]
@@ -3227,7 +3227,7 @@
             "sent_idx": "10",
             "tkn_idx": "365",
             "text": "convinto",
-            "endpoints": [
+            "offsets": [
                 2117,
                 2125
             ]
@@ -3236,7 +3236,7 @@
             "sent_idx": "10",
             "tkn_idx": "366",
             "text": "i",
-            "endpoints": [
+            "offsets": [
                 2126,
                 2127
             ]
@@ -3245,7 +3245,7 @@
             "sent_idx": "10",
             "tkn_idx": "367",
             "text": "vertici",
-            "endpoints": [
+            "offsets": [
                 2128,
                 2135
             ]
@@ -3254,7 +3254,7 @@
             "sent_idx": "10",
             "tkn_idx": "368",
             "text": "di",
-            "endpoints": [
+            "offsets": [
                 2136,
                 2138
             ]
@@ -3263,7 +3263,7 @@
             "sent_idx": "10",
             "tkn_idx": "369",
             "text": "Clermont-Ferrand",
-            "endpoints": [
+            "offsets": [
                 2139,
                 2155
             ]
@@ -3272,7 +3272,7 @@
             "sent_idx": "10",
             "tkn_idx": "370",
             "text": "della",
-            "endpoints": [
+            "offsets": [
                 2156,
                 2161
             ]
@@ -3281,7 +3281,7 @@
             "sent_idx": "10",
             "tkn_idx": "371",
             "text": "necessita'",
-            "endpoints": [
+            "offsets": [
                 2162,
                 2172
             ]
@@ -3290,7 +3290,7 @@
             "sent_idx": "10",
             "tkn_idx": "372",
             "text": "di",
-            "endpoints": [
+            "offsets": [
                 2173,
                 2175
             ]
@@ -3299,7 +3299,7 @@
             "sent_idx": "10",
             "tkn_idx": "373",
             "text": "accelerare",
-            "endpoints": [
+            "offsets": [
                 2176,
                 2186
             ]
@@ -3308,7 +3308,7 @@
             "sent_idx": "10",
             "tkn_idx": "374",
             "text": "il",
-            "endpoints": [
+            "offsets": [
                 2187,
                 2189
             ]
@@ -3317,7 +3317,7 @@
             "sent_idx": "10",
             "tkn_idx": "375",
             "text": "processo",
-            "endpoints": [
+            "offsets": [
                 2190,
                 2198
             ]
@@ -3326,7 +3326,7 @@
             "sent_idx": "10",
             "tkn_idx": "376",
             "text": "di",
-            "endpoints": [
+            "offsets": [
                 2199,
                 2201
             ]
@@ -3335,7 +3335,7 @@
             "sent_idx": "10",
             "tkn_idx": "377",
             "text": "ristrutturazione",
-            "endpoints": [
+            "offsets": [
                 2202,
                 2218
             ]
@@ -3344,7 +3344,7 @@
             "sent_idx": "10",
             "tkn_idx": "378",
             "text": ".",
-            "endpoints": [
+            "offsets": [
                 2218,
                 2219
             ]
@@ -3353,7 +3353,7 @@
             "sent_idx": "11",
             "tkn_idx": "379",
             "text": "I",
-            "endpoints": [
+            "offsets": [
                 2220,
                 2221
             ]
@@ -3362,7 +3362,7 @@
             "sent_idx": "11",
             "tkn_idx": "380",
             "text": "sindacati",
-            "endpoints": [
+            "offsets": [
                 2222,
                 2231
             ]
@@ -3371,7 +3371,7 @@
             "sent_idx": "11",
             "tkn_idx": "381",
             "text": "ne",
-            "endpoints": [
+            "offsets": [
                 2232,
                 2234
             ]
@@ -3380,7 +3380,7 @@
             "sent_idx": "11",
             "tkn_idx": "382",
             "text": "sono",
-            "endpoints": [
+            "offsets": [
                 2235,
                 2239
             ]
@@ -3389,7 +3389,7 @@
             "sent_idx": "11",
             "tkn_idx": "383",
             "text": "a",
-            "endpoints": [
+            "offsets": [
                 2240,
                 2241
             ]
@@ -3398,7 +3398,7 @@
             "sent_idx": "11",
             "tkn_idx": "384",
             "text": "conoscenza",
-            "endpoints": [
+            "offsets": [
                 2242,
                 2252
             ]
@@ -3407,7 +3407,7 @@
             "sent_idx": "11",
             "tkn_idx": "385",
             "text": "e",
-            "endpoints": [
+            "offsets": [
                 2253,
                 2254
             ]
@@ -3416,7 +3416,7 @@
             "sent_idx": "11",
             "tkn_idx": "386",
             "text": "temono",
-            "endpoints": [
+            "offsets": [
                 2255,
                 2261
             ]
@@ -3425,7 +3425,7 @@
             "sent_idx": "11",
             "tkn_idx": "387",
             "text": "che",
-            "endpoints": [
+            "offsets": [
                 2262,
                 2265
             ]
@@ -3434,7 +3434,7 @@
             "sent_idx": "11",
             "tkn_idx": "388",
             "text": "la",
-            "endpoints": [
+            "offsets": [
                 2266,
                 2268
             ]
@@ -3443,7 +3443,7 @@
             "sent_idx": "11",
             "tkn_idx": "389",
             "text": "Michelin",
-            "endpoints": [
+            "offsets": [
                 2269,
                 2277
             ]
@@ -3452,7 +3452,7 @@
             "sent_idx": "11",
             "tkn_idx": "390",
             "text": "disattenda",
-            "endpoints": [
+            "offsets": [
                 2278,
                 2288
             ]
@@ -3461,7 +3461,7 @@
             "sent_idx": "11",
             "tkn_idx": "391",
             "text": "gli",
-            "endpoints": [
+            "offsets": [
                 2289,
                 2292
             ]
@@ -3470,7 +3470,7 @@
             "sent_idx": "11",
             "tkn_idx": "392",
             "text": "accordi",
-            "endpoints": [
+            "offsets": [
                 2293,
                 2300
             ]
@@ -3479,7 +3479,7 @@
             "sent_idx": "11",
             "tkn_idx": "393",
             "text": "raggiunti",
-            "endpoints": [
+            "offsets": [
                 2301,
                 2310
             ]
@@ -3488,7 +3488,7 @@
             "sent_idx": "11",
             "tkn_idx": "394",
             "text": "meno",
-            "endpoints": [
+            "offsets": [
                 2311,
                 2315
             ]
@@ -3497,7 +3497,7 @@
             "sent_idx": "11",
             "tkn_idx": "395",
             "text": "di",
-            "endpoints": [
+            "offsets": [
                 2316,
                 2318
             ]
@@ -3506,7 +3506,7 @@
             "sent_idx": "11",
             "tkn_idx": "396",
             "text": "un",
-            "endpoints": [
+            "offsets": [
                 2319,
                 2321
             ]
@@ -3515,7 +3515,7 @@
             "sent_idx": "11",
             "tkn_idx": "397",
             "text": "mese",
-            "endpoints": [
+            "offsets": [
                 2322,
                 2326
             ]
@@ -3524,7 +3524,7 @@
             "sent_idx": "11",
             "tkn_idx": "398",
             "text": "fa",
-            "endpoints": [
+            "offsets": [
                 2327,
                 2329
             ]
@@ -3533,7 +3533,7 @@
             "sent_idx": "11",
             "tkn_idx": "399",
             "text": ",",
-            "endpoints": [
+            "offsets": [
                 2329,
                 2330
             ]
@@ -3542,7 +3542,7 @@
             "sent_idx": "11",
             "tkn_idx": "400",
             "text": "procedendo",
-            "endpoints": [
+            "offsets": [
                 2331,
                 2341
             ]
@@ -3551,7 +3551,7 @@
             "sent_idx": "11",
             "tkn_idx": "401",
             "text": "alla",
-            "endpoints": [
+            "offsets": [
                 2342,
                 2346
             ]
@@ -3560,7 +3560,7 @@
             "sent_idx": "11",
             "tkn_idx": "402",
             "text": "chiusura",
-            "endpoints": [
+            "offsets": [
                 2347,
                 2355
             ]
@@ -3569,7 +3569,7 @@
             "sent_idx": "11",
             "tkn_idx": "403",
             "text": "dello",
-            "endpoints": [
+            "offsets": [
                 2356,
                 2361
             ]
@@ -3578,7 +3578,7 @@
             "sent_idx": "11",
             "tkn_idx": "404",
             "text": "stabilimento",
-            "endpoints": [
+            "offsets": [
                 2362,
                 2374
             ]
@@ -3587,7 +3587,7 @@
             "sent_idx": "11",
             "tkn_idx": "405",
             "text": "di",
-            "endpoints": [
+            "offsets": [
                 2375,
                 2377
             ]
@@ -3596,7 +3596,7 @@
             "sent_idx": "11",
             "tkn_idx": "406",
             "text": "Torino-Dora",
-            "endpoints": [
+            "offsets": [
                 2378,
                 2389
             ]
@@ -3605,7 +3605,7 @@
             "sent_idx": "11",
             "tkn_idx": "407",
             "text": "e",
-            "endpoints": [
+            "offsets": [
                 2390,
                 2391
             ]
@@ -3614,7 +3614,7 @@
             "sent_idx": "11",
             "tkn_idx": "408",
             "text": "al",
-            "endpoints": [
+            "offsets": [
                 2392,
                 2394
             ]
@@ -3623,7 +3623,7 @@
             "sent_idx": "11",
             "tkn_idx": "409",
             "text": "progressivo",
-            "endpoints": [
+            "offsets": [
                 2395,
                 2406
             ]
@@ -3632,7 +3632,7 @@
             "sent_idx": "11",
             "tkn_idx": "410",
             "text": "smantellamento",
-            "endpoints": [
+            "offsets": [
                 2407,
                 2421
             ]
@@ -3641,7 +3641,7 @@
             "sent_idx": "11",
             "tkn_idx": "411",
             "text": "di",
-            "endpoints": [
+            "offsets": [
                 2422,
                 2424
             ]
@@ -3650,7 +3650,7 @@
             "sent_idx": "11",
             "tkn_idx": "412",
             "text": "Torino-Stura",
-            "endpoints": [
+            "offsets": [
                 2425,
                 2437
             ]
@@ -3659,7 +3659,7 @@
             "sent_idx": "11",
             "tkn_idx": "413",
             "text": ".",
-            "endpoints": [
+            "offsets": [
                 2437,
                 2438
             ]
@@ -3668,7 +3668,7 @@
             "sent_idx": "12",
             "tkn_idx": "414",
             "text": "L'",
-            "endpoints": [
+            "offsets": [
                 2439,
                 2441
             ]
@@ -3677,7 +3677,7 @@
             "sent_idx": "12",
             "tkn_idx": "415",
             "text": "interpretazione",
-            "endpoints": [
+            "offsets": [
                 2442,
                 2457
             ]
@@ -3686,7 +3686,7 @@
             "sent_idx": "12",
             "tkn_idx": "416",
             "text": "che",
-            "endpoints": [
+            "offsets": [
                 2458,
                 2461
             ]
@@ -3695,7 +3695,7 @@
             "sent_idx": "12",
             "tkn_idx": "417",
             "text": "viene",
-            "endpoints": [
+            "offsets": [
                 2462,
                 2467
             ]
@@ -3704,7 +3704,7 @@
             "sent_idx": "12",
             "tkn_idx": "418",
             "text": "data",
-            "endpoints": [
+            "offsets": [
                 2468,
                 2472
             ]
@@ -3713,7 +3713,7 @@
             "sent_idx": "12",
             "tkn_idx": "419",
             "text": "dal",
-            "endpoints": [
+            "offsets": [
                 2473,
                 2476
             ]
@@ -3722,7 +3722,7 @@
             "sent_idx": "12",
             "tkn_idx": "420",
             "text": "sindacato",
-            "endpoints": [
+            "offsets": [
                 2477,
                 2486
             ]
@@ -3731,7 +3731,7 @@
             "sent_idx": "12",
             "tkn_idx": "421",
             "text": "della",
-            "endpoints": [
+            "offsets": [
                 2487,
                 2492
             ]
@@ -3740,7 +3740,7 @@
             "sent_idx": "12",
             "tkn_idx": "422",
             "text": "notizia",
-            "endpoints": [
+            "offsets": [
                 2493,
                 2500
             ]
@@ -3749,7 +3749,7 @@
             "sent_idx": "12",
             "tkn_idx": "423",
             "text": "diffusa",
-            "endpoints": [
+            "offsets": [
                 2501,
                 2508
             ]
@@ -3758,7 +3758,7 @@
             "sent_idx": "12",
             "tkn_idx": "424",
             "text": "da",
-            "endpoints": [
+            "offsets": [
                 2509,
                 2511
             ]
@@ -3767,7 +3767,7 @@
             "sent_idx": "12",
             "tkn_idx": "425",
             "text": "Le",
-            "endpoints": [
+            "offsets": [
                 2512,
                 2514
             ]
@@ -3776,7 +3776,7 @@
             "sent_idx": "12",
             "tkn_idx": "426",
             "text": "Monde",
-            "endpoints": [
+            "offsets": [
                 2515,
                 2520
             ]
@@ -3785,7 +3785,7 @@
             "sent_idx": "12",
             "tkn_idx": "427",
             "text": "e'",
-            "endpoints": [
+            "offsets": [
                 2521,
                 2523
             ]
@@ -3794,7 +3794,7 @@
             "sent_idx": "12",
             "tkn_idx": "428",
             "text": "che",
-            "endpoints": [
+            "offsets": [
                 2524,
                 2527
             ]
@@ -3803,7 +3803,7 @@
             "sent_idx": "12",
             "tkn_idx": "429",
             "text": "essa",
-            "endpoints": [
+            "offsets": [
                 2528,
                 2532
             ]
@@ -3812,7 +3812,7 @@
             "sent_idx": "12",
             "tkn_idx": "430",
             "text": "sia",
-            "endpoints": [
+            "offsets": [
                 2533,
                 2536
             ]
@@ -3821,7 +3821,7 @@
             "sent_idx": "12",
             "tkn_idx": "431",
             "text": "un",
-            "endpoints": [
+            "offsets": [
                 2537,
                 2539
             ]
@@ -3830,7 +3830,7 @@
             "sent_idx": "12",
             "tkn_idx": "432",
             "text": "messaggio",
-            "endpoints": [
+            "offsets": [
                 2540,
                 2549
             ]
@@ -3839,7 +3839,7 @@
             "sent_idx": "12",
             "tkn_idx": "433",
             "text": "indiretto",
-            "endpoints": [
+            "offsets": [
                 2550,
                 2559
             ]
@@ -3848,7 +3848,7 @@
             "sent_idx": "12",
             "tkn_idx": "434",
             "text": "rivolto",
-            "endpoints": [
+            "offsets": [
                 2560,
                 2567
             ]
@@ -3857,7 +3857,7 @@
             "sent_idx": "12",
             "tkn_idx": "435",
             "text": "al",
-            "endpoints": [
+            "offsets": [
                 2568,
                 2570
             ]
@@ -3866,7 +3866,7 @@
             "sent_idx": "12",
             "tkn_idx": "436",
             "text": "governo",
-            "endpoints": [
+            "offsets": [
                 2571,
                 2578
             ]
@@ -3875,7 +3875,7 @@
             "sent_idx": "12",
             "tkn_idx": "437",
             "text": "francese",
-            "endpoints": [
+            "offsets": [
                 2579,
                 2587
             ]
@@ -3884,7 +3884,7 @@
             "sent_idx": "12",
             "tkn_idx": "438",
             "text": ".",
-            "endpoints": [
+            "offsets": [
                 2587,
                 2588
             ]
@@ -3893,7 +3893,7 @@
             "sent_idx": "13",
             "tkn_idx": "439",
             "text": "Negli",
-            "endpoints": [
+            "offsets": [
                 2589,
                 2594
             ]
@@ -3902,7 +3902,7 @@
             "sent_idx": "13",
             "tkn_idx": "440",
             "text": "ambienti",
-            "endpoints": [
+            "offsets": [
                 2595,
                 2603
             ]
@@ -3911,7 +3911,7 @@
             "sent_idx": "13",
             "tkn_idx": "441",
             "text": "sindacali",
-            "endpoints": [
+            "offsets": [
                 2604,
                 2613
             ]
@@ -3920,7 +3920,7 @@
             "sent_idx": "13",
             "tkn_idx": "442",
             "text": "si",
-            "endpoints": [
+            "offsets": [
                 2614,
                 2616
             ]
@@ -3929,7 +3929,7 @@
             "sent_idx": "13",
             "tkn_idx": "443",
             "text": "sostiene",
-            "endpoints": [
+            "offsets": [
                 2617,
                 2625
             ]
@@ -3938,7 +3938,7 @@
             "sent_idx": "13",
             "tkn_idx": "444",
             "text": "infatti",
-            "endpoints": [
+            "offsets": [
                 2626,
                 2633
             ]
@@ -3947,7 +3947,7 @@
             "sent_idx": "13",
             "tkn_idx": "445",
             "text": "che",
-            "endpoints": [
+            "offsets": [
                 2634,
                 2637
             ]
@@ -3956,7 +3956,7 @@
             "sent_idx": "13",
             "tkn_idx": "446",
             "text": "la",
-            "endpoints": [
+            "offsets": [
                 2638,
                 2640
             ]
@@ -3965,7 +3965,7 @@
             "sent_idx": "13",
             "tkn_idx": "447",
             "text": "Michelin",
-            "endpoints": [
+            "offsets": [
                 2641,
                 2649
             ]
@@ -3974,7 +3974,7 @@
             "sent_idx": "13",
             "tkn_idx": "448",
             "text": "ha",
-            "endpoints": [
+            "offsets": [
                 2650,
                 2652
             ]
@@ -3983,7 +3983,7 @@
             "sent_idx": "13",
             "tkn_idx": "449",
             "text": "ottenuto",
-            "endpoints": [
+            "offsets": [
                 2653,
                 2661
             ]
@@ -3992,7 +3992,7 @@
             "sent_idx": "13",
             "tkn_idx": "450",
             "text": "aiuti",
-            "endpoints": [
+            "offsets": [
                 2662,
                 2667
             ]
@@ -4001,7 +4001,7 @@
             "sent_idx": "13",
             "tkn_idx": "451",
             "text": "finanziari",
-            "endpoints": [
+            "offsets": [
                 2668,
                 2678
             ]
@@ -4010,7 +4010,7 @@
             "sent_idx": "13",
             "tkn_idx": "452",
             "text": "dal",
-            "endpoints": [
+            "offsets": [
                 2679,
                 2682
             ]
@@ -4019,7 +4019,7 @@
             "sent_idx": "13",
             "tkn_idx": "453",
             "text": "governo",
-            "endpoints": [
+            "offsets": [
                 2683,
                 2690
             ]
@@ -4028,7 +4028,7 @@
             "sent_idx": "13",
             "tkn_idx": "454",
             "text": "di",
-            "endpoints": [
+            "offsets": [
                 2691,
                 2693
             ]
@@ -4037,7 +4037,7 @@
             "sent_idx": "13",
             "tkn_idx": "455",
             "text": "Parigi",
-            "endpoints": [
+            "offsets": [
                 2694,
                 2700
             ]
@@ -4046,7 +4046,7 @@
             "sent_idx": "13",
             "tkn_idx": "456",
             "text": "in",
-            "endpoints": [
+            "offsets": [
                 2701,
                 2703
             ]
@@ -4055,7 +4055,7 @@
             "sent_idx": "13",
             "tkn_idx": "457",
             "text": "cambio",
-            "endpoints": [
+            "offsets": [
                 2704,
                 2710
             ]
@@ -4064,7 +4064,7 @@
             "sent_idx": "13",
             "tkn_idx": "458",
             "text": "di",
-            "endpoints": [
+            "offsets": [
                 2711,
                 2713
             ]
@@ -4073,7 +4073,7 @@
             "sent_idx": "13",
             "tkn_idx": "459",
             "text": "un",
-            "endpoints": [
+            "offsets": [
                 2714,
                 2716
             ]
@@ -4082,7 +4082,7 @@
             "sent_idx": "13",
             "tkn_idx": "460",
             "text": "mantenimento",
-            "endpoints": [
+            "offsets": [
                 2717,
                 2729
             ]
@@ -4091,7 +4091,7 @@
             "sent_idx": "13",
             "tkn_idx": "461",
             "text": "dei",
-            "endpoints": [
+            "offsets": [
                 2730,
                 2733
             ]
@@ -4100,7 +4100,7 @@
             "sent_idx": "13",
             "tkn_idx": "462",
             "text": "livelli",
-            "endpoints": [
+            "offsets": [
                 2734,
                 2741
             ]
@@ -4109,7 +4109,7 @@
             "sent_idx": "13",
             "tkn_idx": "463",
             "text": "occupazionali",
-            "endpoints": [
+            "offsets": [
                 2742,
                 2755
             ]
@@ -4118,7 +4118,7 @@
             "sent_idx": "13",
             "tkn_idx": "464",
             "text": ".",
-            "endpoints": [
+            "offsets": [
                 2755,
                 2756
             ]
@@ -4127,7 +4127,7 @@
             "sent_idx": "14",
             "tkn_idx": "465",
             "text": "Pertanto",
-            "endpoints": [
+            "offsets": [
                 2757,
                 2765
             ]
@@ -4136,7 +4136,7 @@
             "sent_idx": "14",
             "tkn_idx": "466",
             "text": "la",
-            "endpoints": [
+            "offsets": [
                 2766,
                 2768
             ]
@@ -4145,7 +4145,7 @@
             "sent_idx": "14",
             "tkn_idx": "467",
             "text": "decisione",
-            "endpoints": [
+            "offsets": [
                 2769,
                 2778
             ]
@@ -4154,7 +4154,7 @@
             "sent_idx": "14",
             "tkn_idx": "468",
             "text": "di",
-            "endpoints": [
+            "offsets": [
                 2779,
                 2781
             ]
@@ -4163,7 +4163,7 @@
             "sent_idx": "14",
             "tkn_idx": "469",
             "text": "procedere",
-            "endpoints": [
+            "offsets": [
                 2782,
                 2791
             ]
@@ -4172,7 +4172,7 @@
             "sent_idx": "14",
             "tkn_idx": "470",
             "text": "ai",
-            "endpoints": [
+            "offsets": [
                 2792,
                 2794
             ]
@@ -4181,7 +4181,7 @@
             "sent_idx": "14",
             "tkn_idx": "471",
             "text": "licenziamenti",
-            "endpoints": [
+            "offsets": [
                 2795,
                 2808
             ]
@@ -4190,7 +4190,7 @@
             "sent_idx": "14",
             "tkn_idx": "472",
             "text": "in",
-            "endpoints": [
+            "offsets": [
                 2809,
                 2811
             ]
@@ -4199,7 +4199,7 @@
             "sent_idx": "14",
             "tkn_idx": "473",
             "text": "Italia",
-            "endpoints": [
+            "offsets": [
                 2812,
                 2818
             ]
@@ -4208,7 +4208,7 @@
             "sent_idx": "14",
             "tkn_idx": "474",
             "text": "dovrebbe",
-            "endpoints": [
+            "offsets": [
                 2819,
                 2827
             ]
@@ -4217,7 +4217,7 @@
             "sent_idx": "14",
             "tkn_idx": "475",
             "text": "essere",
-            "endpoints": [
+            "offsets": [
                 2828,
                 2834
             ]
@@ -4226,7 +4226,7 @@
             "sent_idx": "14",
             "tkn_idx": "476",
             "text": "un",
-            "endpoints": [
+            "offsets": [
                 2835,
                 2837
             ]
@@ -4235,7 +4235,7 @@
             "sent_idx": "14",
             "tkn_idx": "477",
             "text": "campanello",
-            "endpoints": [
+            "offsets": [
                 2838,
                 2848
             ]
@@ -4244,7 +4244,7 @@
             "sent_idx": "14",
             "tkn_idx": "478",
             "text": "d'",
-            "endpoints": [
+            "offsets": [
                 2849,
                 2851
             ]
@@ -4253,7 +4253,7 @@
             "sent_idx": "14",
             "tkn_idx": "479",
             "text": "allarme",
-            "endpoints": [
+            "offsets": [
                 2852,
                 2859
             ]
@@ -4262,7 +4262,7 @@
             "sent_idx": "14",
             "tkn_idx": "480",
             "text": ";",
-            "endpoints": [
+            "offsets": [
                 2859,
                 2860
             ]
@@ -4271,7 +4271,7 @@
             "sent_idx": "14",
             "tkn_idx": "481",
             "text": "come",
-            "endpoints": [
+            "offsets": [
                 2861,
                 2865
             ]
@@ -4280,7 +4280,7 @@
             "sent_idx": "14",
             "tkn_idx": "482",
             "text": "dire",
-            "endpoints": [
+            "offsets": [
                 2866,
                 2870
             ]
@@ -4289,7 +4289,7 @@
             "sent_idx": "14",
             "tkn_idx": "483",
             "text": "che",
-            "endpoints": [
+            "offsets": [
                 2871,
                 2874
             ]
@@ -4298,7 +4298,7 @@
             "sent_idx": "14",
             "tkn_idx": "484",
             "text": "la",
-            "endpoints": [
+            "offsets": [
                 2875,
                 2877
             ]
@@ -4307,7 +4307,7 @@
             "sent_idx": "14",
             "tkn_idx": "485",
             "text": "situazione",
-            "endpoints": [
+            "offsets": [
                 2878,
                 2888
             ]
@@ -4316,7 +4316,7 @@
             "sent_idx": "14",
             "tkn_idx": "486",
             "text": "e'",
-            "endpoints": [
+            "offsets": [
                 2889,
                 2891
             ]
@@ -4325,7 +4325,7 @@
             "sent_idx": "14",
             "tkn_idx": "487",
             "text": "tale",
-            "endpoints": [
+            "offsets": [
                 2892,
                 2896
             ]
@@ -4334,7 +4334,7 @@
             "sent_idx": "14",
             "tkn_idx": "488",
             "text": "per",
-            "endpoints": [
+            "offsets": [
                 2897,
                 2900
             ]
@@ -4343,7 +4343,7 @@
             "sent_idx": "14",
             "tkn_idx": "489",
             "text": "cui",
-            "endpoints": [
+            "offsets": [
                 2901,
                 2904
             ]
@@ -4352,7 +4352,7 @@
             "sent_idx": "14",
             "tkn_idx": "490",
             "text": "dopo",
-            "endpoints": [
+            "offsets": [
                 2905,
                 2909
             ]
@@ -4361,7 +4361,7 @@
             "sent_idx": "14",
             "tkn_idx": "491",
             "text": "l'",
-            "endpoints": [
+            "offsets": [
                 2910,
                 2912
             ]
@@ -4370,7 +4370,7 @@
             "sent_idx": "14",
             "tkn_idx": "492",
             "text": "Italia",
-            "endpoints": [
+            "offsets": [
                 2913,
                 2919
             ]
@@ -4379,7 +4379,7 @@
             "sent_idx": "14",
             "tkn_idx": "493",
             "text": "potrebbe",
-            "endpoints": [
+            "offsets": [
                 2920,
                 2928
             ]
@@ -4388,7 +4388,7 @@
             "sent_idx": "14",
             "tkn_idx": "494",
             "text": "giungere",
-            "endpoints": [
+            "offsets": [
                 2929,
                 2937
             ]
@@ -4397,7 +4397,7 @@
             "sent_idx": "14",
             "tkn_idx": "495",
             "text": "inevitabilmente",
-            "endpoints": [
+            "offsets": [
                 2938,
                 2953
             ]
@@ -4406,7 +4406,7 @@
             "sent_idx": "14",
             "tkn_idx": "496",
             "text": "il",
-            "endpoints": [
+            "offsets": [
                 2954,
                 2956
             ]
@@ -4415,7 +4415,7 @@
             "sent_idx": "14",
             "tkn_idx": "497",
             "text": "momento",
-            "endpoints": [
+            "offsets": [
                 2957,
                 2964
             ]
@@ -4424,7 +4424,7 @@
             "sent_idx": "14",
             "tkn_idx": "498",
             "text": "dei",
-            "endpoints": [
+            "offsets": [
                 2965,
                 2968
             ]
@@ -4433,7 +4433,7 @@
             "sent_idx": "14",
             "tkn_idx": "499",
             "text": "licenziamenti",
-            "endpoints": [
+            "offsets": [
                 2969,
                 2982
             ]
@@ -4442,7 +4442,7 @@
             "sent_idx": "14",
             "tkn_idx": "500",
             "text": "anche",
-            "endpoints": [
+            "offsets": [
                 2983,
                 2988
             ]
@@ -4451,7 +4451,7 @@
             "sent_idx": "14",
             "tkn_idx": "501",
             "text": "negli",
-            "endpoints": [
+            "offsets": [
                 2989,
                 2994
             ]
@@ -4460,7 +4460,7 @@
             "sent_idx": "14",
             "tkn_idx": "502",
             "text": "stabilimenti",
-            "endpoints": [
+            "offsets": [
                 2995,
                 3007
             ]
@@ -4469,7 +4469,7 @@
             "sent_idx": "14",
             "tkn_idx": "503",
             "text": "francesi",
-            "endpoints": [
+            "offsets": [
                 3008,
                 3016
             ]
@@ -4478,7 +4478,7 @@
             "sent_idx": "14",
             "tkn_idx": "504",
             "text": ",",
-            "endpoints": [
+            "offsets": [
                 3016,
                 3017
             ]
@@ -4487,7 +4487,7 @@
             "sent_idx": "14",
             "tkn_idx": "505",
             "text": "indipendentemente",
-            "endpoints": [
+            "offsets": [
                 3018,
                 3035
             ]
@@ -4496,7 +4496,7 @@
             "sent_idx": "14",
             "tkn_idx": "506",
             "text": "dalle",
-            "endpoints": [
+            "offsets": [
                 3036,
                 3041
             ]
@@ -4505,7 +4505,7 @@
             "sent_idx": "14",
             "tkn_idx": "507",
             "text": "garanzie",
-            "endpoints": [
+            "offsets": [
                 3042,
                 3050
             ]
@@ -4514,7 +4514,7 @@
             "sent_idx": "14",
             "tkn_idx": "508",
             "text": "che",
-            "endpoints": [
+            "offsets": [
                 3051,
                 3054
             ]
@@ -4523,7 +4523,7 @@
             "sent_idx": "14",
             "tkn_idx": "509",
             "text": "possono",
-            "endpoints": [
+            "offsets": [
                 3055,
                 3062
             ]
@@ -4532,7 +4532,7 @@
             "sent_idx": "14",
             "tkn_idx": "510",
             "text": "essere",
-            "endpoints": [
+            "offsets": [
                 3063,
                 3069
             ]
@@ -4541,7 +4541,7 @@
             "sent_idx": "14",
             "tkn_idx": "511",
             "text": "state",
-            "endpoints": [
+            "offsets": [
                 3070,
                 3075
             ]
@@ -4550,7 +4550,7 @@
             "sent_idx": "14",
             "tkn_idx": "512",
             "text": "fornite",
-            "endpoints": [
+            "offsets": [
                 3076,
                 3083
             ]
@@ -4559,7 +4559,7 @@
             "sent_idx": "14",
             "tkn_idx": "513",
             "text": ".",
-            "endpoints": [
+            "offsets": [
                 3083,
                 3084
             ]

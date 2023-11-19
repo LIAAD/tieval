@@ -91,7 +91,7 @@ class TempEval3DocumentReader(BaseDocumentReader):
                 if event:
                     mkinst.update(event)
 
-                s, e = mkinst["endpoints"].split()
+                s, e = mkinst["offsets"].split()
                 entities.add(Event(
                     aspect=mkinst['aspect'],
                     class_=mkinst['class'],
@@ -102,14 +102,14 @@ class TempEval3DocumentReader(BaseDocumentReader):
                     pos=mkinst['pos'],
                     tense=mkinst['tense'],
                     text=mkinst['text'],
-                    endpoints=(int(s), int(e)),
+                    offsets=(int(s), int(e)),
                     sent_idx=int(mkinst.get("sent_idx"))
                 ))
 
         # timexs
         if timexs:
             for timex in timexs:
-                s, e = timex["endpoints"].split()
+                s, e = timex["offsets"].split()
 
                 entities.add(Timex(
                     function_in_document=timex.get("functionInDocument"),
@@ -117,7 +117,7 @@ class TempEval3DocumentReader(BaseDocumentReader):
                     id=timex["tid"],
                     type_=timex["type"],
                     value=timex["value"],
-                    endpoints=(int(s), int(e)),
+                    offsets=(int(s), int(e)),
                     sent_idx=int(timex.get("sent_idx"))
                 ))
 
@@ -199,7 +199,7 @@ class TimeBank12DocumentReader(BaseDocumentReader):
                 if event:
                     mkinst.update(event)
 
-                s, e = mkinst.get("endpoints").split()
+                s, e = mkinst.get("offsets").split()
                 entities.add(Event(
                     aspect=mkinst['aspect'],
                     class_=mkinst.get('class'),
@@ -210,7 +210,7 @@ class TimeBank12DocumentReader(BaseDocumentReader):
                     pos=mkinst['pos'],
                     tense=mkinst['tense'],
                     text=mkinst['text'],
-                    endpoints=(int(s), int(e))
+                    offsets=(int(s), int(e))
                 ))
 
         # timexs
@@ -219,7 +219,7 @@ class TimeBank12DocumentReader(BaseDocumentReader):
 
         if timexs:
             for timex in timexs:
-                s, e = timex.get("endpoints").split()
+                s, e = timex.get("offsets").split()
 
                 entities.add(Timex(
                     function_in_document=timex.get("functionInDocument"),
@@ -227,7 +227,7 @@ class TimeBank12DocumentReader(BaseDocumentReader):
                     id=timex["tid"],
                     type_=timex["type"],
                     value=timex["value"],
-                    endpoints=(int(s), int(e))
+                    offsets=(int(s), int(e))
                 ))
 
         # dct
@@ -302,19 +302,19 @@ class MeanTimeDocumentReader(BaseDocumentReader):
         events = self.content["Document"]["Markables"]["EVENT_MENTION"]
         for event in events:
 
-            # events that do not conatian endpoints are in the title (which is not included in the raw text)
+            # events that do not conatian offsets are in the title (which is not included in the raw text)
             # we ignore such instances.
-            if event.get("endpoints") is None:
+            if event.get("offsets") is None:
                 continue
 
-            s, e = event["endpoints"].split(" ")
+            s, e = event["offsets"].split(" ")
             s, e = int(s), int(e)
             entities.add(Event(
                 id=event["m_id"],
                 tense=event.get("tense"),
                 pos=event.get("pos"),
                 text=self._text[s:e],
-                endpoints=(s, e)
+                offsets=(s, e)
             ))
 
         # timex
@@ -328,19 +328,19 @@ class MeanTimeDocumentReader(BaseDocumentReader):
             if is_dct or is_descriptor:
                 continue
 
-            # timexs that do not contian endpoints are in the title (which is not included in the raw text)
+            # timexs that do not contian offsets are in the title (which is not included in the raw text)
             # we ignore such instances.
-            if timex.get("endpoints") is None:
+            if timex.get("offsets") is None:
                 continue
 
-            # retrieve endpoints and text
-            s, e = timex["endpoints"].split(" ")
+            # retrieve offsets and text
+            s, e = timex["offsets"].split(" ")
             s, e = int(s), int(e)
 
             entities.add(Timex(
                 id=timex["m_id"],
                 text=self._text[s: e],
-                endpoints=(s, e),
+                offsets=(s, e),
                 type_=timex["type"],
                 function_in_document=timex["functionInDocument"]),
             )
@@ -459,13 +459,13 @@ class NarrativeContainerDocumentReader(BaseDocumentReader):
         tkns = self.content["Document"]["token"]
         text = reconstruct_raw_text(tkns)
 
-        # add endpoints to tokens
+        # add offsets to tokens
         idx = 0
         running_text = text
         for tkn in self.content["Document"]["token"]:
             offset = running_text.find(tkn["text"])
             idx += offset
-            tkn["endpoints"] = (idx, idx + len(tkn["text"]))
+            tkn["offsets"] = (idx, idx + len(tkn["text"]))
             idx += len(tkn["text"])
             running_text = running_text[offset + len(tkn["text"]):]
 
@@ -474,18 +474,18 @@ class NarrativeContainerDocumentReader(BaseDocumentReader):
     @property
     def _entities(self) -> Set[Entity]:
 
-        def get_endpoints(token_anchor, tokens):
+        def get_offsets(token_anchor, tokens):
 
             if not isinstance(token_anchor, list):
                 token_anchor = [token_anchor]
 
-            endpoints = [
+            offsets = [
                 endpoint
                 for tkn in token_anchor
-                for endpoint in tokens[tkn["t_id"]]["endpoints"]
+                for endpoint in tokens[tkn["t_id"]]["offsets"]
             ]
 
-            return endpoints[0], endpoints[-1]
+            return offsets[0], offsets[-1]
 
         tokens = {
             tkn["t_id"]: tkn
@@ -502,7 +502,7 @@ class NarrativeContainerDocumentReader(BaseDocumentReader):
                 continue
 
             # retrieve text
-            s, e = get_endpoints(event["token_anchor"], tokens)
+            s, e = get_offsets(event["token_anchor"], tokens)
             text = self._text[s: e]
 
             entities.add(Event(
@@ -510,7 +510,7 @@ class NarrativeContainerDocumentReader(BaseDocumentReader):
                 tense=event.get("tense"),
                 pos=event.get("pos"),
                 text=text,
-                endpoints=(s, e)
+                offsets=(s, e)
             ))
 
         # timex
@@ -525,14 +525,14 @@ class NarrativeContainerDocumentReader(BaseDocumentReader):
             if is_dct or is_descriptor:
                 continue
 
-            # retrieve endpoints and text
-            s, e = get_endpoints(timex["token_anchor"], tokens)
+            # retrieve offsets and text
+            s, e = get_offsets(timex["token_anchor"], tokens)
             text = self._text[s: e]
 
             entities.add(Timex(
                 id=timex["m_id"],
                 text=text,
-                endpoints=(s, e),
+                offsets=(s, e),
                 type_=timex["type"],
                 function_in_document=timex["functionInDocument"]),
             )
@@ -645,13 +645,14 @@ class GraphEveDocumentReader(BaseDocumentReader):
                 stem=event["EventCarrierTaggedWord"]["Stem"],
                 pos=event["EventCarrierTaggedWord"]["POSTag"],
                 lemma=event["EventCarrierTaggedWord"]["Lemma"],
-                endpoints=(
+                offsets=(
                     int(event["EventCarrierTaggedWord"]["DocumentStartPosition"]),
-                    int(event["EventCarrierTaggedWord"]["DocumentStartPosition"]) + len(event["EventCarrier"])
+                    int(event["EventCarrierTaggedWord"]["DocumentStartPosition"]) +
+                    len(event["EventCarrier"])
                 )
             ))
 
-        # TODO: figure out how to identify temporal expressions span/endpoints
+        # TODO: figure out how to identify temporal expressions span/offsets
 
         return entities
 
@@ -717,16 +718,16 @@ class TempEval2DocumentReader(BaseDocumentReader):
 
         entities = set()
 
-        endpoints_map = {
-            (tkn["sent_idx"], tkn["tkn_idx"]): tkn["endpoints"]
+        offsets_map = {
+            (tkn["sent_idx"], tkn["tkn_idx"]): tkn["offsets"]
             for tkn in self.content["tokens"]
         }
 
         # events
         for event in self.content["entities"]["events"]:
-            # find entity endpoints
-            s, e = self._get_endpoints(event, endpoints_map)
-            event["endpoints"] = (s, e)
+            # find entity offsets
+            s, e = self._get_offsets(event, offsets_map)
+            event["offsets"] = (s, e)
             event["text"] = self._text[s: e]
 
             entities.add(Event(
@@ -737,7 +738,7 @@ class TempEval2DocumentReader(BaseDocumentReader):
                 mood=event.get("mood"),
                 tense=event.get("tense"),
                 polarity=event.get("polarity"),
-                endpoints=event.get("endpoints"),
+                offsets=event.get("offsets"),
                 text=event.get("text")
             ))
 
@@ -747,9 +748,9 @@ class TempEval2DocumentReader(BaseDocumentReader):
 
             if "function_in_document" not in timex:  # ignore dct since it is not explicit in raw text
 
-                # find entity endpoints
-                s, e = self._get_endpoints(timex, endpoints_map)
-                timex["endpoints"] = (s, e)
+                # find entity offsets
+                s, e = self._get_offsets(timex, offsets_map)
+                timex["offsets"] = (s, e)
                 timex["text"] = self._text[s: e]
 
                 entities.add(Timex(
@@ -759,7 +760,7 @@ class TempEval2DocumentReader(BaseDocumentReader):
                     type=timex["id"],
                     value=timex.get("val"),
                     function_in_document=timex.get("function_in_document"),
-                    endpoints=timex.get("endpoints"),
+                    offsets=timex.get("offsets"),
                     text=timex.get("text")
                 ))
 
@@ -787,14 +788,14 @@ class TempEval2DocumentReader(BaseDocumentReader):
         return tlinks
 
     @staticmethod
-    def _get_endpoints(entity, endpoints_map):
+    def _get_offsets(entity, offsets_map):
 
-        endpoints = [
+        offsets = [
             endpoint
             for tkn_idx in entity["tkn_idx"]
-            for endpoint in endpoints_map[(entity["sent_idx"], tkn_idx)]
+            for endpoint in offsets_map[(entity["sent_idx"], tkn_idx)]
         ]
-        return endpoints[0], endpoints[-1]
+        return offsets[0], offsets[-1]
 
 
 class TCRDocumentReader(BaseDocumentReader):
@@ -835,7 +836,7 @@ class TCRDocumentReader(BaseDocumentReader):
                 if event:
                     mkinst.update(event)
 
-                s, e = mkinst["endpoints"].split(" ")
+                s, e = mkinst["offsets"].split(" ")
                 entities.add(Event(
                     aspect=mkinst.get('aspect'),
                     class_=mkinst.get('class'),
@@ -846,7 +847,7 @@ class TCRDocumentReader(BaseDocumentReader):
                     pos=mkinst.get('pos'),
                     tense=mkinst.get('tense'),
                     text=mkinst.get('text'),
-                    endpoints=(int(s), int(e))
+                    offsets=(int(s), int(e))
                 ))
 
         # timexs
@@ -855,14 +856,14 @@ class TCRDocumentReader(BaseDocumentReader):
 
         if timexs:
             for timex in timexs:
-                s, e = timex["endpoints"].split(" ")
+                s, e = timex["offsets"].split(" ")
 
                 entities.add(Timex(
                     text=timex["text"],
                     id=timex["tid"],
                     type_=timex["type"],
                     value=timex["value"],
-                    endpoints=(int(s), int(e))
+                    offsets=(int(s), int(e))
                 ))
 
         # dct
@@ -952,14 +953,14 @@ class TempEval2FrenchDocumentReader(BaseDocumentReader):
                 if event:
                     mkinst.update(event)
 
-                s, e = mkinst.get("endpoints").split()
+                s, e = mkinst.get("offsets").split()
 
                 entities.add(Event(
                     id=mkinst['eiid'],
                     eid=mkinst['eid'],
                     eiid=mkinst['eiid'],
                     text=mkinst['text'],
-                    endpoints=(int(s), int(e)),
+                    offsets=(int(s), int(e)),
                     aspect=mkinst.get('aspect'),
                     class_=mkinst.get('class'),
                     modality=mkinst.get('modality'),
@@ -973,13 +974,13 @@ class TempEval2FrenchDocumentReader(BaseDocumentReader):
         else:
 
             for event in events:
-                s, e = event.get("endpoints").split()
+                s, e = event.get("offsets").split()
 
                 entities.add(Event(
                     id=event['eid'],
                     eid=event['eid'],
                     text=event['text'],
-                    endpoints=(int(s), int(e)),
+                    offsets=(int(s), int(e)),
                     aspect=event.get('aspect'),
                     class_=event.get('class'),
                     modality=event.get('modality'),
@@ -995,11 +996,11 @@ class TempEval2FrenchDocumentReader(BaseDocumentReader):
 
         if timexs:
             for timex in timexs:
-                s, e = timex.get("endpoints").split()
+                s, e = timex.get("offsets").split()
                 entities.add(Timex(
                     id=timex["tid"],
                     text=timex.get("text"),
-                    endpoints=(int(s), int(e)),
+                    offsets=(int(s), int(e)),
                     value=timex.get("value"),
                     type=timex.get("type"),
                     function_in_document=timex.get("functionInDocument"),
@@ -1093,12 +1094,12 @@ class TimeBankPTDocumentReader(BaseDocumentReader):
                 timexs += sent_timexs
 
         for event in events:
-            s, e = event.get("endpoints").split()
+            s, e = event.get("offsets").split()
             entities.add(Event(
                 id=event['eid'],
                 eid=event['eid'],
                 text=event['text'],
-                endpoints=(int(s), int(e)),
+                offsets=(int(s), int(e)),
                 aspect=event.get('aspect'),
                 class_=event.get('class'),
                 modality=event.get('modality'),
@@ -1110,13 +1111,13 @@ class TimeBankPTDocumentReader(BaseDocumentReader):
             ))
 
         for timex in timexs:
-            s, e = timex.get("endpoints").split()
+            s, e = timex.get("offsets").split()
             entities.add(Timex(
                 id=timex["tid"],
                 text=timex.get("text"),
                 value=timex.get("value"),
                 type=timex.get("type"),
-                endpoints=(int(s), int(e)),
+                offsets=(int(s), int(e)),
                 function_in_document=timex.get("functionInDocument"),
                 anchor_time_id=timex.get("anchorTimeID"),
                 temporal_function=timex.get("temporalFunction"),
@@ -1190,7 +1191,7 @@ class KRAUTSDocumentReader(BaseDocumentReader):
             for timex in timexs:
 
                 if "text" in timex:  # ignore empty timexs
-                    s, e = timex["endpoints"].split()
+                    s, e = timex["offsets"].split()
 
                     entities.add(Timex(
                         function_in_document=timex.get("functionInDocument"),
@@ -1198,7 +1199,7 @@ class KRAUTSDocumentReader(BaseDocumentReader):
                         id=timex["tid"],
                         type_=timex["type"],
                         value=timex["value"],
-                        endpoints=(int(s), int(e)),
+                        offsets=(int(s), int(e)),
                     ))
 
         return entities
@@ -1252,15 +1253,15 @@ class WikiWarsDocumentReader(BaseDocumentReader):
         timexs = list(text.iter("TIMEX2"))
         if timexs:
             for timex in timexs:
-                if "endpoints" not in timex.attrib:  # ignore parents of nested timexs
+                if "offsets" not in timex.attrib:  # ignore parents of nested timexs
                     continue
-                s, e = timex.attrib["endpoints"].split()
+                s, e = timex.attrib["offsets"].split()
                 timex_text = "".join(timex.itertext())
                 entities.add(Timex(
                     function_in_document=timex.attrib.get("functionInDocument"),
                     text=timex_text,
                     value=timex.attrib["val"] if "val" in timex else timex.attrib.get("anchor_val"),
-                    endpoints=(int(s), int(e))
+                    offsets=(int(s), int(e))
                 ))
 
         # dct
@@ -1314,7 +1315,7 @@ class FRTimeBankDocumentReader(BaseDocumentReader):
         # events
         events = self.content["TimeML"]["TEXT"].get("EVENT")
         for event in events:
-            s, e = event.get("endpoints").split()
+            s, e = event.get("offsets").split()
             entities.add(Event(
                 class_=event.get('class'),
                 id=event['eiid'],
@@ -1325,7 +1326,7 @@ class FRTimeBankDocumentReader(BaseDocumentReader):
                 text=event['text'],
                 pred=event.get("pred"),
                 vform=event.get("vform"),
-                endpoints=(int(s), int(e))
+                offsets=(int(s), int(e))
             ))
 
         # timexs
@@ -1334,7 +1335,7 @@ class FRTimeBankDocumentReader(BaseDocumentReader):
 
         if timexs:
             for timex in timexs[1:]:  # first timex is dct
-                s, e = timex.get("endpoints").split()
+                s, e = timex.get("offsets").split()
 
                 entities.add(Timex(
                     function_in_document=timex.get("functionInDocument"),
@@ -1342,7 +1343,7 @@ class FRTimeBankDocumentReader(BaseDocumentReader):
                     id=timex["tid"],
                     type_=timex["type"],
                     value=timex["value"],
-                    endpoints=(int(s), int(e))
+                    offsets=(int(s), int(e))
                 ))
 
         # dct
@@ -1419,7 +1420,7 @@ class AncientTimeDocumentReader(BaseDocumentReader):
         # timexs
         timexs = self.content["TimeML"]["TEXT"].get("TIMEX3")
         for timex in timexs:
-            s, e = timex.get("endpoints").split()
+            s, e = timex.get("offsets").split()
 
             entities.add(Timex(
                 function_in_document=timex.get("functionInDocument"),
@@ -1427,7 +1428,7 @@ class AncientTimeDocumentReader(BaseDocumentReader):
                 id=timex["tid"],
                 type_=timex["type"],
                 value=timex["value"],
-                endpoints=(int(s), int(e))
+                offsets=(int(s), int(e))
             ))
 
         # dct
@@ -1492,7 +1493,7 @@ class ProfessorHeidelTimeDocumentReader(BaseDocumentReader):
 
             entities.add(Timex(
                 text=text,
-                endpoints=(s, e)
+                offsets=(s, e)
             ))
 
         # dct
