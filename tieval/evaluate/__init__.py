@@ -1,32 +1,10 @@
 from typing import Dict, List, Tuple
 
-from tabulate import tabulate
-
 from tieval.entities import Entity, Timex
 from tieval.evaluate.metrics import temporal_awareness
 from tieval.evaluate.metrics import temporal_precision
 from tieval.evaluate.metrics import temporal_recall
 from tieval.links import TLink
-
-
-def _print_table(result: Dict) -> None:
-    rows = list(set(result.keys()))
-    rows.sort()
-
-    cols = list(set(key for row in rows for key in result[row]))
-    cols.sort()
-
-    content = [
-        [row] + [round(result[row].get(col, 0), 3) for col in cols]
-        for row in rows]
-
-    tabel = tabulate(
-        tabular_data=content,
-        headers=cols,
-        tablefmt='orgtbl'
-    )
-
-    print(tabel)
 
 
 def confusion_matrix(annotations, predictions):
@@ -96,7 +74,7 @@ def timex_identification(
     }
 
     if verbose:
-        _print_table(result)
+        print(result)
 
     return result
 
@@ -149,7 +127,7 @@ def event_identification(
     }
 
     if verbose:
-        _print_table(result)
+        print(result)
 
     return result
 
@@ -243,7 +221,7 @@ def tlink_classification(
     }
 
     if verbose:
-        _print_table(result)
+        print(result)
 
     return result
 
