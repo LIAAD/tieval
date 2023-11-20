@@ -14,7 +14,6 @@ def temporal_closure(tlinks: Set[TLink]) -> Set[TLink]:
     that is fed as input.
 
     :param Set[TLink] tlinks:  A set of temporal links (typically from a document)
-ep1&type=pdf
     """
 
     edges_triplets = set()
