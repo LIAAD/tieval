@@ -1,7 +1,17 @@
+from dataclasses import dataclass
 from typing import Union, Tuple
 
 
-class Timex:
+@dataclass
+class Entity:
+    id: str
+    text: str
+    offsets: Tuple[int, int]
+    sent_idx: int
+    is_dct: bool = False
+
+
+class Timex(Entity):
     """Object that represents a time expression."""
 
     def __init__(
@@ -42,11 +52,10 @@ class Timex:
     def is_dct(self):
         if self.function_in_document == 'CREATION_TIME':
             return True
-
         return False
 
 
-class Event:
+class Event(Entity):
     """Object that represents an event."""
 
     def __init__(
@@ -93,6 +102,3 @@ class Event:
 
     def __lt__(self, other):
         return self.id < other.id
-
-
-Entity = Union[Timex, Event]

@@ -53,3 +53,6 @@ class TestEvent:
         e1 = Event(id="e1")
         e2 = Event(id="e2")
         assert e1 < e2
+
+    def test_is_dct(self, event):
+        assert not event.is_dct
