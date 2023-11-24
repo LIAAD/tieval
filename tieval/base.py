@@ -118,7 +118,7 @@ class Document:
         self.text = text
         self._text = Text(text, language)
         self.dct = dct
-        self.entities = entities
+        self.entities = [ent for ent in entities if not ent.is_dct]
         self.tlinks = tlinks
 
         for key, value in kwargs.items():

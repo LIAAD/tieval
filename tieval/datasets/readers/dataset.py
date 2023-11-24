@@ -231,6 +231,7 @@ class TimeBankDenseDatasetReader:
             "test": collections.defaultdict(list)
         }
         for filepath in path.glob("**/*.txt"):
+            print(filepath)
 
             split = filepath.parts[-2]
             with open(filepath, 'r') as fin:
@@ -240,13 +241,8 @@ class TimeBankDenseDatasetReader:
                     doc, src_id, tgt_id, relation = line.split()
 
                     document = self.base_dataset[doc]
-                    entities_dict = {}
-                    for timex in document.timexs:
-                        if timex.is_dct:
-                            entities_dict["t0"] = timex
-                        else:
-                            entities_dict[timex.id] = timex
-
+                    entities_dict = {"t0": document.dct}
+                    entities_dict.update({timex.id: timex for timex in document.timexs})
                     entities_dict.update({event.eid: event for event in document.events})
 
                     src = entities_dict[src_id]
