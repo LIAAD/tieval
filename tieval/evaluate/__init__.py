@@ -240,8 +240,8 @@ def span_identification(
         if strict:
             tp, fp, fn = confusion_matrix(annot, pred)
         else:  # relaxed
-            span_annot = [Span(s_annot, e_annot) for s_annot, e_annot in annot]
-            span_pred = [Span(s_pred, e_pred) for s_pred, e_pred in pred]
+            span_annot = [Offsets(s_annot, e_annot) for s_annot, e_annot in annot]
+            span_pred = [Offsets(s_pred, e_pred) for s_pred, e_pred in pred]
             tp, fp, fn = confusion_matrix(span_annot, span_pred)
 
         # update macro metrics counts
@@ -279,15 +279,15 @@ def span_identification(
     return result
 
 
-class Span:
-    """An annotation span build to check if two entities overlap."""
+class Offsets:
+    """An annotation offsets build to check if two entities overlap."""
 
     def __init__(self, start: int, end: int):
         self.start = start
         self.end = end
 
     def __repr__(self):
-        return f"Span({self.start}, {self.end})"
+        return f"Offsets({self.start}, {self.end})"
 
     def __eq__(self, other) -> bool:
         """If the offsets overlap, the offsets are considered equal."""

@@ -20,7 +20,7 @@ class TestSentence:
 
     sent = Sentence(
         content="Hi, my name is.",
-        span=(100, 115)
+        offsets=(100, 115)
     )
 
     def test_tokens(self):

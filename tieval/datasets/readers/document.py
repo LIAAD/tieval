@@ -652,7 +652,7 @@ class GraphEveDocumentReader(BaseDocumentReader):
                 )
             ))
 
-        # TODO: figure out how to identify temporal expressions span/offsets
+        # TODO: figure out how to identify temporal expressions offsets/offsets
 
         return entities
 

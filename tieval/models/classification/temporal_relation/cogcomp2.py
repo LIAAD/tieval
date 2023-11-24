@@ -160,7 +160,7 @@ class CogCompTime2(BaseTrainableModel):
 
                 s_tl, e_tl = tlink_offsets
                 for sent in doc.sentences:
-                    s_sent, e_sent = sent.span
+                    s_sent, e_sent = sent.offsets
 
                     cond_1 = s_sent <= s_tl <= e_sent
                     cond_2 = s_sent <= e_tl <= e_sent
@@ -175,11 +175,11 @@ class CogCompTime2(BaseTrainableModel):
                     # the src and tgt entities can have multiple tokens, in this model
                     # the first token is used in that scenario.
                     if src.offsets:
-                        if tkn.span[0] == src.offsets[0]:
+                        if tkn.offsets[0] == src.offsets[0]:
                             src_idx = idx
 
                     if tgt.offsets:
-                        if tkn.span[0] == tgt.offsets[0]:
+                        if tkn.offsets[0] == tgt.offsets[0]:
                             tgt_idx = idx
 
                 # retrieve elmo character ids of context sentence(s)

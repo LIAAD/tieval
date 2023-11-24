@@ -14,10 +14,10 @@ class Token:
     def __init__(
             self,
             content: str,
-            span: List[int]
+            offsets: List[int]
     ) -> None:
         self.content = content
-        self.span = span
+        self.offsets = offsets
 
     def __str__(self):
         return self.content
@@ -34,10 +34,10 @@ class Sentence:
     def __init__(
             self,
             content: str,
-            span: Tuple[int, int],
+            offsets: Tuple[int, int],
     ):
         self.content = content
-        self.span = span
+        self.offsets = offsets
         self._tokens = None
 
     def __str__(self):
@@ -59,9 +59,9 @@ class Sentence:
     def tokens(self) -> List[List[str]]:
         if self._tokens is None:
             tkns = nltk.tokenize.word_tokenize(self.content)
-            offsets = utils.get_offsets(self.content, tkns, self.span[0])
+            offsets = utils.get_offsets(self.content, tkns, self.offsets[0])
 
-            self._tokens = [Token(tkn, span) for tkn, span in zip(tkns, offsets)]
+            self._tokens = [Token(tkn, offsets) for tkn, offsets in zip(tkns, offsets)]
 
         return self._tokens
 
@@ -89,7 +89,7 @@ class Text:
             sents = self.tokenizer(self.content, language=self.language)
             offsets = utils.get_offsets(self.content, sents)
 
-            self._sents = [Sentence(sent, span) for sent, span in zip(sents, offsets)]
+            self._sents = [Sentence(sent, offsets) for sent, offsets in zip(sents, offsets)]
 
         return self._sents
 

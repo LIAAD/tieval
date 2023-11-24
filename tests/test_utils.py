@@ -14,8 +14,8 @@ def test_get_offsets():
               'regulatory', 'approval', 'and', 'complete', 'the', 'transaction', 'by', 'year-end', '.']
 
     offsets = get_offsets(text, tokens)
-    for span, tkn in zip(offsets, tokens):
-        s, e = span
+    for offsets, tkn in zip(offsets, tokens):
+        s, e = offsets
         assert text[s: e] == tkn
 
 
