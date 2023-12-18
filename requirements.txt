@@ -1,6 +1,0 @@
-allenlp==2.9.3
-nltk
-xmltodict
-networkx>=2.8.1
-py_heideltime
-cached-path==1.1.2

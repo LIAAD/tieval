@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=42", "wheel", "setuptools-git-versioning"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools-git-versioning]
+enabled = true
+
+[project]
+name = "tieval"
+dynamic = ["version"]
+dependencies = [
+    "nltk",
+    "xmltodict",
+    "networkx>=2.8.1",
+    "py_heideltime",
+    "cached-path==1.1.2",
+]
+requires-python = ">=3.8"
+authors = [{ name = "Hugo Sousa", email = "hugo.o.sousa@inesctec.pt" }]
+maintainers = [{ name = "Hugo Sousa", email = "hugo.o.sousa@inesctec.pt" }]
+description = "A framework for evaluation and development of temporal-aware models."
+readme = "README.md"
+license = { file = "LICENSE" }
+keywords = [
+    "temporal information",
+    "evaluation",
+    "temporal information extraction",
+    "temporal relation classification",
+    "temporal relation extraction",
+    "temporal expression identification",
+    "event identification",
+    "event classification",
+]
+classifiers = [
+    'Development Status :: 2 - Pre-Alpha',
+    'License :: OSI Approved :: MIT License',
+    'Programming Language :: Python',
+    'Programming Language :: Python :: 3.8',
+    'Programming Language :: Python :: 3.9',
+    'Programming Language :: Python :: 3.10',
+]
+
+[project.optional-dependencies]
+test = ["pytest"]
+models = ["allenlp==2.9.3", "py_heideltime"]
+
+[project.urls]
+Documentation = "https://tieval.readthedocs.io/"
+Repository = "https://github.com/LIAAD/tieval"
