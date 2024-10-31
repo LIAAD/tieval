@@ -389,7 +389,7 @@ DATASETS_METADATA = {
     "timebank": DatasetMetadata(
         name="TimeBank",
         language="english",
-        url="https://drive.inesctec.pt/s/dAttMwk9TiESCt2/download",
+        url="https://drive.inesctec.pt/s/ndNDjnKq9CTdR8Q/download",
         reader=XMLDatasetReader,
         doc_reader=TempEval3DocumentReader,
     ),
