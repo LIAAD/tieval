@@ -115,4 +115,4 @@ def test_temporal_closure_dataset():
     
     assert n_tlinks_closure >= n_tlinks
     assert n_tlinks == 929
-    assert n_tlinks_closure == 3178
+    assert n_tlinks_closure == 3458

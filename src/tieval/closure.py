@@ -1,5 +1,4 @@
 import itertools
-import collections
 from collections import defaultdict
 from typing import List, Set, Tuple, TypedDict
 
@@ -130,26 +129,6 @@ def _compute_point_temporal_closure(relations: List[_DictRelation]):
     ]
 
 
-def _remove_duplicate_tlinks(tlinks: Set[TLink]) -> Set[TLink]:
-    """Remove duplicate tlinks from a set of tlinks.
-
-    This function removes duplicate tlinks from a set of tlinks by
-    comparing the source, target, and relation of the tlinks.
-    """
-
-    
-    def tlink_key(tlink: TLink) -> str:
-        return " ".join(
-            sorted((tlink.source.id, tlink.target.id))
-        )
-
-    tlink_keys = [tlink_key(tlink) for tlink in tlinks]
-    key_count = collections.Counter(tlink_keys)
-    tlink_keys_to_remove = [key for key, count in key_count.items() if count > 1]
-    unique_tlinks = [tlink for tlink in tlinks if tlink_key(tlink) not in tlink_keys_to_remove]
-    return unique_tlinks
-
-
 def temporal_closure(tlinks: Set[TLink]) -> Set[TLink]:
     """Compute temporal closure from a set of temporal links.
 
@@ -158,8 +137,7 @@ def temporal_closure(tlinks: Set[TLink]) -> Set[TLink]:
 
     :param Set[TLink] tlinks:  A set of temporal links (typically from a document)
     """
-    tlinks = _remove_duplicate_tlinks(tlinks)
-
+    tlinks = set(tlinks)
     edges_triplets = tlinks_to_point_relations(tlinks)
     inferred_point_relations = _compute_point_temporal_closure(edges_triplets)
     inferred_tlinks = point_relations_to_tlinks(inferred_point_relations)
@@ -172,7 +150,7 @@ def point_temporal_closure(tlinks: Set[TLink]):
     This function infers all possible TLinks form the set of relations
     that is fed as input.
     """
-    tlinks = _remove_duplicate_tlinks(tlinks)
+    tlinks = set(tlinks)
     edges_triplets = tlinks_to_point_relations(tlinks)
     inferred_point_relations = _compute_point_temporal_closure(edges_triplets)
     return inferred_point_relations
@@ -241,17 +219,10 @@ def point_relations_to_tlinks(point_relations: List[_DictRelation]) -> Set[TLink
 def tlinks_to_point_relations(tlinks: Set[TLink]) -> List[_DictRelation]:
     point_relations = []
     for tlink in tlinks:
-        if isinstance(tlink.source, str):
-            sx = f"s{tlink.source}"
-            ex = f"e{tlink.source}"
-            sy = f"s{tlink.target}"
-            ey = f"e{tlink.target}"
-
-        else:
-            sx = f"s{tlink.source.id}"
-            ex = f"e{tlink.source.id}"
-            sy = f"s{tlink.target.id}"
-            ey = f"e{tlink.target.id}"
+        sx = f"s{tlink.source_id}"
+        ex = f"e{tlink.source_id}"
+        sy = f"s{tlink.target_id}"
+        ey = f"e{tlink.target_id}"
 
         p_relations = tlink.relation.point.relation
 

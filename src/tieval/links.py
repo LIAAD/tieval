@@ -124,3 +124,15 @@ class TLink:
     @property
     def entities(self):
         return self.source, self.target
+
+    @property
+    def source_id(self):
+        if isinstance(self.source, Entity):
+            return self.source.id
+        return self.source
+
+    @property
+    def target_id(self):
+        if isinstance(self.target, Entity):
+            return self.target.id
+        return self.target
