@@ -96,7 +96,7 @@ def _compute_point_temporal_closure(relations: List[_DictRelation]):
     # Infer relations using POINT_TRANSITIONS
     inferred_relations = set()
     for source in graph.nodes():
-        for target in graph.nodes():
+        for target in nx.dfs_preorder_nodes(graph, source=source):
             if source == target:
                 continue
             # check if there is a path between source and target
