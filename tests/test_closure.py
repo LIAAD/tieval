@@ -125,4 +125,4 @@ def test_temporal_closure_tempeavl_3_train():
     
     assert n_tlinks_closure >= n_tlinks
     assert n_tlinks == 10952
-    assert n_tlinks_closure == 77747
+    assert n_tlinks_closure == 76014

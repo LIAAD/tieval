@@ -69,24 +69,27 @@ def _compute_point_temporal_closure(relations: List[_DictRelation]):
             relation["target"] = node2groupnode[relation["target"]]
 
     # make all relations "<"
-    edges = []
+    edges = set()
     for relation in relations:
         source, target, rel_type = (
             relation["source"],
             relation["target"],
             relation["relation"],
         )
-        if rel_type == "<":
-            edges.append((source, target))
+        if rel_type == "<":    
+            edges.add((source, target))
         elif rel_type == ">":
-            edges.append((target, source))
+            edges.add((target, source))
         elif rel_type is None:
             continue
         elif rel_type == "=":
             continue
         else:
             raise ValueError(f"Unknown relation type: {rel_type}")
-        
+    
+    # Drop edges that are inverse of each other
+    edges = set(edge for edge in edges if (edge[1], edge[0]) not in edges)    
+    
     graph = nx.DiGraph()
     graph.add_edges_from(edges)
     
