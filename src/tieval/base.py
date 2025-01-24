@@ -5,6 +5,7 @@ import nltk
 
 from tieval import utils
 from tieval.closure import temporal_closure as _temporal_closure
+from tieval.closure import point_temporal_closure as _point_temporal_closure
 from tieval.entities import Entity, Event, Timex
 from tieval.links import TLink
 
@@ -125,6 +126,7 @@ class Document:
             setattr(self, key, value)
 
         self._closure = None
+        self._point_closure = None
 
     def __repr__(self) -> str:
         return f'Document(name={self.name})'
@@ -150,6 +152,20 @@ class Document:
             self._closure = _temporal_closure(self.tlinks)
 
         return self._closure
+
+    @property
+    def point_temporal_closure(self) -> Set[TLink]:
+        """Compute temporal closure of the document. Temporal closure is the process of inferring new TLinks from the
+        annotated TLinks.
+
+        It will call the function :py:func:`tieval.closure.temporal_closure` on the set of temporal links of the
+        current document.
+        """
+
+        if self._point_closure is None:
+            self._point_closure = _point_temporal_closure(self.tlinks)
+
+        return self._point_closure
 
     @property
     def timexs(self) -> Set[Timex]:

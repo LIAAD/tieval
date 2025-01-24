@@ -1,5 +1,6 @@
 from tieval.links import TLink
 from tieval.closure import temporal_closure
+import tieval.datasets as datasets
 
 
 def test_temporal_closure_1():
@@ -105,3 +106,13 @@ def test_temporal_closure_3():
     inferred = temporal_closure(annotation)
 
     assert inferred == closure
+
+
+def test_temporal_closure_dataset():
+    dataset = datasets.read("tempeval_3")
+    n_tlinks = sum([len(doc.tlinks) for doc in dataset.test])
+    n_tlinks_closure = sum([len(doc.temporal_closure) for doc in dataset.test])
+    
+    assert n_tlinks_closure >= n_tlinks
+    assert n_tlinks == 929
+    assert n_tlinks_closure == 3178

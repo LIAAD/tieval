@@ -42,43 +42,33 @@ _SETTLE_RELATION = {
 SUPPORTED_RELATIONS = list(_SETTLE_RELATION)
 
 # transitivity table for point relations
-_POINT_TRANSITIONS = {
+POINT_TRANSITIONS = {
     "<": {"<": "<", "=": "<", ">": None, None: None},
     "=": {"<": "<", "=": "=", ">": ">", None: None},
     ">": {">": ">", "=": ">", "<": None, None: None},
-    None: {">": None, "=": None, "<": None, None: None}
+    None: {">": None, "=": None, "<": None, None: None},
 }
 
 # inverse for each point relation
-_INVERSE_POINT_RELATION = {
-    "<": ">",
-    ">": "<",
-    "=": "=",
-    None: None
-}
+INVERSE_POINT_RELATION = {"<": ">", ">": "<", "=": "=", None: None}
 
 
 class Point:
-
     def __init__(self, value: int = 1):
         self.value = value
 
 
 class IncompleteRelationError(Exception):
     """Raised when the point relation is incomplete."""
+
     pass
 
 
 class PointRelation:
-
     def __init__(
-            self,
-            xs_ys: str = None,
-            xs_ye: str = None,
-            xe_ys: str = None,
-            xe_ye: str = None
+        self, xs_ys: str = None, xs_ye: str = None, xe_ys: str = None, xe_ye: str = None
     ) -> None:
-        """ Point relation.
+        """Point relation.
         Every interval relation can be decomposed into four point relations between the entities offsets:
         start of entity x; end of entity x; start of entity y; end of entity y.
 
@@ -102,7 +92,6 @@ class PointRelation:
         return f"PointRelation({self.relation})"
 
     def __str__(self):
-
         if self.order is None:
             raise IncompleteRelationError("The point relation is incomplete.")
 
@@ -113,21 +102,19 @@ class PointRelation:
         return f"Source {source}\nTarget {target}"
 
     def __eq__(self, other):
-
         if isinstance(other, list):
             other = PointRelation(*other)
 
         return self.relation == other.relation
 
     def __invert__(self):
-
         ss, se, es, ee = self.relation
 
         inverse_relations = [
-            _INVERSE_POINT_RELATION[ss],
-            _INVERSE_POINT_RELATION[es],
-            _INVERSE_POINT_RELATION[se],
-            _INVERSE_POINT_RELATION[ee],
+            INVERSE_POINT_RELATION[ss],
+            INVERSE_POINT_RELATION[es],
+            INVERSE_POINT_RELATION[se],
+            INVERSE_POINT_RELATION[ee],
         ]
 
         return PointRelation(*inverse_relations)
@@ -136,10 +123,10 @@ class PointRelation:
         r1, r2, r3, r4 = self.relation
         r5, r6, r7, r8 = other.relation
 
-        ss = _POINT_TRANSITIONS[r1][r5] or _POINT_TRANSITIONS[r2][r7]
-        se = _POINT_TRANSITIONS[r1][r6] or _POINT_TRANSITIONS[r2][r8]
-        es = _POINT_TRANSITIONS[r3][r5] or _POINT_TRANSITIONS[r4][r7]
-        ee = _POINT_TRANSITIONS[r3][r6] or _POINT_TRANSITIONS[r4][r8]
+        ss = POINT_TRANSITIONS[r1][r5] or POINT_TRANSITIONS[r2][r7]
+        se = POINT_TRANSITIONS[r1][r6] or POINT_TRANSITIONS[r2][r8]
+        es = POINT_TRANSITIONS[r3][r5] or POINT_TRANSITIONS[r4][r7]
+        ee = POINT_TRANSITIONS[r3][r6] or POINT_TRANSITIONS[r4][r8]
 
         return PointRelation(ss, se, es, ee)
 
@@ -152,7 +139,6 @@ class PointRelation:
 
     @relation.setter
     def relation(self, relations):
-
         # if the complete relation inferred a point relation different of the original
         # relations, the point relation is inconsistent a.k.a. not valid
         complete_relations = self._complete(*relations)
@@ -164,7 +150,6 @@ class PointRelation:
 
     @staticmethod
     def _complete(start_start, start_end, end_start, end_end):
-
         relations = [
             ("ss", start_start, "ts"),  # source start, target start
             ("ss", start_end, "te"),  # source start, target end
@@ -179,7 +164,7 @@ class PointRelation:
         for src, rel, tgt in relations:
             if rel:
                 relations_dict[(src, tgt)] = rel
-                relations_dict[(tgt, src)] = _INVERSE_POINT_RELATION[rel]
+                relations_dict[(tgt, src)] = INVERSE_POINT_RELATION[rel]
 
         # infer the relation between all end points
         flag = True
@@ -188,13 +173,13 @@ class PointRelation:
             # infer all possible relations
             for (p1, p2), rel12 in relations_dict.items():
                 for (p3, p4), rel34 in relations_dict.items():
-                    cond1 = (p2 == p3 and p1 != p4)
+                    cond1 = p2 == p3 and p1 != p4
                     cond2 = (p1, p4) not in relations_dict
                     cond3 = (p4, p1) not in relations_dict
-                    rel = _POINT_TRANSITIONS[rel12][rel34]
+                    rel = POINT_TRANSITIONS[rel12][rel34]
                     if cond1 and cond2 and cond3 and rel:
                         inferred_relations[(p1, p4)] = rel
-                        inferred_relations[(p4, p1)] = _INVERSE_POINT_RELATION[rel]
+                        inferred_relations[(p4, p1)] = INVERSE_POINT_RELATION[rel]
 
             if not inferred_relations:
                 flag = False
@@ -217,11 +202,10 @@ class PointRelation:
             (e_src, self.relation[2], s_tgt),
             (e_src, self.relation[3], e_tgt),
             (s_src, "<", e_src),
-            (s_tgt, "<", e_tgt)
+            (s_tgt, "<", e_tgt),
         ]
 
         for src, rel, tgt in relations:
-
             if rel == "<":
                 tgt.value += 1
 
@@ -255,14 +239,12 @@ _INTERVAL_TO_POINT_RELATION = {
     "OVERLAPPED": PointRelation(xs_ys=">", xs_ye="<", xe_ye=">"),
     "VAGUE": PointRelation(),
     "BEFORE-OR-OVERLAP": PointRelation(xs_ys="<", xe_ye="<"),
-    "OVERLAP-OR-AFTER": PointRelation(xs_ys=">", xe_ye=">")
+    "OVERLAP-OR-AFTER": PointRelation(xs_ys=">", xe_ye=">"),
 }
 
 
 class TemporalRelation:
-
     def __init__(self, relation: Union[str, list, dict, PointRelation]):
-
         self.point = self._handle(relation)
         self._interval = None
 
@@ -298,7 +280,6 @@ class TemporalRelation:
 
     @property
     def interval(self):
-
         if self._interval is None:
             for itr, pnt in _INTERVAL_TO_POINT_RELATION.items():
                 if pnt == self.point:
@@ -308,9 +289,7 @@ class TemporalRelation:
 
     @staticmethod
     def _handle(relation):
-
         if isinstance(relation, str):
-
             interval = _SETTLE_RELATION.get(relation.upper())
             if interval is None:
                 raise ValueError(f"Interval relation {relation} not supported.")
