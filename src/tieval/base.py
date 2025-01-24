@@ -135,7 +135,7 @@ class Document:
         return self.text
 
     def __getitem__(self, id: str) -> Optional[Union[Entity, TLink]]:
-        for entity in self.entities.union(self.tlinks):
+        for entity in self.entities:
             if entity.id == id:
                 return entity
 
@@ -147,10 +147,14 @@ class Document:
         It will call the function :py:func:`tieval.closure.temporal_closure` on the set of temporal links of the
         current document.
         """
-
         if self._closure is None:
             self._closure = _temporal_closure(self.tlinks)
-
+            if isinstance(self.entities[0], Entity):
+                # Closure returns the entity as a string, so we need to map it to the actual entity
+                entity_map = {ent.id: ent for ent in self.entities + [self.dct]}
+                for tlink in self._closure:
+                    tlink.source = entity_map[tlink.source_id]
+                    tlink.target = entity_map[tlink.target_id]
         return self._closure
 
     @property

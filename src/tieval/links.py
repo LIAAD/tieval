@@ -78,24 +78,28 @@ class TLink:
             relation=~self.relation
         )
 
-    def __eq__(self, other):
-        return self.__hash__() == other.__hash__()
-
-    def __hash__(self):
-        """Define a unique encoding depending on source, target and relation.
-         This encoding is necessary for hashing and equality.
-         """
-        entities = [self.source, self.target]
+    def _key(self):
+        entities = [self.source_id, self.target_id]
         entities.sort()
         src, tgt = entities
 
-        if src == self.source:
-            relation = self.relation.point
+        if src == self.source_id:
+            relation = self.relation
         else:
-            relation = ~self.relation.point
+            relation = ~self.relation
 
-        return hash((src, tgt, relation))
+        keys = [src, tgt, relation.interval]
+        keys.sort()
+        key = "_".join(keys)
+        return key
 
+    def __eq__(self, other):
+        return self._key() == other._key()
+
+    def __hash__(self):
+        return hash(self._key())
+
+        
     @staticmethod
     def _resolve_inference(self, other):
 

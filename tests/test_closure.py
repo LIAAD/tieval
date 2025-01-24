@@ -108,7 +108,7 @@ def test_temporal_closure_3():
     assert inferred == closure
 
 
-def test_temporal_closure_dataset():
+def test_temporal_closure_tempeavl_3_test():
     dataset = datasets.read("tempeval_3")
     n_tlinks = sum([len(doc.tlinks) for doc in dataset.test])
     n_tlinks_closure = sum([len(doc.temporal_closure) for doc in dataset.test])

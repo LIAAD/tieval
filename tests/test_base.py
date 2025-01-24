@@ -2,6 +2,8 @@
 from pathlib import Path
 
 from tieval.base import Sentence
+from tieval.links import TLink
+from tieval.entities import Entity
 from tieval.datasets.readers import TempEval3DocumentReader
 
 
@@ -14,6 +16,13 @@ class TestDocument:
 
     def test_print(self):
         print(self.doc)
+        
+    def test_temporal_closure(self):
+        tlinks = self.doc.temporal_closure
+        tlink = next(iter(tlinks))
+        assert isinstance(tlink, TLink)
+        assert isinstance(tlink.source, Entity)
+        assert isinstance(tlink.target, Entity)
 
 
 class TestSentence:
