@@ -42,6 +42,7 @@ def _compute_point_temporal_closure(relations: List[_DictRelation]):
         - The algorithm handles three types of relations: '<', '=', and None.
         - Inferred relations are determined using the POINT_TRANSITIONS table.
     """
+    relations = sorted(relations, key=lambda x: (x["source"], x["target"]))
 
     # Group equal nodes
     grouped_equal_nodes = []
@@ -174,8 +175,7 @@ def point_temporal_closure(tlinks: Set[TLink]):
     tlinks = _remove_duplicate_tlinks(tlinks)
     edges_triplets = tlinks_to_point_relations(tlinks)
     inferred_point_relations = _compute_point_temporal_closure(edges_triplets)
-    inferred_tlinks = point_relations_to_tlinks(inferred_point_relations)
-    return inferred_tlinks
+    return inferred_point_relations
 
 
 def _structure_point_relation(
