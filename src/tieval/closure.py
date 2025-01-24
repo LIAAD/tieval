@@ -138,8 +138,8 @@ def _remove_duplicate_tlinks(tlinks: Set[TLink]) -> Set[TLink]:
 
     
     def tlink_key(tlink: TLink) -> str:
-        return "".join(
-            sorted((tlink.source.id, tlink.target.id, tlink.relation.interval))
+        return " ".join(
+            sorted((tlink.source.id, tlink.target.id))
         )
 
     tlink_keys = [tlink_key(tlink) for tlink in tlinks]
