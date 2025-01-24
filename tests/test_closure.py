@@ -31,7 +31,7 @@ def test_temporal_closure_1():
     }
 
     inferred = temporal_closure(annotation)
-    assert inferred == closure
+    assert set(inferred) == closure
 
 
 def test_temporal_closure_2():
@@ -116,3 +116,13 @@ def test_temporal_closure_tempeavl_3_test():
     assert n_tlinks_closure >= n_tlinks
     assert n_tlinks == 929
     assert n_tlinks_closure == 3458
+
+
+def test_temporal_closure_tempeavl_3_train():
+    dataset = datasets.read("tempeval_3")
+    n_tlinks = sum([len(doc.tlinks) for doc in dataset.train])
+    n_tlinks_closure = sum([len(doc.temporal_closure) for doc in dataset.train])
+    
+    assert n_tlinks_closure >= n_tlinks
+    assert n_tlinks == 10952
+    assert n_tlinks_closure == 77747

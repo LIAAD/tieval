@@ -23,6 +23,9 @@ class TestDocument:
         assert isinstance(tlink, TLink)
         assert isinstance(tlink.source, Entity)
         assert isinstance(tlink.target, Entity)
+        
+    def test_temporal_closure_length(self):
+        assert len(self.doc.temporal_closure) == 306
 
 
 class TestSentence:

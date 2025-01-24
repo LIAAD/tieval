@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import Set, Optional, Union, List, Tuple
+from typing import Set, Optional, Union, List, Tuple, Iterable
 
 import nltk
 
@@ -110,7 +110,7 @@ class Document:
             text: str,
             dct: Timex,
             entities: Set[Entity],
-            tlinks: Set[TLink],
+            tlinks: Iterable[TLink],
             language: str = "english",
             **kwargs
     ) -> None:
@@ -120,6 +120,12 @@ class Document:
         self._text = Text(text, language)
         self.dct = dct
         self.entities = [ent for ent in entities if not ent.is_dct]
+        
+        # TODO: This is an hack to avoid issues when computing closure. 
+        # Some documents have issues in the annotation of the temporal links.
+        # Sorting the tlinks ensures that the closure is always the same.
+        tlinks = list(tlinks)
+        tlinks.sort(key=lambda x: (x.source.id, x.target.id))
         self.tlinks = tlinks
 
         for key, value in kwargs.items():

@@ -41,8 +41,6 @@ def _compute_point_temporal_closure(relations: List[_DictRelation]):
         - The algorithm handles three types of relations: '<', '=', and None.
         - Inferred relations are determined using the POINT_TRANSITIONS table.
     """
-    relations = sorted(relations, key=lambda x: (x["source"], x["target"]))
-
     # Group equal nodes
     grouped_equal_nodes = []
     for relation in relations:
@@ -71,8 +69,7 @@ def _compute_point_temporal_closure(relations: List[_DictRelation]):
             relation["target"] = node2groupnode[relation["target"]]
 
     # make all relations "<"
-    before_relations = []
-    graph = nx.DiGraph()
+    edges = []
     for relation in relations:
         source, target, rel_type = (
             relation["source"],
@@ -80,42 +77,44 @@ def _compute_point_temporal_closure(relations: List[_DictRelation]):
             relation["relation"],
         )
         if rel_type == "<":
-            graph.add_edge(source, target, relation=rel_type)
-            before_relations.append((source, target, rel_type))
+            edges.append((source, target))
         elif rel_type == ">":
-            graph.add_edge(target, source, relation="<")
-            before_relations.append((target, source, "<"))
+            edges.append((target, source))
         elif rel_type is None:
             continue
         elif rel_type == "=":
             continue
         else:
             raise ValueError(f"Unknown relation type: {rel_type}")
-
+        
+    graph = nx.DiGraph()
+    graph.add_edges_from(edges)
+    
     # Infer relations using POINT_TRANSITIONS
     inferred_relations = set()
     for source in graph.nodes():
-        for target in nx.dfs_preorder_nodes(graph, source=source):
+        for target in graph.nodes():
             if source == target:
                 continue
-
-            path = nx.shortest_path(graph, source, target)
-            combinations = itertools.combinations(path, 2)
-            for node1, node2 in combinations:
-                if node1 in equal_node_map and node2 in equal_node_map:
-                    for original_node1 in equal_node_map[node1]:
-                        for original_node2 in equal_node_map[node2]:
-                            inferred_relations.add(
-                                (original_node1, "<", original_node2)
-                            )
-                elif node1 in equal_node_map:
-                    for original_node in equal_node_map[node1]:
-                        inferred_relations.add((original_node, "<", node2))
-                elif node2 in equal_node_map:
-                    for original_node in equal_node_map[node2]:
-                        inferred_relations.add((node1, "<", original_node))
-                else:
-                    inferred_relations.add((node1, "<", node2))
+            # check if there is a path between source and target
+            if nx.has_path(graph, source, target):   
+                path = nx.shortest_path(graph, source, target)
+                combinations = itertools.combinations(path, 2)
+                for node1, node2 in combinations:
+                    if node1 in equal_node_map and node2 in equal_node_map:
+                        for original_node1 in equal_node_map[node1]:
+                            for original_node2 in equal_node_map[node2]:
+                                inferred_relations.add(
+                                    (original_node1, "<", original_node2)
+                                )
+                    elif node1 in equal_node_map:
+                        for original_node in equal_node_map[node1]:
+                            inferred_relations.add((original_node, "<", node2))
+                    elif node2 in equal_node_map:
+                        for original_node in equal_node_map[node2]:
+                            inferred_relations.add((node1, "<", original_node))
+                    else:
+                        inferred_relations.add((node1, "<", node2))
 
     # Add equal relations
     for group in grouped_equal_nodes:
@@ -137,7 +136,6 @@ def temporal_closure(tlinks: Set[TLink]) -> Set[TLink]:
 
     :param Set[TLink] tlinks:  A set of temporal links (typically from a document)
     """
-    tlinks = set(tlinks)
     edges_triplets = tlinks_to_point_relations(tlinks)
     inferred_point_relations = _compute_point_temporal_closure(edges_triplets)
     inferred_tlinks = point_relations_to_tlinks(inferred_point_relations)
@@ -150,61 +148,56 @@ def point_temporal_closure(tlinks: Set[TLink]):
     This function infers all possible TLinks form the set of relations
     that is fed as input.
     """
-    tlinks = set(tlinks)
     edges_triplets = tlinks_to_point_relations(tlinks)
     inferred_point_relations = _compute_point_temporal_closure(edges_triplets)
     return inferred_point_relations
 
 
 def _structure_point_relation(
-    source: str, target: str, point_relation: Set[str]
+    source: str, target: str, point_relations: List[_DictRelation]
 ) -> Tuple[str, str, str, str]:
     """Map the point relations to the original structure."""
+    point_relations_map = {}
+    duplicate_relations = set()
+    for point_relation in point_relations:
+        pr_src, pr_tgt = point_relation["source"], point_relation["target"]
+        relation = point_relation["relation"]
+        if (pr_src, pr_tgt) not in point_relations_map:
+            point_relations_map[(pr_src, pr_tgt)] = relation
+        else:
+            if relation != point_relations_map[(pr_src, pr_tgt)]:
+                duplicate_relations.add((pr_src, pr_tgt))
+                
+        if (pr_tgt, pr_src) not in point_relations_map:
+            point_relations_map[(pr_tgt, pr_src)] = INVERSE_POINT_RELATION[relation]
+        else:
+            if relation != point_relations_map[(pr_tgt, pr_src)]:
+                duplicate_relations.add((pr_tgt, pr_src))
+    
+    # remove duplicate relations
+    for relation in duplicate_relations:
+        point_relations_map.pop(relation)
 
-    xs_ys, xs_ye, xe_ys, xe_ye = None, None, None, None
-    for node1, relation, node2 in point_relation:
-        if node1 == f"s{source}" and node2 == f"s{target}":
-            xs_ys = relation
-        elif node2 == f"s{source}" and node1 == f"s{target}":
-            xs_ys = INVERSE_POINT_RELATION[relation]
-
-        elif node1 == f"s{source}" and node2 == f"e{target}":
-            xs_ye = relation
-        elif node2 == f"s{source}" and node1 == f"e{target}":
-            xs_ye = INVERSE_POINT_RELATION[relation]
-
-        elif node1 == f"e{source}" and node2 == f"s{target}":
-            xe_ys = relation
-        elif node2 == f"e{source}" and node1 == f"s{target}":
-            xe_ys = INVERSE_POINT_RELATION[relation]
-
-        elif node1 == f"e{source}" and node2 == f"e{target}":
-            xe_ye = relation
-        elif node2 == f"e{source}" and node1 == f"e{target}":
-            xe_ye = INVERSE_POINT_RELATION[relation]
-
+    # structure the point relations
+    xs_ys = point_relations_map.get((f"s{source}", f"s{target}"), None)
+    xs_ye = point_relations_map.get((f"s{source}", f"e{target}"), None)
+    xe_ys = point_relations_map.get((f"e{source}", f"s{target}"), None)
+    xe_ye = point_relations_map.get((f"e{source}", f"e{target}"), None)
     return xs_ys, xs_ye, xe_ys, xe_ye
 
 
 def point_relations_to_tlinks(point_relations: List[_DictRelation]) -> Set[TLink]:
     # aggregate the point relations by entity pairs
-    tlinks_point_relations = defaultdict(set)
+    tlinks_point_relations = defaultdict(list)
     for point_relation in point_relations:
         key = tuple(
             sorted((point_relation["source"][1:], point_relation["target"][1:]))
         )
-        tlinks_point_relations[key].add(
-            (
-                point_relation["source"],
-                point_relation["relation"],
-                point_relation["target"],
-            )
-        )
+        tlinks_point_relations[key].append(point_relation)
 
     # assert if the point relations found form a valid interval relation
-    inferred_tlinks = set()
-    for entities, point_relation in tlinks_point_relations.items():
-        source, target = sorted(entities)
+    inferred_tlinks = []
+    for (source, target), point_relation in tlinks_point_relations.items():
         xs_ys, xs_ye, xe_ys, xe_ye = _structure_point_relation(
             source, target, point_relation
         )
@@ -212,8 +205,8 @@ def point_relations_to_tlinks(point_relations: List[_DictRelation]) -> Set[TLink
         relation = TemporalRelation([xs_ys, xs_ye, xe_ys, xe_ye])
         if relation.is_complete():
             tlink = TLink(source, target, relation)
-            inferred_tlinks.add(tlink)
-    return inferred_tlinks
+            inferred_tlinks.append(tlink)
+    return set(inferred_tlinks)
 
 
 def tlinks_to_point_relations(tlinks: Set[TLink]) -> List[_DictRelation]:
