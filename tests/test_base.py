@@ -25,6 +25,7 @@ class TestDocument:
         assert isinstance(tlink.target, Entity)
         
     def test_temporal_closure_length(self):
+        # TODO: Fix this test
         assert len(self.doc.temporal_closure) == 306
 
 
