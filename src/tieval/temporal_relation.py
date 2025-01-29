@@ -13,17 +13,17 @@ _SETTLE_RELATION = {
     "EQUAL": "SIMULTANEOUS",
     "AFTER": "AFTER",
     "A": "AFTER",
-    "BEGINS-ON": "BEGINS",  #
+    "BEGINS-ON": "BEGINS",
     "SIMULTANEOUS": "SIMULTANEOUS",
     "S": "SIMULTANEOUS",
     "INCLUDES": "INCLUDES",
     "I": "INCLUDES",
-    "DURING": "IS_INCLUDED",
-    "ENDS-ON": "ENDS",  #
+    "DURING": "SIMULTANEOUS",  # According to TimeML 1.2.1 guidelines
+    "ENDS-ON": "ENDS",
     "BEGUN_BY": "BEGUN_BY",
     "STARTED_BY": "BEGUN_BY",
     "ENDED_BY": "ENDED_BY",
-    "DURING_INV": "INCLUDES",
+    "DURING_INV": "SIMULTANEOUS",   # According to TimeML 1.2.1 guidelines
     "ENDS": "ENDS",
     "IS_INCLUDED": "IS_INCLUDED",
     "II": "IS_INCLUDED",
@@ -228,10 +228,8 @@ _INTERVAL_TO_POINT_RELATION = {
     "IAFTER": PointRelation(xs_ye="="),
     "INCLUDES": PointRelation(xs_ys="<", xe_ye=">"),
     "IS_INCLUDED": PointRelation(xs_ys=">", xe_ye="<"),
-    # "ENDS-ON": PointRelation(end_end="="),
     "BEGINS": PointRelation(xs_ys="=", xe_ye="<"),
     "BEGUN_BY": PointRelation(xs_ys="=", xe_ye=">"),
-    # "BEGINS-ON": PointRelation(start_start="="),
     "ENDS": PointRelation(xs_ys=">", xe_ye="="),
     "ENDED_BY": PointRelation(xs_ys="<", xe_ye="="),
     "SIMULTANEOUS": PointRelation(xs_ys="=", xe_ye="="),
