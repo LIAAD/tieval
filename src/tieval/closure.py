@@ -1,4 +1,4 @@
-import itertools
+import warnings
 from collections import defaultdict
 from typing import List, Set, Tuple, TypedDict
 
@@ -14,7 +14,43 @@ class _DictRelation(TypedDict):
     relation: str
 
 
-def _compute_point_temporal_closure(relations: List[_DictRelation]):
+class UnionFind:
+    def __init__(self):
+        self.parent = {}
+        self.rank = {}
+
+    def find(self, x):
+        if x not in self.parent:
+            self.parent[x] = x
+            self.rank[x] = 0
+            return x
+
+        if self.parent[x] != x:
+            self.parent[x] = self.find(self.parent[x])  # Path compression
+        return self.parent[x]
+
+    def union(self, x, y):
+        px, py = self.find(x), self.find(y)
+        if px == py:
+            return
+
+        if self.rank[px] < self.rank[py]:
+            px, py = py, px
+        self.parent[py] = px
+        if self.rank[px] == self.rank[py]:
+            self.rank[px] += 1
+
+    def get_groups(self):
+        groups = {}
+        for x in self.parent:
+            root = self.find(x)
+            if root not in groups:
+                groups[root] = []
+            groups[root].append(x)
+        return list(groups.values())
+
+
+def _compute_point_temporal_closure(relations):
     """
     Compute the temporal closure of a set of temporal relations.
 
@@ -34,7 +70,9 @@ def _compute_point_temporal_closure(relations: List[_DictRelation]):
 
     Returns:
         List[_DictRelation]: A list of dictionaries representing the temporal
-        closure, including both original and inferred relations.
+        closure, including both original and inferred relations. If there is
+        some inconsistency in the annotation, the function will return an empty
+        list.
 
     Note:
         - The '>' relation is converted to '<' by swapping source and target.
@@ -42,19 +80,12 @@ def _compute_point_temporal_closure(relations: List[_DictRelation]):
         - Inferred relations are determined using the POINT_TRANSITIONS table.
     """
     # Group equal nodes
-    grouped_equal_nodes = []
+    uf = UnionFind()
     for relation in relations:
         if relation["relation"] == "=":
-            already_equal = False
-            for node in grouped_equal_nodes:
-                if relation["source"] in node:
-                    node.append(relation["target"])
-                    already_equal = True
-                elif relation["target"] in node:
-                    node.append(relation["source"])
-                    already_equal = True
-            if not already_equal:
-                grouped_equal_nodes.append([relation["source"], relation["target"]])
+            uf.union(relation["source"], relation["target"])
+
+    grouped_equal_nodes = uf.get_groups()
 
     # Replace equal nodes with new nodes
     equal_node_map = {"".join(sorted(group)): group for group in grouped_equal_nodes}
@@ -62,68 +93,65 @@ def _compute_point_temporal_closure(relations: List[_DictRelation]):
         node: groupid for groupid, group in equal_node_map.items() for node in group
     }
 
-    for relation in relations:
-        if relation["source"] in node2groupnode:
-            relation["source"] = node2groupnode[relation["source"]]
-        if relation["target"] in node2groupnode:
-            relation["target"] = node2groupnode[relation["target"]]
-
-    # make all relations "<"
+    # Pre-collect all nodes for graph initialization
+    nodes = set()
     edges = set()
     for relation in relations:
-        source, target, rel_type = (
-            relation["source"],
-            relation["target"],
-            relation["relation"],
-        )
-        if rel_type == "<":    
+        source = node2groupnode.get(relation["source"], relation["source"])
+        target = node2groupnode.get(relation["target"], relation["target"])
+        nodes.add(source)
+        nodes.add(target)
+
+        rel_type = relation["relation"]
+        if rel_type == "<":
             edges.add((source, target))
         elif rel_type == ">":
             edges.add((target, source))
-        elif rel_type is None:
-            continue
-        elif rel_type == "=":
-            continue
-        else:
-            raise ValueError(f"Unknown relation type: {rel_type}")
-    
+
     # Drop edges that are inverse of each other
-    edges = set(edge for edge in edges if (edge[1], edge[0]) not in edges)    
-    
+    edges = {edge for edge in edges if (edge[1], edge[0]) not in edges}
+
+    # Initialize graph with pre-known size
     graph = nx.DiGraph()
+    graph.add_nodes_from(nodes)
     graph.add_edges_from(edges)
-    
-    # Infer relations using POINT_TRANSITIONS
+
+    # Compute transitive closure
+    try:
+        closure = nx.transitive_closure_dag(
+            graph
+        )  # Use DAG-specific algorithm since temporal relations form a DAG
+    except nx.exception.NetworkXUnfeasible:
+        warnings.warn(
+            "There is some issue in the annotation. Temporal graph is not a DAG"
+        )
+        return []
+
     inferred_relations = set()
-    for source in graph.nodes():
-        for target in nx.dfs_preorder_nodes(graph, source=source):
-            if source == target:
-                continue
-            # check if there is a path between source and target
-            if nx.has_path(graph, source, target):   
-                path = nx.shortest_path(graph, source, target)
-                combinations = itertools.combinations(path, 2)
-                for node1, node2 in combinations:
-                    if node1 in equal_node_map and node2 in equal_node_map:
-                        for original_node1 in equal_node_map[node1]:
-                            for original_node2 in equal_node_map[node2]:
-                                inferred_relations.add(
-                                    (original_node1, "<", original_node2)
-                                )
-                    elif node1 in equal_node_map:
-                        for original_node in equal_node_map[node1]:
-                            inferred_relations.add((original_node, "<", node2))
-                    elif node2 in equal_node_map:
-                        for original_node in equal_node_map[node2]:
-                            inferred_relations.add((node1, "<", original_node))
-                    else:
-                        inferred_relations.add((node1, "<", node2))
+    processed_pairs = set()
+    for node1, node2 in closure.edges():
+        if (node1, node2) in processed_pairs:
+            continue
+
+        processed_pairs.add((node1, node2))
+        if node1 in equal_node_map and node2 in equal_node_map:
+            for original_node1 in equal_node_map[node1]:
+                for original_node2 in equal_node_map[node2]:
+                    inferred_relations.add((original_node1, "<", original_node2))
+        elif node1 in equal_node_map:
+            for original_node in equal_node_map[node1]:
+                inferred_relations.add((original_node, "<", node2))
+        elif node2 in equal_node_map:
+            for original_node in equal_node_map[node2]:
+                inferred_relations.add((node1, "<", original_node))
+        else:
+            inferred_relations.add((node1, "<", node2))
 
     # Add equal relations
     for group in grouped_equal_nodes:
-        combinations = itertools.combinations(group, 2)
-        for node1, node2 in combinations:
-            inferred_relations.add((node1, "=", node2))
+        for i, node1 in enumerate(group):
+            for node2 in group[i + 1 :]:
+                inferred_relations.add((node1, "=", node2))
 
     return [
         {"source": source, "target": target, "relation": relation}
@@ -170,13 +198,13 @@ def _structure_point_relation(
         else:
             if relation != point_relations_map[(pr_src, pr_tgt)]:
                 duplicate_relations.add((pr_src, pr_tgt))
-                
+
         if (pr_tgt, pr_src) not in point_relations_map:
             point_relations_map[(pr_tgt, pr_src)] = INVERSE_POINT_RELATION[relation]
         else:
             if relation != point_relations_map[(pr_tgt, pr_src)]:
                 duplicate_relations.add((pr_tgt, pr_src))
-    
+
     # remove duplicate relations
     for relation in duplicate_relations:
         point_relations_map.pop(relation)

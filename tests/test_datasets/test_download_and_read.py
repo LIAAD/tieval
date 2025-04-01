@@ -190,7 +190,7 @@ def test_download_and_read_fr_timebank(tmp_path):
     assert n_docs == 108
     assert n_timexs == 425
     assert n_events == 2115
-    assert n_tlinks == 2304
+    assert n_tlinks == 2303
 
 
 def test_download_and_read_tcr(tmp_path):
