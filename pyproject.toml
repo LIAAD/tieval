@@ -44,7 +44,7 @@ classifiers = [
 
 [project.optional-dependencies]
 test = ["pytest"]
-models = ["allenlp==2.9.3", "py_heideltime"]
+models = ["allennlp==2.9.3", "py_heideltime"]
 
 [project.urls]
 Documentation = "https://tieval.readthedocs.io/"
