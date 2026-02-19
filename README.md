@@ -10,7 +10,7 @@
 
 A framework for evaluation and development of temporally aware models.
 
-![](imgs/tieval.png)
+<img src="imgs/tieval.png" width="400">
 
 ## Installation
 
